@@ -1,0 +1,141 @@
+{
+  "dolar": {
+    "data": "13/07/2026",
+    "valor": 5.1183,
+    "variacao_pct": 0.1859536486063276
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "05/08/2026",
+    "valor": 14.25
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "10/07/2026",
+      "preco_reais": "140.44",
+      "variacao_pct": "+0.14"
+    },
+    {
+      "nome": "Milho",
+      "data": "10/07/2026",
+      "preco_reais": "64.51",
+      "variacao_pct": "0.22"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "10/07/2026",
+      "preco_reais": "82,54",
+      "variacao_pct": "0.0"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "10/07/2026",
+      "preco_reais": "1722.48",
+      "variacao_pct": "-2.29"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "10/07/2026",
+      "preco_reais": "326.65",
+      "variacao_pct": "0.6"
+    },
+    {
+      "nome": "Algodão",
+      "data": "10/07/2026",
+      "preco_reais": "410.63",
+      "variacao_pct": "0.4"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "10/07/2026",
+      "preco_reais": "91.21",
+      "variacao_pct": "-1.08"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Agosto/26",
+      "preco_reais": "5,1370 R$/US$",
+      "variacao_pct": "-0.19",
+      "valor_numerico": 5.1370000000000005,
+      "unidade": "R$/US$"
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 133,28 /sc 60 kg (≈ US$ 26,04 x R$ 5,1183)",
+      "variacao_pct": "1.13",
+      "valor_numerico": 26.04,
+      "unidade": "US$/sc 60 kg"
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Julho/2026",
+      "preco_reais": "64,72 R$/sc 60 kg",
+      "variacao_pct": "-0.05",
+      "valor_numerico": 64.72,
+      "unidade": "R$/sc 60 kg"
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Julho/2026",
+      "preco_reais": "329,80 R$/@",
+      "variacao_pct": "0.05",
+      "valor_numerico": 329.8,
+      "unidade": "R$/@"
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 2029,41 /sc 60 kg (≈ US$ 396,50 x R$ 5,1183)",
+      "variacao_pct": "-1.54",
+      "valor_numerico": 396.5,
+      "unidade": "US$/sc 60 kg"
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Dólar de lado (+0.19%): num dia como esse, vale mais olhar para os fundamentos de cada mercado (clima, safra, estoques) do que para o câmbio.",
+    "Juros em 14.25% ao ano seguem em patamar alto - carregar estoque fica caro, o que empurra produtores a vender mais rápido, e o diferencial de juros atrai capital estrangeiro, valorizando o real. Ambos tendem a pesar contra o preço em reais das commodities de exportação.",
+    "Obs.: vale lembrar que essas são relações históricas, não regras fixas - fatores como clima, safra e demanda internacional podem se sobrepor facilmente ao efeito do câmbio ou dos juros."
+  ],
+  "noticias": [
+    {
+      "titulo": "14:02Mercado da carne exige estratégia diante da reconfiguração do comércio internacional",
+      "link": "https://www.noticiasagricolas.com.br/noticias/carnes/424600-mercado-da-carne-exige-estrategia-diante-da-reconfiguracao-do-comercio-internacional.html",
+      "resumo": "O fim da cota de exportação de carne bovina brasileira no mercado Chines impõe um novo desafio à cadeia pecuária nacional. A redução nas exportações já começa a refletir nas cotações da arroba e dos principais cortes, en...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "12:35China compra mais 136 mil t de soja dos EUA, segundo informa o USDA nesta 2ª feira (13)",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/424597-china-compra-mais-136-mil-t-de-soja-dos-eua-segundo-informa-o-usda-nesta-2-feira-13.html",
+      "resumo": "O USDA (Departamento de Agricultura dos Estados Unidos) informou mais uma venda de 136 mil toneladas de soja para a China nesta segunda-feira (13). O volume é todo da safra 2026/27.",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "11:16Exportações globais de café verde caem 4,1% em maio, diz OIC",
+      "link": "https://www.noticiasagricolas.com.br/noticias/agronegocio/424587-exportacoes-globais-de-cafe-verde-caem-41-em-maio-diz-oic.html",
+      "resumo": "LONDRES, 13 Jul (Reuters) - As exportações globais de café verde caíram 4,1% em maio em relação ao mesmo mês do ano anterior, para 10,8 milhões de sacas de 60 kg, em meio a uma queda acentuada nas exportações de grãos ar...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "11:14Café do Brasil enfrenta desafios do El Niño, mas safras estão mais resistentes",
+      "link": "https://www.noticiasagricolas.com.br/noticias/agronegocio/424588-cafe-do-brasil-enfrenta-desafios-do-el-nino-mas-safras-estao-mais-resistentes.html",
+      "resumo": "SÃO PAULO, 13 Jul (Reuters) - O El Niño pode reduzir a safra recorde de café prevista para o Brasil em até um quinto, segundo a Associação Brasileira da Indústria de Café (Abic), já que o calor excessivo e as chuvas irre...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "10:53Dólar sobe ante o real após EUA e Irã retomarem ataques no Oriente Médio",
+      "link": "https://www.noticiasagricolas.com.br/noticias/agronegocio/424589-dolar-sobe-ante-o-real-apos-eua-e-ira-retomarem-ataques-no-oriente-medio.html",
+      "resumo": "SÃO PAULO, 13 Jul (Reuters) - O dólar segue em alta ante o real nesta segunda-feira, enquanto no exterior a moeda norte-americana também avança ante outras divisas de países emergentes, após Estados Unidos e Irã terem vo...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
