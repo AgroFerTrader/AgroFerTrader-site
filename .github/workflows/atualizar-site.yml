@@ -1,0 +1,38 @@
+name: Atualizar site diariamente
+
+# Roda todo dia às 21h no horário de Brasília (00h UTC), depois que o
+# CEPEA/Esalq e a B3 já divulgaram o fechamento do dia. Também pode ser
+# disparado manualmente pela aba "Actions" do GitHub, a qualquer momento.
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependências
+        run: pip install requests pandas lxml beautifulsoup4
+
+      - name: Gerar o site com os dados de hoje
+        run: python gerar_site.py
+
+      - name: Publicar as mudanças (commit + push)
+        run: |
+          git config user.name "AgroFer Trader Bot"
+          git config user.email "bot@agrofertrader.local"
+          git add index.html dados/
+          git diff --quiet && git diff --staged --quiet || git commit -m "Atualiza site - $(date +'%d/%m/%Y')"
+          git push
