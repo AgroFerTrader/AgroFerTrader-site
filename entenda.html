@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entenda o mercado — AgroFer Trader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B3C1F; --ink-soft:#BFD1B8; --paper:#FDFDF9; --paper-dim:#F2F1E4;
+    --gold:#B08830; --leaf:#4C7A1F; --up:#4C7A1F; --down:#9C3B2E;
+    --line: rgba(11,60,31,0.14); --line-dark: rgba(253,253,249,0.16);
+    --display:'Fraunces', serif; --body:'Inter', sans-serif; --mono:'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.6;}
+  a{color:var(--leaf);}
+  .wrap{max-width:820px;margin:0 auto;padding:0 24px;}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;max-width:1080px;margin:0 auto;}
+  .brand{font-family:var(--display);font-weight:600;font-size:20px;display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);}
+  .brand img{height:58px;width:auto;display:block;}
+  .navlinks{display:flex;gap:28px;font-size:14px;font-weight:500;}
+  .navlinks a{text-decoration:none;opacity:.75;color:var(--ink);}
+  .navlinks a:hover{opacity:1;}
+
+  .page-head{padding:48px 0 40px;border-bottom:1px solid var(--line);}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--leaf);margin-bottom:14px;}
+  h1{font-family:var(--display);font-weight:600;font-size:clamp(30px,4.5vw,44px);margin:0 0 14px;line-height:1.1;}
+  .page-sub{font-size:16px;color:var(--ink);opacity:.75;max-width:56ch;margin:0;}
+
+  section.entry{padding:48px 0;border-bottom:1px solid var(--line);}
+  section.entry:last-of-type{border-bottom:none;}
+  .entry-label{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);background:var(--ink);display:inline-block;padding:4px 10px;margin-bottom:16px;}
+  h2{font-family:var(--display);font-weight:600;font-size:26px;margin:0 0 16px;}
+  section.entry p{font-size:15.5px;max-width:66ch;margin:0 0 16px;}
+  section.entry p:last-child{margin-bottom:0;}
+
+  .glossario-grid{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line);margin-top:8px;}
+  .termo{display:grid;grid-template-columns:180px 1fr;gap:20px;padding:18px 0;border-bottom:1px solid var(--line);}
+  .termo dt{font-family:var(--mono);font-weight:600;font-size:14px;color:var(--leaf);}
+  .termo dd{margin:0;font-size:14.5px;}
+  @media (max-width:560px){
+    .termo{grid-template-columns:1fr;gap:4px;}
+  }
+
+  footer{padding:48px 0 56px;font-size:13px;color:var(--ink);opacity:.6;border-top:1px solid var(--line);margin-top:20px;}
+  footer a{text-decoration:underline;color:var(--ink);}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="brand"><img src="assets/logo.png" alt="AgroFer Trader"></a>
+  <div class="navlinks">
+    <a href="index.html">Preços de hoje</a>
+    <a href="index.html#futuro">Mercado futuro</a>
+    <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="page-head">
+    <div class="eyebrow">Guia de referência</div>
+    <h1>Entenda o mercado, sem jargão</h1>
+    <p class="page-sub">Antes de acompanhar os números todo dia, vale entender de onde eles vêm. Sem fórmula, sem jargão de corretora — só o que cada coisa realmente significa.</p>
+  </div>
+
+  <section class="entry" id="cepea">
+    <div class="entry-label">01 · Preço físico</div>
+    <h2>O que é o CEPEA, e por que confiamos nele</h2>
+    <p>O CEPEA (Centro de Estudos Avançados em Economia Aplicada) é ligado à Esalq, escola de agricultura da USP. Todos os dias, pesquisadores levantam os preços praticados em cooperativas, armazéns e tradings de várias regiões do país, e calculam uma média que representa o preço físico daquela commodity — o valor que o produtor realmente recebe hoje, na entrega imediata.</p>
+    <p>É por isso que usamos o CEPEA como referência: é o indicador mais citado do setor no Brasil, usado oficialmente pela Conab, pelo Ministério da Agricultura, por bancos e por cooperativas. Não é uma estimativa de mercado financeiro — é o retrato do que está sendo negociado de verdade, no chão da fazenda e no balcão da cooperativa.</p>
+    <p>Um detalhe importante: o CEPEA fecha a conta do dia só no fim da tarde. Por isso, o preço que você vê pela manhã é sempre o fechamento de ontem — não é atraso nosso, é como a coleta de dados funciona.</p>
+  </section>
+
+  <section class="entry" id="futuro">
+    <div class="entry-label">02 · Preço futuro</div>
+    <h2>Por que existe um preço "de hoje" e um preço "de setembro"</h2>
+    <p>Além do preço físico, a B3 (a bolsa brasileira) negocia contratos futuros: acordos para comprar ou vender uma commodity numa data futura, por um preço combinado agora. Esse preço reflete a expectativa do mercado financeiro — o que compradores e vendedores acham que o preço vai valer lá na frente, considerando clima, tamanho da safra, câmbio e demanda internacional.</p>
+    <p>Por isso o preço futuro quase nunca é idêntico ao físico: a diferença entre os dois (o que o mercado chama de "base") carrega informação. Se o futuro está bem mais alto que o físico, por exemplo, o mercado está apostando em alguma pressão de alta entre agora e o vencimento do contrato — pode ser expectativa de quebra de safra, alta do dólar, ou aumento de demanda externa.</p>
+    <p>Quem exporta ou compra grandes volumes usa esse mercado para se proteger de oscilação de preço (o que se chama de "hedge") — travando hoje o valor de uma venda ou compra que só vai acontecer daqui a alguns meses.</p>
+  </section>
+
+  <section class="entry" id="glossario">
+    <div class="entry-label">03 · Referência rápida</div>
+    <h2>Glossário do agro</h2>
+    <dl class="glossario-grid">
+      <div class="termo">
+        <dt>Saca</dt>
+        <dd>Unidade padrão de peso pra grãos no Brasil: 60kg. Quando você vê "R$ 140,40 a saca", é o preço de 60kg daquele grão.</dd>
+      </div>
+      <div class="termo">
+        <dt>Arroba (@)</dt>
+        <dd>Unidade usada pra pecuária: 15kg. O boi gordo é sempre cotado por arroba, não por saca.</dd>
+      </div>
+      <div class="termo">
+        <dt>PTAX</dt>
+        <dd>Taxa de câmbio oficial do Banco Central, calculada uma vez por dia a partir da média das operações — usada como referência em contratos e balanços.</dd>
+      </div>
+      <div class="termo">
+        <dt>Selic</dt>
+        <dd>Taxa básica de juros da economia brasileira, definida pelo Banco Central. Afeta o custo do crédito rural e o quanto vale a pena carregar estoque em vez de vender.</dd>
+      </div>
+      <div class="termo">
+        <dt>Fechamento</dt>
+        <dd>O último preço negociado antes do encerramento do pregão do dia — o "resultado final" daquele dia de negociação.</dd>
+      </div>
+      <div class="termo">
+        <dt>Contrato futuro</dt>
+        <dd>Acordo para comprar/vender uma quantidade fixa de uma commodity, numa data futura, por um preço definido hoje.</dd>
+      </div>
+      <div class="termo">
+        <dt>Hedge</dt>
+        <dd>Estratégia de travar um preço futuro pra se proteger de oscilação — comum entre quem exporta ou compra grandes volumes.</dd>
+      </div>
+      <div class="termo">
+        <dt>Basis (base)</dt>
+        <dd>A diferença entre o preço físico e o preço futuro da mesma commodity. Carrega informação sobre a expectativa do mercado.</dd>
+      </div>
+    </dl>
+  </section>
+</div>
+
+<div class="wrap">
+  <footer>
+    AgroFer Trader — conteúdo informativo sobre o mercado agrícola. Não constitui recomendação de investimento ou negócio. · <a href="index.html">Voltar para preços de hoje</a>
+  </footer>
+</div>
+
+</body>
+</html>

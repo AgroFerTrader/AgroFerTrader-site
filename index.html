@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgroFer Trader — A safra de hoje, em números</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B3C1F;
+    --ink-soft:#BFD1B8;
+    --paper:#FDFDF9;
+    --paper-dim:#F2F1E4;
+    --gold:#B08830;
+    --leaf:#4C7A1F;
+    --up:#4C7A1F;
+    --down:#9C3B2E;
+    --line: rgba(11,60,31,0.14);
+    --line-dark: rgba(253,253,249,0.16);
+    --display: 'Fraunces', serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    line-height:1.5;
+  }
+  a{color:inherit;}
+  img{max-width:100%;}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 24px;max-width:1080px;margin:0 auto;
+  }
+  .brand{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:20px;
+    letter-spacing:0.01em;
+    display:flex;align-items:center;gap:10px;
+  }
+  .brand img{height:58px;width:auto;display:block;}
+  .navlinks{display:flex;gap:28px;font-size:14px;font-weight:500;}
+  .navlinks a{text-decoration:none;opacity:0.75;transition:opacity .15s;}
+  .navlinks a:hover, .navlinks a:focus-visible{opacity:1;}
+
+  /* ---------- HERO / TICKER ---------- */
+  .hero{background:var(--ink);color:var(--paper);}
+  .ticker-strip{
+    border-top:1px solid var(--line-dark);
+    border-bottom:1px solid var(--line-dark);
+    overflow:hidden;
+    white-space:nowrap;
+  }
+  .ticker-track{
+    display:inline-flex;
+    padding:12px 0;
+    animation:scroll 38s linear infinite;
+  }
+  @media (prefers-reduced-motion: reduce){ .ticker-track{animation:none;} }
+  .ticker-track span.item{
+    font-family:var(--mono);
+    font-size:13px;
+    padding:0 28px;
+    border-right:1px solid var(--line-dark);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    color:var(--ink-soft);
+  }
+  .ticker-track span.item b{color:var(--paper);font-weight:600;}
+  .up{color:var(--up) !important;}
+  .down{color:var(--down) !important;}
+  @keyframes scroll{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-50%);}
+  }
+
+  .hero-inner{padding:64px 24px 72px;max-width:1080px;margin:0 auto;}
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:18px;
+  }
+  h1.headline{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(34px, 5vw, 54px);
+    line-height:1.08;
+    margin:0 0 20px;
+    max-width:14ch;
+  }
+  .hero-sub{
+    font-size:17px;
+    color:var(--ink-soft);
+    max-width:46ch;
+    margin:0 0 32px;
+  }
+  .cta-row{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 22px;
+    border-radius:2px;
+    font-weight:600;
+    font-size:14px;
+    text-decoration:none;
+    border:1px solid transparent;
+  }
+  .btn-primary{background:var(--gold);color:var(--ink);}
+  .btn-ghost{border-color:var(--line-dark);color:var(--paper);}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:64px 0;}
+  .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:32px;flex-wrap:wrap;}
+  .section-label{
+    font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--leaf);
+  }
+  h2{
+    font-family:var(--display);font-weight:600;font-size:28px;margin:6px 0 0;
+  }
+  .updated{font-size:13px;color:var(--ink);opacity:.55;font-family:var(--mono);}
+
+  /* ---------- PRICE CARDS ---------- */
+  .price-grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+    gap:1px;background:var(--line);border:1px solid var(--line);
+  }
+  .price-card{background:var(--paper);padding:22px 20px;}
+  .price-name{font-size:14px;font-weight:600;margin-bottom:10px;}
+  .price-value{font-family:var(--mono);font-size:24px;font-weight:600;}
+  .price-meta{font-size:12px;margin-top:8px;color:var(--ink);opacity:.65;}
+  .price-var{font-family:var(--mono);font-size:13px;font-weight:600;margin-top:4px;display:inline-block;}
+
+  /* ---------- EXPLANATION ---------- */
+  .explain{
+    background:var(--paper-dim);
+    border-left:3px solid var(--gold);
+    padding:28px 32px;
+  }
+  .explain p{margin:0 0 14px;font-size:15.5px;max-width:70ch;}
+  .explain p:last-child{margin-bottom:0;}
+  .explain .obs{font-size:13px;opacity:.7;font-style:italic;}
+
+  /* ---------- FUTURES (secondary treatment) ---------- */
+  .futures-note{
+    font-size:14px;color:var(--ink);opacity:.75;max-width:60ch;margin:0 0 24px;
+  }
+  .futures-table{width:100%;border-collapse:collapse;font-size:14px;}
+  .futures-table th{
+    text-align:left;font-family:var(--mono);font-size:11px;text-transform:uppercase;
+    letter-spacing:.08em;color:var(--leaf);font-weight:600;
+    padding:10px 12px;border-bottom:1px solid var(--line);
+  }
+  .futures-table td{padding:12px;border-bottom:1px solid var(--line);}
+  .futures-table td.val{font-family:var(--mono);font-weight:600;}
+
+  /* ---------- NEWS ---------- */
+  .news-item{padding:20px 0;border-bottom:1px solid var(--line);}
+  .news-item:first-child{padding-top:0;}
+  .news-title{font-weight:600;font-size:16px;margin:0 0 8px;}
+  .news-title a{text-decoration:none;}
+  .news-title a:hover{text-decoration:underline;}
+  .news-summary{font-size:14.5px;opacity:.8;margin:0 0 8px;max-width:68ch;}
+  .news-source{font-size:12px;font-family:var(--mono);opacity:.55;}
+
+  /* ---------- GLOSSARY TEASER ---------- */
+  .glossary-band{background:var(--ink);color:var(--paper);}
+  .glossary-inner{padding:56px 0;text-align:left;}
+  .glossary-band h2{color:var(--paper);}
+  .glossary-band .section-label{color:var(--gold);}
+  .glossary-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--line-dark);border:1px solid var(--line-dark);margin-top:28px;}
+  .glossary-card{background:var(--ink);padding:22px;}
+  .glossary-card a{text-decoration:none;font-weight:600;font-size:15px;display:flex;justify-content:space-between;align-items:center;}
+  .glossary-card p{font-size:13px;color:var(--ink-soft);margin:8px 0 0;}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:40px 0 56px;font-size:13px;color:var(--ink);opacity:.6;}
+  footer .foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:1px solid var(--line);padding-top:24px;}
+  footer a{text-decoration:underline;}
+
+  @media (max-width:640px){
+    .section-head{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand"><img src="assets/logo.png" alt="AgroFer Trader"></div>
+  <div class="navlinks">
+    <a href="#precos">Preços de hoje</a>
+    <a href="#futuro">Mercado futuro</a>
+    <a href="entenda.html">Entenda</a>
+    <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="ticker-strip">
+    <div class="ticker-track"><!-- TICKER:START -->
+      <span class="item">DÓLAR <b>R$ 5,1552</b> <span class="up">▲ 0,18%</span></span>
+      <span class="item">SOJA <b>R$ 140,40</b> <span class="up">▲ 0,49%</span></span>
+      <span class="item">MILHO <b>R$ 64,37</b> <span class="up">▲ 0,09%</span></span>
+      <span class="item">TRIGO <b>R$ 82,43</b> <span class="up">▲ 0,72%</span></span>
+      <span class="item">CAFÉ ARÁBICA <b>R$ 1.712,39</b> <span class="down">▼ 1,46%</span></span>
+      <span class="item">BOI GORDO <b>R$ 324,70</b> <span class="down">▼ 0,58%</span></span>
+      <span class="item">ALGODÃO <b>R$ 408,74</b> <span class="down">▼ 0,94%</span></span>
+      <span class="item">AÇÚCAR CRISTAL <b>R$ 92,21</b> <span class="down">▼ 1,77%</span></span>
+      <!-- repete pra loop continuo -->
+      <span class="item">DÓLAR <b>R$ 5,1552</b> <span class="up">▲ 0,18%</span></span>
+      <span class="item">SOJA <b>R$ 140,40</b> <span class="up">▲ 0,49%</span></span>
+      <span class="item">MILHO <b>R$ 64,37</b> <span class="up">▲ 0,09%</span></span>
+      <span class="item">TRIGO <b>R$ 82,43</b> <span class="up">▲ 0,72%</span></span>
+      <span class="item">CAFÉ ARÁBICA <b>R$ 1.712,39</b> <span class="down">▼ 1,46%</span></span>
+      <span class="item">BOI GORDO <b>R$ 324,70</b> <span class="down">▼ 0,58%</span></span>
+      <span class="item">ALGODÃO <b>R$ 408,74</b> <span class="down">▼ 0,94%</span></span>
+      <span class="item">AÇÚCAR CRISTAL <b>R$ 92,21</b> <span class="down">▼ 1,77%</span></span><!-- TICKER:END -->
+    </div>
+  </div>
+
+  <div class="hero-inner">
+    <div class="eyebrow"><!-- EYEBROW:START -->Quinta-feira, 09 de julho de 2026 · fechamento do dia anterior<!-- EYEBROW:END --></div>
+    <h1 class="headline">A safra de hoje, em números.</h1>
+    <p class="hero-sub">Cotações físicas do CEPEA/Esalq, explicadas em português simples, publicadas toda manhã. Sem jargão de mercado — só o que o preço significa pra quem produz e pra quem compra.</p>
+    <div class="cta-row">
+      <a href="#precos" class="btn btn-primary">Ver preços de hoje ↓</a>
+      <a href="entenda.html" class="btn btn-ghost">Não entendo nada disso →</a>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section id="precos">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Mercado físico</div>
+        <h2>O que se negocia hoje</h2>
+      </div>
+      <div class="updated"><!-- UPDATED:START -->Fonte: CEPEA/Esalq · dado de 09/07/2026<!-- UPDATED:END --></div>
+    </div>
+
+    <div class="price-grid"><!-- PRICES:START -->
+      <div class="price-card">
+        <div class="price-name">Soja</div>
+        <div class="price-value">R$ 140,40</div>
+        <div class="price-var up">▲ 0,49%</div>
+        <div class="price-meta">por saca de 60kg</div>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Milho</div>
+        <div class="price-value">R$ 64,37</div>
+        <div class="price-var up">▲ 0,09%</div>
+        <div class="price-meta">por saca de 60kg</div>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Trigo</div>
+        <div class="price-value">R$ 82,43</div>
+        <div class="price-var up">▲ 0,72%</div>
+        <div class="price-meta">por saca de 60kg</div>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Café Arábica</div>
+        <div class="price-value">R$ 1.712,39</div>
+        <div class="price-var down">▼ 1,46%</div>
+        <div class="price-meta">por saca de 60kg</div>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Boi Gordo</div>
+        <div class="price-value">R$ 324,70</div>
+        <div class="price-var down">▼ 0,58%</div>
+        <div class="price-meta">por arroba</div>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Algodão</div>
+        <div class="price-value">R$ 408,74</div>
+        <div class="price-var down">▼ 0,94%</div>
+        <div class="price-meta">por saca de 60kg</div>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Açúcar Cristal</div>
+        <div class="price-value">R$ 92,21</div>
+        <div class="price-var down">▼ 1,77%</div>
+        <div class="price-meta">por saca de 60kg</div>
+      </div><!-- PRICES:END -->
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <div>
+        <div class="section-label">Contexto do dia</div>
+        <h2>O que isso significa</h2>
+      </div>
+    </div>
+    <div class="explain"><!-- EXPLAIN:START -->
+      <p>Dólar em leve alta (+0,18%): o movimento é moderado, mas já tende a favorecer um pouco o preço interno de commodities exportadas, já que a mesma cotação em dólar rende mais reais.</p>
+      <p>Selic em 14,25% ao ano — um patamar considerado alto: o crédito rural fica mais caro e carregar estoque também, o que costuma levar produtores a vender mais rápido para gerar caixa, pressionando o preço para baixo no curto prazo.</p>
+      <p class="obs">Obs.: essas são tendências gerais — clima, quebra de safra, estoques mundiais e demanda de outros países também afetam o preço e podem superar o efeito isolado do câmbio ou da Selic.</p><!-- EXPLAIN:END -->
+    </div>
+  </section>
+
+  <section id="futuro">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Pra quem quer se aprofundar</div>
+        <h2>Mercado futuro (B3)</h2>
+      </div>
+    </div>
+    <p class="futures-note">O preço físico (acima) é o que se negocia hoje, na entrega imediata. O futuro é o preço que o mercado financeiro está precificando agora para entrega em um mês adiante — reflete a expectativa dos operadores sobre clima, safra e câmbio.</p>
+    <table class="futures-table">
+      <thead>
+        <tr><th>Commodity</th><th>Contrato</th><th>Fechamento</th><th>Variação</th></tr>
+      </thead>
+      <tbody><!-- FUTURES:START -->
+        <tr><td>Dólar</td><td>Agosto/26</td><td class="val">R$ 5,1370</td><td class="down">▼ 0,19%</td></tr>
+        <tr><td>Soja</td><td>Setembro/26</td><td class="val">R$ 134,24</td><td class="up">▲ 1,13%</td></tr>
+        <tr><td>Milho</td><td>Julho/26</td><td class="val">R$ 64,72</td><td class="down">▼ 0,05%</td></tr>
+        <tr><td>Boi Gordo</td><td>Julho/26</td><td class="val">R$ 329,80</td><td class="up">▲ 0,05%</td></tr>
+        <tr><td>Café Arábica</td><td>Setembro/26</td><td class="val">R$ 2.044,04</td><td class="down">▼ 1,54%</td></tr><!-- FUTURES:END -->
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <div>
+        <div class="section-label">Comércio &amp; economia</div>
+        <h2>Notícias em destaque</h2>
+      </div>
+    </div><!-- NEWS:START -->
+    <div class="news-item">
+      <p class="news-title"><a href="#" target="_blank" rel="noopener">China anuncia tarifa sobre importação de soja</a></p>
+      <p class="news-summary">Governo chinês anunciou nova tarifa que pode afetar exportadores brasileiros nos próximos meses, segundo apuração do setor.</p>
+      <p class="news-source">Fonte: Notícias Agrícolas</p>
+    </div>
+    <div class="news-item">
+      <p class="news-title"><a href="#" target="_blank" rel="noopener">Dólar fecha perto da estabilidade apesar das tensões no Oriente Médio</a></p>
+      <p class="news-summary">Moeda norte-americana sustenta ganhos ante divisas de países emergentes após novo episódio de tensão geopolítica.</p>
+      <p class="news-source">Fonte: Notícias Agrícolas (Reuters)</p>
+    </div><!-- NEWS:END -->
+  </section>
+
+</div>
+
+<div class="glossary-band">
+  <div class="wrap glossary-inner">
+    <div class="section-label">Comece por aqui</div>
+    <h2>Entenda o mercado, sem jargão</h2>
+    <div class="glossary-links">
+      <div class="glossary-card">
+        <a href="entenda.html#cepea">O que é o CEPEA →</a>
+        <p>Quem calcula o preço que você vê aqui todo dia, e como.</p>
+      </div>
+      <div class="glossary-card">
+        <a href="entenda.html#futuro">Como funciona o mercado futuro →</a>
+        <p>Por que existe um preço "de hoje" e um preço "de setembro".</p>
+      </div>
+      <div class="glossary-card">
+        <a href="entenda.html#glossario">Glossário do agro →</a>
+        <p>Saca, arroba, PTAX, Selic — os termos, explicados.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <footer>
+    <div class="foot-row">
+      <div>AgroFer Trader — conteúdo informativo sobre o mercado agrícola. Não constitui recomendação de investimento ou negócio.</div>
+      <div>Fontes: Banco Central, AwesomeAPI, B3 e CEPEA/Esalq (via Notícias Agrícolas) · <a href="entenda.html">Entenda</a> · <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></div>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>
