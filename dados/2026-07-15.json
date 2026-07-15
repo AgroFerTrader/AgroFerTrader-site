@@ -1,0 +1,141 @@
+{
+  "dolar": {
+    "data": "14/07/2026",
+    "valor": 5.0742,
+    "variacao_pct": -0.8616142078424353
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "05/08/2026",
+    "valor": 14.25
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "14/07/2026",
+      "preco_reais": "140.63",
+      "variacao_pct": "-0.16"
+    },
+    {
+      "nome": "Milho",
+      "data": "14/07/2026",
+      "preco_reais": "64.64",
+      "variacao_pct": "0.03"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "14/07/2026",
+      "preco_reais": "83,61",
+      "variacao_pct": "0.0"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "14/07/2026",
+      "preco_reais": "1755.35",
+      "variacao_pct": "1.53"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "14/07/2026",
+      "preco_reais": "328.1",
+      "variacao_pct": "1.08"
+    },
+    {
+      "nome": "Algodão",
+      "data": "14/07/2026",
+      "preco_reais": "405.28",
+      "variacao_pct": "0.25"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "14/07/2026",
+      "preco_reais": "92.11",
+      "variacao_pct": "1.53"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Agosto/26",
+      "preco_reais": "5,0950 R$/US$",
+      "variacao_pct": "-1.17",
+      "valor_numerico": 5.095,
+      "unidade": "R$/US$"
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 132,28 /sc 60 kg (≈ US$ 26,07 x R$ 5,0742)",
+      "variacao_pct": "-0.19",
+      "valor_numerico": 26.07,
+      "unidade": "US$/sc 60 kg"
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Julho/2026",
+      "preco_reais": "64,48 R$/sc 60 kg",
+      "variacao_pct": "-0.39",
+      "valor_numerico": 64.48,
+      "unidade": "R$/sc 60 kg"
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Julho/2026",
+      "preco_reais": "333,50 R$/@",
+      "variacao_pct": "1.12",
+      "valor_numerico": 333.5,
+      "unidade": "R$/@"
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 1975,39 /sc 60 kg (≈ US$ 389,30 x R$ 5,0742)",
+      "variacao_pct": "-0.93",
+      "valor_numerico": 389.3,
+      "unidade": "US$/sc 60 kg"
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Dólar em leve queda (-0.86%): o real um pouco mais valorizado tende a reduzir de forma discreta o incentivo à exportação, pressionando levemente o preço interno de commodities cotadas em dólar.",
+    "Juros em 14.25% ao ano seguem em patamar alto - carregar estoque fica caro, o que empurra produtores a vender mais rápido, e o diferencial de juros atrai capital estrangeiro, valorizando o real. Ambos tendem a pesar contra o preço em reais das commodities de exportação.",
+    "Obs.: nenhuma dessas relações é garantida - clima, oferta mundial e demanda por vezes pesam mais que câmbio e juros na formação do preço final."
+  ],
+  "noticias": [
+    {
+      "titulo": "18:38Senado aprova MP que endurece regras do frete e amplia proteção a caminhoneiros",
+      "link": "https://www.noticiasagricolas.com.br/noticias/logistica/424705-senado-aprova-mp-que-endurece-regras-do-frete-e-amplia-protecao-a-caminhoneiros.html",
+      "resumo": "14 Jul (Reuters) - O Senado aprovou nesta terça-feira a medida provisória que prevê penalidades para transportadoras que não respeitarem o piso mínimo do frete.",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "17:30Dólar fecha no menor nível em um mês sob influência da inflação dos EUA",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/424699-dolar-fecha-no-menor-nivel-em-um-mes-sob-influencia-da-inflacao-dos-eua.html",
+      "resumo": "SÃO PAULO, 14 Jul (Reuters) - O dólar fechou a terça-feira em queda no Brasil e novamente abaixo dos R$5,10, na esteira do recuo da moeda norte-americana também no exterior, após dados de inflação dos Estados Unidos em j...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "16:31Algodão recua na Bolsa de Nova York após atualização da safra dos Estados Unidos",
+      "link": "https://www.noticiasagricolas.com.br/noticias/algodao/424696-algodao-recua-na-bolsa-de-nova-york-apos-atualizacao-da-safra-dos-estados-unidos.html",
+      "resumo": "Os preços do algodão encerraram a sessão desta terça-feira (14) em queda na Bolsa de Nova York, com recuos entre os principais contratos negociados.",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "16:07CNPE impõe barreira à importação de biodiesel; Abicom vê reserva de mercado",
+      "link": "https://www.noticiasagricolas.com.br/noticias/biocombustivel/424693-cnpe-impoe-barreira-a-importacao-de-biodiesel-abicom-ve-reserva-de-mercado.html",
+      "resumo": "SÃO PAULO, 14 Jul (Reuters) - O Conselho Nacional de Política Energética (CNPE) aprovou nesta terça-feira resolução que estabelece que o biodiesel comercializado para mistura obrigatória no diesel no Brasil deverá ser pr...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "15:19Anec eleva projeções de exportações de soja, milho e farelo de soja do Brasil em julho",
+      "link": "https://www.noticiasagricolas.com.br/noticias/graos/424687-anec-eleva-projecoes-de-exportacoes-de-soja-milho-e-farelo-de-soja-do-brasil-em-julho.html",
+      "resumo": "SÃO PAULO, 14 Jul (Reuters) - As exportações de soja, farelo de soja e milho do Brasil em julho deverão superar as expectativas iniciais, de acordo com avaliação semanal divulgada pela Associação Nacional dos Exportadore...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
