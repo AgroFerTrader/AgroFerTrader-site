@@ -1,0 +1,141 @@
+{
+  "dolar": {
+    "data": "17/07/2026",
+    "valor": 5.1176,
+    "variacao_pct": 0.39431093673369744
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "05/08/2026",
+    "valor": 14.25
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "17/07/2026",
+      "preco_reais": "141.02",
+      "variacao_pct": "+0.31"
+    },
+    {
+      "nome": "Milho",
+      "data": "17/07/2026",
+      "preco_reais": "64.94",
+      "variacao_pct": "0.11"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "17/07/2026",
+      "preco_reais": "83,99",
+      "variacao_pct": "-0.25"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "17/07/2026",
+      "preco_reais": "1712.23",
+      "variacao_pct": "0.32"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "17/07/2026",
+      "preco_reais": "333.5",
+      "variacao_pct": "0.71"
+    },
+    {
+      "nome": "Algodão",
+      "data": "17/07/2026",
+      "preco_reais": "411.53",
+      "variacao_pct": "0.13"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "17/07/2026",
+      "preco_reais": "93.56",
+      "variacao_pct": "2.64"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Agosto/26",
+      "preco_reais": "5,1300 R$/US$",
+      "variacao_pct": "0.18",
+      "valor_numerico": 5.13,
+      "unidade": "R$/US$"
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 134,49 /sc 60 kg (≈ US$ 26,28 x R$ 5,1176)",
+      "variacao_pct": "0.57",
+      "valor_numerico": 26.28,
+      "unidade": "US$/sc 60 kg"
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "68,88 R$/sc 60 kg",
+      "variacao_pct": "0.66",
+      "valor_numerico": 68.88,
+      "unidade": "R$/sc 60 kg"
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Julho/2026",
+      "preco_reais": "338,50 R$/@",
+      "variacao_pct": "0.15",
+      "valor_numerico": 338.5,
+      "unidade": "R$/@"
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 1969,51 /sc 60 kg (≈ US$ 384,85 x R$ 5,1176)",
+      "variacao_pct": "1.14",
+      "valor_numerico": 384.85,
+      "unidade": "US$/sc 60 kg"
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Câmbio subiu discretamente hoje (+0.39%) - não é uma virada de tendência, mas pequenas altas como essa historicamente já dão um empurrão positivo ao preço doméstico de commodities de exportação.",
+    "Com a Selic em 14.25% ao ano, o custo de financiamento no campo segue elevado - isso tende a acelerar vendas (para gerar caixa) e, por atrair capital estrangeiro, também tende a fortalecer o real. Os dois efeitos juntos costumam pressionar o preço das commodities exportadas para baixo.",
+    "Obs.: essas são tendências gerais - clima, quebra de safra, estoques mundiais e demanda de outros países também afetam o preço e podem superar o efeito isolado do câmbio ou da Selic."
+  ],
+  "noticias": [
+    {
+      "titulo": "17:22Demanda por exportação e mercado interno impulsionam milho que sobe na B3 nesta 6ªfeira e fecha semanal em alta",
+      "link": "https://www.noticiasagricolas.com.br/noticias/milho/424957-demanda-por-exportacao-e-mercado-interno-impulsionam-milho-que-sobe-na-b-3-nesta-6-feira-e-fecha-semanal-em-alta.html",
+      "resumo": "A sexta-feira (17) chega ao final com os preços internacionais do milho futuro registrando movimentações positivas na Bolsa de Chicago (CBOT), que fecharam a semana acumulando valorizações de até 1,6%.",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "17:19Exterior conduz alta do dólar ante o real em dia de busca por segurança",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/424962-exterior-conduz-alta-do-dolar-ante-o-real-em-dia-de-busca-por-seguranca.html",
+      "resumo": "SÃO PAULO, 17 Jul (Reuters) - O dólar fechou a sexta-feira em alta leve ante o real, acompanhando o viés positivo da moeda norte-americana ante outras divisas de emergentes no exterior, após Estados Unidos e Irã intensif...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "17:16Cenoura/Cepea: Safra de inverno avança, e cotações seguem em queda em MG",
+      "link": "https://www.noticiasagricolas.com.br/noticias/hortifruti/424956-cenoura-cepea-safra-de-inverno-avanca-e-cotacoes-seguem-em-queda-em-mg.html",
+      "resumo": "Nesta semana (13 a 17/07), a cenoura \"suja\" registrou mais uma desvalorização em São Gotardo (MG), com a caixa de 29 kg comercializada à média de R$ 50,00, recuo de 12,10% em relação à semana anterior. Segundo colaborado...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "16:38Consumidores de açúcar dos EUA pedem que governo permita mais importações com tarifas reduzidas",
+      "link": "https://www.noticiasagricolas.com.br/noticias/sucroenergetico/424963-consumidores-de-acucar-dos-eua-pedem-que-governo-permita-mais-importacoes-com-tarifas-reduzidas.html",
+      "resumo": "NOVA YORK, 17 Jul (Reuters) - A associação norte-americana de consumidores de adoçantes solicitou ao governo dos EUA, nesta sexta-feira, mais importações de açúcar com tarifas mais baixas, alegando que os estoques domést...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "15:47Trigo fecha em alta em Chicago e mercado acompanha oferta restrita no Brasil durante a entressafra",
+      "link": "https://www.noticiasagricolas.com.br/noticias/trigo/424948-trigo-fecha-em-alta-em-chicago-e-mercado-acompanha-oferta-restrita-no-brasil-durante-a-entressafra.html",
+      "resumo": "Os contratos futuros do trigo encerraram a sessão desta sexta-feira (17) em alta na Bolsa de Chicago (CBOT), refletindo um movimento de recuperação após as oscilações registradas ao longo da semana. O mercado continua at...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
