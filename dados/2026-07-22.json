@@ -1,0 +1,141 @@
+{
+  "dolar": {
+    "data": "21/07/2026",
+    "valor": 5.078,
+    "variacao_pct": -0.2239949699375187
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "05/08/2026",
+    "valor": 14.25
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "21/07/2026",
+      "preco_reais": "144.17",
+      "variacao_pct": "+1.07"
+    },
+    {
+      "nome": "Milho",
+      "data": "21/07/2026",
+      "preco_reais": "65.29",
+      "variacao_pct": "0.11"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "21/07/2026",
+      "preco_reais": "84,70",
+      "variacao_pct": "1.12"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "21/07/2026",
+      "preco_reais": "1732.75",
+      "variacao_pct": "-1.17"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "21/07/2026",
+      "preco_reais": "342.45",
+      "variacao_pct": "1.59"
+    },
+    {
+      "nome": "Algodão",
+      "data": "21/07/2026",
+      "preco_reais": "402.37",
+      "variacao_pct": "-1.42"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "21/07/2026",
+      "preco_reais": "91.13",
+      "variacao_pct": "-1.19"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Agosto/26",
+      "preco_reais": "5,0880 R$/US$",
+      "variacao_pct": "-0.35",
+      "valor_numerico": 5.088,
+      "unidade": "R$/US$"
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 135,58 /sc 60 kg (≈ US$ 26,70 x R$ 5,0780)",
+      "variacao_pct": "-0.3",
+      "valor_numerico": 26.7,
+      "unidade": "US$/sc 60 kg"
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "69,12 R$/sc 60 kg",
+      "variacao_pct": "-0.52",
+      "valor_numerico": 69.12,
+      "unidade": "R$/sc 60 kg"
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Julho/2026",
+      "preco_reais": "345,00 R$/@",
+      "variacao_pct": "1.1",
+      "valor_numerico": 345.0,
+      "unidade": "R$/@"
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 1974,58 /sc 60 kg (≈ US$ 388,85 x R$ 5,0780)",
+      "variacao_pct": "1.0",
+      "valor_numerico": 388.85,
+      "unidade": "US$/sc 60 kg"
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Câmbio sem grandes variações (-0.22%): não é o dólar que deve explicar os movimentos de preço agrícola hoje, e sim fatores de oferta e demanda específicos de cada commodity.",
+    "Selic em 14.25% ao ano - um patamar considerado alto: o crédito rural fica mais caro e carregar estoque também, o que costuma levar produtores a vender mais rápido para gerar caixa, pressionando o preço para baixo no curto prazo. Juros altos também tendem a atrair capital estrangeiro e valorizar o real, reforçando essa pressão via câmbio.",
+    "Obs.: essas são tendências gerais - clima, quebra de safra, estoques mundiais e demanda de outros países também afetam o preço e podem superar o efeito isolado do câmbio ou da Selic."
+  ],
+  "noticias": [
+    {
+      "titulo": "17:42Soja se mantém no patamar dos R$ 150 nos portos do BR, apesar de realização de lucros em Chicago",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/425108-soja-se-mantem-no-patamar-dos-r-150-nos-portos-do-br-apesar-de-realizacao-de-lucros-em-chicago.html",
+      "resumo": "Os futuros da soja negociados na Bolsa de Chicago encerraram esta terça-feira (21) em campo negativo, devolvendo parte dos fortes ganhos registrados na sessão anterior. O movimento foi marcado por realização de lucros e ...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "17:14Dólar acompanha exterior e tem baixa leve ante o real",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/425105-dolar-acompanha-exterior-e-tem-baixa-leve-ante-o-real.html",
+      "resumo": "SÃO PAULO, 21 Jul (Reuters) - O dólar fechou a terça-feira com leve baixa ante o real, acompanhando o recuo da moeda norte-americana ante outras divisas de países emergentes no exterior, em um dia de notícias conflitante...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "16:39Inmet: Estresse hídrico ameaça a produtividade do milho de terceira safra na região do SEALBA",
+      "link": "https://www.noticiasagricolas.com.br/noticias/tempo-e-clima/425101-estresse-hidrico-ameaca-a-produtividade-do-milho-de-terceira-safra-na-regiao-do-sealba.html",
+      "resumo": "Segundo o acompanhamento das lavouras realizado pela Companhia Nacional de Abastecimento (CONAB), a semeadura do milho de terceira safra na região de SEALBA (Sergipe, Alagoas e Bahia) ocorreu entre o final de abril e o i...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "15:44FPA: Plano Safra 26/27 frustra e preocupa desempenho do próximo ciclo",
+      "link": "https://www.noticiasagricolas.com.br/noticias/agronegocio/425095-fpa-plano-safra-26-27-frustra-e-preocupa-desempenho-do-proximo-ciclo.html",
+      "resumo": "A safra 2026/2027 começou sob um alerta dos produtores em relação à disponibilidade e às condições do crédito rural. Entidades do setor agropecuário avaliam que o atual Plano Safra preocupa, uma vez que o volume e as con...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "15:37Apesar de pressão de China, EUA e UE, arroba do boi pode disparar no último trimestre e renovar máximas",
+      "link": "https://www.noticiasagricolas.com.br/noticias/carnes/425094-apesar-de-pressao-de-china-eua-e-ue-arroba-do-boi-pode-disparar-no-ultimo-trimestre-e-renovar-maximas.html",
+      "resumo": "Apesar de um cenário externo cada vez mais espinhoso — marcado pela imposição da cota chinesa que limitou sua demanda, pelo cerco da União Europeia e pelas barreiras protecionistas nos Estados Unidos —, a pecuária de cor...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
