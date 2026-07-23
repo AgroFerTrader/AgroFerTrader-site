@@ -1,0 +1,141 @@
+{
+  "dolar": {
+    "data": "22/07/2026",
+    "valor": 5.0638,
+    "variacao_pct": -0.2796376526191543
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "05/08/2026",
+    "valor": 14.25
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "22/07/2026",
+      "preco_reais": "145.45",
+      "variacao_pct": "+0.89"
+    },
+    {
+      "nome": "Milho",
+      "data": "22/07/2026",
+      "preco_reais": "65.27",
+      "variacao_pct": "-0.03"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "22/07/2026",
+      "preco_reais": "84,62",
+      "variacao_pct": "-0.09"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "22/07/2026",
+      "preco_reais": "1701.33",
+      "variacao_pct": "-1.81"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "22/07/2026",
+      "preco_reais": "342.65",
+      "variacao_pct": "0.06"
+    },
+    {
+      "nome": "Algodão",
+      "data": "22/07/2026",
+      "preco_reais": "404.37",
+      "variacao_pct": "0.5"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "22/07/2026",
+      "preco_reais": "91.68",
+      "variacao_pct": "0.6"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Agosto/26",
+      "preco_reais": "5,0700 R$/US$",
+      "variacao_pct": "-0.27",
+      "valor_numerico": 5.07,
+      "unidade": "R$/US$"
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 137,03 /sc 60 kg (≈ US$ 27,06 x R$ 5,0638)",
+      "variacao_pct": "1.35",
+      "valor_numerico": 27.06,
+      "unidade": "US$/sc 60 kg"
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "70,11 R$/sc 60 kg",
+      "variacao_pct": "1.43",
+      "valor_numerico": 70.11,
+      "unidade": "R$/sc 60 kg"
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Julho/2026",
+      "preco_reais": "343,85 R$/@",
+      "variacao_pct": "-0.25",
+      "valor_numerico": 343.85,
+      "unidade": "R$/@"
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 1934,37 /sc 60 kg (≈ US$ 382,00 x R$ 5,0638)",
+      "variacao_pct": "-1.76",
+      "valor_numerico": 382.0,
+      "unidade": "US$/sc 60 kg"
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Dólar praticamente estável hoje (-0.28%): sem pressão cambial relevante sobre os preços agrícolas no momento - outros fatores (clima, safra, demanda) tendem a pesar mais que o câmbio hoje.",
+    "Com a Selic em 14.25% ao ano, o custo de financiamento no campo segue elevado - isso tende a acelerar vendas (para gerar caixa) e, por atrair capital estrangeiro, também tende a fortalecer o real. Os dois efeitos juntos costumam pressionar o preço das commodities exportadas para baixo.",
+    "Obs.: vale lembrar que essas são relações históricas, não regras fixas - fatores como clima, safra e demanda internacional podem se sobrepor facilmente ao efeito do câmbio ou dos juros."
+  ],
+  "noticias": [
+    {
+      "titulo": "17:29Dólar cai pela terceira sessão consecutiva em dia positivo para ações no Brasil",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/425173-dolar-cai-pela-terceira-sessao-consecutiva-em-dia-positivo-para-acoes-no-brasil.html",
+      "resumo": "SÃO PAULO, 22 Jul (Reuters) - O avanço firme do Ibovespa, para acima dos 177 mil pontos, abriu espaço para a leve baixa do dólar ante o real nesta quarta-feira, em movimento favorecido ainda pelo recuo da moeda norte-ame...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "16:40Empresas afetadas por tarifaço terão acesso a socorro de R$ 18,5 bi",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/425172-empresas-afetadas-por-tarifaco-terao-acesso-a-socorro-de-r-185-bi.html",
+      "resumo": "No dia da entrada em vigor do novo tarifaço dos Estados Unidos, o governo federal anunciou um novo pacote de apoio às empresas brasileiras. Batizada de Plano Brasil Soberano 3, a iniciativa prevê R$ 18,5 bilhões em linha...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "16:37Trigo fecha em forte alta em Chicago com menor safra brasileira e preocupações com a oferta global",
+      "link": "https://www.noticiasagricolas.com.br/noticias/trigo/425165-trigo-fecha-em-forte-alta-em-chicago-com-menor-safra-brasileira-e-preocupacoes-com-a-oferta-global.html",
+      "resumo": "Os contratos futuros do trigo encerraram a sessão desta quarta-feira (22) com fortes ganhos na Bolsa de Chicago (CBOT). O mercado foi sustentado por preocupações com a oferta global, pela perspectiva de uma safra brasile...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "16:00Governo anuncia R$18,5 bi em crédito para setores afetados por tarifa dos EUA e conflitos",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/425160-governo-anuncia-r185-bi-em-credito-para-setores-afetados-por-tarifa-dos-eua-e-conflitos.html",
+      "resumo": "BRASÍLIA, 22 Jul (Reuters) - O governo federal anunciou nesta quarta-feira R$18,5 bilhões em linhas de financiamento para empresas afetadas por tarifas impostas pelos Estados Unidos e por conflitos internacionais.",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "11:15Anec eleva previsão de exportação de milho do Brasil em julho, mas ainda vê queda anual",
+      "link": "https://www.noticiasagricolas.com.br/noticias/graos/425150-anec-eleva-previsao-de-exportacao-de-milho-do-brasil-em-julho-mas-ainda-ve-queda-anual.html",
+      "resumo": "SÃO PAULO, 22 Jul (Reuters) - A exportação de milho do Brasil em julho foi estimada nesta quarta-feira em 3,7 milhões de toneladas, um pouco acima da projeção de 3,44 milhões divulgada na semana anterior, de acordo com d...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
