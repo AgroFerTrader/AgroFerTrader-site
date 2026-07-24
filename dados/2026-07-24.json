@@ -1,0 +1,141 @@
+{
+  "dolar": {
+    "data": "23/07/2026",
+    "valor": 5.0807,
+    "variacao_pct": 0.33374145898338364
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "05/08/2026",
+    "valor": 14.25
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "23/07/2026",
+      "preco_reais": "147.47",
+      "variacao_pct": "+1.39"
+    },
+    {
+      "nome": "Milho",
+      "data": "23/07/2026",
+      "preco_reais": "65.55",
+      "variacao_pct": "0.43"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "23/07/2026",
+      "preco_reais": "83,68",
+      "variacao_pct": "-1.11"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "23/07/2026",
+      "preco_reais": "1692.59",
+      "variacao_pct": "-0.51"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "23/07/2026",
+      "preco_reais": "343.75",
+      "variacao_pct": "0.32"
+    },
+    {
+      "nome": "Algodão",
+      "data": "23/07/2026",
+      "preco_reais": "408.25",
+      "variacao_pct": "0.96"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "23/07/2026",
+      "preco_reais": "91.49",
+      "variacao_pct": "-0.21"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Agosto/26",
+      "preco_reais": "5,0910 R$/US$",
+      "variacao_pct": "0.45",
+      "valor_numerico": 5.091,
+      "unidade": "R$/US$"
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 137,69 /sc 60 kg (≈ US$ 27,10 x R$ 5,0807)",
+      "variacao_pct": "0.15",
+      "valor_numerico": 27.1,
+      "unidade": "US$/sc 60 kg"
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "70,78 R$/sc 60 kg",
+      "variacao_pct": "0.96",
+      "valor_numerico": 70.78,
+      "unidade": "R$/sc 60 kg"
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Julho/2026",
+      "preco_reais": "343,30 R$/@",
+      "variacao_pct": "-0.16",
+      "valor_numerico": 343.3,
+      "unidade": "R$/@"
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 1907,80 /sc 60 kg (≈ US$ 375,50 x R$ 5,0807)",
+      "variacao_pct": "-1.7",
+      "valor_numerico": 375.5,
+      "unidade": "US$/sc 60 kg"
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Câmbio subiu discretamente hoje (+0.33%) - não é uma virada de tendência, mas pequenas altas como essa historicamente já dão um empurrão positivo ao preço doméstico de commodities de exportação.",
+    "Juros em 14.25% ao ano seguem em patamar alto - carregar estoque fica caro, o que empurra produtores a vender mais rápido, e o diferencial de juros atrai capital estrangeiro, valorizando o real. Ambos tendem a pesar contra o preço em reais das commodities de exportação.",
+    "Obs.: nenhuma dessas relações é garantida - clima, oferta mundial e demanda por vezes pesam mais que câmbio e juros na formação do preço final."
+  ],
+  "noticias": [
+    {
+      "titulo": "17:50Dois superpetroleiros com petróleo saudita deixam Mar Vermelho em direção à China",
+      "link": "https://www.noticiasagricolas.com.br/noticias/petroleo/425250-dois-superpetroleiros-com-petroleo-saudita-deixam-mar-vermelho-em-direcao-a-china.html",
+      "resumo": "CINGAPURA, 23 Jul (Reuters) - Dois superpetroleiros chineses que transportavam, juntos, 4 milhões de barris de petróleo da Arábia Saudita saíram do Mar Vermelho pelo estreito de Bab el-Mandeb nesta quinta-feira, mostrara...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "17:29Regulamentações atrasam início do Plano Safra e das renegociações de dívidas rurais",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-agricola/425245-regulamentacoes-atrasam-inicio-do-plano-safra-e-das-renegociacoes-de-dividas-rurais.html",
+      "resumo": "Quase um mês depois do lançamento do Plano Safra 2026/2027, o governo federal publicou uma portaria que autoriza o pagamento da equalização dos juros referente ao programa. Na prática, a medida era importante para destra...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "17:23Dólar interrompe série de perdas e sobe ante real com conflito entre Irã e EUA",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/425249-dolar-interrompe-serie-de-perdas-e-sobe-ante-real-com-conflito-entre-ira-e-eua.html",
+      "resumo": "SÃO PAULO, 23 Jul (Reuters) - O dólar interrompeu uma sequência de três sessões de perdas e fechou a quinta-feira em alta ante o real, em meio ao acirramento do conflito entre Estados Unidos e Irã no Oriente Médio.",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "17:13No melhor momento do ano, preços da soja testam R$ 162/sc nos portos com Chicago, prêmios e dólar; momento é de venda",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/425243-no-melhor-momento-do-ano-precos-da-soja-testam-os-r-162-sc-nos-portos-com-chicago-premios-e-dolar.html",
+      "resumo": "O mercado da soja registrou mais uma sessão positiva na Bolsa de Chicago nesta quinta-feira (23) e, apesar dos ganhos terem perdido parte da força durante o dia, ainda fechou o dia em campo positivo. Os futuros da oleagi...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "16:12Açúcar fecha em queda em Nova Iorque e Londres com dólar mais forte e melhora nas chuvas na Índia",
+      "link": "https://www.noticiasagricolas.com.br/noticias/sucroenergetico/425237-acucar-fecha-em-queda-em-nova-iorque-e-londres-com-dolar-mais-forte-e-melhora-nas-chuvas-na-india.html",
+      "resumo": "Os preços do açúcar fecharam em queda nesta quinta-feira (23), pressionados pela valorização do dólar e pela perspectiva de maior produção na Índia, à medida que as chuvas de monção no país mostram melhora consistente. O...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
