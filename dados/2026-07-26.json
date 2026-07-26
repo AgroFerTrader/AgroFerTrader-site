@@ -1,0 +1,141 @@
+{
+  "dolar": {
+    "data": "24/07/2026",
+    "valor": 5.0666,
+    "variacao_pct": -0.2775208140610546
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "05/08/2026",
+    "valor": 14.25
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "24/07/2026",
+      "preco_reais": "148.37",
+      "variacao_pct": "+0.61"
+    },
+    {
+      "nome": "Milho",
+      "data": "24/07/2026",
+      "preco_reais": "65.74",
+      "variacao_pct": "0.29"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "24/07/2026",
+      "preco_reais": "84,19",
+      "variacao_pct": "0.61"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "24/07/2026",
+      "preco_reais": "1676.28",
+      "variacao_pct": "-0.96"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "24/07/2026",
+      "preco_reais": "344.2",
+      "variacao_pct": "0.13"
+    },
+    {
+      "nome": "Algodão",
+      "data": "24/07/2026",
+      "preco_reais": "410.73",
+      "variacao_pct": "0.61"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "24/07/2026",
+      "preco_reais": "93.3",
+      "variacao_pct": "1.98"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Agosto/26",
+      "preco_reais": "5,0990 R$/US$",
+      "variacao_pct": "-0.03",
+      "valor_numerico": 5.099,
+      "unidade": "R$/US$"
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 138,47 /sc 60 kg (≈ US$ 27,33 x R$ 5,0666)",
+      "variacao_pct": "0.85",
+      "valor_numerico": 27.33,
+      "unidade": "US$/sc 60 kg"
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "70,61 R$/sc 60 kg",
+      "variacao_pct": "-0.24",
+      "valor_numerico": 70.61,
+      "unidade": "R$/sc 60 kg"
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Julho/2026",
+      "preco_reais": "342,50 R$/@",
+      "variacao_pct": "-0.23",
+      "valor_numerico": 342.5,
+      "unidade": "R$/@"
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 1915,17 /sc 60 kg (≈ US$ 378,00 x R$ 5,0666)",
+      "variacao_pct": "0.67",
+      "valor_numerico": 378.0,
+      "unidade": "US$/sc 60 kg"
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Dólar de lado (-0.28%): num dia como esse, vale mais olhar para os fundamentos de cada mercado (clima, safra, estoques) do que para o câmbio.",
+    "Juros em 14.25% ao ano seguem em patamar alto - carregar estoque fica caro, o que empurra produtores a vender mais rápido, e o diferencial de juros atrai capital estrangeiro, valorizando o real. Ambos tendem a pesar contra o preço em reais das commodities de exportação.",
+    "Obs.: nenhuma dessas relações é garantida - clima, oferta mundial e demanda por vezes pesam mais que câmbio e juros na formação do preço final."
+  ],
+  "noticias": [
+    {
+      "titulo": "17:43Governo prevê descongelar R$5,7 bi em verbas de ministérios apesar de frustração em taxação de dividendos",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/425336-governo-preve-descongelar-r57-bi-em-verbas-de-ministerios-apesar-de-frustracao-em-taxacao-de-dividendos.html",
+      "resumo": "BRASÍLIA, 24 Jul (Reuters) - O governo Luiz Inácio Lula da Silva informou nesta sexta-feira que reduzirá de R$23,7 bilhões para R$17,9 bilhões o bloqueio nas verbas orçamentárias de ministérios para cumprir o limite de d...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "17:37Novas tarifas dos EUA alcançam 23,1% das exportações brasileiras, diz MDIC",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/425335-novas-tarifas-dos-eua-alcancam-231-das-exportacoes-brasileiras-diz-mdic.html",
+      "resumo": "BRASÍLIA, 24 Jul (Reuters) - As novas tarifas dos Estados Unidos atingirão 23,1% das exportações brasileiras para o país, segundo estimativa do Ministério do Desenvolvimento, Indústria e Comércio (MDIC).",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "17:18Dólar fecha o dia estável no Brasil e acumula queda de 0,58% na semana",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/425330-dolar-fecha-o-dia-estavel-no-brasil-e-acumula-queda-de-058-na-semana.html",
+      "resumo": "SÃO PAULO, 24 Jul (Reuters) - O dólar fechou a sexta-feira perto da estabilidade ante o real, em uma sessão em que as novas tarifas comerciais dos EUA e o conflito no Oriente Médio estiveram no centro das atenções.",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "17:14Petróleo cai após relato  de que China pressiona por  fim da guerra entre EUA e Irã",
+      "link": "https://www.noticiasagricolas.com.br/noticias/petroleo/425331-petroleo-cai-apos-relato-de-que-china-pressiona-por-fim-da-guerra-entre-eua-e-ira.html",
+      "resumo": "HOUSTON, 24 Jul (Reuters) - Os preços dos futuros do petróleo caíram mais de 4% nesta sexta-feira, depois que fontes informaram que a China havia iniciado um esforço para retomar as negociações de paz paralisadas entre o...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "16:43Futuros do milho da B3 acumulam valorização semanal de 3% e comercialização avança no Brasil",
+      "link": "https://www.noticiasagricolas.com.br/noticias/milho/425328-futuros-do-milho-da-b-3-acumulam-valorizacao-semanal-de-3-e-comercializacao-avanca-no-brasil.html",
+      "resumo": "A sexta-feira (24) termina com os preços internacionais do milho futuro contabilizando resultados estáveis na Bolsa de Chicago (CBOT). Apesar deste movimento de correções do pregão de hoje, os futuros do cereal ainda fec...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
