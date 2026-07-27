@@ -1,0 +1,135 @@
+{
+  "dolar": {
+    "data": "24/07/2026",
+    "valor": 5.0666,
+    "variacao_pct": -0.2775208140610546
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "05/08/2026",
+    "valor": 14.25
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "24/07/2026",
+      "preco_reais": "148.37",
+      "variacao_pct": "+0.61"
+    },
+    {
+      "nome": "Milho",
+      "data": "24/07/2026",
+      "preco_reais": "65.74",
+      "variacao_pct": "0.29"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "24/07/2026",
+      "preco_reais": "84,19",
+      "variacao_pct": "0.61"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "24/07/2026",
+      "preco_reais": "1676.28",
+      "variacao_pct": "-0.96"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "24/07/2026",
+      "preco_reais": "344.2",
+      "variacao_pct": "0.13"
+    },
+    {
+      "nome": "Algodão",
+      "data": "24/07/2026",
+      "preco_reais": "410.73",
+      "variacao_pct": "0.61"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "24/07/2026",
+      "preco_reais": "93.3",
+      "variacao_pct": "1.98"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Agosto/26",
+      "preco_reais": "5,0990 R$/US$",
+      "variacao_pct": "-0.03",
+      "valor_numerico": 5.099,
+      "unidade": "R$/US$"
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 138,47 /sc 60 kg (≈ US$ 27,33 x R$ 5,0666)",
+      "variacao_pct": "0.85",
+      "valor_numerico": 27.33,
+      "unidade": "US$/sc 60 kg"
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "70,61 R$/sc 60 kg",
+      "variacao_pct": "-0.24",
+      "valor_numerico": 70.61,
+      "unidade": "R$/sc 60 kg"
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Julho/2026",
+      "preco_reais": "342,50 R$/@",
+      "variacao_pct": "-0.23",
+      "valor_numerico": 342.5,
+      "unidade": "R$/@"
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 1915,17 /sc 60 kg (≈ US$ 378,00 x R$ 5,0666)",
+      "variacao_pct": "0.67",
+      "valor_numerico": 378.0,
+      "unidade": "US$/sc 60 kg"
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Dólar de lado (-0.28%): num dia como esse, vale mais olhar para os fundamentos de cada mercado (clima, safra, estoques) do que para o câmbio.",
+    "Juros em 14.25% ao ano seguem em patamar alto - carregar estoque fica caro, o que empurra produtores a vender mais rápido, e o diferencial de juros atrai capital estrangeiro, valorizando o real. Ambos tendem a pesar contra o preço em reais das commodities de exportação.",
+    "Obs.: nenhuma dessas relações é garantida - clima, oferta mundial e demanda por vezes pesam mais que câmbio e juros na formação do preço final."
+  ],
+  "noticias": [
+    {
+      "titulo": "08:27China disponibiliza procedimentos para exportação de polpas e frutas congeladas brasileiras",
+      "link": "https://www.noticiasagricolas.com.br/noticias/hortifruti/425361-china-disponibiliza-procedimentos-para-exportacao-de-polpas-e-frutas-congeladas-brasileiras.html",
+      "resumo": "A Administração-Geral das Alfândegas da China (GACC) disponibilizou o modelo de certificado sanitário aplicável às exportações brasileiras de polpas e frutas congeladas em seu sistema. Com isso, os estabelecimentos inter...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "08:24Melão/Cepea: Safra principal do Vale começa a desacelerar",
+      "link": "https://www.noticiasagricolas.com.br/noticias/hortifruti/425358-melao-cepea-safra-principal-do-vale-comeca-a-desacelerar.html",
+      "resumo": "No Vale do São Francisco (BA/PE), os preços aumentaram nesta semana (20 a 24/07), com o melão amarelo sendo comercializado por R$ 1,53/kg, acréscimo de 11% frente à semana anterior. Segundo colaboradores do Hortifrúti/Ce...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "08:21Cenoura/Cepea: Chuvas no início da safra de inverno limitam colheitas no Sul",
+      "link": "https://www.noticiasagricolas.com.br/noticias/hortifruti/425352-cenoura-cepea-chuvas-no-inicio-da-safra-de-inverno-limitam-colheitas-no-sul.html",
+      "resumo": "Em Caxias do Sul (RS), as condições climáticas no início da safra de inverno estão dificultando as operações no campo. Segundo dados da Climatempo, a previsão para julho era de 169 mm de chuva, mas já foram registrados m...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "08:02Soja/Cepea: Demanda por soja do BR eleva prêmio de exportação e sustenta cotação interna",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/425346-soja-cepea-demanda-por-soja-do-br-eleva-premio-de-exportacao-e-sustenta-cotacao-interna.html",
+      "resumo": "O recente aumento das tensões no Oriente Médio impulsionou as cotações internacionais do petróleo, sustentando os preços internacionais da soja. No Brasil, de acordo com o Cepea, a valorização dos prêmios de exportação, ...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
