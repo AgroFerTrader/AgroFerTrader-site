@@ -1,0 +1,141 @@
+{
+  "dolar": {
+    "data": "27/07/2026",
+    "valor": 5.1005,
+    "variacao_pct": 0.6690877511546212
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "05/08/2026",
+    "valor": 14.25
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "27/07/2026",
+      "preco_reais": "147.75",
+      "variacao_pct": "-0.42"
+    },
+    {
+      "nome": "Milho",
+      "data": "27/07/2026",
+      "preco_reais": "65.47",
+      "variacao_pct": "-0.41"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "27/07/2026",
+      "preco_reais": "84,21",
+      "variacao_pct": "0.01"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "27/07/2026",
+      "preco_reais": "1725.66",
+      "variacao_pct": "2.95"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "27/07/2026",
+      "preco_reais": "344.25",
+      "variacao_pct": "0.01"
+    },
+    {
+      "nome": "Algodão",
+      "data": "27/07/2026",
+      "preco_reais": "412.07",
+      "variacao_pct": "0.33"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "27/07/2026",
+      "preco_reais": "92.75",
+      "variacao_pct": "-0.59"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Agosto/26",
+      "preco_reais": "5,1190 R$/US$",
+      "variacao_pct": "0.71",
+      "valor_numerico": 5.119,
+      "unidade": "R$/US$"
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 139,40 /sc 60 kg (≈ US$ 27,33 x R$ 5,1005)",
+      "variacao_pct": "0.85",
+      "valor_numerico": 27.33,
+      "unidade": "US$/sc 60 kg"
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "70,61 R$/sc 60 kg",
+      "variacao_pct": "-0.24",
+      "valor_numerico": 70.61,
+      "unidade": "R$/sc 60 kg"
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Julho/2026",
+      "preco_reais": "342,50 R$/@",
+      "variacao_pct": "-0.23",
+      "valor_numerico": 342.5,
+      "unidade": "R$/@"
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 1927,99 /sc 60 kg (≈ US$ 378,00 x R$ 5,1005)",
+      "variacao_pct": "0.67",
+      "valor_numerico": 378.0,
+      "unidade": "US$/sc 60 kg"
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Alta suave do dólar (+0.67%): efeito tende a ser discreto, mas na mesma direção de sempre - real mais fraco favorece um pouco quem exporta café, soja e afins.",
+    "Com a Selic em 14.25% ao ano, o custo de financiamento no campo segue elevado - isso tende a acelerar vendas (para gerar caixa) e, por atrair capital estrangeiro, também tende a fortalecer o real. Os dois efeitos juntos costumam pressionar o preço das commodities exportadas para baixo.",
+    "Obs.: vale lembrar que essas são relações históricas, não regras fixas - fatores como clima, safra e demanda internacional podem se sobrepor facilmente ao efeito do câmbio ou dos juros."
+  ],
+  "noticias": [
+    {
+      "titulo": "17:54Dólar fecha em alta no Brasil com exterior no radar",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/425437-dolar-fecha-em-alta-no-brasil-com-exterior-no-radar.html",
+      "resumo": "SÃO PAULO, 27 Jul (Reuters) - O dólar fechou a segunda-feira em alta no Brasil, acompanhando o desempenho da divisa norte-americana no exterior, que seguiu forte mesmo em meio ao alívio nos mercados globais após a trégua...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "16:44Média diária das exportações de algodão até a 4ª semana de julho supera em 28,2% a de julho de 2025",
+      "link": "https://www.noticiasagricolas.com.br/noticias/algodao/425432-media-diaria-das-exportacoes-de-algodao-ate-a-4-semana-de-julho-supera-em-28-2-a-de-julho-de-2025.html",
+      "resumo": "As exportações brasileiras de algodão em bruto registraram média diária 28,2% superior à observada em julho de 2025 durante os primeiros 18 dias úteis de julho de 2026. Os dados constam em relatório divulgado pelo Minist...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "16:42Essencial para o resultado da safra, colheita do milho exige atenção na reta final",
+      "link": "https://www.noticiasagricolas.com.br/noticias/milho/425431-essencial-para-o-resultado-da-safra-colheita-do-milho-exige-atencao-na-reta-final.html",
+      "resumo": "A colheita do milho exige do produtor uma combinação cada vez mais precisa entre planejamento, agilidade operacional e tomada de decisão no campo. Em uma safra marcada por janelas climáticas mais estreitas e instáveis em...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "16:26Café dispara nas bolsas com correção técnica e novas preocupações com a safra brasileira",
+      "link": "https://www.noticiasagricolas.com.br/noticias/cafe/425423-cafe-dispara-nas-bolsas-com-correcao-tecnica-e-novas-preocupacoes-com-a-safra-brasileira.html",
+      "resumo": "Os preços do café encerraram a segunda-feira (27) em forte alta nas bolsas internacionais, impulsionados por um movimento de correção técnica após as perdas da semana passada e pela continuidade das preocupações com a sa...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "15:35Exportações de frutas e nozes seguem abaixo de 2025, mas preço médio sobe 14,7% até a 4ª semana de julho",
+      "link": "https://www.noticiasagricolas.com.br/noticias/hortifruti/425419-exportacoes-de-frutas-e-nozes-seguem-abaixo-de-2025-mas-preco-medio-sobe-14-7-ate-a-4-semana-de-julho.html",
+      "resumo": "As exportações brasileiras de frutas e nozes não oleaginosas, frescas ou secas continuam em ritmo inferior ao observado no mesmo período do ano passado, segundo dados atualizados da Secretaria de Comércio Exterior (Secex...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
