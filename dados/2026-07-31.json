@@ -1,0 +1,141 @@
+{
+  "dolar": {
+    "data": "30/07/2026",
+    "valor": 5.0739,
+    "variacao_pct": -0.9332838705898359
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "05/08/2026",
+    "valor": 14.25
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "30/07/2026",
+      "preco_reais": "145.29",
+      "variacao_pct": "-1.04"
+    },
+    {
+      "nome": "Milho",
+      "data": "30/07/2026",
+      "preco_reais": "65.3",
+      "variacao_pct": "-0.05"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "30/07/2026",
+      "preco_reais": "84,35",
+      "variacao_pct": "0.0"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "30/07/2026",
+      "preco_reais": "1746.47",
+      "variacao_pct": "-0.88"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "30/07/2026",
+      "preco_reais": "346.9",
+      "variacao_pct": "-0.14"
+    },
+    {
+      "nome": "Algodão",
+      "data": "30/07/2026",
+      "preco_reais": "420.09",
+      "variacao_pct": "1.28"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "30/07/2026",
+      "preco_reais": "92.4",
+      "variacao_pct": "-0.57"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Agosto/26",
+      "preco_reais": "5,0650 R$/US$",
+      "variacao_pct": "-0.71",
+      "valor_numerico": 5.065,
+      "unidade": "R$/US$"
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 130,96 /sc 60 kg (≈ US$ 25,81 x R$ 5,0739)",
+      "variacao_pct": "-0.39",
+      "valor_numerico": 25.81,
+      "unidade": "US$/sc 60 kg"
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "69,70 R$/sc 60 kg",
+      "variacao_pct": "-0.41",
+      "valor_numerico": 69.7,
+      "unidade": "R$/sc 60 kg"
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Julho/2026",
+      "preco_reais": "346,10 R$/@",
+      "variacao_pct": "-0.46",
+      "valor_numerico": 346.1,
+      "unidade": "R$/@"
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 2008,00 /sc 60 kg (≈ US$ 395,75 x R$ 5,0739)",
+      "variacao_pct": "-0.21",
+      "valor_numerico": 395.75,
+      "unidade": "US$/sc 60 kg"
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Câmbio recuou de forma moderada hoje (-0.93%) - efeito inverso do de uma alta: a mesma cotação internacional passa a render um pouco menos em reais.",
+    "Selic em 14.25% ao ano - um patamar considerado alto: o crédito rural fica mais caro e carregar estoque também, o que costuma levar produtores a vender mais rápido para gerar caixa, pressionando o preço para baixo no curto prazo. Juros altos também tendem a atrair capital estrangeiro e valorizar o real, reforçando essa pressão via câmbio.",
+    "Obs.: vale lembrar que essas são relações históricas, não regras fixas - fatores como clima, safra e demanda internacional podem se sobrepor facilmente ao efeito do câmbio ou dos juros."
+  ],
+  "noticias": [
+    {
+      "titulo": "17:20Dólar cai quase 1% ante o real sob influência do exterior",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/425651-dolar-cai-quase-1-ante-o-real-sob-influencia-do-exterior.html",
+      "resumo": "SÃO PAULO, 30 Jul (Reuters) - O dólar fechou a quinta-feira em baixa ante o real, acompanhando o recuo firme da moeda norte-americana ante outras divisas no exterior, ainda sob a influência da decisão do Federal Reserve ...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "16:51Mercado de defensivos para arroz irrigado movimenta US$ 262 milhões, com ligeira queda frente à safra anterior",
+      "link": "https://www.noticiasagricolas.com.br/noticias/graos/425646-mercado-de-defensivos-para-arroz-irrigado-movimenta-us-262-milhoes-com-ligeira-queda-frente-a-safra-anterior.html",
+      "resumo": "Principal empresa de pesquisas para o agronegócio, a Kynetec Brasil acaba de divulgar o estudo FarmTrak Arroz Irrigado da safra 2025-26. Conforme o levantamento, o mercado de defensivos agrícolas da cultura caiu 2%, para...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "13:17USDA: Vendas semanais de milho da safra nova dos EUA superam expectativas",
+      "link": "https://www.noticiasagricolas.com.br/noticias/usda/425629-usda-vendas-semanais-de-milho-da-safra-nova-dos-eua-superam-expectativas.html",
+      "resumo": "Nesta quinta-feira (30), o USDA (Departamento de Agricultura dos Estados divulgou sua atualização referente às vendas semanais para exportação com números dentro do esperado para soja, mas acima do esperado na safra nova...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "13:02Brasil e Guiana vendem 20% mais petróleo à Europa no ano, embarque à China cai, diz Argus",
+      "link": "https://www.noticiasagricolas.com.br/noticias/petroleo/425632-brasil-e-guiana-vendem-20-mais-petroleo-a-europa-no-ano-embarque-a-china-cai-diz-argus.html",
+      "resumo": "RIO DE JANEIRO, 30 Jul (Reuters) - As importações europeias de petróleo do Brasil e da Guiana cresceram aproximadamente 20% no acumulado de 2026 até 28 de julho, à medida que refinarias do continente aumentam a preferênc...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "12:23USDA informa nova venda de soja dos EUA para China nesta 5ª feira (30)",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/425624-usda-informa-nova-venda-de-soja-dos-eua-para-china-nesta-5-feira-30.html",
+      "resumo": "O USDA (Departamento de Agricultura dos Estados Unidos) informou mais uma venda de 132 mil toneladas para a China nesta quinta-feira (30). O volume é todo da safra 2026/27 e este é o primeiro anúncio da semanda de vendas...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
