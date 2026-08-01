@@ -1,0 +1,135 @@
+{
+  "dolar": {
+    "data": "31/07/2026",
+    "valor": 5.0773,
+    "variacao_pct": 0.06700959813949958
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "05/08/2026",
+    "valor": 14.25
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "31/07/2026",
+      "preco_reais": "144.91",
+      "variacao_pct": "-0.26"
+    },
+    {
+      "nome": "Milho",
+      "data": "31/07/2026",
+      "preco_reais": "65.25",
+      "variacao_pct": "-0.08"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "31/07/2026",
+      "preco_reais": "84,36",
+      "variacao_pct": "0.0"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "31/07/2026",
+      "preco_reais": "1744.18",
+      "variacao_pct": "-0.13"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "31/07/2026",
+      "preco_reais": "346.55",
+      "variacao_pct": "-0.1"
+    },
+    {
+      "nome": "Algodão",
+      "data": "31/07/2026",
+      "preco_reais": "420.39",
+      "variacao_pct": "0.07"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "31/07/2026",
+      "preco_reais": "91.5",
+      "variacao_pct": "-0.97"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Agosto/26",
+      "preco_reais": "5,0770 R$/US$",
+      "variacao_pct": "0.1",
+      "valor_numerico": 5.077,
+      "unidade": "R$/US$"
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 131,10 /sc 60 kg (≈ US$ 25,82 x R$ 5,0773)",
+      "variacao_pct": "0.04",
+      "valor_numerico": 25.82,
+      "unidade": "US$/sc 60 kg"
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "69,20 R$/sc 60 kg",
+      "variacao_pct": "-0.72",
+      "valor_numerico": 69.2,
+      "unidade": "R$/sc 60 kg"
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Julho/2026",
+      "preco_reais": "346,15 R$/@",
+      "variacao_pct": "0.01",
+      "valor_numerico": 346.15,
+      "unidade": "R$/@"
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 2041,07 /sc 60 kg (≈ US$ 402,00 x R$ 5,0773)",
+      "variacao_pct": "1.58",
+      "valor_numerico": 402.0,
+      "unidade": "US$/sc 60 kg"
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Câmbio sem grandes variações (+0.07%): não é o dólar que deve explicar os movimentos de preço agrícola hoje, e sim fatores de oferta e demanda específicos de cada commodity.",
+    "Selic em 14.25% ao ano - um patamar considerado alto: o crédito rural fica mais caro e carregar estoque também, o que costuma levar produtores a vender mais rápido para gerar caixa, pressionando o preço para baixo no curto prazo. Juros altos também tendem a atrair capital estrangeiro e valorizar o real, reforçando essa pressão via câmbio.",
+    "Obs.: essas são tendências gerais - clima, quebra de safra, estoques mundiais e demanda de outros países também afetam o preço e podem superar o efeito isolado do câmbio ou da Selic."
+  ],
+  "noticias": [
+    {
+      "titulo": "17:34Dólar fecha estável em sessão com atraso na B3, mas acumula queda de 1,82% no mês",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/425748-dolar-fecha-estavel-em-sessao-com-atraso-na-b3-mas-acumula-queda-de-182-no-mes.html",
+      "resumo": "SÃO PAULO, 31 Jul (Reuters) - O dólar fechou a sexta-feira perto da estabilidade ante o real, enquanto no exterior a moeda norte-americana exibia sinais mistos no fim da tarde, em uma sessão marcada pelo atraso da B3 na ...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "15:25Safra 2027 de café entra no radar do mercado com risco climático crescente e produtores já correm para proteger produtividade e qualidade",
+      "link": "https://www.noticiasagricolas.com.br/noticias/cafe/425706-safra-2027-de-cafe-entra-no-radar-do-mercado-com-risco-climatico-crescente-e-produtores-ja-correm-para-proteger-produtividade-e-qualidade.html",
+      "resumo": "O mercado de café começou a olhar com mais atenção para a safra 2027. A possibilidade de formação de um El Niño forte ou até de um Super El Niño no segundo semestre de 2026 acendeu o alerta entre agrônomos, produtores e ...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "15:16Governo eleva a 30% Imposto de Importação de trens de passageiros",
+      "link": "https://www.noticiasagricolas.com.br/noticias/agronegocio/425726-governo-eleva-a-30-imposto-de-importacao-de-trens-de-passageiros.html",
+      "resumo": "SÃO PAULO, 31 Jul (Reuters) - A Câmara de Comércio Exterior (Camex) decidiu pela elevação de 20% para 30% do Imposto de Importação sobre trens de passageiros, informou o Ministério do Desenvolvimento, Indústria, Comércio...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "Exportações passam a ditar preços do milho no Brasil e podem sustentar altas mesmo em plena colheita",
+      "link": "https://www.noticiasagricolas.com.br/noticias/milho/425559-exportacoes-passam-a-ditar-precos-do-milho-no-brasil-e-podem-sustentar-altas-mesmo-em-plena-colheita.html",
+      "resumo": "A colheita da segunda safra de milho está, atualmente, em torno de 60% no Brasil, mas esse avanço das atividaes não provocou a pressão sobre os preços que parte do mercado esperava. Na avaliação do analista de mercado da...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
