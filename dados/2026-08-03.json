@@ -1,0 +1,129 @@
+{
+  "dolar": {
+    "data": "31/07/2026",
+    "valor": 5.0773,
+    "variacao_pct": 0.06700959813949958
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "05/08/2026",
+    "valor": 14.25
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "31/07/2026",
+      "preco_reais": "144.91",
+      "variacao_pct": "-0.26"
+    },
+    {
+      "nome": "Milho",
+      "data": "31/07/2026",
+      "preco_reais": "65.25",
+      "variacao_pct": "-0.08"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "31/07/2026",
+      "preco_reais": "84,36",
+      "variacao_pct": "0.0"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "31/07/2026",
+      "preco_reais": "1744.18",
+      "variacao_pct": "-0.13"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "31/07/2026",
+      "preco_reais": "346.55",
+      "variacao_pct": "-0.1"
+    },
+    {
+      "nome": "Algodão",
+      "data": "31/07/2026",
+      "preco_reais": "420.39",
+      "variacao_pct": "0.07"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "31/07/2026",
+      "preco_reais": "91.5",
+      "variacao_pct": "-0.97"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Agosto/26",
+      "preco_reais": "5,0770 R$/US$",
+      "variacao_pct": "0.1",
+      "valor_numerico": 5.077,
+      "unidade": "R$/US$"
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 131,10 /sc 60 kg (≈ US$ 25,82 x R$ 5,0773)",
+      "variacao_pct": "0.04",
+      "valor_numerico": 25.82,
+      "unidade": "US$/sc 60 kg"
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "69,20 R$/sc 60 kg",
+      "variacao_pct": "-0.72",
+      "valor_numerico": 69.2,
+      "unidade": "R$/sc 60 kg"
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Julho/2026",
+      "preco_reais": "346,15 R$/@",
+      "variacao_pct": "0.01",
+      "valor_numerico": 346.15,
+      "unidade": "R$/@"
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 2041,07 /sc 60 kg (≈ US$ 402,00 x R$ 5,0773)",
+      "variacao_pct": "1.58",
+      "valor_numerico": 402.0,
+      "unidade": "US$/sc 60 kg"
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Dólar de lado (+0.07%): num dia como esse, vale mais olhar para os fundamentos de cada mercado (clima, safra, estoques) do que para o câmbio.",
+    "Com a Selic em 14.25% ao ano, o custo de financiamento no campo segue elevado - isso tende a acelerar vendas (para gerar caixa) e, por atrair capital estrangeiro, também tende a fortalecer o real. Os dois efeitos juntos costumam pressionar o preço das commodities exportadas para baixo.",
+    "Obs.: vale lembrar que essas são relações históricas, não regras fixas - fatores como clima, safra e demanda internacional podem se sobrepor facilmente ao efeito do câmbio ou dos juros."
+  ],
+  "noticias": [
+    {
+      "titulo": "08:30Exportações de óleo de palma da Indonésia sobem 2,5% ano a ano no 1º semestre",
+      "link": "https://www.noticiasagricolas.com.br/noticias/agronegocio/425771-exportacoes-de-oleo-de-palma-da-indonesia-sobem-25-ano-a-ano-no-1o-semestre.html",
+      "resumo": "JACARTA, 3 Ago (Reuters) - A Indonésia exportou 11,28 milhões de toneladas de óleo de palma bruto e refinado no período de janeiro a junho, um aumento de 2,5% em relação ao mesmo período do ano anterior, segundo dados di...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "07:01Crescimento da indústria na China desacelera para mínima em quatro meses em julho, mostra pesquisa",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/425759-crescimento-da-industria-na-china-desacelera-para-minima-em-quatro-meses-em-julho-mostra-pesquisa.html",
+      "resumo": "PEQUIM, 3 Ago (Reuters) - O setor industrial da China cresceu em julho no ritmo mais lento dos últimos quatro meses, com a produção e os novos pedidos apresentando um aumento mais lento, enquanto os pedidos de exportação...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "17:34Dólar fecha estável em sessão com atraso na B3, mas acumula queda de 1,82% no mês",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/425748-dolar-fecha-estavel-em-sessao-com-atraso-na-b3-mas-acumula-queda-de-182-no-mes.html",
+      "resumo": "SÃO PAULO, 31 Jul (Reuters) - O dólar fechou a sexta-feira perto da estabilidade ante o real, enquanto no exterior a moeda norte-americana exibia sinais mistos no fim da tarde, em uma sessão marcada pelo atraso da B3 na ...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
