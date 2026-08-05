@@ -1,0 +1,141 @@
+{
+  "dolar": {
+    "data": "04/08/2026",
+    "valor": 5.1053,
+    "variacao_pct": 0.6505924334128398
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "05/08/2026",
+    "valor": 14.25
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "04/08/2026",
+      "preco_reais": "144.12",
+      "variacao_pct": "+0.06"
+    },
+    {
+      "nome": "Milho",
+      "data": "04/08/2026",
+      "preco_reais": "65.17",
+      "variacao_pct": "-0.11"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "04/08/2026",
+      "preco_reais": "84,79",
+      "variacao_pct": "0.49"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "04/08/2026",
+      "preco_reais": "1729.84",
+      "variacao_pct": "1.03"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "04/08/2026",
+      "preco_reais": "350.2",
+      "variacao_pct": "0.66"
+    },
+    {
+      "nome": "Algodão",
+      "data": "04/08/2026",
+      "preco_reais": "419.86",
+      "variacao_pct": "0.28"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "04/08/2026",
+      "preco_reais": "91.89",
+      "variacao_pct": "1.18"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Setembro/26",
+      "preco_reais": "5,1575 R$/US$",
+      "variacao_pct": "0.68",
+      "valor_numerico": 5.1575,
+      "unidade": "R$/US$"
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Novembro/2026",
+      "preco_reais": "R$ 132,58 /sc 60 kg (≈ US$ 25,97 x R$ 5,1053)",
+      "variacao_pct": "-1.25",
+      "valor_numerico": 25.97,
+      "unidade": "US$/sc 60 kg"
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "68,65 R$/sc 60 kg",
+      "variacao_pct": "-0.12",
+      "valor_numerico": 68.65,
+      "unidade": "R$/sc 60 kg"
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Agosto/2026",
+      "preco_reais": "346,25 R$/@",
+      "variacao_pct": "1.54",
+      "valor_numerico": 346.25,
+      "unidade": "R$/@"
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 2001,28 /sc 60 kg (≈ US$ 392,00 x R$ 5,1053)",
+      "variacao_pct": "0.1",
+      "valor_numerico": 392.0,
+      "unidade": "US$/sc 60 kg"
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Câmbio subiu discretamente hoje (+0.65%) - não é uma virada de tendência, mas pequenas altas como essa historicamente já dão um empurrão positivo ao preço doméstico de commodities de exportação.",
+    "Juros em 14.25% ao ano seguem em patamar alto - carregar estoque fica caro, o que empurra produtores a vender mais rápido, e o diferencial de juros atrai capital estrangeiro, valorizando o real. Ambos tendem a pesar contra o preço em reais das commodities de exportação.",
+    "Obs.: essas são tendências gerais - clima, quebra de safra, estoques mundiais e demanda de outros países também afetam o preço e podem superar o efeito isolado do câmbio ou da Selic."
+  ],
+  "noticias": [
+    {
+      "titulo": "17:47StoneX prevê safra de milho dos EUA em 16,16 bi bushels, acima do número do USDA",
+      "link": "https://www.noticiasagricolas.com.br/noticias/milho/425899-stonex-preve-safra-de-milho-dos-eua-em-1616-bi-bushels-acima-do-numero-do-usda.html",
+      "resumo": "CHICAGO, 4 Ago (Reuters) - A corretora de commodities StoneX projetou, nesta terça-feira, que a produção de milho dos EUA em 2026 será de 16,160 bilhões de bushels, com um rendimento médio de 184,8 bushels por acre.",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "17:44Milho despenca na B3 acompanhando derrocada em Chicago; alta do dólar ameniza perdas no mercado brasileiro",
+      "link": "https://www.noticiasagricolas.com.br/noticias/milho/425894-milho-despenca-na-b-3-acompanhando-derrocada-em-chicago-alta-do-dolar-ameniza-perdas-no-mercado-brasileiro.html",
+      "resumo": "O mercado futuro do milho encerrou esta terça-feira (4) com fortes baixas na B3, refletindo a intensa pressão vinda da Bolsa de Chicago, onde os contratos do cereal registraram perdas superiores a 1% diante de um movimen...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "17:17Dólar fecha em alta ante real antes de anúncio de sanção dos EUA a embaixadora brasileira",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/425896-dolar-a-vista-fecha-em-alta-de-084-a-r51304-na-venda.html",
+      "resumo": "SÃO PAULO, 4 Ago (Reuters) - O dólar fechou a terça-feira com alta ante o real, refletindo o temor de novas sanções dos Estados Unidos ao Brasil, além da expectativa de novos cortes da taxa básica Selic.",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "14:42Ministro diz que Brasil trabalha para manter em primeiro momento exportação de aves à UE",
+      "link": "https://www.noticiasagricolas.com.br/noticias/granjeiros/425879-ministro-diz-que-brasil-trabalha-para-manter-em-primeiro-momento-exportacao-de-aves-a-ue.html",
+      "resumo": "SÃO PAULO, 4 Ago (Reuters) - O governo brasileiro trabalha, em um primeiro momento, para o Brasil seguir exportando pelo menos carne de aves para a Europa, após a União Europeia ter excluído proteínas de origem animal br...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "13:49Greve paralisa atividade nos portos exportadores de grãos da Argentina",
+      "link": "https://www.noticiasagricolas.com.br/noticias/agronegocio/425875-greve-paralisa-atividade-nos-portos-exportadores-de-graos-da-argentina.html",
+      "resumo": "BUENOS AIRES, 4 Ago (Reuters) - Uma greve dos trabalhadores portuários está impedindo que navios entrem e saiam dos portos de grãos da Argentina, informou nesta terça-feira a Câmara de Exportação e Processamento (CIARA-C...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
