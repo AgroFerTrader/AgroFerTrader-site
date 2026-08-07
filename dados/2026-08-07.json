@@ -1,0 +1,141 @@
+{
+  "dolar": {
+    "data": "06/08/2026",
+    "valor": 5.1017,
+    "variacao_pct": -0.26781874340227635
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "16/09/2026",
+    "valor": 14.0
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "06/08/2026",
+      "preco_reais": "144.98",
+      "variacao_pct": "+0.05"
+    },
+    {
+      "nome": "Milho",
+      "data": "06/08/2026",
+      "preco_reais": "64.84",
+      "variacao_pct": "-0.03"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "06/08/2026",
+      "preco_reais": "84,85",
+      "variacao_pct": "-0.21"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "06/08/2026",
+      "preco_reais": "1727.89",
+      "variacao_pct": "-0.14"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "06/08/2026",
+      "preco_reais": "348.3",
+      "variacao_pct": "-0.07"
+    },
+    {
+      "nome": "Algodão",
+      "data": "06/08/2026",
+      "preco_reais": "417.18",
+      "variacao_pct": "-1.32"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "06/08/2026",
+      "preco_reais": "93.88",
+      "variacao_pct": "1.52"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Setembro/26",
+      "preco_reais": "5,1410 R$/US$",
+      "variacao_pct": "-0.28",
+      "valor_numerico": 5.141,
+      "unidade": "R$/US$"
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Novembro/2026",
+      "preco_reais": "R$ 132,54 /sc 60 kg (≈ US$ 25,98 x R$ 5,1017)",
+      "variacao_pct": "0.31",
+      "valor_numerico": 25.98,
+      "unidade": "US$/sc 60 kg"
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "68,42 R$/sc 60 kg",
+      "variacao_pct": "0.18",
+      "valor_numerico": 68.42,
+      "unidade": "R$/sc 60 kg"
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Agosto/2026",
+      "preco_reais": "348,30 R$/@",
+      "variacao_pct": "0.11",
+      "valor_numerico": 348.3,
+      "unidade": "R$/@"
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 1997,32 /sc 60 kg (≈ US$ 391,50 x R$ 5,1017)",
+      "variacao_pct": "-0.81",
+      "valor_numerico": 391.5,
+      "unidade": "US$/sc 60 kg"
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Dólar praticamente estável hoje (-0.27%): sem pressão cambial relevante sobre os preços agrícolas no momento - outros fatores (clima, safra, demanda) tendem a pesar mais que o câmbio hoje.",
+    "Com a Selic em 14.00% ao ano, o custo de financiamento no campo segue elevado - isso tende a acelerar vendas (para gerar caixa) e, por atrair capital estrangeiro, também tende a fortalecer o real. Os dois efeitos juntos costumam pressionar o preço das commodities exportadas para baixo.",
+    "Obs.: essas são tendências gerais - clima, quebra de safra, estoques mundiais e demanda de outros países também afetam o preço e podem superar o efeito isolado do câmbio ou da Selic."
+  ],
+  "noticias": [
+    {
+      "titulo": "18:16Vetos à Lei do Frete ampliam custos, burocracia e insegurança jurídica para o setor produtivo",
+      "link": "https://www.noticiasagricolas.com.br/noticias/logistica/426022-vetos-a-lei-do-frete-ampliam-custos-burocracia-e-inseguranca-juridica-para-o-setor-produtivo.html",
+      "resumo": "A Associação dos Produtores de Soja e Milho do Brasil (Aprosoja Brasil) manifesta profunda preocupação com a sanção da Medida Provisória nº 1.343/2026, convertida na Lei nº 15.485/2026, acompanhada de vetos presidenciais...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "18:10Anec mantém previsão de exportação recorde de soja do Brasil em 2026, mas alerta para dívidas agrícolas",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/426024-anec-mantem-previsao-de-exportacao-recorde-de-soja-do-brasil-em-2026-mas-alerta-para-dividas-agricolas.html",
+      "resumo": "SÃO PAULO, 6 Ago (Reuters) - O Brasil deverá exportar um recorde de 114 milhões de toneladas de soja em 2026, aumento de quase 5% em relação à melhor marca anterior registrada no ano passado, com uma demanda \"aquecida\" e...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "17:10Anec vê aumento nas exportações de soja do Brasil em agosto e recuo para o milho",
+      "link": "https://www.noticiasagricolas.com.br/noticias/graos/426014-anec-ve-aumento-nas-exportacoes-de-soja-do-brasil-em-agosto-e-recuo-para-o-milho.html",
+      "resumo": "SÃO PAULO, 6 Ago (Reuters) - A exportação de soja do Brasil em agosto foi estimada nesta quinta-feira em 9,74 milhões de toneladas, aumento de 1,6 milhão de toneladas na comparação com o mesmo período do ano passado, de ...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "17:08Dólar contraria exterior e fecha em baixa no Brasil",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/426011-dolar-a-vista-fecha-em-baixa-de-044-a-r51055-na-venda.html",
+      "resumo": "SÃO PAULO, 6 Ago (Reuters) - O dólar fechou a quinta-feira em baixa no Brasil e novamente na faixa de R$5,10, na contramão do exterior, onde a moeda norte-americana se firmou em alta ante a maioria das demais divisas, em...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "17:02O mapa do vinho brasileiro, na Safra 2026, ficou ainda maior",
+      "link": "https://www.noticiasagricolas.com.br/noticias/agronegocio/426008-o-mapa-do-vinho-brasileiro-na-safra-2026-ficou-ainda-maior.html",
+      "resumo": "A vitivinicultura brasileira reafirma sua expansão e diversidade na 34ª Avaliação Nacional de Vinhos – Safra 2026. Promovida pela Associação Brasileira de Enologia (ABE), a edição deste ano registra o recorde de 569 amos...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
