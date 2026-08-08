@@ -1,0 +1,129 @@
+{
+  "dolar": {
+    "data": "07/08/2026",
+    "valor": 5.0908,
+    "variacao_pct": -0.21365427210538354
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "16/09/2026",
+    "valor": 14.0
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "07/08/2026",
+      "preco_reais": "145.15",
+      "variacao_pct": "+0.12"
+    },
+    {
+      "nome": "Milho",
+      "data": "07/08/2026",
+      "preco_reais": "65.02",
+      "variacao_pct": "0.28"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "07/08/2026",
+      "preco_reais": "84,87",
+      "variacao_pct": "0.02"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "07/08/2026",
+      "preco_reais": "1732.12",
+      "variacao_pct": "0.24"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "07/08/2026",
+      "preco_reais": "347.5",
+      "variacao_pct": "-0.23"
+    },
+    {
+      "nome": "Algodão",
+      "data": "07/08/2026",
+      "preco_reais": "421.63",
+      "variacao_pct": "1.07"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "07/08/2026",
+      "preco_reais": "96.02",
+      "variacao_pct": "2.28"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Setembro/26",
+      "preco_reais": "5,1110 R$/US$",
+      "variacao_pct": "-0.4",
+      "valor_numerico": 5.111,
+      "unidade": "R$/US$"
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Novembro/2026",
+      "preco_reais": "R$ 132,06 /sc 60 kg (≈ US$ 25,94 x R$ 5,0908)",
+      "variacao_pct": "-0.15",
+      "valor_numerico": 25.94,
+      "unidade": "US$/sc 60 kg"
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "68,80 R$/sc 60 kg",
+      "variacao_pct": "0.56",
+      "valor_numerico": 68.8,
+      "unidade": "R$/sc 60 kg"
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Agosto/2026",
+      "preco_reais": "347,00 R$/@",
+      "variacao_pct": "-0.37",
+      "valor_numerico": 347.0,
+      "unidade": "R$/@"
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 2046,50 /sc 60 kg (≈ US$ 402,00 x R$ 5,0908)",
+      "variacao_pct": "2.68",
+      "valor_numerico": 402.0,
+      "unidade": "US$/sc 60 kg"
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Dólar praticamente estável hoje (-0.21%): sem pressão cambial relevante sobre os preços agrícolas no momento - outros fatores (clima, safra, demanda) tendem a pesar mais que o câmbio hoje.",
+    "Selic em 14.00% ao ano - um patamar considerado alto: o crédito rural fica mais caro e carregar estoque também, o que costuma levar produtores a vender mais rápido para gerar caixa, pressionando o preço para baixo no curto prazo. Juros altos também tendem a atrair capital estrangeiro e valorizar o real, reforçando essa pressão via câmbio.",
+    "Obs.: essas são tendências gerais - clima, quebra de safra, estoques mundiais e demanda de outros países também afetam o preço e podem superar o efeito isolado do câmbio ou da Selic."
+  ],
+  "noticias": [
+    {
+      "titulo": "17:24Dólar cai ante real após queda inesperada do emprego nos EUA",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/426101-dolar-cai-ante-real-apos-queda-inesperada-do-emprego-nos-eua.html",
+      "resumo": "SÃO PAULO, 7 Ago (Reuters) - O dólar fechou a sexta-feira em queda no Brasil e encerrou a semana abaixo dos R$5,10, após o fechamento inesperado de postos de trabalho nos EUA em julho pesar sobre a moeda norte-americana ...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "16:47Petróleo sobe com perspectiva de acordo entre Irã e Omã sobre o Estreito de Ormuz",
+      "link": "https://www.noticiasagricolas.com.br/noticias/petroleo/426098-petroleo-sobe-com-perspectiva-de-acordo-entre-ira-e-oma-sobre-o-estreito-de-ormuz.html",
+      "resumo": "HOUSTON, 7 Ago (Reuters) - Os preços do petróleo subiram nesta sexta-feira, à medida que os mercados avaliavam um acordo em andamento entre o Irã e Omã que estabeleceria regras para o trânsito pelo Estreito de Ormuz.",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "14:59China compra quase 1 milhão de toneladas de soja dos EUA em uma semana; mercado já avalia impactos para o Brasil",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/426084-china-compra-quase-1-milhao-de-toneladas-de-soja-dos-eua-em-uma-semana-mercado-ja-avalia-impactos-para-o-brasil.html",
+      "resumo": "Não importa se a China compra no Brasil ou nos Estados Unidos. Comprando, ela é sempre notícia. Nesta sexta-feira (7), o USDA (Departamento de Agricultura dos Estados Unidos) informou que a nação asiática adquiriu mais 2...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
