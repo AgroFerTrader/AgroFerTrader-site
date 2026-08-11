@@ -1,0 +1,132 @@
+{
+  "dolar": null,
+  "erro_dolar": "502 Server Error: Bad Gateway for url: https://api.bcb.gov.br/dados/serie/bcdata.sgs.1/dados/ultimos/5?formato=json",
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": null,
+  "erro_selic": "502 Server Error: Bad Gateway for url: https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/5?formato=json",
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "10/08/2026",
+      "preco_reais": "144.96",
+      "variacao_pct": "-0.13"
+    },
+    {
+      "nome": "Milho",
+      "data": "10/08/2026",
+      "preco_reais": "65.63",
+      "variacao_pct": "0.94"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "10/08/2026",
+      "preco_reais": "84,87",
+      "variacao_pct": "0.0"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "10/08/2026",
+      "preco_reais": "1750.23",
+      "variacao_pct": "1.05"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "10/08/2026",
+      "preco_reais": "347.5",
+      "variacao_pct": "0.0"
+    },
+    {
+      "nome": "Algodão",
+      "data": "10/08/2026",
+      "preco_reais": "422.36",
+      "variacao_pct": "0.17"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "10/08/2026",
+      "preco_reais": "97.51",
+      "variacao_pct": "1.55"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Setembro/26",
+      "preco_reais": "5,1330 R$/US$",
+      "variacao_pct": "0.41",
+      "valor_numerico": 5.133,
+      "unidade": "R$/US$"
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Novembro/2026",
+      "preco_reais": "26,02 US$/sc 60 kg (não convertido - dólar indisponível)",
+      "variacao_pct": "0.31",
+      "valor_numerico": 26.02,
+      "unidade": "US$/sc 60 kg"
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "69,90 R$/sc 60 kg",
+      "variacao_pct": "1.57",
+      "valor_numerico": 69.9,
+      "unidade": "R$/sc 60 kg"
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Agosto/2026",
+      "preco_reais": "349,00 R$/@",
+      "variacao_pct": "0.53",
+      "valor_numerico": 349.0,
+      "unidade": "R$/@"
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "404,05 US$/sc 60 kg (não convertido - dólar indisponível)",
+      "variacao_pct": "0.36",
+      "valor_numerico": 404.05,
+      "unidade": "US$/sc 60 kg"
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Obs.: essas são tendências gerais - clima, quebra de safra, estoques mundiais e demanda de outros países também afetam o preço e podem superar o efeito isolado do câmbio ou da Selic."
+  ],
+  "noticias": [
+    {
+      "titulo": "17:45Dólar fecha em alta no Brasil com Oriente Médio no radar",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/426179-dolar-fecha-em-alta-no-brasil-com-oriente-medio-no-radar.html",
+      "resumo": "10 Ago (Reuters) - O dólar encerrou a segunda-feira em alta no Brasil, revertendo o recuo da sexta-feira, acompanhando a alta dos rendimentos dos Treasuries no exterior, em meio à retomada da tensão entre Estados Unidos ...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "16:56Futuros do milho seguem o dólar e terminam segunda-feira com altas de até 1,5% na B3",
+      "link": "https://www.noticiasagricolas.com.br/noticias/milho/426174-futuros-do-milho-seguem-o-dolar-e-terminam-segunda-feira-com-altas-de-ate-1-5-na-b-3.html",
+      "resumo": "A segunda-feira (10) termina com os preços internacionais do milho futuro registrando resultados levemente negativos na Bolsa de Chicago (CBOT).",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "16:15Negócios com a soja no Brasil voltam a acontecer neste início de semana com preços nos portos testando os R$ 150/sc",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/426169-precos-da-soja-nos-portos-do-brasil-voltam-aos-r-150-sc-com-altas-em-chicago-do-dolar-e-dos-premios.html",
+      "resumo": "Os preços da soja negociados na Bolsa de Chicago avançaram nesta segunda-feira (10), dando continuidade ao movimento de recuperação observado no mercado internacional e oferecendo suporte também às referências no mercado...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "15:28Importações de trigo começam agosto em alta, com ritmo diário 7,7% maior que há um ano",
+      "link": "https://www.noticiasagricolas.com.br/noticias/trigo/426165-importacoes-de-trigo-comecam-agosto-em-alta-com-ritmo-diario-7-7-maior-que-ha-um-ano.html",
+      "resumo": "As importações brasileiras de trigo e centeio não moídos começaram agosto em ritmo superior ao registrado no mesmo período de 2025. Dados da Secretaria de Comércio Exterior (Secex) mostram que o país importou 126,2 mil t...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "15:22Exportações de frutas começam agosto com alta de 38,1% na receita média diária, aponta Secex",
+      "link": "https://www.noticiasagricolas.com.br/noticias/hortifruti/426164-exportacoes-de-frutas-comecam-agosto-com-alta-de-38-1-na-receita-media-diaria-aponta-secex.html",
+      "resumo": "As exportações brasileiras de frutas e nozes não oleaginosas, frescas ou secas começaram agosto de 2026 com avanço na receita média diária, acompanhadas por uma leve alta no ritmo dos embarques e forte valorização do pre...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
