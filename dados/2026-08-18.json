@@ -1,0 +1,141 @@
+{
+  "dolar": {
+    "data": "17/08/2026",
+    "valor": 5.2014,
+    "variacao_pct": -0.4249942568343798
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "16/09/2026",
+    "valor": 14.0
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "17/08/2026",
+      "preco_reais": "150.14",
+      "variacao_pct": "+0.80"
+    },
+    {
+      "nome": "Milho",
+      "data": "17/08/2026",
+      "preco_reais": "66.71",
+      "variacao_pct": "0.54"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "17/08/2026",
+      "preco_reais": "85,15",
+      "variacao_pct": "-0.18"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "17/08/2026",
+      "preco_reais": "1784.82",
+      "variacao_pct": "-0.52"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "17/08/2026",
+      "preco_reais": "345.05",
+      "variacao_pct": "-0.49"
+    },
+    {
+      "nome": "Algodão",
+      "data": "17/08/2026",
+      "preco_reais": "421.71",
+      "variacao_pct": "0.65"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "17/08/2026",
+      "preco_reais": "99.94",
+      "variacao_pct": "2.08"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Setembro/26",
+      "preco_reais": "5,2225 R$/US$",
+      "variacao_pct": "-0.44",
+      "valor_numerico": 5.2225,
+      "unidade": "R$/US$"
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Novembro/2026",
+      "preco_reais": "R$ 139,50 /sc 60 kg (≈ US$ 26,82 x R$ 5,2014)",
+      "variacao_pct": "2.13",
+      "valor_numerico": 26.82,
+      "unidade": "US$/sc 60 kg"
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "70,57 R$/sc 60 kg",
+      "variacao_pct": "0.53",
+      "valor_numerico": 70.57,
+      "unidade": "R$/sc 60 kg"
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Agosto/2026",
+      "preco_reais": "347,70 R$/@",
+      "variacao_pct": "0.2",
+      "valor_numerico": 347.7,
+      "unidade": "R$/@"
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 2109,69 /sc 60 kg (≈ US$ 405,60 x R$ 5,2014)",
+      "variacao_pct": "0.65",
+      "valor_numerico": 405.6,
+      "unidade": "US$/sc 60 kg"
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Câmbio recuou de forma moderada hoje (-0.42%) - efeito inverso do de uma alta: a mesma cotação internacional passa a render um pouco menos em reais.",
+    "Juros em 14.00% ao ano seguem em patamar alto - carregar estoque fica caro, o que empurra produtores a vender mais rápido, e o diferencial de juros atrai capital estrangeiro, valorizando o real. Ambos tendem a pesar contra o preço em reais das commodities de exportação.",
+    "Obs.: nenhuma dessas relações é garantida - clima, oferta mundial e demanda por vezes pesam mais que câmbio e juros na formação do preço final."
+  ],
+  "noticias": [
+    {
+      "titulo": "18:34Exportação de café do Brasil avança 48,5% no início de agosto, milho recua 32%, diz Secex",
+      "link": "https://www.noticiasagricolas.com.br/noticias/cafe/426569-exportacao-de-cafe-do-brasil-avanca-485-no-inicio-de-agosto-milho-recua-32-diz-secex.html",
+      "resumo": "SÃO PAULO, 17 Ago (Reuters) - As exportações brasileiras de café verde avançaram 48,5% até a segunda semana de agosto no comparativo com o mesmo mês de 2025, com embarques médios diários de 10,1 mil toneladas, segundo da...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "17:59Trump diz que Irã não fará o acordo que ele considera necessário e ameaça bombardear Omã",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/426568-trump-diz-que-ira-nao-fara-o-acordo-que-ele-considera-necessario-e-ameaca-bombardear-oma.html",
+      "resumo": "WASHINGTON, 17 Ago (Reuters) - O presidente norte-americano, Donald Trump, afirmou nesta segunda-feira que o Irã não fará o acordo que ele considera necessário para pôr fim a uma guerra com os EUA e que deveria se render...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "17:10Dólar fecha em queda contra o real com ajuste e exterior",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/426561-dolar-a-vista-fecha-em-queda-de-041-a-r51998-na-venda.html",
+      "resumo": "SÃO PAULO, 17 Ago (Reuters) - O dólar fechou a segunda-feira em queda contra o real, após cinco sessões consecutivas de altas, influenciado pela fraqueza da divisa norte-americana no mercado internacional.",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "16:42Média diária de exportação de algodão sobe 51,1% nos 10 primeiros dias de agosto",
+      "link": "https://www.noticiasagricolas.com.br/noticias/algodao/426551-media-diaria-de-exportacao-de-algodao-sobe-51-1-nos-10-primeiros-dias-de-agosto.html",
+      "resumo": "As exportações brasileiras de algodão em bruto registraram média diária 51,1% superior à observada em agosto de 2025 durante os primeiros 10 dias úteis de agosto de 2026. Os dados constam em relatório divulgado pelo Mini...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "15:30Exportações de frutas aceleram em agosto e receita média diária sobe 25,6%, aponta Secex",
+      "link": "https://www.noticiasagricolas.com.br/noticias/hortifruti/426542-exportacoes-de-frutas-aceleram-em-agosto-e-receita-media-diaria-sobe-25-6-aponta-secex.html",
+      "resumo": "As exportações brasileiras de frutas e nozes não oleaginosas, frescas ou secas mantiveram ritmo superior ao do ano passado na segunda semana de agosto. Dados da Secretaria de Comércio Exterior (Secex), considerando 10 di...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
