@@ -1,0 +1,141 @@
+{
+  "dolar": {
+    "data": "19/08/2026",
+    "valor": 5.1714,
+    "variacao_pct": -0.6321695521011415
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "16/09/2026",
+    "valor": 14.0
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "19/08/2026",
+      "preco_reais": "151.65",
+      "variacao_pct": "+0.19"
+    },
+    {
+      "nome": "Milho",
+      "data": "19/08/2026",
+      "preco_reais": "67.39",
+      "variacao_pct": "0.28"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "19/08/2026",
+      "preco_reais": "86,64",
+      "variacao_pct": "1.75"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "19/08/2026",
+      "preco_reais": "1804.65",
+      "variacao_pct": "-0.59"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "19/08/2026",
+      "preco_reais": "344.85",
+      "variacao_pct": "0.01"
+    },
+    {
+      "nome": "Algodão",
+      "data": "19/08/2026",
+      "preco_reais": "420.68",
+      "variacao_pct": "-0.77"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "19/08/2026",
+      "preco_reais": "102.49",
+      "variacao_pct": "0.22"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Setembro/26",
+      "preco_reais": "5,1925 R$/US$",
+      "variacao_pct": "-0.81",
+      "valor_numerico": 5.1925,
+      "unidade": "R$/US$"
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Novembro/2026",
+      "preco_reais": "R$ 140,92 /sc 60 kg (≈ US$ 27,25 x R$ 5,1714)",
+      "variacao_pct": "1.68",
+      "valor_numerico": 27.25,
+      "unidade": "US$/sc 60 kg"
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "70,95 R$/sc 60 kg",
+      "variacao_pct": "-0.77",
+      "valor_numerico": 70.95,
+      "unidade": "R$/sc 60 kg"
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Agosto/2026",
+      "preco_reais": "348,40 R$/@",
+      "variacao_pct": "0.1",
+      "valor_numerico": 348.4,
+      "unidade": "R$/@"
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 2174,32 /sc 60 kg (≈ US$ 420,45 x R$ 5,1714)",
+      "variacao_pct": "0.35",
+      "valor_numerico": 420.45,
+      "unidade": "US$/sc 60 kg"
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Queda suave do dólar (-0.63%): tende a esfriar discretamente o apetite por exportação, com leve efeito de baixa sobre o preço doméstico de commodities.",
+    "Juros em 14.00% ao ano seguem em patamar alto - carregar estoque fica caro, o que empurra produtores a vender mais rápido, e o diferencial de juros atrai capital estrangeiro, valorizando o real. Ambos tendem a pesar contra o preço em reais das commodities de exportação.",
+    "Obs.: essas são tendências gerais - clima, quebra de safra, estoques mundiais e demanda de outros países também afetam o preço e podem superar o efeito isolado do câmbio ou da Selic."
+  ],
+  "noticias": [
+    {
+      "titulo": "17:14Dólar fecha em queda no Brasil em linha com exterior após Tesouro dos EUA anunciar recompra de títulos",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/426680-dolar-fecha-em-queda-no-brasil-em-linha-com-exterior.html",
+      "resumo": "SÃO PAULO, 19 Ago (Reuters) - O dólar fechou a quarta-feira em queda firme contra o real, refletindo a fraqueza da divisa norte-americana no mercado internacional desencadeada por anúncio do Tesouro dos Estados Unidos de...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "16:00Hedgepoint mantém projeção de safra de café do Brasil em recorde",
+      "link": "https://www.noticiasagricolas.com.br/noticias/cafe/426685-hedgepoint-mantem-projecao-de-safra-de-cafe-do-brasil-em-recorde.html",
+      "resumo": "SÃO PAULO, 19 Ago (Reuters) - A estimativa da safra de café do Brasil 2026/27, cuja colheita caminha para a fase final, foi mantida em um patamar recorde de 75,8 milhões de sacas de 60 kg, apesar de chuvas atípicas de in...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "14:51Hedgepoint estima safra de soja 26/27 em 181,7 mi t, quase estável ante 25/26",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/426691-hedgepoint-estima-safra-de-soja-2627-em-1817-mi-t-quase-estavel-ante-2526.html",
+      "resumo": "SÃO PAULO, 19 Ago (Reuters) - A nova safra de soja do Brasil 2026/27, com plantio começando em meados de setembro, foi estimada em 181,7 milhões de toneladas, praticamente estável na comparação com o ciclo anterior (181,...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "13:01Exportações de grãos da Rússia e Ucrânia pelo Mar Negro praticamente param",
+      "link": "https://www.noticiasagricolas.com.br/noticias/agronegocio/426671-exportacoes-de-graos-da-russia-e-ucrania-pelo-mar-negro-praticamente-param.html",
+      "resumo": "KIEV/MOSCOU, 19 Ago (Reuters) - Os ataques a portos e navios interromperam mais de 97% da capacidade de exportação de grãos da Rússia e da Ucrânia no Mar de Azov e do Mar Negro, cortando uma importante fonte de supriment...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "12:04Exportações agrícolas da Ucrânia despencam em agosto por bloqueio a portos, diz ministro",
+      "link": "https://www.noticiasagricolas.com.br/noticias/agronegocio/426670-exportacoes-agricolas-da-ucrania-despencam-em-agosto-por-bloqueio-a-portos-diz-ministro.html",
+      "resumo": "KIEV, 19 Ago (Reuters) - As exportações de produtos agrícolas da Ucrânia caíram para 794 mil toneladas métricas entre 1º e 15 de agosto, em comparação com as 3,67 milhões de toneladas exportadas durante todo o mês de jul...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
