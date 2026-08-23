@@ -1,0 +1,136 @@
+{
+  "dolar": null,
+  "erro_dolar": "502 Server Error: Bad Gateway for url: https://api.bcb.gov.br/dados/serie/bcdata.sgs.1/dados/ultimos/5?formato=json",
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "16/09/2026",
+    "valor": 14.0
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "21/08/2026",
+      "preco_reais": "153.68",
+      "variacao_pct": "-0.61"
+    },
+    {
+      "nome": "Milho",
+      "data": "21/08/2026",
+      "preco_reais": "67.9",
+      "variacao_pct": "0.24"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "21/08/2026",
+      "preco_reais": "86,81",
+      "variacao_pct": "0.19"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "21/08/2026",
+      "preco_reais": "1803.76",
+      "variacao_pct": "-0.98"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "21/08/2026",
+      "preco_reais": "343.2",
+      "variacao_pct": "-0.72"
+    },
+    {
+      "nome": "Algodão",
+      "data": "21/08/2026",
+      "preco_reais": "427.46",
+      "variacao_pct": "1.53"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "21/08/2026",
+      "preco_reais": "104.37",
+      "variacao_pct": "0.0"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Setembro/26",
+      "preco_reais": "5,1545 R$/US$",
+      "variacao_pct": "-0.97",
+      "valor_numerico": 5.1545000000000005,
+      "unidade": "R$/US$"
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Novembro/2026",
+      "preco_reais": "27,32 US$/sc 60 kg (não convertido - dólar indisponível)",
+      "variacao_pct": "0.26",
+      "valor_numerico": 27.32,
+      "unidade": "US$/sc 60 kg"
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "71,30 R$/sc 60 kg",
+      "variacao_pct": "-0.11",
+      "valor_numerico": 71.3,
+      "unidade": "R$/sc 60 kg"
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Agosto/2026",
+      "preco_reais": "345,75 R$/@",
+      "variacao_pct": "0.32",
+      "valor_numerico": 345.75,
+      "unidade": "R$/@"
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "420,00 US$/sc 60 kg (não convertido - dólar indisponível)",
+      "variacao_pct": "-0.94",
+      "valor_numerico": 420.0,
+      "unidade": "US$/sc 60 kg"
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Com a Selic em 14.00% ao ano, o custo de financiamento no campo segue elevado - isso tende a acelerar vendas (para gerar caixa) e, por atrair capital estrangeiro, também tende a fortalecer o real. Os dois efeitos juntos costumam pressionar o preço das commodities exportadas para baixo.",
+    "Obs.: nenhuma dessas relações é garantida - clima, oferta mundial e demanda por vezes pesam mais que câmbio e juros na formação do preço final."
+  ],
+  "noticias": [
+    {
+      "titulo": "17:16Dólar fecha em queda firme contra o real com exterior favorável e eleições",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/426817-dolar-fecha-em-queda-firme-contra-o-real-com-exterior-favoravel-e-eleicoes.html",
+      "resumo": "SÃO PAULO, 21 Ago (Reuters) - O dólar fechou a sexta-feira em queda firme contra o real, que liderou os ganhos entre as principais moedas, pegando carona no enfraquecimento da moeda norte-americana, ao mesmo tempo em que...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "15:19Frigoríficos de MT aumentam exportações de carne bovina para a Espanha em 172% em julho",
+      "link": "https://www.noticiasagricolas.com.br/noticias/carnes/426803-frigorificos-de-mt-aumentam-exportacoes-de-carne-bovina-para-a-espanha-em-172-em-julho.html",
+      "resumo": "Em julho, os frigoríficos de Mato Grosso ampliaram as vendas de carne bovina para diferentes mercados internacionais, com crescimento dos embarques para países como Chile, Estados Unidos e Espanha. O avanço mais expressi...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "15:17Lula e Trump conversaram por telefone e discutem tarifas",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/426806-lula-e-trump-conversaram-por-telefone-e-discutem-tarifas.html",
+      "resumo": "BRASÍLIA, 21 Ago (Reuters) - O presidente Luiz Inácio Lula da Silva conversou nesta sexta-feira com o presidente norte-americano, Donald Trump, informou o Palácio do Planalto, no primeiro contato entre ambos desde que os...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "14:17China aumenta compras de soja dos EUA em meio a temor de safra menor e preços mais altos",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/426795-china-aumenta-compras-de-soja-dos-eua-em-meio-a-temor-de-safra-menor-e-precos-mais-altos.html",
+      "resumo": "O USDA (Departamento de Agricultura dos Estados Unidos) informou uma forte venda de 1,432 milhão de toneladas de soja nesta sexta-feira (21), confirmando a intensidade da atual demanda pela oleaginosa norte-americana. Do...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "11:24Ameaça do El Niño à safra de café do Vietnã não deve ser subestimada, diz associação",
+      "link": "https://www.noticiasagricolas.com.br/noticias/cafe/426790-ameaca-do-el-nino-a-safra-de-cafe-do-vietna-nao-deve-ser-subestimada-diz-associacao.html",
+      "resumo": "SÃO PAULO, 21 Ago (Reuters) - A safra de café robusta do Vietnã para 2026/27 poderá registrar um ligeiro aumento na produção, embora a ameaça representada pelo El Niño deste ano não deva ser subestimada, afirmou Thai Nhu...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
