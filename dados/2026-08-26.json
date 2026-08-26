@@ -1,0 +1,141 @@
+{
+  "dolar": {
+    "data": "25/08/2026",
+    "valor": 5.149,
+    "variacao_pct": -0.042708495107939934
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "16/09/2026",
+    "valor": 14.0
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "25/08/2026",
+      "preco_reais": "153.70",
+      "variacao_pct": "-0.10"
+    },
+    {
+      "nome": "Milho",
+      "data": "25/08/2026",
+      "preco_reais": "68.43",
+      "variacao_pct": "0.35"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "25/08/2026",
+      "preco_reais": "86,55",
+      "variacao_pct": "0.24"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "25/08/2026",
+      "preco_reais": "1821.25",
+      "variacao_pct": "-0.29"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "25/08/2026",
+      "preco_reais": "343.35",
+      "variacao_pct": "0.04"
+    },
+    {
+      "nome": "Algodão",
+      "data": "25/08/2026",
+      "preco_reais": "428.09",
+      "variacao_pct": "-0.1"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "25/08/2026",
+      "preco_reais": "106.52",
+      "variacao_pct": "0.96"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Setembro/26",
+      "preco_reais": "5,1540 R$/US$",
+      "variacao_pct": "-0.15",
+      "valor_numerico": 5.154,
+      "unidade": "R$/US$"
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Novembro/2026",
+      "preco_reais": "R$ 140,46 /sc 60 kg (≈ US$ 27,28 x R$ 5,1490)",
+      "variacao_pct": "1.04",
+      "valor_numerico": 27.28,
+      "unidade": "US$/sc 60 kg"
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "71,69 R$/sc 60 kg",
+      "variacao_pct": "-0.26",
+      "valor_numerico": 71.69,
+      "unidade": "R$/sc 60 kg"
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Agosto/2026",
+      "preco_reais": "343,60 R$/@",
+      "variacao_pct": "-0.29",
+      "valor_numerico": 343.6,
+      "unidade": "R$/@"
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 2250,11 /sc 60 kg (≈ US$ 437,00 x R$ 5,1490)",
+      "variacao_pct": "-0.96",
+      "valor_numerico": 437.0,
+      "unidade": "US$/sc 60 kg"
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Câmbio sem grandes variações (-0.04%): não é o dólar que deve explicar os movimentos de preço agrícola hoje, e sim fatores de oferta e demanda específicos de cada commodity.",
+    "Selic em 14.00% ao ano - um patamar considerado alto: o crédito rural fica mais caro e carregar estoque também, o que costuma levar produtores a vender mais rápido para gerar caixa, pressionando o preço para baixo no curto prazo. Juros altos também tendem a atrair capital estrangeiro e valorizar o real, reforçando essa pressão via câmbio.",
+    "Obs.: vale lembrar que essas são relações históricas, não regras fixas - fatores como clima, safra e demanda internacional podem se sobrepor facilmente ao efeito do câmbio ou dos juros."
+  ],
+  "noticias": [
+    {
+      "titulo": "17:22Anec reduz exportação de soja do Brasil em agosto, mas total deve superar 10 mi t",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/426980-anec-reduz-exportacao-de-soja-do-brasil-em-agosto-mas-total-deve-superar-10-mi-t.html",
+      "resumo": "SÃO PAULO, 25 Ago (Reuters) - A exportação de soja do Brasil deverá atingir 10,25 milhões de toneladas em agosto, previu nesta terça-feira a Associação Nacional dos Exportadores de Cereais (Anec), ao reduzir em cerca de ...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "17:20Dólar fecha abaixo dos R$5,15 após oscilar em margens estreitas",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/426978-dolar-fecha-abaixo-dos-r515-apos-oscilar-em-margens-estreitas.html",
+      "resumo": "SÃO PAULO, 25 Ago (Reuters) - Em uma sessão de agenda relativamente esvaziada de indicadores econômicos, o dólar oscilou em margens estreitas e encerrou a terça-feira com leve baixa ante o real, com os investidores atent...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "16:11Açúcar fecha em forte queda com pressão de importações menores da Índia e petróleo",
+      "link": "https://www.noticiasagricolas.com.br/noticias/sucroenergetico/426973-acucar-fecha-em-forte-queda-com-pressao-de-importacoes-menores-da-india-e-petroleo.html",
+      "resumo": "Os preços do açúcar fecharam em forte queda nesta terça-feira (25) nas bolsas internacionais, pressionados pela expectativa de que a Índia importe menos açúcar do que o inicialmente previsto e pela queda dos preços do pe...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "15:49Brasil e EUA farão reunião sobre tarifas na próxima segunda-feira, diz MDIC",
+      "link": "https://www.noticiasagricolas.com.br/noticias/agronegocio/426970-brasil-e-eua-farao-reuniao-sobre-tarifas-na-proxima-segunda-feira-diz-mdic.html",
+      "resumo": "BRASÍLIA, 25 Ago (Reuters) - O governo brasileiro terá reunião na próxima segunda-feira com o representante de Comércio dos Estados Unidos, Jamieson Greer, informou nesta terça-feira o Ministério do Desenvolvimento, Indú...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "13:53Safra 26/27: soja ainda cobre custos em MT, mas milho já opera com margem mais apertada",
+      "link": "https://www.noticiasagricolas.com.br/noticias/graos/426957-safra-26-27-soja-ainda-cobre-custos-em-mt-mas-milho-ja-opera-com-margem-mais-apertada.html",
+      "resumo": "Os custos de produção da safra 2026/27 seguem pressionando as margens dos produtores de soja e milho em Mato Grosso, segundo novos levantamentos do Instituto Mato-grossense de Economia Agropecuária (Imea).",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
