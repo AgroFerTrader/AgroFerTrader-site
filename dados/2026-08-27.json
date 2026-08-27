@@ -1,0 +1,141 @@
+{
+  "dolar": {
+    "data": "26/08/2026",
+    "valor": 5.1604,
+    "variacao_pct": 0.2214022140221417
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "16/09/2026",
+    "valor": 14.0
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "26/08/2026",
+      "preco_reais": "154.57",
+      "variacao_pct": "+0.57"
+    },
+    {
+      "nome": "Milho",
+      "data": "26/08/2026",
+      "preco_reais": "68.79",
+      "variacao_pct": "0.53"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "26/08/2026",
+      "preco_reais": "87,25",
+      "variacao_pct": "0.81"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "26/08/2026",
+      "preco_reais": "1800.79",
+      "variacao_pct": "-1.12"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "26/08/2026",
+      "preco_reais": "342.5",
+      "variacao_pct": "-0.25"
+    },
+    {
+      "nome": "Algodão",
+      "data": "26/08/2026",
+      "preco_reais": "428.45",
+      "variacao_pct": "0.08"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "26/08/2026",
+      "preco_reais": "107.98",
+      "variacao_pct": "1.37"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Setembro/26",
+      "preco_reais": "5,1515 R$/US$",
+      "variacao_pct": "-0.04",
+      "valor_numerico": 5.1515,
+      "unidade": "R$/US$"
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Novembro/2026",
+      "preco_reais": "R$ 143,67 /sc 60 kg (≈ US$ 27,84 x R$ 5,1604)",
+      "variacao_pct": "2.05",
+      "valor_numerico": 27.84,
+      "unidade": "US$/sc 60 kg"
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "72,00 R$/sc 60 kg",
+      "variacao_pct": "0.49",
+      "valor_numerico": 72.0,
+      "unidade": "R$/sc 60 kg"
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Agosto/2026",
+      "preco_reais": "342,30 R$/@",
+      "variacao_pct": "-0.38",
+      "valor_numerico": 342.3,
+      "unidade": "R$/@"
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 2157,05 /sc 60 kg (≈ US$ 418,00 x R$ 5,1604)",
+      "variacao_pct": "-4.35",
+      "valor_numerico": 418.0,
+      "unidade": "US$/sc 60 kg"
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Dólar praticamente estável hoje (+0.22%): sem pressão cambial relevante sobre os preços agrícolas no momento - outros fatores (clima, safra, demanda) tendem a pesar mais que o câmbio hoje.",
+    "Selic em 14.00% ao ano - um patamar considerado alto: o crédito rural fica mais caro e carregar estoque também, o que costuma levar produtores a vender mais rápido para gerar caixa, pressionando o preço para baixo no curto prazo. Juros altos também tendem a atrair capital estrangeiro e valorizar o real, reforçando essa pressão via câmbio.",
+    "Obs.: vale lembrar que essas são relações históricas, não regras fixas - fatores como clima, safra e demanda internacional podem se sobrepor facilmente ao efeito do câmbio ou dos juros."
+  ],
+  "noticias": [
+    {
+      "titulo": "17:39Soja vai a R$ 160 nos portos do Brasil com nova disparada em Chicago e alta do dólar nesta 4ª",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/427037-soja-vai-a-r-160-nos-portos-do-brasil-com-nova-disparada-em-chicago-e-alta-do-dolar-nesta-4.html",
+      "resumo": "Os preços da soja subiram tanto no interior, quanto nos portos do Brasil nesta quarta-feira (26), refletindo uma nova disparada das cotações da oleaginosa na Bolsa de Chicago de quase 30 pontos. A soja disponível vai, a ...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "17:16Dólar tem leve alta no Brasil após divulgação de dados econômicos dos EUA",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/427040-dolar-tem-leve-alta-no-brasil-apos-divulgacao-de-dados-economicos-dos-eua.html",
+      "resumo": "SÃO PAULO, 26 Ago (Reuters) - O dólar fechou a quarta-feira com leve alta no Brasil e novamente acima dos R$5,15, acompanhando o fortalecimento da moeda norte-americana no exterior após a divulgação de novos dados sobre ...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "16:12Açúcar fecha misto nas bolsas internacionais; Londres recua com expectativa de menor importação da Índia",
+      "link": "https://www.noticiasagricolas.com.br/noticias/sucroenergetico/427030-acucar-fecha-misto-nas-bolsas-internacionais-londres-recua-com-expectativa-de-menor-importacao-da-india.html",
+      "resumo": "Os preços do açúcar fecharam em direções opostas nesta quarta-feira (26) nas bolsas internacionais. Em Nova Iorque, as cotações encontraram suporte diante de novos sinais de redução da produção na Europa, enquanto Londre...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "14:57Trump analisará normas na indústria de carne bovina, enquanto produtores se opõem ao plano de tarifas",
+      "link": "https://www.noticiasagricolas.com.br/noticias/agronegocio/427019-trump-analisara-normas-na-industria-de-carne-bovina-enquanto-produtores-se-opoem-ao-plano-de-tarifas.html",
+      "resumo": "WASHINGTON, 26 Ago (Reuters) - O presidente dos EUA, Donald Trump, afirmou nesta quarta-feira no programa de Glenn Beck que vai analisar se há regulamentações excessivas nas fábricas de processamento de carne bovina, dep...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "13:22Anea eleva projeção da safra brasileira de algodão para 4,178 milhões de toneladas",
+      "link": "https://www.noticiasagricolas.com.br/noticias/algodao/427013-anea-eleva-projecao-da-safra-brasileira-de-algodao-para-4-178-milhoes-de-toneladas.html",
+      "resumo": "A produção brasileira de algodão na safra 2025/26 deve alcançar 4,178 milhões de toneladas de pluma, de acordo com a tabela de Oferta e Demanda divulgada pela Associação Nacional dos Exportadores de Algodão (Anea) para o...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
