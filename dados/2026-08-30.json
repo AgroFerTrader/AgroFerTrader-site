@@ -1,0 +1,141 @@
+{
+  "dolar": {
+    "data": "28/08/2026",
+    "valor": 5.2005,
+    "variacao_pct": 0.7029162309747836
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "16/09/2026",
+    "valor": 14.0
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "28/08/2026",
+      "preco_reais": "159.76",
+      "variacao_pct": "+3.04"
+    },
+    {
+      "nome": "Milho",
+      "data": "28/08/2026",
+      "preco_reais": "69.51",
+      "variacao_pct": "0.67"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "28/08/2026",
+      "preco_reais": "87,15",
+      "variacao_pct": "0.22"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "28/08/2026",
+      "preco_reais": "1728.61",
+      "variacao_pct": "-0.81"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "28/08/2026",
+      "preco_reais": "345.35",
+      "variacao_pct": "0.25"
+    },
+    {
+      "nome": "Algodão",
+      "data": "28/08/2026",
+      "preco_reais": "429.05",
+      "variacao_pct": "-0.07"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "28/08/2026",
+      "preco_reais": "112.06",
+      "variacao_pct": "1.33"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Setembro/26",
+      "preco_reais": "5,1885 R$/US$",
+      "variacao_pct": "0.45",
+      "valor_numerico": 5.1885,
+      "unidade": "R$/US$"
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Novembro/2026",
+      "preco_reais": "R$ 147,80 /sc 60 kg (≈ US$ 28,42 x R$ 5,2005)",
+      "variacao_pct": "2.08",
+      "valor_numerico": 28.42,
+      "unidade": "US$/sc 60 kg"
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "71,45 R$/sc 60 kg",
+      "variacao_pct": "0.31",
+      "valor_numerico": 71.45,
+      "unidade": "R$/sc 60 kg"
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Agosto/2026",
+      "preco_reais": "343,35 R$/@",
+      "variacao_pct": "0.13",
+      "valor_numerico": 343.35,
+      "unidade": "R$/@"
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 2105,94 /sc 60 kg (≈ US$ 404,95 x R$ 5,2005)",
+      "variacao_pct": "0.75",
+      "valor_numerico": 404.95,
+      "unidade": "US$/sc 60 kg"
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Câmbio subiu discretamente hoje (+0.70%) - não é uma virada de tendência, mas pequenas altas como essa historicamente já dão um empurrão positivo ao preço doméstico de commodities de exportação.",
+    "Com a Selic em 14.00% ao ano, o custo de financiamento no campo segue elevado - isso tende a acelerar vendas (para gerar caixa) e, por atrair capital estrangeiro, também tende a fortalecer o real. Os dois efeitos juntos costumam pressionar o preço das commodities exportadas para baixo.",
+    "Obs.: essas são tendências gerais - clima, quebra de safra, estoques mundiais e demanda de outros países também afetam o preço e podem superar o efeito isolado do câmbio ou da Selic."
+  ],
+  "noticias": [
+    {
+      "titulo": "17:16Dólar fecha perto dos R$5,20 após discurso duro de Warsh sobre inflação nos EUA",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-agricola/427162-dolar-fecha-perto-dos-r520-apos-discurso-duro-de-warsh-sobre-inflacao-nos-eua.html",
+      "resumo": "SÃO PAULO, 28 Ago (Reuters) - O dólar fechou a sexta-feira em alta no Brasil após o chair do Federal Reserve, Kevin Warsh, afirmar durante o simpósio de Jackson Hole que a instituição terá \"trabalho a fazer\" caso a infla...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "16:55Cecafé revisa para cima dados parciais da exportação de agosto em 1,23 mi sacas",
+      "link": "https://www.noticiasagricolas.com.br/noticias/cafe/427166-cecafe-revisa-para-cima-dados-parciais-da-exportacao-de-agosto-em-123-mi-sacas.html",
+      "resumo": "NOVA YORK, 28 Ago (Reuters) - O Conselho dos Exportadores de Café do Brasil (Cecafé) revisou para cima seus dados preliminares sobre as exportações de agosto em 1,23 milhão de sacas de 60 kg, após constatar uma falha téc...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "13:55Exportações mundiais de café verde aumentaram 0,8% em junho, diz OIC",
+      "link": "https://www.noticiasagricolas.com.br/noticias/cafe/427149-exportacoes-mundiais-de-cafe-verde-aumentaram-08-em-junho-diz-oic.html",
+      "resumo": "LONDRES, 28 Ago (Reuters) - As exportações globais de café verde aumentaram 0,8% em junho em relação ao mesmo mês do ano anterior, atingindo 10,48 milhões de sacas de 60 kg, em meio a um forte aumento nos embarques da va...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "12:52Setembro abre nova janela para a soja e reforça importância do manejo antecipado da ferrugem",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/427143-setembro-abre-nova-janela-para-a-soja-e-reforca-importancia-do-manejo-antecipado-da-ferrugem.html",
+      "resumo": "Setembro marca uma virada importante no calendário da soja brasileira. Ao longo do mês, o vazio sanitário chega ao fim em diferentes regiões produtoras e a semeadura da safra 2026/27 começa a ser autorizada. Em Mato Gros...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "Caos climático na China ameaça safras locais e joga preços da soja e do milho para cima no Brasil",
+      "link": "https://www.noticiasagricolas.com.br/noticias/graos/427090-caos-climatico-na-china-ameaca-safras-locais-e-joga-precos-da-soja-e-do-milho-para-cima-no-brasil.html",
+      "resumo": "Nas últimas semanas, a China tem enfrentado uma combinação severa de eventos climáticos extremos que estão ameaçando seriamente suas safras agrícolas. O país lida com um forte contraste, com o norte e o leste sofrendo co...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
