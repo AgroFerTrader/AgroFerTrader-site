@@ -62,7 +62,7 @@ def _nome_curto(nome_completo: str) -> str:
 def montar_ticker_html(dolar, resultados_commodities) -> str:
     itens = []
 
-   if dolar is not None:
+    if dolar is not None:
         seta, classe = _seta_e_classe(dolar["variacao_pct"])
         valor_dolar = f"{dolar['valor']:.4f}".replace(".", ",")
         itens.append(
@@ -309,4 +309,3 @@ def gerar_site() -> None:
 
 if __name__ == "__main__":
     gerar_site()
-
