@@ -1,11 +1,82 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AgroFer Trader — A safra de hoje, em números</title>
+
+<title>AgroFer Trader | Preços Agrícolas, Cotações e Mercado Agro</title>
+<meta name="description" content="AgroFer Trader: consulte preços e cotações de soja, milho, trigo, café arábica, boi gordo, algodão e açúcar, além do mercado futuro e notícias do agronegócio.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="canonical" href="https://agrofertrader.github.io/AgroFerTrader-site/">
+
+<meta property="og:locale" content="pt_BR">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AgroFer Trader | Preços Agrícolas e Mercado Agro">
+<meta property="og:description" content="Cotações agrícolas, mercado futuro e informações do agronegócio em linguagem simples.">
+<meta property="og:url" content="https://agrofertrader.github.io/AgroFerTrader-site/">
+<meta property="og:site_name" content="AgroFer Trader">
+<meta property="og:image" content="https://agrofertrader.github.io/AgroFerTrader-site/assets/logo.png">
+<meta property="og:image:alt" content="Logo da AgroFer Trader">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AgroFer Trader | Preços Agrícolas e Mercado Agro">
+<meta name="twitter:description" content="Preços agrícolas, cotações, mercado futuro e notícias do agronegócio.">
+<meta name="twitter:image" content="https://agrofertrader.github.io/AgroFerTrader-site/assets/logo.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://agrofertrader.github.io/AgroFerTrader-site/#organization",
+      "name": "AgroFer Trader",
+      "url": "https://agrofertrader.github.io/AgroFerTrader-site/",
+      "logo": "https://agrofertrader.github.io/AgroFerTrader-site/assets/logo.png",
+      "sameAs": [
+        "https://www.instagram.com/agrofertrader/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://agrofertrader.github.io/AgroFerTrader-site/#website",
+      "url": "https://agrofertrader.github.io/AgroFerTrader-site/",
+      "name": "AgroFer Trader",
+      "description": "Preços agrícolas, cotações, mercado futuro e informações do agronegócio.",
+      "publisher": {
+        "@id": "https://agrofertrader.github.io/AgroFerTrader-site/#organization"
+      },
+      "inLanguage": "pt-BR"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://agrofertrader.github.io/AgroFerTrader-site/#webpage",
+      "url": "https://agrofertrader.github.io/AgroFerTrader-site/",
+      "name": "Preços Agrícolas e Mercado Agro | AgroFer Trader",
+      "isPartOf": {
+        "@id": "https://agrofertrader.github.io/AgroFerTrader-site/#website"
+      },
+      "about": [
+        "Preços agrícolas",
+        "Soja",
+        "Milho",
+        "Trigo",
+        "Café arábica",
+        "Boi gordo",
+        "Algodão",
+        "Açúcar",
+        "Mercado futuro"
+      ],
+      "inLanguage": "pt-BR"
+    }
+  ]
+}
+</script>
+
 <style>
   :root{
     --ink:#0B3C1F;
@@ -37,7 +108,6 @@
 
   .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
 
-  /* ---------- NAV ---------- */
   nav{
     display:flex;align-items:center;justify-content:space-between;
     padding:20px 24px;max-width:1080px;margin:0 auto;
@@ -54,7 +124,6 @@
   .navlinks a{text-decoration:none;opacity:0.75;transition:opacity .15s;}
   .navlinks a:hover, .navlinks a:focus-visible{opacity:1;}
 
-  /* ---------- HERO / TICKER ---------- */
   .hero{background:var(--ink);color:var(--paper);}
   .ticker-strip{
     border-top:1px solid var(--line-dark);
@@ -122,7 +191,6 @@
   .btn-primary{background:var(--gold);color:var(--ink);}
   .btn-ghost{border-color:var(--line-dark);color:var(--paper);}
 
-  /* ---------- SECTION SHELL ---------- */
   section{padding:64px 0;}
   .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:32px;flex-wrap:wrap;}
   .section-label{
@@ -134,7 +202,6 @@
   }
   .updated{font-size:13px;color:var(--ink);opacity:.55;font-family:var(--mono);}
 
-  /* ---------- PRICE CARDS ---------- */
   .price-grid{
     display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
     gap:1px;background:var(--line);border:1px solid var(--line);
@@ -145,7 +212,6 @@
   .price-meta{font-size:12px;margin-top:8px;color:var(--ink);opacity:.65;}
   .price-var{font-family:var(--mono);font-size:13px;font-weight:600;margin-top:4px;display:inline-block;}
 
-  /* ---------- EXPLANATION ---------- */
   .explain{
     background:var(--paper-dim);
     border-left:3px solid var(--gold);
@@ -155,7 +221,6 @@
   .explain p:last-child{margin-bottom:0;}
   .explain .obs{font-size:13px;opacity:.7;font-style:italic;}
 
-  /* ---------- FUTURES (secondary treatment) ---------- */
   .futures-note{
     font-size:14px;color:var(--ink);opacity:.75;max-width:60ch;margin:0 0 24px;
   }
@@ -168,7 +233,6 @@
   .futures-table td{padding:12px;border-bottom:1px solid var(--line);}
   .futures-table td.val{font-family:var(--mono);font-weight:600;}
 
-  /* ---------- NEWS ---------- */
   .news-item{padding:20px 0;border-bottom:1px solid var(--line);}
   .news-item:first-child{padding-top:0;}
   .news-title{font-weight:600;font-size:16px;margin:0 0 8px;}
@@ -177,7 +241,6 @@
   .news-summary{font-size:14.5px;opacity:.8;margin:0 0 8px;max-width:68ch;}
   .news-source{font-size:12px;font-family:var(--mono);opacity:.55;}
 
-  /* ---------- GLOSSARY TEASER ---------- */
   .glossary-band{background:var(--ink);color:var(--paper);}
   .glossary-inner{padding:56px 0;text-align:left;}
   .glossary-band h2{color:var(--paper);}
@@ -187,7 +250,6 @@
   .glossary-card a{text-decoration:none;font-weight:600;font-size:15px;display:flex;justify-content:space-between;align-items:center;}
   .glossary-card p{font-size:13px;color:var(--ink-soft);margin:8px 0 0;}
 
-  /* ---------- FOOTER ---------- */
   footer{padding:40px 0 56px;font-size:13px;color:var(--ink);opacity:.6;}
   footer .foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:1px solid var(--line);padding-top:24px;}
   footer a{text-decoration:underline;}
@@ -197,22 +259,27 @@
   }
 </style>
 </head>
+
 <body>
 
-<nav>
-  <div class="brand"><img src="assets/logo.png" alt="AgroFer Trader"></div>
+<nav aria-label="Navegação principal">
+  <div class="brand">
+    <a href="./" aria-label="AgroFer Trader — página inicial">
+      <img src="assets/logo.png" alt="AgroFer Trader">
+    </a>
+  </div>
   <div class="navlinks">
     <a href="#precos">Preços de hoje</a>
     <a href="#futuro">Mercado futuro</a>
     <a href="entenda.html">Entenda</a>
-    <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.instagram.com/agrofertrader/" target="_blank" rel="noopener">Instagram</a>
   </div>
 </nav>
 
-<div class="hero">
-  <div class="ticker-strip">
+<header class="hero">
+  <div class="ticker-strip" aria-label="Cotações em destaque">
     <div class="ticker-track"><!-- TICKER:START -->
-<span class="item">DÓLAR <b>R$ 5.2005</b> <span class="up">▲ 0.70%</span></span>
+      <span class="item">DÓLAR <b>R$ 5.2005</b> <span class="up">▲ 0.70%</span></span>
       <span class="item">SOJA <b>R$ 159.76</b> <span class="up">▲ +3.04%</span></span>
       <span class="item">MILHO <b>R$ 69.51</b> <span class="up">▲ 0.67%</span></span>
       <span class="item">TRIGO <b>R$ 87,15</b> <span class="up">▲ 0.22%</span></span>
@@ -236,104 +303,122 @@
     <div class="eyebrow"><!-- EYEBROW:START -->
 Domingo, 30 de agosto de 2026 · fechamento do dia anterior
 <!-- EYEBROW:END --></div>
+
     <h1 class="headline">A safra de hoje, em números.</h1>
-    <p class="hero-sub">Cotações físicas do CEPEA/Esalq, explicadas em português simples, publicadas toda manhã. Sem jargão de mercado — só o que o preço significa pra quem produz e pra quem compra.</p>
+
+    <p class="hero-sub">Dados e cotações do mercado físico, com referência no CEPEA/Esalq e nos principais indicadores do agronegócio. Informação estratégica para acompanhar preços, tendências e movimentos do mercado.</p>
+
     <div class="cta-row">
       <a href="#precos" class="btn btn-primary">Ver preços de hoje ↓</a>
       <a href="entenda.html" class="btn btn-ghost">Não entendo nada disso →</a>
     </div>
   </div>
-</div>
+</header>
 
-<div class="wrap">
+<main class="wrap">
 
-  <section id="precos">
+  <section id="precos" aria-labelledby="titulo-precos">
     <div class="section-head">
       <div>
         <div class="section-label">Mercado físico</div>
-        <h2>O que se negocia hoje</h2>
+        <h2 id="titulo-precos">Preços agrícolas de hoje</h2>
       </div>
       <div class="updated"><!-- UPDATED:START -->
 Fonte: CEPEA/Esalq · dado de 28/08/2026
 <!-- UPDATED:END --></div>
     </div>
 
-    <div class="price-grid"><!-- PRICES:START -->
-<div class="price-card">
-  <div class="price-name">Soja</div>
-  <div class="price-value">R$ 159.76</div>
-  <div class="price-var up">▲ +3.04%</div>
-  <div class="price-meta">por saca de 60kg</div>
-</div>
-      <div class="price-card">
-  <div class="price-name">Milho</div>
-  <div class="price-value">R$ 69.51</div>
-  <div class="price-var up">▲ 0.67%</div>
-  <div class="price-meta">por saca de 60kg</div>
-</div>
-      <div class="price-card">
-  <div class="price-name">Trigo</div>
-  <div class="price-value">R$ 87,15</div>
-  <div class="price-var up">▲ 0.22%</div>
-  <div class="price-meta">por saca de 60kg</div>
-</div>
-      <div class="price-card">
-  <div class="price-name">Café Arábica</div>
-  <div class="price-value">R$ 1728.61</div>
-  <div class="price-var down">▼ -0.81%</div>
-  <div class="price-meta">por saca de 60kg</div>
-</div>
-      <div class="price-card">
-  <div class="price-name">Boi Gordo</div>
-  <div class="price-value">R$ 345.35</div>
-  <div class="price-var up">▲ 0.25%</div>
-  <div class="price-meta">por arroba</div>
-</div>
-      <div class="price-card">
-  <div class="price-name">Algodão</div>
-  <div class="price-value">R$ 429.05</div>
-  <div class="price-var down">▼ -0.07%</div>
-  <div class="price-meta">por saca de 60kg</div>
-</div>
-      <div class="price-card">
-  <div class="price-name">Açúcar Cristal</div>
-  <div class="price-value">R$ 112.06</div>
-  <div class="price-var up">▲ 1.33%</div>
-  <div class="price-meta">por saca de 60kg</div>
-</div>
+    <div class="price-grid" aria-label="Cotações agrícolas de hoje"><!-- PRICES:START -->
+
+      <article class="price-card">
+        <div class="price-name">Soja</div>
+        <div class="price-value">R$ 159.76</div>
+        <div class="price-var up">▲ +3.04%</div>
+        <div class="price-meta">por saca de 60kg</div>
+      </article>
+
+      <article class="price-card">
+        <div class="price-name">Milho</div>
+        <div class="price-value">R$ 69.51</div>
+        <div class="price-var up">▲ 0.67%</div>
+        <div class="price-meta">por saca de 60kg</div>
+      </article>
+
+      <article class="price-card">
+        <div class="price-name">Trigo</div>
+        <div class="price-value">R$ 87,15</div>
+        <div class="price-var up">▲ 0.22%</div>
+        <div class="price-meta">por saca de 60kg</div>
+      </article>
+
+      <article class="price-card">
+        <div class="price-name">Café Arábica</div>
+        <div class="price-value">R$ 1728.61</div>
+        <div class="price-var down">▼ -0.81%</div>
+        <div class="price-meta">por saca de 60kg</div>
+      </article>
+
+      <article class="price-card">
+        <div class="price-name">Boi Gordo</div>
+        <div class="price-value">R$ 345.35</div>
+        <div class="price-var up">▲ 0.25%</div>
+        <div class="price-meta">por arroba</div>
+      </article>
+
+      <article class="price-card">
+        <div class="price-name">Algodão</div>
+        <div class="price-value">R$ 429.05</div>
+        <div class="price-var down">▼ -0.07%</div>
+        <div class="price-meta">por saca de 60kg</div>
+      </article>
+
+      <article class="price-card">
+        <div class="price-name">Açúcar Cristal</div>
+        <div class="price-value">R$ 112.06</div>
+        <div class="price-var up">▲ 1.33%</div>
+        <div class="price-meta">por saca de 60kg</div>
+      </article>
+
 <!-- PRICES:END -->
     </div>
   </section>
 
-  <section>
+  <section aria-labelledby="titulo-contexto">
     <div class="section-head">
       <div>
         <div class="section-label">Contexto do dia</div>
-        <h2>O que isso significa</h2>
+        <h2 id="titulo-contexto">O que as cotações significam</h2>
       </div>
     </div>
+
     <div class="explain"><!-- EXPLAIN:START -->
-<p>Câmbio subiu discretamente hoje (+0.70%) - não é uma virada de tendência, mas pequenas altas como essa historicamente já dão um empurrão positivo ao preço doméstico de commodities de exportação.</p>
+      <p>Câmbio subiu discretamente hoje (+0.70%) - não é uma virada de tendência, mas pequenas altas como essa historicamente já dão um empurrão positivo ao preço doméstico de commodities de exportação.</p>
       <p>Com a Selic em 14.00% ao ano, o custo de financiamento no campo segue elevado - isso tende a acelerar vendas (para gerar caixa) e, por atrair capital estrangeiro, também tende a fortalecer o real. Os dois efeitos juntos costumam pressionar o preço das commodities exportadas para baixo.</p>
       <p class="obs">Obs.: essas são tendências gerais - clima, quebra de safra, estoques mundiais e demanda de outros países também afetam o preço e podem superar o efeito isolado do câmbio ou da Selic.</p>
 <!-- EXPLAIN:END -->
     </div>
   </section>
 
-  <section id="futuro">
+  <section id="futuro" aria-labelledby="titulo-futuro">
     <div class="section-head">
       <div>
         <div class="section-label">Pra quem quer se aprofundar</div>
-        <h2>Mercado futuro (B3)</h2>
+        <h2 id="titulo-futuro">Mercado futuro (B3)</h2>
       </div>
     </div>
-    <p class="futures-note">O preço físico (acima) é o que se negocia hoje, na entrega imediata. O futuro é o preço que o mercado financeiro está precificando agora para entrega em um mês adiante — reflete a expectativa dos operadores sobre clima, safra e câmbio.</p>
+
+    <p class="futures-note">
+      O preço físico é o que se negocia hoje, na entrega imediata. O mercado futuro mostra
+      preços negociados para contratos com vencimentos adiante e reflete expectativas sobre
+      clima, safra, câmbio, oferta e demanda.
+    </p>
+
     <table class="futures-table">
       <thead>
         <tr><th>Commodity</th><th>Contrato</th><th>Fechamento</th><th>Variação</th></tr>
       </thead>
       <tbody><!-- FUTURES:START -->
-<tr><td>Dólar</td><td>Setembro/26</td><td class="val">5,1885 R$/US$</td><td class="up">▲ 0.45%</td></tr>
+        <tr><td>Dólar</td><td>Setembro/26</td><td class="val">5,1885 R$/US$</td><td class="up">▲ 0.45%</td></tr>
         <tr><td>Soja</td><td>Novembro/2026</td><td class="val">R$ 147,80 /sc 60 kg (≈ US$ 28,42 x R$ 5,2005)</td><td class="up">▲ 2.08%</td></tr>
         <tr><td>Milho</td><td>Setembro/2026</td><td class="val">71,45 R$/sc 60 kg</td><td class="up">▲ 0.31%</td></tr>
         <tr><td>Boi Gordo</td><td>Agosto/2026</td><td class="val">343,35 R$/@</td><td class="up">▲ 0.13%</td></tr>
@@ -343,47 +428,54 @@ Fonte: CEPEA/Esalq · dado de 28/08/2026
     </table>
   </section>
 
-  <section>
+  <section aria-labelledby="titulo-noticias">
     <div class="section-head">
       <div>
         <div class="section-label">Comércio &amp; economia</div>
-        <h2>Notícias em destaque</h2>
+        <h2 id="titulo-noticias">Notícias do agronegócio em destaque</h2>
       </div>
-    </div><!-- NEWS:START -->
-<div class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/politica-agricola/427162-dolar-fecha-perto-dos-r520-apos-discurso-duro-de-warsh-sobre-inflacao-nos-eua.html" target="_blank" rel="noopener">17:16Dólar fecha perto dos R$5,20 após discurso duro de Warsh sobre inflação nos EUA</a></p>
-  <p class="news-summary">SÃO PAULO, 28 Ago (Reuters) - O dólar fechou a sexta-feira em alta no Brasil após o chair do Federal Reserve, Kevin Warsh, afirmar durante o simpósio de Jackson Hole que a instituição terá "trabalho a fazer" caso a infla...</p>
-  <p class="news-source">Fonte: Notícias Agrícolas</p>
-</div>
-    <div class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/cafe/427166-cecafe-revisa-para-cima-dados-parciais-da-exportacao-de-agosto-em-123-mi-sacas.html" target="_blank" rel="noopener">16:55Cecafé revisa para cima dados parciais da exportação de agosto em 1,23 mi sacas</a></p>
-  <p class="news-summary">NOVA YORK, 28 Ago (Reuters) - O Conselho dos Exportadores de Café do Brasil (Cecafé) revisou para cima seus dados preliminares sobre as exportações de agosto em 1,23 milhão de sacas de 60 kg, após constatar uma falha téc...</p>
-  <p class="news-source">Fonte: Notícias Agrícolas</p>
-</div>
-    <div class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/cafe/427149-exportacoes-mundiais-de-cafe-verde-aumentaram-08-em-junho-diz-oic.html" target="_blank" rel="noopener">13:55Exportações mundiais de café verde aumentaram 0,8% em junho, diz OIC</a></p>
-  <p class="news-summary">LONDRES, 28 Ago (Reuters) - As exportações globais de café verde aumentaram 0,8% em junho em relação ao mesmo mês do ano anterior, atingindo 10,48 milhões de sacas de 60 kg, em meio a um forte aumento nos embarques da va...</p>
-  <p class="news-source">Fonte: Notícias Agrícolas</p>
-</div>
-    <div class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/soja/427143-setembro-abre-nova-janela-para-a-soja-e-reforca-importancia-do-manejo-antecipado-da-ferrugem.html" target="_blank" rel="noopener">12:52Setembro abre nova janela para a soja e reforça importância do manejo antecipado da ferrugem</a></p>
-  <p class="news-summary">Setembro marca uma virada importante no calendário da soja brasileira. Ao longo do mês, o vazio sanitário chega ao fim em diferentes regiões produtoras e a semeadura da safra 2026/27 começa a ser autorizada. Em Mato Gros...</p>
-  <p class="news-source">Fonte: Notícias Agrícolas</p>
-</div>
-    <div class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/graos/427090-caos-climatico-na-china-ameaca-safras-locais-e-joga-precos-da-soja-e-do-milho-para-cima-no-brasil.html" target="_blank" rel="noopener">Caos climático na China ameaça safras locais e joga preços da soja e do milho para cima no Brasil</a></p>
-  <p class="news-summary">Nas últimas semanas, a China tem enfrentado uma combinação severa de eventos climáticos extremos que estão ameaçando seriamente suas safras agrícolas. O país lida com um forte contraste, com o norte e o leste sofrendo co...</p>
-  <p class="news-source">Fonte: Notícias Agrícolas</p>
-</div>
+    </div>
+
+<!-- NEWS:START -->
+    <article class="news-item">
+      <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/politica-agricola/427162-dolar-fecha-perto-dos-r520-apos-discurso-duro-de-warsh-sobre-inflacao-nos-eua.html" target="_blank" rel="noopener">17:16 Dólar fecha perto dos R$5,20 após discurso duro de Warsh sobre inflação nos EUA</a></p>
+      <p class="news-summary">SÃO PAULO, 28 Ago (Reuters) - O dólar fechou a sexta-feira em alta no Brasil após o chair do Federal Reserve, Kevin Warsh, afirmar durante o simpósio de Jackson Hole que a instituição terá "trabalho a fazer" caso a infla...</p>
+      <p class="news-source">Fonte: Notícias Agrícolas</p>
+    </article>
+
+    <article class="news-item">
+      <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/cafe/427166-cecafe-revisa-para-cima-dados-parciais-da-exportacao-de-agosto-em-123-mi-sacas.html" target="_blank" rel="noopener">16:55 Cecafé revisa para cima dados parciais da exportação de agosto em 1,23 mi sacas</a></p>
+      <p class="news-summary">NOVA YORK, 28 Ago (Reuters) - O Conselho dos Exportadores de Café do Brasil (Cecafé) revisou para cima seus dados preliminares sobre as exportações de agosto em 1,23 milhão de sacas de 60 kg, após constatar uma falha téc...</p>
+      <p class="news-source">Fonte: Notícias Agrícolas</p>
+    </article>
+
+    <article class="news-item">
+      <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/cafe/427149-exportacoes-mundiais-de-cafe-verde-aumentaram-08-em-junho-diz-oic.html" target="_blank" rel="noopener">13:55 Exportações mundiais de café verde aumentaram 0,8% em junho, diz OIC</a></p>
+      <p class="news-summary">LONDRES, 28 Ago (Reuters) - As exportações globais de café verde aumentaram 0,8% em junho em relação ao mesmo mês do ano anterior, atingindo 10,48 milhões de sacas de 60 kg, em meio a um forte aumento nos embarques da va...</p>
+      <p class="news-source">Fonte: Notícias Agrícolas</p>
+    </article>
+
+    <article class="news-item">
+      <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/soja/427143-setembro-abre-nova-janela-para-a-soja-e-reforca-importancia-do-manejo-antecipado-da-ferrugem.html" target="_blank" rel="noopener">12:52 Setembro abre nova janela para a soja e reforça importância do manejo antecipado da ferrugem</a></p>
+      <p class="news-summary">Setembro marca uma virada importante no calendário da soja brasileira. Ao longo do mês, o vazio sanitário chega ao fim em diferentes regiões produtoras e a semeadura da safra 2026/27 começa a ser autorizada. Em Mato Gros...</p>
+      <p class="news-source">Fonte: Notícias Agrícolas</p>
+    </article>
+
+    <article class="news-item">
+      <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/graos/427090-caos-climatico-na-china-ameaca-safras-locais-e-joga-precos-da-soja-e-do-milho-para-cima-no-brasil.html" target="_blank" rel="noopener">Caos climático na China ameaça safras locais e joga preços da soja e do milho para cima no Brasil</a></p>
+      <p class="news-summary">Nas últimas semanas, a China tem enfrentado uma combinação severa de eventos climáticos extremos que estão ameaçando seriamente suas safras agrícolas. O país lida com um forte contraste, com o norte e o leste sofrendo co...</p>
+      <p class="news-source">Fonte: Notícias Agrícolas</p>
+    </article>
 <!-- NEWS:END -->
   </section>
 
-</div>
+</main>
 
-<div class="glossary-band">
+<section class="glossary-band" aria-labelledby="titulo-entenda">
   <div class="wrap glossary-inner">
     <div class="section-label">Comece por aqui</div>
-    <h2>Entenda o mercado, sem jargão</h2>
+    <h2 id="titulo-entenda">Entenda o mercado, sem jargão</h2>
+
     <div class="glossary-links">
       <div class="glossary-card">
         <a href="entenda.html#cepea">O que é o CEPEA →</a>
@@ -399,13 +491,17 @@ Fonte: CEPEA/Esalq · dado de 28/08/2026
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <div class="wrap">
   <footer>
     <div class="foot-row">
       <div>AgroFer Trader — conteúdo informativo sobre o mercado agrícola. Não constitui recomendação de investimento ou negócio.</div>
-      <div>Fontes: Banco Central, AwesomeAPI, B3 e CEPEA/Esalq (via Notícias Agrícolas) · <a href="entenda.html">Entenda</a> · <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></div>
+      <div>
+        Fontes: Banco Central, AwesomeAPI, B3 e CEPEA/Esalq (via Notícias Agrícolas)
+        · <a href="entenda.html">Entenda</a>
+        · <a href="https://www.instagram.com/agrofertrader/" target="_blank" rel="noopener">Instagram @agrofertrader</a>
+      </div>
     </div>
   </footer>
 </div>
