@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://agrofertrader.github.io/AgroFerTrader-site/sitemap.xml
