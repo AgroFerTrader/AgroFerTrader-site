@@ -136,22 +136,32 @@ def montar_explain_html(explicacoes_macro: list) -> str:
     return "\n      ".join(blocos)
 
 
+def _preco_futuro_apenas_valor(preco_reais: str) -> str:
+    """
+    Recebe o resultado final calculado pelo monitor e extrai somente o
+    valor numérico principal. Fórmulas, conversões em dólar e observações
+    entre parênteses ficam fora da apresentação.
+    """
+    texto = str(preco_reais).strip()
+
+    # Primeiro remove qualquer explicação entre parênteses.
+    texto = re.sub(r"\s*\([^)]*\)", "", texto).strip()
+
+    # Procura o primeiro número monetário/decimal do resultado.
+    # Aceita formatos como 147,80 / 147.80 / 2.105,94 / 5,1885.
+    m = re.search(r"\d{1,3}(?:\.\d{3})*(?:,\d+)?|\d+(?:[.,]\d+)?", texto)
+    if not m:
+        return texto
+
+    return m.group(0)
+
+
 def montar_futuros_html(resultados_futuros: list) -> str:
     """
-    Monta as linhas da tabela de mercado futuro B3.
+    Apresenta apenas o resultado final dos cálculos do mercado futuro.
 
-    IMPORTANTE:
-    O monitor continua fazendo todos os cálculos normalmente e entrega
-    o resultado final em r["preco_reais"]. Aqui apenas formatamos a
-    apresentação para o visitante, removendo fórmulas/conversões internas
-    como "(≈ US$ ... x R$ ...)".
-
-    Exemplos exibidos:
-      Soja       -> R$ 147,80/sc
-      Café       -> R$ 2.105,94/sc
-      Milho      -> R$ 71,45/sc
-      Boi Gordo  -> R$ 343,35/@
-      Dólar      -> R$ 5,1885
+    O monitor_agro_v9.py continua responsável por calcular/converter os
+    valores. Esta função somente controla o que o visitante vê.
     """
     linhas = []
 
@@ -169,30 +179,15 @@ def montar_futuros_html(resultados_futuros: list) -> str:
         nome_limpo = nome_original.replace(" Futuro (B3)", "")
         contrato = str(r["data"]).replace("contrato ", "")
 
-        # O cálculo permanece no monitor_agro_v9.py.
-        # Aqui pegamos somente o resultado final e limpamos qualquer
-        # informação auxiliar que eventualmente venha junto.
-        preco_final = str(r["preco_reais"]).strip()
-
-        # Remove explicações de conversão/cálculo entre parênteses.
-        preco_final = re.sub(r"\s*\([^)]*\)", "", preco_final).strip()
-
-        # Padroniza a unidade de exibição sem alterar o valor calculado.
+        valor = _preco_futuro_apenas_valor(r["preco_reais"])
         nome_normalizado = nome_limpo.lower()
 
         if "dólar" in nome_normalizado or "dolar" in nome_normalizado:
-            # Mantém somente o número final e acrescenta a unidade.
-            valor = preco_final.replace("R$/US$", "").replace("R$ /US$", "").strip()
-            preco_exibicao = f"{valor} R$/US$"
+            preco_exibicao = f"R$ {valor}"
         elif "boi gordo" in nome_normalizado:
-            valor = preco_final.replace("R$/@", "").replace("R$ /@", "").strip()
-            preco_exibicao = f"{valor} R$/@"
+            preco_exibicao = f"R$ {valor} /@"
         else:
-            # Soja, milho, trigo, café etc.
-            valor = preco_final
-            valor = valor.replace("R$/sc 60 kg", "").replace("R$/sc", "").strip()
-            valor = valor.replace("/sc 60 kg", "").replace("/sc", "").strip()
-            preco_exibicao = f"{valor} R$/sc"
+            preco_exibicao = f"R$ {valor} /sc"
 
         linhas.append(
             f'<tr><td>{escape(nome_limpo)}</td>'
@@ -315,3 +310,4 @@ def gerar_site() -> None:
 
 if __name__ == "__main__":
     gerar_site()
+
