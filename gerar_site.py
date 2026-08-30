@@ -148,7 +148,7 @@ def _preco_futuro_apenas_valor(preco_reais: str) -> str:
 
     # Procura o primeiro número monetário/decimal do resultado.
     # Aceita formatos como 147,80 / 147.80 / 2.105,94 / 5,1885.
-    m = re.search(r"\d{1,3}(?:\.\d{3})*(?:,\d+)?|\d+(?:[.,]\d+)?", texto)
+    m = re.search(r"\d+(?:\.\d{3})*(?:,\d+)?", texto)
     if not m:
         return texto
 
