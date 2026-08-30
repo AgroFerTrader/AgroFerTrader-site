@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Preço do Café Hoje — Cotação Física, Futuro e Notícias | AgroFer Trader</title>
+<meta name="description" content="Cotação física e futura do café arábica atualizadas diariamente (CEPEA/Esalq e B3), com histórico de preços e notícias específicas do mercado de café.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="canonical" href="https://agrofertrader.github.io/AgroFerTrader-site/commodities/cafe/">
+
+<meta property="og:locale" content="pt_BR">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Preço do Café Hoje — Cotação Física, Futuro e Notícias | AgroFer Trader">
+<meta property="og:description" content="Cotação física e futura do café arábica atualizadas diariamente (CEPEA/Esalq e B3), com histórico de preços e notícias específicas do mercado de café.">
+<meta property="og:url" content="https://agrofertrader.github.io/AgroFerTrader-site/commodities/cafe/">
+<meta property="og:site_name" content="AgroFer Trader">
+<meta property="og:image" content="https://agrofertrader.github.io/AgroFerTrader-site/assets/logo.png">
+<meta property="og:image:alt" content="Logo da AgroFer Trader">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Preço do Café Hoje — Cotação Física, Futuro e Notícias | AgroFer Trader">
+<meta name="twitter:description" content="Cotação física e futura do café arábica atualizadas diariamente (CEPEA/Esalq e B3), com histórico de preços e notícias específicas do mercado de café.">
+<meta name="twitter:image" content="https://agrofertrader.github.io/AgroFerTrader-site/assets/logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "AgroFer Trader", "item": "https://agrofertrader.github.io/AgroFerTrader-site/"},
+        {"@type": "ListItem", "position": 2, "name": "Café Arábica", "item": "https://agrofertrader.github.io/AgroFerTrader-site/commodities/cafe/"}
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://agrofertrader.github.io/AgroFerTrader-site/commodities/cafe/#webpage",
+      "url": "https://agrofertrader.github.io/AgroFerTrader-site/commodities/cafe/",
+      "name": "Preço do Café Hoje — Cotação Física, Futuro e Notícias",
+      "about": ["Café Arábica", "Preço Café Arábica hoje", "Cotação Café Arábica"],
+      "inLanguage": "pt-BR"
+    }
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --ink:#0B3C1F;
+    --ink-soft:#BFD1B8;
+    --paper:#FDFDF9;
+    --paper-dim:#F2F1E4;
+    --gold:#B08830;
+    --leaf:#4C7A1F;
+    --up:#4C7A1F;
+    --down:#9C3B2E;
+    --line: rgba(11,60,31,0.14);
+    --line-dark: rgba(253,253,249,0.16);
+    --display: 'Fraunces', serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.5;}
+  a{color:inherit;}
+  img{max-width:100%;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  nav{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;max-width:1080px;margin:0 auto;}
+  .brand{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:0.01em;display:flex;align-items:center;gap:10px;}
+  .brand img{height:58px;width:auto;display:block;}
+  .navlinks{display:flex;gap:24px;font-size:14px;font-weight:500;flex-wrap:wrap;}
+  .navlinks a{text-decoration:none;opacity:0.75;transition:opacity .15s;}
+  .navlinks a:hover, .navlinks a:focus-visible{opacity:1;}
+  .navlinks a.active{opacity:1;border-bottom:2px solid var(--gold);}
+
+  .breadcrumb{max-width:1080px;margin:0 auto;padding:0 24px;font-family:var(--mono);font-size:12px;color:var(--ink);opacity:.6;}
+  .breadcrumb a{text-decoration:none;}
+  .breadcrumb a:hover{text-decoration:underline;}
+
+  .commodity-switch{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 0;}
+  .commodity-switch a{
+    font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;
+    padding:8px 14px;border:1px solid var(--line-dark);border-radius:2px;text-decoration:none;
+    color:var(--paper);opacity:.75;
+  }
+  .commodity-switch a:hover, .commodity-switch a.active{opacity:1;border-color:var(--gold);color:var(--gold);}
+
+  .hero{background:var(--ink);color:var(--paper);}
+  .hero-inner{padding:48px 24px 56px;max-width:1080px;margin:0 auto;}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
+  h1.headline{font-family:var(--display);font-weight:600;font-size:clamp(30px, 4.5vw, 46px);line-height:1.1;margin:0 0 16px;max-width:16ch;}
+  .hero-sub{font-size:16px;color:var(--ink-soft);max-width:56ch;margin:0;}
+
+  section{padding:56px 0;}
+  .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:28px;flex-wrap:wrap;}
+  .section-label{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--leaf);}
+  h2{font-family:var(--display);font-weight:600;font-size:26px;margin:6px 0 0;}
+  .updated{font-size:13px;color:var(--ink);opacity:.55;font-family:var(--mono);}
+
+  .price-grid{display:flex;gap:1px;background:var(--line);border:1px solid var(--line);max-width:280px;}
+  .price-card{background:var(--paper);padding:22px 20px;flex:1;}
+  .price-name{font-size:14px;font-weight:600;margin-bottom:10px;}
+  .price-value{font-family:var(--mono);font-size:24px;font-weight:600;}
+  .price-meta{font-size:12px;margin-top:8px;color:var(--ink);opacity:.65;}
+  .price-var{font-family:var(--mono);font-size:13px;font-weight:600;margin-top:4px;display:inline-block;}
+  .up{color:var(--up) !important;}
+  .down{color:var(--down) !important;}
+
+  .futures-table{width:100%;border-collapse:collapse;font-size:14px;}
+  .futures-table th{text-align:left;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--leaf);font-weight:600;padding:10px 12px;border-bottom:1px solid var(--line);}
+  .futures-table td{padding:12px;border-bottom:1px solid var(--line);}
+  .futures-table td.val{font-family:var(--mono);font-weight:600;}
+
+  .chart-box{border:1px solid var(--line);background:var(--paper);padding:24px;}
+  .chart-box svg{width:100%;height:auto;display:block;}
+  .chart-legend{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;opacity:.6;margin-top:8px;}
+
+  .report-box{background:var(--paper-dim);border-left:3px solid var(--gold);padding:28px 32px;}
+  .report-box p{margin:0 0 14px;font-size:15.5px;max-width:70ch;}
+  .report-box p:last-child{margin-bottom:0;}
+  .report-placeholder{font-size:14px;opacity:.65;font-style:italic;}
+
+  .news-item{padding:20px 0;border-bottom:1px solid var(--line);}
+  .news-item:first-child{padding-top:0;}
+  .news-title{font-weight:600;font-size:16px;margin:0 0 8px;}
+  .news-title a{text-decoration:none;}
+  .news-title a:hover{text-decoration:underline;}
+  .news-summary{font-size:14.5px;opacity:.8;margin:0 0 8px;max-width:68ch;}
+  .news-source{font-size:12px;font-family:var(--mono);opacity:.55;}
+
+  footer{padding:40px 0 56px;font-size:13px;color:var(--ink);opacity:.6;}
+  footer .foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:1px solid var(--line);padding-top:24px;}
+  footer a{text-decoration:underline;}
+
+  @media (max-width:640px){ .section-head{flex-direction:column;align-items:flex-start;} }
+</style>
+</head>
+
+<body>
+
+<nav aria-label="Navegação principal">
+  <div class="brand">
+    <a href="../../" aria-label="AgroFer Trader — página inicial">
+      <img src="../../assets/logo.png" alt="AgroFer Trader">
+    </a>
+  </div>
+  <div class="navlinks">
+    <a href="../../#precos">Todos os preços</a>
+    <a href="../../#futuro">Mercado futuro</a>
+    <a href="../../entenda.html">Entenda</a>
+    <a href="https://www.instagram.com/agrofertrader/" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="../../">AgroFer Trader</a> &nbsp;/&nbsp; Café Arábica
+</div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow"><!-- EYEBROW:START -->
+Domingo, 30 de agosto de 2026 · fechamento do dia anterior
+<!-- EYEBROW:END --></div>
+
+    <h1 class="headline">Café: preço de hoje, futuro e histórico.</h1>
+    <p class="hero-sub">Cotação física (CEPEA/Esalq) e futura (B3) do café arábica, atualizadas diariamente, com histórico de variação e notícias específicas do mercado.</p>
+
+    <div class="commodity-switch">
+      <a href="../soja/">Soja</a>
+      <a href="../milho/">Milho</a>
+      <a href="../cafe/" class="active">Café Arábica</a>
+      <a href="../boi-gordo/">Boi Gordo</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section aria-labelledby="titulo-fisico">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Mercado físico</div>
+        <h2 id="titulo-fisico">Cotação de hoje</h2>
+      </div>
+      <div class="updated"><!-- UPDATED:START -->
+Fonte: CEPEA/Esalq · dado de 28/08/2026
+<!-- UPDATED:END --></div>
+    </div>
+    <div class="price-grid"><!-- PRECO_FISICO:START -->
+<article class="price-card">
+  <div class="price-name">Café Arábica</div>
+  <div class="price-value">R$ 1728.61</div>
+  <div class="price-var down">▼ -0.81%</div>
+  <div class="price-meta">por saca de 60kg</div>
+</article>
+<!-- PRECO_FISICO:END -->
+    </div>
+  </section>
+
+  <section aria-labelledby="titulo-futuro">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Mercado futuro (B3)</div>
+        <h2 id="titulo-futuro">Contrato futuro</h2>
+      </div>
+    </div>
+    <table class="futures-table">
+      <thead><tr><th>Commodity</th><th>Contrato</th><th>Fechamento</th><th>Variação</th></tr></thead>
+      <tbody><!-- FUTURO:START -->
+<tr><td>Café Arábica</td><td>Setembro/2026</td><td class="val">R$ 2105,94 /sc</td><td class="up">▲ 0.75%</td></tr>
+<!-- FUTURO:END -->
+      </tbody>
+    </table>
+  </section>
+
+  <section aria-labelledby="titulo-grafico">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Histórico</div>
+        <h2 id="titulo-grafico">Variação no período</h2>
+      </div>
+    </div>
+    <div class="chart-box"><!-- GRAFICO:START -->
+<svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Variação de preço de Café Arábica no período">
+  <line x1="74" y1="20" x2="74" y2="230" stroke="rgba(11,60,31,0.14)" stroke-width="1"/>
+  <line x1="74" y1="230" x2="880" y2="230" stroke="rgba(11,60,31,0.14)" stroke-width="1"/>
+  <text x="66" y="24" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ 1826.58</text>
+  <text x="66" y="230" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ 1676.28</text>
+  <polyline points="74.0,165.4 90.8,156.4 107.6,119.5 124.4,143.4 141.2,187.4 158.0,179.8 174.8,179.8 191.5,179.8 208.3,122.4 225.1,151.1 241.9,195.0 258.7,207.2 275.5,230.0 292.3,230.0 309.1,230.0 325.9,161.0 342.7,82.0 359.5,110.3 376.2,131.9 393.0,135.1 409.8,135.1 426.6,135.1 443.4,179.7 460.2,155.2 477.0,154.6 493.8,157.9 510.6,152.0 527.4,152.0 544.2,152.0 561.0,126.7 577.8,109.6 594.5,97.5 611.3,85.9 628.1,65.3 644.9,65.3 661.7,65.3 678.5,78.3 695.3,35.6 712.1,50.6 728.9,26.9 745.7,51.9 762.5,51.9 779.2,51.9 796.0,20.0 812.8,27.4 829.6,56.0 846.4,137.1 863.2,156.9 880.0,156.9" fill="none" stroke="#4C7A1F" stroke-width="2.5"/>
+  <circle cx="880.0" cy="156.9" r="4" fill="#4C7A1F"/>
+</svg>
+<div class="chart-legend"><span>2026-07-13</span><span>2026-08-30 · R$ 1728.61</span></div>
+<!-- GRAFICO:END -->
+    </div>
+  </section>
+
+  <section aria-labelledby="titulo-relatorio">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Análise</div>
+        <h2 id="titulo-relatorio">O que aconteceu na última semana</h2>
+      </div>
+    </div>
+    <div class="report-box"><!-- RELATORIO_SEMANAL:START -->
+<p class="report-placeholder">Relatório semanal em preparação — em breve, uma análise comentada sobre os principais movimentos desta commodity na última semana.</p>
+<!-- RELATORIO_SEMANAL:END -->
+    </div>
+  </section>
+
+  <section aria-labelledby="titulo-noticias">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Notícias</div>
+        <h2 id="titulo-noticias">Café Arábica em destaque</h2>
+      </div>
+    </div>
+    <div><!-- NOTICIAS:START -->
+<article class="news-item">
+  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/eventos/tempo-e-dinheiro-com-joao-batista-olivi/" target="_blank" rel="noopener">Tempo e Dinheiro - com João Batista Olivi</a></p>
+  <p class="news-summary">Este é o Tempo e Dinheiro, programa apresentado pelo jornalista João Batista Olivi e que conta com a participação de especialistas de diversos setores. Acompanhe as notícias sobre os bastidores do Congresso Nacional, com...</p>
+  <p class="news-source">Fonte: Notícias Agrícolas</p>
+</article>
+    <article class="news-item">
+  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/cafe/427163-resiliencia-climatica-do-cafe-robusta-e-um-mito-da-internet-diz-pesquisador.html" target="_blank" rel="noopener">Café28/08/2026 - 17:22Resiliência climática do café robusta é um &quot;mito da internet&quot;, diz pesquisador</a></p>
+  <p class="news-summary">SÃO PAULO, 28 Ago (Reuters) - Um novo estudo contestou avaliação amplamente difundida de que o café robusta é mais resistente às mudanças climáticas do que outras variedades, com o principal autor do trabalho referindo-s...</p>
+  <p class="news-source">Fonte: Notícias Agrícolas</p>
+</article>
+    <article class="news-item">
+  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/cafe/427166-cecafe-revisa-para-cima-dados-parciais-da-exportacao-de-agosto-em-123-mi-sacas.html" target="_blank" rel="noopener">Café28/08/2026 - 16:55Cecafé revisa para cima dados parciais da exportação de agosto em 1,23 mi sacas</a></p>
+  <p class="news-summary">NOVA YORK, 28 Ago (Reuters) - O Conselho dos Exportadores de Café do Brasil (Cecafé) revisou para cima seus dados preliminares sobre as exportações de agosto em 1,23 milhão de sacas de 60 kg, após constatar uma falha téc...</p>
+  <p class="news-source">Fonte: Notícias Agrícolas</p>
+</article>
+    <article class="news-item">
+  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/cafe/427149-exportacoes-mundiais-de-cafe-verde-aumentaram-08-em-junho-diz-oic.html" target="_blank" rel="noopener">Café28/08/2026 - 13:55Exportações mundiais de café verde aumentaram 0,8% em junho, diz OIC</a></p>
+  <p class="news-summary">LONDRES, 28 Ago (Reuters) - As exportações globais de café verde aumentaram 0,8% em junho em relação ao mesmo mês do ano anterior, atingindo 10,48 milhões de sacas de 60 kg, em meio a um forte aumento nos embarques da va...</p>
+  <p class="news-source">Fonte: Notícias Agrícolas</p>
+</article>
+    <article class="news-item">
+  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/cafe/427093-maquinarios-agricolas-ganham-destaque-na-21-fecon.html" target="_blank" rel="noopener">Café27/08/2026 - 16:38Maquinários agrícolas ganham destaque na 21ª Fecon</a></p>
+  <p class="news-summary">A 21ª Feira Cocatrel de Negócios (Fecon), que será realizada de 1º a 3 de setembro, em Três Pontas (MG), contará com a participação do setor de Máquinas e Implementos. Durante os três dias de evento, os cooperados poderã...</p>
+  <p class="news-source">Fonte: Notícias Agrícolas</p>
+</article>
+<!-- NOTICIAS:END -->
+    </div>
+  </section>
+
+</main>
+
+<div class="wrap">
+  <footer>
+    <div class="foot-row">
+      <div>AgroFer Trader — conteúdo informativo sobre o mercado de café arábica. Não constitui recomendação de investimento ou negócio.</div>
+      <div>
+        Fontes: B3 e CEPEA/Esalq (via Notícias Agrícolas)
+        · <a href="../../entenda.html">Entenda</a>
+        · <a href="https://www.instagram.com/agrofertrader/" target="_blank" rel="noopener">Instagram @agrofertrader</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>
