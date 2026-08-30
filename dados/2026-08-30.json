@@ -101,9 +101,9 @@
   "explicacoes_macro": [
     "",
     "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
-    "Câmbio subiu discretamente hoje (+0.70%) - não é uma virada de tendência, mas pequenas altas como essa historicamente já dão um empurrão positivo ao preço doméstico de commodities de exportação.",
-    "Com a Selic em 14.00% ao ano, o custo de financiamento no campo segue elevado - isso tende a acelerar vendas (para gerar caixa) e, por atrair capital estrangeiro, também tende a fortalecer o real. Os dois efeitos juntos costumam pressionar o preço das commodities exportadas para baixo.",
-    "Obs.: essas são tendências gerais - clima, quebra de safra, estoques mundiais e demanda de outros países também afetam o preço e podem superar o efeito isolado do câmbio ou da Selic."
+    "Dólar em leve alta (+0.70%): o movimento é moderado, mas já tende a favorecer um pouco o preço interno de commodities exportadas, já que a mesma cotação em dólar rende mais reais.",
+    "Juros em 14.00% ao ano seguem em patamar alto - carregar estoque fica caro, o que empurra produtores a vender mais rápido, e o diferencial de juros atrai capital estrangeiro, valorizando o real. Ambos tendem a pesar contra o preço em reais das commodities de exportação.",
+    "Obs.: nenhuma dessas relações é garantida - clima, oferta mundial e demanda por vezes pesam mais que câmbio e juros na formação do preço final."
   ],
   "noticias": [
     {
@@ -131,9 +131,9 @@
       "fonte": "Notícias Agrícolas"
     },
     {
-      "titulo": "Caos climático na China ameaça safras locais e joga preços da soja e do milho para cima no Brasil",
-      "link": "https://www.noticiasagricolas.com.br/noticias/graos/427090-caos-climatico-na-china-ameaca-safras-locais-e-joga-precos-da-soja-e-do-milho-para-cima-no-brasil.html",
-      "resumo": "Nas últimas semanas, a China tem enfrentado uma combinação severa de eventos climáticos extremos que estão ameaçando seriamente suas safras agrícolas. O país lida com um forte contraste, com o norte e o leste sofrendo co...",
+      "titulo": "Soja sustenta altas em Chicago nesta 5ª (27) e puxa negócios a R$ 161 no Porto de Paranaguá",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/427098-soja-sustenta-rali-em-chicago-e-puxa-negocios-a-r-161-no-porto-de-paranagua.html",
+      "resumo": "A semana vem sendo de boas notícias para o produtor brasileiro de soja. Pegando carona na sequência de altas na Bolsa de Chicago - que já se aproximam de 5% em um mês nos principais vencimentos, o mercado nacional regist...",
       "fonte": "Notícias Agrícolas"
     }
   ],
