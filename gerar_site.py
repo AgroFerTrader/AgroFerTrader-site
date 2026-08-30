@@ -62,10 +62,9 @@ def _nome_curto(nome_completo: str) -> str:
 def montar_ticker_html(dolar, resultados_commodities) -> str:
     itens = []
 
-    if dolar is not None:
+   if dolar is not None:
         seta, classe = _seta_e_classe(dolar["variacao_pct"])
-        itens.append(
-            valor_dolar = f"{dolar['valor']:.4f}"
+        valor_dolar = f"{dolar['valor']:.4f}".replace(".", ",")
         itens.append(
             f'<span class="item">DÓLAR <b>R$ {escape(valor_dolar)}</b> '
             f'<span class="{classe}">{seta} {abs(dolar["variacao_pct"]):.2f}%</span></span>'
