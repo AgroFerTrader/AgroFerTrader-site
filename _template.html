@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>{{TITULO_PAGINA}} | AgroFer Trader</title>
+<meta name="description" content="{{META_DESCRICAO}}">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="canonical" href="https://agrofertrader.github.io/AgroFerTrader-site/commodities/{{SLUG}}/">
+
+<meta property="og:locale" content="pt_BR">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{TITULO_PAGINA}} | AgroFer Trader">
+<meta property="og:description" content="{{META_DESCRICAO}}">
+<meta property="og:url" content="https://agrofertrader.github.io/AgroFerTrader-site/commodities/{{SLUG}}/">
+<meta property="og:site_name" content="AgroFer Trader">
+<meta property="og:image" content="https://agrofertrader.github.io/AgroFerTrader-site/assets/logo.png">
+<meta property="og:image:alt" content="Logo da AgroFer Trader">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{TITULO_PAGINA}} | AgroFer Trader">
+<meta name="twitter:description" content="{{META_DESCRICAO}}">
+<meta name="twitter:image" content="https://agrofertrader.github.io/AgroFerTrader-site/assets/logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "AgroFer Trader", "item": "https://agrofertrader.github.io/AgroFerTrader-site/"},
+        {"@type": "ListItem", "position": 2, "name": "{{NOME_EXIBICAO}}", "item": "https://agrofertrader.github.io/AgroFerTrader-site/commodities/{{SLUG}}/"}
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://agrofertrader.github.io/AgroFerTrader-site/commodities/{{SLUG}}/#webpage",
+      "url": "https://agrofertrader.github.io/AgroFerTrader-site/commodities/{{SLUG}}/",
+      "name": "{{TITULO_PAGINA}}",
+      "about": ["{{NOME_EXIBICAO}}", "Preço {{NOME_EXIBICAO}} hoje", "Cotação {{NOME_EXIBICAO}}"],
+      "inLanguage": "pt-BR"
+    }
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --ink:#0B3C1F;
+    --ink-soft:#BFD1B8;
+    --paper:#FDFDF9;
+    --paper-dim:#F2F1E4;
+    --gold:#B08830;
+    --leaf:#4C7A1F;
+    --up:#4C7A1F;
+    --down:#9C3B2E;
+    --line: rgba(11,60,31,0.14);
+    --line-dark: rgba(253,253,249,0.16);
+    --display: 'Fraunces', serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.5;}
+  a{color:inherit;}
+  img{max-width:100%;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  nav{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;max-width:1080px;margin:0 auto;}
+  .brand{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:0.01em;display:flex;align-items:center;gap:10px;}
+  .brand img{height:58px;width:auto;display:block;}
+  .navlinks{display:flex;gap:24px;font-size:14px;font-weight:500;flex-wrap:wrap;}
+  .navlinks a{text-decoration:none;opacity:0.75;transition:opacity .15s;}
+  .navlinks a:hover, .navlinks a:focus-visible{opacity:1;}
+  .navlinks a.active{opacity:1;border-bottom:2px solid var(--gold);}
+
+  .breadcrumb{max-width:1080px;margin:0 auto;padding:0 24px;font-family:var(--mono);font-size:12px;color:var(--ink);opacity:.6;}
+  .breadcrumb a{text-decoration:none;}
+  .breadcrumb a:hover{text-decoration:underline;}
+
+  .commodity-switch{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 0;}
+  .commodity-switch a{
+    font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;
+    padding:8px 14px;border:1px solid var(--line-dark);border-radius:2px;text-decoration:none;
+    color:var(--paper);opacity:.75;
+  }
+  .commodity-switch a:hover, .commodity-switch a.active{opacity:1;border-color:var(--gold);color:var(--gold);}
+
+  .hero{background:var(--ink);color:var(--paper);}
+  .hero-inner{padding:48px 24px 56px;max-width:1080px;margin:0 auto;}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
+  h1.headline{font-family:var(--display);font-weight:600;font-size:clamp(30px, 4.5vw, 46px);line-height:1.1;margin:0 0 16px;max-width:16ch;}
+  .hero-sub{font-size:16px;color:var(--ink-soft);max-width:56ch;margin:0;}
+
+  section{padding:56px 0;}
+  .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:28px;flex-wrap:wrap;}
+  .section-label{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--leaf);}
+  h2{font-family:var(--display);font-weight:600;font-size:26px;margin:6px 0 0;}
+  .updated{font-size:13px;color:var(--ink);opacity:.55;font-family:var(--mono);}
+
+  .price-grid{display:flex;gap:1px;background:var(--line);border:1px solid var(--line);max-width:280px;}
+  .price-card{background:var(--paper);padding:22px 20px;flex:1;}
+  .price-name{font-size:14px;font-weight:600;margin-bottom:10px;}
+  .price-value{font-family:var(--mono);font-size:24px;font-weight:600;}
+  .price-meta{font-size:12px;margin-top:8px;color:var(--ink);opacity:.65;}
+  .price-var{font-family:var(--mono);font-size:13px;font-weight:600;margin-top:4px;display:inline-block;}
+  .up{color:var(--up) !important;}
+  .down{color:var(--down) !important;}
+
+  .futures-table{width:100%;border-collapse:collapse;font-size:14px;}
+  .futures-table th{text-align:left;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--leaf);font-weight:600;padding:10px 12px;border-bottom:1px solid var(--line);}
+  .futures-table td{padding:12px;border-bottom:1px solid var(--line);}
+  .futures-table td.val{font-family:var(--mono);font-weight:600;}
+
+  .chart-box{border:1px solid var(--line);background:var(--paper);padding:24px;}
+  .chart-box svg{width:100%;height:auto;display:block;}
+  .chart-legend{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;opacity:.6;margin-top:8px;}
+
+  .report-box{background:var(--paper-dim);border-left:3px solid var(--gold);padding:28px 32px;}
+  .report-box p{margin:0 0 14px;font-size:15.5px;max-width:70ch;}
+  .report-box p:last-child{margin-bottom:0;}
+  .report-placeholder{font-size:14px;opacity:.65;font-style:italic;}
+
+  .news-item{padding:20px 0;border-bottom:1px solid var(--line);}
+  .news-item:first-child{padding-top:0;}
+  .news-title{font-weight:600;font-size:16px;margin:0 0 8px;}
+  .news-title a{text-decoration:none;}
+  .news-title a:hover{text-decoration:underline;}
+  .news-summary{font-size:14.5px;opacity:.8;margin:0 0 8px;max-width:68ch;}
+  .news-source{font-size:12px;font-family:var(--mono);opacity:.55;}
+
+  footer{padding:40px 0 56px;font-size:13px;color:var(--ink);opacity:.6;}
+  footer .foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:1px solid var(--line);padding-top:24px;}
+  footer a{text-decoration:underline;}
+
+  @media (max-width:640px){ .section-head{flex-direction:column;align-items:flex-start;} }
+</style>
+</head>
+
+<body>
+
+<nav aria-label="Navegação principal">
+  <div class="brand">
+    <a href="../../" aria-label="AgroFer Trader — página inicial">
+      <img src="../../assets/logo.png" alt="AgroFer Trader">
+    </a>
+  </div>
+  <div class="navlinks">
+    <a href="../../#precos">Todos os preços</a>
+    <a href="../../#futuro">Mercado futuro</a>
+    <a href="../../entenda.html">Entenda</a>
+    <a href="https://www.instagram.com/agrofertrader/" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="../../">AgroFer Trader</a> &nbsp;/&nbsp; {{NOME_EXIBICAO}}
+</div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow"><!-- EYEBROW:START -->
+{{EYEBROW_INICIAL}}
+<!-- EYEBROW:END --></div>
+
+    <h1 class="headline">{{HEADLINE}}</h1>
+    <p class="hero-sub">{{SUBTITULO}}</p>
+
+    <div class="commodity-switch">
+      {{SWITCH_LINKS}}
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section aria-labelledby="titulo-fisico">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Mercado físico</div>
+        <h2 id="titulo-fisico">Cotação de hoje</h2>
+      </div>
+      <div class="updated"><!-- UPDATED:START -->
+{{UPDATED_INICIAL}}
+<!-- UPDATED:END --></div>
+    </div>
+    <div class="price-grid"><!-- PRECO_FISICO:START -->
+{{PRECO_FISICO_INICIAL}}
+<!-- PRECO_FISICO:END -->
+    </div>
+  </section>
+
+  <section aria-labelledby="titulo-futuro">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Mercado futuro (B3)</div>
+        <h2 id="titulo-futuro">Contrato futuro</h2>
+      </div>
+    </div>
+    <table class="futures-table">
+      <thead><tr><th>Commodity</th><th>Contrato</th><th>Fechamento</th><th>Variação</th></tr></thead>
+      <tbody><!-- FUTURO:START -->
+{{FUTURO_INICIAL}}
+<!-- FUTURO:END -->
+      </tbody>
+    </table>
+  </section>
+
+  <section aria-labelledby="titulo-grafico">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Histórico</div>
+        <h2 id="titulo-grafico">Variação no período</h2>
+      </div>
+    </div>
+    <div class="chart-box"><!-- GRAFICO:START -->
+{{GRAFICO_INICIAL}}
+<!-- GRAFICO:END -->
+    </div>
+  </section>
+
+  <section aria-labelledby="titulo-relatorio">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Análise</div>
+        <h2 id="titulo-relatorio">O que aconteceu na última semana</h2>
+      </div>
+    </div>
+    <div class="report-box"><!-- RELATORIO_SEMANAL:START -->
+{{RELATORIO_SEMANAL_INICIAL}}
+<!-- RELATORIO_SEMANAL:END -->
+    </div>
+  </section>
+
+  <section aria-labelledby="titulo-noticias">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Notícias</div>
+        <h2 id="titulo-noticias">{{NOME_EXIBICAO}} em destaque</h2>
+      </div>
+    </div>
+    <div><!-- NOTICIAS:START -->
+{{NOTICIAS_INICIAL}}
+<!-- NOTICIAS:END -->
+    </div>
+  </section>
+
+</main>
+
+<div class="wrap">
+  <footer>
+    <div class="foot-row">
+      <div>AgroFer Trader — conteúdo informativo sobre o mercado de {{NOME_EXIBICAO_MINUSCULO}}. Não constitui recomendação de investimento ou negócio.</div>
+      <div>
+        Fontes: B3 e CEPEA/Esalq (via Notícias Agrícolas)
+        · <a href="../../entenda.html">Entenda</a>
+        · <a href="https://www.instagram.com/agrofertrader/" target="_blank" rel="noopener">Instagram @agrofertrader</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>
