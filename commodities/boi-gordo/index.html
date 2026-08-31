@@ -289,20 +289,18 @@ Fonte: CEPEA/Esalq · dado de 28/08/2026
   <circle id="ponto-boi-gordo-49" class="chart-dot" cx="880.0" cy="59.8" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="880.0" cy="59.8" r="10" fill="transparent" data-alvo="ponto-boi-gordo-49" data-data="31/08/2026" data-preco="345,35"/>
   <circle cx="880.0" cy="59.8" r="4" fill="#4C7A1F"/>
 </svg>
-<div class="chart-readout">
-  <span class="chart-readout-label">Data</span>
-  <span class="chart-readout-data">31/08/2026</span>
-  <span class="chart-readout-divider">·</span>
-  <span class="chart-readout-label">Preço</span>
-  <span class="chart-readout-preco">R$ 345,35</span>
 </div>
+<div class="chart-footer">
+  <span class="chart-footer-extremo">13/07/2026</span>
+  <span class="chart-readout-texto">31/08/2026 · R$ 345,35</span>
+  <span class="chart-footer-extremo">31/08/2026 · R$ 345,35</span>
 </div>
 <script>
 (function(){
   var raiz = document.getElementById("grafico-boi-gordo");
   if (!raiz) return;
-  var elData = raiz.querySelector(".chart-readout-data");
-  var elPreco = raiz.querySelector(".chart-readout-preco");
+  var rodape = raiz.nextElementSibling;
+  var elTexto = rodape.querySelector(".chart-readout-texto");
   var pontos = raiz.querySelectorAll(".chart-hit");
   var ativo = null;
   pontos.forEach(function(ponto){
@@ -310,20 +308,17 @@ Fonte: CEPEA/Esalq · dado de 28/08/2026
       if (ativo) ativo.classList.remove("chart-dot-ativo");
       var alvo = raiz.querySelector("#" + ponto.getAttribute("data-alvo"));
       if (alvo) { alvo.classList.add("chart-dot-ativo"); ativo = alvo; }
-      elData.textContent = ponto.getAttribute("data-data");
-      elPreco.textContent = "R$ " + ponto.getAttribute("data-preco");
+      elTexto.textContent = ponto.getAttribute("data-data") + " · R$ " + ponto.getAttribute("data-preco");
     }
     ponto.addEventListener("mouseenter", ativar);
     ponto.addEventListener("touchstart", ativar, {passive: true});
   });
   raiz.addEventListener("mouseleave", function(){
     if (ativo) { ativo.classList.remove("chart-dot-ativo"); ativo = null; }
-    elData.textContent = "31/08/2026";
-    elPreco.textContent = "R$ 345,35";
+    elTexto.textContent = "31/08/2026 · R$ 345,35";
   });
 })();
 </script>
-<div class="chart-legend"><span>13/07/2026</span><span>31/08/2026 · R$ 345,35</span></div>
 <!-- GRAFICO:END -->
     </div>
   </section>
