@@ -47,6 +47,28 @@
 
   footer{padding:48px 0 56px;font-size:13px;color:var(--ink);opacity:.6;border-top:1px solid var(--line);margin-top:20px;}
   footer a{text-decoration:underline;color:var(--ink);}
+
+  /* Nav: em telas estreitas, a logo fica numa linha e os links viram
+     uma faixa rolável horizontalmente. Nao afeta o layout de desktop. */
+  @media (max-width:680px){
+    nav{flex-wrap:wrap;row-gap:10px;}
+    .brand{flex-shrink:0;}
+    .navlinks{
+      flex:1 1 100%;
+      justify-content:flex-start;
+      flex-wrap:nowrap;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+      white-space:nowrap;
+      scrollbar-width:none;
+      padding-bottom:2px;
+      margin:0 -24px;
+      padding-left:24px;
+      padding-right:24px;
+    }
+    .navlinks::-webkit-scrollbar{display:none;}
+    .navlinks a{flex-shrink:0;}
+  }
 </style>
 </head>
 <body>
@@ -131,4 +153,3 @@
 
 </body>
 </html>
-
