@@ -120,7 +120,16 @@
   .futures-table td.val{font-family:var(--mono);font-weight:600;}
 
   .chart-box{border:1px solid var(--line);background:var(--paper);padding:24px;}
-  .chart-box svg{width:100%;height:auto;display:block;}
+  .chart-wrap{position:relative;}
+  .chart-wrap svg{width:100%;height:auto;display:block;}
+  .chart-hit{cursor:pointer;}
+  .chart-tooltip{
+    position:absolute;pointer-events:none;top:0;
+    background:var(--ink);color:var(--paper);
+    font-family:var(--mono);font-size:12px;white-space:nowrap;
+    padding:6px 10px;border:1px solid var(--gold);border-radius:2px;
+    transform:translate(-50%,-130%);z-index:5;
+  }
   .chart-legend{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;opacity:.6;margin-top:8px;}
 
   .report-box{background:var(--paper-dim);border-left:3px solid var(--gold);padding:28px 32px;}
