@@ -79,6 +79,7 @@
   .navlinks{display:flex;gap:24px;font-size:14px;font-weight:500;flex-wrap:wrap;}
   .navlinks a{text-decoration:none;opacity:0.75;transition:opacity .15s;}
   .navlinks a:hover, .navlinks a:focus-visible{opacity:1;}
+  .navlinks .nav-divider{opacity:.25;font-weight:300;}
   .navlinks a.active{opacity:1;border-bottom:2px solid var(--gold);}
 
   .breadcrumb{max-width:1080px;margin:0 auto;padding:0 24px;font-family:var(--mono);font-size:12px;color:var(--ink);opacity:.6;}
@@ -164,8 +165,14 @@
     </a>
   </div>
   <div class="navlinks">
-    <a href="../../#precos">Todos os preços</a>
+    <a href="../../#precos">Preços de hoje</a>
     <a href="../../#futuro">Mercado futuro</a>
+    <span class="nav-divider" aria-hidden="true">|</span>
+    <a href="../soja/">Soja</a>
+    <a href="../milho/">Milho</a>
+    <a href="../cafe/">Café Arábica</a>
+    <a href="../boi-gordo/">Boi Gordo</a>
+    <span class="nav-divider" aria-hidden="true">|</span>
     <a href="../../entenda.html">Entenda</a>
     <a href="https://www.instagram.com/agrofertrader/" target="_blank" rel="noopener">Instagram</a>
   </div>
@@ -280,4 +287,5 @@
 
 </body>
 </html>
+
 
