@@ -120,8 +120,19 @@
   .futures-table td.val{font-family:var(--mono);font-weight:600;}
 
   .chart-box{border:1px solid var(--line);background:var(--paper);padding:24px;}
-  .chart-box svg{width:100%;height:auto;display:block;}
-  .chart-legend{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;opacity:.6;margin-top:8px;}
+  .chart-wrap{position:relative;}
+  .chart-wrap svg{width:100%;height:auto;display:block;}
+  .chart-hit{cursor:pointer;}
+  .chart-dot{transition:transform .12s ease;transform-box:fill-box;transform-origin:center;}
+  .chart-dot.chart-dot-ativo{transform:scale(1.8);}
+  .chart-footer{
+    display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;
+    background:var(--paper-dim);border-top:3px solid var(--gold);
+    margin:20px -24px -24px -24px;padding:18px 24px;
+  }
+  .chart-footer-extremo{font-family:var(--mono);font-size:12px;color:var(--ink);opacity:.55;white-space:nowrap;}
+  .chart-footer-extremo:last-child{text-align:right;}
+  .chart-readout-texto{font-family:var(--display);font-weight:600;font-size:19px;color:var(--ink);text-align:center;white-space:nowrap;}
 
   .report-box{background:var(--paper-dim);border-left:3px solid var(--gold);padding:28px 32px;}
   .report-box p{margin:0 0 14px;font-size:15.5px;max-width:70ch;}
@@ -167,7 +178,7 @@
 <header class="hero">
   <div class="hero-inner">
     <div class="eyebrow"><!-- EYEBROW:START -->
-Segunda-feira, 31 de agosto de 2026 · fechamento do dia anterior
+
 <!-- EYEBROW:END --></div>
 
     <h1 class="headline">Milho: preço de hoje, futuro e histórico.</h1>
@@ -191,17 +202,11 @@ Segunda-feira, 31 de agosto de 2026 · fechamento do dia anterior
         <h2 id="titulo-fisico">Cotação de hoje</h2>
       </div>
       <div class="updated"><!-- UPDATED:START -->
-Fonte: CEPEA/Esalq · dado de 28/08/2026
+
 <!-- UPDATED:END --></div>
     </div>
     <div class="price-grid"><!-- PRECO_FISICO:START -->
-<a class="price-card price-card-link" href="commodities/milho/">
-  <div class="price-name">Milho</div>
-  <div class="price-value">R$ 69.51</div>
-  <div class="price-var up">▲ 0.67%</div>
-  <div class="price-meta">por saca de 60kg</div>
-  <div class="price-link">Ver detalhes →</div>
-</a>
+
 <!-- PRECO_FISICO:END -->
     </div>
   </section>
@@ -216,7 +221,7 @@ Fonte: CEPEA/Esalq · dado de 28/08/2026
     <table class="futures-table">
       <thead><tr><th>Commodity</th><th>Contrato</th><th>Fechamento</th><th>Variação</th></tr></thead>
       <tbody><!-- FUTURO:START -->
-<tr><td><a href="commodities/milho/">Milho</a></td><td>Setembro/2026</td><td class="val">R$ 71,45 /sc</td><td class="up">▲ 0.31%</td></tr>
+
 <!-- FUTURO:END -->
       </tbody>
     </table>
@@ -230,95 +235,7 @@ Fonte: CEPEA/Esalq · dado de 28/08/2026
       </div>
     </div>
     <div class="chart-box"><!-- GRAFICO:START -->
-<div class="chart-wrap" id="grafico-milho">
-<svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Variação de preço de Milho no período">
-  <line x1="62" y1="20" x2="62" y2="230" stroke="rgba(11,60,31,0.14)" stroke-width="1"/>
-  <line x1="62" y1="230" x2="880" y2="230" stroke="rgba(11,60,31,0.14)" stroke-width="1"/>
-  <text x="54" y="24" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ 69,51</text>
-  <text x="54" y="230" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ 64,51</text>
-  <polyline points="62.0,230.0 78.7,225.4 95.4,224.5 112.1,219.1 128.8,214.9 145.5,211.9 162.2,211.9 178.9,211.9 195.6,200.2 212.2,197.2 228.9,198.1 245.6,186.3 262.3,178.3 279.0,178.3 295.7,178.3 312.4,189.7 329.1,200.2 345.8,195.6 362.5,196.8 379.2,198.9 395.9,198.9 412.6,198.9 429.3,199.3 446.0,202.3 462.7,215.3 479.3,216.1 496.0,208.6 512.7,208.6 529.4,208.6 546.1,183.0 562.8,182.1 579.5,161.1 596.2,163.6 612.9,152.7 629.6,152.7 646.3,152.7 663.0,137.6 679.7,117.0 696.4,109.0 713.1,94.3 729.8,87.6 746.4,87.6 763.1,87.6 779.8,75.4 796.5,65.4 813.2,50.2 829.9,39.3 846.6,20.0 863.3,20.0 880.0,20.0" fill="none" stroke="#4C7A1F" stroke-width="2.5"/>
-  <circle id="ponto-milho-0" class="chart-dot" cx="62.0" cy="230.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="62.0" cy="230.0" r="10" fill="transparent" data-alvo="ponto-milho-0" data-data="13/07/2026" data-preco="64,51"/>
-  <circle id="ponto-milho-1" class="chart-dot" cx="78.7" cy="225.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="78.7" cy="225.4" r="10" fill="transparent" data-alvo="ponto-milho-1" data-data="14/07/2026" data-preco="64,62"/>
-  <circle id="ponto-milho-2" class="chart-dot" cx="95.4" cy="224.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="95.4" cy="224.5" r="10" fill="transparent" data-alvo="ponto-milho-2" data-data="15/07/2026" data-preco="64,64"/>
-  <circle id="ponto-milho-3" class="chart-dot" cx="112.1" cy="219.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="112.1" cy="219.1" r="10" fill="transparent" data-alvo="ponto-milho-3" data-data="16/07/2026" data-preco="64,77"/>
-  <circle id="ponto-milho-4" class="chart-dot" cx="128.8" cy="214.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="128.8" cy="214.9" r="10" fill="transparent" data-alvo="ponto-milho-4" data-data="17/07/2026" data-preco="64,87"/>
-  <circle id="ponto-milho-5" class="chart-dot" cx="145.5" cy="211.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="145.5" cy="211.9" r="10" fill="transparent" data-alvo="ponto-milho-5" data-data="18/07/2026" data-preco="64,94"/>
-  <circle id="ponto-milho-6" class="chart-dot" cx="162.2" cy="211.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="162.2" cy="211.9" r="10" fill="transparent" data-alvo="ponto-milho-6" data-data="19/07/2026" data-preco="64,94"/>
-  <circle id="ponto-milho-7" class="chart-dot" cx="178.9" cy="211.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="178.9" cy="211.9" r="10" fill="transparent" data-alvo="ponto-milho-7" data-data="20/07/2026" data-preco="64,94"/>
-  <circle id="ponto-milho-8" class="chart-dot" cx="195.6" cy="200.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="195.6" cy="200.2" r="10" fill="transparent" data-alvo="ponto-milho-8" data-data="21/07/2026" data-preco="65,22"/>
-  <circle id="ponto-milho-9" class="chart-dot" cx="212.2" cy="197.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="212.2" cy="197.2" r="10" fill="transparent" data-alvo="ponto-milho-9" data-data="22/07/2026" data-preco="65,29"/>
-  <circle id="ponto-milho-10" class="chart-dot" cx="228.9" cy="198.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="228.9" cy="198.1" r="10" fill="transparent" data-alvo="ponto-milho-10" data-data="23/07/2026" data-preco="65,27"/>
-  <circle id="ponto-milho-11" class="chart-dot" cx="245.6" cy="186.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="245.6" cy="186.3" r="10" fill="transparent" data-alvo="ponto-milho-11" data-data="24/07/2026" data-preco="65,55"/>
-  <circle id="ponto-milho-12" class="chart-dot" cx="262.3" cy="178.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="262.3" cy="178.3" r="10" fill="transparent" data-alvo="ponto-milho-12" data-data="25/07/2026" data-preco="65,74"/>
-  <circle id="ponto-milho-13" class="chart-dot" cx="279.0" cy="178.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="279.0" cy="178.3" r="10" fill="transparent" data-alvo="ponto-milho-13" data-data="26/07/2026" data-preco="65,74"/>
-  <circle id="ponto-milho-14" class="chart-dot" cx="295.7" cy="178.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="295.7" cy="178.3" r="10" fill="transparent" data-alvo="ponto-milho-14" data-data="27/07/2026" data-preco="65,74"/>
-  <circle id="ponto-milho-15" class="chart-dot" cx="312.4" cy="189.7" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="312.4" cy="189.7" r="10" fill="transparent" data-alvo="ponto-milho-15" data-data="28/07/2026" data-preco="65,47"/>
-  <circle id="ponto-milho-16" class="chart-dot" cx="329.1" cy="200.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="329.1" cy="200.2" r="10" fill="transparent" data-alvo="ponto-milho-16" data-data="29/07/2026" data-preco="65,22"/>
-  <circle id="ponto-milho-17" class="chart-dot" cx="345.8" cy="195.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="345.8" cy="195.6" r="10" fill="transparent" data-alvo="ponto-milho-17" data-data="30/07/2026" data-preco="65,33"/>
-  <circle id="ponto-milho-18" class="chart-dot" cx="362.5" cy="196.8" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="362.5" cy="196.8" r="10" fill="transparent" data-alvo="ponto-milho-18" data-data="31/07/2026" data-preco="65,30"/>
-  <circle id="ponto-milho-19" class="chart-dot" cx="379.2" cy="198.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="379.2" cy="198.9" r="10" fill="transparent" data-alvo="ponto-milho-19" data-data="01/08/2026" data-preco="65,25"/>
-  <circle id="ponto-milho-20" class="chart-dot" cx="395.9" cy="198.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="395.9" cy="198.9" r="10" fill="transparent" data-alvo="ponto-milho-20" data-data="02/08/2026" data-preco="65,25"/>
-  <circle id="ponto-milho-21" class="chart-dot" cx="412.6" cy="198.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="412.6" cy="198.9" r="10" fill="transparent" data-alvo="ponto-milho-21" data-data="03/08/2026" data-preco="65,25"/>
-  <circle id="ponto-milho-22" class="chart-dot" cx="429.3" cy="199.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="429.3" cy="199.3" r="10" fill="transparent" data-alvo="ponto-milho-22" data-data="04/08/2026" data-preco="65,24"/>
-  <circle id="ponto-milho-23" class="chart-dot" cx="446.0" cy="202.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="446.0" cy="202.3" r="10" fill="transparent" data-alvo="ponto-milho-23" data-data="05/08/2026" data-preco="65,17"/>
-  <circle id="ponto-milho-24" class="chart-dot" cx="462.7" cy="215.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="462.7" cy="215.3" r="10" fill="transparent" data-alvo="ponto-milho-24" data-data="06/08/2026" data-preco="64,86"/>
-  <circle id="ponto-milho-25" class="chart-dot" cx="479.3" cy="216.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="479.3" cy="216.1" r="10" fill="transparent" data-alvo="ponto-milho-25" data-data="07/08/2026" data-preco="64,84"/>
-  <circle id="ponto-milho-26" class="chart-dot" cx="496.0" cy="208.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="496.0" cy="208.6" r="10" fill="transparent" data-alvo="ponto-milho-26" data-data="08/08/2026" data-preco="65,02"/>
-  <circle id="ponto-milho-27" class="chart-dot" cx="512.7" cy="208.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="512.7" cy="208.6" r="10" fill="transparent" data-alvo="ponto-milho-27" data-data="09/08/2026" data-preco="65,02"/>
-  <circle id="ponto-milho-28" class="chart-dot" cx="529.4" cy="208.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="529.4" cy="208.6" r="10" fill="transparent" data-alvo="ponto-milho-28" data-data="10/08/2026" data-preco="65,02"/>
-  <circle id="ponto-milho-29" class="chart-dot" cx="546.1" cy="183.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="546.1" cy="183.0" r="10" fill="transparent" data-alvo="ponto-milho-29" data-data="11/08/2026" data-preco="65,63"/>
-  <circle id="ponto-milho-30" class="chart-dot" cx="562.8" cy="182.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="562.8" cy="182.1" r="10" fill="transparent" data-alvo="ponto-milho-30" data-data="12/08/2026" data-preco="65,65"/>
-  <circle id="ponto-milho-31" class="chart-dot" cx="579.5" cy="161.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="579.5" cy="161.1" r="10" fill="transparent" data-alvo="ponto-milho-31" data-data="13/08/2026" data-preco="66,15"/>
-  <circle id="ponto-milho-32" class="chart-dot" cx="596.2" cy="163.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="596.2" cy="163.6" r="10" fill="transparent" data-alvo="ponto-milho-32" data-data="14/08/2026" data-preco="66,09"/>
-  <circle id="ponto-milho-33" class="chart-dot" cx="612.9" cy="152.7" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="612.9" cy="152.7" r="10" fill="transparent" data-alvo="ponto-milho-33" data-data="15/08/2026" data-preco="66,35"/>
-  <circle id="ponto-milho-34" class="chart-dot" cx="629.6" cy="152.7" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="629.6" cy="152.7" r="10" fill="transparent" data-alvo="ponto-milho-34" data-data="16/08/2026" data-preco="66,35"/>
-  <circle id="ponto-milho-35" class="chart-dot" cx="646.3" cy="152.7" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="646.3" cy="152.7" r="10" fill="transparent" data-alvo="ponto-milho-35" data-data="17/08/2026" data-preco="66,35"/>
-  <circle id="ponto-milho-36" class="chart-dot" cx="663.0" cy="137.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="663.0" cy="137.6" r="10" fill="transparent" data-alvo="ponto-milho-36" data-data="18/08/2026" data-preco="66,71"/>
-  <circle id="ponto-milho-37" class="chart-dot" cx="679.7" cy="117.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="679.7" cy="117.0" r="10" fill="transparent" data-alvo="ponto-milho-37" data-data="19/08/2026" data-preco="67,20"/>
-  <circle id="ponto-milho-38" class="chart-dot" cx="696.4" cy="109.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="696.4" cy="109.0" r="10" fill="transparent" data-alvo="ponto-milho-38" data-data="20/08/2026" data-preco="67,39"/>
-  <circle id="ponto-milho-39" class="chart-dot" cx="713.1" cy="94.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="713.1" cy="94.3" r="10" fill="transparent" data-alvo="ponto-milho-39" data-data="21/08/2026" data-preco="67,74"/>
-  <circle id="ponto-milho-40" class="chart-dot" cx="729.8" cy="87.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="729.8" cy="87.6" r="10" fill="transparent" data-alvo="ponto-milho-40" data-data="22/08/2026" data-preco="67,90"/>
-  <circle id="ponto-milho-41" class="chart-dot" cx="746.4" cy="87.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="746.4" cy="87.6" r="10" fill="transparent" data-alvo="ponto-milho-41" data-data="23/08/2026" data-preco="67,90"/>
-  <circle id="ponto-milho-42" class="chart-dot" cx="763.1" cy="87.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="763.1" cy="87.6" r="10" fill="transparent" data-alvo="ponto-milho-42" data-data="24/08/2026" data-preco="67,90"/>
-  <circle id="ponto-milho-43" class="chart-dot" cx="779.8" cy="75.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="779.8" cy="75.4" r="10" fill="transparent" data-alvo="ponto-milho-43" data-data="25/08/2026" data-preco="68,19"/>
-  <circle id="ponto-milho-44" class="chart-dot" cx="796.5" cy="65.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="796.5" cy="65.4" r="10" fill="transparent" data-alvo="ponto-milho-44" data-data="26/08/2026" data-preco="68,43"/>
-  <circle id="ponto-milho-45" class="chart-dot" cx="813.2" cy="50.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="813.2" cy="50.2" r="10" fill="transparent" data-alvo="ponto-milho-45" data-data="27/08/2026" data-preco="68,79"/>
-  <circle id="ponto-milho-46" class="chart-dot" cx="829.9" cy="39.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="829.9" cy="39.3" r="10" fill="transparent" data-alvo="ponto-milho-46" data-data="28/08/2026" data-preco="69,05"/>
-  <circle id="ponto-milho-47" class="chart-dot" cx="846.6" cy="20.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="846.6" cy="20.0" r="10" fill="transparent" data-alvo="ponto-milho-47" data-data="29/08/2026" data-preco="69,51"/>
-  <circle id="ponto-milho-48" class="chart-dot" cx="863.3" cy="20.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="863.3" cy="20.0" r="10" fill="transparent" data-alvo="ponto-milho-48" data-data="30/08/2026" data-preco="69,51"/>
-  <circle id="ponto-milho-49" class="chart-dot" cx="880.0" cy="20.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="880.0" cy="20.0" r="10" fill="transparent" data-alvo="ponto-milho-49" data-data="31/08/2026" data-preco="69,51"/>
-  <circle cx="880.0" cy="20.0" r="4" fill="#4C7A1F"/>
-</svg>
-</div>
-<div class="chart-footer">
-  <span class="chart-footer-extremo">13/07/2026</span>
-  <span class="chart-readout-texto">31/08/2026 · R$ 69,51</span>
-  <span class="chart-footer-extremo">31/08/2026 · R$ 69,51</span>
-</div>
-<script>
-(function(){
-  var raiz = document.getElementById("grafico-milho");
-  if (!raiz) return;
-  var rodape = raiz.nextElementSibling;
-  var elTexto = rodape.querySelector(".chart-readout-texto");
-  var pontos = raiz.querySelectorAll(".chart-hit");
-  var ativo = null;
-  pontos.forEach(function(ponto){
-    function ativar(){
-      if (ativo) ativo.classList.remove("chart-dot-ativo");
-      var alvo = raiz.querySelector("#" + ponto.getAttribute("data-alvo"));
-      if (alvo) { alvo.classList.add("chart-dot-ativo"); ativo = alvo; }
-      elTexto.textContent = ponto.getAttribute("data-data") + " · R$ " + ponto.getAttribute("data-preco");
-    }
-    ponto.addEventListener("mouseenter", ativar);
-    ponto.addEventListener("touchstart", ativar, {passive: true});
-  });
-  raiz.addEventListener("mouseleave", function(){
-    if (ativo) { ativo.classList.remove("chart-dot-ativo"); ativo = null; }
-    elTexto.textContent = "31/08/2026 · R$ 69,51";
-  });
-})();
-</script>
+
 <!-- GRAFICO:END -->
     </div>
   </section>
@@ -344,31 +261,7 @@ Fonte: CEPEA/Esalq · dado de 28/08/2026
       </div>
     </div>
     <div><!-- NOTICIAS:START -->
-<article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/eventos/tempo-e-dinheiro-com-joao-batista-olivi/" target="_blank" rel="noopener">Tempo e Dinheiro - com João Batista Olivi</a></p>
-  <p class="news-summary">Este é o Tempo e Dinheiro, programa apresentado pelo jornalista João Batista Olivi e que conta com a participação de especialistas de diversos setores. Acompanhe as notícias sobre os bastidores do Congresso Nacional, com...</p>
-  <p class="news-source">Fonte: Notícias Agrícolas</p>
-</article>
-    <article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/milho/427158-milho-acumula-alta-superior-a-5-em-chicago-na-semana-e-analista-ve-espaco-para-novos-ganhos.html" target="_blank" rel="noopener">Milho28/08/2026 - 16:54Milho acumula alta superior a 5% em Chicago na semana e analista vê espaço para novos ganhos</a></p>
-  <p class="news-summary">A sexta-feira (28) termina com os preços internacionais do milho futuro contabilizando novas valorizações na Bolsa de Chicago (CBOT) e fechando a semana com ganhos acumulados de mais de 5% nas principais posições da tabe...</p>
-  <p class="news-source">Fonte: Notícias Agrícolas</p>
-</article>
-    <article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/milho/427124-futuros-do-milho-voltam-a-subir-em-chicago-com-resultados-da-exportacao-dos-eua-sustentando-nessa-sexta-feira.html" target="_blank" rel="noopener">Milho28/08/2026 - 10:54Futuros do milho voltam a subir em Chicago com resultados da exportação dos EUA sustentando nessa sexta-feira</a></p>
-  <p class="news-summary">A sexta-feira (28) começa com os preços internacionais do milho futuro retomando as movimentações positivas na Bolsa de Chicago (CBOT), e contabilizando avanços por volta das 10h26 (horário de Brasília).</p>
-  <p class="news-source">Fonte: Notícias Agrícolas</p>
-</article>
-    <article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/milho/427094-futuros-do-milho-recuam-ate-1-nesta-quinta-feira-com-b-3-seguindo-pressao-externa.html" target="_blank" rel="noopener">Milho27/08/2026 - 17:01Futuros do milho recuam até 1% nesta quinta-feira, com B3 seguindo pressão externa</a></p>
-  <p class="news-summary">A quinta-feira (27) termina com os preços internacionais do milho futuro contabilizando movimentações negativas na Bolsa de Chicago (CBOT).</p>
-  <p class="news-source">Fonte: Notícias Agrícolas</p>
-</article>
-    <article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/milho/427086-producao-de-milho-1-safra-dispara-41-no-estado-de-sao-paulo-no-ciclo-2025-26.html" target="_blank" rel="noopener">Milho27/08/2026 - 15:02Produção de milho 1ª safra dispara 41% no estado de São Paulo no ciclo 2025/26</a></p>
-  <p class="news-summary">A cultura do milho primeira safra registrou um salto expressivo na produção paulista de 41%. É o que aponta o terceiro levantamento de previsão e estimativa da safra 2025/26, realizado pelo Instituto de Economia Agrícola...</p>
-  <p class="news-source">Fonte: Notícias Agrícolas</p>
-</article>
+
 <!-- NOTICIAS:END -->
     </div>
   </section>
