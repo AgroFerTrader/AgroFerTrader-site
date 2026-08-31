@@ -10,4 +10,20 @@
         <loc>https://agrofertrader.github.io/AgroFerTrader-site/entenda.html</loc>
     </url>
 
+    <url>
+        <loc>https://agrofertrader.github.io/AgroFerTrader-site/commodities/soja/</loc>
+    </url>
+
+    <url>
+        <loc>https://agrofertrader.github.io/AgroFerTrader-site/commodities/milho/</loc>
+    </url>
+
+    <url>
+        <loc>https://agrofertrader.github.io/AgroFerTrader-site/commodities/cafe/</loc>
+    </url>
+
+    <url>
+        <loc>https://agrofertrader.github.io/AgroFerTrader-site/commodities/boi-gordo/</loc>
+    </url>
+
 </urlset>
