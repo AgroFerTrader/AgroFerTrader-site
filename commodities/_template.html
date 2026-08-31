@@ -154,6 +154,32 @@
   footer a{text-decoration:underline;}
 
   @media (max-width:640px){ .section-head{flex-direction:column;align-items:flex-start;} }
+
+  /* Nav: em telas estreitas, a logo fica numa linha e os links viram
+     uma faixa rolável horizontalmente (em vez de quebrar em varias
+     linhas e espremer a logo). Nao afeta o layout de desktop. */
+  @media (max-width:680px){
+    nav{flex-wrap:wrap;row-gap:10px;}
+    .brand{flex-shrink:0;}
+    .navlinks{
+      flex:1 1 100%;
+      justify-content:flex-start;
+      flex-wrap:nowrap;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+      white-space:nowrap;
+      scrollbar-width:none;
+      padding-bottom:2px;
+      margin:0 -24px;
+      padding-left:24px;
+      padding-right:24px;
+    }
+    .navlinks::-webkit-scrollbar{display:none;}
+    .navlinks a, .navlinks .nav-divider{flex-shrink:0;}
+    .commodity-switch{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -24px;padding:18px 24px 0;}
+    .commodity-switch::-webkit-scrollbar{display:none;}
+    .commodity-switch a{flex-shrink:0;}
+  }
 </style>
 </head>
 
@@ -288,4 +314,3 @@
 
 </body>
 </html>
-
