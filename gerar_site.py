@@ -141,17 +141,6 @@ def montar_precos_html(resultados_commodities) -> str:
     return "\n      ".join(blocos)
 
 
-def montar_commodity_switch_html() -> str:
-    """Faixa de navegação rápida para as páginas individuais de commodity,
-    no mesmo estilo visual usado dentro de cada página individual."""
-    ordem = ["Soja", "Milho", "Café Arábica", "Boi Gordo"]
-    links = []
-    for nome in ordem:
-        slug = SLUGS_COMMODITIES[nome]
-        links.append(f'<a href="commodities/{slug}/">{escape(nome)}</a>')
-    return "\n      ".join(links)
-
-
 def montar_explain_html(explicacoes_macro: list) -> str:
     paragrafos = [
         l for l in explicacoes_macro
@@ -329,7 +318,6 @@ def gerar_site() -> None:
         "EXPLAIN": montar_explain_html(dados["explicacoes_macro"]),
         "FUTURES": montar_futuros_html(dados["resultados_futuros"]),
         "NEWS": montar_noticias_html(dados["noticias"]),
-        "COMMODITY_SWITCH": montar_commodity_switch_html(),
     }
 
     for marcador, conteudo in substituicoes.items():
