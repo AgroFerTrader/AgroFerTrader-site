@@ -217,7 +217,22 @@ def carregar_historico_fisico(nome_fisica: str, dias: int = 90) -> list:
 #    sem JS), no mesmo padrao visual sobrio do site.
 # ---------------------------------------------------------------------------
 
-def montar_grafico_svg(serie: list, nome_exibicao: str) -> str:
+def _fmt_brl(valor: float) -> str:
+    """Formata um float no padrão R$ brasileiro (vírgula decimal, ponto de
+    milhar), ex: 1728.61 -> '1.728,61'."""
+    return f"{valor:,.2f}".replace(",", "_").replace(".", ",").replace("_", ".")
+
+
+def _fmt_data_br(data_iso: str) -> str:
+    """Converte 'AAAA-MM-DD' (nome do arquivo em dados/) para 'DD/MM/AAAA'."""
+    try:
+        ano, mes, dia = data_iso.split("-")
+        return f"{dia}/{mes}/{ano}"
+    except ValueError:
+        return data_iso
+
+
+def montar_grafico_svg(serie: list, nome_exibicao: str, slug: str) -> str:
     if len(serie) < 2:
         return (
             '<p style="opacity:.6;font-size:14px;">'
@@ -229,7 +244,7 @@ def montar_grafico_svg(serie: list, nome_exibicao: str) -> str:
     largura, altura = 900, 260
     # margem esquerda cresce com a quantidade de digitos do maior preco,
     # para o rotulo "R$ X.XXX,XX" nunca ser cortado pela borda do SVG
-    maior_preco_texto = f"R$ {max(v for _, v in serie):.2f}"
+    maior_preco_texto = f"R$ {_fmt_brl(max(v for _, v in serie))}"
     margem_esq = max(50, 14 + len(maior_preco_texto) * 6)
     margem_dir, margem_topo, margem_baixo = 20, 20, 30
 
@@ -245,32 +260,74 @@ def montar_grafico_svg(serie: list, nome_exibicao: str) -> str:
     passo_x = largura_util / (len(serie) - 1)
 
     pontos = []
-    for i, (_, valor) in enumerate(serie):
+    for i, (data_str, valor) in enumerate(serie):
         x = margem_esq + i * passo_x
         y = margem_topo + altura_util - ((valor - minimo) / faixa) * altura_util
-        pontos.append((x, y))
+        pontos.append((x, y, data_str, valor))
 
-    pontos_str = " ".join(f"{x:.1f},{y:.1f}" for x, y in pontos)
+    pontos_str = " ".join(f"{x:.1f},{y:.1f}" for x, y, _, _ in pontos)
 
     cor_linha = "#4C7A1F" if valores[-1] >= valores[0] else "#9C3B2E"
 
-    circulo_final_x, circulo_final_y = pontos[-1]
+    circulo_final_x, circulo_final_y, _, _ = pontos[-1]
 
     data_inicial = serie[0][0]
     data_final = serie[-1][0]
 
-    svg = f'''<svg viewBox="0 0 {largura} {altura}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Variação de preço de {escape(nome_exibicao)} no período">
+    # Pontos interativos: um circulo visivel pequeno + uma "area de toque"
+    # maior e invisivel por cima (mais facil de acertar com o mouse/dedo),
+    # cada um carregando a data e o preco daquele dia como atributos.
+    pontos_svg = []
+    for x, y, data_str, valor in pontos:
+        pontos_svg.append(
+            f'<circle class="chart-dot" cx="{x:.1f}" cy="{y:.1f}" r="3" fill="{cor_linha}"/>'
+            f'<circle class="chart-hit" cx="{x:.1f}" cy="{y:.1f}" r="10" '
+            f'fill="transparent" data-data="{escape(_fmt_data_br(data_str))}" '
+            f'data-preco="{escape(_fmt_brl(valor))}"/>'
+        )
+    pontos_svg_str = "\n  ".join(pontos_svg)
+
+    id_unico = f"grafico-{slug}"
+
+    svg = f'''<div class="chart-wrap" id="{id_unico}">
+<svg viewBox="0 0 {largura} {altura}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Variação de preço de {escape(nome_exibicao)} no período">
   <line x1="{margem_esq}" y1="{margem_topo}" x2="{margem_esq}" y2="{margem_topo + altura_util}" stroke="rgba(11,60,31,0.14)" stroke-width="1"/>
   <line x1="{margem_esq}" y1="{margem_topo + altura_util}" x2="{largura - margem_dir}" y2="{margem_topo + altura_util}" stroke="rgba(11,60,31,0.14)" stroke-width="1"/>
-  <text x="{margem_esq - 8}" y="{margem_topo + 4}" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ {maximo:.2f}</text>
-  <text x="{margem_esq - 8}" y="{margem_topo + altura_util}" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ {minimo:.2f}</text>
+  <text x="{margem_esq - 8}" y="{margem_topo + 4}" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ {_fmt_brl(maximo)}</text>
+  <text x="{margem_esq - 8}" y="{margem_topo + altura_util}" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ {_fmt_brl(minimo)}</text>
   <polyline points="{pontos_str}" fill="none" stroke="{cor_linha}" stroke-width="2.5"/>
+  {pontos_svg_str}
   <circle cx="{circulo_final_x:.1f}" cy="{circulo_final_y:.1f}" r="4" fill="{cor_linha}"/>
-</svg>'''
+</svg>
+<div class="chart-tooltip" hidden></div>
+</div>
+<script>
+(function(){{
+  var raiz = document.getElementById("{id_unico}");
+  if (!raiz) return;
+  var tooltip = raiz.querySelector(".chart-tooltip");
+  var pontos = raiz.querySelectorAll(".chart-hit");
+  pontos.forEach(function(ponto){{
+    function mostrar(evento){{
+      var retangulo = raiz.getBoundingClientRect();
+      var clienteX = (evento.touches ? evento.touches[0].clientX : evento.clientX);
+      var x = clienteX - retangulo.left;
+      tooltip.textContent = ponto.getAttribute("data-data") + " · R$ " + ponto.getAttribute("data-preco");
+      tooltip.style.left = x + "px";
+      tooltip.style.top = "0px";
+      tooltip.hidden = false;
+    }}
+    ponto.addEventListener("mouseenter", mostrar);
+    ponto.addEventListener("mousemove", mostrar);
+    ponto.addEventListener("mouseleave", function(){{ tooltip.hidden = true; }});
+    ponto.addEventListener("touchstart", mostrar, {{passive: true}});
+  }});
+}})();
+</script>'''
 
     legenda = (
-        f'<div class="chart-legend"><span>{escape(data_inicial)}</span>'
-        f'<span>{escape(data_final)} · R$ {valores[-1]:.2f}</span></div>'
+        f'<div class="chart-legend"><span>{escape(_fmt_data_br(data_inicial))}</span>'
+        f'<span>{escape(_fmt_data_br(data_final))} · R$ {_fmt_brl(valores[-1])}</span></div>'
     )
 
     return svg + "\n" + legenda
@@ -368,7 +425,7 @@ def atualizar_pagina_commodity(config: dict, dados: dict) -> None:
         "UPDATED": site.montar_updated(dados),
         "PRECO_FISICO": site.montar_precos_html(fisica_filtrada),
         "FUTURO": site.montar_futuros_html(futuro_filtrado),
-        "GRAFICO": montar_grafico_svg(historico, config["nome_exibicao"]),
+        "GRAFICO": montar_grafico_svg(historico, config["nome_exibicao"], config["slug"]),
         "NOTICIAS": site.montar_noticias_html(noticias_categoria),
     }
 
