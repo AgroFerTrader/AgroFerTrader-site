@@ -304,20 +304,18 @@ def montar_grafico_svg(serie: list, nome_exibicao: str, slug: str) -> str:
   {pontos_svg_str}
   <circle cx="{circulo_final_x:.1f}" cy="{circulo_final_y:.1f}" r="4" fill="{cor_linha}"/>
 </svg>
-<div class="chart-readout">
-  <span class="chart-readout-label">Data</span>
-  <span class="chart-readout-data">{data_final_fmt}</span>
-  <span class="chart-readout-divider">·</span>
-  <span class="chart-readout-label">Preço</span>
-  <span class="chart-readout-preco">R$ {preco_final_fmt}</span>
 </div>
+<div class="chart-footer">
+  <span class="chart-footer-extremo">{escape(_fmt_data_br(data_inicial))}</span>
+  <span class="chart-readout-texto">{data_final_fmt} · R$ {preco_final_fmt}</span>
+  <span class="chart-footer-extremo">{data_final_fmt} · R$ {preco_final_fmt}</span>
 </div>
 <script>
 (function(){{
   var raiz = document.getElementById("{id_unico}");
   if (!raiz) return;
-  var elData = raiz.querySelector(".chart-readout-data");
-  var elPreco = raiz.querySelector(".chart-readout-preco");
+  var rodape = raiz.nextElementSibling;
+  var elTexto = rodape.querySelector(".chart-readout-texto");
   var pontos = raiz.querySelectorAll(".chart-hit");
   var ativo = null;
   pontos.forEach(function(ponto){{
@@ -325,26 +323,19 @@ def montar_grafico_svg(serie: list, nome_exibicao: str, slug: str) -> str:
       if (ativo) ativo.classList.remove("chart-dot-ativo");
       var alvo = raiz.querySelector("#" + ponto.getAttribute("data-alvo"));
       if (alvo) {{ alvo.classList.add("chart-dot-ativo"); ativo = alvo; }}
-      elData.textContent = ponto.getAttribute("data-data");
-      elPreco.textContent = "R$ " + ponto.getAttribute("data-preco");
+      elTexto.textContent = ponto.getAttribute("data-data") + " · R$ " + ponto.getAttribute("data-preco");
     }}
     ponto.addEventListener("mouseenter", ativar);
     ponto.addEventListener("touchstart", ativar, {{passive: true}});
   }});
   raiz.addEventListener("mouseleave", function(){{
     if (ativo) {{ ativo.classList.remove("chart-dot-ativo"); ativo = null; }}
-    elData.textContent = "{data_final_fmt}";
-    elPreco.textContent = "R$ {preco_final_fmt}";
+    elTexto.textContent = "{data_final_fmt} · R$ {preco_final_fmt}";
   }});
 }})();
 </script>'''
 
-    legenda = (
-        f'<div class="chart-legend"><span>{escape(_fmt_data_br(data_inicial))}</span>'
-        f'<span>{data_final_fmt} · R$ {preco_final_fmt}</span></div>'
-    )
-
-    return svg + "\n" + legenda
+    return svg
 
 
 # ---------------------------------------------------------------------------
