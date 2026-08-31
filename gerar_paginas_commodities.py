@@ -276,18 +276,23 @@ def montar_grafico_svg(serie: list, nome_exibicao: str, slug: str) -> str:
 
     # Pontos interativos: um circulo visivel pequeno + uma "area de toque"
     # maior e invisivel por cima (mais facil de acertar com o mouse/dedo),
-    # cada um carregando a data e o preco daquele dia como atributos.
+    # cada um sabendo qual e o seu ponto visivel correspondente (para
+    # destaca-lo) e carregando a data e o preco daquele dia.
     pontos_svg = []
-    for x, y, data_str, valor in pontos:
+    for i, (x, y, data_str, valor) in enumerate(pontos):
+        id_ponto = f"ponto-{slug}-{i}"
         pontos_svg.append(
-            f'<circle class="chart-dot" cx="{x:.1f}" cy="{y:.1f}" r="3" fill="{cor_linha}"/>'
+            f'<circle id="{id_ponto}" class="chart-dot" cx="{x:.1f}" cy="{y:.1f}" r="3" fill="{cor_linha}"/>'
             f'<circle class="chart-hit" cx="{x:.1f}" cy="{y:.1f}" r="10" '
-            f'fill="transparent" data-data="{escape(_fmt_data_br(data_str))}" '
+            f'fill="transparent" data-alvo="{id_ponto}" '
+            f'data-data="{escape(_fmt_data_br(data_str))}" '
             f'data-preco="{escape(_fmt_brl(valor))}"/>'
         )
     pontos_svg_str = "\n  ".join(pontos_svg)
 
     id_unico = f"grafico-{slug}"
+    data_final_fmt = escape(_fmt_data_br(data_final))
+    preco_final_fmt = _fmt_brl(valores[-1])
 
     svg = f'''<div class="chart-wrap" id="{id_unico}">
 <svg viewBox="0 0 {largura} {altura}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Variação de preço de {escape(nome_exibicao)} no período">
@@ -299,35 +304,44 @@ def montar_grafico_svg(serie: list, nome_exibicao: str, slug: str) -> str:
   {pontos_svg_str}
   <circle cx="{circulo_final_x:.1f}" cy="{circulo_final_y:.1f}" r="4" fill="{cor_linha}"/>
 </svg>
-<div class="chart-tooltip" hidden></div>
+<div class="chart-readout">
+  <span class="chart-readout-label">Data</span>
+  <span class="chart-readout-data">{data_final_fmt}</span>
+  <span class="chart-readout-divider">·</span>
+  <span class="chart-readout-label">Preço</span>
+  <span class="chart-readout-preco">R$ {preco_final_fmt}</span>
+</div>
 </div>
 <script>
 (function(){{
   var raiz = document.getElementById("{id_unico}");
   if (!raiz) return;
-  var tooltip = raiz.querySelector(".chart-tooltip");
+  var elData = raiz.querySelector(".chart-readout-data");
+  var elPreco = raiz.querySelector(".chart-readout-preco");
   var pontos = raiz.querySelectorAll(".chart-hit");
+  var ativo = null;
   pontos.forEach(function(ponto){{
-    function mostrar(evento){{
-      var retangulo = raiz.getBoundingClientRect();
-      var clienteX = (evento.touches ? evento.touches[0].clientX : evento.clientX);
-      var x = clienteX - retangulo.left;
-      tooltip.textContent = ponto.getAttribute("data-data") + " · R$ " + ponto.getAttribute("data-preco");
-      tooltip.style.left = x + "px";
-      tooltip.style.top = "0px";
-      tooltip.hidden = false;
+    function ativar(){{
+      if (ativo) ativo.classList.remove("chart-dot-ativo");
+      var alvo = raiz.querySelector("#" + ponto.getAttribute("data-alvo"));
+      if (alvo) {{ alvo.classList.add("chart-dot-ativo"); ativo = alvo; }}
+      elData.textContent = ponto.getAttribute("data-data");
+      elPreco.textContent = "R$ " + ponto.getAttribute("data-preco");
     }}
-    ponto.addEventListener("mouseenter", mostrar);
-    ponto.addEventListener("mousemove", mostrar);
-    ponto.addEventListener("mouseleave", function(){{ tooltip.hidden = true; }});
-    ponto.addEventListener("touchstart", mostrar, {{passive: true}});
+    ponto.addEventListener("mouseenter", ativar);
+    ponto.addEventListener("touchstart", ativar, {{passive: true}});
+  }});
+  raiz.addEventListener("mouseleave", function(){{
+    if (ativo) {{ ativo.classList.remove("chart-dot-ativo"); ativo = null; }}
+    elData.textContent = "{data_final_fmt}";
+    elPreco.textContent = "R$ {preco_final_fmt}";
   }});
 }})();
 </script>'''
 
     legenda = (
         f'<div class="chart-legend"><span>{escape(_fmt_data_br(data_inicial))}</span>'
-        f'<span>{escape(_fmt_data_br(data_final))} · R$ {_fmt_brl(valores[-1])}</span></div>'
+        f'<span>{data_final_fmt} · R$ {preco_final_fmt}</span></div>'
     )
 
     return svg + "\n" + legenda
