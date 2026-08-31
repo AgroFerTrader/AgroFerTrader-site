@@ -102,8 +102,8 @@
     "",
     "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
     "Dólar em leve alta (+0.70%): o movimento é moderado, mas já tende a favorecer um pouco o preço interno de commodities exportadas, já que a mesma cotação em dólar rende mais reais.",
-    "Com a Selic em 14.00% ao ano, o custo de financiamento no campo segue elevado - isso tende a acelerar vendas (para gerar caixa) e, por atrair capital estrangeiro, também tende a fortalecer o real. Os dois efeitos juntos costumam pressionar o preço das commodities exportadas para baixo.",
-    "Obs.: essas são tendências gerais - clima, quebra de safra, estoques mundiais e demanda de outros países também afetam o preço e podem superar o efeito isolado do câmbio ou da Selic."
+    "Selic em 14.00% ao ano - um patamar considerado alto: o crédito rural fica mais caro e carregar estoque também, o que costuma levar produtores a vender mais rápido para gerar caixa, pressionando o preço para baixo no curto prazo. Juros altos também tendem a atrair capital estrangeiro e valorizar o real, reforçando essa pressão via câmbio.",
+    "Obs.: vale lembrar que essas são relações históricas, não regras fixas - fatores como clima, safra e demanda internacional podem se sobrepor facilmente ao efeito do câmbio ou dos juros."
   ],
   "noticias": [
     {
@@ -121,13 +121,13 @@
     {
       "titulo": "28/08/2026 - 13:55Exportações mundiais de café verde aumentaram 0,8% em junho, diz OIC",
       "link": "https://www.noticiasagricolas.com.br/noticias/cafe/427149-exportacoes-mundiais-de-cafe-verde-aumentaram-08-em-junho-diz-oic.html",
-      "resumo": "Resumo não disponível — acesse a matéria completa pelo link.",
+      "resumo": "LONDRES, 28 Ago (Reuters) - As exportações globais de café verde aumentaram 0,8% em junho em relação ao mesmo mês do ano anterior, atingindo 10,48 milhões de sacas de 60 kg, em meio a um forte aumento nos embarques da va...",
       "fonte": "Notícias Agrícolas"
     },
     {
       "titulo": "28/08/2026 - 12:52Setembro abre nova janela para a soja e reforça importância do manejo antecipado da ferrugem",
       "link": "https://www.noticiasagricolas.com.br/noticias/soja/427143-setembro-abre-nova-janela-para-a-soja-e-reforca-importancia-do-manejo-antecipado-da-ferrugem.html",
-      "resumo": "Resumo não disponível — acesse a matéria completa pelo link.",
+      "resumo": "Setembro marca uma virada importante no calendário da soja brasileira. Ao longo do mês, o vazio sanitário chega ao fim em diferentes regiões produtoras e a semeadura da safra 2026/27 começa a ser autorizada. Em Mato Gros...",
       "fonte": "Notícias Agrícolas"
     }
   ],
