@@ -59,6 +59,17 @@ def _nome_curto(nome_completo: str) -> str:
     return nome_completo.split(" (")[0].upper()
 
 
+# Commodities que tem pagina individual em commodities/<slug>/ - usado para
+# transformar o card/linha correspondente num link, na home. Quem nao esta
+# aqui (Trigo, Algodao, Acucar Cristal) continua exibido normalmente, sem link.
+SLUGS_COMMODITIES = {
+    "Soja": "soja",
+    "Milho": "milho",
+    "Café Arábica": "cafe",
+    "Boi Gordo": "boi-gordo",
+}
+
+
 def montar_ticker_html(dolar, resultados_commodities) -> str:
     itens = []
 
@@ -96,6 +107,7 @@ def montar_precos_html(resultados_commodities) -> str:
         nome_original = str(r["nome"])
         nome_limpo = nome_original.split(" (")[0]
         nome_html = escape(nome_limpo)
+        slug = SLUGS_COMMODITIES.get(nome_limpo)
 
         if "erro" in r:
             blocos.append(
@@ -109,16 +121,35 @@ def montar_precos_html(resultados_commodities) -> str:
         seta, classe = _seta_e_classe(r["variacao_pct"])
         unidade = unidades.get(nome_limpo, "por saca de 60kg")
 
-        blocos.append(
-            f'<article class="price-card">\n'
+        conteudo_card = (
             f'  <div class="price-name">{nome_html}</div>\n'
             f'  <div class="price-value">R$ {escape(str(r["preco_reais"]))}</div>\n'
             f'  <div class="price-var {classe}">{seta} {escape(str(r["variacao_pct"]))}%</div>\n'
             f'  <div class="price-meta">{escape(unidade)}</div>\n'
-            f'</article>'
         )
 
+        if slug:
+            conteudo_card += '  <div class="price-link">Ver detalhes →</div>\n'
+            blocos.append(
+                f'<a class="price-card price-card-link" href="commodities/{slug}/">\n'
+                f'{conteudo_card}'
+                f'</a>'
+            )
+        else:
+            blocos.append(f'<article class="price-card">\n{conteudo_card}</article>')
+
     return "\n      ".join(blocos)
+
+
+def montar_commodity_switch_html() -> str:
+    """Faixa de navegação rápida para as páginas individuais de commodity,
+    no mesmo estilo visual usado dentro de cada página individual."""
+    ordem = ["Soja", "Milho", "Café Arábica", "Boi Gordo"]
+    links = []
+    for nome in ordem:
+        slug = SLUGS_COMMODITIES[nome]
+        links.append(f'<a href="commodities/{slug}/">{escape(nome)}</a>')
+    return "\n      ".join(links)
 
 
 def montar_explain_html(explicacoes_macro: list) -> str:
@@ -188,8 +219,14 @@ def montar_futuros_html(resultados_futuros: list) -> str:
         else:
             preco_exibicao = f"R$ {valor} /sc"
 
+        slug = SLUGS_COMMODITIES.get(nome_limpo)
+        nome_celula = (
+            f'<a href="commodities/{slug}/">{escape(nome_limpo)}</a>' if slug
+            else escape(nome_limpo)
+        )
+
         linhas.append(
-            f'<tr><td>{escape(nome_limpo)}</td>'
+            f'<tr><td>{nome_celula}</td>'
             f'<td>{escape(contrato)}</td>'
             f'<td class="val">{escape(preco_exibicao)}</td>'
             f'<td class="{classe}">{seta} {escape(str(r["variacao_pct"]))}%</td></tr>'
@@ -292,6 +329,7 @@ def gerar_site() -> None:
         "EXPLAIN": montar_explain_html(dados["explicacoes_macro"]),
         "FUTURES": montar_futuros_html(dados["resultados_futuros"]),
         "NEWS": montar_noticias_html(dados["noticias"]),
+        "COMMODITY_SWITCH": montar_commodity_switch_html(),
     }
 
     for marcador, conteudo in substituicoes.items():
