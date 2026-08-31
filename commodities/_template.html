@@ -125,16 +125,14 @@
   .chart-hit{cursor:pointer;}
   .chart-dot{transition:transform .12s ease;transform-box:fill-box;transform-origin:center;}
   .chart-dot.chart-dot-ativo{transform:scale(1.8);}
-  .chart-readout{
-    display:flex;justify-content:center;align-items:baseline;gap:10px;flex-wrap:wrap;
-    margin-top:20px;padding-top:18px;border-top:1px solid var(--line);
-    font-family:var(--mono);
+  .chart-footer{
+    display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;
+    background:var(--paper-dim);border-top:3px solid var(--gold);
+    margin:20px -24px -24px -24px;padding:18px 24px;
   }
-  .chart-readout-label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--leaf);}
-  .chart-readout-divider{color:var(--line);opacity:.8;margin:0 2px;}
-  .chart-readout-data{font-size:15px;font-weight:600;color:var(--ink);}
-  .chart-readout-preco{font-size:20px;font-weight:600;color:var(--ink);}
-  .chart-legend{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;opacity:.6;margin-top:8px;}
+  .chart-footer-extremo{font-family:var(--mono);font-size:12px;color:var(--ink);opacity:.55;white-space:nowrap;}
+  .chart-footer-extremo:last-child{text-align:right;}
+  .chart-readout-texto{font-family:var(--display);font-weight:600;font-size:19px;color:var(--ink);text-align:center;white-space:nowrap;}
 
   .report-box{background:var(--paper-dim);border-left:3px solid var(--gold);padding:28px 32px;}
   .report-box p{margin:0 0 14px;font-size:15.5px;max-width:70ch;}
@@ -282,3 +280,4 @@
 
 </body>
 </html>
+
