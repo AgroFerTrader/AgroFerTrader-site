@@ -120,8 +120,19 @@
   .futures-table td.val{font-family:var(--mono);font-weight:600;}
 
   .chart-box{border:1px solid var(--line);background:var(--paper);padding:24px;}
-  .chart-box svg{width:100%;height:auto;display:block;}
-  .chart-legend{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;opacity:.6;margin-top:8px;}
+  .chart-wrap{position:relative;}
+  .chart-wrap svg{width:100%;height:auto;display:block;}
+  .chart-hit{cursor:pointer;}
+  .chart-dot{transition:transform .12s ease;transform-box:fill-box;transform-origin:center;}
+  .chart-dot.chart-dot-ativo{transform:scale(1.8);}
+  .chart-footer{
+    display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;
+    background:var(--paper-dim);border-top:3px solid var(--gold);
+    margin:20px -24px -24px -24px;padding:18px 24px;
+  }
+  .chart-footer-extremo{font-family:var(--mono);font-size:12px;color:var(--ink);opacity:.55;white-space:nowrap;}
+  .chart-footer-extremo:last-child{text-align:right;}
+  .chart-readout-texto{font-family:var(--display);font-weight:600;font-size:19px;color:var(--ink);text-align:center;white-space:nowrap;}
 
   .report-box{background:var(--paper-dim);border-left:3px solid var(--gold);padding:28px 32px;}
   .report-box p{margin:0 0 14px;font-size:15.5px;max-width:70ch;}
@@ -167,7 +178,7 @@
 <header class="hero">
   <div class="hero-inner">
     <div class="eyebrow"><!-- EYEBROW:START -->
-Segunda-feira, 31 de agosto de 2026 · fechamento do dia anterior
+
 <!-- EYEBROW:END --></div>
 
     <h1 class="headline">Boi Gordo: preço de hoje, futuro e histórico.</h1>
@@ -191,17 +202,11 @@ Segunda-feira, 31 de agosto de 2026 · fechamento do dia anterior
         <h2 id="titulo-fisico">Cotação de hoje</h2>
       </div>
       <div class="updated"><!-- UPDATED:START -->
-Fonte: CEPEA/Esalq · dado de 28/08/2026
+
 <!-- UPDATED:END --></div>
     </div>
     <div class="price-grid"><!-- PRECO_FISICO:START -->
-<a class="price-card price-card-link" href="commodities/boi-gordo/">
-  <div class="price-name">Boi Gordo</div>
-  <div class="price-value">R$ 345.35</div>
-  <div class="price-var up">▲ 0.25%</div>
-  <div class="price-meta">por arroba</div>
-  <div class="price-link">Ver detalhes →</div>
-</a>
+
 <!-- PRECO_FISICO:END -->
     </div>
   </section>
@@ -216,7 +221,7 @@ Fonte: CEPEA/Esalq · dado de 28/08/2026
     <table class="futures-table">
       <thead><tr><th>Commodity</th><th>Contrato</th><th>Fechamento</th><th>Variação</th></tr></thead>
       <tbody><!-- FUTURO:START -->
-<tr><td><a href="commodities/boi-gordo/">Boi Gordo</a></td><td>Agosto/2026</td><td class="val">R$ 343,35 /@</td><td class="up">▲ 0.13%</td></tr>
+
 <!-- FUTURO:END -->
       </tbody>
     </table>
@@ -230,95 +235,7 @@ Fonte: CEPEA/Esalq · dado de 28/08/2026
       </div>
     </div>
     <div class="chart-box"><!-- GRAFICO:START -->
-<div class="chart-wrap" id="grafico-boi-gordo">
-<svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Variação de preço de Boi Gordo no período">
-  <line x1="68" y1="20" x2="68" y2="230" stroke="rgba(11,60,31,0.14)" stroke-width="1"/>
-  <line x1="68" y1="230" x2="880" y2="230" stroke="rgba(11,60,31,0.14)" stroke-width="1"/>
-  <text x="60" y="24" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ 350,20</text>
-  <text x="60" y="230" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ 324,60</text>
-  <polyline points="68.0,213.2 84.6,230.0 101.1,201.3 117.7,192.3 134.3,176.3 150.9,157.0 167.4,157.0 184.0,157.0 200.6,127.5 217.1,83.6 233.7,81.9 250.3,72.9 266.9,69.2 283.4,69.2 300.0,69.2 316.6,68.8 333.1,40.5 349.7,43.0 366.3,47.1 382.9,49.9 399.4,49.9 416.0,49.9 432.6,38.9 449.1,20.0 465.7,33.5 482.3,35.6 498.9,42.1 515.4,42.1 532.0,42.1 548.6,42.1 565.1,43.0 581.7,50.4 598.3,48.3 614.9,48.3 631.4,48.3 648.0,48.3 664.6,62.2 681.1,64.3 697.7,63.9 714.3,56.9 730.9,77.4 747.4,77.4 764.0,77.4 780.6,77.4 797.1,76.2 813.7,83.2 830.3,66.8 846.9,59.8 863.4,59.8 880.0,59.8" fill="none" stroke="#4C7A1F" stroke-width="2.5"/>
-  <circle id="ponto-boi-gordo-0" class="chart-dot" cx="68.0" cy="213.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="68.0" cy="213.2" r="10" fill="transparent" data-alvo="ponto-boi-gordo-0" data-data="13/07/2026" data-preco="326,65"/>
-  <circle id="ponto-boi-gordo-1" class="chart-dot" cx="84.6" cy="230.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="84.6" cy="230.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-1" data-data="14/07/2026" data-preco="324,60"/>
-  <circle id="ponto-boi-gordo-2" class="chart-dot" cx="101.1" cy="201.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="101.1" cy="201.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-2" data-data="15/07/2026" data-preco="328,10"/>
-  <circle id="ponto-boi-gordo-3" class="chart-dot" cx="117.7" cy="192.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="117.7" cy="192.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-3" data-data="16/07/2026" data-preco="329,20"/>
-  <circle id="ponto-boi-gordo-4" class="chart-dot" cx="134.3" cy="176.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="134.3" cy="176.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-4" data-data="17/07/2026" data-preco="331,15"/>
-  <circle id="ponto-boi-gordo-5" class="chart-dot" cx="150.9" cy="157.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="150.9" cy="157.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-5" data-data="18/07/2026" data-preco="333,50"/>
-  <circle id="ponto-boi-gordo-6" class="chart-dot" cx="167.4" cy="157.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="167.4" cy="157.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-6" data-data="19/07/2026" data-preco="333,50"/>
-  <circle id="ponto-boi-gordo-7" class="chart-dot" cx="184.0" cy="157.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="184.0" cy="157.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-7" data-data="20/07/2026" data-preco="333,50"/>
-  <circle id="ponto-boi-gordo-8" class="chart-dot" cx="200.6" cy="127.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="200.6" cy="127.5" r="10" fill="transparent" data-alvo="ponto-boi-gordo-8" data-data="21/07/2026" data-preco="337,10"/>
-  <circle id="ponto-boi-gordo-9" class="chart-dot" cx="217.1" cy="83.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="217.1" cy="83.6" r="10" fill="transparent" data-alvo="ponto-boi-gordo-9" data-data="22/07/2026" data-preco="342,45"/>
-  <circle id="ponto-boi-gordo-10" class="chart-dot" cx="233.7" cy="81.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="233.7" cy="81.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-10" data-data="23/07/2026" data-preco="342,65"/>
-  <circle id="ponto-boi-gordo-11" class="chart-dot" cx="250.3" cy="72.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="250.3" cy="72.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-11" data-data="24/07/2026" data-preco="343,75"/>
-  <circle id="ponto-boi-gordo-12" class="chart-dot" cx="266.9" cy="69.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="266.9" cy="69.2" r="10" fill="transparent" data-alvo="ponto-boi-gordo-12" data-data="25/07/2026" data-preco="344,20"/>
-  <circle id="ponto-boi-gordo-13" class="chart-dot" cx="283.4" cy="69.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="283.4" cy="69.2" r="10" fill="transparent" data-alvo="ponto-boi-gordo-13" data-data="26/07/2026" data-preco="344,20"/>
-  <circle id="ponto-boi-gordo-14" class="chart-dot" cx="300.0" cy="69.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="300.0" cy="69.2" r="10" fill="transparent" data-alvo="ponto-boi-gordo-14" data-data="27/07/2026" data-preco="344,20"/>
-  <circle id="ponto-boi-gordo-15" class="chart-dot" cx="316.6" cy="68.8" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="316.6" cy="68.8" r="10" fill="transparent" data-alvo="ponto-boi-gordo-15" data-data="28/07/2026" data-preco="344,25"/>
-  <circle id="ponto-boi-gordo-16" class="chart-dot" cx="333.1" cy="40.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="333.1" cy="40.5" r="10" fill="transparent" data-alvo="ponto-boi-gordo-16" data-data="29/07/2026" data-preco="347,70"/>
-  <circle id="ponto-boi-gordo-17" class="chart-dot" cx="349.7" cy="43.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="349.7" cy="43.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-17" data-data="30/07/2026" data-preco="347,40"/>
-  <circle id="ponto-boi-gordo-18" class="chart-dot" cx="366.3" cy="47.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="366.3" cy="47.1" r="10" fill="transparent" data-alvo="ponto-boi-gordo-18" data-data="31/07/2026" data-preco="346,90"/>
-  <circle id="ponto-boi-gordo-19" class="chart-dot" cx="382.9" cy="49.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="382.9" cy="49.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-19" data-data="01/08/2026" data-preco="346,55"/>
-  <circle id="ponto-boi-gordo-20" class="chart-dot" cx="399.4" cy="49.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="399.4" cy="49.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-20" data-data="02/08/2026" data-preco="346,55"/>
-  <circle id="ponto-boi-gordo-21" class="chart-dot" cx="416.0" cy="49.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="416.0" cy="49.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-21" data-data="03/08/2026" data-preco="346,55"/>
-  <circle id="ponto-boi-gordo-22" class="chart-dot" cx="432.6" cy="38.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="432.6" cy="38.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-22" data-data="04/08/2026" data-preco="347,90"/>
-  <circle id="ponto-boi-gordo-23" class="chart-dot" cx="449.1" cy="20.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="449.1" cy="20.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-23" data-data="05/08/2026" data-preco="350,20"/>
-  <circle id="ponto-boi-gordo-24" class="chart-dot" cx="465.7" cy="33.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="465.7" cy="33.5" r="10" fill="transparent" data-alvo="ponto-boi-gordo-24" data-data="06/08/2026" data-preco="348,55"/>
-  <circle id="ponto-boi-gordo-25" class="chart-dot" cx="482.3" cy="35.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="482.3" cy="35.6" r="10" fill="transparent" data-alvo="ponto-boi-gordo-25" data-data="07/08/2026" data-preco="348,30"/>
-  <circle id="ponto-boi-gordo-26" class="chart-dot" cx="498.9" cy="42.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="498.9" cy="42.1" r="10" fill="transparent" data-alvo="ponto-boi-gordo-26" data-data="08/08/2026" data-preco="347,50"/>
-  <circle id="ponto-boi-gordo-27" class="chart-dot" cx="515.4" cy="42.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="515.4" cy="42.1" r="10" fill="transparent" data-alvo="ponto-boi-gordo-27" data-data="09/08/2026" data-preco="347,50"/>
-  <circle id="ponto-boi-gordo-28" class="chart-dot" cx="532.0" cy="42.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="532.0" cy="42.1" r="10" fill="transparent" data-alvo="ponto-boi-gordo-28" data-data="10/08/2026" data-preco="347,50"/>
-  <circle id="ponto-boi-gordo-29" class="chart-dot" cx="548.6" cy="42.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="548.6" cy="42.1" r="10" fill="transparent" data-alvo="ponto-boi-gordo-29" data-data="11/08/2026" data-preco="347,50"/>
-  <circle id="ponto-boi-gordo-30" class="chart-dot" cx="565.1" cy="43.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="565.1" cy="43.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30" data-data="12/08/2026" data-preco="347,40"/>
-  <circle id="ponto-boi-gordo-31" class="chart-dot" cx="581.7" cy="50.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="581.7" cy="50.4" r="10" fill="transparent" data-alvo="ponto-boi-gordo-31" data-data="13/08/2026" data-preco="346,50"/>
-  <circle id="ponto-boi-gordo-32" class="chart-dot" cx="598.3" cy="48.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="598.3" cy="48.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-32" data-data="14/08/2026" data-preco="346,75"/>
-  <circle id="ponto-boi-gordo-33" class="chart-dot" cx="614.9" cy="48.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="614.9" cy="48.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-33" data-data="15/08/2026" data-preco="346,75"/>
-  <circle id="ponto-boi-gordo-34" class="chart-dot" cx="631.4" cy="48.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="631.4" cy="48.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-34" data-data="16/08/2026" data-preco="346,75"/>
-  <circle id="ponto-boi-gordo-35" class="chart-dot" cx="648.0" cy="48.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="648.0" cy="48.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-35" data-data="17/08/2026" data-preco="346,75"/>
-  <circle id="ponto-boi-gordo-36" class="chart-dot" cx="664.6" cy="62.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="664.6" cy="62.2" r="10" fill="transparent" data-alvo="ponto-boi-gordo-36" data-data="18/08/2026" data-preco="345,05"/>
-  <circle id="ponto-boi-gordo-37" class="chart-dot" cx="681.1" cy="64.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="681.1" cy="64.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-37" data-data="19/08/2026" data-preco="344,80"/>
-  <circle id="ponto-boi-gordo-38" class="chart-dot" cx="697.7" cy="63.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="697.7" cy="63.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-38" data-data="20/08/2026" data-preco="344,85"/>
-  <circle id="ponto-boi-gordo-39" class="chart-dot" cx="714.3" cy="56.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="714.3" cy="56.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-39" data-data="21/08/2026" data-preco="345,70"/>
-  <circle id="ponto-boi-gordo-40" class="chart-dot" cx="730.9" cy="77.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="730.9" cy="77.4" r="10" fill="transparent" data-alvo="ponto-boi-gordo-40" data-data="22/08/2026" data-preco="343,20"/>
-  <circle id="ponto-boi-gordo-41" class="chart-dot" cx="747.4" cy="77.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="747.4" cy="77.4" r="10" fill="transparent" data-alvo="ponto-boi-gordo-41" data-data="23/08/2026" data-preco="343,20"/>
-  <circle id="ponto-boi-gordo-42" class="chart-dot" cx="764.0" cy="77.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="764.0" cy="77.4" r="10" fill="transparent" data-alvo="ponto-boi-gordo-42" data-data="24/08/2026" data-preco="343,20"/>
-  <circle id="ponto-boi-gordo-43" class="chart-dot" cx="780.6" cy="77.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="780.6" cy="77.4" r="10" fill="transparent" data-alvo="ponto-boi-gordo-43" data-data="25/08/2026" data-preco="343,20"/>
-  <circle id="ponto-boi-gordo-44" class="chart-dot" cx="797.1" cy="76.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="797.1" cy="76.2" r="10" fill="transparent" data-alvo="ponto-boi-gordo-44" data-data="26/08/2026" data-preco="343,35"/>
-  <circle id="ponto-boi-gordo-45" class="chart-dot" cx="813.7" cy="83.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="813.7" cy="83.2" r="10" fill="transparent" data-alvo="ponto-boi-gordo-45" data-data="27/08/2026" data-preco="342,50"/>
-  <circle id="ponto-boi-gordo-46" class="chart-dot" cx="830.3" cy="66.8" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="830.3" cy="66.8" r="10" fill="transparent" data-alvo="ponto-boi-gordo-46" data-data="28/08/2026" data-preco="344,50"/>
-  <circle id="ponto-boi-gordo-47" class="chart-dot" cx="846.9" cy="59.8" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="846.9" cy="59.8" r="10" fill="transparent" data-alvo="ponto-boi-gordo-47" data-data="29/08/2026" data-preco="345,35"/>
-  <circle id="ponto-boi-gordo-48" class="chart-dot" cx="863.4" cy="59.8" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="863.4" cy="59.8" r="10" fill="transparent" data-alvo="ponto-boi-gordo-48" data-data="30/08/2026" data-preco="345,35"/>
-  <circle id="ponto-boi-gordo-49" class="chart-dot" cx="880.0" cy="59.8" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="880.0" cy="59.8" r="10" fill="transparent" data-alvo="ponto-boi-gordo-49" data-data="31/08/2026" data-preco="345,35"/>
-  <circle cx="880.0" cy="59.8" r="4" fill="#4C7A1F"/>
-</svg>
-</div>
-<div class="chart-footer">
-  <span class="chart-footer-extremo">13/07/2026</span>
-  <span class="chart-readout-texto">31/08/2026 · R$ 345,35</span>
-  <span class="chart-footer-extremo">31/08/2026 · R$ 345,35</span>
-</div>
-<script>
-(function(){
-  var raiz = document.getElementById("grafico-boi-gordo");
-  if (!raiz) return;
-  var rodape = raiz.nextElementSibling;
-  var elTexto = rodape.querySelector(".chart-readout-texto");
-  var pontos = raiz.querySelectorAll(".chart-hit");
-  var ativo = null;
-  pontos.forEach(function(ponto){
-    function ativar(){
-      if (ativo) ativo.classList.remove("chart-dot-ativo");
-      var alvo = raiz.querySelector("#" + ponto.getAttribute("data-alvo"));
-      if (alvo) { alvo.classList.add("chart-dot-ativo"); ativo = alvo; }
-      elTexto.textContent = ponto.getAttribute("data-data") + " · R$ " + ponto.getAttribute("data-preco");
-    }
-    ponto.addEventListener("mouseenter", ativar);
-    ponto.addEventListener("touchstart", ativar, {passive: true});
-  });
-  raiz.addEventListener("mouseleave", function(){
-    if (ativo) { ativo.classList.remove("chart-dot-ativo"); ativo = null; }
-    elTexto.textContent = "31/08/2026 · R$ 345,35";
-  });
-})();
-</script>
+
 <!-- GRAFICO:END -->
     </div>
   </section>
@@ -344,31 +261,7 @@ Fonte: CEPEA/Esalq · dado de 28/08/2026
       </div>
     </div>
     <div><!-- NOTICIAS:START -->
-<article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/eventos/tempo-e-dinheiro-com-joao-batista-olivi/" target="_blank" rel="noopener">Tempo e Dinheiro - com João Batista Olivi</a></p>
-  <p class="news-summary">Este é o Tempo e Dinheiro, programa apresentado pelo jornalista João Batista Olivi e que conta com a participação de especialistas de diversos setores. Acompanhe as notícias sobre os bastidores do Congresso Nacional, com...</p>
-  <p class="news-source">Fonte: Notícias Agrícolas</p>
-</article>
-    <article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/boi/427048-boi-cepea-bezerro-se-valoriza-mais-que-boi-magro.html" target="_blank" rel="noopener">Boi27/08/2026 - 07:47Boi/Cepea: Bezerro se valoriza mais que boi magro</a></p>
-  <p class="news-summary">Os preços do bezerro e do boi magro avançam no mercado brasileiro neste ano. Segundo o Cepea, esse cenário é resultado da oferta mais ajustada de animais, com maior retenção de fêmeas, e da demanda consistente de recriad...</p>
-  <p class="news-source">Fonte: Notícias Agrícolas</p>
-</article>
-    <article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/boi/426969-abate-de-bovinos-cresce-1-3-no-segundo-trimestre-e-supera-10-7-milhoes-de-cabecas-aponta-ibge.html" target="_blank" rel="noopener">Boi25/08/2026 - 15:18Abate de bovinos cresce 1,3% no segundo trimestre e supera 10,7 milhões de cabeças, aponta IBGE</a></p>
-  <p class="news-summary">O abate de bovinos voltou a crescer no Brasil no segundo trimestre de 2026. De acordo com os primeiros resultados divulgados pelo Instituto Brasileiro de Geografia e Estatística (IBGE), foram abatidas10,72 milhões de cab...</p>
-  <p class="news-source">Fonte: Notícias Agrícolas</p>
-</article>
-    <article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/boi/426924-mercado-de-genetica-bovina-cresce-12-4-no-primeiro-semestre-e-supera-12-milhoes-de-doses-de-semen-comercializadas.html" target="_blank" rel="noopener">Boi25/08/2026 - 08:48Mercado de genética bovina cresce 12,4% no primeiro semestre e supera 12 milhões de doses de sêmen comercializadas</a></p>
-  <p class="news-summary">O mercado brasileiro de genética bovina registrou crescimento de 12,4% no primeiro semestre de 2026, com 12.329.148 doses de sêmen comercializadas no Brasil e no exterior. Os dados são do Index Asbia Sêmen 1º Semestre de...</p>
-  <p class="news-source">Fonte: Notícias Agrícolas</p>
-</article>
-    <article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/boi/426917-fronteira-dos-eua-reabre-para-gado-mexicano-mas-persistem-preocupacoes-com-parasita.html" target="_blank" rel="noopener">Boi24/08/2026 - 18:45Fronteira dos EUA reabre para gado mexicano, mas persistem preocupações com parasita</a></p>
-  <p class="news-summary">CIDADE DO MÉXICO/WASHINGTON, 24 Ago (Reuters) - O México está intensificando sua campanha contra a mosca que transmite um parasita que atinge os rebanhos da fronteira norte, onde foram detectados casos recentes, aumentan...</p>
-  <p class="news-source">Fonte: Notícias Agrícolas</p>
-</article>
+
 <!-- NOTICIAS:END -->
     </div>
   </section>
