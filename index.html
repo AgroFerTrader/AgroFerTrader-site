@@ -191,6 +191,16 @@
   .btn-primary{background:var(--gold);color:var(--ink);}
   .btn-ghost{border-color:var(--line-dark);color:var(--paper);}
 
+  .commodity-nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:28px;}
+  .commodity-nav-label{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);}
+  .commodity-switch{display:flex;gap:10px;flex-wrap:wrap;}
+  .commodity-switch a{
+    font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;
+    padding:8px 14px;border:1px solid var(--line-dark);border-radius:2px;text-decoration:none;
+    color:var(--paper);opacity:.75;transition:opacity .15s, border-color .15s, color .15s;
+  }
+  .commodity-switch a:hover, .commodity-switch a:focus-visible{opacity:1;border-color:var(--gold);color:var(--gold);}
+
   section{padding:64px 0;}
   .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:32px;flex-wrap:wrap;}
   .section-label{
@@ -207,10 +217,13 @@
     gap:1px;background:var(--line);border:1px solid var(--line);
   }
   .price-card{background:var(--paper);padding:22px 20px;}
+  .price-card-link{text-decoration:none;color:inherit;display:block;transition:background-color .15s;}
+  .price-card-link:hover, .price-card-link:focus-visible{background-color:var(--paper-dim);}
   .price-name{font-size:14px;font-weight:600;margin-bottom:10px;}
   .price-value{font-family:var(--mono);font-size:24px;font-weight:600;}
   .price-meta{font-size:12px;margin-top:8px;color:var(--ink);opacity:.65;}
   .price-var{font-family:var(--mono);font-size:13px;font-weight:600;margin-top:4px;display:inline-block;}
+  .price-link{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--gold);margin-top:12px;font-weight:600;}
 
   .explain{
     background:var(--paper-dim);
@@ -232,6 +245,8 @@
   }
   .futures-table td{padding:12px;border-bottom:1px solid var(--line);}
   .futures-table td.val{font-family:var(--mono);font-weight:600;}
+  .futures-table td a{text-decoration:none;border-bottom:1px dotted var(--leaf);}
+  .futures-table td a:hover{color:var(--leaf);}
 
   .news-item{padding:20px 0;border-bottom:1px solid var(--line);}
   .news-item:first-child{padding-top:0;}
@@ -279,29 +294,12 @@
 <header class="hero">
   <div class="ticker-strip" aria-label="Cotações em destaque">
     <div class="ticker-track"><!-- TICKER:START -->
-<span class="item">DÓLAR <b>R$ 5,2005</b> <span class="up">▲ 0.70%</span></span>
-      <span class="item">SOJA <b>R$ 159.76</b> <span class="up">▲ +3.04%</span></span>
-      <span class="item">MILHO <b>R$ 69.51</b> <span class="up">▲ 0.67%</span></span>
-      <span class="item">TRIGO <b>R$ 87,15</b> <span class="up">▲ 0.22%</span></span>
-      <span class="item">CAFÉ ARÁBICA <b>R$ 1728.61</b> <span class="down">▼ -0.81%</span></span>
-      <span class="item">BOI GORDO <b>R$ 345.35</b> <span class="up">▲ 0.25%</span></span>
-      <span class="item">ALGODÃO <b>R$ 429.05</b> <span class="down">▼ -0.07%</span></span>
-      <span class="item">AÇÚCAR CRISTAL <b>R$ 112.06</b> <span class="up">▲ 1.33%</span></span>
-      <span class="item">DÓLAR <b>R$ 5,2005</b> <span class="up">▲ 0.70%</span></span>
-      <span class="item">SOJA <b>R$ 159.76</b> <span class="up">▲ +3.04%</span></span>
-      <span class="item">MILHO <b>R$ 69.51</b> <span class="up">▲ 0.67%</span></span>
-      <span class="item">TRIGO <b>R$ 87,15</b> <span class="up">▲ 0.22%</span></span>
-      <span class="item">CAFÉ ARÁBICA <b>R$ 1728.61</b> <span class="down">▼ -0.81%</span></span>
-      <span class="item">BOI GORDO <b>R$ 345.35</b> <span class="up">▲ 0.25%</span></span>
-      <span class="item">ALGODÃO <b>R$ 429.05</b> <span class="down">▼ -0.07%</span></span>
-      <span class="item">AÇÚCAR CRISTAL <b>R$ 112.06</b> <span class="up">▲ 1.33%</span></span>
 <!-- TICKER:END -->
     </div>
   </div>
 
   <div class="hero-inner">
     <div class="eyebrow"><!-- EYEBROW:START -->
-Domingo, 30 de agosto de 2026 · fechamento do dia anterior
 <!-- EYEBROW:END --></div>
 
     <h1 class="headline">A safra de hoje, em números.</h1>
@@ -311,6 +309,12 @@ Domingo, 30 de agosto de 2026 · fechamento do dia anterior
     <div class="cta-row">
       <a href="#precos" class="btn btn-primary">Ver preços de hoje ↓</a>
       <a href="entenda.html" class="btn btn-ghost">Não entendo nada disso →</a>
+    </div>
+
+    <div class="commodity-nav" aria-label="Navegar por commodity">
+      <span class="commodity-nav-label">Ver por commodity:</span>
+      <div class="commodity-switch"><!-- COMMODITY_SWITCH:START -->
+<!-- COMMODITY_SWITCH:END --></div>
     </div>
   </div>
 </header>
@@ -324,53 +328,10 @@ Domingo, 30 de agosto de 2026 · fechamento do dia anterior
         <h2 id="titulo-precos">Preços agrícolas de hoje</h2>
       </div>
       <div class="updated"><!-- UPDATED:START -->
-Fonte: CEPEA/Esalq · dado de 28/08/2026
 <!-- UPDATED:END --></div>
     </div>
 
     <div class="price-grid" aria-label="Cotações agrícolas de hoje"><!-- PRICES:START -->
-<article class="price-card">
-  <div class="price-name">Soja</div>
-  <div class="price-value">R$ 159.76</div>
-  <div class="price-var up">▲ +3.04%</div>
-  <div class="price-meta">por saca de 60kg</div>
-</article>
-      <article class="price-card">
-  <div class="price-name">Milho</div>
-  <div class="price-value">R$ 69.51</div>
-  <div class="price-var up">▲ 0.67%</div>
-  <div class="price-meta">por saca de 60kg</div>
-</article>
-      <article class="price-card">
-  <div class="price-name">Trigo</div>
-  <div class="price-value">R$ 87,15</div>
-  <div class="price-var up">▲ 0.22%</div>
-  <div class="price-meta">por saca de 60kg</div>
-</article>
-      <article class="price-card">
-  <div class="price-name">Café Arábica</div>
-  <div class="price-value">R$ 1728.61</div>
-  <div class="price-var down">▼ -0.81%</div>
-  <div class="price-meta">por saca de 60kg</div>
-</article>
-      <article class="price-card">
-  <div class="price-name">Boi Gordo</div>
-  <div class="price-value">R$ 345.35</div>
-  <div class="price-var up">▲ 0.25%</div>
-  <div class="price-meta">por arroba</div>
-</article>
-      <article class="price-card">
-  <div class="price-name">Algodão</div>
-  <div class="price-value">R$ 429.05</div>
-  <div class="price-var down">▼ -0.07%</div>
-  <div class="price-meta">por saca de 60kg</div>
-</article>
-      <article class="price-card">
-  <div class="price-name">Açúcar Cristal</div>
-  <div class="price-value">R$ 112.06</div>
-  <div class="price-var up">▲ 1.33%</div>
-  <div class="price-meta">por saca de 60kg</div>
-</article>
 <!-- PRICES:END -->
     </div>
   </section>
@@ -384,9 +345,6 @@ Fonte: CEPEA/Esalq · dado de 28/08/2026
     </div>
 
     <div class="explain"><!-- EXPLAIN:START -->
-<p>Câmbio subiu discretamente hoje (+0.70%) - não é uma virada de tendência, mas pequenas altas como essa historicamente já dão um empurrão positivo ao preço doméstico de commodities de exportação.</p>
-      <p>Juros em 14.00% ao ano seguem em patamar alto - carregar estoque fica caro, o que empurra produtores a vender mais rápido, e o diferencial de juros atrai capital estrangeiro, valorizando o real. Ambos tendem a pesar contra o preço em reais das commodities de exportação.</p>
-      <p class="obs">Obs.: vale lembrar que essas são relações históricas, não regras fixas - fatores como clima, safra e demanda internacional podem se sobrepor facilmente ao efeito do câmbio ou dos juros.</p>
 <!-- EXPLAIN:END -->
     </div>
   </section>
@@ -410,11 +368,6 @@ Fonte: CEPEA/Esalq · dado de 28/08/2026
         <tr><th>Commodity</th><th>Contrato</th><th>Fechamento</th><th>Variação</th></tr>
       </thead>
       <tbody><!-- FUTURES:START -->
-<tr><td>Dólar</td><td>Setembro/26</td><td class="val">R$ 5,1885</td><td class="up">▲ 0.45%</td></tr>
-        <tr><td>Soja</td><td>Novembro/2026</td><td class="val">R$ 147,80 /sc</td><td class="up">▲ 2.08%</td></tr>
-        <tr><td>Milho</td><td>Setembro/2026</td><td class="val">R$ 71,45 /sc</td><td class="up">▲ 0.31%</td></tr>
-        <tr><td>Boi Gordo</td><td>Agosto/2026</td><td class="val">R$ 343,35 /@</td><td class="up">▲ 0.13%</td></tr>
-        <tr><td>Café Arábica</td><td>Setembro/2026</td><td class="val">R$ 2105,94 /sc</td><td class="up">▲ 0.75%</td></tr>
 <!-- FUTURES:END -->
       </tbody>
     </table>
@@ -429,26 +382,6 @@ Fonte: CEPEA/Esalq · dado de 28/08/2026
     </div>
 
 <!-- NEWS:START -->
-<article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/politica-agricola/427162-dolar-fecha-perto-dos-r520-apos-discurso-duro-de-warsh-sobre-inflacao-nos-eua.html" target="_blank" rel="noopener">28/08/2026 - 17:16Dólar fecha perto dos R$5,20 após discurso duro de Warsh sobre inflação nos EUA</a></p>
-  <p class="news-summary">SÃO PAULO, 28 Ago (Reuters) - O dólar fechou a sexta-feira em alta no Brasil após o chair do Federal Reserve, Kevin Warsh, afirmar durante o simpósio de Jackson Hole que a instituição terá &quot;trabalho a fazer&quot; caso a infla...</p>
-  <p class="news-source">Fonte: Notícias Agrícolas</p>
-</article>
-    <article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/cafe/427166-cecafe-revisa-para-cima-dados-parciais-da-exportacao-de-agosto-em-123-mi-sacas.html" target="_blank" rel="noopener">28/08/2026 - 16:55Cecafé revisa para cima dados parciais da exportação de agosto em 1,23 mi sacas</a></p>
-  <p class="news-summary">NOVA YORK, 28 Ago (Reuters) - O Conselho dos Exportadores de Café do Brasil (Cecafé) revisou para cima seus dados preliminares sobre as exportações de agosto em 1,23 milhão de sacas de 60 kg, após constatar uma falha téc...</p>
-  <p class="news-source">Fonte: Notícias Agrícolas</p>
-</article>
-    <article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/cafe/427149-exportacoes-mundiais-de-cafe-verde-aumentaram-08-em-junho-diz-oic.html" target="_blank" rel="noopener">28/08/2026 - 13:55Exportações mundiais de café verde aumentaram 0,8% em junho, diz OIC</a></p>
-  <p class="news-summary">LONDRES, 28 Ago (Reuters) - As exportações globais de café verde aumentaram 0,8% em junho em relação ao mesmo mês do ano anterior, atingindo 10,48 milhões de sacas de 60 kg, em meio a um forte aumento nos embarques da va...</p>
-  <p class="news-source">Fonte: Notícias Agrícolas</p>
-</article>
-    <article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/soja/427143-setembro-abre-nova-janela-para-a-soja-e-reforca-importancia-do-manejo-antecipado-da-ferrugem.html" target="_blank" rel="noopener">28/08/2026 - 12:52Setembro abre nova janela para a soja e reforça importância do manejo antecipado da ferrugem</a></p>
-  <p class="news-summary">Setembro marca uma virada importante no calendário da soja brasileira. Ao longo do mês, o vazio sanitário chega ao fim em diferentes regiões produtoras e a semeadura da safra 2026/27 começa a ser autorizada. Em Mato Gros...</p>
-  <p class="news-source">Fonte: Notícias Agrícolas</p>
-</article>
 <!-- NEWS:END -->
   </section>
 
