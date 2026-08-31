@@ -123,13 +123,17 @@
   .chart-wrap{position:relative;}
   .chart-wrap svg{width:100%;height:auto;display:block;}
   .chart-hit{cursor:pointer;}
-  .chart-tooltip{
-    position:absolute;pointer-events:none;top:0;
-    background:var(--ink);color:var(--paper);
-    font-family:var(--mono);font-size:12px;white-space:nowrap;
-    padding:6px 10px;border:1px solid var(--gold);border-radius:2px;
-    transform:translate(-50%,-130%);z-index:5;
+  .chart-dot{transition:transform .12s ease;transform-box:fill-box;transform-origin:center;}
+  .chart-dot.chart-dot-ativo{transform:scale(1.8);}
+  .chart-readout{
+    display:flex;justify-content:center;align-items:baseline;gap:10px;flex-wrap:wrap;
+    margin-top:20px;padding-top:18px;border-top:1px solid var(--line);
+    font-family:var(--mono);
   }
+  .chart-readout-label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--leaf);}
+  .chart-readout-divider{color:var(--line);opacity:.8;margin:0 2px;}
+  .chart-readout-data{font-size:15px;font-weight:600;color:var(--ink);}
+  .chart-readout-preco{font-size:20px;font-weight:600;color:var(--ink);}
   .chart-legend{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;opacity:.6;margin-top:8px;}
 
   .report-box{background:var(--paper-dim);border-left:3px solid var(--gold);padding:28px 32px;}
