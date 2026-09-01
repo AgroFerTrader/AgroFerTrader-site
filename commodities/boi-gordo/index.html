@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="../../assets/logo.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../assets/apple-touch-icon.png">
+<link rel="manifest" href="../../site.webmanifest">
 
 <title>Preço do Boi Gordo Hoje — Cotação Física, Futuro e Notícias | AgroFer Trader</title>
 <meta name="description" content="Cotação física e futura do boi gordo atualizadas diariamente (CEPEA/Esalq e B3), com histórico de preços e notícias específicas da pecuária de corte.">
@@ -33,6 +36,16 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Organization",
+      "@id": "https://agrofertrader.github.io/AgroFerTrader-site/#organization",
+      "name": "AgroFer Trader",
+      "url": "https://agrofertrader.github.io/AgroFerTrader-site/",
+      "logo": "https://agrofertrader.github.io/AgroFerTrader-site/assets/logo.png",
+      "sameAs": [
+        "https://www.instagram.com/agrofertrader/"
+      ]
+    },
+    {
       "@type": "BreadcrumbList",
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "AgroFer Trader", "item": "https://agrofertrader.github.io/AgroFerTrader-site/"},
@@ -45,11 +58,29 @@
       "url": "https://agrofertrader.github.io/AgroFerTrader-site/commodities/boi-gordo/",
       "name": "Preço do Boi Gordo Hoje — Cotação Física, Futuro e Notícias",
       "about": ["Boi Gordo", "Preço Boi Gordo hoje", "Cotação Boi Gordo"],
-      "inLanguage": "pt-BR"
+      "inLanguage": "pt-BR",
+      "publisher": {"@id": "https://agrofertrader.github.io/AgroFerTrader-site/#organization"}
     }
   ]
 }
 </script>
+<script type="application/ld+json"><!-- JSONLD_PRODUTO:START -->
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Boi Gordo",
+  "description": "Cotação física e futura do boi gordo atualizadas diariamente (CEPEA/Esalq e B3), com histórico de preços e notícias específicas da pecuária de corte.",
+  "url": "https://agrofertrader.github.io/AgroFerTrader-site/commodities/boi-gordo/",
+  "offers": {
+    "@type": "Offer",
+    "url": "https://agrofertrader.github.io/AgroFerTrader-site/commodities/boi-gordo/",
+    "priceCurrency": "BRL",
+    "price": "344.40",
+    "availability": "https://schema.org/InStock",
+    "priceValidUntil": "2026-09-01"
+  }
+}
+<!-- JSONLD_PRODUTO:END --></script>
 
 <style>
   :root{
@@ -260,7 +291,13 @@ Fonte: CEPEA/Esalq · dado de 31/08/2026
 <!-- PRECO_FISICO:END -->
     </div>
     <!-- COTACOES_REGIONAIS:START -->
-
+<div class="regional-label">Outras praças</div>
+<div class="price-grid-regional">
+<div class="price-card-regional"><div class="price-name">Barretos - SP</div><div class="price-value">R$ 338,00</div></div>
+<div class="price-card-regional"><div class="price-name">Norte - MT</div><div class="price-value">R$ 321,00</div></div>
+<div class="price-card-regional"><div class="price-name">Sul - BA</div><div class="price-value">R$ 326,00</div></div>
+<div class="price-card-regional"><div class="price-name">Goiânia - GO</div><div class="price-value">R$ 326,00</div></div>
+</div>
 <!-- COTACOES_REGIONAIS:END -->
   </section>
 
