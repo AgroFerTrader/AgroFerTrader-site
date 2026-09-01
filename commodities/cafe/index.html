@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="../../assets/logo.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../assets/apple-touch-icon.png">
+<link rel="manifest" href="../../site.webmanifest">
 
 <title>Preço do Café Hoje — Cotação Física, Futuro e Notícias | AgroFer Trader</title>
 <meta name="description" content="Cotação física e futura do café arábica atualizadas diariamente (CEPEA/Esalq e B3), com histórico de preços e notícias específicas do mercado de café.">
@@ -33,6 +36,16 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Organization",
+      "@id": "https://agrofertrader.github.io/AgroFerTrader-site/#organization",
+      "name": "AgroFer Trader",
+      "url": "https://agrofertrader.github.io/AgroFerTrader-site/",
+      "logo": "https://agrofertrader.github.io/AgroFerTrader-site/assets/logo.png",
+      "sameAs": [
+        "https://www.instagram.com/agrofertrader/"
+      ]
+    },
+    {
       "@type": "BreadcrumbList",
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "AgroFer Trader", "item": "https://agrofertrader.github.io/AgroFerTrader-site/"},
@@ -45,11 +58,29 @@
       "url": "https://agrofertrader.github.io/AgroFerTrader-site/commodities/cafe/",
       "name": "Preço do Café Hoje — Cotação Física, Futuro e Notícias",
       "about": ["Café Arábica", "Preço Café Arábica hoje", "Cotação Café Arábica"],
-      "inLanguage": "pt-BR"
+      "inLanguage": "pt-BR",
+      "publisher": {"@id": "https://agrofertrader.github.io/AgroFerTrader-site/#organization"}
     }
   ]
 }
 </script>
+<script type="application/ld+json"><!-- JSONLD_PRODUTO:START -->
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Café Arábica",
+  "description": "Cotação física e futura do café arábica atualizadas diariamente (CEPEA/Esalq e B3), com histórico de preços e notícias específicas do mercado de café.",
+  "url": "https://agrofertrader.github.io/AgroFerTrader-site/commodities/cafe/",
+  "offers": {
+    "@type": "Offer",
+    "url": "https://agrofertrader.github.io/AgroFerTrader-site/commodities/cafe/",
+    "priceCurrency": "BRL",
+    "price": "1748.44",
+    "availability": "https://schema.org/InStock",
+    "priceValidUntil": "2026-09-01"
+  }
+}
+<!-- JSONLD_PRODUTO:END --></script>
 
 <style>
   :root{
@@ -262,14 +293,10 @@ Fonte: CEPEA/Esalq · dado de 31/08/2026
     <!-- COTACOES_REGIONAIS:START -->
 <div class="regional-label">Outras praças</div>
 <div class="price-grid-regional">
-<div class="price-card-regional"><div class="price-name">Guaxupé - MG</div><div class="price-value">R$ 1.788,00</div></div>
-<div class="price-card-regional"><div class="price-name">Poços de Caldas - MG</div><div class="price-value">R$ 1.740,00</div></div>
-<div class="price-card-regional"><div class="price-name">Patrocínio - MG</div><div class="price-value">R$ 1.810,00</div></div>
-<div class="price-card-regional"><div class="price-name">Araguari - MG</div><div class="price-value">R$ 1.800,00</div></div>
-<div class="price-card-regional"><div class="price-name">Varginha - MG</div><div class="price-value">R$ 1.870,00</div></div>
-<div class="price-card-regional"><div class="price-name">Machado - MG</div><div class="price-value">R$ 1.800,00</div></div>
-<div class="price-card-regional"><div class="price-name">Campos Gerais - MG</div><div class="price-value">R$ 1.779,00</div></div>
-<div class="price-card-regional"><div class="price-name">Franca - SP</div><div class="price-value">R$ 1.770,00</div></div>
+<div class="price-card-regional"><div class="price-name">Minas Gerais (geral)</div><div class="price-value">R$ 1.793,86</div></div>
+<div class="price-card-regional"><div class="price-name">Sul de Minas</div><div class="price-value">R$ 1.789,40</div></div>
+<div class="price-card-regional"><div class="price-name">Cerrado Mineiro</div><div class="price-value">R$ 1.805,00</div></div>
+<div class="price-card-regional"><div class="price-name">Mogiana</div><div class="price-value">R$ 1.770,00</div></div>
 </div>
 <!-- COTACOES_REGIONAIS:END -->
   </section>
@@ -284,7 +311,7 @@ Fonte: CEPEA/Esalq · dado de 31/08/2026
     <table class="futures-table">
       <thead><tr><th>Commodity</th><th>Contrato</th><th>Fechamento</th><th>Variação</th></tr></thead>
       <tbody><!-- FUTURO:START -->
-<tr><td><a href="commodities/cafe/">Café Arábica</a></td><td>Setembro/2026</td><td class="val">R$ 2089,22 /sc</td><td class="down">▼ -0.43%</td></tr>
+<tr><td><a href="commodities/cafe/">Café Arábica</a></td><td>Setembro/2026</td><td class="val">R$ 2083,17 /sc</td><td class="up">▲ 0.19%</td></tr>
 <!-- FUTURO:END -->
       </tbody>
     </table>

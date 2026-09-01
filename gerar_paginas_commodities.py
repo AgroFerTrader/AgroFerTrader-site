@@ -59,7 +59,9 @@ COMMODITIES_PAGINAS = [
         "nome_fisica": "Soja",
         "nome_futuro": "Soja Futuro (B3)",
         "categoria_noticias": "soja",
-        "nome_secao_regional": "Soja",
+        # Praças regionais, em ordem de prioridade - ver
+        # buscar_cotacoes_regionais_da_pagina() logo abaixo.
+        "estados_regionais": ["MT", "PR", "MS", "RS"],
         "titulo_pagina": "Preço da Soja Hoje — Cotação Física, Futuro e Notícias",
         "meta_descricao": "Cotação física e futura da soja atualizadas diariamente (CEPEA/Esalq e B3), com histórico de preços e notícias específicas do mercado de soja.",
         "headline": "Soja: preço de hoje, futuro e histórico.",
@@ -71,7 +73,7 @@ COMMODITIES_PAGINAS = [
         "nome_fisica": "Milho",
         "nome_futuro": "Milho Futuro (B3)",
         "categoria_noticias": "milho",
-        "nome_secao_regional": "Milho",
+        "estados_regionais": ["MT", "PR", "GO", "MG"],
         "titulo_pagina": "Preço do Milho Hoje — Cotação Física, Futuro e Notícias",
         "meta_descricao": "Cotação física e futura do milho atualizadas diariamente (CEPEA/Esalq e B3), com histórico de preços e notícias específicas do mercado de milho.",
         "headline": "Milho: preço de hoje, futuro e histórico.",
@@ -83,7 +85,8 @@ COMMODITIES_PAGINAS = [
         "nome_fisica": "Café Arábica",
         "nome_futuro": "Café Arábica Futuro (B3)",
         "categoria_noticias": "cafe",
-        "nome_secao_regional": "Café",
+        # Café usa fonte municipal dedicada, agrupada por praça cafeeira
+        # (não por estado) - ver buscar_cotacoes_regionais_da_pagina().
         "titulo_pagina": "Preço do Café Hoje — Cotação Física, Futuro e Notícias",
         "meta_descricao": "Cotação física e futura do café arábica atualizadas diariamente (CEPEA/Esalq e B3), com histórico de preços e notícias específicas do mercado de café.",
         "headline": "Café: preço de hoje, futuro e histórico.",
@@ -95,13 +98,37 @@ COMMODITIES_PAGINAS = [
         "nome_fisica": "Boi Gordo",
         "nome_futuro": "Boi Gordo Futuro (B3)",
         "categoria_noticias": "boi",
-        "nome_secao_regional": "Boi Gordo",
+        "estados_regionais": ["SP", "MT", "BA", "GO"],
         "titulo_pagina": "Preço do Boi Gordo Hoje — Cotação Física, Futuro e Notícias",
         "meta_descricao": "Cotação física e futura do boi gordo atualizadas diariamente (CEPEA/Esalq e B3), com histórico de preços e notícias específicas da pecuária de corte.",
         "headline": "Boi Gordo: preço de hoje, futuro e histórico.",
         "subtitulo": "Cotação física (CEPEA/Esalq) e futura (B3) do boi gordo, atualizadas diariamente, com histórico de variação e notícias específicas da pecuária.",
     },
 ]
+
+
+# ---------------------------------------------------------------------------
+# 0) COTACOES REGIONAIS - cada commodity usa a fonte (Notícias
+#    Agrícolas/CEPEA) que de fato traz as praças pedidas para ela; café é
+#    o único caso agrupado por praça cafeeira (não por estado).
+# ---------------------------------------------------------------------------
+
+def buscar_cotacoes_regionais_da_pagina(config: dict) -> list:
+    if config["slug"] == "cafe":
+        return monitor.buscar_cotacoes_regionais_cafe_por_regiao()
+    if config["slug"] == "soja":
+        return monitor.buscar_cotacoes_regionais_mercado_fisico(
+            "soja/soja-mercado-fisico-sindicatos-e-cooperativas",
+            config["estados_regionais"],
+        )
+    if config["slug"] == "milho":
+        return monitor.buscar_cotacoes_regionais_mercado_fisico(
+            "milho/milho-mercado-fisico-sindicatos-e-cooperativas",
+            config["estados_regionais"],
+        )
+    if config["slug"] == "boi-gordo":
+        return monitor.buscar_cotacoes_regionais_boi(config["estados_regionais"])
+    return []
 
 
 # ---------------------------------------------------------------------------
@@ -147,6 +174,7 @@ def garantir_pagina_existe(config: dict) -> str:
         "{{COTACOES_REGIONAIS_INICIAL}}": "",
         "{{FUTURO_INICIAL}}": "",
         "{{GRAFICO_INICIAL}}": "",
+        "{{JSONLD_PRODUTO_INICIAL}}": "",
         "{{RELATORIO_SEMANAL_INICIAL}}": (
             '<p class="report-placeholder">'
             "Relatório semanal em preparação — em breve, uma análise comentada "
@@ -343,6 +371,45 @@ def montar_grafico_svg(serie: list, nome_exibicao: str, slug: str) -> str:
     return svg
 
 
+def montar_jsonld_produto(config: dict, fisica_filtrada: list) -> str:
+    """Monta o JSON-LD (Product + Offer) com o preço do dia da commodity,
+    para o marcador JSONLD_PRODUTO no <head> da página (script separado
+    do JSON-LD estático de Organization/BreadcrumbList/WebPage, que não
+    muda todo dia).
+
+    Só emite algo quando há um preço válido do dia; em erro ou fonte
+    indisponível, devolve string vazia (o <script> fica sem conteúdo,
+    e é simplesmente ignorado por quem lê a página) em vez de publicar
+    um preço desatualizado ou inventado.
+    """
+    if not fisica_filtrada or "erro" in fisica_filtrada[0]:
+        return ""
+
+    resultado = fisica_filtrada[0]
+    try:
+        preco_num = _preco_fisico_para_float(resultado["preco_reais"])
+    except (ValueError, TypeError):
+        return ""
+
+    url_pagina = f"https://agrofertrader.github.io/AgroFerTrader-site/commodities/{config['slug']}/"
+    dados_jsonld = {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": config["nome_exibicao"],
+        "description": config["meta_descricao"],
+        "url": url_pagina,
+        "offers": {
+            "@type": "Offer",
+            "url": url_pagina,
+            "priceCurrency": "BRL",
+            "price": f"{preco_num:.2f}",
+            "availability": "https://schema.org/InStock",
+            "priceValidUntil": datetime.now().strftime("%Y-%m-%d"),
+        },
+    }
+    return json.dumps(dados_jsonld, ensure_ascii=False, indent=2)
+
+
 # ---------------------------------------------------------------------------
 # 4) NOTICIAS POR CATEGORIA - mesmo padrao de scraping do
 #    monitor_agro_v9.buscar_noticias_agro(), mas na pagina de categoria
@@ -428,14 +495,7 @@ def atualizar_pagina_commodity(config: dict, dados: dict) -> None:
     historico = carregar_historico_fisico(config["nome_fisica"])
 
     try:
-        # O café tem uma fonte dedicada bem mais rica (preço por
-        # município/cooperativa - inclui Varginha e várias outras
-        # cidades de Minas Gerais todo dia); as demais usam a fonte
-        # genérica de "praças" da página agregada de mercado físico.
-        if config["slug"] == "cafe":
-            cotacoes_regionais = monitor.buscar_cotacoes_regionais_cafe(max_pracas=8)
-        else:
-            cotacoes_regionais = monitor.buscar_cotacoes_regionais(config["nome_secao_regional"])
+        cotacoes_regionais = buscar_cotacoes_regionais_da_pagina(config)
     except Exception as e:
         cotacoes_regionais = []
         print(f"Aviso: nao foi possivel buscar cotacoes regionais de {config['slug']} ({e})")
@@ -454,6 +514,7 @@ def atualizar_pagina_commodity(config: dict, dados: dict) -> None:
         "COTACOES_REGIONAIS": site.montar_cotacoes_regionais_html(cotacoes_regionais),
         "FUTURO": site.montar_futuros_html(futuro_filtrado),
         "GRAFICO": montar_grafico_svg(historico, config["nome_exibicao"], config["slug"]),
+        "JSONLD_PRODUTO": montar_jsonld_produto(config, fisica_filtrada),
         "NOTICIAS": site.montar_noticias_html(noticias_categoria),
     }
 
@@ -466,6 +527,35 @@ def atualizar_pagina_commodity(config: dict, dados: dict) -> None:
     print(f"Pagina atualizada: commodities/{config['slug']}/index.html")
 
 
+# ---------------------------------------------------------------------------
+# 6) SITEMAP - regenerado a cada rodada a partir das paginas fixas do
+#    site (home, entenda) + uma entrada por commodity em
+#    COMMODITIES_PAGINAS, para nunca ficar desatualizado quando uma nova
+#    commodity for adicionada aqui.
+# ---------------------------------------------------------------------------
+
+URL_BASE_SITE = "https://agrofertrader.github.io/AgroFerTrader-site"
+PAGINAS_FIXAS_SITEMAP = ["", "entenda.html"]
+
+
+def gerar_sitemap() -> None:
+    urls = [f"{URL_BASE_SITE}/{pagina}" for pagina in PAGINAS_FIXAS_SITEMAP]
+    urls += [f"{URL_BASE_SITE}/commodities/{c['slug']}/" for c in COMMODITIES_PAGINAS]
+
+    linhas_url = "\n\n".join(f"    <url>\n        <loc>{escape(u)}</loc>\n    </url>" for u in urls)
+    conteudo = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n\n'
+        f"{linhas_url}\n\n"
+        "</urlset>\n"
+    )
+
+    caminho = os.path.join(PASTA_SITE, "sitemap.xml")
+    with open(caminho, "w", encoding="utf-8") as f:
+        f.write(conteudo)
+    print("sitemap.xml atualizado")
+
+
 def gerar_paginas_commodities() -> None:
     print("Buscando os mesmos dados do dia usados na home (monitor_agro_v9)...")
     dados = monitor.coletar_dados()
@@ -474,6 +564,8 @@ def gerar_paginas_commodities() -> None:
 
     for config in COMMODITIES_PAGINAS:
         atualizar_pagina_commodity(config, dados)
+
+    gerar_sitemap()
 
     print("Todas as paginas de commodities foram atualizadas.")
 

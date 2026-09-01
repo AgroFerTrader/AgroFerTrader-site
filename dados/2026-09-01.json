@@ -1,12 +1,17 @@
 {
   "dolar": {
-    "data": "31/08/2026",
-    "valor": 5.1816,
-    "variacao_pct": -0.3634265935967594
+    "data": "01/09/2026",
+    "valor": 5.157,
+    "variacao_pct": -0.47475683186661255
   },
   "erro_dolar": null,
-  "dolar_tr": null,
-  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "dolar_tr": {
+    "compra": 5.1486,
+    "venda": 5.1494,
+    "variacao_pct": -0.677124,
+    "hora": "01/09/2026 16:05:59"
+  },
+  "erro_dolar_tr": null,
   "selic": {
     "data": "16/09/2026",
     "valor": 14.0
@@ -68,7 +73,7 @@
     {
       "nome": "Soja Futuro (B3)",
       "data": "contrato Janeiro/2027",
-      "preco_reais": "R$ 149,23 /sc 60 kg (≈ US$ 28,80 x R$ 5,1816)",
+      "preco_reais": "R$ 148,52 /sc 60 kg (≈ US$ 28,80 x R$ 5,1570)",
       "variacao_pct": "0.35",
       "valor_numerico": 28.8,
       "unidade": "US$/sc 60 kg"
@@ -92,22 +97,28 @@
     {
       "nome": "Café Arábica Futuro (B3)",
       "data": "contrato Setembro/2026",
-      "preco_reais": "R$ 2089,22 /sc 60 kg (≈ US$ 403,20 x R$ 5,1816)",
-      "variacao_pct": "-0.43",
-      "valor_numerico": 403.2,
+      "preco_reais": "R$ 2083,17 /sc 60 kg (≈ US$ 403,95 x R$ 5,1570)",
+      "variacao_pct": "0.19",
+      "valor_numerico": 403.95,
       "unidade": "US$/sc 60 kg"
     }
   ],
   "explicacoes_macro": [
     "",
     "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
-    "Queda suave do dólar (-0.36%): tende a esfriar discretamente o apetite por exportação, com leve efeito de baixa sobre o preço doméstico de commodities.",
-    "Selic em 14.00% ao ano - um patamar considerado alto: o crédito rural fica mais caro e carregar estoque também, o que costuma levar produtores a vender mais rápido para gerar caixa, pressionando o preço para baixo no curto prazo. Juros altos também tendem a atrair capital estrangeiro e valorizar o real, reforçando essa pressão via câmbio.",
-    "Obs.: nenhuma dessas relações é garantida - clima, oferta mundial e demanda por vezes pesam mais que câmbio e juros na formação do preço final."
+    "Câmbio recuou de forma moderada hoje (-0.47%) - efeito inverso do de uma alta: a mesma cotação internacional passa a render um pouco menos em reais.",
+    "Com a Selic em 14.00% ao ano, o custo de financiamento no campo segue elevado - isso tende a acelerar vendas (para gerar caixa) e, por atrair capital estrangeiro, também tende a fortalecer o real. Os dois efeitos juntos costumam pressionar o preço das commodities exportadas para baixo.",
+    "Obs.: essas são tendências gerais - clima, quebra de safra, estoques mundiais e demanda de outros países também afetam o preço e podem superar o efeito isolado do câmbio ou da Selic."
   ],
   "noticias": [
     {
-      "titulo": "Soja12:09StoneX eleva em 0,2% previsão de safra de soja do Brasil 2026/27 para 183,5 mi t",
+      "titulo": "Sucroenergético16:02Açúcar ganha força com expectativa de déficit global na safra 2026/27",
+      "link": "https://www.noticiasagricolas.com.br/noticias/sucroenergetico/427315-acucar-ganha-forca-com-expectativa-de-deficit-global-na-safra-2026-27.html",
+      "resumo": "O mercado internacional de açúcar fechou a terça-feira (1º) em forte alta, após a Organização Internacional do Açúcar (ISO) apontar para uma mudança no balanço global da commodity, com a expectativa de déficit na safra 2...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "01/09/2026 - 12:09StoneX eleva em 0,2% previsão de safra de soja do Brasil 2026/27 para 183,5 mi t",
       "link": "https://www.noticiasagricolas.com.br/noticias/soja/427300-stonex-eleva-em-02-previsao-de-safra-de-soja-do-brasil-202627-para-1835-mi-t.html",
       "resumo": "SÃO PAULO, 1 Set (Reuters) - A safra de soja do Brasil em 2026/27 foi estimada nesta terça-feira em 183,5 milhões de toneladas, leve alta de 0,2% em relação à previsão do mês anterior, alguns dias antes do início do plan...",
       "fonte": "Notícias Agrícolas"
@@ -116,24 +127,6 @@
       "titulo": "01/09/2026 - 11:57Produtora de Bataguassu eleva produção de hortaliças à escala comercial e diversifica renda",
       "link": "https://www.noticiasagricolas.com.br/noticias/hortifruti/427293-produtora-de-bataguassu-eleva-producao-de-hortalicas-a-escala-comercial-e-diversifica-renda.html",
       "resumo": "No Assentamento Santa Clara, em Bataguassu/MS, uma pequena horta que antes servia apenas para o consumo da família ganhou outra dimensão. A produtora rural Eliane de Lima Gonçalves transformou o cultivo de hortaliças em ...",
-      "fonte": "Notícias Agrícolas"
-    },
-    {
-      "titulo": "01/09/2026 - 10:10Dólar se reaproxima da estabilidade ante real com exterior no radar",
-      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/427269-dolar-se-reaproxima-da-estabilidade-ante-real-com-exterior-no-radar.html",
-      "resumo": "1 Set (Reuters) - O dólar se reaproximava da estabilidade ante o real nesta manhã de terça-feira após abrir em leve alta, enquanto no exterior a moeda norte-americana sobe ante boa parte das demais divisas, conforme novo...",
-      "fonte": "Notícias Agrícolas"
-    },
-    {
-      "titulo": "01/09/2026 - 10:03Justiça derruba liminar que suspendia imposto de exportação de petróleo",
-      "link": "https://www.noticiasagricolas.com.br/noticias/petroleo/427270-justica-derruba-liminar-que-suspendia-imposto-de-exportacao-de-petroleo.html",
-      "resumo": "BRASÍLIA, 1 Set (Reuters) - Decisão do Tribunal Regional Federal (TRF) da 1ª Região derrubou nesta terça-feira liminar que havia suspendido a cobrança do imposto de 12% sobre a exportação de petróleo, após o governo apre...",
-      "fonte": "Notícias Agrícolas"
-    },
-    {
-      "titulo": "01/09/2026 - 09:48Acordo petrolífero de Trump com Venezuela gera preocupações em alguns produtores, dizem fontes",
-      "link": "https://www.noticiasagricolas.com.br/noticias/petroleo/427271-acordo-petrolifero-de-trump-com-venezuela-gera-preocupacoes-em-alguns-produtores-dizem-fontes.html",
-      "resumo": "HOUSTON, 31 Ago (Reuters) - Um acordo sem precedentes para que os Estados Unidos obtenham acesso a um quinto das reservas de petróleo da Venezuela — e o papel central que um empresário venezuelano desempenhará — está ger...",
       "fonte": "Notícias Agrícolas"
     }
   ],
