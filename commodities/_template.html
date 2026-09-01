@@ -170,10 +170,9 @@
      margem negativa, sem precisar duplicar <main>. */
   .analise-secao{
     background:var(--ink);color:var(--ink-soft);
-    width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);
-    padding:64px 0;
+    padding:48px 40px;
+    border-radius:6px;
   }
-  .analise-secao .analise-inner{max-width:1080px;margin:0 auto;padding:0 24px;}
   .analise-secao .section-label{color:var(--gold);}
   .analise-secao h2{color:var(--paper);}
   .analise-artigo{max-width:70ch;}
@@ -211,6 +210,7 @@
     .price-grid{max-width:100%;}
     .price-card{padding:14px 12px;flex:1 1 45%;min-width:0;}
     .price-card-regional{padding:14px 12px;flex:1 1 45%;min-width:0;}
+    .analise-secao{padding:36px 22px;border-radius:0;}
     /* O rodape do grafico (data inicial / leitura atual / data final)
        usa 3 colunas de largura fixa (nowrap) pensadas para desktop; em
        telas estreitas isso nao cabe e "vaza" para fora do cartao. Aqui
@@ -327,7 +327,6 @@
   </section>
 
   <section aria-labelledby="titulo-analise" class="analise-secao">
-    <div class="analise-inner">
       <div class="section-head">
         <div>
           <div class="section-label">Análise</div>
@@ -361,7 +360,6 @@
       <p class="analise-rodape"><!-- ANALISE_FONTES:START -->
 {{ANALISE_FONTES_INICIAL}}
 <!-- ANALISE_FONTES:END --></p>
-    </div>
   </section>
 
   <section aria-labelledby="titulo-grafico">

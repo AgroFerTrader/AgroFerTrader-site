@@ -331,6 +331,42 @@ def _fmt_data_br(data_iso: str) -> str:
         return data_iso
 
 
+def _caminho_suave(pontos_xy: list) -> str:
+    """Converte uma lista de pontos (x, y) num path SVG suavizado (curvas
+    de Bézier cúbicas via Catmull-Rom uniforme), que passa EXATAMENTE
+    por cada ponto - ao contrário de uma linha poligonal reta entre
+    pontos consecutivos (o que antes deixava o gráfico com aparência
+    "serrilhada" em séries com muita oscilação dia a dia). É o mesmo
+    princípio usado pelo modo "spline" de bibliotecas de gráfico como
+    Highcharts/Chart.js.
+
+    Os pontos das extremidades são clampeados (repetidos) para o
+    cálculo dos vizinhos, o que é o tratamento de borda padrão dessa
+    técnica.
+    """
+    n = len(pontos_xy)
+    if n < 2:
+        return ""
+    if n == 2:
+        (x0, y0), (x1, y1) = pontos_xy
+        return f"M {x0:.1f},{y0:.1f} L {x1:.1f},{y1:.1f}"
+
+    def _p(i):
+        return pontos_xy[max(0, min(n - 1, i))]
+
+    x0, y0 = pontos_xy[0]
+    partes = [f"M {x0:.1f},{y0:.1f}"]
+    for i in range(n - 1):
+        p0x, p0y = _p(i - 1)
+        p1x, p1y = _p(i)
+        p2x, p2y = _p(i + 1)
+        p3x, p3y = _p(i + 2)
+        c1x, c1y = p1x + (p2x - p0x) / 6, p1y + (p2y - p0y) / 6
+        c2x, c2y = p2x - (p3x - p1x) / 6, p2y - (p3y - p1y) / 6
+        partes.append(f"C {c1x:.1f},{c1y:.1f} {c2x:.1f},{c2y:.1f} {p2x:.1f},{p2y:.1f}")
+    return " ".join(partes)
+
+
 def montar_grafico_svg(serie: list, nome_exibicao: str, slug: str) -> str:
     if len(serie) < 2:
         return (
@@ -364,7 +400,13 @@ def montar_grafico_svg(serie: list, nome_exibicao: str, slug: str) -> str:
         y = margem_topo + altura_util - ((valor - minimo) / faixa) * altura_util
         pontos.append((x, y, data_str, valor))
 
-    pontos_str = " ".join(f"{x:.1f},{y:.1f}" for x, y, _, _ in pontos)
+    caminho_linha = _caminho_suave([(x, y) for x, y, _, _ in pontos])
+    linha_base_y = margem_topo + altura_util
+    caminho_area = (
+        f"{caminho_linha} "
+        f"L {pontos[-1][0]:.1f},{linha_base_y:.1f} "
+        f"L {pontos[0][0]:.1f},{linha_base_y:.1f} Z"
+    )
 
     cor_linha = "#4C7A1F" if valores[-1] >= valores[0] else "#9C3B2E"
 
@@ -390,16 +432,24 @@ def montar_grafico_svg(serie: list, nome_exibicao: str, slug: str) -> str:
     pontos_svg_str = "\n  ".join(pontos_svg)
 
     id_unico = f"grafico-{slug}"
+    id_gradiente = f"grad-{slug}"
     data_final_fmt = escape(_fmt_data_br(data_final))
     preco_final_fmt = _fmt_brl(valores[-1])
 
     svg = f'''<div class="chart-wrap" id="{id_unico}">
 <svg viewBox="0 0 {largura} {altura}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Variação de preço de {escape(nome_exibicao)} no período">
+  <defs>
+    <linearGradient id="{id_gradiente}" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="{cor_linha}" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="{cor_linha}" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
   <line x1="{margem_esq}" y1="{margem_topo}" x2="{margem_esq}" y2="{margem_topo + altura_util}" stroke="rgba(11,60,31,0.14)" stroke-width="1"/>
   <line x1="{margem_esq}" y1="{margem_topo + altura_util}" x2="{largura - margem_dir}" y2="{margem_topo + altura_util}" stroke="rgba(11,60,31,0.14)" stroke-width="1"/>
   <text x="{margem_esq - 8}" y="{margem_topo + 4}" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ {_fmt_brl(maximo)}</text>
   <text x="{margem_esq - 8}" y="{margem_topo + altura_util}" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ {_fmt_brl(minimo)}</text>
-  <polyline points="{pontos_str}" fill="none" stroke="{cor_linha}" stroke-width="2.5"/>
+  <path d="{caminho_area}" fill="url(#{id_gradiente})" stroke="none"/>
+  <path d="{caminho_linha}" fill="none" stroke="{cor_linha}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
   {pontos_svg_str}
   <circle cx="{circulo_final_x:.1f}" cy="{circulo_final_y:.1f}" r="4" fill="{cor_linha}"/>
 </svg>
