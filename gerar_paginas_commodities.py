@@ -59,6 +59,7 @@ COMMODITIES_PAGINAS = [
         "nome_fisica": "Soja",
         "nome_futuro": "Soja Futuro (B3)",
         "categoria_noticias": "soja",
+        "nome_secao_regional": "Soja",
         "titulo_pagina": "Preço da Soja Hoje — Cotação Física, Futuro e Notícias",
         "meta_descricao": "Cotação física e futura da soja atualizadas diariamente (CEPEA/Esalq e B3), com histórico de preços e notícias específicas do mercado de soja.",
         "headline": "Soja: preço de hoje, futuro e histórico.",
@@ -70,6 +71,7 @@ COMMODITIES_PAGINAS = [
         "nome_fisica": "Milho",
         "nome_futuro": "Milho Futuro (B3)",
         "categoria_noticias": "milho",
+        "nome_secao_regional": "Milho",
         "titulo_pagina": "Preço do Milho Hoje — Cotação Física, Futuro e Notícias",
         "meta_descricao": "Cotação física e futura do milho atualizadas diariamente (CEPEA/Esalq e B3), com histórico de preços e notícias específicas do mercado de milho.",
         "headline": "Milho: preço de hoje, futuro e histórico.",
@@ -81,6 +83,7 @@ COMMODITIES_PAGINAS = [
         "nome_fisica": "Café Arábica",
         "nome_futuro": "Café Arábica Futuro (B3)",
         "categoria_noticias": "cafe",
+        "nome_secao_regional": "Café",
         "titulo_pagina": "Preço do Café Hoje — Cotação Física, Futuro e Notícias",
         "meta_descricao": "Cotação física e futura do café arábica atualizadas diariamente (CEPEA/Esalq e B3), com histórico de preços e notícias específicas do mercado de café.",
         "headline": "Café: preço de hoje, futuro e histórico.",
@@ -92,6 +95,7 @@ COMMODITIES_PAGINAS = [
         "nome_fisica": "Boi Gordo",
         "nome_futuro": "Boi Gordo Futuro (B3)",
         "categoria_noticias": "boi",
+        "nome_secao_regional": "Boi Gordo",
         "titulo_pagina": "Preço do Boi Gordo Hoje — Cotação Física, Futuro e Notícias",
         "meta_descricao": "Cotação física e futura do boi gordo atualizadas diariamente (CEPEA/Esalq e B3), com histórico de preços e notícias específicas da pecuária de corte.",
         "headline": "Boi Gordo: preço de hoje, futuro e histórico.",
@@ -140,6 +144,7 @@ def garantir_pagina_existe(config: dict) -> str:
         "{{EYEBROW_INICIAL}}": "",
         "{{UPDATED_INICIAL}}": "",
         "{{PRECO_FISICO_INICIAL}}": "",
+        "{{COTACOES_REGIONAIS_INICIAL}}": "",
         "{{FUTURO_INICIAL}}": "",
         "{{GRAFICO_INICIAL}}": "",
         "{{RELATORIO_SEMANAL_INICIAL}}": (
@@ -422,13 +427,24 @@ def atualizar_pagina_commodity(config: dict, dados: dict) -> None:
 
     historico = carregar_historico_fisico(config["nome_fisica"])
 
+    try:
+        cotacoes_regionais = monitor.buscar_cotacoes_regionais(config["nome_secao_regional"])
+    except Exception as e:
+        cotacoes_regionais = []
+        print(f"Aviso: nao foi possivel buscar cotacoes regionais de {config['slug']} ({e})")
+
     with open(caminho_pagina, encoding="utf-8") as f:
         html = f.read()
 
     substituicoes = {
         "EYEBROW": site.montar_eyebrow(),
         "UPDATED": site.montar_updated(dados),
-        "PRECO_FISICO": site.montar_precos_html(fisica_filtrada),
+        # com_links=False: esse cartao de preco ja esta na propria pagina
+        # de detalhes da commodity, entao um link "Ver detalhes" apontando
+        # de volta pra "commodities/{slug}/" (relativo à raiz do site, como
+        # e usado na home) resolveria errado a partir daqui e cairia num 404.
+        "PRECO_FISICO": site.montar_precos_html(fisica_filtrada, com_links=False),
+        "COTACOES_REGIONAIS": site.montar_cotacoes_regionais_html(cotacoes_regionais),
         "FUTURO": site.montar_futuros_html(futuro_filtrado),
         "GRAFICO": montar_grafico_svg(historico, config["nome_exibicao"], config["slug"]),
         "NOTICIAS": site.montar_noticias_html(noticias_categoria),
