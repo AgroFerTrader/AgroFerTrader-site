@@ -188,6 +188,7 @@
   .analise-corpo p{margin:0 0 12px;}
   .analise-corpo p:last-child{margin-bottom:0;}
   .analise-placeholder{font-size:14px;opacity:.65;font-style:italic;}
+  .analise-rodape{font-size:12.5px;color:var(--ink);opacity:.6;font-family:var(--mono);margin:14px 2px 0;}
 
   .chart-legenda{font-size:15.5px;margin:0 0 18px;max-width:70ch;}
 
@@ -331,7 +332,7 @@ Fonte: CEPEA/Esalq · dado de 31/08/2026
     <table class="futures-table">
       <thead><tr><th>Commodity</th><th>Contrato</th><th>Fechamento</th><th>Variação</th></tr></thead>
       <tbody><!-- FUTURO:START -->
-<tr><td><a href="commodities/milho/">Milho</a></td><td>Setembro/2026</td><td class="val">R$ 71,05 /sc</td><td class="down">▼ -0.63%</td></tr>
+<tr><td><a href="commodities/milho/">Milho</a></td><td>Setembro/2026</td><td class="val">R$ 72,24 /sc</td><td class="up">▲ 1.67%</td></tr>
 <!-- FUTURO:END -->
       </tbody>
     </table>
@@ -363,18 +364,18 @@ Fonte: CEPEA/Esalq · dado de 31/08/2026
 <p class="analise-placeholder">Em preparação — em breve, a reação de preço, volume e comportamento dos players observada na semana.</p>
 <!-- ANALISE_CONSEQUENCIAS:END --></div>
       </article>
-      <article class="analise-campo">
+      <!-- ANALISE_IMPACTO_B2B:START -->
+<article class="analise-campo">
         <h3>Impacto B2B</h3>
-        <div class="analise-corpo"><!-- ANALISE_IMPACTO_B2B:START -->
-<p class="analise-placeholder">Em preparação — em breve, o que muda para quem compra e vende em grande volume, indústria e trading.</p>
-<!-- ANALISE_IMPACTO_B2B:END --></div>
+        <div class="analise-corpo"><p class="analise-placeholder">Em preparação — em breve, o que muda para quem compra e vende em grande volume, indústria e trading (quando as fontes cobrirem esse ângulo).</p></div>
       </article>
-      <article class="analise-campo">
+<!-- ANALISE_IMPACTO_B2B:END -->
+      <!-- ANALISE_IMPACTO_B2C:START -->
+<article class="analise-campo">
         <h3>Impacto B2C</h3>
-        <div class="analise-corpo"><!-- ANALISE_IMPACTO_B2C:START -->
-<p class="analise-placeholder">Em preparação — em breve, o que muda para o produtor menor e o consumidor final, quando aplicável.</p>
-<!-- ANALISE_IMPACTO_B2C:END --></div>
+        <div class="analise-corpo"><p class="analise-placeholder">Em preparação — em breve, o que muda para o produtor menor e o consumidor final (quando as fontes cobrirem esse ângulo).</p></div>
       </article>
+<!-- ANALISE_IMPACTO_B2C:END -->
       <article class="analise-campo">
         <h3>O que observar</h3>
         <div class="analise-corpo"><!-- ANALISE_O_QUE_OBSERVAR:START -->
@@ -382,6 +383,9 @@ Fonte: CEPEA/Esalq · dado de 31/08/2026
 <!-- ANALISE_O_QUE_OBSERVAR:END --></div>
       </article>
     </div>
+    <p class="analise-rodape"><!-- ANALISE_FONTES:START -->
+
+<!-- ANALISE_FONTES:END --></p>
   </section>
 
   <section aria-labelledby="titulo-grafico">
