@@ -1579,7 +1579,7 @@ def gerar_email_html(
     return html
 
 
-def enviar_email(resumo: str, html: str | None = None, assunto: str | None = None) -> None:
+def enviar_email(resumo: str, html: str | None = None) -> None:
     """
     Envia o resumo por e-mail via SMTP, em HTML (com fallback em texto
     puro para clientes de e-mail antigos que não renderizam HTML).
@@ -1633,7 +1633,7 @@ def enviar_email(resumo: str, html: str | None = None, assunto: str | None = Non
         return
 
     mensagem = EmailMessage()
-    mensagem["Subject"] = assunto or f"Monitor Agro - Resumo diário {datetime.now().strftime('%d/%m/%Y')}"
+    mensagem["Subject"] = f"Monitor Agro - Resumo diário {datetime.now().strftime('%d/%m/%Y')}"
     mensagem["From"] = usuario
     mensagem["To"] = destinatarios
     mensagem.set_content(resumo)  # versão texto puro (fallback)

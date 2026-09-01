@@ -2,45 +2,37 @@
 """
 Gerar Analise Semanal - AgroFer Trader
 ========================================
-Gera o bloco "Analise da Semana" (os 6 campos: O que aconteceu, Por que
-aconteceu, Consequencias no mercado, Impacto B2B, Impacto B2C, O que
-observar) de cada pagina de commodity, a partir de materias reais
-publicadas na ultima semana no Notícias Agrícolas.
+Ferramenta de apoio pro "Bloco de Analise da Semana" de cada pagina de
+commodity - NAO e um processo automatizado. O fluxo e:
 
-PREMISSA CENTRAL: este script NAO cria opiniao ou analise propria. Ele
-consolida e reorganiza o que as proprias fontes ja noticiaram na
-semana, com atribuicao clara a cada uma. A unica excecao controlada sao
-os campos Impacto B2B/Impacto B2C: quando as fontes nao cobrirem esse
-angulo, uma leitura de mercado pode ser proposta com base em
-conhecimento geral (nunca inventando fato/numero), mas SEMPRE rotulada
-"(Leitura da AgroFer Trader)" para nao ser confundida com reportagem -
-e so quando houver confianca razoavel; sem confianca, o campo fica de
-fora da pagina (nao aparece card nenhum), em vez de mostrar algo vago.
+  1. Este script coleta o material bruto da semana (materias completas,
+     com data e fonte) direto do Notícias Agrícolas, pra uma
+     commodity.
+  2. Voce e o Claude leem esse material juntos, numa conversa, e
+     discutem o que aconteceu, por que, consequencias, impacto
+     B2B/B2C e o que observar - SEMPRE com atribuicao clara a fonte de
+     cada fato, nunca inventando nada. So os campos Impacto B2B/B2C
+     podem trazer uma leitura de mercado sem fonte direta, e so quando
+     houver confianca razoavel - nesse caso, marcada
+     "(Leitura da AgroFer Trader)"; sem confianca nem cobertura, o
+     campo fica de fora da pagina.
+  3. Depois de fechado o texto, as funcoes de escrita deste modulo
+     (atualizar_analise_semanal_pagina) gravam o resultado nos
+     marcadores da pagina, e o commit/PR seguem o mesmo fluxo manual
+     dos outros blocos deste projeto (branch propria, PR pra revisao,
+     nunca commit direto na main).
 
-Como a sintese exige interpretar texto (juntar fatos, separar causas,
-notar divergencia entre fontes) - trabalho que um script determinístico
-nao faz sozinho -, este modulo chama a API da Claude (Anthropic) para
-essa etapa. O scraping em si (coletar as materias) e puro Python, sem
-IA.
+Este modulo NAO chama nenhuma API de IA sozinho e NAO roda via GitHub
+Actions - e uma ferramenta de linha de comando pra uso manual, numa
+sessao de trabalho.
 
-NAO PUBLICA nada direto no site ao vivo: escreve o resultado nas
-paginas commodities/<slug>/index.html de uma COPIA local do repositorio
-(o workflow do GitHub Actions que chama este script roda numa branch
-nova, commita e abre um Pull Request - nunca commita direto na main).
-Alguem (voce) revisa o PR e decide mergear ou pedir ajuste.
-
-Requisitos (alem dos do monitor_agro_v9.py): pip install anthropic
-Variavel de ambiente obrigatoria: ANTHROPIC_API_KEY
-
-Uso:
-    python gerar_analise_semanal.py
-    python gerar_analise_semanal.py --commodity cafe   (so uma, pra testar)
+Uso (so a coleta, pra ler e discutir):
+    python gerar_analise_semanal.py --commodity cafe
+    python gerar_analise_semanal.py --commodity cafe --dias 7
 """
 
-import json
-import os
+import argparse
 import re
-import sys
 from datetime import datetime, timedelta
 from html import escape
 
@@ -48,9 +40,6 @@ import requests
 
 import gerar_paginas_commodities as paginas
 import gerar_site as site
-import monitor_agro_v9 as monitor
-
-MODELO_CLAUDE = "claude-opus-5"
 
 CABECALHOS_HTTP = {
     "User-Agent": (
@@ -63,7 +52,8 @@ CABECALHOS_HTTP = {
 
 # ---------------------------------------------------------------------------
 # 1) COLETA - materias completas da ultima semana, com data real (nao so
-#    manchete + primeiro paragrafo, como o scraper diario de noticias).
+#    manchete + primeiro paragrafo, como o scraper diario de noticias
+#    usado na secao "Noticias" das paginas).
 # ---------------------------------------------------------------------------
 
 def _parse_data_hora_listagem(texto_hora: str) -> datetime | None:
@@ -99,11 +89,11 @@ def coletar_materias_semana(categoria: str, dias: int = 7, max_candidatos: int =
     gerar_paginas_commodities.buscar_noticias_por_categoria(), que traz
     so 5 manchetes com um paragrafo de resumo (usado na secao
     "Noticias" das paginas). Aqui o volume e a profundidade precisam
-    ser maiores, porque o texto completo e a materia-prima da sintese
-    feita pela IA.
+    ser maiores, porque e material de leitura pra discussao, nao so
+    exibicao.
 
-    A pagina de categoria mistem DOIS padroes de listagem diferentes
-    (confirmado inspecionando o HTML real) - os cards em destaque no
+    A pagina de categoria tem DOIS padroes de HTML diferentes
+    (confirmado inspecionando o HTML real): os cards em destaque no
     topo (<a><div class="destaques-noticias">...<span class="hora">
     ...<h2>) e a lista principal abaixo (<a><span class="hora">...
     <div><h2>) - mas em ambos o <a> e o ancestral comum mais proximo
@@ -178,138 +168,10 @@ def coletar_materias_semana(categoria: str, dias: int = 7, max_candidatos: int =
 
 
 # ---------------------------------------------------------------------------
-# 2) SINTESE - chamada a API da Claude para consolidar as materias da
-#    semana nos 6 campos do bloco de analise, com atribuicao.
-# ---------------------------------------------------------------------------
-
-INSTRUCOES_SINTESE = """Você é o processo editorial do AgroFer Trader, um site de \
-inteligência e análise de mercado agrícola. Toda semana, você recebe um \
-conjunto de matérias jornalísticas REAIS (título, data, fonte, texto \
-completo) publicadas na última semana sobre UMA commodity. Sua tarefa é \
-CONSOLIDAR e REORGANIZAR o que essas fontes já noticiaram - nunca criar \
-opinião ou análise própria além do que a regra 4 permite explicitamente.
-
-REGRAS OBRIGATÓRIAS:
-
-1. Cada frase nos campos "o_que_aconteceu", "por_que_aconteceu", \
-"consequencias" e "o_que_observar" deve vir DIRETAMENTE do conteúdo das \
-matérias fornecidas, reescrita com suas próprias palavras (nunca copiada \
-literalmente), com atribuição clara à fonte e, quando disponível, à data \
-(ex.: "segundo Notícias Agrícolas, 26/08"). NÃO invente causas, números \
-ou eventos que não estejam nas matérias.
-
-2. Se as fontes divergirem sobre a causa de um movimento, registre a \
-divergência explicitamente em vez de escolher uma versão só.
-
-3. Se não houver material suficiente nas matérias fornecidas para \
-preencher "o_que_aconteceu", "por_que_aconteceu", "consequencias" ou \
-"o_que_observar", o(s) parágrafo(s) desse campo deve(m) dizer isso \
-explicitamente (ex.: "Não houve cobertura suficiente das fontes sobre X \
-nesta semana") - nunca preencher com texto genérico ou vago. Esses 4 \
-campos NUNCA ficam com array vazio - sempre pelo menos um parágrafo,\
-mesmo que seja só para admitir a falta de cobertura.
-
-4. EXCEÇÃO específica para "impacto_b2b" e "impacto_b2c": se as \
-matérias não cobrirem esse ângulo, você TEM PERMISSÃO de escrever uma \
-leitura provável baseada no seu conhecimento geral de mercado - MAS \
-SOMENTE quando tiver confiança razoável na afirmação, e ela deve ser \
-CLARAMENTE marcada com o prefixo "(Leitura da AgroFer Trader)" em vez \
-de atribuída a uma fonte. Se você não tiver confiança suficiente NEM \
-cobertura das fontes, devolva um array VAZIO [] para esse campo - não \
-escreva nada, nem um placeholder. Um card vazio não aparece na página \
-(é o comportamento esperado, não um erro).
-
-5. "resumo_analista": 2-3 linhas, tom de manchete de analista, \
-resumindo o que aconteceu e por quê nesta semana - ainda baseado só no \
-que está nas matérias (mesma regra 1).
-
-6. "grafico_legenda_causa": uma frase curta (uma linha, sem ponto final \
-no início, começando com letra minúscula, ex.: "puxada pela realização \
-de lucros após a disparada de segunda-feira") complementando um dado de \
-variação percentual que já foi calculado separadamente - não repita o \
-número aqui, só a causa, com atribuição.
-
-7. "fontes_consultadas": liste os nomes das fontes (ex.: "Notícias \
-Agrícolas") efetivamente usadas para preencher os campos acima - não \
-liste fontes só mencionadas de passagem sem uso real no texto.
-
-8. "cobertura_suficiente": true se havia matérias suficientes para \
-produzir uma análise minimamente completa desta semana; false se as \
-matérias fornecidas eram claramente insuficientes (poucas ou \
-irrelevantes) para qualquer leitura confiável - nesse caso os campos \
-"o_que_aconteceu" etc. devem apenas registrar a falta de cobertura \
-(regra 3), sem forçar uma narrativa.
-
-FORMATO: cada campo de texto é uma lista de parágrafos em texto simples \
-(sem HTML, sem markdown), em português do Brasil. Um parágrafo por item \
-da lista."""
-
-SCHEMA_SINTESE = {
-    "type": "object",
-    "properties": {
-        "cobertura_suficiente": {"type": "boolean"},
-        "resumo_analista": {"type": "string"},
-        "o_que_aconteceu": {"type": "array", "items": {"type": "string"}, "minItems": 1},
-        "por_que_aconteceu": {"type": "array", "items": {"type": "string"}, "minItems": 1},
-        "consequencias": {"type": "array", "items": {"type": "string"}, "minItems": 1},
-        "impacto_b2b": {"type": "array", "items": {"type": "string"}},
-        "impacto_b2c": {"type": "array", "items": {"type": "string"}},
-        "o_que_observar": {"type": "array", "items": {"type": "string"}, "minItems": 1},
-        "grafico_legenda_causa": {"type": "string"},
-        "fontes_consultadas": {"type": "array", "items": {"type": "string"}},
-    },
-    "required": [
-        "cobertura_suficiente", "resumo_analista", "o_que_aconteceu",
-        "por_que_aconteceu", "consequencias", "impacto_b2b", "impacto_b2c",
-        "o_que_observar", "grafico_legenda_causa", "fontes_consultadas",
-    ],
-    "additionalProperties": False,
-}
-
-
-def _montar_prompt_materias(nome_exibicao: str, materias: list) -> str:
-    partes = [f"Commodity: {nome_exibicao}\n"]
-    for m in materias:
-        partes.append(
-            f"### {m['titulo']}\n"
-            f"Fonte: Notícias Agrícolas | Data: {m['data'].strftime('%d/%m/%Y %H:%M')} | "
-            f"Link: {m['link']}\n"
-            f"{m['corpo']}\n"
-        )
-    return "\n".join(partes)
-
-
-def sintetizar_analise_semanal(nome_exibicao: str, materias: list) -> dict | None:
-    """Chama a API da Claude para consolidar as materias da semana nos 6
-    campos do bloco de analise. Devolve None se nao houver materia
-    nenhuma (nesse caso nao vale a pena nem chamar a API)."""
-    if not materias:
-        return None
-
-    import anthropic
-
-    client = anthropic.Anthropic()
-    resposta = client.messages.create(
-        model=MODELO_CLAUDE,
-        max_tokens=8000,
-        system=INSTRUCOES_SINTESE,
-        messages=[{
-            "role": "user",
-            "content": _montar_prompt_materias(nome_exibicao, materias),
-        }],
-        output_config={
-            "effort": "high",
-            "format": {"type": "json_schema", "schema": SCHEMA_SINTESE},
-        },
-    )
-
-    texto = next(b.text for b in resposta.content if b.type == "text")
-    return json.loads(texto)
-
-
-# ---------------------------------------------------------------------------
-# 3) MONTAGEM HTML - converte o resultado estruturado da IA nos mesmos
-#    blocos HTML que os marcadores do template esperam.
+# 2) MONTAGEM HTML - converte o texto ja discutido/fechado (em conversa)
+#    nos mesmos blocos HTML que os marcadores do template esperam.
+#    Use estas funcoes manualmente depois de fechar o texto de cada
+#    campo - nao ha sintese automatica neste modulo.
 # ---------------------------------------------------------------------------
 
 def _paragrafos_html(paragrafos: list) -> str:
@@ -340,16 +202,27 @@ def montar_rodape_fontes(fontes: list, data_atualizacao: datetime) -> str:
     return f"Fontes consultadas nesta semana: {lista_fontes} · Atualizado em {data_fmt}"
 
 
-# ---------------------------------------------------------------------------
-# 4) ESCRITA - grava o resultado nos marcadores da pagina da commodity.
-#    Estes marcadores NAO fazem parte do dict `substituicoes` do
-#    gerador diario (gerar_paginas_commodities.py) - so este script os
-#    toca, uma vez por semana, e sempre numa branch/PR separada (nunca
-#    direto na pagina publicada).
-# ---------------------------------------------------------------------------
+def atualizar_analise_semanal_pagina(
+    slug: str,
+    resumo_analista: str,
+    o_que_aconteceu: list,
+    por_que_aconteceu: list,
+    consequencias: list,
+    impacto_b2b: list,
+    impacto_b2c: list,
+    o_que_observar: list,
+    fontes_consultadas: list,
+    grafico_legenda_causa: str = "",
+    data_atualizacao: datetime | None = None,
+) -> bool:
+    """Grava o texto ja fechado (em conversa) nos marcadores da pagina
+    commodities/<slug>/index.html. Cada parametro *_lista e uma lista
+    de paragrafos (texto simples, sem HTML); impacto_b2b/impacto_b2c
+    vazios fazem o card inteiro sumir da pagina."""
+    data_atualizacao = data_atualizacao or datetime.now()
+    caminho_pagina = f"{paginas.PASTA_COMMODITIES}/{slug}/index.html"
 
-def atualizar_analise_semanal_pagina(config: dict, sintese: dict, data_atualizacao: datetime) -> bool:
-    caminho_pagina = os.path.join(paginas.PASTA_COMMODITIES, config["slug"], "index.html")
+    import os
     if not os.path.exists(caminho_pagina):
         print(f"Aviso: {caminho_pagina} nao existe - rode gerar_paginas_commodities.py primeiro.")
         return False
@@ -358,17 +231,16 @@ def atualizar_analise_semanal_pagina(config: dict, sintese: dict, data_atualizac
         html = f.read()
 
     substituicoes = {
-        "RESUMO_ANALISTA": escape(sintese["resumo_analista"]),
-        "ANALISE_O_QUE_ACONTECEU": _paragrafos_html(sintese["o_que_aconteceu"]),
-        "ANALISE_POR_QUE_ACONTECEU": _paragrafos_html(sintese["por_que_aconteceu"]),
-        "ANALISE_CONSEQUENCIAS": _paragrafos_html(sintese["consequencias"]),
-        "ANALISE_IMPACTO_B2B": _campo_opcional_html("Impacto B2B", sintese["impacto_b2b"]),
-        "ANALISE_IMPACTO_B2C": _campo_opcional_html("Impacto B2C", sintese["impacto_b2c"]),
-        "ANALISE_O_QUE_OBSERVAR": _paragrafos_html(sintese["o_que_observar"]),
-        "ANALISE_FONTES": montar_rodape_fontes(sintese["fontes_consultadas"], data_atualizacao),
+        "RESUMO_ANALISTA": escape(resumo_analista),
+        "ANALISE_O_QUE_ACONTECEU": _paragrafos_html(o_que_aconteceu),
+        "ANALISE_POR_QUE_ACONTECEU": _paragrafos_html(por_que_aconteceu),
+        "ANALISE_CONSEQUENCIAS": _paragrafos_html(consequencias),
+        "ANALISE_IMPACTO_B2B": _campo_opcional_html("Impacto B2B", impacto_b2b),
+        "ANALISE_IMPACTO_B2C": _campo_opcional_html("Impacto B2C", impacto_b2c),
+        "ANALISE_O_QUE_OBSERVAR": _paragrafos_html(o_que_observar),
+        "ANALISE_FONTES": montar_rodape_fontes(fontes_consultadas, data_atualizacao),
         "GRAFICO_LEGENDA_CAUSA": (
-            f", {escape(sintese['grafico_legenda_causa'])}."
-            if sintese.get("grafico_legenda_causa") else ""
+            f", {escape(grafico_legenda_causa)}." if grafico_legenda_causa else ""
         ),
     }
 
@@ -378,61 +250,27 @@ def atualizar_analise_semanal_pagina(config: dict, sintese: dict, data_atualizac
     with open(caminho_pagina, "w", encoding="utf-8") as f:
         f.write(html)
 
-    print(f"Analise semanal escrita em commodities/{config['slug']}/index.html")
+    print(f"Analise semanal escrita em commodities/{slug}/index.html")
     return True
 
 
-# ---------------------------------------------------------------------------
-# 5) ORQUESTRACAO
-# ---------------------------------------------------------------------------
-
-def gerar_analise_semanal(slugs: list | None = None) -> list:
-    """Roda o pipeline completo (coleta -> sintese -> escrita) para as
-    commodities pedidas (todas, se slugs vier None). Devolve a lista dos
-    slugs que de fato tiveram a pagina atualizada, para o workflow do
-    GitHub Actions decidir se vale a pena commitar/abrir PR."""
-    agora = datetime.now()
-    atualizados = []
-
-    for config in paginas.COMMODITIES_PAGINAS:
-        if slugs and config["slug"] not in slugs:
-            continue
-
-        print(f"=== {config['nome_exibicao']} ===")
-        try:
-            materias = coletar_materias_semana(config["categoria_noticias"])
-        except Exception as e:
-            print(f"Aviso: falha ao coletar materias de {config['slug']} ({e})")
-            continue
-
-        print(f"{len(materias)} materia(s) da ultima semana encontrada(s).")
-        if not materias:
-            print("Sem materias suficientes - pulando esta commodity.")
-            continue
-
-        try:
-            sintese = sintetizar_analise_semanal(config["nome_exibicao"], materias)
-        except Exception as e:
-            print(f"Aviso: falha ao sintetizar analise de {config['slug']} ({e})")
-            continue
-
-        if sintese is None:
-            continue
-
-        if atualizar_analise_semanal_pagina(config, sintese, agora):
-            atualizados.append(config["slug"])
-
-    return atualizados
-
-
 if __name__ == "__main__":
-    filtro = None
-    if "--commodity" in sys.argv:
-        filtro = [sys.argv[sys.argv.index("--commodity") + 1]]
+    parser = argparse.ArgumentParser(
+        description="Coleta as materias da ultima semana de uma commodity, pra leitura/discussao manual."
+    )
+    parser.add_argument("--commodity", required=True, help="slug da commodity (soja, milho, cafe, boi-gordo)")
+    parser.add_argument("--dias", type=int, default=7, help="janela de dias pra tras (padrao: 7)")
+    args = parser.parse_args()
 
-    slugs_atualizados = gerar_analise_semanal(filtro)
+    config = next((c for c in paginas.COMMODITIES_PAGINAS if c["slug"] == args.commodity), None)
+    if config is None:
+        slugs_validos = ", ".join(c["slug"] for c in paginas.COMMODITIES_PAGINAS)
+        raise SystemExit(f"Commodity '{args.commodity}' nao encontrada. Opcoes: {slugs_validos}")
 
-    if slugs_atualizados:
-        print(f"\nConcluido. Paginas atualizadas: {', '.join(slugs_atualizados)}")
-    else:
-        print("\nNenhuma pagina foi atualizada nesta rodada.")
+    materias = coletar_materias_semana(config["categoria_noticias"], dias=args.dias)
+    print(f"=== {config['nome_exibicao']} - {len(materias)} materia(s) nos ultimos {args.dias} dias ===\n")
+    for m in materias:
+        print(f"### {m['titulo']}")
+        print(f"Data: {m['data'].strftime('%d/%m/%Y %H:%M')} | Fonte: Notícias Agrícolas | Link: {m['link']}")
+        print(m["corpo"])
+        print()
