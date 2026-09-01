@@ -1,0 +1,135 @@
+{
+  "dolar": {
+    "data": "31/08/2026",
+    "valor": 5.1816,
+    "variacao_pct": -0.3634265935967594
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "16/09/2026",
+    "valor": 14.0
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "31/08/2026",
+      "preco_reais": "159.44",
+      "variacao_pct": "-0.20"
+    },
+    {
+      "nome": "Milho",
+      "data": "31/08/2026",
+      "preco_reais": "70.23",
+      "variacao_pct": "1.04"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "31/08/2026",
+      "preco_reais": "87,38",
+      "variacao_pct": "0.27"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "31/08/2026",
+      "preco_reais": "1748.44",
+      "variacao_pct": "1.15"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "31/08/2026",
+      "preco_reais": "344.4",
+      "variacao_pct": "-0.28"
+    },
+    {
+      "nome": "Algodão",
+      "data": "31/08/2026",
+      "preco_reais": "436.48",
+      "variacao_pct": "1.73"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "31/08/2026",
+      "preco_reais": "113.75",
+      "variacao_pct": "1.51"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Setembro/26",
+      "preco_reais": "5,1820 R$/US$",
+      "variacao_pct": "-0.51",
+      "valor_numerico": 5.182,
+      "unidade": "R$/US$"
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Janeiro/2027",
+      "preco_reais": "R$ 149,23 /sc 60 kg (≈ US$ 28,80 x R$ 5,1816)",
+      "variacao_pct": "0.35",
+      "valor_numerico": 28.8,
+      "unidade": "US$/sc 60 kg"
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "71,05 R$/sc 60 kg",
+      "variacao_pct": "-0.63",
+      "valor_numerico": 71.05,
+      "unidade": "R$/sc 60 kg"
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "357,65 R$/@",
+      "variacao_pct": "-0.28",
+      "valor_numerico": 357.65,
+      "unidade": "R$/@"
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 2089,22 /sc 60 kg (≈ US$ 403,20 x R$ 5,1816)",
+      "variacao_pct": "-0.43",
+      "valor_numerico": 403.2,
+      "unidade": "US$/sc 60 kg"
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Dólar em leve queda (-0.36%): o real um pouco mais valorizado tende a reduzir de forma discreta o incentivo à exportação, pressionando levemente o preço interno de commodities cotadas em dólar.",
+    "Com a Selic em 14.00% ao ano, o custo de financiamento no campo segue elevado - isso tende a acelerar vendas (para gerar caixa) e, por atrair capital estrangeiro, também tende a fortalecer o real. Os dois efeitos juntos costumam pressionar o preço das commodities exportadas para baixo.",
+    "Obs.: vale lembrar que essas são relações históricas, não regras fixas - fatores como clima, safra e demanda internacional podem se sobrepor facilmente ao efeito do câmbio ou dos juros."
+  ],
+  "noticias": [
+    {
+      "titulo": "Grãos18:14Imea prevê alta de 0,59% na área de milho de MT em 26/27; mantém safra de soja",
+      "link": "https://www.noticiasagricolas.com.br/noticias/graos/427243-imea-preve-alta-de-059-na-area-de-milho-de-mt-em-2627-mantem-safra-de-soja.html",
+      "resumo": "SÃO PAULO, 31 Ago (Reuters) - O Mato Grosso deverá ampliar em 0,59% a área plantada com milho na temporada 2026/27, para 7,48 milhões de hectares, com incertezas climáticas ligadas ao El Niño limitando o potencial de pla...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "31/08/2026 - 17:55Açúcar fecha em alta em Nova Iorque, com mercado atento a déficit global na safra 2026/27",
+      "link": "https://www.noticiasagricolas.com.br/noticias/sucroenergetico/427232-acucar-fecha-em-alta-em-nova-iorque-com-mercado-atento-a-deficit-global-na-safra-2026-27.html",
+      "resumo": "O mercado futuro do açúcar encerrou a sessão desta segunda-feira (31) em alta na Bolsa de Nova Iorque. O contrato com vencimento em outubro avançou 25 pontos, negociado a 17,81 centavos de dólar por libra-peso. Em Londre...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "31/08/2026 - 17:44Dólar tem baixa leve sob influência do noticiário político e do exterior",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/427237-dolar-tem-baixa-leve-sob-influencia-do-noticiario-politico-e-do-exterior.html",
+      "resumo": "SÃO PAULO, 31 Ago (Reuters) - O dólar fechou a segunda-feira com leve baixa no Brasil, influenciado pelo noticiário político, pelo avanço dos preços internacionais do petróleo e pelo recuo da moeda norte-americana ante o...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "31/08/2026 - 14:09MP das blusinhas: Abrapa defende valorização das fibras naturais no debate sobre importações",
+      "link": "https://www.noticiasagricolas.com.br/noticias/algodao/427219-mp-das-blusinhas-abrapa-defende-valorizacao-das-fibras-naturais-no-debate-sobre-importacoes.html",
+      "resumo": "A Associação Brasileira dos Produtores de Algodão (Abrapa) acompanha a reta final da tramitação da Medida Provisória nº 1.357/2026, conhecida como “MP das blusinhas”. A entidade defende que o debate no Congresso Nacional...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
