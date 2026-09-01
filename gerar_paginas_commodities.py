@@ -64,8 +64,7 @@ COMMODITIES_PAGINAS = [
         "estados_regionais": ["MT", "PR", "MS", "RS"],
         "titulo_pagina": "Preço da Soja Hoje — Cotação Física, Futuro e Notícias",
         "meta_descricao": "Cotação física e futura da soja atualizadas diariamente (CEPEA/Esalq e B3), com histórico de preços e notícias específicas do mercado de soja.",
-        "headline": "Soja: preço de hoje, futuro e histórico.",
-        "subtitulo": "Cotação física (CEPEA/Esalq) e futura (B3) da soja, atualizadas diariamente, com histórico de variação e notícias específicas do mercado.",
+        "headline": "Análise de Mercado — Soja",
     },
     {
         "slug": "milho",
@@ -76,8 +75,7 @@ COMMODITIES_PAGINAS = [
         "estados_regionais": ["MT", "PR", "GO", "MG"],
         "titulo_pagina": "Preço do Milho Hoje — Cotação Física, Futuro e Notícias",
         "meta_descricao": "Cotação física e futura do milho atualizadas diariamente (CEPEA/Esalq e B3), com histórico de preços e notícias específicas do mercado de milho.",
-        "headline": "Milho: preço de hoje, futuro e histórico.",
-        "subtitulo": "Cotação física (CEPEA/Esalq) e futura (B3) do milho, atualizadas diariamente, com histórico de variação e notícias específicas do mercado.",
+        "headline": "Análise de Mercado — Milho",
     },
     {
         "slug": "cafe",
@@ -89,8 +87,7 @@ COMMODITIES_PAGINAS = [
         # (não por estado) - ver buscar_cotacoes_regionais_da_pagina().
         "titulo_pagina": "Preço do Café Hoje — Cotação Física, Futuro e Notícias",
         "meta_descricao": "Cotação física e futura do café arábica atualizadas diariamente (CEPEA/Esalq e B3), com histórico de preços e notícias específicas do mercado de café.",
-        "headline": "Café: preço de hoje, futuro e histórico.",
-        "subtitulo": "Cotação física (CEPEA/Esalq) e futura (B3) do café arábica, atualizadas diariamente, com histórico de variação e notícias específicas do mercado.",
+        "headline": "Análise de Mercado — Café",
     },
     {
         "slug": "boi-gordo",
@@ -101,9 +98,53 @@ COMMODITIES_PAGINAS = [
         "estados_regionais": ["SP", "MT", "BA", "GO"],
         "titulo_pagina": "Preço do Boi Gordo Hoje — Cotação Física, Futuro e Notícias",
         "meta_descricao": "Cotação física e futura do boi gordo atualizadas diariamente (CEPEA/Esalq e B3), com histórico de preços e notícias específicas da pecuária de corte.",
-        "headline": "Boi Gordo: preço de hoje, futuro e histórico.",
-        "subtitulo": "Cotação física (CEPEA/Esalq) e futura (B3) do boi gordo, atualizadas diariamente, com histórico de variação e notícias específicas da pecuária.",
+        "headline": "Análise de Mercado — Boi Gordo",
     },
+]
+
+
+# ---------------------------------------------------------------------------
+# Os seis campos fixos do bloco "Analise da Semana" - mesmo marcador em
+# todas as 4 commodities, pra virar um padrao editorial reconhecivel.
+# Preenchidos manualmente por enquanto (por isso NAO entram no dict
+# `substituicoes` de atualizar_pagina_commodity: assim como
+# RELATORIO_SEMANAL antes deles, o script diario nunca sobrescreve o
+# que ja foi editado a mao - so usa o texto abaixo na primeira vez que
+# a pagina e criada).
+# ---------------------------------------------------------------------------
+CAMPOS_ANALISE_SEMANAL = [
+    (
+        "ANALISE_O_QUE_ACONTECEU",
+        "Em preparação — em breve, um resumo dos principais fatos da semana "
+        "para esta commodity, com atribuição às fontes (CEPEA, Notícias "
+        "Agrícolas e outras fontes aprovadas).",
+    ),
+    (
+        "ANALISE_POR_QUE_ACONTECEU",
+        "Em preparação — em breve, as causas apontadas pelas fontes para os "
+        "movimentos da semana (clima, câmbio, oferta e demanda, política, "
+        "logística).",
+    ),
+    (
+        "ANALISE_CONSEQUENCIAS",
+        "Em preparação — em breve, a reação de preço, volume e comportamento "
+        "dos players observada na semana.",
+    ),
+    (
+        "ANALISE_IMPACTO_B2B",
+        "Em preparação — em breve, o que muda para quem compra e vende em "
+        "grande volume, indústria e trading.",
+    ),
+    (
+        "ANALISE_IMPACTO_B2C",
+        "Em preparação — em breve, o que muda para o produtor menor e o "
+        "consumidor final, quando aplicável.",
+    ),
+    (
+        "ANALISE_O_QUE_OBSERVAR",
+        "Em preparação — em breve, os fatores-chave a observar na próxima "
+        "semana.",
+    ),
 ]
 
 
@@ -166,7 +207,6 @@ def garantir_pagina_existe(config: dict) -> str:
         "{{TITULO_PAGINA}}": config["titulo_pagina"],
         "{{META_DESCRICAO}}": config["meta_descricao"],
         "{{HEADLINE}}": config["headline"],
-        "{{SUBTITULO}}": config["subtitulo"],
         "{{SWITCH_LINKS}}": montar_links_switch(config["slug"]),
         "{{EYEBROW_INICIAL}}": "",
         "{{UPDATED_INICIAL}}": "",
@@ -174,15 +214,19 @@ def garantir_pagina_existe(config: dict) -> str:
         "{{COTACOES_REGIONAIS_INICIAL}}": "",
         "{{FUTURO_INICIAL}}": "",
         "{{GRAFICO_INICIAL}}": "",
+        "{{GRAFICO_LEGENDA_STAT_INICIAL}}": "",
+        "{{GRAFICO_LEGENDA_CAUSA_INICIAL}}": "",
         "{{JSONLD_PRODUTO_INICIAL}}": "",
-        "{{RELATORIO_SEMANAL_INICIAL}}": (
-            '<p class="report-placeholder">'
-            "Relatório semanal em preparação — em breve, uma análise comentada "
-            "sobre os principais movimentos desta commodity na última semana."
-            "</p>"
+        "{{RESUMO_ANALISTA_INICIAL}}": (
+            f"Análise em preparação — em breve, um resumo do que está "
+            f"movimentando o mercado de {config['nome_exibicao'].lower()} nesta semana."
         ),
         "{{NOTICIAS_INICIAL}}": "",
     }
+    for chave_campo, texto_placeholder in CAMPOS_ANALISE_SEMANAL:
+        substituicoes_estaticas[f"{{{{{chave_campo}_INICIAL}}}}"] = (
+            f'<p class="analise-placeholder">{texto_placeholder}</p>'
+        )
     for chave, valor in substituicoes_estaticas.items():
         html = html.replace(chave, valor)
 
@@ -371,6 +415,40 @@ def montar_grafico_svg(serie: list, nome_exibicao: str, slug: str) -> str:
     return svg
 
 
+def montar_legenda_grafico_stat(serie: list) -> str:
+    """Legenda analítica automática do gráfico: variação percentual nos
+    últimos ~5 pontos do histórico (aprox. uma semana de pregão),
+    calculada a partir dos mesmos dados que já alimentam o SVG. Só o
+    fato numérico - a causa ("puxada por X") é o marcador
+    GRAFICO_LEGENDA_CAUSA, ao lado, preenchido manualmente (não temos
+    como inferir causa de um número sozinho).
+
+    Atualizada a cada rodada do gerador (ao contrário de
+    GRAFICO_LEGENDA_CAUSA, que é editorial e não é tocada aqui).
+    """
+    if len(serie) < 2:
+        return ""
+
+    janela = min(5, len(serie) - 1)
+    valor_inicio = serie[-(janela + 1)][1]
+    valor_fim = serie[-1][1]
+    if valor_inicio == 0:
+        return ""
+
+    variacao_pct = ((valor_fim - valor_inicio) / valor_inicio) * 100
+    variacao_fmt = f"{abs(variacao_pct):.1f}".replace(".", ",")
+    periodo_texto = "na semana" if janela >= 4 else "no período exibido"
+
+    if variacao_pct > 0.1:
+        rotulo = f"Alta de {variacao_fmt}%"
+    elif variacao_pct < -0.1:
+        rotulo = f"Queda de {variacao_fmt}%"
+    else:
+        rotulo = "Estabilidade"
+
+    return escape(f"{rotulo} {periodo_texto}.")
+
+
 def montar_jsonld_produto(config: dict, fisica_filtrada: list) -> str:
     """Monta o JSON-LD (Product + Offer) com o preço do dia da commodity,
     para o marcador JSONLD_PRODUTO no <head> da página (script separado
@@ -514,6 +592,7 @@ def atualizar_pagina_commodity(config: dict, dados: dict) -> None:
         "COTACOES_REGIONAIS": site.montar_cotacoes_regionais_html(cotacoes_regionais),
         "FUTURO": site.montar_futuros_html(futuro_filtrado),
         "GRAFICO": montar_grafico_svg(historico, config["nome_exibicao"], config["slug"]),
+        "GRAFICO_LEGENDA_STAT": montar_legenda_grafico_stat(historico),
         "JSONLD_PRODUTO": montar_jsonld_produto(config, fisica_filtrada),
         "NOTICIAS": site.montar_noticias_html(noticias_categoria),
     }
