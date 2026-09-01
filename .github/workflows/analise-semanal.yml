@@ -1,8 +1,9 @@
 name: Análise semanal (rascunho para aprovação)
-# Roda toda sexta-feira às 20h no horário de Brasília (23h UTC) - depois
-# do fechamento da semana em Nova York e nas praças físicas brasileiras,
-# cobrindo a semana Seg-Sex inteira. Também pode ser disparado manualmente
-# pela aba "Actions" do GitHub.
+# Roda todo sábado às 12h no horário de Brasília (15h UTC - Brasil não
+# observa horário de verão, então o offset é sempre UTC-3), já com a
+# semana Seg-Sex inteira fechada (Nova York e praças físicas
+# brasileiras). Também pode ser disparado manualmente pela aba
+# "Actions" do GitHub.
 #
 # IMPORTANTE: este workflow NUNCA publica direto no site. Ele gera o
 # conteúdo (gerar_analise_semanal.py), commita numa branch nova e abre um
@@ -11,7 +12,7 @@ name: Análise semanal (rascunho para aprovação)
 # obrigatória às fontes, nunca inventar fato, etc.).
 on:
   schedule:
-    - cron: "0 23 * * 5"
+    - cron: "0 15 * * 6"
   workflow_dispatch: {}
 permissions:
   contents: write
