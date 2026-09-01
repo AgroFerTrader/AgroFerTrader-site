@@ -107,20 +107,20 @@
   h2{font-family:var(--display);font-weight:600;font-size:26px;margin:6px 0 0;}
   .updated{font-size:13px;color:var(--ink);opacity:.55;font-family:var(--mono);}
 
-  .price-grid{display:flex;gap:1px;background:var(--line);border:1px solid var(--line);max-width:280px;}
-  .price-card{background:var(--paper);padding:22px 20px;flex:1;}
-  .price-name{font-size:14px;font-weight:600;margin-bottom:10px;}
-  .price-value{font-family:var(--mono);font-size:24px;font-weight:600;}
-  .price-meta{font-size:12px;margin-top:8px;color:var(--ink);opacity:.65;}
-  .price-var{font-family:var(--mono);font-size:13px;font-weight:600;margin-top:4px;display:inline-block;}
+  .price-grid{display:flex;justify-content:center;background:var(--line);border:1px solid var(--line);max-width:380px;margin:0 auto;}
+  .price-card{background:var(--paper);padding:36px 32px;flex:1;text-align:center;}
+  .price-name{font-size:15px;font-weight:600;margin-bottom:16px;letter-spacing:.01em;}
+  .price-value{font-family:var(--mono);font-size:clamp(30px,7vw,40px);font-weight:600;line-height:1.1;}
+  .price-meta{font-size:13px;margin-top:12px;color:var(--ink);opacity:.65;}
+  .price-var{font-family:var(--mono);font-size:15px;font-weight:600;margin-top:8px;display:inline-block;}
   .up{color:var(--up) !important;}
   .down{color:var(--down) !important;}
 
-  .regional-label{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--leaf);opacity:.85;margin:22px 0 8px;}
-  .price-grid-regional{display:flex;flex-wrap:wrap;gap:1px;background:var(--line);border:1px solid var(--line);max-width:640px;}
-  .price-card-regional{background:var(--paper);padding:14px 16px;flex:1 1 140px;min-width:140px;}
-  .price-card-regional .price-name{font-size:12.5px;opacity:.7;margin-bottom:6px;}
-  .price-card-regional .price-value{font-family:var(--mono);font-size:16px;font-weight:600;}
+  .regional-label{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--leaf);opacity:.85;margin:28px 0 10px;text-align:center;}
+  .price-grid-regional{display:flex;flex-wrap:wrap;justify-content:center;gap:1px;background:var(--line);border:1px solid var(--line);max-width:640px;margin:0 auto;}
+  .price-card-regional{background:var(--paper);padding:16px 18px;flex:1 1 150px;min-width:150px;text-align:center;}
+  .price-card-regional .price-name{font-size:13px;font-weight:600;opacity:.75;margin-bottom:8px;}
+  .price-card-regional .price-value{font-family:var(--mono);font-size:18px;font-weight:600;}
 
   .futures-table{width:100%;border-collapse:collapse;font-size:14px;}
   .futures-table th{text-align:left;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--leaf);font-weight:600;padding:10px 12px;border-bottom:1px solid var(--line);}
@@ -161,6 +161,9 @@
 
   @media (max-width:640px){
     .section-head{flex-direction:column;align-items:flex-start;}
+    .price-grid{max-width:100%;}
+    .price-card{padding:28px 20px;}
+    .price-card-regional{padding:14px 12px;flex:1 1 45%;min-width:0;}
     .chart-footer{grid-template-columns:1fr;text-align:center;gap:6px;}
     .chart-footer-extremo, .chart-footer-extremo:last-child{text-align:center;white-space:normal;}
     .chart-readout-texto{font-size:17px;white-space:normal;}
@@ -220,7 +223,7 @@
   <div class="hero-inner">
     <div class="breadcrumb-hero"><a href="../../">AgroFer Trader</a><span aria-hidden="true"> / </span><span>Soja</span></div>
     <div class="eyebrow"><!-- EYEBROW:START -->
-Terça-feira, 01 de setembro de 2026 · fechamento do dia anterior
+Segunda-feira, 31 de agosto de 2026 · fechamento do dia anterior
 <!-- EYEBROW:END --></div>
 
     <h1 class="headline">Soja: preço de hoje, futuro e histórico.</h1>
@@ -244,26 +247,20 @@ Terça-feira, 01 de setembro de 2026 · fechamento do dia anterior
         <h2 id="titulo-fisico">Cotação de hoje</h2>
       </div>
       <div class="updated"><!-- UPDATED:START -->
-Fonte: CEPEA/Esalq · dado de 31/08/2026
+Fonte: CEPEA/Esalq · dado de 28/08/2026
 <!-- UPDATED:END --></div>
     </div>
     <div class="price-grid"><!-- PRECO_FISICO:START -->
 <article class="price-card">
   <div class="price-name">Soja</div>
-  <div class="price-value">R$ 159.44</div>
-  <div class="price-var down">▼ -0.20%</div>
+  <div class="price-value">R$ 159.76</div>
+  <div class="price-var up">▲ +3.04%</div>
   <div class="price-meta">por saca de 60kg</div>
 </article>
 <!-- PRECO_FISICO:END -->
     </div>
     <!-- COTACOES_REGIONAIS:START -->
-<div class="regional-label">Outras praças</div>
-<div class="price-grid-regional">
-<div class="price-card-regional"><div class="price-name">Soja Fob Abelardo Luz/Sc R$/60Kg</div><div class="price-value">R$ 15500</div></div>
-<div class="price-card-regional"><div class="price-name">Soja Cif Balsas/Ma R$/60Kg</div><div class="price-value">R$ 13900</div></div>
-<div class="price-card-regional"><div class="price-name">Soja Cif Barreiras/BA R$/60Kg</div><div class="price-value">R$ 14100</div></div>
-<div class="price-card-regional"><div class="price-name">Soja Cif Campo Grande/Ms R$/60Kg</div><div class="price-value">R$ 14000</div></div>
-</div>
+
 <!-- COTACOES_REGIONAIS:END -->
   </section>
 
@@ -277,7 +274,7 @@ Fonte: CEPEA/Esalq · dado de 31/08/2026
     <table class="futures-table">
       <thead><tr><th>Commodity</th><th>Contrato</th><th>Fechamento</th><th>Variação</th></tr></thead>
       <tbody><!-- FUTURO:START -->
-<tr><td><a href="commodities/soja/">Soja</a></td><td>Janeiro/2027</td><td class="val">R$ 28,80 /sc</td><td class="up">▲ 0.35%</td></tr>
+<tr><td><a href="commodities/soja/">Soja</a></td><td>Novembro/2026</td><td class="val">R$ 147,26 /sc</td><td class="up">▲ 2.08%</td></tr>
 <!-- FUTURO:END -->
       </tbody>
     </table>
@@ -297,65 +294,64 @@ Fonte: CEPEA/Esalq · dado de 31/08/2026
   <line x1="68" y1="230" x2="880" y2="230" stroke="rgba(11,60,31,0.14)" stroke-width="1"/>
   <text x="60" y="24" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ 159,76</text>
   <text x="60" y="230" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ 139,99</text>
-  <polyline points="68.0,225.2 84.2,220.8 100.5,223.2 116.7,230.0 133.0,223.7 149.2,219.1 165.4,219.1 181.7,219.1 197.9,201.7 214.2,185.6 230.4,172.0 246.6,150.5 262.9,141.0 279.1,141.0 295.4,141.0 311.6,147.6 327.8,146.1 344.1,157.6 360.3,173.7 376.6,177.7 392.8,177.7 409.0,177.7 425.3,187.0 441.5,186.1 457.8,177.7 474.0,177.0 490.2,175.2 506.5,175.2 522.7,175.2 539.0,177.2 555.2,178.0 571.4,162.5 587.7,156.2 603.9,134.8 620.2,134.8 636.4,134.8 652.6,122.2 668.9,109.2 685.1,106.1 701.4,74.5 717.6,84.6 733.8,84.6 750.1,84.6 766.3,82.7 782.6,84.4 798.8,75.1 815.0,70.0 831.3,20.0 847.5,20.0 863.8,20.0 880.0,23.4" fill="none" stroke="#4C7A1F" stroke-width="2.5"/>
+  <polyline points="68.0,225.2 84.6,220.8 101.1,223.2 117.7,230.0 134.3,223.7 150.9,219.1 167.4,219.1 184.0,219.1 200.6,201.7 217.1,185.6 233.7,172.0 250.3,150.5 266.9,141.0 283.4,141.0 300.0,141.0 316.6,147.6 333.1,146.1 349.7,157.6 366.3,173.7 382.9,177.7 399.4,177.7 416.0,177.7 432.6,187.0 449.1,186.1 465.7,177.7 482.3,177.0 498.9,175.2 515.4,175.2 532.0,175.2 548.6,177.2 565.1,178.0 581.7,162.5 598.3,156.2 614.9,134.8 631.4,134.8 648.0,134.8 664.6,122.2 681.1,109.2 697.7,106.1 714.3,74.5 730.9,84.6 747.4,84.6 764.0,84.6 780.6,82.7 797.1,84.4 813.7,75.1 830.3,70.0 846.9,20.0 863.4,20.0 880.0,20.0" fill="none" stroke="#4C7A1F" stroke-width="2.5"/>
   <circle id="ponto-soja-0" class="chart-dot" cx="68.0" cy="225.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="68.0" cy="225.2" r="10" fill="transparent" data-alvo="ponto-soja-0" data-data="13/07/2026" data-preco="140,44"/>
-  <circle id="ponto-soja-1" class="chart-dot" cx="84.2" cy="220.8" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="84.2" cy="220.8" r="10" fill="transparent" data-alvo="ponto-soja-1" data-data="14/07/2026" data-preco="140,86"/>
-  <circle id="ponto-soja-2" class="chart-dot" cx="100.5" cy="223.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="100.5" cy="223.2" r="10" fill="transparent" data-alvo="ponto-soja-2" data-data="15/07/2026" data-preco="140,63"/>
-  <circle id="ponto-soja-3" class="chart-dot" cx="116.7" cy="230.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="116.7" cy="230.0" r="10" fill="transparent" data-alvo="ponto-soja-3" data-data="16/07/2026" data-preco="139,99"/>
-  <circle id="ponto-soja-4" class="chart-dot" cx="133.0" cy="223.7" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="133.0" cy="223.7" r="10" fill="transparent" data-alvo="ponto-soja-4" data-data="17/07/2026" data-preco="140,58"/>
-  <circle id="ponto-soja-5" class="chart-dot" cx="149.2" cy="219.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="149.2" cy="219.1" r="10" fill="transparent" data-alvo="ponto-soja-5" data-data="18/07/2026" data-preco="141,02"/>
-  <circle id="ponto-soja-6" class="chart-dot" cx="165.4" cy="219.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="165.4" cy="219.1" r="10" fill="transparent" data-alvo="ponto-soja-6" data-data="19/07/2026" data-preco="141,02"/>
-  <circle id="ponto-soja-7" class="chart-dot" cx="181.7" cy="219.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="181.7" cy="219.1" r="10" fill="transparent" data-alvo="ponto-soja-7" data-data="20/07/2026" data-preco="141,02"/>
-  <circle id="ponto-soja-8" class="chart-dot" cx="197.9" cy="201.7" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="197.9" cy="201.7" r="10" fill="transparent" data-alvo="ponto-soja-8" data-data="21/07/2026" data-preco="142,65"/>
-  <circle id="ponto-soja-9" class="chart-dot" cx="214.2" cy="185.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="214.2" cy="185.6" r="10" fill="transparent" data-alvo="ponto-soja-9" data-data="22/07/2026" data-preco="144,17"/>
-  <circle id="ponto-soja-10" class="chart-dot" cx="230.4" cy="172.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="230.4" cy="172.0" r="10" fill="transparent" data-alvo="ponto-soja-10" data-data="23/07/2026" data-preco="145,45"/>
-  <circle id="ponto-soja-11" class="chart-dot" cx="246.6" cy="150.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="246.6" cy="150.5" r="10" fill="transparent" data-alvo="ponto-soja-11" data-data="24/07/2026" data-preco="147,47"/>
-  <circle id="ponto-soja-12" class="chart-dot" cx="262.9" cy="141.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="262.9" cy="141.0" r="10" fill="transparent" data-alvo="ponto-soja-12" data-data="25/07/2026" data-preco="148,37"/>
-  <circle id="ponto-soja-13" class="chart-dot" cx="279.1" cy="141.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="279.1" cy="141.0" r="10" fill="transparent" data-alvo="ponto-soja-13" data-data="26/07/2026" data-preco="148,37"/>
-  <circle id="ponto-soja-14" class="chart-dot" cx="295.4" cy="141.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="295.4" cy="141.0" r="10" fill="transparent" data-alvo="ponto-soja-14" data-data="27/07/2026" data-preco="148,37"/>
-  <circle id="ponto-soja-15" class="chart-dot" cx="311.6" cy="147.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="311.6" cy="147.6" r="10" fill="transparent" data-alvo="ponto-soja-15" data-data="28/07/2026" data-preco="147,75"/>
-  <circle id="ponto-soja-16" class="chart-dot" cx="327.8" cy="146.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="327.8" cy="146.1" r="10" fill="transparent" data-alvo="ponto-soja-16" data-data="29/07/2026" data-preco="147,89"/>
-  <circle id="ponto-soja-17" class="chart-dot" cx="344.1" cy="157.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="344.1" cy="157.6" r="10" fill="transparent" data-alvo="ponto-soja-17" data-data="30/07/2026" data-preco="146,81"/>
-  <circle id="ponto-soja-18" class="chart-dot" cx="360.3" cy="173.7" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="360.3" cy="173.7" r="10" fill="transparent" data-alvo="ponto-soja-18" data-data="31/07/2026" data-preco="145,29"/>
-  <circle id="ponto-soja-19" class="chart-dot" cx="376.6" cy="177.7" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="376.6" cy="177.7" r="10" fill="transparent" data-alvo="ponto-soja-19" data-data="01/08/2026" data-preco="144,91"/>
-  <circle id="ponto-soja-20" class="chart-dot" cx="392.8" cy="177.7" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="392.8" cy="177.7" r="10" fill="transparent" data-alvo="ponto-soja-20" data-data="02/08/2026" data-preco="144,91"/>
-  <circle id="ponto-soja-21" class="chart-dot" cx="409.0" cy="177.7" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="409.0" cy="177.7" r="10" fill="transparent" data-alvo="ponto-soja-21" data-data="03/08/2026" data-preco="144,91"/>
-  <circle id="ponto-soja-22" class="chart-dot" cx="425.3" cy="187.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="425.3" cy="187.0" r="10" fill="transparent" data-alvo="ponto-soja-22" data-data="04/08/2026" data-preco="144,04"/>
-  <circle id="ponto-soja-23" class="chart-dot" cx="441.5" cy="186.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="441.5" cy="186.1" r="10" fill="transparent" data-alvo="ponto-soja-23" data-data="05/08/2026" data-preco="144,12"/>
-  <circle id="ponto-soja-24" class="chart-dot" cx="457.8" cy="177.7" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="457.8" cy="177.7" r="10" fill="transparent" data-alvo="ponto-soja-24" data-data="06/08/2026" data-preco="144,91"/>
-  <circle id="ponto-soja-25" class="chart-dot" cx="474.0" cy="177.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="474.0" cy="177.0" r="10" fill="transparent" data-alvo="ponto-soja-25" data-data="07/08/2026" data-preco="144,98"/>
-  <circle id="ponto-soja-26" class="chart-dot" cx="490.2" cy="175.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="490.2" cy="175.2" r="10" fill="transparent" data-alvo="ponto-soja-26" data-data="08/08/2026" data-preco="145,15"/>
-  <circle id="ponto-soja-27" class="chart-dot" cx="506.5" cy="175.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="506.5" cy="175.2" r="10" fill="transparent" data-alvo="ponto-soja-27" data-data="09/08/2026" data-preco="145,15"/>
-  <circle id="ponto-soja-28" class="chart-dot" cx="522.7" cy="175.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="522.7" cy="175.2" r="10" fill="transparent" data-alvo="ponto-soja-28" data-data="10/08/2026" data-preco="145,15"/>
-  <circle id="ponto-soja-29" class="chart-dot" cx="539.0" cy="177.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="539.0" cy="177.2" r="10" fill="transparent" data-alvo="ponto-soja-29" data-data="11/08/2026" data-preco="144,96"/>
-  <circle id="ponto-soja-30" class="chart-dot" cx="555.2" cy="178.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="555.2" cy="178.0" r="10" fill="transparent" data-alvo="ponto-soja-30" data-data="12/08/2026" data-preco="144,89"/>
-  <circle id="ponto-soja-31" class="chart-dot" cx="571.4" cy="162.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="571.4" cy="162.5" r="10" fill="transparent" data-alvo="ponto-soja-31" data-data="13/08/2026" data-preco="146,34"/>
-  <circle id="ponto-soja-32" class="chart-dot" cx="587.7" cy="156.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="587.7" cy="156.2" r="10" fill="transparent" data-alvo="ponto-soja-32" data-data="14/08/2026" data-preco="146,94"/>
-  <circle id="ponto-soja-33" class="chart-dot" cx="603.9" cy="134.8" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="603.9" cy="134.8" r="10" fill="transparent" data-alvo="ponto-soja-33" data-data="15/08/2026" data-preco="148,95"/>
-  <circle id="ponto-soja-34" class="chart-dot" cx="620.2" cy="134.8" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="620.2" cy="134.8" r="10" fill="transparent" data-alvo="ponto-soja-34" data-data="16/08/2026" data-preco="148,95"/>
-  <circle id="ponto-soja-35" class="chart-dot" cx="636.4" cy="134.8" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="636.4" cy="134.8" r="10" fill="transparent" data-alvo="ponto-soja-35" data-data="17/08/2026" data-preco="148,95"/>
-  <circle id="ponto-soja-36" class="chart-dot" cx="652.6" cy="122.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="652.6" cy="122.2" r="10" fill="transparent" data-alvo="ponto-soja-36" data-data="18/08/2026" data-preco="150,14"/>
-  <circle id="ponto-soja-37" class="chart-dot" cx="668.9" cy="109.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="668.9" cy="109.2" r="10" fill="transparent" data-alvo="ponto-soja-37" data-data="19/08/2026" data-preco="151,36"/>
-  <circle id="ponto-soja-38" class="chart-dot" cx="685.1" cy="106.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="685.1" cy="106.1" r="10" fill="transparent" data-alvo="ponto-soja-38" data-data="20/08/2026" data-preco="151,65"/>
-  <circle id="ponto-soja-39" class="chart-dot" cx="701.4" cy="74.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="701.4" cy="74.5" r="10" fill="transparent" data-alvo="ponto-soja-39" data-data="21/08/2026" data-preco="154,63"/>
-  <circle id="ponto-soja-40" class="chart-dot" cx="717.6" cy="84.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="717.6" cy="84.6" r="10" fill="transparent" data-alvo="ponto-soja-40" data-data="22/08/2026" data-preco="153,68"/>
-  <circle id="ponto-soja-41" class="chart-dot" cx="733.8" cy="84.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="733.8" cy="84.6" r="10" fill="transparent" data-alvo="ponto-soja-41" data-data="23/08/2026" data-preco="153,68"/>
-  <circle id="ponto-soja-42" class="chart-dot" cx="750.1" cy="84.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="750.1" cy="84.6" r="10" fill="transparent" data-alvo="ponto-soja-42" data-data="24/08/2026" data-preco="153,68"/>
-  <circle id="ponto-soja-43" class="chart-dot" cx="766.3" cy="82.7" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="766.3" cy="82.7" r="10" fill="transparent" data-alvo="ponto-soja-43" data-data="25/08/2026" data-preco="153,86"/>
-  <circle id="ponto-soja-44" class="chart-dot" cx="782.6" cy="84.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="782.6" cy="84.4" r="10" fill="transparent" data-alvo="ponto-soja-44" data-data="26/08/2026" data-preco="153,70"/>
-  <circle id="ponto-soja-45" class="chart-dot" cx="798.8" cy="75.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="798.8" cy="75.1" r="10" fill="transparent" data-alvo="ponto-soja-45" data-data="27/08/2026" data-preco="154,57"/>
-  <circle id="ponto-soja-46" class="chart-dot" cx="815.0" cy="70.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="815.0" cy="70.0" r="10" fill="transparent" data-alvo="ponto-soja-46" data-data="28/08/2026" data-preco="155,05"/>
-  <circle id="ponto-soja-47" class="chart-dot" cx="831.3" cy="20.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="831.3" cy="20.0" r="10" fill="transparent" data-alvo="ponto-soja-47" data-data="29/08/2026" data-preco="159,76"/>
-  <circle id="ponto-soja-48" class="chart-dot" cx="847.5" cy="20.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="847.5" cy="20.0" r="10" fill="transparent" data-alvo="ponto-soja-48" data-data="30/08/2026" data-preco="159,76"/>
-  <circle id="ponto-soja-49" class="chart-dot" cx="863.8" cy="20.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="863.8" cy="20.0" r="10" fill="transparent" data-alvo="ponto-soja-49" data-data="31/08/2026" data-preco="159,76"/>
-  <circle id="ponto-soja-50" class="chart-dot" cx="880.0" cy="23.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="880.0" cy="23.4" r="10" fill="transparent" data-alvo="ponto-soja-50" data-data="01/09/2026" data-preco="159,44"/>
-  <circle cx="880.0" cy="23.4" r="4" fill="#4C7A1F"/>
+  <circle id="ponto-soja-1" class="chart-dot" cx="84.6" cy="220.8" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="84.6" cy="220.8" r="10" fill="transparent" data-alvo="ponto-soja-1" data-data="14/07/2026" data-preco="140,86"/>
+  <circle id="ponto-soja-2" class="chart-dot" cx="101.1" cy="223.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="101.1" cy="223.2" r="10" fill="transparent" data-alvo="ponto-soja-2" data-data="15/07/2026" data-preco="140,63"/>
+  <circle id="ponto-soja-3" class="chart-dot" cx="117.7" cy="230.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="117.7" cy="230.0" r="10" fill="transparent" data-alvo="ponto-soja-3" data-data="16/07/2026" data-preco="139,99"/>
+  <circle id="ponto-soja-4" class="chart-dot" cx="134.3" cy="223.7" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="134.3" cy="223.7" r="10" fill="transparent" data-alvo="ponto-soja-4" data-data="17/07/2026" data-preco="140,58"/>
+  <circle id="ponto-soja-5" class="chart-dot" cx="150.9" cy="219.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="150.9" cy="219.1" r="10" fill="transparent" data-alvo="ponto-soja-5" data-data="18/07/2026" data-preco="141,02"/>
+  <circle id="ponto-soja-6" class="chart-dot" cx="167.4" cy="219.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="167.4" cy="219.1" r="10" fill="transparent" data-alvo="ponto-soja-6" data-data="19/07/2026" data-preco="141,02"/>
+  <circle id="ponto-soja-7" class="chart-dot" cx="184.0" cy="219.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="184.0" cy="219.1" r="10" fill="transparent" data-alvo="ponto-soja-7" data-data="20/07/2026" data-preco="141,02"/>
+  <circle id="ponto-soja-8" class="chart-dot" cx="200.6" cy="201.7" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="200.6" cy="201.7" r="10" fill="transparent" data-alvo="ponto-soja-8" data-data="21/07/2026" data-preco="142,65"/>
+  <circle id="ponto-soja-9" class="chart-dot" cx="217.1" cy="185.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="217.1" cy="185.6" r="10" fill="transparent" data-alvo="ponto-soja-9" data-data="22/07/2026" data-preco="144,17"/>
+  <circle id="ponto-soja-10" class="chart-dot" cx="233.7" cy="172.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="233.7" cy="172.0" r="10" fill="transparent" data-alvo="ponto-soja-10" data-data="23/07/2026" data-preco="145,45"/>
+  <circle id="ponto-soja-11" class="chart-dot" cx="250.3" cy="150.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="250.3" cy="150.5" r="10" fill="transparent" data-alvo="ponto-soja-11" data-data="24/07/2026" data-preco="147,47"/>
+  <circle id="ponto-soja-12" class="chart-dot" cx="266.9" cy="141.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="266.9" cy="141.0" r="10" fill="transparent" data-alvo="ponto-soja-12" data-data="25/07/2026" data-preco="148,37"/>
+  <circle id="ponto-soja-13" class="chart-dot" cx="283.4" cy="141.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="283.4" cy="141.0" r="10" fill="transparent" data-alvo="ponto-soja-13" data-data="26/07/2026" data-preco="148,37"/>
+  <circle id="ponto-soja-14" class="chart-dot" cx="300.0" cy="141.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="300.0" cy="141.0" r="10" fill="transparent" data-alvo="ponto-soja-14" data-data="27/07/2026" data-preco="148,37"/>
+  <circle id="ponto-soja-15" class="chart-dot" cx="316.6" cy="147.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="316.6" cy="147.6" r="10" fill="transparent" data-alvo="ponto-soja-15" data-data="28/07/2026" data-preco="147,75"/>
+  <circle id="ponto-soja-16" class="chart-dot" cx="333.1" cy="146.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="333.1" cy="146.1" r="10" fill="transparent" data-alvo="ponto-soja-16" data-data="29/07/2026" data-preco="147,89"/>
+  <circle id="ponto-soja-17" class="chart-dot" cx="349.7" cy="157.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="349.7" cy="157.6" r="10" fill="transparent" data-alvo="ponto-soja-17" data-data="30/07/2026" data-preco="146,81"/>
+  <circle id="ponto-soja-18" class="chart-dot" cx="366.3" cy="173.7" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="366.3" cy="173.7" r="10" fill="transparent" data-alvo="ponto-soja-18" data-data="31/07/2026" data-preco="145,29"/>
+  <circle id="ponto-soja-19" class="chart-dot" cx="382.9" cy="177.7" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="382.9" cy="177.7" r="10" fill="transparent" data-alvo="ponto-soja-19" data-data="01/08/2026" data-preco="144,91"/>
+  <circle id="ponto-soja-20" class="chart-dot" cx="399.4" cy="177.7" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="399.4" cy="177.7" r="10" fill="transparent" data-alvo="ponto-soja-20" data-data="02/08/2026" data-preco="144,91"/>
+  <circle id="ponto-soja-21" class="chart-dot" cx="416.0" cy="177.7" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="416.0" cy="177.7" r="10" fill="transparent" data-alvo="ponto-soja-21" data-data="03/08/2026" data-preco="144,91"/>
+  <circle id="ponto-soja-22" class="chart-dot" cx="432.6" cy="187.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="432.6" cy="187.0" r="10" fill="transparent" data-alvo="ponto-soja-22" data-data="04/08/2026" data-preco="144,04"/>
+  <circle id="ponto-soja-23" class="chart-dot" cx="449.1" cy="186.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="449.1" cy="186.1" r="10" fill="transparent" data-alvo="ponto-soja-23" data-data="05/08/2026" data-preco="144,12"/>
+  <circle id="ponto-soja-24" class="chart-dot" cx="465.7" cy="177.7" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="465.7" cy="177.7" r="10" fill="transparent" data-alvo="ponto-soja-24" data-data="06/08/2026" data-preco="144,91"/>
+  <circle id="ponto-soja-25" class="chart-dot" cx="482.3" cy="177.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="482.3" cy="177.0" r="10" fill="transparent" data-alvo="ponto-soja-25" data-data="07/08/2026" data-preco="144,98"/>
+  <circle id="ponto-soja-26" class="chart-dot" cx="498.9" cy="175.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="498.9" cy="175.2" r="10" fill="transparent" data-alvo="ponto-soja-26" data-data="08/08/2026" data-preco="145,15"/>
+  <circle id="ponto-soja-27" class="chart-dot" cx="515.4" cy="175.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="515.4" cy="175.2" r="10" fill="transparent" data-alvo="ponto-soja-27" data-data="09/08/2026" data-preco="145,15"/>
+  <circle id="ponto-soja-28" class="chart-dot" cx="532.0" cy="175.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="532.0" cy="175.2" r="10" fill="transparent" data-alvo="ponto-soja-28" data-data="10/08/2026" data-preco="145,15"/>
+  <circle id="ponto-soja-29" class="chart-dot" cx="548.6" cy="177.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="548.6" cy="177.2" r="10" fill="transparent" data-alvo="ponto-soja-29" data-data="11/08/2026" data-preco="144,96"/>
+  <circle id="ponto-soja-30" class="chart-dot" cx="565.1" cy="178.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="565.1" cy="178.0" r="10" fill="transparent" data-alvo="ponto-soja-30" data-data="12/08/2026" data-preco="144,89"/>
+  <circle id="ponto-soja-31" class="chart-dot" cx="581.7" cy="162.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="581.7" cy="162.5" r="10" fill="transparent" data-alvo="ponto-soja-31" data-data="13/08/2026" data-preco="146,34"/>
+  <circle id="ponto-soja-32" class="chart-dot" cx="598.3" cy="156.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="598.3" cy="156.2" r="10" fill="transparent" data-alvo="ponto-soja-32" data-data="14/08/2026" data-preco="146,94"/>
+  <circle id="ponto-soja-33" class="chart-dot" cx="614.9" cy="134.8" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="614.9" cy="134.8" r="10" fill="transparent" data-alvo="ponto-soja-33" data-data="15/08/2026" data-preco="148,95"/>
+  <circle id="ponto-soja-34" class="chart-dot" cx="631.4" cy="134.8" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="631.4" cy="134.8" r="10" fill="transparent" data-alvo="ponto-soja-34" data-data="16/08/2026" data-preco="148,95"/>
+  <circle id="ponto-soja-35" class="chart-dot" cx="648.0" cy="134.8" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="648.0" cy="134.8" r="10" fill="transparent" data-alvo="ponto-soja-35" data-data="17/08/2026" data-preco="148,95"/>
+  <circle id="ponto-soja-36" class="chart-dot" cx="664.6" cy="122.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="664.6" cy="122.2" r="10" fill="transparent" data-alvo="ponto-soja-36" data-data="18/08/2026" data-preco="150,14"/>
+  <circle id="ponto-soja-37" class="chart-dot" cx="681.1" cy="109.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="681.1" cy="109.2" r="10" fill="transparent" data-alvo="ponto-soja-37" data-data="19/08/2026" data-preco="151,36"/>
+  <circle id="ponto-soja-38" class="chart-dot" cx="697.7" cy="106.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="697.7" cy="106.1" r="10" fill="transparent" data-alvo="ponto-soja-38" data-data="20/08/2026" data-preco="151,65"/>
+  <circle id="ponto-soja-39" class="chart-dot" cx="714.3" cy="74.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="714.3" cy="74.5" r="10" fill="transparent" data-alvo="ponto-soja-39" data-data="21/08/2026" data-preco="154,63"/>
+  <circle id="ponto-soja-40" class="chart-dot" cx="730.9" cy="84.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="730.9" cy="84.6" r="10" fill="transparent" data-alvo="ponto-soja-40" data-data="22/08/2026" data-preco="153,68"/>
+  <circle id="ponto-soja-41" class="chart-dot" cx="747.4" cy="84.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="747.4" cy="84.6" r="10" fill="transparent" data-alvo="ponto-soja-41" data-data="23/08/2026" data-preco="153,68"/>
+  <circle id="ponto-soja-42" class="chart-dot" cx="764.0" cy="84.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="764.0" cy="84.6" r="10" fill="transparent" data-alvo="ponto-soja-42" data-data="24/08/2026" data-preco="153,68"/>
+  <circle id="ponto-soja-43" class="chart-dot" cx="780.6" cy="82.7" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="780.6" cy="82.7" r="10" fill="transparent" data-alvo="ponto-soja-43" data-data="25/08/2026" data-preco="153,86"/>
+  <circle id="ponto-soja-44" class="chart-dot" cx="797.1" cy="84.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="797.1" cy="84.4" r="10" fill="transparent" data-alvo="ponto-soja-44" data-data="26/08/2026" data-preco="153,70"/>
+  <circle id="ponto-soja-45" class="chart-dot" cx="813.7" cy="75.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="813.7" cy="75.1" r="10" fill="transparent" data-alvo="ponto-soja-45" data-data="27/08/2026" data-preco="154,57"/>
+  <circle id="ponto-soja-46" class="chart-dot" cx="830.3" cy="70.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="830.3" cy="70.0" r="10" fill="transparent" data-alvo="ponto-soja-46" data-data="28/08/2026" data-preco="155,05"/>
+  <circle id="ponto-soja-47" class="chart-dot" cx="846.9" cy="20.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="846.9" cy="20.0" r="10" fill="transparent" data-alvo="ponto-soja-47" data-data="29/08/2026" data-preco="159,76"/>
+  <circle id="ponto-soja-48" class="chart-dot" cx="863.4" cy="20.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="863.4" cy="20.0" r="10" fill="transparent" data-alvo="ponto-soja-48" data-data="30/08/2026" data-preco="159,76"/>
+  <circle id="ponto-soja-49" class="chart-dot" cx="880.0" cy="20.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="880.0" cy="20.0" r="10" fill="transparent" data-alvo="ponto-soja-49" data-data="31/08/2026" data-preco="159,76"/>
+  <circle cx="880.0" cy="20.0" r="4" fill="#4C7A1F"/>
 </svg>
 </div>
 <div class="chart-footer">
   <span class="chart-footer-extremo">13/07/2026</span>
-  <span class="chart-readout-texto">01/09/2026 · R$ 159,44</span>
-  <span class="chart-footer-extremo">01/09/2026 · R$ 159,44</span>
+  <span class="chart-readout-texto">31/08/2026 · R$ 159,76</span>
+  <span class="chart-footer-extremo">31/08/2026 · R$ 159,76</span>
 </div>
 <script>
 (function(){
@@ -377,7 +373,7 @@ Fonte: CEPEA/Esalq · dado de 31/08/2026
   });
   raiz.addEventListener("mouseleave", function(){
     if (ativo) { ativo.classList.remove("chart-dot-ativo"); ativo = null; }
-    elTexto.textContent = "01/09/2026 · R$ 159,44";
+    elTexto.textContent = "31/08/2026 · R$ 159,76";
   });
 })();
 </script>
@@ -412,23 +408,23 @@ Fonte: CEPEA/Esalq · dado de 31/08/2026
   <p class="news-source">Fonte: Notícias Agrícolas</p>
 </article>
     <article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/soja/427230-mercado-brasileiro-da-soja-comeca-semana-com-precos-estaveis-e-negocios-ainda-acontecendo.html" target="_blank" rel="noopener">Soja31/08/2026 - 17:07Mercado brasileiro da soja começa semana com preços estáveis e negócios ainda acontecendo</a></p>
-  <p class="news-summary">A segunda-feira (31) fechou levemente positiva para os futuros da soja negociados na Bolsa de Chicago. O contrato novembro encerrou o dia com US$ 12,88, enquanto janeiro, março e maio terminaram o pregão com os preços ac...</p>
-  <p class="news-source">Fonte: Notícias Agrícolas</p>
-</article>
-    <article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/soja/427213-soja-26-27-retracao-na-expansao-de-area-indica-um-teto-para-o-crescimento.html" target="_blank" rel="noopener">Soja31/08/2026 - 13:22Soja 26/27: retração na expansão de área indica um teto para o crescimento?</a></p>
+  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/soja/427213-soja-26-27-retracao-na-expansao-de-area-indica-um-teto-para-o-crescimento.html" target="_blank" rel="noopener">Soja13:22Soja 26/27: retração na expansão de área indica um teto para o crescimento?</a></p>
   <p class="news-summary">Depois de anos avançando sobre novas áreas e estabelecendo sucessivos recordes de produção, a soja brasileira chega à safra 2026/27 diante de uma mudança importante de ritmo. Diferentes projeções privadas apontam para um...</p>
   <p class="news-source">Fonte: Notícias Agrícolas</p>
 </article>
     <article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/soja/427214-soja-segue-recuando-em-chicago-nesta-2-mas-ameniza-perdas-com-demanda-presente.html" target="_blank" rel="noopener">Soja31/08/2026 - 13:22Soja segue recuando em Chicago nesta 2ª, mas ameniza perdas com demanda presente</a></p>
-  <p class="news-summary">O mercado da soja segue trabalhando com estabilidade na Bolsa de Chicago nesta tarde de segunda-feira (31), perdendo de 1,25 a 5 pontos nos principais vencimentos, por volta de 12h50 (horário de Brasília), levando o nove...</p>
+  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/soja/427182-soja-recua-levemente-em-chicago-nesta-2-feira-mas-clima-nos-eua-e-demanda-ainda-dao-suporte.html" target="_blank" rel="noopener">Soja07:40Soja recua levemente em Chicago nesta 2ª feira, mas clima nos EUA e demanda ainda dão suporte</a></p>
+  <p class="news-summary">Os futuros da soja negociados na Bolsa de Chicago operam com leves baixas nesta segunda-feira (31), em um movimento de ajustes após os ganhos recentes e intensos das últimas sessões. Apesar da pressão pontual, o mercado ...</p>
   <p class="news-source">Fonte: Notícias Agrícolas</p>
 </article>
     <article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/soja/427182-soja-recua-levemente-em-chicago-nesta-2-feira-mas-clima-nos-eua-e-demanda-ainda-dao-suporte.html" target="_blank" rel="noopener">Soja31/08/2026 - 07:40Soja recua levemente em Chicago nesta 2ª feira, mas clima nos EUA e demanda ainda dão suporte</a></p>
-  <p class="news-summary">Os futuros da soja negociados na Bolsa de Chicago operam com leves baixas nesta segunda-feira (31), em um movimento de ajustes após os ganhos recentes e intensos das últimas sessões. Apesar da pressão pontual, o mercado ...</p>
+  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/soja/427180-soja-cepea-demanda-firme-e-incertezas-sobre-a-safra-2026-27-elevam-precos.html" target="_blank" rel="noopener">Soja07:27Soja/Cepea: Demanda firme e incertezas sobre a safra 2026/27 elevam preços</a></p>
+  <p class="news-summary">A firme demanda global, as condições climáticas irregulares no Hemisfério Norte e as incertezas quanto aos possíveis efeitos do fenômeno climático El Niño sobre a safra 2026/27 seguem impulsionando os preços futuros e do...</p>
+  <p class="news-source">Fonte: Notícias Agrícolas</p>
+</article>
+    <article class="news-item">
+  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/soja/427143-setembro-abre-nova-janela-para-a-soja-e-reforca-importancia-do-manejo-antecipado-da-ferrugem.html" target="_blank" rel="noopener">Soja28/08/2026 - 12:52Setembro abre nova janela para a soja e reforça importância do manejo antecipado da ferrugem</a></p>
+  <p class="news-summary">Setembro marca uma virada importante no calendário da soja brasileira. Ao longo do mês, o vazio sanitário chega ao fim em diferentes regiões produtoras e a semeadura da safra 2026/27 começa a ser autorizada. Em Mato Gros...</p>
   <p class="news-source">Fonte: Notícias Agrícolas</p>
 </article>
 <!-- NOTICIAS:END -->
@@ -452,5 +448,3 @@ Fonte: CEPEA/Esalq · dado de 31/08/2026
 
 </body>
 </html>
-
-
