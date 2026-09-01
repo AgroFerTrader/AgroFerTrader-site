@@ -182,8 +182,11 @@ def montar_links_switch(slug_atual: str) -> str:
     links = []
     for c in COMMODITIES_PAGINAS:
         classe = ' class="active"' if c["slug"] == slug_atual else ""
+        # Prefixo "Análise:" reforça, também na navegação entre
+        # commodities, que cada página é uma análise de mercado - não
+        # só uma cotação. Os slugs de URL (href) não mudam.
         links.append(
-            f'<a href="../{c["slug"]}/"{classe}>{escape(c["nome_exibicao"])}</a>'
+            f'<a href="../{c["slug"]}/"{classe}>Análise: {escape(c["nome_exibicao"])}</a>'
         )
     return "\n      ".join(links)
 

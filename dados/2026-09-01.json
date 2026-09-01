@@ -6,10 +6,10 @@
   },
   "erro_dolar": null,
   "dolar_tr": {
-    "compra": 5.1503,
-    "venda": 5.1516,
-    "variacao_pct": -0.644329,
-    "hora": "01/09/2026 16:21:45"
+    "compra": 5.1496,
+    "venda": 5.15,
+    "variacao_pct": -0.657833,
+    "hora": "01/09/2026 16:26:45"
   },
   "erro_dolar_tr": null,
   "selic": {
@@ -107,8 +107,8 @@
     "",
     "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
     "Queda suave do dólar (-0.47%): tende a esfriar discretamente o apetite por exportação, com leve efeito de baixa sobre o preço doméstico de commodities.",
-    "Com a Selic em 14.00% ao ano, o custo de financiamento no campo segue elevado - isso tende a acelerar vendas (para gerar caixa) e, por atrair capital estrangeiro, também tende a fortalecer o real. Os dois efeitos juntos costumam pressionar o preço das commodities exportadas para baixo.",
-    "Obs.: essas são tendências gerais - clima, quebra de safra, estoques mundiais e demanda de outros países também afetam o preço e podem superar o efeito isolado do câmbio ou da Selic."
+    "Juros em 14.00% ao ano seguem em patamar alto - carregar estoque fica caro, o que empurra produtores a vender mais rápido, e o diferencial de juros atrai capital estrangeiro, valorizando o real. Ambos tendem a pesar contra o preço em reais das commodities de exportação.",
+    "Obs.: vale lembrar que essas são relações históricas, não regras fixas - fatores como clima, safra e demanda internacional podem se sobrepor facilmente ao efeito do câmbio ou dos juros."
   ],
   "noticias": [
     {
