@@ -99,7 +99,7 @@ def montar_ticker_html(dolar, resultados_commodities) -> str:
     return "\n      ".join(todos)
 
 
-def montar_precos_html(resultados_commodities) -> str:
+def montar_precos_html(resultados_commodities, com_links: bool = True) -> str:
     unidades = {"Boi Gordo": "por arroba"}
     blocos = []
 
@@ -128,7 +128,7 @@ def montar_precos_html(resultados_commodities) -> str:
             f'  <div class="price-meta">{escape(unidade)}</div>\n'
         )
 
-        if slug:
+        if slug and com_links:
             conteudo_card += '  <div class="price-link">Ver detalhes →</div>\n'
             blocos.append(
                 f'<a class="price-card price-card-link" href="commodities/{slug}/">\n'
@@ -139,6 +139,34 @@ def montar_precos_html(resultados_commodities) -> str:
             blocos.append(f'<article class="price-card">\n{conteudo_card}</article>')
 
     return "\n      ".join(blocos)
+
+
+def montar_cotacoes_regionais_html(cotacoes_regionais) -> str:
+    """Monta o bloco de 'outras pracas' (cotacoes regionais) exibido
+    apenas nas paginas individuais de cada commodity, abaixo do preco
+    principal (indicador CEPEA/Esalq). Nao e usado na home - a home
+    mantem so o indicador principal, sem alteracao nenhuma.
+
+    cotacoes_regionais: lista de dicts {"praca": str, "preco": str}.
+    Se vier vazia (fonte indisponivel ou secao nao encontrada), nao
+    renderiza nada, em vez de mostrar uma caixa vazia.
+    """
+    if not cotacoes_regionais:
+        return ""
+
+    cartoes = []
+    for item in cotacoes_regionais:
+        cartoes.append(
+            '<div class="price-card-regional">'
+            f'<div class="price-name">{escape(str(item["praca"]))}</div>'
+            f'<div class="price-value">R$ {escape(str(item["preco"]))}</div>'
+            '</div>'
+        )
+
+    return (
+        '<div class="regional-label">Outras praças</div>\n'
+        '<div class="price-grid-regional">\n' + "\n".join(cartoes) + "\n</div>"
+    )
 
 
 def montar_explain_html(explicacoes_macro: list) -> str:
