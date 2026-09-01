@@ -204,6 +204,15 @@ def montar_links_switch(slug_atual: str) -> str:
     return "\n      ".join(links)
 
 
+def montar_opcoes_comparar(slug_atual: str) -> str:
+    opcoes = ['<option value="">Comparar com…</option>']
+    for c in COMMODITIES_PAGINAS:
+        if c["slug"] == slug_atual:
+            continue
+        opcoes.append(f'<option value="{c["slug"]}">{escape(c["nome_exibicao"])}</option>')
+    return "\n        ".join(opcoes)
+
+
 def garantir_pagina_existe(config: dict) -> str:
     pasta_pagina = os.path.join(PASTA_COMMODITIES, config["slug"])
     caminho_pagina = os.path.join(pasta_pagina, "index.html")
@@ -233,7 +242,9 @@ def garantir_pagina_existe(config: dict) -> str:
         "{{GRAFICO_LEGENDA_STAT_INICIAL}}": "",
         "{{GRAFICO_LEGENDA_CAUSA_INICIAL}}": "",
         "{{JSONLD_PRODUTO_INICIAL}}": "",
+        "{{DADOS_HISTORICO_JSON_INICIAL}}": "",
         "{{ANALISE_FONTES_INICIAL}}": "",
+        "{{COMPARAR_OPCOES}}": montar_opcoes_comparar(config["slug"]),
         "{{RESUMO_ANALISTA_INICIAL}}": (
             f"Análise em preparação — em breve, um resumo do que está "
             f"movimentando o mercado de {config['nome_exibicao'].lower()} nesta semana."
@@ -367,7 +378,21 @@ def _caminho_suave(pontos_xy: list) -> str:
     return " ".join(partes)
 
 
+PERIODOS_GRAFICO = [("7d", "7 dias", 7), ("30d", "30 dias", 30), ("90d", "90 dias", 90)]
+
+
 def montar_grafico_svg(serie: list, nome_exibicao: str, slug: str) -> str:
+    """Monta o gráfico com abas de período (7/30/90 dias). Cada aba é
+    renderizada inteira no servidor (_renderizar_svg_periodo) a partir
+    do recorte correspondente de `serie`; o navegador só troca qual
+    bloco fica visível (ver assets/interatividade.js), sem nenhum
+    cálculo de coordenadas no cliente para essa parte.
+
+    Períodos sem dado suficiente (menos de 2 pontos no recorte, comum
+    logo após o lançamento do site, quando o histórico ainda é curto)
+    não geram aba. Se sobrar só um período utilizável, mostra o gráfico
+    sem abas (nada para alternar).
+    """
     if len(serie) < 2:
         return (
             '<p style="opacity:.6;font-size:14px;">'
@@ -376,6 +401,41 @@ def montar_grafico_svg(serie: list, nome_exibicao: str, slug: str) -> str:
             "</p>"
         )
 
+    conteudos = []
+    for sufixo, rotulo, dias in PERIODOS_GRAFICO:
+        recorte = serie[-dias:]
+        if len(recorte) < 2:
+            continue
+        conteudo = _renderizar_svg_periodo(recorte, nome_exibicao, slug, sufixo)
+        conteudos.append((sufixo, rotulo, conteudo))
+
+    if not conteudos:
+        return ""
+    if len(conteudos) == 1:
+        return conteudos[0][2]
+
+    botoes = "\n      ".join(
+        f'<button type="button" class="periodo-btn{" active" if i == 0 else ""}" '
+        f'data-periodo="{sufixo}" role="tab" aria-selected="{"true" if i == 0 else "false"}">{rotulo}</button>'
+        for i, (sufixo, rotulo, _) in enumerate(conteudos)
+    )
+    painel = "\n      ".join(
+        f'<div data-periodo="{sufixo}"{"" if i == 0 else " hidden"}>{conteudo}</div>'
+        for i, (sufixo, _, conteudo) in enumerate(conteudos)
+    )
+
+    return (
+        f'<div class="chart-periodos" role="tablist" aria-label="Período do gráfico">\n'
+        f"      {botoes}\n"
+        f"    </div>\n"
+        f'    <div class="chart-painel">\n'
+        f"      {painel}\n"
+        f"    </div>"
+    )
+
+
+def _renderizar_svg_periodo(serie: list, nome_exibicao: str, slug_base: str, sufixo: str) -> str:
+    slug = f"{slug_base}-{sufixo}"
     largura, altura = 900, 260
     # margem esquerda cresce com a quantidade de digitos do maior preco,
     # para o rotulo "R$ X.XXX,XX" nunca ser cortado pela borda do SVG
@@ -436,7 +496,7 @@ def montar_grafico_svg(serie: list, nome_exibicao: str, slug: str) -> str:
     data_final_fmt = escape(_fmt_data_br(data_final))
     preco_final_fmt = _fmt_brl(valores[-1])
 
-    svg = f'''<div class="chart-wrap" id="{id_unico}">
+    svg = f'''<div class="chart-wrap" id="{id_unico}" data-slug="{slug_base}" data-margem-esq="{margem_esq}" data-margem-topo="{margem_topo}" data-altura-util="{altura_util}" data-largura-util="{largura_util}" data-num-pontos="{len(serie)}">
 <svg viewBox="0 0 {largura} {altura}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Variação de preço de {escape(nome_exibicao)} no período">
   <defs>
     <linearGradient id="{id_gradiente}" x1="0" y1="0" x2="0" y2="1">
@@ -524,6 +584,27 @@ def montar_legenda_grafico_stat(serie: list) -> str:
     )
 
 
+def montar_dados_historico_json() -> str:
+    """Monta um JSON compacto {slug: [[data, preco], ...]} com o
+    histórico (até 90 dias) das 4 commodities, embutido uma vez em cada
+    página de commodity (ver marcador DADOS_HISTORICO_JSON) pra
+    alimentar o comparativo entre commodities no gráfico
+    (assets/interatividade.js) - sem nenhuma requisição nova no
+    navegador, só os mesmos dados que já geram os gráficos individuais.
+    """
+    dados = {
+        c["slug"]: carregar_historico_fisico(c["nome_fisica"])
+        for c in COMMODITIES_PAGINAS
+    }
+    bruto = json.dumps(dados, ensure_ascii=False, separators=(",", ":"))
+    # O <script> precisa estar TODO dentro do marcador (não só o JSON) -
+    # como <script> é um elemento de "raw text" em HTML, um comentário
+    # <!-- --> colocado dentro dele não é interpretado como comentário
+    # pelo navegador (fica texto literal, quebrando o JSON.parse do
+    # lado do JS). Por isso a marcação fica por fora da tag inteira.
+    return f'<script type="application/json" id="dados-historico-commodities">{bruto}</script>'
+
+
 def montar_jsonld_produto(config: dict, fisica_filtrada: list) -> str:
     """Monta o JSON-LD (Product + Offer) com o preço do dia da commodity,
     para o marcador JSONLD_PRODUTO no <head> da página (script separado
@@ -560,7 +641,13 @@ def montar_jsonld_produto(config: dict, fisica_filtrada: list) -> str:
             "priceValidUntil": datetime.now().strftime("%Y-%m-%d"),
         },
     }
-    return json.dumps(dados_jsonld, ensure_ascii=False, indent=2)
+    bruto = json.dumps(dados_jsonld, ensure_ascii=False, indent=2)
+    # Ver comentário equivalente em montar_dados_historico_json(): o
+    # <script> inteiro precisa estar dentro do marcador, não só o JSON,
+    # senão os comentários HTML do marcador viram texto literal dentro
+    # do bloco e o JSON-LD fica inválido pros crawlers (bug real que
+    # existia aqui desde o Bloco 1 até esta correção).
+    return f'<script type="application/ld+json">{bruto}</script>'
 
 
 # ---------------------------------------------------------------------------
@@ -669,6 +756,7 @@ def atualizar_pagina_commodity(config: dict, dados: dict) -> None:
         "GRAFICO": montar_grafico_svg(historico, config["nome_exibicao"], config["slug"]),
         "GRAFICO_LEGENDA_STAT": montar_legenda_grafico_stat(historico),
         "JSONLD_PRODUTO": montar_jsonld_produto(config, fisica_filtrada),
+        "DADOS_HISTORICO_JSON": montar_dados_historico_json(),
         "NOTICIAS": site.montar_noticias_html(noticias_categoria),
     }
 

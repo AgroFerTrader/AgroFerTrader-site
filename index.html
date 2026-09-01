@@ -264,6 +264,40 @@
   footer .foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:1px solid var(--line);padding-top:24px;}
   footer a{text-decoration:underline;}
 
+  .a-revelar{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;}
+  .a-revelar.revelado{opacity:1;transform:translateY(0);}
+
+  .termo-tooltip{border-bottom:1px dotted currentColor;cursor:help;position:relative;}
+  .termo-tooltip .tip{
+    display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);
+    background:var(--ink);color:var(--paper);font-family:var(--body);font-size:12.5px;
+    font-weight:400;line-height:1.4;padding:10px 12px;border-radius:4px;width:220px;
+    text-align:left;z-index:10;box-shadow:0 6px 20px rgba(0,0,0,.18);
+  }
+  .termo-tooltip .tip::after{
+    content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);
+    border:5px solid transparent;border-top-color:var(--ink);
+  }
+  .termo-tooltip:hover .tip, .termo-tooltip:focus .tip{display:block;}
+
+  .captura-email{
+    background:var(--paper-dim);padding:32px;border-radius:6px;
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;
+  }
+  .captura-email-texto h3{font-family:var(--display);font-size:19px;margin:0 0 4px;}
+  .captura-email-texto p{font-size:14px;opacity:.75;margin:0;max-width:44ch;}
+  .captura-email form{display:flex;gap:8px;flex-wrap:wrap;}
+  .captura-email input[type=email]{
+    font-family:var(--body);font-size:14px;padding:11px 14px;border:1px solid var(--line);
+    border-radius:2px;min-width:220px;background:var(--paper);color:var(--ink);
+  }
+  .captura-email button{
+    font-family:var(--body);font-size:14px;font-weight:600;padding:11px 20px;
+    border:none;border-radius:2px;background:var(--gold);color:var(--ink);cursor:pointer;
+  }
+  .captura-email button:hover{opacity:.9;}
+  .captura-email-obs{font-size:11.5px;opacity:.55;margin-top:8px;width:100%;}
+
   @media (max-width:640px){
     .section-head{flex-direction:column;align-items:flex-start;}
   }
@@ -520,11 +554,29 @@ Fonte: CEPEA/Esalq · dado de 31/08/2026
 </section>
 
 <div class="wrap">
+  <!-- Formulario de captura de e-mail. ACAO PENDENTE: troque
+       "SEU_FORM_ID" pelo ID real de um formulario criado em
+       https://formspree.io (gratuito, leva ~2 min) - sem isso, o
+       formulario nao envia nada. -->
+  <section aria-labelledby="titulo-alerta-home">
+    <div class="captura-email">
+      <div class="captura-email-texto">
+        <h3 id="titulo-alerta-home">Receba as análises da semana por e-mail</h3>
+        <p>Soja, milho, café e boi gordo - um resumo direto na sua caixa de entrada, sem spam.</p>
+      </div>
+      <form action="https://formspree.io/f/SEU_FORM_ID" method="POST">
+        <input type="email" name="email" required placeholder="seu@email.com" aria-label="Seu e-mail">
+        <button type="submit">Quero receber</button>
+        <div class="captura-email-obs">Você pode cancelar quando quiser. Não compartilhamos seu e-mail com terceiros.</div>
+      </form>
+    </div>
+  </section>
+
   <footer>
     <div class="foot-row">
       <div>AgroFer Trader — conteúdo informativo sobre o mercado agrícola. Não constitui recomendação de investimento ou negócio.</div>
       <div>
-        Fontes: Banco Central, AwesomeAPI, B3 e CEPEA/Esalq (via Notícias Agrícolas)
+        Fontes: Banco Central, AwesomeAPI, <span class="termo-tooltip" tabindex="0">B3<span class="tip">B3: a Bolsa de Valores do Brasil, onde é negociado o mercado futuro dessas commodities.</span></span> e <span class="termo-tooltip" tabindex="0">CEPEA/Esalq<span class="tip">CEPEA/Esalq: Centro de Estudos Avançados em Economia Aplicada da USP, referência nacional em indicadores de preço agropecuário.</span></span> (via Notícias Agrícolas)
         · <a href="entenda.html">Entenda</a>
         · <a href="https://www.instagram.com/agrofertrader/" target="_blank" rel="noopener">Instagram @agrofertrader</a>
       </div>
@@ -532,5 +584,6 @@ Fonte: CEPEA/Esalq · dado de 31/08/2026
   </footer>
 </div>
 
+<script src="assets/interatividade.js" defer></script>
 </body>
 </html>
