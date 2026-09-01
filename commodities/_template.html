@@ -107,20 +107,20 @@
   h2{font-family:var(--display);font-weight:600;font-size:26px;margin:6px 0 0;}
   .updated{font-size:13px;color:var(--ink);opacity:.55;font-family:var(--mono);}
 
-  .price-grid{display:flex;gap:1px;background:var(--line);border:1px solid var(--line);max-width:280px;}
-  .price-card{background:var(--paper);padding:22px 20px;flex:1;}
-  .price-name{font-size:14px;font-weight:600;margin-bottom:10px;}
-  .price-value{font-family:var(--mono);font-size:24px;font-weight:600;}
-  .price-meta{font-size:12px;margin-top:8px;color:var(--ink);opacity:.65;}
-  .price-var{font-family:var(--mono);font-size:13px;font-weight:600;margin-top:4px;display:inline-block;}
+  .price-grid{display:flex;justify-content:center;background:var(--line);border:1px solid var(--line);max-width:380px;margin:0 auto;}
+  .price-card{background:var(--paper);padding:36px 32px;flex:1;text-align:center;}
+  .price-name{font-size:15px;font-weight:600;margin-bottom:16px;letter-spacing:.01em;}
+  .price-value{font-family:var(--mono);font-size:clamp(30px,7vw,40px);font-weight:600;line-height:1.1;}
+  .price-meta{font-size:13px;margin-top:12px;color:var(--ink);opacity:.65;}
+  .price-var{font-family:var(--mono);font-size:15px;font-weight:600;margin-top:8px;display:inline-block;}
   .up{color:var(--up) !important;}
   .down{color:var(--down) !important;}
 
-  .regional-label{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--leaf);opacity:.85;margin:22px 0 8px;}
-  .price-grid-regional{display:flex;flex-wrap:wrap;gap:1px;background:var(--line);border:1px solid var(--line);max-width:640px;}
-  .price-card-regional{background:var(--paper);padding:14px 16px;flex:1 1 140px;min-width:140px;}
-  .price-card-regional .price-name{font-size:12.5px;opacity:.7;margin-bottom:6px;}
-  .price-card-regional .price-value{font-family:var(--mono);font-size:16px;font-weight:600;}
+  .regional-label{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--leaf);opacity:.85;margin:28px 0 10px;text-align:center;}
+  .price-grid-regional{display:flex;flex-wrap:wrap;justify-content:center;gap:1px;background:var(--line);border:1px solid var(--line);max-width:640px;margin:0 auto;}
+  .price-card-regional{background:var(--paper);padding:16px 18px;flex:1 1 150px;min-width:150px;text-align:center;}
+  .price-card-regional .price-name{font-size:13px;font-weight:600;opacity:.75;margin-bottom:8px;}
+  .price-card-regional .price-value{font-family:var(--mono);font-size:18px;font-weight:600;}
 
   .futures-table{width:100%;border-collapse:collapse;font-size:14px;}
   .futures-table th{text-align:left;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--leaf);font-weight:600;padding:10px 12px;border-bottom:1px solid var(--line);}
@@ -161,6 +161,9 @@
 
   @media (max-width:640px){
     .section-head{flex-direction:column;align-items:flex-start;}
+    .price-grid{max-width:100%;}
+    .price-card{padding:28px 20px;}
+    .price-card-regional{padding:14px 12px;flex:1 1 45%;min-width:0;}
     /* O rodape do grafico (data inicial / leitura atual / data final)
        usa 3 colunas de largura fixa (nowrap) pensadas para desktop; em
        telas estreitas isso nao cabe e "vaza" para fora do cartao. Aqui
