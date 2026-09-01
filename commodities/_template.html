@@ -83,9 +83,9 @@
   .navlinks .nav-divider{opacity:.25;font-weight:300;}
   .navlinks a.active{opacity:1;border-bottom:2px solid var(--gold);}
 
-  .breadcrumb{max-width:1080px;margin:0 auto;padding:0 24px;font-family:var(--mono);font-size:12px;color:var(--ink);opacity:.6;}
-  .breadcrumb a{text-decoration:none;}
-  .breadcrumb a:hover{text-decoration:underline;}
+  .breadcrumb-hero{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);opacity:.7;margin-bottom:16px;}
+  .breadcrumb-hero a{text-decoration:none;}
+  .breadcrumb-hero a:hover{text-decoration:underline;color:var(--paper);}
 
   .commodity-switch{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 0;}
   .commodity-switch a{
@@ -115,6 +115,12 @@
   .price-var{font-family:var(--mono);font-size:13px;font-weight:600;margin-top:4px;display:inline-block;}
   .up{color:var(--up) !important;}
   .down{color:var(--down) !important;}
+
+  .regional-label{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--leaf);opacity:.85;margin:22px 0 8px;}
+  .price-grid-regional{display:flex;flex-wrap:wrap;gap:1px;background:var(--line);border:1px solid var(--line);max-width:640px;}
+  .price-card-regional{background:var(--paper);padding:14px 16px;flex:1 1 140px;min-width:140px;}
+  .price-card-regional .price-name{font-size:12.5px;opacity:.7;margin-bottom:6px;}
+  .price-card-regional .price-value{font-family:var(--mono);font-size:16px;font-weight:600;}
 
   .futures-table{width:100%;border-collapse:collapse;font-size:14px;}
   .futures-table th{text-align:left;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--leaf);font-weight:600;padding:10px 12px;border-bottom:1px solid var(--line);}
@@ -153,7 +159,17 @@
   footer .foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:1px solid var(--line);padding-top:24px;}
   footer a{text-decoration:underline;}
 
-  @media (max-width:640px){ .section-head{flex-direction:column;align-items:flex-start;} }
+  @media (max-width:640px){
+    .section-head{flex-direction:column;align-items:flex-start;}
+    /* O rodape do grafico (data inicial / leitura atual / data final)
+       usa 3 colunas de largura fixa (nowrap) pensadas para desktop; em
+       telas estreitas isso nao cabe e "vaza" para fora do cartao. Aqui
+       so empilhamos e liberamos a quebra de linha - o desktop (regra
+       .chart-footer acima) continua intocado. */
+    .chart-footer{grid-template-columns:1fr;text-align:center;gap:6px;}
+    .chart-footer-extremo, .chart-footer-extremo:last-child{text-align:center;white-space:normal;}
+    .chart-readout-texto{font-size:17px;white-space:normal;}
+  }
 
   /* Nav: em telas estreitas, a logo fica numa linha e os links viram
      uma faixa rolável horizontalmente (em vez de quebrar em varias
@@ -205,12 +221,9 @@
   </div>
 </nav>
 
-<div class="breadcrumb">
-  <a href="../../">AgroFer Trader</a> &nbsp;/&nbsp; {{NOME_EXIBICAO}}
-</div>
-
 <header class="hero">
   <div class="hero-inner">
+    <div class="breadcrumb-hero"><a href="../../">AgroFer Trader</a><span aria-hidden="true"> / </span><span>{{NOME_EXIBICAO}}</span></div>
     <div class="eyebrow"><!-- EYEBROW:START -->
 {{EYEBROW_INICIAL}}
 <!-- EYEBROW:END --></div>
@@ -240,6 +253,9 @@
 {{PRECO_FISICO_INICIAL}}
 <!-- PRECO_FISICO:END -->
     </div>
+    <!-- COTACOES_REGIONAIS:START -->
+{{COTACOES_REGIONAIS_INICIAL}}
+<!-- COTACOES_REGIONAIS:END -->
   </section>
 
   <section aria-labelledby="titulo-futuro">
