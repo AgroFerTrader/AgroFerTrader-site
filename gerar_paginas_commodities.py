@@ -428,7 +428,14 @@ def atualizar_pagina_commodity(config: dict, dados: dict) -> None:
     historico = carregar_historico_fisico(config["nome_fisica"])
 
     try:
-        cotacoes_regionais = monitor.buscar_cotacoes_regionais(config["nome_secao_regional"])
+        # O café tem uma fonte dedicada bem mais rica (preço por
+        # município/cooperativa - inclui Varginha e várias outras
+        # cidades de Minas Gerais todo dia); as demais usam a fonte
+        # genérica de "praças" da página agregada de mercado físico.
+        if config["slug"] == "cafe":
+            cotacoes_regionais = monitor.buscar_cotacoes_regionais_cafe(max_pracas=8)
+        else:
+            cotacoes_regionais = monitor.buscar_cotacoes_regionais(config["nome_secao_regional"])
     except Exception as e:
         cotacoes_regionais = []
         print(f"Aviso: nao foi possivel buscar cotacoes regionais de {config['slug']} ({e})")
