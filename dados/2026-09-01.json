@@ -6,10 +6,10 @@
   },
   "erro_dolar": null,
   "dolar_tr": {
-    "compra": 5.1508,
-    "venda": 5.1523,
-    "variacao_pct": -0.634683,
-    "hora": "01/09/2026 16:46:55"
+    "compra": 5.155,
+    "venda": 5.1558,
+    "variacao_pct": -0.55366,
+    "hora": "01/09/2026 17:42:24"
   },
   "erro_dolar_tr": null,
   "selic": {
@@ -107,10 +107,16 @@
     "",
     "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
     "Dólar em leve queda (-0.47%): o real um pouco mais valorizado tende a reduzir de forma discreta o incentivo à exportação, pressionando levemente o preço interno de commodities cotadas em dólar.",
-    "Com a Selic em 14.00% ao ano, o custo de financiamento no campo segue elevado - isso tende a acelerar vendas (para gerar caixa) e, por atrair capital estrangeiro, também tende a fortalecer o real. Os dois efeitos juntos costumam pressionar o preço das commodities exportadas para baixo.",
+    "Juros em 14.00% ao ano seguem em patamar alto - carregar estoque fica caro, o que empurra produtores a vender mais rápido, e o diferencial de juros atrai capital estrangeiro, valorizando o real. Ambos tendem a pesar contra o preço em reais das commodities de exportação.",
     "Obs.: vale lembrar que essas são relações históricas, não regras fixas - fatores como clima, safra e demanda internacional podem se sobrepor facilmente ao efeito do câmbio ou dos juros."
   ],
   "noticias": [
+    {
+      "titulo": "01/09/2026 - 16:31USDA vai testar satélites e inteligência artificial nas estimativas de safra",
+      "link": "https://www.noticiasagricolas.com.br/noticias/agronegocio/427329-usda-vai-testar-satelites-e-inteligencia-artificial-nas-estimativas-de-safra.html",
+      "resumo": "BOONE, IOWA, 1 Set (Reuters) - O Departamento de Agricultura dos Estados Unidos (USDA) está lançando um projeto-piloto que contará mais fortemente com a tecnologia, como parte de um esforço mais amplo para aprimorar suas...",
+      "fonte": "Notícias Agrícolas"
+    },
     {
       "titulo": "01/09/2026 - 16:02Açúcar ganha força com expectativa de déficit global na safra 2026/27",
       "link": "https://www.noticiasagricolas.com.br/noticias/sucroenergetico/427315-acucar-ganha-forca-com-expectativa-de-deficit-global-na-safra-2026-27.html",
@@ -127,12 +133,6 @@
       "titulo": "01/09/2026 - 12:09StoneX eleva em 0,2% previsão de safra de soja do Brasil 2026/27 para 183,5 mi t",
       "link": "https://www.noticiasagricolas.com.br/noticias/soja/427300-stonex-eleva-em-02-previsao-de-safra-de-soja-do-brasil-202627-para-1835-mi-t.html",
       "resumo": "SÃO PAULO, 1 Set (Reuters) - A safra de soja do Brasil em 2026/27 foi estimada nesta terça-feira em 183,5 milhões de toneladas, leve alta de 0,2% em relação à previsão do mês anterior, alguns dias antes do início do plan...",
-      "fonte": "Notícias Agrícolas"
-    },
-    {
-      "titulo": "01/09/2026 - 11:57Produtora de Bataguassu eleva produção de hortaliças à escala comercial e diversifica renda",
-      "link": "https://www.noticiasagricolas.com.br/noticias/hortifruti/427293-produtora-de-bataguassu-eleva-producao-de-hortalicas-a-escala-comercial-e-diversifica-renda.html",
-      "resumo": "No Assentamento Santa Clara, em Bataguassu/MS, uma pequena horta que antes servia apenas para o consumo da família ganhou outra dimensão. A produtora rural Eliane de Lima Gonçalves transformou o cultivo de hortaliças em ...",
       "fonte": "Notícias Agrícolas"
     }
   ],

@@ -198,11 +198,8 @@ def montar_links_switch(slug_atual: str) -> str:
     links = []
     for c in COMMODITIES_PAGINAS:
         classe = ' class="active"' if c["slug"] == slug_atual else ""
-        # Prefixo "Análise:" reforça, também na navegação entre
-        # commodities, que cada página é uma análise de mercado - não
-        # só uma cotação. Os slugs de URL (href) não mudam.
         links.append(
-            f'<a href="../{c["slug"]}/"{classe}>Análise: {escape(c["nome_exibicao"])}</a>'
+            f'<a href="../{c["slug"]}/"{classe}>{escape(c["nome_exibicao"])}</a>'
         )
     return "\n      ".join(links)
 
@@ -249,10 +246,8 @@ def garantir_pagina_existe(config: dict) -> str:
         )
     for chave_campo, titulo_campo, texto_placeholder in CAMPOS_ANALISE_SEMANAL_OPCIONAIS:
         substituicoes_estaticas[f"{{{{{chave_campo}_INICIAL}}}}"] = (
-            '<article class="analise-campo">\n'
-            f'        <h3>{titulo_campo}</h3>\n'
-            f'        <div class="analise-corpo"><p class="analise-placeholder">{texto_placeholder}</p></div>\n'
-            '      </article>'
+            f'<h3>{titulo_campo}</h3>\n'
+            f'        <div class="analise-texto"><p class="analise-placeholder">{texto_placeholder}</p></div>'
         )
     for chave, valor in substituicoes_estaticas.items():
         html = html.replace(chave, valor)
@@ -467,13 +462,16 @@ def montar_legenda_grafico_stat(serie: list) -> str:
     periodo_texto = "na semana" if janela >= 4 else "no período exibido"
 
     if variacao_pct > 0.1:
-        rotulo = f"Alta de {variacao_fmt}%"
+        rotulo, classe = f"Alta de {variacao_fmt}%", "up"
     elif variacao_pct < -0.1:
-        rotulo = f"Queda de {variacao_fmt}%"
+        rotulo, classe = f"Queda de {variacao_fmt}%", "down"
     else:
-        rotulo = "Estabilidade"
+        rotulo, classe = "Estabilidade", ""
 
-    return escape(f"{rotulo} {periodo_texto}.")
+    return (
+        f'<span class="chart-legenda-stat {classe}">{escape(rotulo)}</span> '
+        f'{escape(periodo_texto)}.'
+    )
 
 
 def montar_jsonld_produto(config: dict, fisica_filtrada: list) -> str:
