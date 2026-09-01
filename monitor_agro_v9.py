@@ -239,6 +239,79 @@ def buscar_cotacao_noticias_agricolas(
     raise ValueError(f"Não encontrei tabela de preços reconhecível para {nome_exibicao}")
 
 
+def buscar_cotacoes_regionais(nome_secao: str, max_linhas: int = 4) -> list:
+    """
+    Busca cotações regionais (por praça/região) de UMA commodity na
+    página "Mercado Físico - Safras & Mercado" do Notícias Agrícolas
+    (fonte: Safras & Mercado). Diferente do indicador CEPEA/Esalq
+    principal (um único número nacional), essa página traz, para cada
+    commodity, uma mini-tabela com várias praças/regiões diferentes
+    (ex.: para o café, Vitória-ES, Cerrado-MG, Oeste-BA, Norte-PR).
+
+    Usado apenas nas páginas individuais de cada commodity (não na
+    home, que mantém só o indicador principal).
+
+    nome_secao: texto exato do título da seção na página de origem
+        (ex.: "Soja", "Milho", "Café", "Boi Gordo") - precisa bater
+        com o <h3> daquela seção para achar a tabela certa.
+    max_linhas: quantas praças retornar (a página costuma trazer 3-4
+        por commodity).
+
+    Retorna uma lista de dicts {"praca": str, "preco": str} (preço =
+    coluna "Fechamento", mais estável que "Último" intradiário) ou uma
+    lista vazia se a seção não for encontrada (layout mudou) - quem
+    chama deve tratar isso sem quebrar a página (ver
+    montar_cotacoes_regionais_html em gerar_site.py, que simplesmente
+    não desenha nada quando a lista vem vazia).
+    """
+    from io import StringIO
+    from bs4 import BeautifulSoup
+
+    url = "https://www.noticiasagricolas.com.br/cotacoes/mercado-fisico-safras-e-mercado"
+    cabecalhos = {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/124.0.0.0 Safari/537.36"
+        )
+    }
+    resposta = requests.get(url, headers=cabecalhos, timeout=10)
+    resposta.raise_for_status()
+
+    sopa = BeautifulSoup(resposta.text, "lxml")
+
+    for cabecalho in sopa.find_all(["h2", "h3"]):
+        if cabecalho.get_text(strip=True).lower() != nome_secao.strip().lower():
+            continue
+
+        tabela_html = cabecalho.find_next("table")
+        if tabela_html is None:
+            return []
+
+        try:
+            tabela = pd.read_html(StringIO(str(tabela_html)), decimal=",", thousands=".")[0]
+        except ValueError:
+            return []
+
+        colunas = list(tabela.columns)
+        coluna_praca = _achar_coluna(colunas, ["papel"])
+        coluna_preco = _achar_coluna(colunas, ["fechamento"])
+        if not coluna_praca or not coluna_preco:
+            return []
+
+        resultado = []
+        for _, linha in tabela.head(max_linhas).iterrows():
+            resultado.append({
+                "praca": str(linha[coluna_praca]).strip(),
+                "preco": str(linha[coluna_preco]).strip(),
+            })
+        return resultado
+
+    # Seção não encontrada nessa rodada (nome mudou, página fora do ar
+    # etc.) - devolve vazio em vez de derrubar a geração da página.
+    return []
+
+
 # Lista de commodities monitoradas. Cada uma tem um caminho específico
 # (descoberto individualmente), pois a estrutura do site não é uniforme.
 # Para adicionar outra, é preciso achar o caminho exato da página do
