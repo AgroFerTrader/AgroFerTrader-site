@@ -547,58 +547,58 @@ _REGIOES_CAFE_MG = {
 }
 
 
-def buscar_cotacoes_regionais_cafe_por_regiao() -> list:
+def buscar_cotacoes_regionais_cafe_por_regiao(max_pracas: int = 4) -> list:
     """
-    Agrupa as praças municipais de buscar_cotacoes_regionais_cafe() nas 4
-    praças cafeeiras que a AgroFer Trader acompanha: Minas Gerais
-    (geral), Sul de Minas, Cerrado Mineiro e Mogiana. Não inventa dado
-    novo - apenas reorganiza, por região, os mesmos preços municipais já
-    coletados dessa mesma fonte (CEPEA/Notícias Agrícolas).
+    Seleciona, a partir dos municípios de buscar_cotacoes_regionais_cafe(),
+    até `max_pracas` praças que representem regiões cafeeiras DIFERENTES
+    - nunca mais de um município do mesmo grupo, pra não dar a impressão
+    de que é tudo "Minas Gerais" repetido. Não inventa dado novo, só
+    escolhe quais dos preços municipais já coletados exibir.
 
-    "Minas Gerais (geral)" é a média simples de TODOS os municípios
-    mineiros retornados nesta rodada (independente da sub-região).
-    "Sul de Minas" e "Cerrado Mineiro" são a média dos municípios de MG
-    reconhecidos em _REGIOES_CAFE_MG para cada uma. "Mogiana" usa os
-    municípios paulistas da região (hoje, na prática, Franca/SP).
+    Varginha/MG (referência clássica do Sul de Minas, a maior região
+    produtora do país) é sempre a primeira escolha quando disponível.
+    As demais vagas são preenchidas com um município por região
+    diferente (Cerrado Mineiro, Mogiana etc. - ver _REGIOES_CAFE_MG),
+    na ordem em que aparecem na fonte.
 
-    Uma região sem nenhum município reconhecido nesta rodada não aparece
-    no resultado, em vez de mostrar um valor inventado.
+    Retorna os itens no formato original "Cidade - UF" (não um nome de
+    região inventado), pra deixar claro que cada valor é o preço real
+    de uma praça específica.
     """
     brutos = buscar_cotacoes_regionais_cafe(max_pracas=30)
     if not brutos:
         return []
 
-    grupos = {"Minas Gerais (geral)": [], "Sul de Minas": [], "Cerrado Mineiro": [], "Mogiana": []}
-    for item in brutos:
-        m = re.match(r"^(.*) - ([A-Z]{2})$", str(item["praca"]))
+    def _regiao_de(praca: str):
+        m = re.match(r"^(.*) - ([A-Z]{2})$", praca)
         if not m:
-            continue
+            return None
         cidade, uf = m.group(1).strip(), m.group(2)
-        try:
-            preco_num = _texto_para_float(str(item["preco"]))
-        except ValueError:
-            continue
-
         chave_busca = _sem_acentos(cidade.lower())
-        if uf == "MG":
-            grupos["Minas Gerais (geral)"].append(preco_num)
-            regiao = _REGIOES_CAFE_MG.get(chave_busca)
-            if regiao:
-                grupos[regiao].append(preco_num)
-        elif uf == "SP" and "franca" in chave_busca:
-            grupos["Mogiana"].append(preco_num)
+        if uf != "MG":
+            return "Mogiana" if "franca" in chave_busca else uf
+        return _REGIOES_CAFE_MG.get(chave_busca, "Outras praças de MG")
 
-    ordem = ["Minas Gerais (geral)", "Sul de Minas", "Cerrado Mineiro", "Mogiana"]
-    resultado = []
-    for nome_regiao in ordem:
-        precos = grupos[nome_regiao]
-        if not precos:
+    varginha = next((item for item in brutos if item["praca"].startswith("Varginha")), None)
+
+    selecionadas = []
+    regioes_usadas = set()
+    if varginha:
+        selecionadas.append(varginha)
+        regioes_usadas.add(_regiao_de(varginha["praca"]))
+
+    for item in brutos:
+        if len(selecionadas) >= max_pracas:
+            break
+        if item is varginha:
             continue
-        media = sum(precos) / len(precos)
-        preco_fmt = f"{media:,.2f}".replace(",", "_").replace(".", ",").replace("_", ".")
-        resultado.append({"praca": nome_regiao, "preco": preco_fmt})
+        regiao = _regiao_de(item["praca"])
+        if regiao is None or regiao in regioes_usadas:
+            continue
+        selecionadas.append(item)
+        regioes_usadas.add(regiao)
 
-    return resultado
+    return selecionadas[:max_pracas]
 
 
 # Lista de commodities monitoradas. Cada uma tem um caminho específico

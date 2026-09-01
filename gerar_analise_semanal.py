@@ -179,19 +179,15 @@ def _paragrafos_html(paragrafos: list) -> str:
 
 
 def _campo_opcional_html(titulo: str, paragrafos: list) -> str:
-    """Monta o <article> completo de um campo opcional (Impacto B2B/B2C).
-    Devolve string vazia quando a lista de paragrafos vier vazia - o
-    card inteiro some da pagina nesse caso (ver commodities/_template.html,
-    onde o marcador envolve o <article> inteiro, nao so o texto)."""
+    """Monta o titulo + texto completo de um campo opcional (Impacto
+    B2B/B2C). Devolve string vazia quando a lista de paragrafos vier
+    vazia - o campo inteiro (titulo incluido) some da pagina nesse caso
+    (ver commodities/_template.html, onde o marcador envolve o <h3> +
+    o texto juntos, nao so o paragrafo)."""
     if not paragrafos:
         return ""
     corpo = _paragrafos_html(paragrafos)
-    return (
-        '<article class="analise-campo">\n'
-        f'        <h3>{escape(titulo)}</h3>\n'
-        f'        <div class="analise-corpo">{corpo}</div>\n'
-        '      </article>'
-    )
+    return f'<h3>{escape(titulo)}</h3>\n        <div class="analise-texto">{corpo}</div>'
 
 
 def montar_rodape_fontes(fontes: list, data_atualizacao: datetime) -> str:
