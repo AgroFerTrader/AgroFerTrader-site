@@ -6,10 +6,10 @@
   },
   "erro_dolar": null,
   "dolar_tr": {
-    "compra": 5.1496,
-    "venda": 5.15,
-    "variacao_pct": -0.657833,
-    "hora": "01/09/2026 16:26:45"
+    "compra": 5.1508,
+    "venda": 5.1523,
+    "variacao_pct": -0.634683,
+    "hora": "01/09/2026 16:46:55"
   },
   "erro_dolar_tr": null,
   "selic": {
@@ -73,25 +73,25 @@
     {
       "nome": "Soja Futuro (B3)",
       "data": "contrato Janeiro/2027",
-      "preco_reais": "R$ 148,52 /sc 60 kg (≈ US$ 28,80 x R$ 5,1570)",
-      "variacao_pct": "0.35",
-      "valor_numerico": 28.8,
+      "preco_reais": "R$ 151,41 /sc 60 kg (≈ US$ 29,36 x R$ 5,1570)",
+      "variacao_pct": "1.94",
+      "valor_numerico": 29.36,
       "unidade": "US$/sc 60 kg"
     },
     {
       "nome": "Milho Futuro (B3)",
       "data": "contrato Setembro/2026",
-      "preco_reais": "71,05 R$/sc 60 kg",
-      "variacao_pct": "-0.63",
-      "valor_numerico": 71.05,
+      "preco_reais": "72,24 R$/sc 60 kg",
+      "variacao_pct": "1.67",
+      "valor_numerico": 72.24,
       "unidade": "R$/sc 60 kg"
     },
     {
       "nome": "Boi Gordo Futuro (B3)",
       "data": "contrato Setembro/2026",
-      "preco_reais": "357,65 R$/@",
-      "variacao_pct": "-0.28",
-      "valor_numerico": 357.65,
+      "preco_reais": "356,10 R$/@",
+      "variacao_pct": "-0.43",
+      "valor_numerico": 356.1,
       "unidade": "R$/@"
     },
     {
@@ -106,15 +106,21 @@
   "explicacoes_macro": [
     "",
     "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
-    "Queda suave do dólar (-0.47%): tende a esfriar discretamente o apetite por exportação, com leve efeito de baixa sobre o preço doméstico de commodities.",
-    "Juros em 14.00% ao ano seguem em patamar alto - carregar estoque fica caro, o que empurra produtores a vender mais rápido, e o diferencial de juros atrai capital estrangeiro, valorizando o real. Ambos tendem a pesar contra o preço em reais das commodities de exportação.",
+    "Dólar em leve queda (-0.47%): o real um pouco mais valorizado tende a reduzir de forma discreta o incentivo à exportação, pressionando levemente o preço interno de commodities cotadas em dólar.",
+    "Com a Selic em 14.00% ao ano, o custo de financiamento no campo segue elevado - isso tende a acelerar vendas (para gerar caixa) e, por atrair capital estrangeiro, também tende a fortalecer o real. Os dois efeitos juntos costumam pressionar o preço das commodities exportadas para baixo.",
     "Obs.: vale lembrar que essas são relações históricas, não regras fixas - fatores como clima, safra e demanda internacional podem se sobrepor facilmente ao efeito do câmbio ou dos juros."
   ],
   "noticias": [
     {
-      "titulo": "Sucroenergético16:02Açúcar ganha força com expectativa de déficit global na safra 2026/27",
+      "titulo": "01/09/2026 - 16:02Açúcar ganha força com expectativa de déficit global na safra 2026/27",
       "link": "https://www.noticiasagricolas.com.br/noticias/sucroenergetico/427315-acucar-ganha-forca-com-expectativa-de-deficit-global-na-safra-2026-27.html",
       "resumo": "O mercado internacional de açúcar fechou a terça-feira (1º) em forte alta, após a Organização Internacional do Açúcar (ISO) apontar para uma mudança no balanço global da commodity, com a expectativa de déficit na safra 2...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "01/09/2026 - 14:35Emater projeta leve recuo na área de soja do RS, mas salto na safra 26/27",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/427321-emater-projeta-leve-recuo-na-area-de-soja-do-rs-mas-salto-na-safra-2627.html",
+      "resumo": "SÃO PAULO, 1 Set (Reuters) - A área plantada com soja no Rio Grande do Sul em 2026/27 foi estimada nesta terça-feira em 6,645 milhões de hectares, queda de 0,92% em relação ao ciclo anterior, mas a produção deverá dar um...",
       "fonte": "Notícias Agrícolas"
     },
     {

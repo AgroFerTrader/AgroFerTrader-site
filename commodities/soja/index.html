@@ -188,6 +188,7 @@
   .analise-corpo p{margin:0 0 12px;}
   .analise-corpo p:last-child{margin-bottom:0;}
   .analise-placeholder{font-size:14px;opacity:.65;font-style:italic;}
+  .analise-rodape{font-size:12.5px;color:var(--ink);opacity:.6;font-family:var(--mono);margin:14px 2px 0;}
 
   .chart-legenda{font-size:15.5px;margin:0 0 18px;max-width:70ch;}
 
@@ -331,7 +332,7 @@ Fonte: CEPEA/Esalq · dado de 31/08/2026
     <table class="futures-table">
       <thead><tr><th>Commodity</th><th>Contrato</th><th>Fechamento</th><th>Variação</th></tr></thead>
       <tbody><!-- FUTURO:START -->
-<tr><td><a href="commodities/soja/">Soja</a></td><td>Janeiro/2027</td><td class="val">R$ 148,52 /sc</td><td class="up">▲ 0.35%</td></tr>
+<tr><td><a href="commodities/soja/">Soja</a></td><td>Janeiro/2027</td><td class="val">R$ 151,41 /sc</td><td class="up">▲ 1.94%</td></tr>
 <!-- FUTURO:END -->
       </tbody>
     </table>
@@ -363,18 +364,18 @@ Fonte: CEPEA/Esalq · dado de 31/08/2026
 <p class="analise-placeholder">Em preparação — em breve, a reação de preço, volume e comportamento dos players observada na semana.</p>
 <!-- ANALISE_CONSEQUENCIAS:END --></div>
       </article>
-      <article class="analise-campo">
+      <!-- ANALISE_IMPACTO_B2B:START -->
+<article class="analise-campo">
         <h3>Impacto B2B</h3>
-        <div class="analise-corpo"><!-- ANALISE_IMPACTO_B2B:START -->
-<p class="analise-placeholder">Em preparação — em breve, o que muda para quem compra e vende em grande volume, indústria e trading.</p>
-<!-- ANALISE_IMPACTO_B2B:END --></div>
+        <div class="analise-corpo"><p class="analise-placeholder">Em preparação — em breve, o que muda para quem compra e vende em grande volume, indústria e trading (quando as fontes cobrirem esse ângulo).</p></div>
       </article>
-      <article class="analise-campo">
+<!-- ANALISE_IMPACTO_B2B:END -->
+      <!-- ANALISE_IMPACTO_B2C:START -->
+<article class="analise-campo">
         <h3>Impacto B2C</h3>
-        <div class="analise-corpo"><!-- ANALISE_IMPACTO_B2C:START -->
-<p class="analise-placeholder">Em preparação — em breve, o que muda para o produtor menor e o consumidor final, quando aplicável.</p>
-<!-- ANALISE_IMPACTO_B2C:END --></div>
+        <div class="analise-corpo"><p class="analise-placeholder">Em preparação — em breve, o que muda para o produtor menor e o consumidor final (quando as fontes cobrirem esse ângulo).</p></div>
       </article>
+<!-- ANALISE_IMPACTO_B2C:END -->
       <article class="analise-campo">
         <h3>O que observar</h3>
         <div class="analise-corpo"><!-- ANALISE_O_QUE_OBSERVAR:START -->
@@ -382,6 +383,9 @@ Fonte: CEPEA/Esalq · dado de 31/08/2026
 <!-- ANALISE_O_QUE_OBSERVAR:END --></div>
       </article>
     </div>
+    <p class="analise-rodape"><!-- ANALISE_FONTES:START -->
+
+<!-- ANALISE_FONTES:END --></p>
   </section>
 
   <section aria-labelledby="titulo-grafico">
@@ -508,6 +512,11 @@ Alta de 3,2% na semana.
   <p class="news-source">Fonte: Notícias Agrícolas</p>
 </article>
     <article class="news-item">
+  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/soja/427321-emater-projeta-leve-recuo-na-area-de-soja-do-rs-mas-salto-na-safra-2627.html" target="_blank" rel="noopener">Soja14:35Emater projeta leve recuo na área de soja do RS, mas salto na safra 26/27</a></p>
+  <p class="news-summary">SÃO PAULO, 1 Set (Reuters) - A área plantada com soja no Rio Grande do Sul em 2026/27 foi estimada nesta terça-feira em 6,645 milhões de hectares, queda de 0,92% em relação ao ciclo anterior, mas a produção deverá dar um...</p>
+  <p class="news-source">Fonte: Notícias Agrícolas</p>
+</article>
+    <article class="news-item">
   <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/soja/427306-soja-mais-cara-derruba-margem-de-esmagamento-em-mt-ao-menor-nivel-para-agosto-em-tres-anos.html" target="_blank" rel="noopener">Soja13:47Soja mais cara derruba margem de esmagamento em MT ao menor nível para agosto em três anos</a></p>
   <p class="news-summary">A valorização da soja em Mato Grosso voltou a pressionar a rentabilidade das indústrias processadoras em agosto. Segundo o Instituto Mato-grossense de Economia Agropecuária (Imea), a margem bruta de esmagamento recuou 11...</p>
   <p class="news-source">Fonte: Notícias Agrícolas</p>
@@ -515,11 +524,6 @@ Alta de 3,2% na semana.
     <article class="news-item">
   <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/soja/427300-stonex-eleva-em-02-previsao-de-safra-de-soja-do-brasil-202627-para-1835-mi-t.html" target="_blank" rel="noopener">Soja12:09StoneX eleva em 0,2% previsão de safra de soja do Brasil 2026/27 para 183,5 mi t</a></p>
   <p class="news-summary">SÃO PAULO, 1 Set (Reuters) - A safra de soja do Brasil em 2026/27 foi estimada nesta terça-feira em 183,5 milhões de toneladas, leve alta de 0,2% em relação à previsão do mês anterior, alguns dias antes do início do plan...</p>
-  <p class="news-source">Fonte: Notícias Agrícolas</p>
-</article>
-    <article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/soja/427282-comeca-nesta-terca-feira-1-de-setembro-o-calendario-de-semeadura-da-soja-na-regiao-1-de-sao-paulo.html" target="_blank" rel="noopener">Soja10:39Começa nesta terça-feira, 1º de setembro, o calendário de semeadura da soja na Região 1 de São Paulo</a></p>
-  <p class="news-summary">A Defesa Agropecuária da Secretaria de Agricultura e Abastecimento (SAA) informa que o calendário de semeadura da cultura da soja na Região 1, tem início nesta terça-feira, dia 1º de setembro. A medida passa a valer após...</p>
   <p class="news-source">Fonte: Notícias Agrícolas</p>
 </article>
 <!-- NOTICIAS:END -->

@@ -112,7 +112,11 @@ COMMODITIES_PAGINAS = [
 # que ja foi editado a mao - so usa o texto abaixo na primeira vez que
 # a pagina e criada).
 # ---------------------------------------------------------------------------
-CAMPOS_ANALISE_SEMANAL = [
+# Campos "fixos": sempre aparecem na pagina (mesmo quando as fontes nao
+# cobrirem o suficiente, o proprio texto deve dizer isso - nunca ficam
+# de fora). O marcador envolve so o paragrafo; o <article>/<h3> fica
+# fixo no template.
+CAMPOS_ANALISE_SEMANAL_FIXOS = [
     (
         "ANALISE_O_QUE_ACONTECEU",
         "Em preparação — em breve, um resumo dos principais fatos da semana "
@@ -131,19 +135,31 @@ CAMPOS_ANALISE_SEMANAL = [
         "dos players observada na semana.",
     ),
     (
-        "ANALISE_IMPACTO_B2B",
-        "Em preparação — em breve, o que muda para quem compra e vende em "
-        "grande volume, indústria e trading.",
-    ),
-    (
-        "ANALISE_IMPACTO_B2C",
-        "Em preparação — em breve, o que muda para o produtor menor e o "
-        "consumidor final, quando aplicável.",
-    ),
-    (
         "ANALISE_O_QUE_OBSERVAR",
         "Em preparação — em breve, os fatores-chave a observar na próxima "
         "semana.",
+    ),
+]
+
+# Campos "opcionais": Impacto B2B e Impacto B2C. Quando as fontes nao
+# cobrirem o angulo E nao houver uma leitura de mercado confiavel o
+# suficiente pra propor (ver gerar_analise_semanal.py), o campo inteiro
+# - card e titulo incluidos - some da pagina, em vez de mostrar um card
+# vazio ou um texto vago. Por isso o marcador envolve o <article>
+# inteiro (nao so o paragrafo) - ver commodities/_template.html.
+CAMPOS_ANALISE_SEMANAL_OPCIONAIS = [
+    (
+        "ANALISE_IMPACTO_B2B",
+        "Impacto B2B",
+        "Em preparação — em breve, o que muda para quem compra e vende em "
+        "grande volume, indústria e trading (quando as fontes cobrirem esse "
+        "ângulo).",
+    ),
+    (
+        "ANALISE_IMPACTO_B2C",
+        "Impacto B2C",
+        "Em preparação — em breve, o que muda para o produtor menor e o "
+        "consumidor final (quando as fontes cobrirem esse ângulo).",
     ),
 ]
 
@@ -220,15 +236,23 @@ def garantir_pagina_existe(config: dict) -> str:
         "{{GRAFICO_LEGENDA_STAT_INICIAL}}": "",
         "{{GRAFICO_LEGENDA_CAUSA_INICIAL}}": "",
         "{{JSONLD_PRODUTO_INICIAL}}": "",
+        "{{ANALISE_FONTES_INICIAL}}": "",
         "{{RESUMO_ANALISTA_INICIAL}}": (
             f"Análise em preparação — em breve, um resumo do que está "
             f"movimentando o mercado de {config['nome_exibicao'].lower()} nesta semana."
         ),
         "{{NOTICIAS_INICIAL}}": "",
     }
-    for chave_campo, texto_placeholder in CAMPOS_ANALISE_SEMANAL:
+    for chave_campo, texto_placeholder in CAMPOS_ANALISE_SEMANAL_FIXOS:
         substituicoes_estaticas[f"{{{{{chave_campo}_INICIAL}}}}"] = (
             f'<p class="analise-placeholder">{texto_placeholder}</p>'
+        )
+    for chave_campo, titulo_campo, texto_placeholder in CAMPOS_ANALISE_SEMANAL_OPCIONAIS:
+        substituicoes_estaticas[f"{{{{{chave_campo}_INICIAL}}}}"] = (
+            '<article class="analise-campo">\n'
+            f'        <h3>{titulo_campo}</h3>\n'
+            f'        <div class="analise-corpo"><p class="analise-placeholder">{texto_placeholder}</p></div>\n'
+            '      </article>'
         )
     for chave, valor in substituicoes_estaticas.items():
         html = html.replace(chave, valor)
