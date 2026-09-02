@@ -165,6 +165,137 @@ CAMPOS_ANALISE_SEMANAL_OPCIONAIS = [
 
 
 # ---------------------------------------------------------------------------
+# ANALISES DE MERCADO (markdown aprovado manualmente) - cada commodity tem
+# um arquivo analises/<slug>.md, escrito e aprovado fora deste script (ver
+# PARTE 1 do pedido que criou este bloco). Este script so formata e publica
+# esse conteudo nos marcadores ANALISE_* do template; nunca gera texto de
+# analise por conta propria.
+# ---------------------------------------------------------------------------
+
+PASTA_ANALISES = os.path.join(PASTA_SITE, "analises")
+
+_RE_SECAO_MD = re.compile(r"(?m)^##\s+(.+)$")
+
+
+def _paragrafos_html(texto: str) -> str:
+    """Converte paragrafos separados por linha em branco (texto corrido,
+    dissertativo - nao bullet points) em <p>...</p>, um por paragrafo."""
+    blocos = re.split(r"\n\s*\n", texto.strip())
+    return "\n".join(
+        f"<p>{escape(bloco.strip().replace(chr(10), ' '), quote=False)}</p>"
+        for bloco in blocos if bloco.strip()
+    )
+
+
+def _secoes_analise_md(texto_md: str) -> dict:
+    """Divide o markdown em {titulo_da_secao: corpo}, usando os cabecalhos
+    '## ...' como separadores (mesmo padrao dos 4 arquivos aprovados em
+    analises/*.md). O texto antes do primeiro '##' (titulo H1 + linha de
+    fechamento/data) e descartado aqui - HEADLINE ja vem de
+    COMMODITIES_PAGINAS, e a data de publicacao e calculada a partir do
+    arquivo (ver carregar_analise_markdown)."""
+    partes = _RE_SECAO_MD.split(texto_md)
+    secoes = {}
+    for i in range(1, len(partes), 2):
+        titulo = partes[i].strip()
+        corpo = partes[i + 1] if i + 1 < len(partes) else ""
+        secoes[titulo] = corpo.strip()
+    return secoes
+
+
+def _secao_por_prefixo(secoes: dict, prefixo: str):
+    for titulo, corpo in secoes.items():
+        if titulo.startswith(prefixo):
+            return titulo, corpo
+    return None, ""
+
+
+def carregar_analise_markdown(slug: str):
+    """Le analises/<slug>.md e devolve o dict de substituicoes prontas para
+    os marcadores ANALISE_* do template (texto corrido em <p>, rodape de
+    fontes + data). Devolve None se o arquivo ainda nao existir - nesse
+    caso a pagina mantem o que ja tinha (placeholder ou publicacao
+    anterior), sem risco de apagar conteudo por engano.
+
+    A data "Atualizado em" usa a data de modificacao do PROPRIO arquivo
+    .md, nao a data em que o gerador roda - assim ela so muda quando a
+    analise de fato for editada, mesmo que o site seja republicado (com
+    novas cotacoes) varias vezes no mesmo dia.
+    """
+    caminho = os.path.join(PASTA_ANALISES, f"{slug}.md")
+    if not os.path.exists(caminho):
+        return None
+
+    with open(caminho, encoding="utf-8") as f:
+        texto_md = f.read()
+
+    linha_fechamento = next(
+        (l for l in texto_md.splitlines() if l.startswith("Fechamento:")), ""
+    )
+    m_fechamento = re.match(r"Fechamento:\s*([^|]+)\|", linha_fechamento)
+    fechamento = m_fechamento.group(1).strip() if m_fechamento else ""
+
+    secoes = _secoes_analise_md(texto_md)
+
+    _, corpo_o_que = _secao_por_prefixo(secoes, "O que aconteceu")
+    titulo_por_que, corpo_por_que = _secao_por_prefixo(secoes, "Por que aconteceu")
+    _, corpo_consequencias = _secao_por_prefixo(secoes, "Consequências no mercado")
+    _, corpo_b2b = _secao_por_prefixo(secoes, "Impacto B2B")
+    _, corpo_b2c = _secao_por_prefixo(secoes, "Impacto B2C")
+    _, corpo_observar = _secao_por_prefixo(secoes, "O que observar")
+
+    # O subtitulo de "Por que aconteceu" (ex.: "- a camada internacional
+    # que explica o paradoxo") carrega informacao real do texto aprovado,
+    # mas o <h3> da secao ja e fixo no template - entra como frase de
+    # abertura em destaque, nao como um cabecalho novo.
+    html_por_que = ""
+    if titulo_por_que and "—" in titulo_por_que:
+        subtitulo = titulo_por_que.split("—", 1)[1].strip()
+        if subtitulo:
+            subtitulo = subtitulo[0].upper() + subtitulo[1:]
+            html_por_que += f"<p><strong>{escape(subtitulo, quote=False)}.</strong></p>\n"
+    html_por_que += _paragrafos_html(corpo_por_que)
+
+    # "Fontes consultadas" e o ultimo paragrafo da secao "O que observar"
+    # no markdown aprovado (sem cabecalho '##' proprio) - separado aqui do
+    # corpo editorial para virar o rodape de transparencia da pagina.
+    paragrafos_observar = [
+        b.strip().replace("\n", " ")
+        for b in re.split(r"\n\s*\n", corpo_observar.strip())
+        if b.strip()
+    ]
+    fontes_texto = ""
+    if paragrafos_observar and paragrafos_observar[-1].startswith("Fontes consultadas"):
+        fontes_texto = paragrafos_observar.pop()
+    corpo_observar_html = "\n".join(f"<p>{escape(p, quote=False)}</p>" for p in paragrafos_observar)
+
+    data_publicacao = datetime.fromtimestamp(os.path.getmtime(caminho)).strftime("%d/%m/%Y")
+    partes_rodape = []
+    if fechamento:
+        partes_rodape.append(f"Fechamento: {fechamento}")
+    partes_rodape.append(f"Atualizado em: {data_publicacao}")
+    if fontes_texto:
+        partes_rodape.append(escape(fontes_texto, quote=False))
+    rodape = " · ".join(partes_rodape)
+
+    return {
+        "ANALISE_O_QUE_ACONTECEU": _paragrafos_html(corpo_o_que),
+        "ANALISE_POR_QUE_ACONTECEU": html_por_que,
+        "ANALISE_CONSEQUENCIAS": _paragrafos_html(corpo_consequencias),
+        "ANALISE_IMPACTO_B2B": (
+            f'<h3>Impacto B2B</h3>\n        <div class="analise-texto">'
+            f'{_paragrafos_html(corpo_b2b)}</div>'
+        ),
+        "ANALISE_IMPACTO_B2C": (
+            f'<h3>Impacto B2C</h3>\n        <div class="analise-texto">'
+            f'{_paragrafos_html(corpo_b2c)}</div>'
+        ),
+        "ANALISE_O_QUE_OBSERVAR": corpo_observar_html,
+        "ANALISE_FONTES": rodape,
+    }
+
+
+# ---------------------------------------------------------------------------
 # 0) COTACOES REGIONAIS - cada commodity usa a fonte (Notícias
 #    Agrícolas/CEPEA) que de fato traz as praças pedidas para ela; café é
 #    o único caso agrupado por praça cafeeira (não por estado).
@@ -833,6 +964,10 @@ def atualizar_pagina_commodity(config: dict, dados: dict) -> None:
         "DADOS_HISTORICO_JSON": montar_dados_historico_json(),
         "NOTICIAS": site.montar_noticias_html(noticias_categoria),
     }
+
+    analise_md = carregar_analise_markdown(config["slug"])
+    if analise_md:
+        substituicoes.update(analise_md)
 
     for marcador, conteudo in substituicoes.items():
         html = site._substituir_entre_marcadores(html, marcador, conteudo)
