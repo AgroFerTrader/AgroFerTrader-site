@@ -446,11 +446,22 @@
       var minimo = Math.min.apply(null, valores), maximo = Math.max.apply(null, valores);
       if (minimo === maximo) { minimo -= 1; maximo += 1; }
       var passo = larguraUtil / Math.max(1, n - 1), base = margemTopo + alturaUtil;
+      // A primeira e a ultima barra sao centralizadas exatamente sobre o
+      // primeiro/ultimo ponto - que fica em cima da propria borda do
+      // grafico. Sem limitar a largura, essas duas barras "vazam" pra
+      // fora da area util e cobrem os rotulos de preco (a esquerda) e a
+      // linha do eixo. Limita cada barra a nunca passar de
+      // [margemEsq, margemEsq + larguraUtil].
+      var limiteEsq = margemEsq, limiteDir = margemEsq + larguraUtil;
       valores.forEach(function (valor, i) {
         var bar = document.createElementNS("http://www.w3.org/2000/svg", "rect");
         var alturaBarra = ((valor - minimo) / (maximo - minimo)) * alturaUtil;
-        bar.setAttribute("class", "chart-bar"); bar.setAttribute("x", margemEsq + i * passo - Math.max(2, passo * .32));
-        bar.setAttribute("y", base - alturaBarra); bar.setAttribute("width", Math.max(4, passo * .64));
+        var centroX = margemEsq + i * passo;
+        var largBarra = Math.max(4, passo * .64);
+        var xEsq = Math.max(limiteEsq, centroX - largBarra / 2);
+        var xDir = Math.min(limiteDir, centroX + largBarra / 2);
+        bar.setAttribute("class", "chart-bar"); bar.setAttribute("x", xEsq);
+        bar.setAttribute("y", base - alturaBarra); bar.setAttribute("width", Math.max(1, xDir - xEsq));
         bar.setAttribute("height", alturaBarra); bar.setAttribute("fill", "#4C7A1F"); bar.setAttribute("opacity", ".7");
         svg.insertBefore(bar, svg.querySelector(".chart-hit"));
       });
