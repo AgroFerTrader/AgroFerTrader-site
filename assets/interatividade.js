@@ -190,15 +190,6 @@
     return partes.join(" ");
   }
 
-  function _variacaoPercentual(serie) {
-    if (!serie.length) return [];
-    var base = serie[0][1];
-    if (!base) return serie.map(function () { return 0; });
-    return serie.map(function (ponto) {
-      return ((ponto[1] - base) / base) * 100;
-    });
-  }
-
   function obterDadosHistorico() {
     var script = document.getElementById("dados-historico-commodities");
     if (!script) return null;
@@ -230,10 +221,15 @@
     var base = document.querySelector(".chart-wrap");
     if (!base) return;
     var serieTipo = painel.querySelector(".comparativo-serie").value;
+    var periodoEl = painel.querySelector(".comparativo-periodo");
+    var periodo = periodoEl ? periodoEl.value : "tudo";
+    var leitura = painel.querySelector(".comparativo-leitura");
+    var textoLeituraPadrao = "Passe o mouse sobre o gráfico para ver o preço de cada dia.";
     var selecionados = Array.from(painel.querySelectorAll("input[name='commodity-comparada']:checked")).map(function (input) { return input.value; });
     if (!selecionados.length) {
       svg.innerHTML = "";
       painel.querySelector(".comparativo-legenda").innerHTML = "";
+      if (leitura) leitura.textContent = textoLeituraPadrao;
       return;
     }
     var slugBase = base.dataset.slug;
@@ -241,33 +237,115 @@
     var series = [{ slug: slugBase, nome: nomes[slugBase] || slugBase, valores: (dados[serieTipo][slugBase] || []) }];
     selecionados.forEach(function (slug) { if (dados[serieTipo][slug]) series.push({ slug: slug, nome: nomes[slug] || slug, valores: dados[serieTipo][slug] }); });
     series = series.filter(function (item) { return item.valores.length > 1; });
-    if (series.length < 2) { svg.innerHTML = '<text x="450" y="160" text-anchor="middle" fill="#61705f" font-family="Arial">Selecione ao menos uma commodity com histórico disponível.</text>'; return; }
+    if (series.length < 2) { svg.innerHTML = '<text x="450" y="160" text-anchor="middle" fill="#61705f" font-family="Arial">Selecione ao menos uma commodity com histórico disponível.</text>'; if (leitura) leitura.textContent = textoLeituraPadrao; return; }
+
+    if (periodo !== "tudo") {
+      var dias = parseInt(periodo, 10);
+      series.forEach(function (item) { item.valores = item.valores.slice(-dias); });
+      series = series.filter(function (item) { return item.valores.length > 1; });
+      if (series.length < 2) { svg.innerHTML = '<text x="450" y="160" text-anchor="middle" fill="#61705f" font-family="Arial">Sem dados suficientes nesse período.</text>'; if (leitura) leitura.textContent = textoLeituraPadrao; return; }
+    }
+
     var n = Math.min.apply(null, series.map(function (item) { return item.valores.length; }));
-    series.forEach(function (item) { item.valores = item.valores.slice(-n); item.variacoes = _variacaoPercentual(item.valores); });
-    var todas = [].concat.apply([], series.map(function (item) { return item.variacoes; }));
-    var minimo = Math.min.apply(null, todas), maximo = Math.max.apply(null, todas);
-    if (minimo === maximo) { minimo -= 1; maximo += 1; }
-    var esquerda = 72, topo = 28, largura = 820, altura = 220, passo = largura / (n - 1), faixa = maximo - minimo;
-    function ponto(valor, indice) { return [esquerda + indice * passo, topo + altura - ((valor - minimo) / faixa) * altura]; }
+    // Cada commodity e desenhada na sua PROPRIA faixa de preco (min-max
+    // dela mesma mapeados para toda a altura do grafico) - assim da pra
+    // comparar a tendencia de commodities com escalas muito diferentes
+    // (soja ~R$150 x cafe ~R$1.800) lado a lado. O preco real de cada
+    // dia aparece ao passar o mouse, nao num eixo numerico compartilhado
+    // (que nao faria sentido com escalas independentes).
+    series.forEach(function (item) {
+      item.valores = item.valores.slice(-n);
+      var precos = item.valores.map(function (p) { return p[1]; });
+      item.minimo = Math.min.apply(null, precos);
+      item.maximo = Math.max.apply(null, precos);
+      if (item.minimo === item.maximo) { item.minimo -= 1; item.maximo += 1; }
+      item.unidade = UNIDADES_PRECO[item.slug] || "R$/saca";
+    });
+    var esquerda = 72, topo = 28, largura = 820, altura = 220, passo = largura / (n - 1);
+    function ponto(item, indice) {
+      var valor = item.valores[indice][1];
+      var posicao = (valor - item.minimo) / (item.maximo - item.minimo);
+      return [esquerda + indice * passo, topo + altura - posicao * altura];
+    }
     var ns = "http://www.w3.org/2000/svg";
     svg.setAttribute("viewBox", "0 0 920 320"); svg.innerHTML = "";
-    [minimo, 0, maximo].forEach(function (valor) { var p = ponto(valor, 0), linha = document.createElementNS(ns, "line"); linha.setAttribute("x1", esquerda); linha.setAttribute("x2", esquerda + largura); linha.setAttribute("y1", p[1]); linha.setAttribute("y2", p[1]); linha.setAttribute("stroke", valor === 0 ? "#B08830" : "#d7ddcf"); linha.setAttribute("stroke-dasharray", valor === 0 ? "none" : "3,4"); svg.appendChild(linha); var texto = document.createElementNS(ns, "text"); texto.setAttribute("x", esquerda - 10); texto.setAttribute("y", p[1] + 4); texto.setAttribute("text-anchor", "end"); texto.setAttribute("font-size", "11"); texto.setAttribute("fill", "#61705f"); texto.textContent = valor.toFixed(1).replace(".", ",") + "%"; svg.appendChild(texto); });
+    // Linhas de grade neutras (sem numero - cada serie tem sua propria
+    // escala, entao um rotulo numerico unico seria enganoso).
+    [0, 0.5, 1].forEach(function (fracao) {
+      var y = topo + altura - fracao * altura;
+      var linha = document.createElementNS(ns, "line");
+      linha.setAttribute("x1", esquerda); linha.setAttribute("x2", esquerda + largura);
+      linha.setAttribute("y1", y); linha.setAttribute("y2", y);
+      linha.setAttribute("stroke", "#d7ddcf"); linha.setAttribute("stroke-dasharray", "3,4");
+      svg.appendChild(linha);
+    });
     var cores = ["#B08830", "#0B3C1F", "#9C3B2E", "#4C7A1F"];
     var modo = painel.querySelector(".comparativo-modo").value;
+    var elementosLeitura = [];
     series.forEach(function (item, indice) {
-      var pontos = item.variacoes.map(ponto), grupo = document.createElementNS(ns, "g");
+      var pontos = item.valores.map(function (p, i) { return ponto(item, i); });
+      var grupo = document.createElementNS(ns, "g");
       grupo.setAttribute("class", "comparativo-linha");
-      if (modo === "barras") pontos.forEach(function (p, i) { var barra = document.createElementNS(ns, "rect"), zero = ponto(0, i)[1]; barra.setAttribute("x", p[0] - Math.max(2, passo / (series.length + 1)) * (series.length - indice)); barra.setAttribute("y", Math.min(p[1], zero)); barra.setAttribute("width", Math.max(3, passo / (series.length + 1))); barra.setAttribute("height", Math.abs(zero - p[1])); barra.setAttribute("fill", cores[indice % cores.length]); barra.setAttribute("opacity", ".78"); grupo.appendChild(barra); });
-      else { var linha = document.createElementNS(ns, "path"); linha.setAttribute("d", _caminhoSuaveJS(pontos)); linha.setAttribute("fill", "none"); linha.setAttribute("stroke", cores[indice % cores.length]); linha.setAttribute("stroke-width", indice === 0 ? "3" : "2"); grupo.appendChild(linha); }
+      if (modo === "barras") {
+        pontos.forEach(function (p, i) {
+          var base_y = topo + altura;
+          var barra = document.createElementNS(ns, "rect");
+          var largBarra = Math.max(3, passo / (series.length + 1));
+          barra.setAttribute("x", p[0] - largBarra * (series.length - indice) / 2);
+          barra.setAttribute("y", p[1]);
+          barra.setAttribute("width", largBarra);
+          barra.setAttribute("height", Math.max(0, base_y - p[1]));
+          barra.setAttribute("fill", cores[indice % cores.length]);
+          barra.setAttribute("opacity", ".78");
+          barra.setAttribute("data-nome", item.nome);
+          barra.setAttribute("data-data", (item.valores[i][0] || "").split("-").reverse().join("/"));
+          barra.setAttribute("data-preco", formatarBRL(item.valores[i][1]));
+          grupo.appendChild(barra);
+          elementosLeitura.push(barra);
+        });
+      } else {
+        var linha = document.createElementNS(ns, "path");
+        linha.setAttribute("d", _caminhoSuaveJS(pontos));
+        linha.setAttribute("fill", "none"); linha.setAttribute("stroke", cores[indice % cores.length]);
+        linha.setAttribute("stroke-width", indice === 0 ? "3" : "2");
+        grupo.appendChild(linha);
+        pontos.forEach(function (p, i) {
+          var hit = document.createElementNS(ns, "circle");
+          hit.setAttribute("cx", p[0]); hit.setAttribute("cy", p[1]); hit.setAttribute("r", "7");
+          hit.setAttribute("fill", "transparent");
+          hit.setAttribute("data-nome", item.nome);
+          hit.setAttribute("data-data", (item.valores[i][0] || "").split("-").reverse().join("/"));
+          hit.setAttribute("data-preco", formatarBRL(item.valores[i][1]));
+          grupo.appendChild(hit);
+          elementosLeitura.push(hit);
+        });
+      }
       svg.appendChild(grupo);
     });
-    [0, Math.floor((n - 1) / 2), n - 1].forEach(function (i) { var texto = document.createElementNS(ns, "text"), p = ponto(0, i); texto.setAttribute("x", p[0]); texto.setAttribute("y", "285"); texto.setAttribute("text-anchor", "middle"); texto.setAttribute("font-size", "11"); texto.setAttribute("fill", "#61705f"); texto.textContent = (series[0].valores[i][0] || "").split("-").reverse().join("/"); svg.appendChild(texto); });
-    var legenda = painel.querySelector(".comparativo-legenda"); legenda.innerHTML = series.map(function (item, indice) { return '<span><i style="background:' + cores[indice % cores.length] + '"></i>' + item.nome + " · " + (serieTipo === "futuros" ? "futuro" : "físico") + "</span>"; }).join("");
+    if (leitura) {
+      elementosLeitura.forEach(function (el) {
+        el.style.cursor = "pointer";
+        el.addEventListener("mouseenter", function () {
+          leitura.textContent = el.getAttribute("data-data") + " · " + el.getAttribute("data-nome") + ": R$ " + el.getAttribute("data-preco");
+        });
+      });
+      svg.addEventListener("mouseleave", function () { leitura.textContent = textoLeituraPadrao; });
+    }
+    [0, Math.floor((n - 1) / 2), n - 1].forEach(function (i) { var texto = document.createElementNS(ns, "text"), p = ponto(series[0], i); texto.setAttribute("x", esquerda + i * passo); texto.setAttribute("y", "285"); texto.setAttribute("text-anchor", "middle"); texto.setAttribute("font-size", "11"); texto.setAttribute("fill", "#61705f"); texto.textContent = (series[0].valores[i][0] || "").split("-").reverse().join("/"); svg.appendChild(texto); });
+    var legenda = painel.querySelector(".comparativo-legenda");
+    legenda.innerHTML = series.map(function (item, indice) {
+      var sufixo = item.unidade.replace("R$", "");
+      return '<span><i style="background:' + cores[indice % cores.length] + '"></i>' + item.nome + " " + sufixo + ": R$ " + formatarBRL(item.minimo) + "–" + formatarBRL(item.maximo) + "</span>";
+    }).join("");
   }
 
   function renderizarModoGrafico(modo) {
     var serieAtiva = document.querySelector(".chart-series-panel:not([hidden])") || document;
-    serieAtiva.querySelectorAll(".chart-painel [data-periodo]:not([hidden]) .chart-wrap").forEach(function (wrap) {
+    var wraps = Array.from(serieAtiva.querySelectorAll(".chart-painel [data-periodo]:not([hidden]) .chart-wrap"));
+    document.querySelectorAll(".chart-painel-personalizado:not([hidden]) .chart-wrap").forEach(function (wrap) {
+      wraps.push(wrap);
+    });
+    wraps.forEach(function (wrap) {
       var svg = wrap.querySelector("svg");
       if (!svg) return;
       svg.classList.toggle("modo-barras", modo === "barras");
@@ -405,7 +483,10 @@
     var precoFinalFmt = formatarBRL(ultimo.valor);
 
     var html =
-      '<div class="chart-wrap" id="grafico-' + sufixoId + '">' +
+      '<div class="chart-wrap" id="grafico-' + sufixoId + '" data-slug="' + slug +
+      '" data-margem-esq="' + margemEsq + '" data-margem-topo="' + margemTopo +
+      '" data-altura-util="' + alturaUtil + '" data-largura-util="' + larguraUtil +
+      '" data-num-pontos="' + serieFiltrada.length + '">' +
       '<svg viewBox="0 0 ' + largura + ' ' + altura + '" xmlns="http://www.w3.org/2000/svg" role="img" ' +
       'aria-label="Variação de preço de ' + nomeExibicao + ' entre ' + formatarDataBR(primeiro.data) + ' e ' + dataFinalFmt + '">' +
       '<defs><linearGradient id="' + idGrad + '" x1="0" y1="0" x2="0" y2="1">' +
@@ -512,13 +593,16 @@
         resultado.innerHTML = renderizarGraficoPersonalizado(slug, filtrada, nomes[slug] || slug);
         resultado.hidden = false;
         ativarLeituraChartWrap(resultado.querySelector(".chart-wrap"));
+
+        var modoAtivo = chartBox.querySelector(".chart-modo-btn.active");
+        renderizarModoGrafico(modoAtivo ? modoAtivo.dataset.modoGrafico : "linha");
       });
     });
   }
 
   function iniciarFerramentasGrafico() {
     var estiloImpressao = document.createElement("style");
-    estiloImpressao.textContent = ".comparativo-painel{margin:28px 0 0;padding:28px 32px;border:1px solid #d7ddcf;border-top:3px solid #B08830;background:#FDFDF9}.comparativo-cabecalho{display:flex;justify-content:space-between;gap:24px;align-items:flex-start}.comparativo-cabecalho h3{margin:5px 0 4px;color:#0B3C1F;font:600 25px Georgia,serif}.comparativo-cabecalho p{max-width:62ch;margin:0;color:#61705f;font-size:14px;line-height:1.6}.comparativo-limpar{border:1px solid #d7ddcf;background:#fff;color:#0B3C1F;padding:8px 12px;font:500 11px 'IBM Plex Mono',monospace;cursor:pointer;white-space:nowrap}.comparativo-controles{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;margin:24px 0 14px}.comparativo-controles fieldset{border:0;margin:0;padding:0}.comparativo-controles legend,.comparativo-controles label{display:block;font:500 11px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.06em;color:#4C7A1F;margin-bottom:8px}.comparativo-opcoes{display:flex;gap:8px;flex-wrap:wrap}.comparativo-opcoes label{display:flex;align-items:center;gap:6px;border:1px solid #d7ddcf;background:#fff;color:#0B3C1F;padding:9px 11px;text-transform:none;letter-spacing:0;font:500 13px Inter,sans-serif;margin:0}.comparativo-controles select{display:block;margin-top:8px;padding:9px 11px;border:1px solid #d7ddcf;background:#fff;color:#0B3C1F;font:13px Inter,sans-serif}.comparativo-legenda{display:flex;gap:18px;flex-wrap:wrap;margin:18px 0 6px;font:12px 'IBM Plex Mono',monospace;color:#61705f}.comparativo-legenda span{display:inline-flex;align-items:center;gap:6px}.comparativo-legenda i{width:18px;height:3px;display:inline-block}.comparativo-svg{width:100%;height:auto;min-height:260px;display:block}.comparativo-vazio{margin:0;color:#61705f;font-size:13px}.comparativo-vazio[hidden]{display:none}@media print{body.imprimir-grafico>*{display:none!important}body.imprimir-grafico main{display:block!important}body.imprimir-grafico main>section{display:none!important}body.imprimir-grafico main>section.grafico-para-impressao{display:block!important;padding:20px 0}body.imprimir-grafico .chart-ferramentas,body.imprimir-grafico .comparativo-painel{display:none!important}}@media(max-width:640px){.comparativo-painel{padding:24px 18px}.comparativo-cabecalho{display:block}.comparativo-limpar{margin-top:16px}.comparativo-controles{gap:16px}.comparativo-svg{min-height:220px}}.chart-personalizado{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-left:auto}.chart-personalizado-campo{display:flex;align-items:center;gap:6px;font:12px 'IBM Plex Mono',monospace;color:#0B3C1F;opacity:.75}.chart-personalizado-campo input[type=date]{font:12px Inter,sans-serif;padding:5px 6px;border:1px solid #d7ddcf;border-radius:2px;background:#fff;color:#0B3C1F}.chart-personalizado-aviso{font:12px Inter,sans-serif;color:#9C3B2E;flex-basis:100%}.chart-personalizado-aviso[hidden]{display:none}.chart-painel-personalizado[hidden]{display:none}@media(max-width:640px){.chart-personalizado{margin-left:0;width:100%}}";
+    estiloImpressao.textContent = ".comparativo-painel{margin:28px 0 0;padding:28px 32px;border:1px solid #d7ddcf;border-top:3px solid #B08830;background:#FDFDF9}.comparativo-cabecalho{display:flex;justify-content:space-between;gap:24px;align-items:flex-start}.comparativo-cabecalho h3{margin:5px 0 4px;color:#0B3C1F;font:600 25px Georgia,serif}.comparativo-cabecalho p{max-width:62ch;margin:0;color:#61705f;font-size:14px;line-height:1.6}.comparativo-limpar{border:1px solid #d7ddcf;background:#fff;color:#0B3C1F;padding:8px 12px;font:500 11px 'IBM Plex Mono',monospace;cursor:pointer;white-space:nowrap}.comparativo-controles{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;margin:24px 0 14px}.comparativo-controles fieldset{border:0;margin:0;padding:0}.comparativo-controles legend,.comparativo-controles label{display:block;font:500 11px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.06em;color:#4C7A1F;margin-bottom:8px}.comparativo-opcoes{display:flex;gap:8px;flex-wrap:wrap}.comparativo-opcoes label{display:flex;align-items:center;gap:6px;border:1px solid #d7ddcf;background:#fff;color:#0B3C1F;padding:9px 11px;text-transform:none;letter-spacing:0;font:500 13px Inter,sans-serif;margin:0}.comparativo-controles select{display:block;margin-top:8px;padding:9px 11px;border:1px solid #d7ddcf;background:#fff;color:#0B3C1F;font:13px Inter,sans-serif}.comparativo-legenda{display:flex;gap:18px;flex-wrap:wrap;margin:18px 0 6px;font:12px 'IBM Plex Mono',monospace;color:#61705f}.comparativo-legenda span{display:inline-flex;align-items:center;gap:6px}.comparativo-legenda i{width:18px;height:3px;display:inline-block}.comparativo-leitura{margin:0 0 10px;font:600 13px 'IBM Plex Mono',monospace;color:#0B3C1F;min-height:1.4em}.comparativo-svg{width:100%;height:auto;min-height:260px;display:block}.comparativo-vazio{margin:0;color:#61705f;font-size:13px}.comparativo-vazio[hidden]{display:none}@media print{body.imprimir-grafico>*{display:none!important}body.imprimir-grafico main{display:block!important}body.imprimir-grafico main>section{display:none!important}body.imprimir-grafico main>section.grafico-para-impressao{display:block!important;padding:20px 0}body.imprimir-grafico .chart-ferramentas,body.imprimir-grafico .comparativo-painel{display:none!important}}@media(max-width:640px){.comparativo-painel{padding:24px 18px}.comparativo-cabecalho{display:block}.comparativo-limpar{margin-top:16px}.comparativo-controles{gap:16px}.comparativo-svg{min-height:220px}}.chart-personalizado{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-left:auto}.chart-personalizado-campo{display:flex;align-items:center;gap:6px;font:12px 'IBM Plex Mono',monospace;color:#0B3C1F;opacity:.75}.chart-personalizado-campo input[type=date]{font:12px Inter,sans-serif;padding:5px 6px;border:1px solid #d7ddcf;border-radius:2px;background:#fff;color:#0B3C1F}.chart-personalizado-aviso{font:12px Inter,sans-serif;color:#9C3B2E;flex-basis:100%}.chart-personalizado-aviso[hidden]{display:none}.chart-painel-personalizado[hidden]{display:none}@media(max-width:640px){.chart-personalizado{margin-left:0;width:100%}}";
     document.head.appendChild(estiloImpressao);
       document.querySelectorAll(".chart-ferramentas").forEach(function (ferramentas) {
         var comparadorLegado = ferramentas.querySelector("#comparar-select");
@@ -529,12 +613,13 @@
         if (dados && base && grafico && !document.querySelector(".comparativo-painel")) {
           var nomes = { soja: "Soja", milho: "Milho", cafe: "Café Arábica", "boi-gordo": "Boi Gordo" };
           var painel = document.createElement("section"); painel.className = "comparativo-painel";
-          painel.innerHTML = '<div class="comparativo-cabecalho"><div><span class="section-label">Comparação</span><h3>Evolução comparada</h3><p>Todos os preços são normalizados para começar em 0%. Assim, commodities com valores diferentes podem ser comparadas sem distorção.</p></div><button type="button" class="comparativo-limpar">Limpar seleção</button></div><div class="comparativo-controles"><fieldset><legend>Commodities</legend><div class="comparativo-opcoes"></div></fieldset><label>Série<select class="comparativo-serie"><option value="fisicos">Preço físico</option><option value="futuros">Preço futuro</option></select></label><label>Visualização<select class="comparativo-modo"><option value="linha">Linhas</option><option value="barras">Barras agrupadas</option></select></label></div><div class="comparativo-legenda"></div><svg class="comparativo-svg" role="img" aria-label="Comparação de evolução percentual entre commodities"></svg><p class="comparativo-vazio">Selecione uma ou mais commodities para iniciar a comparação.</p>';
+          painel.innerHTML = '<div class="comparativo-cabecalho"><div><span class="section-label">Comparação</span><h3>Evolução comparada</h3><p>Cada commodity é desenhada na sua própria faixa de preço (para caber lado a lado mesmo com escalas bem diferentes) - passe o mouse sobre o gráfico para ver o preço real de cada dia.</p></div><button type="button" class="comparativo-limpar">Limpar seleção</button></div><div class="comparativo-controles"><fieldset><legend>Commodities</legend><div class="comparativo-opcoes"></div></fieldset><label>Série<select class="comparativo-serie"><option value="fisicos">Preço físico</option><option value="futuros">Preço futuro</option></select></label><label>Período<select class="comparativo-periodo"><option value="7">7 dias</option><option value="30">30 dias</option><option value="90" selected>90 dias</option><option value="tudo">Tudo</option></select></label><label>Visualização<select class="comparativo-modo"><option value="linha">Linhas</option><option value="barras">Barras agrupadas</option></select></label></div><div class="comparativo-legenda"></div><p class="comparativo-leitura">Passe o mouse sobre o gráfico para ver o preço de cada dia.</p><svg class="comparativo-svg" role="img" aria-label="Comparação de preço entre commodities, cada uma na sua própria escala"></svg><p class="comparativo-vazio">Selecione uma ou mais commodities para iniciar a comparação.</p>';
           grafico.parentNode.insertBefore(painel, grafico.nextSibling);
           var opcoes = painel.querySelector(".comparativo-opcoes");
           Object.keys(dados.fisicos).forEach(function (slug) { if (slug !== base.dataset.slug) opcoes.innerHTML += '<label><input type="checkbox" name="commodity-comparada" value="' + slug + '">' + (nomes[slug] || slug) + '</label>'; });
           painel.querySelectorAll("input[name='commodity-comparada']").forEach(function (input) { input.addEventListener("change", function () { painel.querySelector(".comparativo-vazio").hidden = painel.querySelectorAll("input:checked").length > 0; renderizarComparativo(painel); }); });
           painel.querySelector(".comparativo-serie").addEventListener("change", function () { renderizarComparativo(painel); });
+          painel.querySelector(".comparativo-periodo").addEventListener("change", function () { renderizarComparativo(painel); });
           painel.querySelector(".comparativo-modo").addEventListener("change", function () { renderizarComparativo(painel); });
           painel.querySelector(".comparativo-limpar").addEventListener("click", function () { painel.querySelectorAll("input:checked").forEach(function (input) { input.checked = false; }); painel.querySelector(".comparativo-vazio").hidden = false; renderizarComparativo(painel); });
         }
