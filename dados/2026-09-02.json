@@ -68,25 +68,25 @@
     {
       "nome": "Soja Futuro (B3)",
       "data": "contrato Janeiro/2027",
-      "preco_reais": "R$ 150,54 /sc 60 kg (≈ US$ 29,36 x R$ 5,1273)",
-      "variacao_pct": "1.94",
-      "valor_numerico": 29.36,
+      "preco_reais": "R$ 149,72 /sc 60 kg (≈ US$ 29,20 x R$ 5,1273)",
+      "variacao_pct": "-0.54",
+      "valor_numerico": 29.2,
       "unidade": "US$/sc 60 kg"
     },
     {
       "nome": "Milho Futuro (B3)",
       "data": "contrato Setembro/2026",
-      "preco_reais": "72,24 R$/sc 60 kg",
-      "variacao_pct": "1.67",
-      "valor_numerico": 72.24,
+      "preco_reais": "72,59 R$/sc 60 kg",
+      "variacao_pct": "0.47",
+      "valor_numerico": 72.59,
       "unidade": "R$/sc 60 kg"
     },
     {
       "nome": "Boi Gordo Futuro (B3)",
       "data": "contrato Setembro/2026",
-      "preco_reais": "356,10 R$/@",
-      "variacao_pct": "-0.43",
-      "valor_numerico": 356.1,
+      "preco_reais": "358,15 R$/@",
+      "variacao_pct": "0.59",
+      "valor_numerico": 358.15,
       "unidade": "R$/@"
     },
     {
@@ -101,9 +101,9 @@
   "explicacoes_macro": [
     "",
     "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
-    "Câmbio recuou de forma moderada hoje (-0.58%) - efeito inverso do de uma alta: a mesma cotação internacional passa a render um pouco menos em reais.",
+    "Queda suave do dólar (-0.58%): tende a esfriar discretamente o apetite por exportação, com leve efeito de baixa sobre o preço doméstico de commodities.",
     "Com a Selic em 14.00% ao ano, o custo de financiamento no campo segue elevado - isso tende a acelerar vendas (para gerar caixa) e, por atrair capital estrangeiro, também tende a fortalecer o real. Os dois efeitos juntos costumam pressionar o preço das commodities exportadas para baixo.",
-    "Obs.: vale lembrar que essas são relações históricas, não regras fixas - fatores como clima, safra e demanda internacional podem se sobrepor facilmente ao efeito do câmbio ou dos juros."
+    "Obs.: nenhuma dessas relações é garantida - clima, oferta mundial e demanda por vezes pesam mais que câmbio e juros na formação do preço final."
   ],
   "noticias": [
     {
