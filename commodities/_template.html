@@ -155,6 +155,9 @@
   .chart-hit{cursor:pointer;}
   .chart-dot{transition:transform .12s ease;transform-box:fill-box;transform-origin:center;}
   .chart-dot.chart-dot-ativo{transform:scale(1.8);}
+  /* Modo Barras: esconde a linha/area/pontos do modo Linha, senao os
+     dois modos ficam sobrepostos no mesmo grafico. */
+  .modo-barras .chart-area,.modo-barras .chart-linha,.modo-barras .chart-dot,.modo-barras .chart-dot-final{display:none;}
   .chart-footer{
     display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;
     background:var(--paper-dim);border-top:3px solid var(--gold);

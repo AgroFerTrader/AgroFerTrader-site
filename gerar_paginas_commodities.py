@@ -750,11 +750,11 @@ def _renderizar_svg_periodo(
   <line x1="{margem_esq}" y1="{margem_topo}" x2="{margem_esq}" y2="{margem_topo + altura_util}" stroke="rgba(11,60,31,0.14)" stroke-width="1"/>
   <line x1="{margem_esq}" y1="{margem_topo + altura_util}" x2="{largura - margem_dir}" y2="{margem_topo + altura_util}" stroke="rgba(11,60,31,0.14)" stroke-width="1"/>
   {rotulos_preco_str}
-  <path d="{caminho_area}" fill="url(#{id_gradiente})" stroke="none"/>
-  <path d="{caminho_linha}" fill="none" stroke="{cor_linha}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path class="chart-area" d="{caminho_area}" fill="url(#{id_gradiente})" stroke="none"/>
+  <path class="chart-linha" d="{caminho_linha}" fill="none" stroke="{cor_linha}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
   {pontos_svg_str}
     {rotulos_datas}
-  <circle cx="{circulo_final_x:.1f}" cy="{circulo_final_y:.1f}" r="4" fill="{cor_linha}"/>
+  <circle class="chart-dot-final" cx="{circulo_final_x:.1f}" cy="{circulo_final_y:.1f}" r="4" fill="{cor_linha}"/>
 </svg>
 </div>
 <div class="chart-footer">

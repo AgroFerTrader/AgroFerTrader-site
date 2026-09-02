@@ -250,91 +250,161 @@
     }
 
     var n = Math.min.apply(null, series.map(function (item) { return item.valores.length; }));
-    // Todas as commodities selecionadas compartilham a MESMA escala de
-    // preco (R$ real, nao %) - o objetivo e que o resultado no grafico
-    // corresponda ao valor de fato: uma commodity que vale mais (ex.
-    // cafe ~R$1.800) aparece mais alta que uma que vale menos (ex. soja
+    // Todas as commodities selecionadas compartilham o MESMO eixo de
+    // preco (R$ real, nao %) - uma commodity que vale mais (ex. cafe
+    // ~R$1.800) aparece mais alta que uma que vale menos (ex. soja
     // ~R$150), mesmo que a variacao percentual da mais barata tenha
-    // sido maior no periodo. Commodities bem mais baratas que as demais
-    // selecionadas tendem a aparecer achatadas perto da base - e o
-    // preco real, nao um erro de escala.
+    // sido maior no periodo.
+    //
+    // Quando os precos selecionados sao muito diferentes em grandeza
+    // (proporcao maior que ~3x entre o maior e o menor), uma escala
+    // linear faz a commodity mais barata parecer uma reta constante -
+    // sua variacao real (de uns poucos R$) fica invisivel perto da
+    // variacao da mais cara (de centenas de R$). A escala logaritmica
+    // resolve isso sem distorcer os valores: ela espalha os precos pela
+    // VARIACAO PERCENTUAL (nao a diferenca absoluta), entao a mesma
+    // oscilacao relativa - digamos, 10% - ocupa a mesma altura no
+    // grafico pra qualquer commodity, cara ou barata. Os valores
+    // continuam reais (nos rotulos, na legenda, ao passar o mouse) -
+    // so a posicao no eixo e calculada de outro jeito.
     series.forEach(function (item) {
       item.valores = item.valores.slice(-n);
       item.unidade = UNIDADES_PRECO[item.slug] || "R$/saca";
     });
-    var todosPrecos = [].concat.apply([], series.map(function (item) { return item.valores.map(function (p) { return p[1]; }); }));
-    var minimo = Math.min.apply(null, todosPrecos), maximo = Math.max.apply(null, todosPrecos);
-    if (minimo === maximo) { minimo -= 1; maximo += 1; }
-    var faixa = maximo - minimo;
-    var esquerda = 110, topo = 30, largura = 860, altura = 300, passo = largura / (n - 1);
-    function ponto(item, indice) {
-      var valor = item.valores[indice][1];
-      return [esquerda + indice * passo, topo + altura - ((valor - minimo) / faixa) * altura];
-    }
-    var ns = "http://www.w3.org/2000/svg";
-    svg.setAttribute("viewBox", "0 0 1000 420"); svg.innerHTML = "";
-    // Grade e rotulos de preco reais (4 niveis), compartilhados por
-    // todas as series - agora ha um eixo unico que faz sentido, porque
-    // todo mundo esta na mesma escala.
-    var numTicks = 4;
-    for (var t = 0; t < numTicks; t++) {
-      var valorTick = minimo + faixa * t / (numTicks - 1);
-      var yTick = topo + altura - (t / (numTicks - 1)) * altura;
-      if (t > 0) {
-        var linha = document.createElementNS(ns, "line");
-        linha.setAttribute("x1", esquerda); linha.setAttribute("x2", esquerda + largura);
-        linha.setAttribute("y1", yTick); linha.setAttribute("y2", yTick);
-        linha.setAttribute("stroke", "#d7ddcf"); linha.setAttribute("stroke-dasharray", "3,4");
-        svg.appendChild(linha);
-      }
-      var rotulo = document.createElementNS(ns, "text");
-      rotulo.setAttribute("x", esquerda - 10); rotulo.setAttribute("y", yTick + 4);
-      rotulo.setAttribute("text-anchor", "end"); rotulo.setAttribute("font-size", "11");
-      rotulo.setAttribute("font-family", "IBM Plex Mono, monospace"); rotulo.setAttribute("fill", "#61705f");
-      rotulo.textContent = "R$ " + formatarBRL(valorTick);
-      svg.appendChild(rotulo);
-    }
     var cores = ["#B08830", "#0B3C1F", "#9C3B2E", "#4C7A1F"];
-    var modo = painel.querySelector(".comparativo-modo").value;
+    var ns = "http://www.w3.org/2000/svg";
+    var numTicks = 4;
+
+    // Com exatamente 2 commodities (a base + 1 marcada), cada uma ganha
+    // seu PROPRIO eixo (esquerda para a primeira, direita para a
+    // segunda) - assim a variacao real de cada uma fica totalmente
+    // visivel, sem uma "esmagar" a outra por causa da diferenca de
+    // preco entre elas. Com 3+ commodities um eixo por serie no ficaria
+    // poluido demais, entao elas continuam compartilhando um unico eixo
+    // (ver funcaoEscalaCompartilhada abaixo).
+    var usarDoisEixos = series.length === 2;
+    var topo = 30, altura = 300;
+    var esquerda = usarDoisEixos ? 100 : 110;
+    var direita = usarDoisEixos ? 100 : 30;
+    var largura = 1000 - esquerda - direita;
+    var passo = largura / (n - 1);
+
+    svg.setAttribute("viewBox", "0 0 1000 420"); svg.innerHTML = "";
+
+    // Grade neutra (sem numero associado - com 2 eixos, cada um tem sua
+    // propria numeracao ao lado; com eixo compartilhado, o numero fica
+    // junto de cada linha, ver mais abaixo).
+    for (var g = 0; g < numTicks; g++) {
+      var yGrade = topo + altura - (g / (numTicks - 1)) * altura;
+      if (g === 0) continue;
+      var linhaGrade = document.createElementNS(ns, "line");
+      linhaGrade.setAttribute("x1", esquerda); linhaGrade.setAttribute("x2", esquerda + largura);
+      linhaGrade.setAttribute("y1", yGrade); linhaGrade.setAttribute("y2", yGrade);
+      linhaGrade.setAttribute("stroke", "#d7ddcf"); linhaGrade.setAttribute("stroke-dasharray", "3,4");
+      svg.appendChild(linhaGrade);
+    }
+
+    var posicaoY;
+    if (usarDoisEixos) {
+      series.forEach(function (item) {
+        var precos = item.valores.map(function (p) { return p[1]; });
+        item.minimo = Math.min.apply(null, precos);
+        item.maximo = Math.max.apply(null, precos);
+        if (item.minimo === item.maximo) { item.minimo -= 1; item.maximo += 1; }
+      });
+      posicaoY = function (item, valor) {
+        return topo + altura - ((valor - item.minimo) / (item.maximo - item.minimo)) * altura;
+      };
+      [series[0], series[1]].forEach(function (item, ladoIndice) {
+        var corEixo = cores[ladoIndice];
+        var x = ladoIndice === 0 ? esquerda : esquerda + largura;
+        var alinhamento = ladoIndice === 0 ? "end" : "start";
+        var deslocamento = ladoIndice === 0 ? -10 : 10;
+        for (var t = 0; t < numTicks; t++) {
+          var valorTickEixo = item.minimo + (item.maximo - item.minimo) * (t / (numTicks - 1));
+          var yTickEixo = posicaoY(item, valorTickEixo);
+          var rotuloEixo = document.createElementNS(ns, "text");
+          rotuloEixo.setAttribute("x", x + deslocamento); rotuloEixo.setAttribute("y", yTickEixo + 4);
+          rotuloEixo.setAttribute("text-anchor", alinhamento); rotuloEixo.setAttribute("font-size", "11");
+          rotuloEixo.setAttribute("font-family", "IBM Plex Mono, monospace"); rotuloEixo.setAttribute("fill", corEixo);
+          rotuloEixo.textContent = "R$ " + formatarBRL(valorTickEixo);
+          svg.appendChild(rotuloEixo);
+        }
+        var rotuloNome = document.createElementNS(ns, "text");
+        rotuloNome.setAttribute("x", x); rotuloNome.setAttribute("y", 14);
+        rotuloNome.setAttribute("text-anchor", ladoIndice === 0 ? "start" : "end");
+        rotuloNome.setAttribute("font-size", "10"); rotuloNome.setAttribute("font-family", "IBM Plex Mono, monospace");
+        rotuloNome.setAttribute("font-weight", "600"); rotuloNome.setAttribute("fill", corEixo);
+        rotuloNome.textContent = item.nome + " · " + item.unidade;
+        svg.appendChild(rotuloNome);
+      });
+    } else {
+      // 3+ commodities: um unico eixo compartilhado. Quando os precos
+      // selecionados sao muito diferentes em grandeza (proporcao maior
+      // que ~3x entre o maior e o menor), uma escala linear faz a(s)
+      // commodity(ies) mais barata(s) parecerem uma reta constante -
+      // escala logaritmica reparte pela VARIACAO PERCENTUAL (nao a
+      // diferenca absoluta), entao a mesma oscilacao relativa ocupa a
+      // mesma altura no grafico pra qualquer commodity, cara ou barata.
+      var todosPrecos = [].concat.apply([], series.map(function (item) { return item.valores.map(function (p) { return p[1]; }); }));
+      var minimo = Math.min.apply(null, todosPrecos), maximo = Math.max.apply(null, todosPrecos);
+      if (minimo === maximo) { minimo -= 1; maximo += 1; }
+      var usarEscalaLog = minimo > 0 && (maximo / minimo) >= 3;
+      var faixaLinear = maximo - minimo;
+      var faixaLog = usarEscalaLog ? Math.log(maximo / minimo) : 0;
+      posicaoY = function (_item, valor) {
+        var fracao = usarEscalaLog ? Math.log(valor / minimo) / faixaLog : (valor - minimo) / faixaLinear;
+        return topo + altura - fracao * altura;
+      };
+      if (usarEscalaLog) {
+        var avisoLog = document.createElementNS(ns, "text");
+        avisoLog.setAttribute("x", esquerda); avisoLog.setAttribute("y", 14);
+        avisoLog.setAttribute("font-size", "10"); avisoLog.setAttribute("font-family", "IBM Plex Mono, monospace");
+        avisoLog.setAttribute("fill", "#61705f");
+        avisoLog.textContent = "Escala logarítmica (preços com grandezas muito diferentes) — valores reais em cada ponto";
+        svg.appendChild(avisoLog);
+      }
+      for (var t2 = 0; t2 < numTicks; t2++) {
+        var fracaoTick = t2 / (numTicks - 1);
+        var valorTick = usarEscalaLog ? minimo * Math.pow(maximo / minimo, fracaoTick) : minimo + faixaLinear * fracaoTick;
+        var yTick = posicaoY(null, valorTick);
+        var rotulo = document.createElementNS(ns, "text");
+        rotulo.setAttribute("x", esquerda - 10); rotulo.setAttribute("y", yTick + 4);
+        rotulo.setAttribute("text-anchor", "end"); rotulo.setAttribute("font-size", "11");
+        rotulo.setAttribute("font-family", "IBM Plex Mono, monospace"); rotulo.setAttribute("fill", "#61705f");
+        rotulo.textContent = "R$ " + formatarBRL(valorTick);
+        svg.appendChild(rotulo);
+      }
+    }
+
+    function ponto(item, indice) {
+      return [esquerda + indice * passo, posicaoY(item, item.valores[indice][1])];
+    }
+    // Sempre em linha: gráfico de barras não representa bem commodities
+    // de magnitude muito diferente lado a lado (a mais barata sempre
+    // fica esmagada perto da linha de base, nao importa a escala) - o
+    // grafico principal (uma so commodity por vez) continua tendo
+    // Linha/Barras normalmente.
     var elementosLeitura = [];
     series.forEach(function (item, indice) {
       var pontos = item.valores.map(function (p, i) { return ponto(item, i); });
       var grupo = document.createElementNS(ns, "g");
       grupo.setAttribute("class", "comparativo-linha");
-      if (modo === "barras") {
-        pontos.forEach(function (p, i) {
-          var base_y = topo + altura;
-          var barra = document.createElementNS(ns, "rect");
-          var largBarra = Math.max(3, passo / (series.length + 1));
-          barra.setAttribute("x", p[0] - largBarra * (series.length - indice) / 2);
-          barra.setAttribute("y", p[1]);
-          barra.setAttribute("width", largBarra);
-          barra.setAttribute("height", Math.max(0, base_y - p[1]));
-          barra.setAttribute("fill", cores[indice % cores.length]);
-          barra.setAttribute("opacity", ".78");
-          barra.setAttribute("data-nome", item.nome);
-          barra.setAttribute("data-data", (item.valores[i][0] || "").split("-").reverse().join("/"));
-          barra.setAttribute("data-preco", formatarBRL(item.valores[i][1]));
-          grupo.appendChild(barra);
-          elementosLeitura.push(barra);
-        });
-      } else {
-        var linha2 = document.createElementNS(ns, "path");
-        linha2.setAttribute("d", _caminhoSuaveJS(pontos));
-        linha2.setAttribute("fill", "none"); linha2.setAttribute("stroke", cores[indice % cores.length]);
-        linha2.setAttribute("stroke-width", indice === 0 ? "3" : "2");
-        grupo.appendChild(linha2);
-        pontos.forEach(function (p, i) {
-          var hit = document.createElementNS(ns, "circle");
-          hit.setAttribute("cx", p[0]); hit.setAttribute("cy", p[1]); hit.setAttribute("r", "7");
-          hit.setAttribute("fill", "transparent");
-          hit.setAttribute("data-nome", item.nome);
-          hit.setAttribute("data-data", (item.valores[i][0] || "").split("-").reverse().join("/"));
-          hit.setAttribute("data-preco", formatarBRL(item.valores[i][1]));
-          grupo.appendChild(hit);
-          elementosLeitura.push(hit);
-        });
-      }
+      var linha2 = document.createElementNS(ns, "path");
+      linha2.setAttribute("d", _caminhoSuaveJS(pontos));
+      linha2.setAttribute("fill", "none"); linha2.setAttribute("stroke", cores[indice % cores.length]);
+      linha2.setAttribute("stroke-width", indice === 0 ? "3" : "2");
+      grupo.appendChild(linha2);
+      pontos.forEach(function (p, i) {
+        var hit = document.createElementNS(ns, "circle");
+        hit.setAttribute("cx", p[0]); hit.setAttribute("cy", p[1]); hit.setAttribute("r", "7");
+        hit.setAttribute("fill", "transparent");
+        hit.setAttribute("data-nome", item.nome);
+        hit.setAttribute("data-data", (item.valores[i][0] || "").split("-").reverse().join("/"));
+        hit.setAttribute("data-preco", formatarBRL(item.valores[i][1]));
+        grupo.appendChild(hit);
+        elementosLeitura.push(hit);
+      });
       svg.appendChild(grupo);
     });
     if (leitura) {
@@ -608,10 +678,10 @@
       '<line x1="' + margemEsq + '" y1="' + (margemTopo + alturaUtil) + '" x2="' + (largura - margemDir) + '" y2="' +
       (margemTopo + alturaUtil) + '" stroke="rgba(11,60,31,0.14)" stroke-width="1"/>' +
       rotulosPreco +
-      '<path d="' + caminhoArea + '" fill="url(#' + idGrad + ')" stroke="none"/>' +
-      '<path d="' + caminhoLinha + '" fill="none" stroke="' + corLinha + '" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>' +
+      '<path class="chart-area" d="' + caminhoArea + '" fill="url(#' + idGrad + ')" stroke="none"/>' +
+      '<path class="chart-linha" d="' + caminhoLinha + '" fill="none" stroke="' + corLinha + '" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>' +
       pontosSvg + rotulosDatas +
-      '<circle cx="' + ultimo.x.toFixed(1) + '" cy="' + ultimo.y.toFixed(1) + '" r="4" fill="' + corLinha + '"/>' +
+      '<circle class="chart-dot-final" cx="' + ultimo.x.toFixed(1) + '" cy="' + ultimo.y.toFixed(1) + '" r="4" fill="' + corLinha + '"/>' +
       '</svg></div>' +
       '<div class="chart-footer">' +
       '<span class="chart-footer-extremo">' + formatarDataBR(primeiro.data) + '</span>' +
@@ -717,16 +787,14 @@
         var base = document.querySelector(".chart-wrap");
         var grafico = document.querySelector(".chart-box");
         if (dados && base && grafico && !document.querySelector(".comparativo-painel")) {
-          var nomes = { soja: "Soja", milho: "Milho", cafe: "Café Arábica", "boi-gordo": "Boi Gordo" };
           var painel = document.createElement("section"); painel.className = "comparativo-painel";
-          painel.innerHTML = '<div class="comparativo-cabecalho"><div><span class="section-label">Comparação</span><h3>Evolução comparada</h3><p>Preço real (não variação percentual) de cada commodity selecionada, na mesma escala - passe o mouse sobre o gráfico para ver o valor de cada dia.</p></div><div class="comparativo-acoes"><button type="button" class="chart-btn-secundario comparativo-exportar">Exportar em PDF</button><button type="button" class="comparativo-limpar">Limpar seleção</button></div></div><div class="comparativo-controles"><fieldset><legend>Commodities</legend><div class="comparativo-opcoes"></div></fieldset><label>Série<select class="comparativo-serie"><option value="fisicos">Preço físico</option><option value="futuros">Preço futuro</option></select></label><label>Período<select class="comparativo-periodo"><option value="7">7 dias</option><option value="30">30 dias</option><option value="90" selected>90 dias</option><option value="tudo">Tudo</option></select></label><label>Visualização<select class="comparativo-modo"><option value="linha">Linhas</option><option value="barras">Barras agrupadas</option></select></label></div><div class="comparativo-legenda"></div><p class="comparativo-leitura">Passe o mouse sobre o gráfico para ver o preço de cada dia.</p><svg class="comparativo-svg" role="img" aria-label="Comparação de preço real entre commodities, na mesma escala"></svg><p class="comparativo-vazio">Selecione uma ou mais commodities para iniciar a comparação.</p>';
+          painel.innerHTML = '<div class="comparativo-cabecalho"><div><span class="section-label">Comparação</span><h3>Evolução comparada</h3><p>Preço real (não variação percentual) de cada commodity selecionada - com 2 commodities, cada uma ganha seu próprio eixo (à esquerda e à direita); com mais de 2, todas dividem uma única escala. Passe o mouse sobre o gráfico para ver o valor de cada dia.</p></div><div class="comparativo-acoes"><button type="button" class="chart-btn-secundario comparativo-exportar">Exportar em PDF</button><button type="button" class="comparativo-limpar">Limpar seleção</button></div></div><div class="comparativo-controles"><fieldset><legend>Commodities</legend><div class="comparativo-opcoes"></div></fieldset><label>Série<select class="comparativo-serie"><option value="fisicos">Preço físico</option><option value="futuros">Preço futuro</option></select></label><label>Período<select class="comparativo-periodo"><option value="7">7 dias</option><option value="30">30 dias</option><option value="90" selected>90 dias</option><option value="tudo">Tudo</option></select></label></div><div class="comparativo-legenda"></div><p class="comparativo-leitura">Passe o mouse sobre o gráfico para ver o preço de cada dia.</p><svg class="comparativo-svg" role="img" aria-label="Comparação de preço real entre commodities, na mesma escala"></svg><p class="comparativo-vazio">Selecione uma ou mais commodities para iniciar a comparação.</p>';
           grafico.parentNode.insertBefore(painel, grafico.nextSibling);
           var opcoes = painel.querySelector(".comparativo-opcoes");
-          Object.keys(dados.fisicos).forEach(function (slug) { if (slug !== base.dataset.slug) opcoes.innerHTML += '<label><input type="checkbox" name="commodity-comparada" value="' + slug + '">' + (nomes[slug] || slug) + '</label>'; });
+          Object.keys(dados.fisicos).forEach(function (slug) { if (slug !== base.dataset.slug) opcoes.innerHTML += '<label><input type="checkbox" name="commodity-comparada" value="' + slug + '">' + (NOMES_COMMODITY[slug] || slug) + '</label>'; });
           painel.querySelectorAll("input[name='commodity-comparada']").forEach(function (input) { input.addEventListener("change", function () { painel.querySelector(".comparativo-vazio").hidden = painel.querySelectorAll("input:checked").length > 0; renderizarComparativo(painel); }); });
           painel.querySelector(".comparativo-serie").addEventListener("change", function () { renderizarComparativo(painel); });
           painel.querySelector(".comparativo-periodo").addEventListener("change", function () { renderizarComparativo(painel); });
-          painel.querySelector(".comparativo-modo").addEventListener("change", function () { renderizarComparativo(painel); });
           painel.querySelector(".comparativo-limpar").addEventListener("click", function () { painel.querySelectorAll("input:checked").forEach(function (input) { input.checked = false; }); painel.querySelector(".comparativo-vazio").hidden = false; renderizarComparativo(painel); });
           painel.querySelector(".comparativo-exportar").addEventListener("click", function () {
             var svgAlvo = painel.querySelector(".comparativo-svg");
