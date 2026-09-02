@@ -398,6 +398,37 @@
     </div>
   </section>
 
+  <section aria-labelledby="titulo-grafico">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Histórico</div>
+        <h2 id="titulo-grafico">Variação no período</h2>
+      </div>
+    </div>
+    <p class="chart-legenda"><!-- GRAFICO_LEGENDA_STAT:START -->
+{{GRAFICO_LEGENDA_STAT_INICIAL}}
+<!-- GRAFICO_LEGENDA_STAT:END --> <!-- GRAFICO_LEGENDA_CAUSA:START -->{{GRAFICO_LEGENDA_CAUSA_INICIAL}}<!-- GRAFICO_LEGENDA_CAUSA:END --></p>
+    <div class="chart-box">
+      <div class="chart-ferramentas">
+        <div class="chart-modos" role="tablist" aria-label="Tipo de gráfico">
+          <button type="button" class="chart-modo-btn active" data-modo-grafico="linha" aria-selected="true">Linha</button>
+          <button type="button" class="chart-modo-btn" data-modo-grafico="barras" aria-selected="false">Barras</button>
+        </div>
+        <select class="chart-serie-select" aria-label="Série de preços">
+          <option value="fisicos">Preço físico</option>
+          <option value="futuros">Preço futuro</option>
+        </select>
+        <button type="button" class="chart-exportar">Exportar gráfico em PDF</button>
+      </div>
+      <!-- GRAFICO:START -->
+{{GRAFICO_INICIAL}}
+<!-- GRAFICO:END -->
+    </div>
+    <!-- DADOS_HISTORICO_JSON:START -->
+{{DADOS_HISTORICO_JSON_INICIAL}}
+<!-- DADOS_HISTORICO_JSON:END -->
+  </section>
+
   <section aria-labelledby="titulo-analise" class="analise-secao">
       <div class="section-head">
         <div>
@@ -436,37 +467,6 @@
         <button type="button" class="compartilhar-copiar">Copiar link</button>
         <button type="button" class="analise-exportar">Exportar em PDF</button>
       </div>
-  </section>
-
-  <section aria-labelledby="titulo-grafico">
-    <div class="section-head">
-      <div>
-        <div class="section-label">Histórico</div>
-        <h2 id="titulo-grafico">Variação no período</h2>
-      </div>
-    </div>
-    <p class="chart-legenda"><!-- GRAFICO_LEGENDA_STAT:START -->
-{{GRAFICO_LEGENDA_STAT_INICIAL}}
-<!-- GRAFICO_LEGENDA_STAT:END --> <!-- GRAFICO_LEGENDA_CAUSA:START -->{{GRAFICO_LEGENDA_CAUSA_INICIAL}}<!-- GRAFICO_LEGENDA_CAUSA:END --></p>
-    <div class="chart-box">
-      <div class="chart-ferramentas">
-        <div class="chart-modos" role="tablist" aria-label="Tipo de gráfico">
-          <button type="button" class="chart-modo-btn active" data-modo-grafico="linha" aria-selected="true">Linha</button>
-          <button type="button" class="chart-modo-btn" data-modo-grafico="barras" aria-selected="false">Barras</button>
-        </div>
-        <select class="chart-serie-select" aria-label="Série de preços">
-          <option value="fisicos">Preço físico</option>
-          <option value="futuros">Preço futuro</option>
-        </select>
-        <button type="button" class="chart-exportar">Exportar gráfico em PDF</button>
-      </div>
-      <!-- GRAFICO:START -->
-{{GRAFICO_INICIAL}}
-<!-- GRAFICO:END -->
-    </div>
-    <!-- DADOS_HISTORICO_JSON:START -->
-{{DADOS_HISTORICO_JSON_INICIAL}}
-<!-- DADOS_HISTORICO_JSON:END -->
   </section>
 
   <section aria-labelledby="titulo-noticias">
