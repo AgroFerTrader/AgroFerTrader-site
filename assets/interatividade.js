@@ -126,8 +126,7 @@
       if (!painel) return;
 
       nav.addEventListener("click", function (evento) {
-          var botao = evento.target.closest(".periodo-btn");
-          if (select) { select.multiple = true; select.size = 3; select.style.display = "none"; }
+        var botao = evento.target.closest(".periodo-btn");
         if (!botao) return;
         var periodo = botao.getAttribute("data-periodo");
 
