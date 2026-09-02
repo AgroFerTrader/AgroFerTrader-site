@@ -213,12 +213,12 @@
   /* Comparativo entre commodities */
   .chart-ferramentas{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px;}
   .chart-modos{display:flex;gap:4px;flex-wrap:wrap;}
-  .chart-modo-btn,.chart-exportar{
+  .chart-modo-btn,.chart-exportar,.chart-btn-secundario{
     font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.04em;
     padding:7px 10px;border:1px solid var(--line);border-radius:2px;background:var(--paper);
     color:var(--ink);cursor:pointer;
   }
-  .chart-modo-btn.active,.chart-exportar:hover{border-color:var(--gold);color:var(--leaf);font-weight:600;}
+  .chart-modo-btn.active,.chart-exportar:hover,.chart-btn-secundario:hover{border-color:var(--gold);color:var(--leaf);font-weight:600;}
   .chart-comparacao-legenda{display:none;gap:16px;font-size:12px;font-family:var(--mono);opacity:.75;}
   .chart-comparacao-legenda.visivel{display:flex;}
   .chart-comparacao-legenda .marca{display:inline-block;width:16px;height:0;border-top:2px solid var(--gold);margin-right:5px;vertical-align:middle;}
@@ -494,6 +494,7 @@
   </footer>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
 <script src="../../assets/interatividade.js" defer></script>
 </body>
 </html>
