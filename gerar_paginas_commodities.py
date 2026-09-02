@@ -322,6 +322,39 @@ def carregar_historico_fisico(nome_fisica: str, dias: int = 90) -> list:
     return serie
 
 
+def carregar_historico_futuro(nome_futuro: str, dias: int = 90) -> list:
+    """Le o fechamento historico do contrato futuro nos snapshots diarios."""
+    if not os.path.isdir(PASTA_DADOS):
+        return []
+
+    arquivos = sorted(
+        f for f in os.listdir(PASTA_DADOS)
+        if re.match(r"^\d{4}-\d{2}-\d{2}\.json$", f)
+    )[-dias:]
+    serie = []
+    for nome_arquivo in arquivos:
+        try:
+            with open(os.path.join(PASTA_DADOS, nome_arquivo), encoding="utf-8") as f:
+                dados = json.load(f)
+        except (OSError, json.JSONDecodeError):
+            continue
+        resultado = next(
+            (item for item in dados.get("resultados_futuros", [])
+             if item.get("nome") == nome_futuro and "erro" not in item),
+            None,
+        )
+        if not resultado:
+            continue
+        try:
+            valor = _preco_fisico_para_float(
+                site._preco_futuro_apenas_valor(resultado["preco_reais"])
+            )
+        except (ValueError, TypeError):
+            continue
+        serie.append((nome_arquivo[:-5], valor))
+    return serie
+
+
 # ---------------------------------------------------------------------------
 # 3) GRAFICO - renderiza um SVG de linha simples (sem dependencia externa,
 #    sem JS), no mesmo padrao visual sobrio do site.
@@ -381,7 +414,12 @@ def _caminho_suave(pontos_xy: list) -> str:
 PERIODOS_GRAFICO = [("7d", "7 dias", 7), ("30d", "30 dias", 30), ("90d", "90 dias", 90)]
 
 
-def montar_grafico_svg(serie: list, nome_exibicao: str, slug: str) -> str:
+def montar_grafico_svg(
+    serie: list,
+    nome_exibicao: str,
+    slug: str,
+    serie_futura: list | None = None,
+) -> str:
     """Monta o gráfico com abas de período (7/30/90 dias). Cada aba é
     renderizada inteira no servidor (_renderizar_svg_periodo) a partir
     do recorte correspondente de `serie`; o navegador só troca qual
@@ -393,6 +431,16 @@ def montar_grafico_svg(serie: list, nome_exibicao: str, slug: str) -> str:
     não geram aba. Se sobrar só um período utilizável, mostra o gráfico
     sem abas (nada para alternar).
     """
+    if serie_futura is not None:
+        return (
+            f'<div class="chart-series-panel" data-serie="fisicos">'
+            f'{montar_grafico_svg(serie, nome_exibicao, slug)}'
+            f'</div>'
+            f'<div class="chart-series-panel" data-serie="futuros" hidden>'
+            f'{montar_grafico_svg(serie_futura, nome_exibicao, slug)}'
+            f'</div>'
+        )
+
     if len(serie) < 2:
         return (
             '<p style="opacity:.6;font-size:14px;">'
@@ -593,8 +641,14 @@ def montar_dados_historico_json() -> str:
     navegador, só os mesmos dados que já geram os gráficos individuais.
     """
     dados = {
-        c["slug"]: carregar_historico_fisico(c["nome_fisica"])
-        for c in COMMODITIES_PAGINAS
+        "fisicos": {
+            c["slug"]: carregar_historico_fisico(c["nome_fisica"])
+            for c in COMMODITIES_PAGINAS
+        },
+        "futuros": {
+            c["slug"]: carregar_historico_futuro(c["nome_futuro"])
+            for c in COMMODITIES_PAGINAS
+        },
     }
     bruto = json.dumps(dados, ensure_ascii=False, separators=(",", ":"))
     # O <script> precisa estar TODO dentro do marcador (não só o JSON) -
@@ -760,7 +814,12 @@ def atualizar_pagina_commodity(config: dict, dados: dict) -> None:
         "PRECO_FISICO": site.montar_precos_html(fisica_filtrada, com_links=False),
         "COTACOES_REGIONAIS": site.montar_cotacoes_regionais_html(cotacoes_regionais),
         "FUTURO": site.montar_futuros_html(futuro_filtrado),
-        "GRAFICO": montar_grafico_svg(historico, config["nome_exibicao"], config["slug"]),
+        "GRAFICO": montar_grafico_svg(
+            historico,
+            config["nome_exibicao"],
+            config["slug"],
+            carregar_historico_futuro(config["nome_futuro"]),
+        ),
         "GRAFICO_LEGENDA_STAT": montar_legenda_grafico_stat(historico),
         "JSONLD_PRODUTO": montar_jsonld_produto(config, fisica_filtrada),
         "DADOS_HISTORICO_JSON": montar_dados_historico_json(),

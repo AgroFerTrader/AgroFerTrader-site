@@ -87,7 +87,7 @@
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.5;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.5;overflow-x:hidden;}
   a{color:inherit;}
   img{max-width:100%;}
   .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
@@ -164,16 +164,14 @@
   .chart-footer-extremo:last-child{text-align:right;}
   .chart-readout-texto{font-family:var(--display);font-weight:600;font-size:19px;color:var(--ink);text-align:center;white-space:nowrap;}
 
-  /* Analise da Semana: o bloco dominante da pagina - por isso o
-     tratamento editorial de destaque (faixa verde de ponta a ponta,
-     como a hero), texto corrido com titulos, sem caixas/cards. A
-     faixa quebra a largura do .wrap pai via a tecnica do 100vw +
-     margem negativa, sem precisar duplicar <main>. */
+  /* Analise da Semana: bloco editorial centralizado, com texto corrido
+     e subtitulos curtos para orientar a leitura. */
   .analise-secao{
-    background:var(--paper-dim);color:var(--ink);
-    padding:48px 40px;
+    max-width:900px;width:100%;margin:0 auto;
+    background:var(--paper);color:var(--ink);
+    padding:44px 48px;
+    border:1px solid var(--line);
     border-top:4px solid var(--gold);
-    border-bottom:1px solid var(--line);
   }
   .analise-secao .section-label{color:var(--leaf);}
   .analise-secao h2{color:var(--ink);}
@@ -214,6 +212,13 @@
 
   /* Comparativo entre commodities */
   .chart-ferramentas{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px;}
+  .chart-modos{display:flex;gap:4px;flex-wrap:wrap;}
+  .chart-modo-btn,.chart-exportar{
+    font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.04em;
+    padding:7px 10px;border:1px solid var(--line);border-radius:2px;background:var(--paper);
+    color:var(--ink);cursor:pointer;
+  }
+  .chart-modo-btn.active,.chart-exportar:hover{border-color:var(--gold);color:var(--leaf);font-weight:600;}
   .chart-comparar-select{
     font-family:var(--mono);font-size:12px;padding:7px 12px;border:1px solid var(--line);
     border-radius:20px;background:var(--paper);color:var(--ink);cursor:pointer;
@@ -445,9 +450,18 @@
 <!-- GRAFICO_LEGENDA_STAT:END --> <!-- GRAFICO_LEGENDA_CAUSA:START -->{{GRAFICO_LEGENDA_CAUSA_INICIAL}}<!-- GRAFICO_LEGENDA_CAUSA:END --></p>
     <div class="chart-box">
       <div class="chart-ferramentas">
+        <div class="chart-modos" role="tablist" aria-label="Tipo de gráfico">
+          <button type="button" class="chart-modo-btn active" data-modo-grafico="linha" aria-selected="true">Linha</button>
+          <button type="button" class="chart-modo-btn" data-modo-grafico="barras" aria-selected="false">Barras</button>
+        </div>
+        <select class="chart-serie-select" aria-label="Série de preços">
+          <option value="fisicos">Preço físico</option>
+          <option value="futuros">Preço futuro</option>
+        </select>
         <select id="comparar-select" class="chart-comparar-select" aria-label="Comparar com outra commodity">
           {{COMPARAR_OPCOES}}
         </select>
+        <button type="button" class="chart-exportar">Exportar gráfico em PDF</button>
         <span class="chart-comparacao-legenda"><span class="marca"></span>{{NOME_EXIBICAO}} <span class="marca tracejada"></span>comparação (% no período)</span>
       </div>
       <!-- GRAFICO:START -->

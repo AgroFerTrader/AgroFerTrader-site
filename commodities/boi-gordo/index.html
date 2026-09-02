@@ -66,7 +66,7 @@
 }
 </script>
 <script type="application/ld+json"><!-- JSONLD_PRODUTO:START -->
-{
+<script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "Boi Gordo",
@@ -80,7 +80,7 @@
     "availability": "https://schema.org/InStock",
     "priceValidUntil": "2026-09-02"
   }
-}
+}</script>
 <!-- JSONLD_PRODUTO:END --></script>
 
 <style>
@@ -101,7 +101,7 @@
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.5;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.5;overflow-x:hidden;}
   a{color:inherit;}
   img{max-width:100%;}
   .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
@@ -163,6 +163,7 @@
   .futures-table td.val{font-family:var(--mono);font-weight:600;}
 
   .chart-box{border:1px solid var(--line);background:var(--paper);padding:24px;}
+  .chart-ferramentas{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px;}.chart-modos{display:flex;gap:4px;}.chart-modo-btn,.chart-exportar{font-family:var(--mono);font-size:11px;padding:7px 10px;border:1px solid var(--line);border-radius:2px;background:var(--paper);color:var(--ink);cursor:pointer;}.chart-modo-btn.active,.chart-exportar:hover{border-color:var(--gold);color:var(--leaf);font-weight:600;}
   .chart-wrap{position:relative;}
   .chart-wrap svg{width:100%;height:auto;display:block;}
   .chart-hit{cursor:pointer;}
@@ -177,17 +178,14 @@
   .chart-footer-extremo:last-child{text-align:right;}
   .chart-readout-texto{font-family:var(--display);font-weight:600;font-size:19px;color:var(--ink);text-align:center;white-space:nowrap;}
 
-  /* Analise da Semana: o bloco dominante da pagina - por isso o
-     tratamento editorial de destaque (faixa verde de ponta a ponta,
-     como a hero), texto corrido com titulos, sem caixas/cards. A
-     faixa quebra a largura do .wrap pai via a tecnica do 100vw +
-     margem negativa, sem precisar duplicar <main>. */
+  /* Analise da Semana: bloco editorial centralizado, com texto corrido
+     e subtitulos curtos para orientar a leitura. */
   .analise-secao{
-    background:var(--paper-dim);color:var(--ink);
-    width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);
-    padding:56px 0;
+    max-width:900px;width:100%;margin:0 auto;
+    background:var(--paper);color:var(--ink);
+    padding:44px 48px;
+    border:1px solid var(--line);
     border-top:4px solid var(--gold);
-    border-bottom:1px solid var(--line);
   }
   .analise-secao .analise-inner{max-width:1080px;margin:0 auto;padding:0 24px;}
   .analise-secao .section-label{color:var(--leaf);}
@@ -407,77 +405,45 @@ Fonte: CEPEA/Esalq · dado de 01/09/2026
     <p class="chart-legenda"><!-- GRAFICO_LEGENDA_STAT:START -->
 <span class="chart-legenda-stat up">Alta de 0,4%</span> na semana.
 <!-- GRAFICO_LEGENDA_STAT:END --> <!-- GRAFICO_LEGENDA_CAUSA:START --><!-- GRAFICO_LEGENDA_CAUSA:END --></p>
-    <div class="chart-box"><!-- GRAFICO:START -->
-<div class="chart-wrap" id="grafico-boi-gordo">
+    <div class="chart-box"><div class="chart-ferramentas"><div class="chart-modos" role="tablist" aria-label="Tipo de gráfico"><button type="button" class="chart-modo-btn active" data-modo-grafico="linha" aria-selected="true">Linha</button><button type="button" class="chart-modo-btn" data-modo-grafico="barras" aria-selected="false">Barras</button></div><select class="chart-serie-select" aria-label="Série de preços"><option value="fisicos">Preço físico</option><option value="futuros">Preço futuro</option></select><button type="button" class="chart-exportar">Exportar gráfico em PDF</button></div><!-- GRAFICO:START -->
+<div class="chart-series-panel" data-serie="fisicos"><div class="chart-periodos" role="tablist" aria-label="Período do gráfico">
+      <button type="button" class="periodo-btn active" data-periodo="7d" role="tab" aria-selected="true">7 dias</button>
+      <button type="button" class="periodo-btn" data-periodo="30d" role="tab" aria-selected="false">30 dias</button>
+      <button type="button" class="periodo-btn" data-periodo="90d" role="tab" aria-selected="false">90 dias</button>
+    </div>
+    <div class="chart-painel">
+      <div data-periodo="7d"><div class="chart-wrap" id="grafico-boi-gordo-7d" data-slug="boi-gordo" data-margem-esq="68" data-margem-topo="20" data-altura-util="210" data-largura-util="812" data-num-pontos="7">
 <svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Variação de preço de Boi Gordo no período">
+  <defs>
+    <linearGradient id="grad-boi-gordo-7d" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4C7A1F" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#4C7A1F" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
   <line x1="68" y1="20" x2="68" y2="230" stroke="rgba(11,60,31,0.14)" stroke-width="1"/>
   <line x1="68" y1="230" x2="880" y2="230" stroke="rgba(11,60,31,0.14)" stroke-width="1"/>
-  <text x="60" y="24" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ 350,20</text>
-  <text x="60" y="230" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ 324,60</text>
-  <polyline points="68.0,213.2 83.9,230.0 99.8,201.3 115.8,192.3 131.7,176.3 147.6,157.0 163.5,157.0 179.5,157.0 195.4,127.5 211.3,83.6 227.2,81.9 243.1,72.9 259.1,69.2 275.0,69.2 290.9,69.2 306.8,68.8 322.7,40.5 338.7,43.0 354.6,47.1 370.5,49.9 386.4,49.9 402.4,49.9 418.3,38.9 434.2,20.0 450.1,33.5 466.0,35.6 482.0,42.1 497.9,42.1 513.8,42.1 529.7,42.1 545.6,43.0 561.6,50.4 577.5,48.3 593.4,48.3 609.3,48.3 625.3,48.3 641.2,62.2 657.1,64.3 673.0,63.9 688.9,56.9 704.9,77.4 720.8,77.4 736.7,77.4 752.6,77.4 768.5,76.2 784.5,83.2 800.4,66.8 816.3,59.8 832.2,59.8 848.2,59.8 864.1,67.6 880.0,54.5" fill="none" stroke="#4C7A1F" stroke-width="2.5"/>
-  <circle id="ponto-boi-gordo-0" class="chart-dot" cx="68.0" cy="213.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="68.0" cy="213.2" r="10" fill="transparent" data-alvo="ponto-boi-gordo-0" data-data="13/07/2026" data-preco="326,65"/>
-  <circle id="ponto-boi-gordo-1" class="chart-dot" cx="83.9" cy="230.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="83.9" cy="230.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-1" data-data="14/07/2026" data-preco="324,60"/>
-  <circle id="ponto-boi-gordo-2" class="chart-dot" cx="99.8" cy="201.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="99.8" cy="201.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-2" data-data="15/07/2026" data-preco="328,10"/>
-  <circle id="ponto-boi-gordo-3" class="chart-dot" cx="115.8" cy="192.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="115.8" cy="192.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-3" data-data="16/07/2026" data-preco="329,20"/>
-  <circle id="ponto-boi-gordo-4" class="chart-dot" cx="131.7" cy="176.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="131.7" cy="176.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-4" data-data="17/07/2026" data-preco="331,15"/>
-  <circle id="ponto-boi-gordo-5" class="chart-dot" cx="147.6" cy="157.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="147.6" cy="157.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-5" data-data="18/07/2026" data-preco="333,50"/>
-  <circle id="ponto-boi-gordo-6" class="chart-dot" cx="163.5" cy="157.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="163.5" cy="157.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-6" data-data="19/07/2026" data-preco="333,50"/>
-  <circle id="ponto-boi-gordo-7" class="chart-dot" cx="179.5" cy="157.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="179.5" cy="157.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-7" data-data="20/07/2026" data-preco="333,50"/>
-  <circle id="ponto-boi-gordo-8" class="chart-dot" cx="195.4" cy="127.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="195.4" cy="127.5" r="10" fill="transparent" data-alvo="ponto-boi-gordo-8" data-data="21/07/2026" data-preco="337,10"/>
-  <circle id="ponto-boi-gordo-9" class="chart-dot" cx="211.3" cy="83.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="211.3" cy="83.6" r="10" fill="transparent" data-alvo="ponto-boi-gordo-9" data-data="22/07/2026" data-preco="342,45"/>
-  <circle id="ponto-boi-gordo-10" class="chart-dot" cx="227.2" cy="81.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="227.2" cy="81.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-10" data-data="23/07/2026" data-preco="342,65"/>
-  <circle id="ponto-boi-gordo-11" class="chart-dot" cx="243.1" cy="72.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="243.1" cy="72.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-11" data-data="24/07/2026" data-preco="343,75"/>
-  <circle id="ponto-boi-gordo-12" class="chart-dot" cx="259.1" cy="69.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="259.1" cy="69.2" r="10" fill="transparent" data-alvo="ponto-boi-gordo-12" data-data="25/07/2026" data-preco="344,20"/>
-  <circle id="ponto-boi-gordo-13" class="chart-dot" cx="275.0" cy="69.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="275.0" cy="69.2" r="10" fill="transparent" data-alvo="ponto-boi-gordo-13" data-data="26/07/2026" data-preco="344,20"/>
-  <circle id="ponto-boi-gordo-14" class="chart-dot" cx="290.9" cy="69.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="290.9" cy="69.2" r="10" fill="transparent" data-alvo="ponto-boi-gordo-14" data-data="27/07/2026" data-preco="344,20"/>
-  <circle id="ponto-boi-gordo-15" class="chart-dot" cx="306.8" cy="68.8" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="306.8" cy="68.8" r="10" fill="transparent" data-alvo="ponto-boi-gordo-15" data-data="28/07/2026" data-preco="344,25"/>
-  <circle id="ponto-boi-gordo-16" class="chart-dot" cx="322.7" cy="40.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="322.7" cy="40.5" r="10" fill="transparent" data-alvo="ponto-boi-gordo-16" data-data="29/07/2026" data-preco="347,70"/>
-  <circle id="ponto-boi-gordo-17" class="chart-dot" cx="338.7" cy="43.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="338.7" cy="43.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-17" data-data="30/07/2026" data-preco="347,40"/>
-  <circle id="ponto-boi-gordo-18" class="chart-dot" cx="354.6" cy="47.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="354.6" cy="47.1" r="10" fill="transparent" data-alvo="ponto-boi-gordo-18" data-data="31/07/2026" data-preco="346,90"/>
-  <circle id="ponto-boi-gordo-19" class="chart-dot" cx="370.5" cy="49.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="370.5" cy="49.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-19" data-data="01/08/2026" data-preco="346,55"/>
-  <circle id="ponto-boi-gordo-20" class="chart-dot" cx="386.4" cy="49.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="386.4" cy="49.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-20" data-data="02/08/2026" data-preco="346,55"/>
-  <circle id="ponto-boi-gordo-21" class="chart-dot" cx="402.4" cy="49.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="402.4" cy="49.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-21" data-data="03/08/2026" data-preco="346,55"/>
-  <circle id="ponto-boi-gordo-22" class="chart-dot" cx="418.3" cy="38.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="418.3" cy="38.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-22" data-data="04/08/2026" data-preco="347,90"/>
-  <circle id="ponto-boi-gordo-23" class="chart-dot" cx="434.2" cy="20.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="434.2" cy="20.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-23" data-data="05/08/2026" data-preco="350,20"/>
-  <circle id="ponto-boi-gordo-24" class="chart-dot" cx="450.1" cy="33.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="450.1" cy="33.5" r="10" fill="transparent" data-alvo="ponto-boi-gordo-24" data-data="06/08/2026" data-preco="348,55"/>
-  <circle id="ponto-boi-gordo-25" class="chart-dot" cx="466.0" cy="35.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="466.0" cy="35.6" r="10" fill="transparent" data-alvo="ponto-boi-gordo-25" data-data="07/08/2026" data-preco="348,30"/>
-  <circle id="ponto-boi-gordo-26" class="chart-dot" cx="482.0" cy="42.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="482.0" cy="42.1" r="10" fill="transparent" data-alvo="ponto-boi-gordo-26" data-data="08/08/2026" data-preco="347,50"/>
-  <circle id="ponto-boi-gordo-27" class="chart-dot" cx="497.9" cy="42.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="497.9" cy="42.1" r="10" fill="transparent" data-alvo="ponto-boi-gordo-27" data-data="09/08/2026" data-preco="347,50"/>
-  <circle id="ponto-boi-gordo-28" class="chart-dot" cx="513.8" cy="42.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="513.8" cy="42.1" r="10" fill="transparent" data-alvo="ponto-boi-gordo-28" data-data="10/08/2026" data-preco="347,50"/>
-  <circle id="ponto-boi-gordo-29" class="chart-dot" cx="529.7" cy="42.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="529.7" cy="42.1" r="10" fill="transparent" data-alvo="ponto-boi-gordo-29" data-data="11/08/2026" data-preco="347,50"/>
-  <circle id="ponto-boi-gordo-30" class="chart-dot" cx="545.6" cy="43.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="545.6" cy="43.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30" data-data="12/08/2026" data-preco="347,40"/>
-  <circle id="ponto-boi-gordo-31" class="chart-dot" cx="561.6" cy="50.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="561.6" cy="50.4" r="10" fill="transparent" data-alvo="ponto-boi-gordo-31" data-data="13/08/2026" data-preco="346,50"/>
-  <circle id="ponto-boi-gordo-32" class="chart-dot" cx="577.5" cy="48.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="577.5" cy="48.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-32" data-data="14/08/2026" data-preco="346,75"/>
-  <circle id="ponto-boi-gordo-33" class="chart-dot" cx="593.4" cy="48.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="593.4" cy="48.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-33" data-data="15/08/2026" data-preco="346,75"/>
-  <circle id="ponto-boi-gordo-34" class="chart-dot" cx="609.3" cy="48.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="609.3" cy="48.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-34" data-data="16/08/2026" data-preco="346,75"/>
-  <circle id="ponto-boi-gordo-35" class="chart-dot" cx="625.3" cy="48.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="625.3" cy="48.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-35" data-data="17/08/2026" data-preco="346,75"/>
-  <circle id="ponto-boi-gordo-36" class="chart-dot" cx="641.2" cy="62.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="641.2" cy="62.2" r="10" fill="transparent" data-alvo="ponto-boi-gordo-36" data-data="18/08/2026" data-preco="345,05"/>
-  <circle id="ponto-boi-gordo-37" class="chart-dot" cx="657.1" cy="64.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="657.1" cy="64.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-37" data-data="19/08/2026" data-preco="344,80"/>
-  <circle id="ponto-boi-gordo-38" class="chart-dot" cx="673.0" cy="63.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="673.0" cy="63.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-38" data-data="20/08/2026" data-preco="344,85"/>
-  <circle id="ponto-boi-gordo-39" class="chart-dot" cx="688.9" cy="56.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="688.9" cy="56.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-39" data-data="21/08/2026" data-preco="345,70"/>
-  <circle id="ponto-boi-gordo-40" class="chart-dot" cx="704.9" cy="77.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="704.9" cy="77.4" r="10" fill="transparent" data-alvo="ponto-boi-gordo-40" data-data="22/08/2026" data-preco="343,20"/>
-  <circle id="ponto-boi-gordo-41" class="chart-dot" cx="720.8" cy="77.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="720.8" cy="77.4" r="10" fill="transparent" data-alvo="ponto-boi-gordo-41" data-data="23/08/2026" data-preco="343,20"/>
-  <circle id="ponto-boi-gordo-42" class="chart-dot" cx="736.7" cy="77.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="736.7" cy="77.4" r="10" fill="transparent" data-alvo="ponto-boi-gordo-42" data-data="24/08/2026" data-preco="343,20"/>
-  <circle id="ponto-boi-gordo-43" class="chart-dot" cx="752.6" cy="77.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="752.6" cy="77.4" r="10" fill="transparent" data-alvo="ponto-boi-gordo-43" data-data="25/08/2026" data-preco="343,20"/>
-  <circle id="ponto-boi-gordo-44" class="chart-dot" cx="768.5" cy="76.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="768.5" cy="76.2" r="10" fill="transparent" data-alvo="ponto-boi-gordo-44" data-data="26/08/2026" data-preco="343,35"/>
-  <circle id="ponto-boi-gordo-45" class="chart-dot" cx="784.5" cy="83.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="784.5" cy="83.2" r="10" fill="transparent" data-alvo="ponto-boi-gordo-45" data-data="27/08/2026" data-preco="342,50"/>
-  <circle id="ponto-boi-gordo-46" class="chart-dot" cx="800.4" cy="66.8" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="800.4" cy="66.8" r="10" fill="transparent" data-alvo="ponto-boi-gordo-46" data-data="28/08/2026" data-preco="344,50"/>
-  <circle id="ponto-boi-gordo-47" class="chart-dot" cx="816.3" cy="59.8" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="816.3" cy="59.8" r="10" fill="transparent" data-alvo="ponto-boi-gordo-47" data-data="29/08/2026" data-preco="345,35"/>
-  <circle id="ponto-boi-gordo-48" class="chart-dot" cx="832.2" cy="59.8" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="832.2" cy="59.8" r="10" fill="transparent" data-alvo="ponto-boi-gordo-48" data-data="30/08/2026" data-preco="345,35"/>
-  <circle id="ponto-boi-gordo-49" class="chart-dot" cx="848.2" cy="59.8" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="848.2" cy="59.8" r="10" fill="transparent" data-alvo="ponto-boi-gordo-49" data-data="31/08/2026" data-preco="345,35"/>
-  <circle id="ponto-boi-gordo-50" class="chart-dot" cx="864.1" cy="67.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="864.1" cy="67.6" r="10" fill="transparent" data-alvo="ponto-boi-gordo-50" data-data="01/09/2026" data-preco="344,40"/>
-  <circle id="ponto-boi-gordo-51" class="chart-dot" cx="880.0" cy="54.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="880.0" cy="54.5" r="10" fill="transparent" data-alvo="ponto-boi-gordo-51" data-data="02/09/2026" data-preco="346,00"/>
-  <circle cx="880.0" cy="54.5" r="4" fill="#4C7A1F"/>
+  <text x="60" y="24" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ 346,00</text>
+  <text x="60" y="230" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ 342,50</text>
+  <path d="M 68.0,230.0 C 90.6,210.0 158.2,138.5 203.3,110.0 C 248.4,81.5 293.6,67.5 338.7,59.0 C 383.8,50.5 428.9,59.0 474.0,59.0 C 519.1,59.0 564.2,49.5 609.3,59.0 C 654.4,68.5 699.6,122.5 744.7,116.0 C 789.8,109.5 857.4,36.0 880.0,20.0 L 880.0,230.0 L 68.0,230.0 Z" fill="url(#grad-boi-gordo-7d)" stroke="none"/>
+  <path d="M 68.0,230.0 C 90.6,210.0 158.2,138.5 203.3,110.0 C 248.4,81.5 293.6,67.5 338.7,59.0 C 383.8,50.5 428.9,59.0 474.0,59.0 C 519.1,59.0 564.2,49.5 609.3,59.0 C 654.4,68.5 699.6,122.5 744.7,116.0 C 789.8,109.5 857.4,36.0 880.0,20.0" fill="none" stroke="#4C7A1F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle id="ponto-boi-gordo-7d-0" class="chart-dot" cx="68.0" cy="230.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="68.0" cy="230.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-7d-0" data-data="27/08/2026" data-preco="342,50"/>
+  <circle id="ponto-boi-gordo-7d-1" class="chart-dot" cx="203.3" cy="110.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="203.3" cy="110.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-7d-1" data-data="28/08/2026" data-preco="344,50"/>
+  <circle id="ponto-boi-gordo-7d-2" class="chart-dot" cx="338.7" cy="59.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="338.7" cy="59.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-7d-2" data-data="29/08/2026" data-preco="345,35"/>
+  <circle id="ponto-boi-gordo-7d-3" class="chart-dot" cx="474.0" cy="59.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="474.0" cy="59.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-7d-3" data-data="30/08/2026" data-preco="345,35"/>
+  <circle id="ponto-boi-gordo-7d-4" class="chart-dot" cx="609.3" cy="59.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="609.3" cy="59.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-7d-4" data-data="31/08/2026" data-preco="345,35"/>
+  <circle id="ponto-boi-gordo-7d-5" class="chart-dot" cx="744.7" cy="116.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="744.7" cy="116.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-7d-5" data-data="01/09/2026" data-preco="344,40"/>
+  <circle id="ponto-boi-gordo-7d-6" class="chart-dot" cx="880.0" cy="20.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="880.0" cy="20.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-7d-6" data-data="02/09/2026" data-preco="346,00"/>
+  <circle cx="880.0" cy="20.0" r="4" fill="#4C7A1F"/>
 </svg>
 </div>
 <div class="chart-footer">
-  <span class="chart-footer-extremo">13/07/2026</span>
+  <span class="chart-footer-extremo">27/08/2026</span>
   <span class="chart-readout-texto">02/09/2026 · R$ 346,00</span>
   <span class="chart-footer-extremo">02/09/2026 · R$ 346,00</span>
 </div>
 <script>
 (function(){
-  var raiz = document.getElementById("grafico-boi-gordo");
+  var raiz = document.getElementById("grafico-boi-gordo-7d");
   if (!raiz) return;
   var rodape = raiz.nextElementSibling;
   var elTexto = rodape.querySelector(".chart-readout-texto");
@@ -498,9 +464,420 @@ Fonte: CEPEA/Esalq · dado de 01/09/2026
     elTexto.textContent = "02/09/2026 · R$ 346,00";
   });
 })();
-</script>
+</script></div>
+      <div data-periodo="30d" hidden><div class="chart-wrap" id="grafico-boi-gordo-30d" data-slug="boi-gordo" data-margem-esq="68" data-margem-topo="20" data-altura-util="210" data-largura-util="812" data-num-pontos="30">
+<svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Variação de preço de Boi Gordo no período">
+  <defs>
+    <linearGradient id="grad-boi-gordo-30d" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9C3B2E" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#9C3B2E" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <line x1="68" y1="20" x2="68" y2="230" stroke="rgba(11,60,31,0.14)" stroke-width="1"/>
+  <line x1="68" y1="230" x2="880" y2="230" stroke="rgba(11,60,31,0.14)" stroke-width="1"/>
+  <text x="60" y="24" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ 350,20</text>
+  <text x="60" y="230" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ 342,50</text>
+  <path d="M 68.0,82.7 C 72.7,72.3 86.7,23.0 96.0,20.0 C 105.3,17.0 114.7,56.4 124.0,65.0 C 133.3,73.6 142.7,67.0 152.0,71.8 C 161.3,76.6 170.7,90.0 180.0,93.6 C 189.3,97.3 198.7,93.6 208.0,93.6 C 217.3,93.6 226.7,93.6 236.0,93.6 C 245.3,93.6 254.7,93.2 264.0,93.6 C 273.3,94.1 282.7,91.8 292.0,96.4 C 301.3,100.9 310.7,118.0 320.0,120.9 C 329.3,123.9 338.7,115.2 348.0,114.1 C 357.3,113.0 366.7,114.1 376.0,114.1 C 385.3,114.1 394.7,114.1 404.0,114.1 C 413.3,114.1 422.7,106.4 432.0,114.1 C 441.3,121.8 450.7,151.6 460.0,160.5 C 469.3,169.3 478.7,166.4 488.0,167.3 C 497.3,168.2 506.7,170.0 516.0,165.9 C 525.3,161.8 534.7,135.2 544.0,142.7 C 553.3,150.2 562.7,199.5 572.0,210.9 C 581.3,222.3 590.7,210.9 600.0,210.9 C 609.3,210.9 618.7,210.9 628.0,210.9 C 637.3,210.9 646.7,211.6 656.0,210.9 C 665.3,210.2 674.7,203.6 684.0,206.8 C 693.3,210.0 702.7,235.2 712.0,230.0 C 721.3,224.8 730.7,188.4 740.0,175.5 C 749.3,162.5 758.7,156.1 768.0,152.3 C 777.3,148.4 786.7,152.3 796.0,152.3 C 805.3,152.3 814.7,148.0 824.0,152.3 C 833.3,156.6 842.7,181.1 852.0,178.2 C 861.3,175.2 875.3,141.8 880.0,134.5 L 880.0,230.0 L 68.0,230.0 Z" fill="url(#grad-boi-gordo-30d)" stroke="none"/>
+  <path d="M 68.0,82.7 C 72.7,72.3 86.7,23.0 96.0,20.0 C 105.3,17.0 114.7,56.4 124.0,65.0 C 133.3,73.6 142.7,67.0 152.0,71.8 C 161.3,76.6 170.7,90.0 180.0,93.6 C 189.3,97.3 198.7,93.6 208.0,93.6 C 217.3,93.6 226.7,93.6 236.0,93.6 C 245.3,93.6 254.7,93.2 264.0,93.6 C 273.3,94.1 282.7,91.8 292.0,96.4 C 301.3,100.9 310.7,118.0 320.0,120.9 C 329.3,123.9 338.7,115.2 348.0,114.1 C 357.3,113.0 366.7,114.1 376.0,114.1 C 385.3,114.1 394.7,114.1 404.0,114.1 C 413.3,114.1 422.7,106.4 432.0,114.1 C 441.3,121.8 450.7,151.6 460.0,160.5 C 469.3,169.3 478.7,166.4 488.0,167.3 C 497.3,168.2 506.7,170.0 516.0,165.9 C 525.3,161.8 534.7,135.2 544.0,142.7 C 553.3,150.2 562.7,199.5 572.0,210.9 C 581.3,222.3 590.7,210.9 600.0,210.9 C 609.3,210.9 618.7,210.9 628.0,210.9 C 637.3,210.9 646.7,211.6 656.0,210.9 C 665.3,210.2 674.7,203.6 684.0,206.8 C 693.3,210.0 702.7,235.2 712.0,230.0 C 721.3,224.8 730.7,188.4 740.0,175.5 C 749.3,162.5 758.7,156.1 768.0,152.3 C 777.3,148.4 786.7,152.3 796.0,152.3 C 805.3,152.3 814.7,148.0 824.0,152.3 C 833.3,156.6 842.7,181.1 852.0,178.2 C 861.3,175.2 875.3,141.8 880.0,134.5" fill="none" stroke="#9C3B2E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle id="ponto-boi-gordo-30d-0" class="chart-dot" cx="68.0" cy="82.7" r="3" fill="#9C3B2E"/><circle class="chart-hit" cx="68.0" cy="82.7" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-0" data-data="04/08/2026" data-preco="347,90"/>
+  <circle id="ponto-boi-gordo-30d-1" class="chart-dot" cx="96.0" cy="20.0" r="3" fill="#9C3B2E"/><circle class="chart-hit" cx="96.0" cy="20.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-1" data-data="05/08/2026" data-preco="350,20"/>
+  <circle id="ponto-boi-gordo-30d-2" class="chart-dot" cx="124.0" cy="65.0" r="3" fill="#9C3B2E"/><circle class="chart-hit" cx="124.0" cy="65.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-2" data-data="06/08/2026" data-preco="348,55"/>
+  <circle id="ponto-boi-gordo-30d-3" class="chart-dot" cx="152.0" cy="71.8" r="3" fill="#9C3B2E"/><circle class="chart-hit" cx="152.0" cy="71.8" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-3" data-data="07/08/2026" data-preco="348,30"/>
+  <circle id="ponto-boi-gordo-30d-4" class="chart-dot" cx="180.0" cy="93.6" r="3" fill="#9C3B2E"/><circle class="chart-hit" cx="180.0" cy="93.6" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-4" data-data="08/08/2026" data-preco="347,50"/>
+  <circle id="ponto-boi-gordo-30d-5" class="chart-dot" cx="208.0" cy="93.6" r="3" fill="#9C3B2E"/><circle class="chart-hit" cx="208.0" cy="93.6" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-5" data-data="09/08/2026" data-preco="347,50"/>
+  <circle id="ponto-boi-gordo-30d-6" class="chart-dot" cx="236.0" cy="93.6" r="3" fill="#9C3B2E"/><circle class="chart-hit" cx="236.0" cy="93.6" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-6" data-data="10/08/2026" data-preco="347,50"/>
+  <circle id="ponto-boi-gordo-30d-7" class="chart-dot" cx="264.0" cy="93.6" r="3" fill="#9C3B2E"/><circle class="chart-hit" cx="264.0" cy="93.6" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-7" data-data="11/08/2026" data-preco="347,50"/>
+  <circle id="ponto-boi-gordo-30d-8" class="chart-dot" cx="292.0" cy="96.4" r="3" fill="#9C3B2E"/><circle class="chart-hit" cx="292.0" cy="96.4" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-8" data-data="12/08/2026" data-preco="347,40"/>
+  <circle id="ponto-boi-gordo-30d-9" class="chart-dot" cx="320.0" cy="120.9" r="3" fill="#9C3B2E"/><circle class="chart-hit" cx="320.0" cy="120.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-9" data-data="13/08/2026" data-preco="346,50"/>
+  <circle id="ponto-boi-gordo-30d-10" class="chart-dot" cx="348.0" cy="114.1" r="3" fill="#9C3B2E"/><circle class="chart-hit" cx="348.0" cy="114.1" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-10" data-data="14/08/2026" data-preco="346,75"/>
+  <circle id="ponto-boi-gordo-30d-11" class="chart-dot" cx="376.0" cy="114.1" r="3" fill="#9C3B2E"/><circle class="chart-hit" cx="376.0" cy="114.1" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-11" data-data="15/08/2026" data-preco="346,75"/>
+  <circle id="ponto-boi-gordo-30d-12" class="chart-dot" cx="404.0" cy="114.1" r="3" fill="#9C3B2E"/><circle class="chart-hit" cx="404.0" cy="114.1" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-12" data-data="16/08/2026" data-preco="346,75"/>
+  <circle id="ponto-boi-gordo-30d-13" class="chart-dot" cx="432.0" cy="114.1" r="3" fill="#9C3B2E"/><circle class="chart-hit" cx="432.0" cy="114.1" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-13" data-data="17/08/2026" data-preco="346,75"/>
+  <circle id="ponto-boi-gordo-30d-14" class="chart-dot" cx="460.0" cy="160.5" r="3" fill="#9C3B2E"/><circle class="chart-hit" cx="460.0" cy="160.5" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-14" data-data="18/08/2026" data-preco="345,05"/>
+  <circle id="ponto-boi-gordo-30d-15" class="chart-dot" cx="488.0" cy="167.3" r="3" fill="#9C3B2E"/><circle class="chart-hit" cx="488.0" cy="167.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-15" data-data="19/08/2026" data-preco="344,80"/>
+  <circle id="ponto-boi-gordo-30d-16" class="chart-dot" cx="516.0" cy="165.9" r="3" fill="#9C3B2E"/><circle class="chart-hit" cx="516.0" cy="165.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-16" data-data="20/08/2026" data-preco="344,85"/>
+  <circle id="ponto-boi-gordo-30d-17" class="chart-dot" cx="544.0" cy="142.7" r="3" fill="#9C3B2E"/><circle class="chart-hit" cx="544.0" cy="142.7" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-17" data-data="21/08/2026" data-preco="345,70"/>
+  <circle id="ponto-boi-gordo-30d-18" class="chart-dot" cx="572.0" cy="210.9" r="3" fill="#9C3B2E"/><circle class="chart-hit" cx="572.0" cy="210.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-18" data-data="22/08/2026" data-preco="343,20"/>
+  <circle id="ponto-boi-gordo-30d-19" class="chart-dot" cx="600.0" cy="210.9" r="3" fill="#9C3B2E"/><circle class="chart-hit" cx="600.0" cy="210.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-19" data-data="23/08/2026" data-preco="343,20"/>
+  <circle id="ponto-boi-gordo-30d-20" class="chart-dot" cx="628.0" cy="210.9" r="3" fill="#9C3B2E"/><circle class="chart-hit" cx="628.0" cy="210.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-20" data-data="24/08/2026" data-preco="343,20"/>
+  <circle id="ponto-boi-gordo-30d-21" class="chart-dot" cx="656.0" cy="210.9" r="3" fill="#9C3B2E"/><circle class="chart-hit" cx="656.0" cy="210.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-21" data-data="25/08/2026" data-preco="343,20"/>
+  <circle id="ponto-boi-gordo-30d-22" class="chart-dot" cx="684.0" cy="206.8" r="3" fill="#9C3B2E"/><circle class="chart-hit" cx="684.0" cy="206.8" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-22" data-data="26/08/2026" data-preco="343,35"/>
+  <circle id="ponto-boi-gordo-30d-23" class="chart-dot" cx="712.0" cy="230.0" r="3" fill="#9C3B2E"/><circle class="chart-hit" cx="712.0" cy="230.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-23" data-data="27/08/2026" data-preco="342,50"/>
+  <circle id="ponto-boi-gordo-30d-24" class="chart-dot" cx="740.0" cy="175.5" r="3" fill="#9C3B2E"/><circle class="chart-hit" cx="740.0" cy="175.5" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-24" data-data="28/08/2026" data-preco="344,50"/>
+  <circle id="ponto-boi-gordo-30d-25" class="chart-dot" cx="768.0" cy="152.3" r="3" fill="#9C3B2E"/><circle class="chart-hit" cx="768.0" cy="152.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-25" data-data="29/08/2026" data-preco="345,35"/>
+  <circle id="ponto-boi-gordo-30d-26" class="chart-dot" cx="796.0" cy="152.3" r="3" fill="#9C3B2E"/><circle class="chart-hit" cx="796.0" cy="152.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-26" data-data="30/08/2026" data-preco="345,35"/>
+  <circle id="ponto-boi-gordo-30d-27" class="chart-dot" cx="824.0" cy="152.3" r="3" fill="#9C3B2E"/><circle class="chart-hit" cx="824.0" cy="152.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-27" data-data="31/08/2026" data-preco="345,35"/>
+  <circle id="ponto-boi-gordo-30d-28" class="chart-dot" cx="852.0" cy="178.2" r="3" fill="#9C3B2E"/><circle class="chart-hit" cx="852.0" cy="178.2" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-28" data-data="01/09/2026" data-preco="344,40"/>
+  <circle id="ponto-boi-gordo-30d-29" class="chart-dot" cx="880.0" cy="134.5" r="3" fill="#9C3B2E"/><circle class="chart-hit" cx="880.0" cy="134.5" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-29" data-data="02/09/2026" data-preco="346,00"/>
+  <circle cx="880.0" cy="134.5" r="4" fill="#9C3B2E"/>
+</svg>
+</div>
+<div class="chart-footer">
+  <span class="chart-footer-extremo">04/08/2026</span>
+  <span class="chart-readout-texto">02/09/2026 · R$ 346,00</span>
+  <span class="chart-footer-extremo">02/09/2026 · R$ 346,00</span>
+</div>
+<script>
+(function(){
+  var raiz = document.getElementById("grafico-boi-gordo-30d");
+  if (!raiz) return;
+  var rodape = raiz.nextElementSibling;
+  var elTexto = rodape.querySelector(".chart-readout-texto");
+  var pontos = raiz.querySelectorAll(".chart-hit");
+  var ativo = null;
+  pontos.forEach(function(ponto){
+    function ativar(){
+      if (ativo) ativo.classList.remove("chart-dot-ativo");
+      var alvo = raiz.querySelector("#" + ponto.getAttribute("data-alvo"));
+      if (alvo) { alvo.classList.add("chart-dot-ativo"); ativo = alvo; }
+      elTexto.textContent = ponto.getAttribute("data-data") + " · R$ " + ponto.getAttribute("data-preco");
+    }
+    ponto.addEventListener("mouseenter", ativar);
+    ponto.addEventListener("touchstart", ativar, {passive: true});
+  });
+  raiz.addEventListener("mouseleave", function(){
+    if (ativo) { ativo.classList.remove("chart-dot-ativo"); ativo = null; }
+    elTexto.textContent = "02/09/2026 · R$ 346,00";
+  });
+})();
+</script></div>
+      <div data-periodo="90d" hidden><div class="chart-wrap" id="grafico-boi-gordo-90d" data-slug="boi-gordo" data-margem-esq="68" data-margem-topo="20" data-altura-util="210" data-largura-util="812" data-num-pontos="52">
+<svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Variação de preço de Boi Gordo no período">
+  <defs>
+    <linearGradient id="grad-boi-gordo-90d" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4C7A1F" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#4C7A1F" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <line x1="68" y1="20" x2="68" y2="230" stroke="rgba(11,60,31,0.14)" stroke-width="1"/>
+  <line x1="68" y1="230" x2="880" y2="230" stroke="rgba(11,60,31,0.14)" stroke-width="1"/>
+  <text x="60" y="24" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ 350,20</text>
+  <text x="60" y="230" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ 324,60</text>
+  <path d="M 68.0,213.2 C 70.7,216.0 78.6,232.0 83.9,230.0 C 89.2,228.0 94.5,207.6 99.8,201.3 C 105.2,195.0 110.5,196.4 115.8,192.3 C 121.1,188.1 126.4,182.1 131.7,176.3 C 137.0,170.4 142.3,160.2 147.6,157.0 C 152.9,153.8 158.2,157.0 163.5,157.0 C 168.8,157.0 174.1,161.9 179.5,157.0 C 184.8,152.1 190.1,139.7 195.4,127.5 C 200.7,115.2 206.0,91.2 211.3,83.6 C 216.6,76.0 221.9,83.7 227.2,81.9 C 232.5,80.2 237.8,75.0 243.1,72.9 C 248.4,70.8 253.8,69.8 259.1,69.2 C 264.4,68.6 269.7,69.2 275.0,69.2 C 280.3,69.2 285.6,69.3 290.9,69.2 C 296.2,69.2 301.5,73.6 306.8,68.8 C 312.1,64.0 317.4,44.8 322.7,40.5 C 328.1,36.2 333.4,41.9 338.7,43.0 C 344.0,44.1 349.3,45.9 354.6,47.1 C 359.9,48.2 365.2,49.5 370.5,49.9 C 375.8,50.4 381.1,49.9 386.4,49.9 C 391.7,49.9 397.0,51.8 402.4,49.9 C 407.7,48.1 413.0,43.9 418.3,38.9 C 423.6,33.9 428.9,20.9 434.2,20.0 C 439.5,19.1 444.8,30.9 450.1,33.5 C 455.4,36.1 460.7,34.2 466.0,35.6 C 471.3,37.0 476.7,41.1 482.0,42.1 C 487.3,43.2 492.6,42.1 497.9,42.1 C 503.2,42.1 508.5,42.1 513.8,42.1 C 519.1,42.1 524.4,42.0 529.7,42.1 C 535.0,42.3 540.3,41.6 545.6,43.0 C 551.0,44.3 556.3,49.5 561.6,50.4 C 566.9,51.2 572.2,48.6 577.5,48.3 C 582.8,48.0 588.1,48.3 593.4,48.3 C 598.7,48.3 604.0,48.3 609.3,48.3 C 614.6,48.3 619.9,46.0 625.3,48.3 C 630.6,50.6 635.9,59.6 641.2,62.2 C 646.5,64.9 651.8,64.0 657.1,64.3 C 662.4,64.6 667.7,65.1 673.0,63.9 C 678.3,62.7 683.6,54.7 688.9,56.9 C 694.2,59.2 699.6,74.0 704.9,77.4 C 710.2,80.8 715.5,77.4 720.8,77.4 C 726.1,77.4 731.4,77.4 736.7,77.4 C 742.0,77.4 747.3,77.6 752.6,77.4 C 757.9,77.2 763.2,75.2 768.5,76.2 C 773.9,77.1 779.2,84.7 784.5,83.2 C 789.8,81.6 795.1,70.7 800.4,66.8 C 805.7,62.9 811.0,60.9 816.3,59.8 C 821.6,58.6 826.9,59.8 832.2,59.8 C 837.5,59.8 842.8,58.5 848.2,59.8 C 853.5,61.1 858.8,68.5 864.1,67.6 C 869.4,66.7 877.3,56.6 880.0,54.5 L 880.0,230.0 L 68.0,230.0 Z" fill="url(#grad-boi-gordo-90d)" stroke="none"/>
+  <path d="M 68.0,213.2 C 70.7,216.0 78.6,232.0 83.9,230.0 C 89.2,228.0 94.5,207.6 99.8,201.3 C 105.2,195.0 110.5,196.4 115.8,192.3 C 121.1,188.1 126.4,182.1 131.7,176.3 C 137.0,170.4 142.3,160.2 147.6,157.0 C 152.9,153.8 158.2,157.0 163.5,157.0 C 168.8,157.0 174.1,161.9 179.5,157.0 C 184.8,152.1 190.1,139.7 195.4,127.5 C 200.7,115.2 206.0,91.2 211.3,83.6 C 216.6,76.0 221.9,83.7 227.2,81.9 C 232.5,80.2 237.8,75.0 243.1,72.9 C 248.4,70.8 253.8,69.8 259.1,69.2 C 264.4,68.6 269.7,69.2 275.0,69.2 C 280.3,69.2 285.6,69.3 290.9,69.2 C 296.2,69.2 301.5,73.6 306.8,68.8 C 312.1,64.0 317.4,44.8 322.7,40.5 C 328.1,36.2 333.4,41.9 338.7,43.0 C 344.0,44.1 349.3,45.9 354.6,47.1 C 359.9,48.2 365.2,49.5 370.5,49.9 C 375.8,50.4 381.1,49.9 386.4,49.9 C 391.7,49.9 397.0,51.8 402.4,49.9 C 407.7,48.1 413.0,43.9 418.3,38.9 C 423.6,33.9 428.9,20.9 434.2,20.0 C 439.5,19.1 444.8,30.9 450.1,33.5 C 455.4,36.1 460.7,34.2 466.0,35.6 C 471.3,37.0 476.7,41.1 482.0,42.1 C 487.3,43.2 492.6,42.1 497.9,42.1 C 503.2,42.1 508.5,42.1 513.8,42.1 C 519.1,42.1 524.4,42.0 529.7,42.1 C 535.0,42.3 540.3,41.6 545.6,43.0 C 551.0,44.3 556.3,49.5 561.6,50.4 C 566.9,51.2 572.2,48.6 577.5,48.3 C 582.8,48.0 588.1,48.3 593.4,48.3 C 598.7,48.3 604.0,48.3 609.3,48.3 C 614.6,48.3 619.9,46.0 625.3,48.3 C 630.6,50.6 635.9,59.6 641.2,62.2 C 646.5,64.9 651.8,64.0 657.1,64.3 C 662.4,64.6 667.7,65.1 673.0,63.9 C 678.3,62.7 683.6,54.7 688.9,56.9 C 694.2,59.2 699.6,74.0 704.9,77.4 C 710.2,80.8 715.5,77.4 720.8,77.4 C 726.1,77.4 731.4,77.4 736.7,77.4 C 742.0,77.4 747.3,77.6 752.6,77.4 C 757.9,77.2 763.2,75.2 768.5,76.2 C 773.9,77.1 779.2,84.7 784.5,83.2 C 789.8,81.6 795.1,70.7 800.4,66.8 C 805.7,62.9 811.0,60.9 816.3,59.8 C 821.6,58.6 826.9,59.8 832.2,59.8 C 837.5,59.8 842.8,58.5 848.2,59.8 C 853.5,61.1 858.8,68.5 864.1,67.6 C 869.4,66.7 877.3,56.6 880.0,54.5" fill="none" stroke="#4C7A1F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle id="ponto-boi-gordo-90d-0" class="chart-dot" cx="68.0" cy="213.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="68.0" cy="213.2" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-0" data-data="13/07/2026" data-preco="326,65"/>
+  <circle id="ponto-boi-gordo-90d-1" class="chart-dot" cx="83.9" cy="230.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="83.9" cy="230.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-1" data-data="14/07/2026" data-preco="324,60"/>
+  <circle id="ponto-boi-gordo-90d-2" class="chart-dot" cx="99.8" cy="201.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="99.8" cy="201.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-2" data-data="15/07/2026" data-preco="328,10"/>
+  <circle id="ponto-boi-gordo-90d-3" class="chart-dot" cx="115.8" cy="192.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="115.8" cy="192.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-3" data-data="16/07/2026" data-preco="329,20"/>
+  <circle id="ponto-boi-gordo-90d-4" class="chart-dot" cx="131.7" cy="176.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="131.7" cy="176.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-4" data-data="17/07/2026" data-preco="331,15"/>
+  <circle id="ponto-boi-gordo-90d-5" class="chart-dot" cx="147.6" cy="157.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="147.6" cy="157.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-5" data-data="18/07/2026" data-preco="333,50"/>
+  <circle id="ponto-boi-gordo-90d-6" class="chart-dot" cx="163.5" cy="157.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="163.5" cy="157.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-6" data-data="19/07/2026" data-preco="333,50"/>
+  <circle id="ponto-boi-gordo-90d-7" class="chart-dot" cx="179.5" cy="157.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="179.5" cy="157.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-7" data-data="20/07/2026" data-preco="333,50"/>
+  <circle id="ponto-boi-gordo-90d-8" class="chart-dot" cx="195.4" cy="127.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="195.4" cy="127.5" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-8" data-data="21/07/2026" data-preco="337,10"/>
+  <circle id="ponto-boi-gordo-90d-9" class="chart-dot" cx="211.3" cy="83.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="211.3" cy="83.6" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-9" data-data="22/07/2026" data-preco="342,45"/>
+  <circle id="ponto-boi-gordo-90d-10" class="chart-dot" cx="227.2" cy="81.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="227.2" cy="81.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-10" data-data="23/07/2026" data-preco="342,65"/>
+  <circle id="ponto-boi-gordo-90d-11" class="chart-dot" cx="243.1" cy="72.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="243.1" cy="72.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-11" data-data="24/07/2026" data-preco="343,75"/>
+  <circle id="ponto-boi-gordo-90d-12" class="chart-dot" cx="259.1" cy="69.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="259.1" cy="69.2" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-12" data-data="25/07/2026" data-preco="344,20"/>
+  <circle id="ponto-boi-gordo-90d-13" class="chart-dot" cx="275.0" cy="69.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="275.0" cy="69.2" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-13" data-data="26/07/2026" data-preco="344,20"/>
+  <circle id="ponto-boi-gordo-90d-14" class="chart-dot" cx="290.9" cy="69.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="290.9" cy="69.2" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-14" data-data="27/07/2026" data-preco="344,20"/>
+  <circle id="ponto-boi-gordo-90d-15" class="chart-dot" cx="306.8" cy="68.8" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="306.8" cy="68.8" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-15" data-data="28/07/2026" data-preco="344,25"/>
+  <circle id="ponto-boi-gordo-90d-16" class="chart-dot" cx="322.7" cy="40.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="322.7" cy="40.5" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-16" data-data="29/07/2026" data-preco="347,70"/>
+  <circle id="ponto-boi-gordo-90d-17" class="chart-dot" cx="338.7" cy="43.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="338.7" cy="43.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-17" data-data="30/07/2026" data-preco="347,40"/>
+  <circle id="ponto-boi-gordo-90d-18" class="chart-dot" cx="354.6" cy="47.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="354.6" cy="47.1" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-18" data-data="31/07/2026" data-preco="346,90"/>
+  <circle id="ponto-boi-gordo-90d-19" class="chart-dot" cx="370.5" cy="49.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="370.5" cy="49.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-19" data-data="01/08/2026" data-preco="346,55"/>
+  <circle id="ponto-boi-gordo-90d-20" class="chart-dot" cx="386.4" cy="49.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="386.4" cy="49.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-20" data-data="02/08/2026" data-preco="346,55"/>
+  <circle id="ponto-boi-gordo-90d-21" class="chart-dot" cx="402.4" cy="49.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="402.4" cy="49.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-21" data-data="03/08/2026" data-preco="346,55"/>
+  <circle id="ponto-boi-gordo-90d-22" class="chart-dot" cx="418.3" cy="38.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="418.3" cy="38.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-22" data-data="04/08/2026" data-preco="347,90"/>
+  <circle id="ponto-boi-gordo-90d-23" class="chart-dot" cx="434.2" cy="20.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="434.2" cy="20.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-23" data-data="05/08/2026" data-preco="350,20"/>
+  <circle id="ponto-boi-gordo-90d-24" class="chart-dot" cx="450.1" cy="33.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="450.1" cy="33.5" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-24" data-data="06/08/2026" data-preco="348,55"/>
+  <circle id="ponto-boi-gordo-90d-25" class="chart-dot" cx="466.0" cy="35.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="466.0" cy="35.6" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-25" data-data="07/08/2026" data-preco="348,30"/>
+  <circle id="ponto-boi-gordo-90d-26" class="chart-dot" cx="482.0" cy="42.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="482.0" cy="42.1" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-26" data-data="08/08/2026" data-preco="347,50"/>
+  <circle id="ponto-boi-gordo-90d-27" class="chart-dot" cx="497.9" cy="42.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="497.9" cy="42.1" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-27" data-data="09/08/2026" data-preco="347,50"/>
+  <circle id="ponto-boi-gordo-90d-28" class="chart-dot" cx="513.8" cy="42.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="513.8" cy="42.1" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-28" data-data="10/08/2026" data-preco="347,50"/>
+  <circle id="ponto-boi-gordo-90d-29" class="chart-dot" cx="529.7" cy="42.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="529.7" cy="42.1" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-29" data-data="11/08/2026" data-preco="347,50"/>
+  <circle id="ponto-boi-gordo-90d-30" class="chart-dot" cx="545.6" cy="43.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="545.6" cy="43.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-30" data-data="12/08/2026" data-preco="347,40"/>
+  <circle id="ponto-boi-gordo-90d-31" class="chart-dot" cx="561.6" cy="50.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="561.6" cy="50.4" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-31" data-data="13/08/2026" data-preco="346,50"/>
+  <circle id="ponto-boi-gordo-90d-32" class="chart-dot" cx="577.5" cy="48.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="577.5" cy="48.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-32" data-data="14/08/2026" data-preco="346,75"/>
+  <circle id="ponto-boi-gordo-90d-33" class="chart-dot" cx="593.4" cy="48.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="593.4" cy="48.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-33" data-data="15/08/2026" data-preco="346,75"/>
+  <circle id="ponto-boi-gordo-90d-34" class="chart-dot" cx="609.3" cy="48.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="609.3" cy="48.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-34" data-data="16/08/2026" data-preco="346,75"/>
+  <circle id="ponto-boi-gordo-90d-35" class="chart-dot" cx="625.3" cy="48.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="625.3" cy="48.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-35" data-data="17/08/2026" data-preco="346,75"/>
+  <circle id="ponto-boi-gordo-90d-36" class="chart-dot" cx="641.2" cy="62.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="641.2" cy="62.2" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-36" data-data="18/08/2026" data-preco="345,05"/>
+  <circle id="ponto-boi-gordo-90d-37" class="chart-dot" cx="657.1" cy="64.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="657.1" cy="64.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-37" data-data="19/08/2026" data-preco="344,80"/>
+  <circle id="ponto-boi-gordo-90d-38" class="chart-dot" cx="673.0" cy="63.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="673.0" cy="63.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-38" data-data="20/08/2026" data-preco="344,85"/>
+  <circle id="ponto-boi-gordo-90d-39" class="chart-dot" cx="688.9" cy="56.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="688.9" cy="56.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-39" data-data="21/08/2026" data-preco="345,70"/>
+  <circle id="ponto-boi-gordo-90d-40" class="chart-dot" cx="704.9" cy="77.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="704.9" cy="77.4" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-40" data-data="22/08/2026" data-preco="343,20"/>
+  <circle id="ponto-boi-gordo-90d-41" class="chart-dot" cx="720.8" cy="77.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="720.8" cy="77.4" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-41" data-data="23/08/2026" data-preco="343,20"/>
+  <circle id="ponto-boi-gordo-90d-42" class="chart-dot" cx="736.7" cy="77.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="736.7" cy="77.4" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-42" data-data="24/08/2026" data-preco="343,20"/>
+  <circle id="ponto-boi-gordo-90d-43" class="chart-dot" cx="752.6" cy="77.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="752.6" cy="77.4" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-43" data-data="25/08/2026" data-preco="343,20"/>
+  <circle id="ponto-boi-gordo-90d-44" class="chart-dot" cx="768.5" cy="76.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="768.5" cy="76.2" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-44" data-data="26/08/2026" data-preco="343,35"/>
+  <circle id="ponto-boi-gordo-90d-45" class="chart-dot" cx="784.5" cy="83.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="784.5" cy="83.2" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-45" data-data="27/08/2026" data-preco="342,50"/>
+  <circle id="ponto-boi-gordo-90d-46" class="chart-dot" cx="800.4" cy="66.8" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="800.4" cy="66.8" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-46" data-data="28/08/2026" data-preco="344,50"/>
+  <circle id="ponto-boi-gordo-90d-47" class="chart-dot" cx="816.3" cy="59.8" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="816.3" cy="59.8" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-47" data-data="29/08/2026" data-preco="345,35"/>
+  <circle id="ponto-boi-gordo-90d-48" class="chart-dot" cx="832.2" cy="59.8" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="832.2" cy="59.8" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-48" data-data="30/08/2026" data-preco="345,35"/>
+  <circle id="ponto-boi-gordo-90d-49" class="chart-dot" cx="848.2" cy="59.8" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="848.2" cy="59.8" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-49" data-data="31/08/2026" data-preco="345,35"/>
+  <circle id="ponto-boi-gordo-90d-50" class="chart-dot" cx="864.1" cy="67.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="864.1" cy="67.6" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-50" data-data="01/09/2026" data-preco="344,40"/>
+  <circle id="ponto-boi-gordo-90d-51" class="chart-dot" cx="880.0" cy="54.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="880.0" cy="54.5" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-51" data-data="02/09/2026" data-preco="346,00"/>
+  <circle cx="880.0" cy="54.5" r="4" fill="#4C7A1F"/>
+</svg>
+</div>
+<div class="chart-footer">
+  <span class="chart-footer-extremo">13/07/2026</span>
+  <span class="chart-readout-texto">02/09/2026 · R$ 346,00</span>
+  <span class="chart-footer-extremo">02/09/2026 · R$ 346,00</span>
+</div>
+<script>
+(function(){
+  var raiz = document.getElementById("grafico-boi-gordo-90d");
+  if (!raiz) return;
+  var rodape = raiz.nextElementSibling;
+  var elTexto = rodape.querySelector(".chart-readout-texto");
+  var pontos = raiz.querySelectorAll(".chart-hit");
+  var ativo = null;
+  pontos.forEach(function(ponto){
+    function ativar(){
+      if (ativo) ativo.classList.remove("chart-dot-ativo");
+      var alvo = raiz.querySelector("#" + ponto.getAttribute("data-alvo"));
+      if (alvo) { alvo.classList.add("chart-dot-ativo"); ativo = alvo; }
+      elTexto.textContent = ponto.getAttribute("data-data") + " · R$ " + ponto.getAttribute("data-preco");
+    }
+    ponto.addEventListener("mouseenter", ativar);
+    ponto.addEventListener("touchstart", ativar, {passive: true});
+  });
+  raiz.addEventListener("mouseleave", function(){
+    if (ativo) { ativo.classList.remove("chart-dot-ativo"); ativo = null; }
+    elTexto.textContent = "02/09/2026 · R$ 346,00";
+  });
+})();
+</script></div>
+    </div></div><div class="chart-series-panel" data-serie="futuros" hidden><div class="chart-periodos" role="tablist" aria-label="Período do gráfico">
+      <button type="button" class="periodo-btn active" data-periodo="7d" role="tab" aria-selected="true">7 dias</button>
+      <button type="button" class="periodo-btn" data-periodo="30d" role="tab" aria-selected="false">30 dias</button>
+      <button type="button" class="periodo-btn" data-periodo="90d" role="tab" aria-selected="false">90 dias</button>
+    </div>
+    <div class="chart-painel">
+      <div data-periodo="7d"><div class="chart-wrap" id="grafico-boi-gordo-7d" data-slug="boi-gordo" data-margem-esq="68" data-margem-topo="20" data-altura-util="210" data-largura-util="812" data-num-pontos="7">
+<svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Variação de preço de Boi Gordo no período">
+  <defs>
+    <linearGradient id="grad-boi-gordo-7d" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4C7A1F" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#4C7A1F" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <line x1="68" y1="20" x2="68" y2="230" stroke="rgba(11,60,31,0.14)" stroke-width="1"/>
+  <line x1="68" y1="230" x2="880" y2="230" stroke="rgba(11,60,31,0.14)" stroke-width="1"/>
+  <text x="60" y="24" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ 356,10</text>
+  <text x="60" y="230" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ 342,30</text>
+  <path d="M 68.0,230.0 C 90.6,228.5 158.2,223.5 203.3,220.9 C 248.4,218.2 293.6,215.2 338.7,214.0 C 383.8,212.9 428.9,214.0 474.0,214.0 C 519.1,214.0 564.2,246.4 609.3,214.0 C 654.4,181.7 699.6,52.3 744.7,20.0 C 789.8,-12.3 857.4,20.0 880.0,20.0 L 880.0,230.0 L 68.0,230.0 Z" fill="url(#grad-boi-gordo-7d)" stroke="none"/>
+  <path d="M 68.0,230.0 C 90.6,228.5 158.2,223.5 203.3,220.9 C 248.4,218.2 293.6,215.2 338.7,214.0 C 383.8,212.9 428.9,214.0 474.0,214.0 C 519.1,214.0 564.2,246.4 609.3,214.0 C 654.4,181.7 699.6,52.3 744.7,20.0 C 789.8,-12.3 857.4,20.0 880.0,20.0" fill="none" stroke="#4C7A1F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle id="ponto-boi-gordo-7d-0" class="chart-dot" cx="68.0" cy="230.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="68.0" cy="230.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-7d-0" data-data="27/08/2026" data-preco="342,30"/>
+  <circle id="ponto-boi-gordo-7d-1" class="chart-dot" cx="203.3" cy="220.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="203.3" cy="220.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-7d-1" data-data="28/08/2026" data-preco="342,90"/>
+  <circle id="ponto-boi-gordo-7d-2" class="chart-dot" cx="338.7" cy="214.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="338.7" cy="214.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-7d-2" data-data="29/08/2026" data-preco="343,35"/>
+  <circle id="ponto-boi-gordo-7d-3" class="chart-dot" cx="474.0" cy="214.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="474.0" cy="214.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-7d-3" data-data="30/08/2026" data-preco="343,35"/>
+  <circle id="ponto-boi-gordo-7d-4" class="chart-dot" cx="609.3" cy="214.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="609.3" cy="214.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-7d-4" data-data="31/08/2026" data-preco="343,35"/>
+  <circle id="ponto-boi-gordo-7d-5" class="chart-dot" cx="744.7" cy="20.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="744.7" cy="20.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-7d-5" data-data="01/09/2026" data-preco="356,10"/>
+  <circle id="ponto-boi-gordo-7d-6" class="chart-dot" cx="880.0" cy="20.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="880.0" cy="20.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-7d-6" data-data="02/09/2026" data-preco="356,10"/>
+  <circle cx="880.0" cy="20.0" r="4" fill="#4C7A1F"/>
+</svg>
+</div>
+<div class="chart-footer">
+  <span class="chart-footer-extremo">27/08/2026</span>
+  <span class="chart-readout-texto">02/09/2026 · R$ 356,10</span>
+  <span class="chart-footer-extremo">02/09/2026 · R$ 356,10</span>
+</div>
+<script>
+(function(){
+  var raiz = document.getElementById("grafico-boi-gordo-7d");
+  if (!raiz) return;
+  var rodape = raiz.nextElementSibling;
+  var elTexto = rodape.querySelector(".chart-readout-texto");
+  var pontos = raiz.querySelectorAll(".chart-hit");
+  var ativo = null;
+  pontos.forEach(function(ponto){
+    function ativar(){
+      if (ativo) ativo.classList.remove("chart-dot-ativo");
+      var alvo = raiz.querySelector("#" + ponto.getAttribute("data-alvo"));
+      if (alvo) { alvo.classList.add("chart-dot-ativo"); ativo = alvo; }
+      elTexto.textContent = ponto.getAttribute("data-data") + " · R$ " + ponto.getAttribute("data-preco");
+    }
+    ponto.addEventListener("mouseenter", ativar);
+    ponto.addEventListener("touchstart", ativar, {passive: true});
+  });
+  raiz.addEventListener("mouseleave", function(){
+    if (ativo) { ativo.classList.remove("chart-dot-ativo"); ativo = null; }
+    elTexto.textContent = "02/09/2026 · R$ 356,10";
+  });
+})();
+</script></div>
+      <div data-periodo="30d" hidden><div class="chart-wrap" id="grafico-boi-gordo-30d" data-slug="boi-gordo" data-margem-esq="68" data-margem-topo="20" data-altura-util="210" data-largura-util="812" data-num-pontos="30">
+<svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Variação de preço de Boi Gordo no período">
+  <defs>
+    <linearGradient id="grad-boi-gordo-30d" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4C7A1F" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#4C7A1F" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <line x1="68" y1="20" x2="68" y2="230" stroke="rgba(11,60,31,0.14)" stroke-width="1"/>
+  <line x1="68" y1="230" x2="880" y2="230" stroke="rgba(11,60,31,0.14)" stroke-width="1"/>
+  <text x="60" y="24" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ 356,10</text>
+  <text x="60" y="230" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ 340,75</text>
+  <path d="M 68.0,230.0 C 72.7,217.5 86.7,171.9 96.0,154.8 C 105.3,137.7 114.7,132.1 124.0,127.4 C 133.3,122.7 142.7,123.9 152.0,126.7 C 161.3,129.6 170.7,141.5 180.0,144.5 C 189.3,147.5 198.7,144.5 208.0,144.5 C 217.3,144.5 226.7,149.1 236.0,144.5 C 245.3,139.9 254.7,124.3 264.0,117.1 C 273.3,110.0 282.7,102.3 292.0,101.4 C 301.3,100.5 310.7,107.8 320.0,111.7 C 329.3,115.5 338.7,118.0 348.0,124.7 C 357.3,131.3 366.7,146.9 376.0,151.3 C 385.3,155.8 394.7,151.3 404.0,151.3 C 413.3,151.3 422.7,154.1 432.0,151.3 C 441.3,148.6 450.7,138.9 460.0,134.9 C 469.3,130.9 478.7,129.0 488.0,127.4 C 497.3,125.8 506.7,117.1 516.0,125.3 C 525.3,133.6 534.7,170.6 544.0,176.6 C 553.3,182.7 562.7,164.1 572.0,161.6 C 581.3,159.1 590.7,161.6 600.0,161.6 C 609.3,161.6 618.7,159.3 628.0,161.6 C 637.3,163.9 646.7,170.4 656.0,175.3 C 665.3,180.2 674.7,185.4 684.0,191.0 C 693.3,196.6 702.7,207.2 712.0,208.8 C 721.3,210.4 730.7,203.0 740.0,200.6 C 749.3,198.2 758.7,195.5 768.0,194.4 C 777.3,193.4 786.7,194.4 796.0,194.4 C 805.3,194.4 814.7,223.5 824.0,194.4 C 833.3,165.4 842.7,49.1 852.0,20.0 C 861.3,-9.1 875.3,20.0 880.0,20.0 L 880.0,230.0 L 68.0,230.0 Z" fill="url(#grad-boi-gordo-30d)" stroke="none"/>
+  <path d="M 68.0,230.0 C 72.7,217.5 86.7,171.9 96.0,154.8 C 105.3,137.7 114.7,132.1 124.0,127.4 C 133.3,122.7 142.7,123.9 152.0,126.7 C 161.3,129.6 170.7,141.5 180.0,144.5 C 189.3,147.5 198.7,144.5 208.0,144.5 C 217.3,144.5 226.7,149.1 236.0,144.5 C 245.3,139.9 254.7,124.3 264.0,117.1 C 273.3,110.0 282.7,102.3 292.0,101.4 C 301.3,100.5 310.7,107.8 320.0,111.7 C 329.3,115.5 338.7,118.0 348.0,124.7 C 357.3,131.3 366.7,146.9 376.0,151.3 C 385.3,155.8 394.7,151.3 404.0,151.3 C 413.3,151.3 422.7,154.1 432.0,151.3 C 441.3,148.6 450.7,138.9 460.0,134.9 C 469.3,130.9 478.7,129.0 488.0,127.4 C 497.3,125.8 506.7,117.1 516.0,125.3 C 525.3,133.6 534.7,170.6 544.0,176.6 C 553.3,182.7 562.7,164.1 572.0,161.6 C 581.3,159.1 590.7,161.6 600.0,161.6 C 609.3,161.6 618.7,159.3 628.0,161.6 C 637.3,163.9 646.7,170.4 656.0,175.3 C 665.3,180.2 674.7,185.4 684.0,191.0 C 693.3,196.6 702.7,207.2 712.0,208.8 C 721.3,210.4 730.7,203.0 740.0,200.6 C 749.3,198.2 758.7,195.5 768.0,194.4 C 777.3,193.4 786.7,194.4 796.0,194.4 C 805.3,194.4 814.7,223.5 824.0,194.4 C 833.3,165.4 842.7,49.1 852.0,20.0 C 861.3,-9.1 875.3,20.0 880.0,20.0" fill="none" stroke="#4C7A1F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle id="ponto-boi-gordo-30d-0" class="chart-dot" cx="68.0" cy="230.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="68.0" cy="230.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-0" data-data="04/08/2026" data-preco="340,75"/>
+  <circle id="ponto-boi-gordo-30d-1" class="chart-dot" cx="96.0" cy="154.8" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="96.0" cy="154.8" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-1" data-data="05/08/2026" data-preco="346,25"/>
+  <circle id="ponto-boi-gordo-30d-2" class="chart-dot" cx="124.0" cy="127.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="124.0" cy="127.4" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-2" data-data="06/08/2026" data-preco="348,25"/>
+  <circle id="ponto-boi-gordo-30d-3" class="chart-dot" cx="152.0" cy="126.7" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="152.0" cy="126.7" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-3" data-data="07/08/2026" data-preco="348,30"/>
+  <circle id="ponto-boi-gordo-30d-4" class="chart-dot" cx="180.0" cy="144.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="180.0" cy="144.5" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-4" data-data="08/08/2026" data-preco="347,00"/>
+  <circle id="ponto-boi-gordo-30d-5" class="chart-dot" cx="208.0" cy="144.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="208.0" cy="144.5" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-5" data-data="09/08/2026" data-preco="347,00"/>
+  <circle id="ponto-boi-gordo-30d-6" class="chart-dot" cx="236.0" cy="144.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="236.0" cy="144.5" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-6" data-data="10/08/2026" data-preco="347,00"/>
+  <circle id="ponto-boi-gordo-30d-7" class="chart-dot" cx="264.0" cy="117.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="264.0" cy="117.1" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-7" data-data="11/08/2026" data-preco="349,00"/>
+  <circle id="ponto-boi-gordo-30d-8" class="chart-dot" cx="292.0" cy="101.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="292.0" cy="101.4" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-8" data-data="12/08/2026" data-preco="350,15"/>
+  <circle id="ponto-boi-gordo-30d-9" class="chart-dot" cx="320.0" cy="111.7" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="320.0" cy="111.7" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-9" data-data="13/08/2026" data-preco="349,40"/>
+  <circle id="ponto-boi-gordo-30d-10" class="chart-dot" cx="348.0" cy="124.7" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="348.0" cy="124.7" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-10" data-data="14/08/2026" data-preco="348,45"/>
+  <circle id="ponto-boi-gordo-30d-11" class="chart-dot" cx="376.0" cy="151.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="376.0" cy="151.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-11" data-data="15/08/2026" data-preco="346,50"/>
+  <circle id="ponto-boi-gordo-30d-12" class="chart-dot" cx="404.0" cy="151.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="404.0" cy="151.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-12" data-data="16/08/2026" data-preco="346,50"/>
+  <circle id="ponto-boi-gordo-30d-13" class="chart-dot" cx="432.0" cy="151.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="432.0" cy="151.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-13" data-data="17/08/2026" data-preco="346,50"/>
+  <circle id="ponto-boi-gordo-30d-14" class="chart-dot" cx="460.0" cy="134.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="460.0" cy="134.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-14" data-data="18/08/2026" data-preco="347,70"/>
+  <circle id="ponto-boi-gordo-30d-15" class="chart-dot" cx="488.0" cy="127.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="488.0" cy="127.4" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-15" data-data="19/08/2026" data-preco="348,25"/>
+  <circle id="ponto-boi-gordo-30d-16" class="chart-dot" cx="516.0" cy="125.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="516.0" cy="125.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-16" data-data="20/08/2026" data-preco="348,40"/>
+  <circle id="ponto-boi-gordo-30d-17" class="chart-dot" cx="544.0" cy="176.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="544.0" cy="176.6" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-17" data-data="21/08/2026" data-preco="344,65"/>
+  <circle id="ponto-boi-gordo-30d-18" class="chart-dot" cx="572.0" cy="161.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="572.0" cy="161.6" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-18" data-data="22/08/2026" data-preco="345,75"/>
+  <circle id="ponto-boi-gordo-30d-19" class="chart-dot" cx="600.0" cy="161.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="600.0" cy="161.6" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-19" data-data="23/08/2026" data-preco="345,75"/>
+  <circle id="ponto-boi-gordo-30d-20" class="chart-dot" cx="628.0" cy="161.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="628.0" cy="161.6" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-20" data-data="24/08/2026" data-preco="345,75"/>
+  <circle id="ponto-boi-gordo-30d-21" class="chart-dot" cx="656.0" cy="175.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="656.0" cy="175.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-21" data-data="25/08/2026" data-preco="344,75"/>
+  <circle id="ponto-boi-gordo-30d-22" class="chart-dot" cx="684.0" cy="191.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="684.0" cy="191.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-22" data-data="26/08/2026" data-preco="343,60"/>
+  <circle id="ponto-boi-gordo-30d-23" class="chart-dot" cx="712.0" cy="208.8" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="712.0" cy="208.8" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-23" data-data="27/08/2026" data-preco="342,30"/>
+  <circle id="ponto-boi-gordo-30d-24" class="chart-dot" cx="740.0" cy="200.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="740.0" cy="200.6" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-24" data-data="28/08/2026" data-preco="342,90"/>
+  <circle id="ponto-boi-gordo-30d-25" class="chart-dot" cx="768.0" cy="194.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="768.0" cy="194.4" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-25" data-data="29/08/2026" data-preco="343,35"/>
+  <circle id="ponto-boi-gordo-30d-26" class="chart-dot" cx="796.0" cy="194.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="796.0" cy="194.4" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-26" data-data="30/08/2026" data-preco="343,35"/>
+  <circle id="ponto-boi-gordo-30d-27" class="chart-dot" cx="824.0" cy="194.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="824.0" cy="194.4" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-27" data-data="31/08/2026" data-preco="343,35"/>
+  <circle id="ponto-boi-gordo-30d-28" class="chart-dot" cx="852.0" cy="20.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="852.0" cy="20.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-28" data-data="01/09/2026" data-preco="356,10"/>
+  <circle id="ponto-boi-gordo-30d-29" class="chart-dot" cx="880.0" cy="20.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="880.0" cy="20.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-30d-29" data-data="02/09/2026" data-preco="356,10"/>
+  <circle cx="880.0" cy="20.0" r="4" fill="#4C7A1F"/>
+</svg>
+</div>
+<div class="chart-footer">
+  <span class="chart-footer-extremo">04/08/2026</span>
+  <span class="chart-readout-texto">02/09/2026 · R$ 356,10</span>
+  <span class="chart-footer-extremo">02/09/2026 · R$ 356,10</span>
+</div>
+<script>
+(function(){
+  var raiz = document.getElementById("grafico-boi-gordo-30d");
+  if (!raiz) return;
+  var rodape = raiz.nextElementSibling;
+  var elTexto = rodape.querySelector(".chart-readout-texto");
+  var pontos = raiz.querySelectorAll(".chart-hit");
+  var ativo = null;
+  pontos.forEach(function(ponto){
+    function ativar(){
+      if (ativo) ativo.classList.remove("chart-dot-ativo");
+      var alvo = raiz.querySelector("#" + ponto.getAttribute("data-alvo"));
+      if (alvo) { alvo.classList.add("chart-dot-ativo"); ativo = alvo; }
+      elTexto.textContent = ponto.getAttribute("data-data") + " · R$ " + ponto.getAttribute("data-preco");
+    }
+    ponto.addEventListener("mouseenter", ativar);
+    ponto.addEventListener("touchstart", ativar, {passive: true});
+  });
+  raiz.addEventListener("mouseleave", function(){
+    if (ativo) { ativo.classList.remove("chart-dot-ativo"); ativo = null; }
+    elTexto.textContent = "02/09/2026 · R$ 356,10";
+  });
+})();
+</script></div>
+      <div data-periodo="90d" hidden><div class="chart-wrap" id="grafico-boi-gordo-90d" data-slug="boi-gordo" data-margem-esq="68" data-margem-topo="20" data-altura-util="210" data-largura-util="812" data-num-pontos="52">
+<svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Variação de preço de Boi Gordo no período">
+  <defs>
+    <linearGradient id="grad-boi-gordo-90d" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4C7A1F" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#4C7A1F" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <line x1="68" y1="20" x2="68" y2="230" stroke="rgba(11,60,31,0.14)" stroke-width="1"/>
+  <line x1="68" y1="230" x2="880" y2="230" stroke="rgba(11,60,31,0.14)" stroke-width="1"/>
+  <text x="60" y="24" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ 356,10</text>
+  <text x="60" y="230" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ 329,75</text>
+  <path d="M 68.0,229.6 C 70.7,229.7 78.6,234.9 83.9,230.0 C 89.2,225.1 94.5,208.7 99.8,200.1 C 105.2,191.5 110.5,184.4 115.8,178.6 C 121.1,172.8 126.4,168.1 131.7,165.0 C 137.0,162.0 142.3,161.1 147.6,160.3 C 152.9,159.5 158.2,160.3 163.5,160.3 C 168.8,160.3 174.1,163.7 179.5,160.3 C 184.8,156.8 190.1,148.2 195.4,139.5 C 200.7,130.9 206.0,112.1 211.3,108.5 C 216.6,104.8 221.9,115.4 227.2,117.6 C 232.5,119.9 237.8,120.2 243.1,122.0 C 248.4,123.8 253.8,127.3 259.1,128.4 C 264.4,129.4 269.7,128.4 275.0,128.4 C 280.3,128.4 285.6,128.4 290.9,128.4 C 296.2,128.4 301.5,133.1 306.8,128.4 C 312.1,123.7 317.4,104.9 322.7,100.1 C 328.1,95.2 333.4,99.4 338.7,99.3 C 344.0,99.2 349.3,99.7 354.6,99.7 C 359.9,99.7 365.2,99.4 370.5,99.3 C 375.8,99.2 381.1,99.3 386.4,99.3 C 391.7,99.3 397.0,92.1 402.4,99.3 C 407.7,106.5 413.0,142.5 418.3,142.3 C 423.6,142.2 428.9,108.5 434.2,98.5 C 439.5,88.5 444.8,85.3 450.1,82.6 C 455.4,79.8 460.7,80.5 466.0,82.2 C 471.3,83.8 476.7,90.8 482.0,92.5 C 487.3,94.3 492.6,92.5 497.9,92.5 C 503.2,92.5 508.5,95.2 513.8,92.5 C 519.1,89.9 524.4,80.8 529.7,76.6 C 535.0,72.4 540.3,68.0 545.6,67.4 C 551.0,66.9 556.3,71.1 561.6,73.4 C 566.9,75.7 572.2,77.1 577.5,81.0 C 582.8,84.8 588.1,93.9 593.4,96.5 C 598.7,99.1 604.0,96.5 609.3,96.5 C 614.6,96.5 619.9,98.1 625.3,96.5 C 630.6,94.9 635.9,89.3 641.2,86.9 C 646.5,84.6 651.8,83.5 657.1,82.6 C 662.4,81.6 667.7,76.6 673.0,81.4 C 678.3,86.1 683.6,107.7 688.9,111.3 C 694.2,114.8 699.6,103.9 704.9,102.5 C 710.2,101.0 715.5,102.5 720.8,102.5 C 726.1,102.5 731.4,101.2 736.7,102.5 C 742.0,103.8 747.3,107.6 752.6,110.5 C 757.9,113.3 763.2,116.4 768.5,119.6 C 773.9,122.9 779.2,129.1 784.5,130.0 C 789.8,130.9 795.1,126.6 800.4,125.2 C 805.7,123.8 811.0,122.2 816.3,121.6 C 821.6,121.0 826.9,121.6 832.2,121.6 C 837.5,121.6 842.8,138.5 848.2,121.6 C 853.5,104.7 858.8,36.9 864.1,20.0 C 869.4,3.1 877.3,20.0 880.0,20.0 L 880.0,230.0 L 68.0,230.0 Z" fill="url(#grad-boi-gordo-90d)" stroke="none"/>
+  <path d="M 68.0,229.6 C 70.7,229.7 78.6,234.9 83.9,230.0 C 89.2,225.1 94.5,208.7 99.8,200.1 C 105.2,191.5 110.5,184.4 115.8,178.6 C 121.1,172.8 126.4,168.1 131.7,165.0 C 137.0,162.0 142.3,161.1 147.6,160.3 C 152.9,159.5 158.2,160.3 163.5,160.3 C 168.8,160.3 174.1,163.7 179.5,160.3 C 184.8,156.8 190.1,148.2 195.4,139.5 C 200.7,130.9 206.0,112.1 211.3,108.5 C 216.6,104.8 221.9,115.4 227.2,117.6 C 232.5,119.9 237.8,120.2 243.1,122.0 C 248.4,123.8 253.8,127.3 259.1,128.4 C 264.4,129.4 269.7,128.4 275.0,128.4 C 280.3,128.4 285.6,128.4 290.9,128.4 C 296.2,128.4 301.5,133.1 306.8,128.4 C 312.1,123.7 317.4,104.9 322.7,100.1 C 328.1,95.2 333.4,99.4 338.7,99.3 C 344.0,99.2 349.3,99.7 354.6,99.7 C 359.9,99.7 365.2,99.4 370.5,99.3 C 375.8,99.2 381.1,99.3 386.4,99.3 C 391.7,99.3 397.0,92.1 402.4,99.3 C 407.7,106.5 413.0,142.5 418.3,142.3 C 423.6,142.2 428.9,108.5 434.2,98.5 C 439.5,88.5 444.8,85.3 450.1,82.6 C 455.4,79.8 460.7,80.5 466.0,82.2 C 471.3,83.8 476.7,90.8 482.0,92.5 C 487.3,94.3 492.6,92.5 497.9,92.5 C 503.2,92.5 508.5,95.2 513.8,92.5 C 519.1,89.9 524.4,80.8 529.7,76.6 C 535.0,72.4 540.3,68.0 545.6,67.4 C 551.0,66.9 556.3,71.1 561.6,73.4 C 566.9,75.7 572.2,77.1 577.5,81.0 C 582.8,84.8 588.1,93.9 593.4,96.5 C 598.7,99.1 604.0,96.5 609.3,96.5 C 614.6,96.5 619.9,98.1 625.3,96.5 C 630.6,94.9 635.9,89.3 641.2,86.9 C 646.5,84.6 651.8,83.5 657.1,82.6 C 662.4,81.6 667.7,76.6 673.0,81.4 C 678.3,86.1 683.6,107.7 688.9,111.3 C 694.2,114.8 699.6,103.9 704.9,102.5 C 710.2,101.0 715.5,102.5 720.8,102.5 C 726.1,102.5 731.4,101.2 736.7,102.5 C 742.0,103.8 747.3,107.6 752.6,110.5 C 757.9,113.3 763.2,116.4 768.5,119.6 C 773.9,122.9 779.2,129.1 784.5,130.0 C 789.8,130.9 795.1,126.6 800.4,125.2 C 805.7,123.8 811.0,122.2 816.3,121.6 C 821.6,121.0 826.9,121.6 832.2,121.6 C 837.5,121.6 842.8,138.5 848.2,121.6 C 853.5,104.7 858.8,36.9 864.1,20.0 C 869.4,3.1 877.3,20.0 880.0,20.0" fill="none" stroke="#4C7A1F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle id="ponto-boi-gordo-90d-0" class="chart-dot" cx="68.0" cy="229.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="68.0" cy="229.6" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-0" data-data="13/07/2026" data-preco="329,80"/>
+  <circle id="ponto-boi-gordo-90d-1" class="chart-dot" cx="83.9" cy="230.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="83.9" cy="230.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-1" data-data="14/07/2026" data-preco="329,75"/>
+  <circle id="ponto-boi-gordo-90d-2" class="chart-dot" cx="99.8" cy="200.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="99.8" cy="200.1" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-2" data-data="15/07/2026" data-preco="333,50"/>
+  <circle id="ponto-boi-gordo-90d-3" class="chart-dot" cx="115.8" cy="178.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="115.8" cy="178.6" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-3" data-data="16/07/2026" data-preco="336,20"/>
+  <circle id="ponto-boi-gordo-90d-4" class="chart-dot" cx="131.7" cy="165.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="131.7" cy="165.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-4" data-data="17/07/2026" data-preco="337,90"/>
+  <circle id="ponto-boi-gordo-90d-5" class="chart-dot" cx="147.6" cy="160.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="147.6" cy="160.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-5" data-data="18/07/2026" data-preco="338,50"/>
+  <circle id="ponto-boi-gordo-90d-6" class="chart-dot" cx="163.5" cy="160.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="163.5" cy="160.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-6" data-data="19/07/2026" data-preco="338,50"/>
+  <circle id="ponto-boi-gordo-90d-7" class="chart-dot" cx="179.5" cy="160.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="179.5" cy="160.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-7" data-data="20/07/2026" data-preco="338,50"/>
+  <circle id="ponto-boi-gordo-90d-8" class="chart-dot" cx="195.4" cy="139.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="195.4" cy="139.5" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-8" data-data="21/07/2026" data-preco="341,10"/>
+  <circle id="ponto-boi-gordo-90d-9" class="chart-dot" cx="211.3" cy="108.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="211.3" cy="108.5" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-9" data-data="22/07/2026" data-preco="345,00"/>
+  <circle id="ponto-boi-gordo-90d-10" class="chart-dot" cx="227.2" cy="117.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="227.2" cy="117.6" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-10" data-data="23/07/2026" data-preco="343,85"/>
+  <circle id="ponto-boi-gordo-90d-11" class="chart-dot" cx="243.1" cy="122.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="243.1" cy="122.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-11" data-data="24/07/2026" data-preco="343,30"/>
+  <circle id="ponto-boi-gordo-90d-12" class="chart-dot" cx="259.1" cy="128.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="259.1" cy="128.4" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-12" data-data="25/07/2026" data-preco="342,50"/>
+  <circle id="ponto-boi-gordo-90d-13" class="chart-dot" cx="275.0" cy="128.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="275.0" cy="128.4" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-13" data-data="26/07/2026" data-preco="342,50"/>
+  <circle id="ponto-boi-gordo-90d-14" class="chart-dot" cx="290.9" cy="128.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="290.9" cy="128.4" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-14" data-data="27/07/2026" data-preco="342,50"/>
+  <circle id="ponto-boi-gordo-90d-15" class="chart-dot" cx="306.8" cy="128.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="306.8" cy="128.4" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-15" data-data="28/07/2026" data-preco="342,50"/>
+  <circle id="ponto-boi-gordo-90d-16" class="chart-dot" cx="322.7" cy="100.1" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="322.7" cy="100.1" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-16" data-data="29/07/2026" data-preco="346,05"/>
+  <circle id="ponto-boi-gordo-90d-17" class="chart-dot" cx="338.7" cy="99.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="338.7" cy="99.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-17" data-data="30/07/2026" data-preco="346,15"/>
+  <circle id="ponto-boi-gordo-90d-18" class="chart-dot" cx="354.6" cy="99.7" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="354.6" cy="99.7" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-18" data-data="31/07/2026" data-preco="346,10"/>
+  <circle id="ponto-boi-gordo-90d-19" class="chart-dot" cx="370.5" cy="99.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="370.5" cy="99.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-19" data-data="01/08/2026" data-preco="346,15"/>
+  <circle id="ponto-boi-gordo-90d-20" class="chart-dot" cx="386.4" cy="99.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="386.4" cy="99.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-20" data-data="02/08/2026" data-preco="346,15"/>
+  <circle id="ponto-boi-gordo-90d-21" class="chart-dot" cx="402.4" cy="99.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="402.4" cy="99.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-21" data-data="03/08/2026" data-preco="346,15"/>
+  <circle id="ponto-boi-gordo-90d-22" class="chart-dot" cx="418.3" cy="142.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="418.3" cy="142.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-22" data-data="04/08/2026" data-preco="340,75"/>
+  <circle id="ponto-boi-gordo-90d-23" class="chart-dot" cx="434.2" cy="98.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="434.2" cy="98.5" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-23" data-data="05/08/2026" data-preco="346,25"/>
+  <circle id="ponto-boi-gordo-90d-24" class="chart-dot" cx="450.1" cy="82.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="450.1" cy="82.6" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-24" data-data="06/08/2026" data-preco="348,25"/>
+  <circle id="ponto-boi-gordo-90d-25" class="chart-dot" cx="466.0" cy="82.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="466.0" cy="82.2" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-25" data-data="07/08/2026" data-preco="348,30"/>
+  <circle id="ponto-boi-gordo-90d-26" class="chart-dot" cx="482.0" cy="92.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="482.0" cy="92.5" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-26" data-data="08/08/2026" data-preco="347,00"/>
+  <circle id="ponto-boi-gordo-90d-27" class="chart-dot" cx="497.9" cy="92.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="497.9" cy="92.5" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-27" data-data="09/08/2026" data-preco="347,00"/>
+  <circle id="ponto-boi-gordo-90d-28" class="chart-dot" cx="513.8" cy="92.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="513.8" cy="92.5" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-28" data-data="10/08/2026" data-preco="347,00"/>
+  <circle id="ponto-boi-gordo-90d-29" class="chart-dot" cx="529.7" cy="76.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="529.7" cy="76.6" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-29" data-data="11/08/2026" data-preco="349,00"/>
+  <circle id="ponto-boi-gordo-90d-30" class="chart-dot" cx="545.6" cy="67.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="545.6" cy="67.4" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-30" data-data="12/08/2026" data-preco="350,15"/>
+  <circle id="ponto-boi-gordo-90d-31" class="chart-dot" cx="561.6" cy="73.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="561.6" cy="73.4" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-31" data-data="13/08/2026" data-preco="349,40"/>
+  <circle id="ponto-boi-gordo-90d-32" class="chart-dot" cx="577.5" cy="81.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="577.5" cy="81.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-32" data-data="14/08/2026" data-preco="348,45"/>
+  <circle id="ponto-boi-gordo-90d-33" class="chart-dot" cx="593.4" cy="96.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="593.4" cy="96.5" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-33" data-data="15/08/2026" data-preco="346,50"/>
+  <circle id="ponto-boi-gordo-90d-34" class="chart-dot" cx="609.3" cy="96.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="609.3" cy="96.5" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-34" data-data="16/08/2026" data-preco="346,50"/>
+  <circle id="ponto-boi-gordo-90d-35" class="chart-dot" cx="625.3" cy="96.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="625.3" cy="96.5" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-35" data-data="17/08/2026" data-preco="346,50"/>
+  <circle id="ponto-boi-gordo-90d-36" class="chart-dot" cx="641.2" cy="86.9" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="641.2" cy="86.9" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-36" data-data="18/08/2026" data-preco="347,70"/>
+  <circle id="ponto-boi-gordo-90d-37" class="chart-dot" cx="657.1" cy="82.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="657.1" cy="82.6" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-37" data-data="19/08/2026" data-preco="348,25"/>
+  <circle id="ponto-boi-gordo-90d-38" class="chart-dot" cx="673.0" cy="81.4" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="673.0" cy="81.4" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-38" data-data="20/08/2026" data-preco="348,40"/>
+  <circle id="ponto-boi-gordo-90d-39" class="chart-dot" cx="688.9" cy="111.3" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="688.9" cy="111.3" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-39" data-data="21/08/2026" data-preco="344,65"/>
+  <circle id="ponto-boi-gordo-90d-40" class="chart-dot" cx="704.9" cy="102.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="704.9" cy="102.5" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-40" data-data="22/08/2026" data-preco="345,75"/>
+  <circle id="ponto-boi-gordo-90d-41" class="chart-dot" cx="720.8" cy="102.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="720.8" cy="102.5" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-41" data-data="23/08/2026" data-preco="345,75"/>
+  <circle id="ponto-boi-gordo-90d-42" class="chart-dot" cx="736.7" cy="102.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="736.7" cy="102.5" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-42" data-data="24/08/2026" data-preco="345,75"/>
+  <circle id="ponto-boi-gordo-90d-43" class="chart-dot" cx="752.6" cy="110.5" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="752.6" cy="110.5" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-43" data-data="25/08/2026" data-preco="344,75"/>
+  <circle id="ponto-boi-gordo-90d-44" class="chart-dot" cx="768.5" cy="119.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="768.5" cy="119.6" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-44" data-data="26/08/2026" data-preco="343,60"/>
+  <circle id="ponto-boi-gordo-90d-45" class="chart-dot" cx="784.5" cy="130.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="784.5" cy="130.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-45" data-data="27/08/2026" data-preco="342,30"/>
+  <circle id="ponto-boi-gordo-90d-46" class="chart-dot" cx="800.4" cy="125.2" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="800.4" cy="125.2" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-46" data-data="28/08/2026" data-preco="342,90"/>
+  <circle id="ponto-boi-gordo-90d-47" class="chart-dot" cx="816.3" cy="121.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="816.3" cy="121.6" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-47" data-data="29/08/2026" data-preco="343,35"/>
+  <circle id="ponto-boi-gordo-90d-48" class="chart-dot" cx="832.2" cy="121.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="832.2" cy="121.6" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-48" data-data="30/08/2026" data-preco="343,35"/>
+  <circle id="ponto-boi-gordo-90d-49" class="chart-dot" cx="848.2" cy="121.6" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="848.2" cy="121.6" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-49" data-data="31/08/2026" data-preco="343,35"/>
+  <circle id="ponto-boi-gordo-90d-50" class="chart-dot" cx="864.1" cy="20.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="864.1" cy="20.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-50" data-data="01/09/2026" data-preco="356,10"/>
+  <circle id="ponto-boi-gordo-90d-51" class="chart-dot" cx="880.0" cy="20.0" r="3" fill="#4C7A1F"/><circle class="chart-hit" cx="880.0" cy="20.0" r="10" fill="transparent" data-alvo="ponto-boi-gordo-90d-51" data-data="02/09/2026" data-preco="356,10"/>
+  <circle cx="880.0" cy="20.0" r="4" fill="#4C7A1F"/>
+</svg>
+</div>
+<div class="chart-footer">
+  <span class="chart-footer-extremo">13/07/2026</span>
+  <span class="chart-readout-texto">02/09/2026 · R$ 356,10</span>
+  <span class="chart-footer-extremo">02/09/2026 · R$ 356,10</span>
+</div>
+<script>
+(function(){
+  var raiz = document.getElementById("grafico-boi-gordo-90d");
+  if (!raiz) return;
+  var rodape = raiz.nextElementSibling;
+  var elTexto = rodape.querySelector(".chart-readout-texto");
+  var pontos = raiz.querySelectorAll(".chart-hit");
+  var ativo = null;
+  pontos.forEach(function(ponto){
+    function ativar(){
+      if (ativo) ativo.classList.remove("chart-dot-ativo");
+      var alvo = raiz.querySelector("#" + ponto.getAttribute("data-alvo"));
+      if (alvo) { alvo.classList.add("chart-dot-ativo"); ativo = alvo; }
+      elTexto.textContent = ponto.getAttribute("data-data") + " · R$ " + ponto.getAttribute("data-preco");
+    }
+    ponto.addEventListener("mouseenter", ativar);
+    ponto.addEventListener("touchstart", ativar, {passive: true});
+  });
+  raiz.addEventListener("mouseleave", function(){
+    if (ativo) { ativo.classList.remove("chart-dot-ativo"); ativo = null; }
+    elTexto.textContent = "02/09/2026 · R$ 356,10";
+  });
+})();
+</script></div>
+    </div></div>
 <!-- GRAFICO:END -->
     </div>
+  <!-- DADOS_HISTORICO_JSON:START -->
+<script type="application/json" id="dados-historico-commodities">{"fisicos":{"soja":[["2026-07-13",140.44],["2026-07-14",140.86],["2026-07-15",140.63],["2026-07-16",139.99],["2026-07-17",140.58],["2026-07-18",141.02],["2026-07-19",141.02],["2026-07-20",141.02],["2026-07-21",142.65],["2026-07-22",144.17],["2026-07-23",145.45],["2026-07-24",147.47],["2026-07-25",148.37],["2026-07-26",148.37],["2026-07-27",148.37],["2026-07-28",147.75],["2026-07-29",147.89],["2026-07-30",146.81],["2026-07-31",145.29],["2026-08-01",144.91],["2026-08-02",144.91],["2026-08-03",144.91],["2026-08-04",144.04],["2026-08-05",144.12],["2026-08-06",144.91],["2026-08-07",144.98],["2026-08-08",145.15],["2026-08-09",145.15],["2026-08-10",145.15],["2026-08-11",144.96],["2026-08-12",144.89],["2026-08-13",146.34],["2026-08-14",146.94],["2026-08-15",148.95],["2026-08-16",148.95],["2026-08-17",148.95],["2026-08-18",150.14],["2026-08-19",151.36],["2026-08-20",151.65],["2026-08-21",154.63],["2026-08-22",153.68],["2026-08-23",153.68],["2026-08-24",153.68],["2026-08-25",153.86],["2026-08-26",153.7],["2026-08-27",154.57],["2026-08-28",155.05],["2026-08-29",159.76],["2026-08-30",159.76],["2026-08-31",159.76],["2026-09-01",159.44],["2026-09-02",161.14]],"milho":[["2026-07-13",64.51],["2026-07-14",64.62],["2026-07-15",64.64],["2026-07-16",64.77],["2026-07-17",64.87],["2026-07-18",64.94],["2026-07-19",64.94],["2026-07-20",64.94],["2026-07-21",65.22],["2026-07-22",65.29],["2026-07-23",65.27],["2026-07-24",65.55],["2026-07-25",65.74],["2026-07-26",65.74],["2026-07-27",65.74],["2026-07-28",65.47],["2026-07-29",65.22],["2026-07-30",65.33],["2026-07-31",65.3],["2026-08-01",65.25],["2026-08-02",65.25],["2026-08-03",65.25],["2026-08-04",65.24],["2026-08-05",65.17],["2026-08-06",64.86],["2026-08-07",64.84],["2026-08-08",65.02],["2026-08-09",65.02],["2026-08-10",65.02],["2026-08-11",65.63],["2026-08-12",65.65],["2026-08-13",66.15],["2026-08-14",66.09],["2026-08-15",66.35],["2026-08-16",66.35],["2026-08-17",66.35],["2026-08-18",66.71],["2026-08-19",67.2],["2026-08-20",67.39],["2026-08-21",67.74],["2026-08-22",67.9],["2026-08-23",67.9],["2026-08-24",67.9],["2026-08-25",68.19],["2026-08-26",68.43],["2026-08-27",68.79],["2026-08-28",69.05],["2026-08-29",69.51],["2026-08-30",69.51],["2026-08-31",69.51],["2026-09-01",70.23],["2026-09-02",70.96]],"cafe":[["2026-07-13",1722.48],["2026-07-14",1728.97],["2026-07-15",1755.35],["2026-07-16",1738.26],["2026-07-17",1706.75],["2026-07-18",1712.23],["2026-07-19",1712.23],["2026-07-20",1712.23],["2026-07-21",1753.28],["2026-07-22",1732.75],["2026-07-23",1701.33],["2026-07-24",1692.59],["2026-07-25",1676.28],["2026-07-26",1676.28],["2026-07-27",1676.28],["2026-07-28",1725.66],["2026-07-29",1782.18],["2026-07-30",1761.96],["2026-07-31",1746.47],["2026-08-01",1744.18],["2026-08-02",1744.18],["2026-08-03",1744.18],["2026-08-04",1712.28],["2026-08-05",1729.84],["2026-08-06",1730.24],["2026-08-07",1727.89],["2026-08-08",1732.12],["2026-08-09",1732.12],["2026-08-10",1732.12],["2026-08-11",1750.23],["2026-08-12",1762.44],["2026-08-13",1771.09],["2026-08-14",1779.4],["2026-08-15",1794.15],["2026-08-16",1794.15],["2026-08-17",1794.15],["2026-08-18",1784.82],["2026-08-19",1815.45],["2026-08-20",1804.65],["2026-08-21",1821.66],["2026-08-22",1803.76],["2026-08-23",1803.76],["2026-08-24",1803.76],["2026-08-25",1826.58],["2026-08-26",1821.25],["2026-08-27",1800.79],["2026-08-28",1742.74],["2026-08-29",1728.61],["2026-08-30",1728.61],["2026-08-31",1728.61],["2026-09-01",1748.44],["2026-09-02",1730.56]],"boi-gordo":[["2026-07-13",326.65],["2026-07-14",324.6],["2026-07-15",328.1],["2026-07-16",329.2],["2026-07-17",331.15],["2026-07-18",333.5],["2026-07-19",333.5],["2026-07-20",333.5],["2026-07-21",337.1],["2026-07-22",342.45],["2026-07-23",342.65],["2026-07-24",343.75],["2026-07-25",344.2],["2026-07-26",344.2],["2026-07-27",344.2],["2026-07-28",344.25],["2026-07-29",347.7],["2026-07-30",347.4],["2026-07-31",346.9],["2026-08-01",346.55],["2026-08-02",346.55],["2026-08-03",346.55],["2026-08-04",347.9],["2026-08-05",350.2],["2026-08-06",348.55],["2026-08-07",348.3],["2026-08-08",347.5],["2026-08-09",347.5],["2026-08-10",347.5],["2026-08-11",347.5],["2026-08-12",347.4],["2026-08-13",346.5],["2026-08-14",346.75],["2026-08-15",346.75],["2026-08-16",346.75],["2026-08-17",346.75],["2026-08-18",345.05],["2026-08-19",344.8],["2026-08-20",344.85],["2026-08-21",345.7],["2026-08-22",343.2],["2026-08-23",343.2],["2026-08-24",343.2],["2026-08-25",343.2],["2026-08-26",343.35],["2026-08-27",342.5],["2026-08-28",344.5],["2026-08-29",345.35],["2026-08-30",345.35],["2026-08-31",345.35],["2026-09-01",344.4],["2026-09-02",346.0]]},"futuros":{"soja":[["2026-07-13",133.28],["2026-07-14",133.69],["2026-07-15",132.28],["2026-07-16",133.26],["2026-07-17",133.2],["2026-07-18",134.49],["2026-07-19",134.49],["2026-07-20",134.49],["2026-07-21",136.29],["2026-07-22",135.58],["2026-07-23",137.03],["2026-07-24",137.69],["2026-07-25",138.47],["2026-07-26",138.47],["2026-07-27",138.47],["2026-07-28",139.4],["2026-07-29",135.77],["2026-07-30",132.7],["2026-07-31",130.96],["2026-08-01",131.1],["2026-08-02",131.1],["2026-08-03",131.1],["2026-08-04",133.4],["2026-08-05",132.58],["2026-08-06",132.49],["2026-08-07",132.54],["2026-08-08",132.06],["2026-08-09",132.06],["2026-08-10",132.06],["2026-08-11",26.02],["2026-08-12",132.16],["2026-08-13",134.73],["2026-08-14",134.99],["2026-08-15",137.17],["2026-08-16",137.17],["2026-08-17",137.17],["2026-08-18",139.5],["2026-08-19",139.48],["2026-08-20",140.92],["2026-08-21",141.32],["2026-08-22",141.04],["2026-08-23",27.32],["2026-08-24",141.04],["2026-08-25",139.08],["2026-08-26",140.46],["2026-08-27",143.67],["2026-08-28",143.77],["2026-08-29",147.8],["2026-08-30",147.8],["2026-08-31",147.26],["2026-09-01",151.41],["2026-09-02",151.41]],"milho":[["2026-07-13",64.72],["2026-07-14",64.73],["2026-07-15",64.48],["2026-07-16",64.63],["2026-07-17",68.43],["2026-07-18",68.88],["2026-07-19",68.88],["2026-07-20",68.88],["2026-07-21",69.46],["2026-07-22",69.12],["2026-07-23",70.11],["2026-07-24",70.78],["2026-07-25",70.61],["2026-07-26",70.61],["2026-07-27",70.61],["2026-07-28",70.61],["2026-07-29",70.41],["2026-07-30",70.34],["2026-07-31",69.7],["2026-08-01",69.2],["2026-08-02",69.2],["2026-08-03",69.2],["2026-08-04",68.73],["2026-08-05",68.65],["2026-08-06",68.3],["2026-08-07",68.42],["2026-08-08",68.8],["2026-08-09",68.8],["2026-08-10",68.8],["2026-08-11",69.9],["2026-08-12",69.84],["2026-08-13",70.34],["2026-08-14",69.43],["2026-08-15",70.29],["2026-08-16",70.29],["2026-08-17",70.29],["2026-08-18",70.57],["2026-08-19",71.48],["2026-08-20",70.95],["2026-08-21",71.31],["2026-08-22",71.3],["2026-08-23",71.3],["2026-08-24",71.3],["2026-08-25",71.88],["2026-08-26",71.69],["2026-08-27",72.0],["2026-08-28",71.14],["2026-08-29",71.45],["2026-08-30",71.45],["2026-08-31",71.45],["2026-09-01",72.24],["2026-09-02",72.24]],"cafe":[["2026-07-13",2029.41],["2026-07-14",2011.24],["2026-07-15",1975.39],["2026-07-16",1983.43],["2026-07-17",1939.6],["2026-07-18",1969.51],["2026-07-19",1969.51],["2026-07-20",1969.51],["2026-07-21",1959.42],["2026-07-22",1974.58],["2026-07-23",1934.37],["2026-07-24",1907.8],["2026-07-25",1915.17],["2026-07-26",1915.17],["2026-07-27",1915.17],["2026-07-28",1927.99],["2026-07-29",2085.46],["2026-07-30",2081.97],["2026-07-31",2008.0],["2026-08-01",2041.07],["2026-08-02",2041.07],["2026-08-03",2041.07],["2026-08-04",1986.31],["2026-08-05",2001.28],["2026-08-06",2019.05],["2026-08-07",1997.32],["2026-08-08",2046.5],["2026-08-09",2046.5],["2026-08-10",2046.5],["2026-08-11",404.05],["2026-08-12",2061.91],["2026-08-13",2092.15],["2026-08-14",2094.84],["2026-08-15",2104.59],["2026-08-16",2104.59],["2026-08-17",2104.59],["2026-08-18",2109.69],["2026-08-19",2180.6],["2026-08-20",2174.32],["2026-08-21",2198.95],["2026-08-22",2168.25],["2026-08-23",420.0],["2026-08-24",2168.25],["2026-08-25",2289.71],["2026-08-26",2250.11],["2026-08-27",2157.05],["2026-08-28",2075.75],["2026-08-29",2105.94],["2026-08-30",2105.94],["2026-08-31",2098.29],["2026-09-01",2083.17],["2026-09-02",2083.17]],"boi-gordo":[["2026-07-13",329.8],["2026-07-14",329.75],["2026-07-15",333.5],["2026-07-16",336.2],["2026-07-17",337.9],["2026-07-18",338.5],["2026-07-19",338.5],["2026-07-20",338.5],["2026-07-21",341.1],["2026-07-22",345.0],["2026-07-23",343.85],["2026-07-24",343.3],["2026-07-25",342.5],["2026-07-26",342.5],["2026-07-27",342.5],["2026-07-28",342.5],["2026-07-29",346.05],["2026-07-30",346.15],["2026-07-31",346.1],["2026-08-01",346.15],["2026-08-02",346.15],["2026-08-03",346.15],["2026-08-04",340.75],["2026-08-05",346.25],["2026-08-06",348.25],["2026-08-07",348.3],["2026-08-08",347.0],["2026-08-09",347.0],["2026-08-10",347.0],["2026-08-11",349.0],["2026-08-12",350.15],["2026-08-13",349.4],["2026-08-14",348.45],["2026-08-15",346.5],["2026-08-16",346.5],["2026-08-17",346.5],["2026-08-18",347.7],["2026-08-19",348.25],["2026-08-20",348.4],["2026-08-21",344.65],["2026-08-22",345.75],["2026-08-23",345.75],["2026-08-24",345.75],["2026-08-25",344.75],["2026-08-26",343.6],["2026-08-27",342.3],["2026-08-28",342.9],["2026-08-29",343.35],["2026-08-30",343.35],["2026-08-31",343.35],["2026-09-01",356.1],["2026-09-02",356.1]]}}</script>
+<!-- DADOS_HISTORICO_JSON:END -->
   </section>
 
   <section aria-labelledby="titulo-noticias">
@@ -512,28 +889,28 @@ Fonte: CEPEA/Esalq · dado de 01/09/2026
     </div>
     <div><!-- NOTICIAS:START -->
 <article class="news-item">
+  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/cotacao-do-dolar/" target="_blank" rel="noopener">Dólar USD R$ 5,10 -1,04% Ver em Tempo Real</a></p>
+  <p class="news-summary">Lembramos que os valores são para consulta e oferecido por terceiros. Não nos responsabilizamos pela exatidão dos valores informados</p>
+  <p class="news-source">Fonte: Notícias Agrícolas</p>
+</article>
+    <article class="news-item">
   <p class="news-title"><a href="https://www.noticiasagricolas.com.br/eventos/tempo-e-dinheiro-com-joao-batista-olivi/" target="_blank" rel="noopener">Tempo e Dinheiro - com João Batista Olivi</a></p>
   <p class="news-summary">Este é o Tempo e Dinheiro, programa apresentado pelo jornalista João Batista Olivi e que conta com a participação de especialistas de diversos setores. Acompanhe as notícias sobre os bastidores do Congresso Nacional, com...</p>
   <p class="news-source">Fonte: Notícias Agrícolas</p>
 </article>
     <article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/boi/427048-boi-cepea-bezerro-se-valoriza-mais-que-boi-magro.html" target="_blank" rel="noopener">Boi27/08/2026 - 07:47Boi/Cepea: Bezerro se valoriza mais que boi magro</a></p>
+  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/boi/427048-boi-cepea-bezerro-se-valoriza-mais-que-boi-magro.html" target="_blank" rel="noopener">Boi/Cepea: Bezerro se valoriza mais que boi magro</a></p>
   <p class="news-summary">Os preços do bezerro e do boi magro avançam no mercado brasileiro neste ano. Segundo o Cepea, esse cenário é resultado da oferta mais ajustada de animais, com maior retenção de fêmeas, e da demanda consistente de recriad...</p>
   <p class="news-source">Fonte: Notícias Agrícolas</p>
 </article>
     <article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/boi/426969-abate-de-bovinos-cresce-1-3-no-segundo-trimestre-e-supera-10-7-milhoes-de-cabecas-aponta-ibge.html" target="_blank" rel="noopener">Boi25/08/2026 - 15:18Abate de bovinos cresce 1,3% no segundo trimestre e supera 10,7 milhões de cabeças, aponta IBGE</a></p>
+  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/boi/426969-abate-de-bovinos-cresce-1-3-no-segundo-trimestre-e-supera-10-7-milhoes-de-cabecas-aponta-ibge.html" target="_blank" rel="noopener">Abate de bovinos cresce 1,3% no segundo trimestre e supera 10,7 milhões de cabeças, aponta IBGE</a></p>
   <p class="news-summary">O abate de bovinos voltou a crescer no Brasil no segundo trimestre de 2026. De acordo com os primeiros resultados divulgados pelo Instituto Brasileiro de Geografia e Estatística (IBGE), foram abatidas10,72 milhões de cab...</p>
   <p class="news-source">Fonte: Notícias Agrícolas</p>
 </article>
     <article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/boi/426924-mercado-de-genetica-bovina-cresce-12-4-no-primeiro-semestre-e-supera-12-milhoes-de-doses-de-semen-comercializadas.html" target="_blank" rel="noopener">Boi25/08/2026 - 08:48Mercado de genética bovina cresce 12,4% no primeiro semestre e supera 12 milhões de doses de sêmen comercializadas</a></p>
+  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/boi/426924-mercado-de-genetica-bovina-cresce-12-4-no-primeiro-semestre-e-supera-12-milhoes-de-doses-de-semen-comercializadas.html" target="_blank" rel="noopener">Mercado de genética bovina cresce 12,4% no primeiro semestre e supera 12 milhões de doses de sêmen comercializadas</a></p>
   <p class="news-summary">O mercado brasileiro de genética bovina registrou crescimento de 12,4% no primeiro semestre de 2026, com 12.329.148 doses de sêmen comercializadas no Brasil e no exterior. Os dados são do Index Asbia Sêmen 1º Semestre de...</p>
-  <p class="news-source">Fonte: Notícias Agrícolas</p>
-</article>
-    <article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/boi/426917-fronteira-dos-eua-reabre-para-gado-mexicano-mas-persistem-preocupacoes-com-parasita.html" target="_blank" rel="noopener">Boi24/08/2026 - 18:45Fronteira dos EUA reabre para gado mexicano, mas persistem preocupações com parasita</a></p>
-  <p class="news-summary">CIDADE DO MÉXICO/WASHINGTON, 24 Ago (Reuters) - O México está intensificando sua campanha contra a mosca que transmite um parasita que atinge os rebanhos da fronteira norte, onde foram detectados casos recentes, aumentan...</p>
   <p class="news-source">Fonte: Notícias Agrícolas</p>
 </article>
 <!-- NOTICIAS:END -->
@@ -555,5 +932,6 @@ Fonte: CEPEA/Esalq · dado de 01/09/2026
   </footer>
 </div>
 
+<script src="../../assets/interatividade.js" defer></script>
 </body>
 </html>

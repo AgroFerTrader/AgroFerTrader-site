@@ -204,14 +204,16 @@
       // navegador (script e "raw text", nao passa pelo parser de HTML
       // de verdade), entao precisam ser retiradas aqui antes do parse.
       var texto = script.textContent.replace(/<!--[\s\S]*?-->/g, "").trim();
-      return JSON.parse(texto);
+      var dados = JSON.parse(texto);
+      return dados.fisicos ? dados : { fisicos: dados, futuros: {} };
     } catch (e) {
       return null;
     }
   }
 
   function painelAtivo() {
-    var painelVisivel = document.querySelector(".chart-painel [data-periodo]:not([hidden])");
+    var serieAtiva = document.querySelector(".chart-series-panel:not([hidden])") || document;
+    var painelVisivel = serieAtiva.querySelector(".chart-painel [data-periodo]:not([hidden])");
     return painelVisivel;
   }
 
@@ -242,8 +244,9 @@
     var svg = chartWrap.querySelector("svg");
     if (!svg || isNaN(margemEsq) || !numPontos) return;
 
-    var serieBaseCompleta = dados[slugBase];
-    var serieCompCompleta = dados[slugComparar];
+    var tipoSerie = document.querySelector(".chart-serie-select")?.value || "fisicos";
+    var serieBaseCompleta = dados[tipoSerie][slugBase];
+    var serieCompCompleta = dados[tipoSerie][slugComparar];
     if (!serieBaseCompleta || !serieCompCompleta) return;
 
     // Mesma janela de dias usada no periodo em exibicao, alinhada pelas
@@ -300,6 +303,82 @@
 
     var legenda = document.querySelector(".chart-comparacao-legenda");
     if (legenda) legenda.classList.add("visivel");
+  }
+
+  function renderizarModoGrafico(modo) {
+    var serieAtiva = document.querySelector(".chart-series-panel:not([hidden])") || document;
+    serieAtiva.querySelectorAll(".chart-painel [data-periodo]:not([hidden]) .chart-wrap").forEach(function (wrap) {
+      var svg = wrap.querySelector("svg");
+      if (!svg) return;
+      svg.classList.toggle("modo-barras", modo === "barras");
+      var pontos = wrap.querySelectorAll(".chart-hit");
+      wrap.querySelectorAll(".chart-bar").forEach(function (bar) { bar.remove(); });
+      if (modo !== "barras") return;
+      var largura = 900, altura = 260, margemEsq = parseFloat(wrap.dataset.margemEsq);
+      var margemTopo = parseFloat(wrap.dataset.margemTopo), alturaUtil = parseFloat(wrap.dataset.alturaUtil);
+      var larguraUtil = parseFloat(wrap.dataset.larguraUtil), n = pontos.length;
+      if (!n) return;
+      var valores = Array.prototype.map.call(pontos, function (p) { return parseFloat(p.dataset.preco.replace('.', '').replace(',', '.')); });
+      var minimo = Math.min.apply(null, valores), maximo = Math.max.apply(null, valores);
+      if (minimo === maximo) { minimo -= 1; maximo += 1; }
+      var passo = larguraUtil / Math.max(1, n - 1), base = margemTopo + alturaUtil;
+      valores.forEach(function (valor, i) {
+        var bar = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        var alturaBarra = ((valor - minimo) / (maximo - minimo)) * alturaUtil;
+        bar.setAttribute("class", "chart-bar"); bar.setAttribute("x", margemEsq + i * passo - Math.max(2, passo * .32));
+        bar.setAttribute("y", base - alturaBarra); bar.setAttribute("width", Math.max(4, passo * .64));
+        bar.setAttribute("height", alturaBarra); bar.setAttribute("fill", "#4C7A1F"); bar.setAttribute("opacity", ".7");
+        svg.insertBefore(bar, svg.querySelector(".chart-hit"));
+      });
+    });
+  }
+
+  function iniciarFerramentasGrafico() {
+    var estiloImpressao = document.createElement("style");
+    estiloImpressao.textContent = "@media print{body.imprimir-grafico>*{display:none!important}body.imprimir-grafico main{display:block!important}body.imprimir-grafico main>section{display:none!important}body.imprimir-grafico main>section.grafico-para-impressao{display:block!important;padding:20px 0}body.imprimir-grafico .chart-ferramentas{display:none!important}}";
+    document.head.appendChild(estiloImpressao);
+    document.querySelectorAll(".chart-ferramentas").forEach(function (ferramentas) {
+      if (ferramentas.querySelector("#comparar-select")) return;
+      var dados = obterDadosHistorico();
+      var atual = (document.querySelector(".chart-wrap") || {}).dataset?.slug;
+      var select = document.createElement("select");
+      select.id = "comparar-select"; select.className = "chart-comparar-select";
+      select.setAttribute("aria-label", "Comparar com outra commodity");
+      select.innerHTML = '<option value="">Comparar com...</option>';
+      var nomes = { soja: "Soja", milho: "Milho", cafe: "Café Arábica", "boi-gordo": "Boi Gordo" };
+      if (dados && dados.fisicos) Object.keys(dados.fisicos).forEach(function (slug) {
+        if (slug !== atual) select.innerHTML += '<option value="' + slug + '">' + (nomes[slug] || slug) + '</option>';
+      });
+      ferramentas.insertBefore(select, ferramentas.querySelector(".chart-exportar"));
+    });
+    document.querySelectorAll(".chart-modo-btn").forEach(function (botao) {
+      botao.addEventListener("click", function () {
+        document.querySelectorAll(".chart-modo-btn").forEach(function (item) {
+          var ativo = item === botao; item.classList.toggle("active", ativo); item.setAttribute("aria-selected", ativo ? "true" : "false");
+        });
+        renderizarModoGrafico(botao.dataset.modoGrafico);
+      });
+    });
+    document.querySelectorAll(".chart-serie-select").forEach(function (select) {
+      select.addEventListener("change", function () {
+        document.querySelectorAll(".chart-series-panel").forEach(function (painel) {
+          painel.hidden = painel.dataset.serie !== select.value;
+        });
+        var modoAtivo = document.querySelector(".chart-modo-btn.active");
+        renderizarModoGrafico(modoAtivo ? modoAtivo.dataset.modoGrafico : "linha");
+        var comparar = document.getElementById("comparar-select");
+        if (comparar && comparar.value) desenharComparacao(comparar.value);
+      });
+    });
+    document.querySelectorAll(".chart-exportar").forEach(function (botao) {
+      botao.addEventListener("click", function () {
+        var secao = document.querySelector('[aria-labelledby="titulo-grafico"]');
+        if (secao) secao.classList.add("grafico-para-impressao");
+        document.body.classList.add("imprimir-grafico"); window.print();
+        window.setTimeout(function () { document.body.classList.remove("imprimir-grafico"); }, 1000);
+        window.setTimeout(function () { if (secao) secao.classList.remove("grafico-para-impressao"); }, 1000);
+      });
+    });
   }
 
   function limparComparacao(svg) {
@@ -380,6 +459,7 @@
     iniciarNumerosAnimados();
     iniciarRevelacaoAoRolar();
     iniciarSeletorPeriodo();
+    iniciarFerramentasGrafico();
     iniciarComparador();
     iniciarCompartilhar();
     iniciarExportarPdf();
