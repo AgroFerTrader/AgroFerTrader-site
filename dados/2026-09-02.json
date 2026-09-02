@@ -1,8 +1,8 @@
 {
   "dolar": {
-    "data": "01/09/2026",
-    "valor": 5.157,
-    "variacao_pct": -0.47475683186661255
+    "data": "02/09/2026",
+    "valor": 5.1273,
+    "variacao_pct": -0.5759162303664933
   },
   "erro_dolar": null,
   "dolar_tr": null,
@@ -68,7 +68,7 @@
     {
       "nome": "Soja Futuro (B3)",
       "data": "contrato Janeiro/2027",
-      "preco_reais": "R$ 151,41 /sc 60 kg (≈ US$ 29,36 x R$ 5,1570)",
+      "preco_reais": "R$ 150,54 /sc 60 kg (≈ US$ 29,36 x R$ 5,1273)",
       "variacao_pct": "1.94",
       "valor_numerico": 29.36,
       "unidade": "US$/sc 60 kg"
@@ -91,43 +91,43 @@
     },
     {
       "nome": "Café Arábica Futuro (B3)",
-      "data": "contrato Setembro/2026",
-      "preco_reais": "R$ 2083,17 /sc 60 kg (≈ US$ 403,95 x R$ 5,1570)",
-      "variacao_pct": "0.19",
-      "valor_numerico": 403.95,
+      "data": "contrato Dezembro/2026",
+      "preco_reais": "R$ 1859,16 /sc 60 kg (≈ US$ 362,60 x R$ 5,1273)",
+      "variacao_pct": "-3.86",
+      "valor_numerico": 362.6,
       "unidade": "US$/sc 60 kg"
     }
   ],
   "explicacoes_macro": [
     "",
     "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
-    "Queda suave do dólar (-0.47%): tende a esfriar discretamente o apetite por exportação, com leve efeito de baixa sobre o preço doméstico de commodities.",
-    "Selic em 14.00% ao ano - um patamar considerado alto: o crédito rural fica mais caro e carregar estoque também, o que costuma levar produtores a vender mais rápido para gerar caixa, pressionando o preço para baixo no curto prazo. Juros altos também tendem a atrair capital estrangeiro e valorizar o real, reforçando essa pressão via câmbio.",
-    "Obs.: nenhuma dessas relações é garantida - clima, oferta mundial e demanda por vezes pesam mais que câmbio e juros na formação do preço final."
+    "Câmbio recuou de forma moderada hoje (-0.58%) - efeito inverso do de uma alta: a mesma cotação internacional passa a render um pouco menos em reais.",
+    "Com a Selic em 14.00% ao ano, o custo de financiamento no campo segue elevado - isso tende a acelerar vendas (para gerar caixa) e, por atrair capital estrangeiro, também tende a fortalecer o real. Os dois efeitos juntos costumam pressionar o preço das commodities exportadas para baixo.",
+    "Obs.: vale lembrar que essas são relações históricas, não regras fixas - fatores como clima, safra e demanda internacional podem se sobrepor facilmente ao efeito do câmbio ou dos juros."
   ],
   "noticias": [
     {
-      "titulo": "Política e Economia01/09/2026 - 17:38Dólar cai para perto dos R$5,15 em dia de alta do petróleo",
-      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/427331-dolar-cai-para-perto-dos-r515-em-dia-de-alta-do-petroleo.html",
-      "resumo": "SÃO PAULO, 1 Set (Reuters) - O dólar fechou a terça-feira em queda no Brasil e novamente próximo dos R$5,15, em mais um dia de alta do petróleo no exterior, em meio ao conflito no Oriente Médio.",
+      "titulo": "Petróleo15:38TRF-1 derruba liminar e mantém imposto de 12% sobre exportação de petróleo",
+      "link": "https://www.noticiasagricolas.com.br/noticias/petroleo/427392-trf-1-derruba-liminar-e-mantem-imposto-de-12-sobre-exportacao-de-petroleo.html",
+      "resumo": "O Tribunal Regional Federal da 1ª Região (TRF-1) derrubou a liminar que havia suspendido a cobrança de 12% de imposto sobre as exportações de petróleo bruto. A decisão, proferida pelo desembargador federal Roberto Carval...",
       "fonte": "Notícias Agrícolas"
     },
     {
-      "titulo": "01/09/2026 - 16:31USDA vai testar satélites e inteligência artificial nas estimativas de safra",
-      "link": "https://www.noticiasagricolas.com.br/noticias/agronegocio/427329-usda-vai-testar-satelites-e-inteligencia-artificial-nas-estimativas-de-safra.html",
-      "resumo": "BOONE, IOWA, 1 Set (Reuters) - O Departamento de Agricultura dos Estados Unidos (USDA) está lançando um projeto-piloto que contará mais fortemente com a tecnologia, como parte de um esforço mais amplo para aprimorar suas...",
+      "titulo": "02/09/2026 - 14:15Crescimento do processamento doméstico de milho amplia alternativas de comercialização e reduz dependência das exportações",
+      "link": "https://www.noticiasagricolas.com.br/noticias/milho/427386-crescimento-do-processamento-domestico-de-milho-amplia-alternativas-de-comercializacao-e-reduz-dependencia-das-exportacoes.html",
+      "resumo": "A expansão do etanol de milho começa a mudar não apenas o tamanho do consumo doméstico do cereal no Brasil, mas também a dinâmica de comercialização nas principais regiões produtoras. Com novas usinas e ampliação da capa...",
       "fonte": "Notícias Agrícolas"
     },
     {
-      "titulo": "01/09/2026 - 16:02Açúcar ganha força com expectativa de déficit global na safra 2026/27",
-      "link": "https://www.noticiasagricolas.com.br/noticias/sucroenergetico/427315-acucar-ganha-forca-com-expectativa-de-deficit-global-na-safra-2026-27.html",
-      "resumo": "O mercado internacional de açúcar fechou a terça-feira (1º) em forte alta, após a Organização Internacional do Açúcar (ISO) apontar para uma mudança no balanço global da commodity, com a expectativa de déficit na safra 2...",
+      "titulo": "02/09/2026 - 12:04Emater/RS-Ascar anuncia estimativas iniciais da safra de verão no Rio Grande do Sul",
+      "link": "https://www.noticiasagricolas.com.br/noticias/graos/427374-emater-rs-ascar-anuncia-estimativas-iniciais-da-safra-de-verao-no-rio-grande-do-sul.html",
+      "resumo": "A área a ser cultivada com milho no Rio Grande do Sul na safra 2026/2027 deve ser 7,42% maior do que a safra passada, alcançando 896.401 hectares, e uma produção de 6.911.954 toneladas, 7,18% maior do que as 6.448.709 to...",
       "fonte": "Notícias Agrícolas"
     },
     {
-      "titulo": "01/09/2026 - 14:35Emater projeta leve recuo na área de soja do RS, mas salto na safra 26/27",
-      "link": "https://www.noticiasagricolas.com.br/noticias/soja/427321-emater-projeta-leve-recuo-na-area-de-soja-do-rs-mas-salto-na-safra-2627.html",
-      "resumo": "SÃO PAULO, 1 Set (Reuters) - A área plantada com soja no Rio Grande do Sul em 2026/27 foi estimada nesta terça-feira em 6,645 milhões de hectares, queda de 0,92% em relação ao ciclo anterior, mas a produção deverá dar um...",
+      "titulo": "02/09/2026 - 11:17Dólar cai ante real após pesquisa mostrar Flávio mais próximo de Lula no segundo turno",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/427369-dolar-cai-ante-real-apos-pesquisa-mostrar-flavio-mais-proximo-de-lula-no-segundo-turno.html",
+      "resumo": "SÃO PAULO, 2 Set (Reuters) - O dólar renovou as mínimas ante o real nesta manhã de quarta-feira após nova pesquisa eleitoral indicar uma queda da distância numérica entre o presidente Luiz Inácio Lula da Silva (PT) e o s...",
       "fonte": "Notícias Agrícolas"
     }
   ],
