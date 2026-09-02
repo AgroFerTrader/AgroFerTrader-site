@@ -65,6 +65,7 @@ COMMODITIES_PAGINAS = [
         "titulo_pagina": "Preço da Soja Hoje — Cotação Física, Futuro e Notícias",
         "meta_descricao": "Cotação física e futura da soja atualizadas diariamente (CEPEA/Esalq e B3), com histórico de preços e notícias específicas do mercado de soja.",
         "headline": "Análise de Mercado — Soja",
+        "unidade_preco": "R$/saca",
     },
     {
         "slug": "milho",
@@ -76,6 +77,7 @@ COMMODITIES_PAGINAS = [
         "titulo_pagina": "Preço do Milho Hoje — Cotação Física, Futuro e Notícias",
         "meta_descricao": "Cotação física e futura do milho atualizadas diariamente (CEPEA/Esalq e B3), com histórico de preços e notícias específicas do mercado de milho.",
         "headline": "Análise de Mercado — Milho",
+        "unidade_preco": "R$/saca",
     },
     {
         "slug": "cafe",
@@ -88,6 +90,7 @@ COMMODITIES_PAGINAS = [
         "titulo_pagina": "Preço do Café Hoje — Cotação Física, Futuro e Notícias",
         "meta_descricao": "Cotação física e futura do café arábica atualizadas diariamente (CEPEA/Esalq e B3), com histórico de preços e notícias específicas do mercado de café.",
         "headline": "Análise de Mercado — Café",
+        "unidade_preco": "R$/saca",
     },
     {
         "slug": "boi-gordo",
@@ -99,6 +102,7 @@ COMMODITIES_PAGINAS = [
         "titulo_pagina": "Preço do Boi Gordo Hoje — Cotação Física, Futuro e Notícias",
         "meta_descricao": "Cotação física e futura do boi gordo atualizadas diariamente (CEPEA/Esalq e B3), com histórico de preços e notícias específicas da pecuária de corte.",
         "headline": "Análise de Mercado — Boi Gordo",
+        "unidade_preco": "R$/@",
     },
 ]
 
@@ -162,6 +166,137 @@ CAMPOS_ANALISE_SEMANAL_OPCIONAIS = [
         "consumidor final (quando as fontes cobrirem esse ângulo).",
     ),
 ]
+
+
+# ---------------------------------------------------------------------------
+# ANALISES DE MERCADO (markdown aprovado manualmente) - cada commodity tem
+# um arquivo analises/<slug>.md, escrito e aprovado fora deste script (ver
+# PARTE 1 do pedido que criou este bloco). Este script so formata e publica
+# esse conteudo nos marcadores ANALISE_* do template; nunca gera texto de
+# analise por conta propria.
+# ---------------------------------------------------------------------------
+
+PASTA_ANALISES = os.path.join(PASTA_SITE, "analises")
+
+_RE_SECAO_MD = re.compile(r"(?m)^##\s+(.+)$")
+
+
+def _paragrafos_html(texto: str) -> str:
+    """Converte paragrafos separados por linha em branco (texto corrido,
+    dissertativo - nao bullet points) em <p>...</p>, um por paragrafo."""
+    blocos = re.split(r"\n\s*\n", texto.strip())
+    return "\n".join(
+        f"<p>{escape(bloco.strip().replace(chr(10), ' '), quote=False)}</p>"
+        for bloco in blocos if bloco.strip()
+    )
+
+
+def _secoes_analise_md(texto_md: str) -> dict:
+    """Divide o markdown em {titulo_da_secao: corpo}, usando os cabecalhos
+    '## ...' como separadores (mesmo padrao dos 4 arquivos aprovados em
+    analises/*.md). O texto antes do primeiro '##' (titulo H1 + linha de
+    fechamento/data) e descartado aqui - HEADLINE ja vem de
+    COMMODITIES_PAGINAS, e a data de publicacao e calculada a partir do
+    arquivo (ver carregar_analise_markdown)."""
+    partes = _RE_SECAO_MD.split(texto_md)
+    secoes = {}
+    for i in range(1, len(partes), 2):
+        titulo = partes[i].strip()
+        corpo = partes[i + 1] if i + 1 < len(partes) else ""
+        secoes[titulo] = corpo.strip()
+    return secoes
+
+
+def _secao_por_prefixo(secoes: dict, prefixo: str):
+    for titulo, corpo in secoes.items():
+        if titulo.startswith(prefixo):
+            return titulo, corpo
+    return None, ""
+
+
+def carregar_analise_markdown(slug: str):
+    """Le analises/<slug>.md e devolve o dict de substituicoes prontas para
+    os marcadores ANALISE_* do template (texto corrido em <p>, rodape de
+    fontes + data). Devolve None se o arquivo ainda nao existir - nesse
+    caso a pagina mantem o que ja tinha (placeholder ou publicacao
+    anterior), sem risco de apagar conteudo por engano.
+
+    A data "Atualizado em" usa a data de modificacao do PROPRIO arquivo
+    .md, nao a data em que o gerador roda - assim ela so muda quando a
+    analise de fato for editada, mesmo que o site seja republicado (com
+    novas cotacoes) varias vezes no mesmo dia.
+    """
+    caminho = os.path.join(PASTA_ANALISES, f"{slug}.md")
+    if not os.path.exists(caminho):
+        return None
+
+    with open(caminho, encoding="utf-8") as f:
+        texto_md = f.read()
+
+    linha_fechamento = next(
+        (l for l in texto_md.splitlines() if l.startswith("Fechamento:")), ""
+    )
+    m_fechamento = re.match(r"Fechamento:\s*([^|]+)\|", linha_fechamento)
+    fechamento = m_fechamento.group(1).strip() if m_fechamento else ""
+
+    secoes = _secoes_analise_md(texto_md)
+
+    _, corpo_o_que = _secao_por_prefixo(secoes, "O que aconteceu")
+    titulo_por_que, corpo_por_que = _secao_por_prefixo(secoes, "Por que aconteceu")
+    _, corpo_consequencias = _secao_por_prefixo(secoes, "Consequências no mercado")
+    _, corpo_b2b = _secao_por_prefixo(secoes, "Impacto B2B")
+    _, corpo_b2c = _secao_por_prefixo(secoes, "Impacto B2C")
+    _, corpo_observar = _secao_por_prefixo(secoes, "O que observar")
+
+    # O subtitulo de "Por que aconteceu" (ex.: "- a camada internacional
+    # que explica o paradoxo") carrega informacao real do texto aprovado,
+    # mas o <h3> da secao ja e fixo no template - entra como frase de
+    # abertura em destaque, nao como um cabecalho novo.
+    html_por_que = ""
+    if titulo_por_que and "—" in titulo_por_que:
+        subtitulo = titulo_por_que.split("—", 1)[1].strip()
+        if subtitulo:
+            subtitulo = subtitulo[0].upper() + subtitulo[1:]
+            html_por_que += f"<p><strong>{escape(subtitulo, quote=False)}.</strong></p>\n"
+    html_por_que += _paragrafos_html(corpo_por_que)
+
+    # "Fontes consultadas" e o ultimo paragrafo da secao "O que observar"
+    # no markdown aprovado (sem cabecalho '##' proprio) - separado aqui do
+    # corpo editorial para virar o rodape de transparencia da pagina.
+    paragrafos_observar = [
+        b.strip().replace("\n", " ")
+        for b in re.split(r"\n\s*\n", corpo_observar.strip())
+        if b.strip()
+    ]
+    fontes_texto = ""
+    if paragrafos_observar and paragrafos_observar[-1].startswith("Fontes consultadas"):
+        fontes_texto = paragrafos_observar.pop()
+    corpo_observar_html = "\n".join(f"<p>{escape(p, quote=False)}</p>" for p in paragrafos_observar)
+
+    data_publicacao = datetime.fromtimestamp(os.path.getmtime(caminho)).strftime("%d/%m/%Y")
+    partes_rodape = []
+    if fechamento:
+        partes_rodape.append(f"Fechamento: {fechamento}")
+    partes_rodape.append(f"Atualizado em: {data_publicacao}")
+    if fontes_texto:
+        partes_rodape.append(escape(fontes_texto, quote=False))
+    rodape = " · ".join(partes_rodape)
+
+    return {
+        "ANALISE_O_QUE_ACONTECEU": _paragrafos_html(corpo_o_que),
+        "ANALISE_POR_QUE_ACONTECEU": html_por_que,
+        "ANALISE_CONSEQUENCIAS": _paragrafos_html(corpo_consequencias),
+        "ANALISE_IMPACTO_B2B": (
+            f'<h3>Impacto B2B</h3>\n        <div class="analise-texto">'
+            f'{_paragrafos_html(corpo_b2b)}</div>'
+        ),
+        "ANALISE_IMPACTO_B2C": (
+            f'<h3>Impacto B2C</h3>\n        <div class="analise-texto">'
+            f'{_paragrafos_html(corpo_b2c)}</div>'
+        ),
+        "ANALISE_O_QUE_OBSERVAR": corpo_observar_html,
+        "ANALISE_FONTES": rodape,
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -419,6 +554,7 @@ def montar_grafico_svg(
     nome_exibicao: str,
     slug: str,
     serie_futura: list | None = None,
+    unidade_preco: str = "R$/saca",
 ) -> str:
     """Monta o gráfico com abas de período (7/30/90 dias). Cada aba é
     renderizada inteira no servidor (_renderizar_svg_periodo) a partir
@@ -434,10 +570,10 @@ def montar_grafico_svg(
     if serie_futura is not None:
         return (
             f'<div class="chart-series-panel" data-serie="fisicos">'
-            f'{montar_grafico_svg(serie, nome_exibicao, slug)}'
+            f'{montar_grafico_svg(serie, nome_exibicao, slug, unidade_preco=unidade_preco)}'
             f'</div>'
             f'<div class="chart-series-panel" data-serie="futuros" hidden>'
-            f'{montar_grafico_svg(serie_futura, nome_exibicao, slug)}'
+            f'{montar_grafico_svg(serie_futura, nome_exibicao, slug, unidade_preco=unidade_preco)}'
             f'</div>'
         )
 
@@ -454,7 +590,7 @@ def montar_grafico_svg(
         recorte = serie[-dias:]
         if len(recorte) < 2:
             continue
-        conteudo = _renderizar_svg_periodo(recorte, nome_exibicao, slug, sufixo)
+        conteudo = _renderizar_svg_periodo(recorte, nome_exibicao, slug, sufixo, unidade_preco)
         conteudos.append((sufixo, rotulo, conteudo))
 
     if not conteudos:
@@ -482,14 +618,18 @@ def montar_grafico_svg(
     )
 
 
-def _renderizar_svg_periodo(serie: list, nome_exibicao: str, slug_base: str, sufixo: str) -> str:
+def _renderizar_svg_periodo(
+    serie: list, nome_exibicao: str, slug_base: str, sufixo: str, unidade_preco: str = "R$/saca"
+) -> str:
     slug = f"{slug_base}-{sufixo}"
-    largura, altura = 900, 260
+    largura, altura = 900, 360
     # margem esquerda cresce com a quantidade de digitos do maior preco,
     # para o rotulo "R$ X.XXX,XX" nunca ser cortado pela borda do SVG
     maior_preco_texto = f"R$ {_fmt_brl(max(v for _, v in serie))}"
     margem_esq = max(50, 14 + len(maior_preco_texto) * 6)
-    margem_dir, margem_topo, margem_baixo = 20, 20, 30
+    # margem_topo cresce um pouco para caber o rotulo de unidade
+    # (R$/saca ou R$/@) acima da primeira linha de grade do eixo vertical.
+    margem_dir, margem_topo, margem_baixo = 20, 30, 34
 
     valores = [v for _, v in serie]
     minimo, maximo = min(valores), max(valores)
@@ -543,26 +683,61 @@ def _renderizar_svg_periodo(serie: list, nome_exibicao: str, slug_base: str, suf
     id_gradiente = f"grad-{slug}"
     data_final_fmt = escape(_fmt_data_br(data_final))
     preco_final_fmt = _fmt_brl(valores[-1])
-    indices_rotulo = sorted({0, len(pontos) // 2, len(pontos) - 1})
+
+    # Eixo horizontal (datas): ate 5 rotulos, uniformemente espacados pelos
+    # indices da serie (nao pelos pixels) - com series curtas (ex.: 7
+    # pontos) cada ponto tende a ganhar seu proprio rotulo; com series
+    # longas (ex.: 90 pontos) os rotulos ficam espacados o suficiente para
+    # nao se sobrepor.
+    num_rotulos_data = min(5, len(pontos))
+    if num_rotulos_data <= 1:
+        indices_rotulo = [0]
+    else:
+        passo_indice = (len(pontos) - 1) / (num_rotulos_data - 1)
+        indices_rotulo = sorted({round(i * passo_indice) for i in range(num_rotulos_data)})
     rotulos_datas = "".join(
-        f'<text x="{pontos[i][0]:.1f}" y="{altura - 8}" text-anchor="middle" '
+        f'<text x="{pontos[i][0]:.1f}" y="{altura - 10}" text-anchor="middle" '
         f'font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">'
         f'{escape(_fmt_data_br(pontos[i][2]))}</text>'
         for i in indices_rotulo
     )
 
+    # Eixo vertical (preco): 4 niveis igualmente espacados entre o minimo e
+    # o maximo do periodo, cada um com uma linha de grade tracejada leve -
+    # assim o usuario le o preco aproximado de qualquer ponto sem precisar
+    # passar o mouse em cima.
+    num_ticks_preco = 4
+    linhas_grade = []
+    rotulos_preco = []
+    for i in range(num_ticks_preco):
+        valor_tick = minimo + faixa * i / (num_ticks_preco - 1)
+        y_tick = margem_topo + altura_util - ((valor_tick - minimo) / faixa) * altura_util
+        if i > 0:
+            linhas_grade.append(
+                f'<line x1="{margem_esq}" y1="{y_tick:.1f}" x2="{largura - margem_dir}" y2="{y_tick:.1f}" '
+                f'stroke="rgba(11,60,31,0.08)" stroke-width="1" stroke-dasharray="3,4"/>'
+            )
+        rotulos_preco.append(
+            f'<text x="{margem_esq - 8}" y="{y_tick + 4:.1f}" text-anchor="end" '
+            f'font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">'
+            f'R$ {_fmt_brl(valor_tick)}</text>'
+        )
+    linhas_grade_str = "\n  ".join(linhas_grade)
+    rotulos_preco_str = "\n  ".join(rotulos_preco)
+
     svg = f'''<div class="chart-wrap" id="{id_unico}" data-slug="{slug_base}" data-margem-esq="{margem_esq}" data-margem-topo="{margem_topo}" data-altura-util="{altura_util}" data-largura-util="{largura_util}" data-num-pontos="{len(serie)}">
-<svg viewBox="0 0 {largura} {altura}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Variação de preço de {escape(nome_exibicao)} no período">
+<svg viewBox="0 0 {largura} {altura}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Variação de preço de {escape(nome_exibicao)} no período, em {escape(unidade_preco)}, por data">
   <defs>
     <linearGradient id="{id_gradiente}" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="{cor_linha}" stop-opacity="0.25"/>
       <stop offset="100%" stop-color="{cor_linha}" stop-opacity="0"/>
     </linearGradient>
   </defs>
+  <text x="{margem_esq}" y="16" text-anchor="start" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600" fill="#0B3C1F" opacity="0.55">{escape(unidade_preco)}</text>
+  {linhas_grade_str}
   <line x1="{margem_esq}" y1="{margem_topo}" x2="{margem_esq}" y2="{margem_topo + altura_util}" stroke="rgba(11,60,31,0.14)" stroke-width="1"/>
   <line x1="{margem_esq}" y1="{margem_topo + altura_util}" x2="{largura - margem_dir}" y2="{margem_topo + altura_util}" stroke="rgba(11,60,31,0.14)" stroke-width="1"/>
-  <text x="{margem_esq - 8}" y="{margem_topo + 4}" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ {_fmt_brl(maximo)}</text>
-  <text x="{margem_esq - 8}" y="{margem_topo + altura_util}" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ {_fmt_brl(minimo)}</text>
+  {rotulos_preco_str}
   <path d="{caminho_area}" fill="url(#{id_gradiente})" stroke="none"/>
   <path d="{caminho_linha}" fill="none" stroke="{cor_linha}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
   {pontos_svg_str}
@@ -827,12 +1002,17 @@ def atualizar_pagina_commodity(config: dict, dados: dict) -> None:
             config["nome_exibicao"],
             config["slug"],
             carregar_historico_futuro(config["nome_futuro"]),
+            unidade_preco=config.get("unidade_preco", "R$/saca"),
         ),
         "GRAFICO_LEGENDA_STAT": montar_legenda_grafico_stat(historico),
         "JSONLD_PRODUTO": montar_jsonld_produto(config, fisica_filtrada),
         "DADOS_HISTORICO_JSON": montar_dados_historico_json(),
         "NOTICIAS": site.montar_noticias_html(noticias_categoria),
     }
+
+    analise_md = carregar_analise_markdown(config["slug"])
+    if analise_md:
+        substituicoes.update(analise_md)
 
     for marcador, conteudo in substituicoes.items():
         html = site._substituir_entre_marcadores(html, marcador, conteudo)

@@ -33,6 +33,13 @@
     return numero.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   }
 
+  function formatarDataBR(dataIso) {
+    var partes = String(dataIso).split("-");
+    return partes.length === 3 ? partes.reverse().join("/") : dataIso;
+  }
+
+  var UNIDADES_PRECO = { soja: "R$/saca", milho: "R$/saca", cafe: "R$/saca", "boi-gordo": "R$/@" };
+
   // -------------------------------------------------------------------
   // 1) Numeros animados: cartoes de preco "contam" do zero ate o valor
   //    real ao entrar na tela (nao ao carregar a pagina inteira - so
@@ -126,10 +133,12 @@
       if (!painel) return;
 
       nav.addEventListener("click", function (evento) {
-          var botao = evento.target.closest(".periodo-btn");
-          if (select) { select.multiple = true; select.size = 3; select.style.display = "none"; }
+        var botao = evento.target.closest(".periodo-btn");
         if (!botao) return;
         var periodo = botao.getAttribute("data-periodo");
+
+        var chartBox = nav.closest(".chart-box");
+        if (chartBox && chartBox._sairModoPersonalizado) chartBox._sairModoPersonalizado();
 
         nav.querySelectorAll(".periodo-btn").forEach(function (b) {
           var ativo = b === botao;
@@ -265,7 +274,7 @@
       var pontos = wrap.querySelectorAll(".chart-hit");
       wrap.querySelectorAll(".chart-bar").forEach(function (bar) { bar.remove(); });
       if (modo !== "barras") return;
-      var largura = 900, altura = 260, margemEsq = parseFloat(wrap.dataset.margemEsq);
+      var largura = 900, altura = 360, margemEsq = parseFloat(wrap.dataset.margemEsq);
       var margemTopo = parseFloat(wrap.dataset.margemTopo), alturaUtil = parseFloat(wrap.dataset.alturaUtil);
       var larguraUtil = parseFloat(wrap.dataset.larguraUtil), n = pontos.length;
       if (!n) return;
@@ -284,9 +293,232 @@
     });
   }
 
+  // -------------------------------------------------------------------
+  // 4.5) Intervalo personalizado: alem dos periodos pre-renderizados
+  //    (7/30/90 dias), o usuario pode escolher data inicial e final -
+  //    calculado inteiramente no navegador a partir dos mesmos dados
+  //    historicos ja embutidos na pagina (DADOS_HISTORICO_JSON), sem
+  //    nenhuma requisicao nova. O grafico gerado segue o mesmo layout
+  //    visual (eixos, cores, leitura ao passar o mouse) do grafico
+  //    renderizado no servidor.
+  // -------------------------------------------------------------------
+
+  function ativarLeituraChartWrap(wrap) {
+    if (!wrap) return;
+    var rodape = wrap.nextElementSibling;
+    if (!rodape) return;
+    var elTexto = rodape.querySelector(".chart-readout-texto");
+    if (!elTexto) return;
+    var textoPadrao = elTexto.textContent;
+    var ativo = null;
+    wrap.querySelectorAll(".chart-hit").forEach(function (ponto) {
+      function ativar() {
+        if (ativo) ativo.classList.remove("chart-dot-ativo");
+        var alvo = wrap.querySelector("#" + ponto.getAttribute("data-alvo"));
+        if (alvo) { alvo.classList.add("chart-dot-ativo"); ativo = alvo; }
+        elTexto.textContent = ponto.getAttribute("data-data") + " · R$ " + ponto.getAttribute("data-preco");
+      }
+      ponto.addEventListener("mouseenter", ativar);
+      ponto.addEventListener("touchstart", ativar, { passive: true });
+    });
+    wrap.addEventListener("mouseleave", function () {
+      if (ativo) { ativo.classList.remove("chart-dot-ativo"); ativo = null; }
+      elTexto.textContent = textoPadrao;
+    });
+  }
+
+  function renderizarGraficoPersonalizado(slug, serieFiltrada, nomeExibicao) {
+    var largura = 900, altura = 360;
+    var valores = serieFiltrada.map(function (p) { return p[1]; });
+    var maiorTexto = "R$ " + formatarBRL(Math.max.apply(null, valores));
+    var margemEsq = Math.max(50, 14 + maiorTexto.length * 6);
+    var margemDir = 20, margemTopo = 30, margemBaixo = 34;
+    var minimo = Math.min.apply(null, valores), maximo = Math.max.apply(null, valores);
+    if (minimo === maximo) { minimo -= 1; maximo += 1; }
+    var faixa = maximo - minimo;
+    var larguraUtil = largura - margemEsq - margemDir;
+    var alturaUtil = altura - margemTopo - margemBaixo;
+    var passoX = larguraUtil / Math.max(1, serieFiltrada.length - 1);
+
+    var pontos = serieFiltrada.map(function (p, i) {
+      return {
+        x: margemEsq + i * passoX,
+        y: margemTopo + alturaUtil - ((p[1] - minimo) / faixa) * alturaUtil,
+        data: p[0],
+        valor: p[1]
+      };
+    });
+
+    var corLinha = valores[valores.length - 1] >= valores[0] ? "#4C7A1F" : "#9C3B2E";
+    var caminhoLinha = _caminhoSuaveJS(pontos.map(function (p) { return [p.x, p.y]; }));
+    var linhaBaseY = margemTopo + alturaUtil;
+    var ultimo = pontos[pontos.length - 1], primeiro = pontos[0];
+    var caminhoArea = caminhoLinha +
+      " L " + ultimo.x.toFixed(1) + "," + linhaBaseY.toFixed(1) +
+      " L " + primeiro.x.toFixed(1) + "," + linhaBaseY.toFixed(1) + " Z";
+
+    var sufixoId = slug + "-personalizado-" + Date.now();
+    var idGrad = "grad-" + sufixoId;
+
+    var numTicksPreco = 4, linhasGrade = "", rotulosPreco = "";
+    for (var i = 0; i < numTicksPreco; i++) {
+      var valorTick = minimo + faixa * i / (numTicksPreco - 1);
+      var yTick = margemTopo + alturaUtil - ((valorTick - minimo) / faixa) * alturaUtil;
+      if (i > 0) {
+        linhasGrade += '<line x1="' + margemEsq + '" y1="' + yTick.toFixed(1) + '" x2="' + (largura - margemDir) +
+          '" y2="' + yTick.toFixed(1) + '" stroke="rgba(11,60,31,0.08)" stroke-width="1" stroke-dasharray="3,4"/>';
+      }
+      rotulosPreco += '<text x="' + (margemEsq - 8) + '" y="' + (yTick + 4).toFixed(1) +
+        '" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">R$ ' +
+        formatarBRL(valorTick) + '</text>';
+    }
+
+    var numRotulosData = Math.min(5, pontos.length);
+    var indicesRotulo = [];
+    if (numRotulosData <= 1) {
+      indicesRotulo = [0];
+    } else {
+      var passoIndice = (pontos.length - 1) / (numRotulosData - 1);
+      var vistos = {};
+      for (var j = 0; j < numRotulosData; j++) {
+        var idx = Math.round(j * passoIndice);
+        if (!vistos[idx]) { vistos[idx] = true; indicesRotulo.push(idx); }
+      }
+    }
+    var rotulosDatas = indicesRotulo.map(function (idx) {
+      var p = pontos[idx];
+      return '<text x="' + p.x.toFixed(1) + '" y="' + (altura - 10) +
+        '" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">' +
+        formatarDataBR(p.data) + '</text>';
+    }).join("");
+
+    var pontosSvg = pontos.map(function (p, i) {
+      var idPonto = "ponto-" + sufixoId + "-" + i;
+      return '<circle id="' + idPonto + '" class="chart-dot" cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) +
+        '" r="3" fill="' + corLinha + '"/><circle class="chart-hit" cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) +
+        '" r="10" fill="transparent" data-alvo="' + idPonto + '" data-data="' + formatarDataBR(p.data) +
+        '" data-preco="' + formatarBRL(p.valor) + '"/>';
+    }).join("");
+
+    var unidade = UNIDADES_PRECO[slug] || "R$/saca";
+    var dataFinalFmt = formatarDataBR(ultimo.data);
+    var precoFinalFmt = formatarBRL(ultimo.valor);
+
+    var html =
+      '<div class="chart-wrap" id="grafico-' + sufixoId + '">' +
+      '<svg viewBox="0 0 ' + largura + ' ' + altura + '" xmlns="http://www.w3.org/2000/svg" role="img" ' +
+      'aria-label="Variação de preço de ' + nomeExibicao + ' entre ' + formatarDataBR(primeiro.data) + ' e ' + dataFinalFmt + '">' +
+      '<defs><linearGradient id="' + idGrad + '" x1="0" y1="0" x2="0" y2="1">' +
+      '<stop offset="0%" stop-color="' + corLinha + '" stop-opacity="0.25"/>' +
+      '<stop offset="100%" stop-color="' + corLinha + '" stop-opacity="0"/></linearGradient></defs>' +
+      '<text x="' + margemEsq + '" y="16" text-anchor="start" font-family="IBM Plex Mono, monospace" font-size="11" ' +
+      'font-weight="600" fill="#0B3C1F" opacity="0.55">' + unidade + '</text>' +
+      linhasGrade +
+      '<line x1="' + margemEsq + '" y1="' + margemTopo + '" x2="' + margemEsq + '" y2="' + (margemTopo + alturaUtil) +
+      '" stroke="rgba(11,60,31,0.14)" stroke-width="1"/>' +
+      '<line x1="' + margemEsq + '" y1="' + (margemTopo + alturaUtil) + '" x2="' + (largura - margemDir) + '" y2="' +
+      (margemTopo + alturaUtil) + '" stroke="rgba(11,60,31,0.14)" stroke-width="1"/>' +
+      rotulosPreco +
+      '<path d="' + caminhoArea + '" fill="url(#' + idGrad + ')" stroke="none"/>' +
+      '<path d="' + caminhoLinha + '" fill="none" stroke="' + corLinha + '" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>' +
+      pontosSvg + rotulosDatas +
+      '<circle cx="' + ultimo.x.toFixed(1) + '" cy="' + ultimo.y.toFixed(1) + '" r="4" fill="' + corLinha + '"/>' +
+      '</svg></div>' +
+      '<div class="chart-footer">' +
+      '<span class="chart-footer-extremo">' + formatarDataBR(primeiro.data) + '</span>' +
+      '<span class="chart-readout-texto">' + dataFinalFmt + ' · R$ ' + precoFinalFmt + '</span>' +
+      '<span class="chart-footer-extremo">' + dataFinalFmt + ' · R$ ' + precoFinalFmt + '</span>' +
+      '</div>';
+
+    return html;
+  }
+
+  function iniciarIntervaloPersonalizado() {
+    var nomes = { soja: "Soja", milho: "Milho", cafe: "Café Arábica", "boi-gordo": "Boi Gordo" };
+
+    document.querySelectorAll(".chart-box").forEach(function (chartBox) {
+      var baseWrap = chartBox.querySelector(".chart-wrap");
+      var ferramentas = chartBox.querySelector(".chart-ferramentas");
+      if (!baseWrap || !ferramentas || ferramentas.querySelector(".chart-personalizado")) return;
+
+      var dados = obterDadosHistorico();
+      if (!dados) return;
+
+      var slug = baseWrap.dataset.slug;
+
+      var bloco = document.createElement("div");
+      bloco.className = "chart-personalizado";
+      bloco.innerHTML =
+        '<label class="chart-personalizado-campo">De <input type="date" class="chart-data-inicio"></label>' +
+        '<label class="chart-personalizado-campo">Até <input type="date" class="chart-data-fim"></label>' +
+        '<button type="button" class="chart-exportar chart-personalizado-aplicar">Aplicar período</button>' +
+        '<span class="chart-personalizado-aviso" hidden></span>';
+      ferramentas.appendChild(bloco);
+
+      var todasDatas = (dados.fisicos[slug] || []).concat(dados.futuros[slug] || []).map(function (p) { return p[0]; });
+      if (todasDatas.length) {
+        var minData = todasDatas.reduce(function (a, b) { return a < b ? a : b; });
+        var maxData = todasDatas.reduce(function (a, b) { return a > b ? a : b; });
+        ["chart-data-inicio", "chart-data-fim"].forEach(function (classe) {
+          var campo = bloco.querySelector("." + classe);
+          campo.min = minData;
+          campo.max = maxData;
+        });
+      }
+
+      var resultado = document.createElement("div");
+      resultado.className = "chart-painel-personalizado";
+      resultado.hidden = true;
+      chartBox.insertBefore(resultado, ferramentas.nextSibling);
+
+      chartBox._sairModoPersonalizado = function () {
+        resultado.hidden = true;
+        resultado.innerHTML = "";
+        var select = chartBox.querySelector(".chart-serie-select");
+        chartBox.querySelectorAll(".chart-series-panel").forEach(function (painel) {
+          painel.hidden = select ? painel.dataset.serie !== select.value : painel.dataset.serie !== "fisicos";
+        });
+      };
+
+      bloco.querySelector(".chart-personalizado-aplicar").addEventListener("click", function () {
+        var inicio = bloco.querySelector(".chart-data-inicio").value;
+        var fim = bloco.querySelector(".chart-data-fim").value;
+        var aviso = bloco.querySelector(".chart-personalizado-aviso");
+        aviso.hidden = true;
+
+        if (!inicio || !fim || inicio > fim) {
+          aviso.textContent = "Escolha uma data inicial e uma final, com a inicial antes da final.";
+          aviso.hidden = false;
+          return;
+        }
+
+        var select = chartBox.querySelector(".chart-serie-select");
+        var serieTipo = select ? select.value : "fisicos";
+        var serie = (dados[serieTipo] && dados[serieTipo][slug]) || [];
+        var filtrada = serie.filter(function (p) { return p[0] >= inicio && p[0] <= fim; });
+
+        if (filtrada.length < 2) {
+          aviso.textContent = "Sem dados suficientes nesse período — tente um intervalo maior.";
+          aviso.hidden = false;
+          return;
+        }
+
+        chartBox.querySelectorAll(".periodo-btn").forEach(function (b) {
+          b.classList.remove("active");
+          b.setAttribute("aria-selected", "false");
+        });
+        chartBox.querySelectorAll(".chart-series-panel").forEach(function (painel) { painel.hidden = true; });
+
+        resultado.innerHTML = renderizarGraficoPersonalizado(slug, filtrada, nomes[slug] || slug);
+        resultado.hidden = false;
+        ativarLeituraChartWrap(resultado.querySelector(".chart-wrap"));
+      });
+    });
+  }
+
   function iniciarFerramentasGrafico() {
     var estiloImpressao = document.createElement("style");
-    estiloImpressao.textContent = ".comparativo-painel{margin:28px 0 0;padding:28px 32px;border:1px solid #d7ddcf;border-top:3px solid #B08830;background:#FDFDF9}.comparativo-cabecalho{display:flex;justify-content:space-between;gap:24px;align-items:flex-start}.comparativo-cabecalho h3{margin:5px 0 4px;color:#0B3C1F;font:600 25px Georgia,serif}.comparativo-cabecalho p{max-width:62ch;margin:0;color:#61705f;font-size:14px;line-height:1.6}.comparativo-limpar{border:1px solid #d7ddcf;background:#fff;color:#0B3C1F;padding:8px 12px;font:500 11px 'IBM Plex Mono',monospace;cursor:pointer;white-space:nowrap}.comparativo-controles{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;margin:24px 0 14px}.comparativo-controles fieldset{border:0;margin:0;padding:0}.comparativo-controles legend,.comparativo-controles label{display:block;font:500 11px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.06em;color:#4C7A1F;margin-bottom:8px}.comparativo-opcoes{display:flex;gap:8px;flex-wrap:wrap}.comparativo-opcoes label{display:flex;align-items:center;gap:6px;border:1px solid #d7ddcf;background:#fff;color:#0B3C1F;padding:9px 11px;text-transform:none;letter-spacing:0;font:500 13px Inter,sans-serif;margin:0}.comparativo-controles select{display:block;margin-top:8px;padding:9px 11px;border:1px solid #d7ddcf;background:#fff;color:#0B3C1F;font:13px Inter,sans-serif}.comparativo-legenda{display:flex;gap:18px;flex-wrap:wrap;margin:18px 0 6px;font:12px 'IBM Plex Mono',monospace;color:#61705f}.comparativo-legenda span{display:inline-flex;align-items:center;gap:6px}.comparativo-legenda i{width:18px;height:3px;display:inline-block}.comparativo-svg{width:100%;height:auto;min-height:260px;display:block}.comparativo-vazio{margin:0;color:#61705f;font-size:13px}.comparativo-vazio[hidden]{display:none}@media print{body.imprimir-grafico>*{display:none!important}body.imprimir-grafico main{display:block!important}body.imprimir-grafico main>section{display:none!important}body.imprimir-grafico main>section.grafico-para-impressao{display:block!important;padding:20px 0}body.imprimir-grafico .chart-ferramentas,.comparativo-limpar{display:none!important}}@media(max-width:640px){.comparativo-painel{padding:24px 18px}.comparativo-cabecalho{display:block}.comparativo-limpar{margin-top:16px}.comparativo-controles{gap:16px}.comparativo-svg{min-height:220px}}";
+    estiloImpressao.textContent = ".comparativo-painel{margin:28px 0 0;padding:28px 32px;border:1px solid #d7ddcf;border-top:3px solid #B08830;background:#FDFDF9}.comparativo-cabecalho{display:flex;justify-content:space-between;gap:24px;align-items:flex-start}.comparativo-cabecalho h3{margin:5px 0 4px;color:#0B3C1F;font:600 25px Georgia,serif}.comparativo-cabecalho p{max-width:62ch;margin:0;color:#61705f;font-size:14px;line-height:1.6}.comparativo-limpar{border:1px solid #d7ddcf;background:#fff;color:#0B3C1F;padding:8px 12px;font:500 11px 'IBM Plex Mono',monospace;cursor:pointer;white-space:nowrap}.comparativo-controles{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;margin:24px 0 14px}.comparativo-controles fieldset{border:0;margin:0;padding:0}.comparativo-controles legend,.comparativo-controles label{display:block;font:500 11px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.06em;color:#4C7A1F;margin-bottom:8px}.comparativo-opcoes{display:flex;gap:8px;flex-wrap:wrap}.comparativo-opcoes label{display:flex;align-items:center;gap:6px;border:1px solid #d7ddcf;background:#fff;color:#0B3C1F;padding:9px 11px;text-transform:none;letter-spacing:0;font:500 13px Inter,sans-serif;margin:0}.comparativo-controles select{display:block;margin-top:8px;padding:9px 11px;border:1px solid #d7ddcf;background:#fff;color:#0B3C1F;font:13px Inter,sans-serif}.comparativo-legenda{display:flex;gap:18px;flex-wrap:wrap;margin:18px 0 6px;font:12px 'IBM Plex Mono',monospace;color:#61705f}.comparativo-legenda span{display:inline-flex;align-items:center;gap:6px}.comparativo-legenda i{width:18px;height:3px;display:inline-block}.comparativo-svg{width:100%;height:auto;min-height:260px;display:block}.comparativo-vazio{margin:0;color:#61705f;font-size:13px}.comparativo-vazio[hidden]{display:none}@media print{body.imprimir-grafico>*{display:none!important}body.imprimir-grafico main{display:block!important}body.imprimir-grafico main>section{display:none!important}body.imprimir-grafico main>section.grafico-para-impressao{display:block!important;padding:20px 0}body.imprimir-grafico .chart-ferramentas,body.imprimir-grafico .comparativo-painel{display:none!important}}@media(max-width:640px){.comparativo-painel{padding:24px 18px}.comparativo-cabecalho{display:block}.comparativo-limpar{margin-top:16px}.comparativo-controles{gap:16px}.comparativo-svg{min-height:220px}}.chart-personalizado{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-left:auto}.chart-personalizado-campo{display:flex;align-items:center;gap:6px;font:12px 'IBM Plex Mono',monospace;color:#0B3C1F;opacity:.75}.chart-personalizado-campo input[type=date]{font:12px Inter,sans-serif;padding:5px 6px;border:1px solid #d7ddcf;border-radius:2px;background:#fff;color:#0B3C1F}.chart-personalizado-aviso{font:12px Inter,sans-serif;color:#9C3B2E;flex-basis:100%}.chart-personalizado-aviso[hidden]{display:none}.chart-painel-personalizado[hidden]{display:none}@media(max-width:640px){.chart-personalizado{margin-left:0;width:100%}}";
     document.head.appendChild(estiloImpressao);
       document.querySelectorAll(".chart-ferramentas").forEach(function (ferramentas) {
         var comparadorLegado = ferramentas.querySelector("#comparar-select");
@@ -317,6 +549,8 @@
     });
     document.querySelectorAll(".chart-serie-select").forEach(function (select) {
       select.addEventListener("change", function () {
+        var chartBox = select.closest(".chart-box");
+        if (chartBox && chartBox._sairModoPersonalizado) chartBox._sairModoPersonalizado();
         document.querySelectorAll(".chart-series-panel").forEach(function (painel) {
           painel.hidden = painel.dataset.serie !== select.value;
         });
@@ -404,6 +638,7 @@
     iniciarRevelacaoAoRolar();
     iniciarSeletorPeriodo();
     iniciarFerramentasGrafico();
+    iniciarIntervaloPersonalizado();
     iniciarComparador();
     iniciarCompartilhar();
     iniciarExportarPdf();
