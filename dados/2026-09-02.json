@@ -1,0 +1,135 @@
+{
+  "dolar": {
+    "data": "01/09/2026",
+    "valor": 5.157,
+    "variacao_pct": -0.47475683186661255
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "16/09/2026",
+    "valor": 14.0
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "01/09/2026",
+      "preco_reais": "161.14",
+      "variacao_pct": "+1.07"
+    },
+    {
+      "nome": "Milho",
+      "data": "01/09/2026",
+      "preco_reais": "70.96",
+      "variacao_pct": "1.04"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "01/09/2026",
+      "preco_reais": "87,48",
+      "variacao_pct": "0.1"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "01/09/2026",
+      "preco_reais": "1730.56",
+      "variacao_pct": "-1.02"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "01/09/2026",
+      "preco_reais": "346.0",
+      "variacao_pct": "0.46"
+    },
+    {
+      "nome": "Algodão",
+      "data": "01/09/2026",
+      "preco_reais": "444.82",
+      "variacao_pct": "1.91"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "01/09/2026",
+      "preco_reais": "114.51",
+      "variacao_pct": "0.67"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Outubro/26",
+      "preco_reais": "5,1880 R$/US$",
+      "variacao_pct": "-0.6",
+      "valor_numerico": 5.188,
+      "unidade": "R$/US$"
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Janeiro/2027",
+      "preco_reais": "R$ 151,41 /sc 60 kg (≈ US$ 29,36 x R$ 5,1570)",
+      "variacao_pct": "1.94",
+      "valor_numerico": 29.36,
+      "unidade": "US$/sc 60 kg"
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "72,24 R$/sc 60 kg",
+      "variacao_pct": "1.67",
+      "valor_numerico": 72.24,
+      "unidade": "R$/sc 60 kg"
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "356,10 R$/@",
+      "variacao_pct": "-0.43",
+      "valor_numerico": 356.1,
+      "unidade": "R$/@"
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 2083,17 /sc 60 kg (≈ US$ 403,95 x R$ 5,1570)",
+      "variacao_pct": "0.19",
+      "valor_numerico": 403.95,
+      "unidade": "US$/sc 60 kg"
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Queda suave do dólar (-0.47%): tende a esfriar discretamente o apetite por exportação, com leve efeito de baixa sobre o preço doméstico de commodities.",
+    "Selic em 14.00% ao ano - um patamar considerado alto: o crédito rural fica mais caro e carregar estoque também, o que costuma levar produtores a vender mais rápido para gerar caixa, pressionando o preço para baixo no curto prazo. Juros altos também tendem a atrair capital estrangeiro e valorizar o real, reforçando essa pressão via câmbio.",
+    "Obs.: nenhuma dessas relações é garantida - clima, oferta mundial e demanda por vezes pesam mais que câmbio e juros na formação do preço final."
+  ],
+  "noticias": [
+    {
+      "titulo": "Política e Economia01/09/2026 - 17:38Dólar cai para perto dos R$5,15 em dia de alta do petróleo",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/427331-dolar-cai-para-perto-dos-r515-em-dia-de-alta-do-petroleo.html",
+      "resumo": "SÃO PAULO, 1 Set (Reuters) - O dólar fechou a terça-feira em queda no Brasil e novamente próximo dos R$5,15, em mais um dia de alta do petróleo no exterior, em meio ao conflito no Oriente Médio.",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "01/09/2026 - 16:31USDA vai testar satélites e inteligência artificial nas estimativas de safra",
+      "link": "https://www.noticiasagricolas.com.br/noticias/agronegocio/427329-usda-vai-testar-satelites-e-inteligencia-artificial-nas-estimativas-de-safra.html",
+      "resumo": "BOONE, IOWA, 1 Set (Reuters) - O Departamento de Agricultura dos Estados Unidos (USDA) está lançando um projeto-piloto que contará mais fortemente com a tecnologia, como parte de um esforço mais amplo para aprimorar suas...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "01/09/2026 - 16:02Açúcar ganha força com expectativa de déficit global na safra 2026/27",
+      "link": "https://www.noticiasagricolas.com.br/noticias/sucroenergetico/427315-acucar-ganha-forca-com-expectativa-de-deficit-global-na-safra-2026-27.html",
+      "resumo": "O mercado internacional de açúcar fechou a terça-feira (1º) em forte alta, após a Organização Internacional do Açúcar (ISO) apontar para uma mudança no balanço global da commodity, com a expectativa de déficit na safra 2...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "01/09/2026 - 14:35Emater projeta leve recuo na área de soja do RS, mas salto na safra 26/27",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/427321-emater-projeta-leve-recuo-na-area-de-soja-do-rs-mas-salto-na-safra-2627.html",
+      "resumo": "SÃO PAULO, 1 Set (Reuters) - A área plantada com soja no Rio Grande do Sul em 2026/27 foi estimada nesta terça-feira em 6,645 milhões de hectares, queda de 0,92% em relação ao ciclo anterior, mas a produção deverá dar um...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
