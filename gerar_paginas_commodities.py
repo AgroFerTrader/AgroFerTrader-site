@@ -615,7 +615,7 @@ def montar_grafico_svg(
 
 def _renderizar_svg_periodo(serie: list, nome_exibicao: str, slug_base: str, sufixo: str) -> str:
     slug = f"{slug_base}-{sufixo}"
-    largura, altura = 900, 260
+    largura, altura = 900, 360
     # margem esquerda cresce com a quantidade de digitos do maior preco,
     # para o rotulo "R$ X.XXX,XX" nunca ser cortado pela borda do SVG
     maior_preco_texto = f"R$ {_fmt_brl(max(v for _, v in serie))}"

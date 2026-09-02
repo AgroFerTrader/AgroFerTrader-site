@@ -264,7 +264,7 @@
       var pontos = wrap.querySelectorAll(".chart-hit");
       wrap.querySelectorAll(".chart-bar").forEach(function (bar) { bar.remove(); });
       if (modo !== "barras") return;
-      var largura = 900, altura = 260, margemEsq = parseFloat(wrap.dataset.margemEsq);
+      var largura = 900, altura = 360, margemEsq = parseFloat(wrap.dataset.margemEsq);
       var margemTopo = parseFloat(wrap.dataset.margemTopo), alturaUtil = parseFloat(wrap.dataset.alturaUtil);
       var larguraUtil = parseFloat(wrap.dataset.larguraUtil), n = pontos.length;
       if (!n) return;
