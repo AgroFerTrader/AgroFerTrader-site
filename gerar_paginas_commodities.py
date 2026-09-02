@@ -657,6 +657,13 @@ def montar_jsonld_produto(config: dict, fisica_filtrada: list) -> str:
 #    ja que a categoria em si ja restringe o assunto).
 # ---------------------------------------------------------------------------
 
+def _titulo_noticia_limpo(link) -> str:
+    titulo = link.find(["h2", "h3"])
+    texto = titulo.get_text(" ", strip=True) if titulo else link.get_text(" ", strip=True)
+    # Algumas listagens misturam categoria/data/hora no mesmo ancestral do titulo.
+    return re.sub(r"^.*?\b\d{2}:\d{2}\s*", "", texto).strip()
+
+
 def buscar_noticias_por_categoria(categoria: str, quantidade: int = 5) -> list:
     from bs4 import BeautifulSoup
 
@@ -676,7 +683,7 @@ def buscar_noticias_por_categoria(categoria: str, quantidade: int = 5) -> list:
     candidatas = []
     links_ja_vistos = set()
     for link in sopa.select("a"):
-        texto = link.get_text(strip=True)
+        texto = _titulo_noticia_limpo(link)
         href = link.get("href")
         if texto and href and len(texto) > 40 and href not in links_ja_vistos:
             if href.startswith("/"):

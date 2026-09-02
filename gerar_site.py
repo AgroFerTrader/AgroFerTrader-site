@@ -59,6 +59,11 @@ def _nome_curto(nome_completo: str) -> str:
     return nome_completo.split(" (")[0].upper()
 
 
+def _variacao_exibicao(variacao) -> str:
+    valor = monitor._variacao_para_float(variacao)
+    return str(variacao) if valor is None else f"{abs(valor):.2f}"
+
+
 # Commodities que tem pagina individual em commodities/<slug>/ - usado para
 # transformar o card/linha correspondente num link, na home. Quem nao esta
 # aqui (Trigo, Algodao, Acucar Cristal) continua exibido normalmente, sem link.
@@ -88,7 +93,7 @@ def montar_ticker_html(dolar, resultados_commodities) -> str:
         seta, classe = _seta_e_classe(r["variacao_pct"])
         nome = escape(_nome_curto(r["nome"]))
         preco = escape(str(r["preco_reais"]))
-        variacao = escape(str(r["variacao_pct"]))
+        variacao = escape(_variacao_exibicao(r["variacao_pct"]))
 
         itens.append(
             f'<span class="item">{nome} <b>R$ {preco}</b> '
@@ -124,7 +129,7 @@ def montar_precos_html(resultados_commodities, com_links: bool = True) -> str:
         conteudo_card = (
             f'  <div class="price-name">{nome_html}</div>\n'
             f'  <div class="price-value">R$ {escape(str(r["preco_reais"]))}</div>\n'
-            f'  <div class="price-var {classe}">{seta} {escape(str(r["variacao_pct"]))}%</div>\n'
+            f'  <div class="price-var {classe}">{seta} {_variacao_exibicao(r["variacao_pct"])}%</div>\n'
             f'  <div class="price-meta">{escape(unidade)}</div>\n'
         )
 
@@ -238,7 +243,7 @@ def montar_futuros_html(resultados_futuros: list) -> str:
 
         slug = SLUGS_COMMODITIES.get(nome_limpo)
         nome_celula = (
-            f'<a href="commodities/{slug}/">{escape(nome_limpo)}</a>' if slug
+            f'<a href="../{slug}/">{escape(nome_limpo)}</a>' if slug
             else escape(nome_limpo)
         )
 
@@ -246,7 +251,7 @@ def montar_futuros_html(resultados_futuros: list) -> str:
             f'<tr><td>{nome_celula}</td>'
             f'<td>{escape(contrato)}</td>'
             f'<td class="val">{escape(preco_exibicao)}</td>'
-            f'<td class="{classe}">{seta} {escape(str(r["variacao_pct"]))}%</td></tr>'
+            f'<td class="{classe}">{seta} {_variacao_exibicao(r["variacao_pct"])}%</td></tr>'
         )
 
     return "\n        ".join(linhas)
