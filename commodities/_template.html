@@ -219,10 +219,6 @@
     color:var(--ink);cursor:pointer;
   }
   .chart-modo-btn.active,.chart-exportar:hover{border-color:var(--gold);color:var(--leaf);font-weight:600;}
-  .chart-comparar-select{
-    font-family:var(--mono);font-size:12px;padding:7px 12px;border:1px solid var(--line);
-    border-radius:20px;background:var(--paper);color:var(--ink);cursor:pointer;
-  }
   .chart-comparacao-legenda{display:none;gap:16px;font-size:12px;font-family:var(--mono);opacity:.75;}
   .chart-comparacao-legenda.visivel{display:flex;}
   .chart-comparacao-legenda .marca{display:inline-block;width:16px;height:0;border-top:2px solid var(--gold);margin-right:5px;vertical-align:middle;}
@@ -277,6 +273,7 @@
 
   @media (max-width:640px){
     .section-head{flex-direction:column;align-items:flex-start;}
+    .futures-table{display:block;max-width:100%;min-width:0;overflow-x:auto;}
     .price-grid{max-width:100%;}
     .price-card{padding:14px 12px;flex:1 1 45%;min-width:0;}
     .price-card-regional{padding:14px 12px;flex:1 1 45%;min-width:0;}
@@ -458,11 +455,7 @@
           <option value="fisicos">Preço físico</option>
           <option value="futuros">Preço futuro</option>
         </select>
-        <select id="comparar-select" class="chart-comparar-select" multiple size="3" aria-label="Comparar com outra commodity">
-          {{COMPARAR_OPCOES}}
-        </select>
         <button type="button" class="chart-exportar">Exportar gráfico em PDF</button>
-        <span class="chart-comparacao-legenda"><span class="marca"></span>{{NOME_EXIBICAO}} <span class="marca tracejada"></span>comparação (% no período)</span>
       </div>
       <!-- GRAFICO:START -->
 {{GRAFICO_INICIAL}}

@@ -126,7 +126,8 @@
       if (!painel) return;
 
       nav.addEventListener("click", function (evento) {
-        var botao = evento.target.closest(".periodo-btn");
+          var botao = evento.target.closest(".periodo-btn");
+          if (select) { select.multiple = true; select.size = 3; select.style.display = "none"; }
         if (!botao) return;
         var periodo = botao.getAttribute("data-periodo");
 
@@ -140,10 +141,6 @@
         });
 
         // Se houver uma comparacao ativa, redesenha pro novo periodo.
-        var compararSelect = document.getElementById("comparar-select");
-        if (compararSelect && compararSelect.value) {
-          desenharComparacao(compararSelect.value);
-        }
       });
     });
   }
@@ -217,108 +214,46 @@
     return painelVisivel;
   }
 
-  function desenharComparacao(slugComparar) {
+  function renderizarComparativo(painel) {
     var dados = obterDadosHistorico();
-    var bloco = painelAtivo();
-    if (!dados || !bloco) return;
-
-    // Limpa qualquer sobreposicao anterior (de um periodo ja escondido,
-    // por exemplo) antes de desenhar a nova - so o painel ativo deve
-    // ter a comparacao visivel.
-    document.querySelectorAll(".chart-wrap.chart-comparando").forEach(function (wrap) {
-      var svgAntigo = wrap.querySelector("svg");
-      if (svgAntigo) limparComparacao(svgAntigo);
-      wrap.classList.remove("chart-comparando");
-    });
-
-    var chartWrap = bloco.querySelector(".chart-wrap");
-    if (!chartWrap) return;
-
-    var slugBase = chartWrap.getAttribute("data-slug");
-    var margemEsq = parseFloat(chartWrap.getAttribute("data-margem-esq"));
-    var margemTopo = parseFloat(chartWrap.getAttribute("data-margem-topo"));
-    var alturaUtil = parseFloat(chartWrap.getAttribute("data-altura-util"));
-    var larguraUtil = parseFloat(chartWrap.getAttribute("data-largura-util"));
-    var numPontos = parseInt(chartWrap.getAttribute("data-num-pontos"), 10);
-
-    var svg = chartWrap.querySelector("svg");
-    if (!svg || isNaN(margemEsq) || !numPontos) return;
-
-    var tipoSerie = document.querySelector(".comparar-serie-select")?.value || document.querySelector(".chart-serie-select")?.value || "fisicos";
-    var serieBaseCompleta = dados[tipoSerie][slugBase];
-    var comparar = document.getElementById("comparar-select");
-    var slugsComparar = comparar ? Array.from(comparar.selectedOptions).map(function (option) { return option.value; }).filter(Boolean) : [slugComparar];
-    var serieCompCompleta = dados[tipoSerie][slugsComparar[0]];
-    if (!serieBaseCompleta || !serieCompCompleta) return;
-
-    // Mesma janela de dias usada no periodo em exibicao, alinhada pelas
-    // ULTIMAS N datas de cada serie (os snapshots diarios sao gerados
-    // juntos, entao as datas ja vem alinhadas por indice).
-    var serieBase = serieBaseCompleta.slice(-numPontos);
-    var serieComp = serieCompCompleta.slice(-numPontos);
-    var n = Math.min(serieBase.length, serieComp.length);
-    if (n < 2) return;
-    serieBase = serieBase.slice(-n);
-    serieComp = serieComp.slice(-n);
-
-    var varBase = _variacaoPercentual(serieBase);
-    var varComp = _variacaoPercentual(serieComp);
-    var todasVariacoes = varBase.concat(varComp);
-    var minimo = Math.min.apply(null, todasVariacoes);
-    var maximo = Math.max.apply(null, todasVariacoes);
+    var svg = painel.querySelector(".comparativo-svg");
+    if (!dados || !svg) return;
+    var base = document.querySelector(".chart-wrap");
+    if (!base) return;
+    var serieTipo = painel.querySelector(".comparativo-serie").value;
+    var selecionados = Array.from(painel.querySelectorAll("input[name='commodity-comparada']:checked")).map(function (input) { return input.value; });
+    if (!selecionados.length) {
+      svg.innerHTML = "";
+      painel.querySelector(".comparativo-legenda").innerHTML = "";
+      return;
+    }
+    var slugBase = base.dataset.slug;
+    var nomes = { soja: "Soja", milho: "Milho", cafe: "Café Arábica", "boi-gordo": "Boi Gordo" };
+    var series = [{ slug: slugBase, nome: nomes[slugBase] || slugBase, valores: (dados[serieTipo][slugBase] || []) }];
+    selecionados.forEach(function (slug) { if (dados[serieTipo][slug]) series.push({ slug: slug, nome: nomes[slug] || slug, valores: dados[serieTipo][slug] }); });
+    series = series.filter(function (item) { return item.valores.length > 1; });
+    if (series.length < 2) { svg.innerHTML = '<text x="450" y="160" text-anchor="middle" fill="#61705f" font-family="Arial">Selecione ao menos uma commodity com histórico disponível.</text>'; return; }
+    var n = Math.min.apply(null, series.map(function (item) { return item.valores.length; }));
+    series.forEach(function (item) { item.valores = item.valores.slice(-n); item.variacoes = _variacaoPercentual(item.valores); });
+    var todas = [].concat.apply([], series.map(function (item) { return item.variacoes; }));
+    var minimo = Math.min.apply(null, todas), maximo = Math.max.apply(null, todas);
     if (minimo === maximo) { minimo -= 1; maximo += 1; }
-    var faixa = maximo - minimo;
-    var passoX = larguraUtil / (n - 1);
-
-    function pontosDe(variacoes) {
-      return variacoes.map(function (v, i) {
-        var x = margemEsq + i * passoX;
-        var y = margemTopo + alturaUtil - ((v - minimo) / faixa) * alturaUtil;
-        return [x, y];
-      });
-    }
-
-    var nsSvg = "http://www.w3.org/2000/svg";
-    limparComparacao(svg);
-
-    var grupo = document.createElementNS(nsSvg, "g");
-    grupo.setAttribute("class", "chart-comparacao");
-
-    var pathBase = document.createElementNS(nsSvg, "path");
-    pathBase.setAttribute("d", _caminhoSuaveJS(pontosDe(varBase)));
-    pathBase.setAttribute("fill", "none");
-    pathBase.setAttribute("stroke", "#B08830");
-    pathBase.setAttribute("stroke-width", "2");
-    pathBase.setAttribute("stroke-dasharray", "1,0");
-    grupo.appendChild(pathBase);
-
-    var modoComparacao = document.querySelector(".comparar-modo-select")?.value || "linha";
-    var pathComp = document.createElementNS(nsSvg, modoComparacao === "barras" ? "rect" : "path");
-    if (modoComparacao === "barras") {
-      var primeiroBarra = pontosDe(varComp)[varComp.length - 1];
-      pathComp.setAttribute("x", primeiroBarra[0] - passoX * .25); pathComp.setAttribute("y", Math.min(primeiroBarra[1], margemTopo + alturaUtil));
-      pathComp.setAttribute("width", Math.max(4, passoX * .5)); pathComp.setAttribute("height", Math.abs(margemTopo + alturaUtil - primeiroBarra[1]));
-      pathComp.setAttribute("fill", "#0B3C1F"); pathComp.setAttribute("opacity", ".55");
-    } else {
-      pathComp.setAttribute("d", _caminhoSuaveJS(pontosDe(varComp))); pathComp.setAttribute("fill", "none");
-      pathComp.setAttribute("stroke", "#0B3C1F"); pathComp.setAttribute("stroke-width", "2"); pathComp.setAttribute("stroke-dasharray", "6,4");
-    }
-    grupo.appendChild(pathComp);
-    slugsComparar.slice(1).forEach(function (slug, indice) {
-      var serieExtra = (dados[tipoSerie][slug] || []).slice(-n);
-      if (serieExtra.length < 2) return;
-      var variacaoExtra = _variacaoPercentual(serieExtra);
-      var pathExtra = document.createElementNS(nsSvg, "path");
-      pathExtra.setAttribute("d", _caminhoSuaveJS(pontosDe(variacaoExtra))); pathExtra.setAttribute("fill", "none");
-      pathExtra.setAttribute("stroke", ["#9C3B2E", "#B08830"][indice % 2]); pathExtra.setAttribute("stroke-width", "2"); pathExtra.setAttribute("stroke-dasharray", "3,3");
-      grupo.appendChild(pathExtra);
+    var esquerda = 72, topo = 28, largura = 820, altura = 220, passo = largura / (n - 1), faixa = maximo - minimo;
+    function ponto(valor, indice) { return [esquerda + indice * passo, topo + altura - ((valor - minimo) / faixa) * altura]; }
+    var ns = "http://www.w3.org/2000/svg";
+    svg.setAttribute("viewBox", "0 0 920 320"); svg.innerHTML = "";
+    [minimo, 0, maximo].forEach(function (valor) { var p = ponto(valor, 0), linha = document.createElementNS(ns, "line"); linha.setAttribute("x1", esquerda); linha.setAttribute("x2", esquerda + largura); linha.setAttribute("y1", p[1]); linha.setAttribute("y2", p[1]); linha.setAttribute("stroke", valor === 0 ? "#B08830" : "#d7ddcf"); linha.setAttribute("stroke-dasharray", valor === 0 ? "none" : "3,4"); svg.appendChild(linha); var texto = document.createElementNS(ns, "text"); texto.setAttribute("x", esquerda - 10); texto.setAttribute("y", p[1] + 4); texto.setAttribute("text-anchor", "end"); texto.setAttribute("font-size", "11"); texto.setAttribute("fill", "#61705f"); texto.textContent = valor.toFixed(1).replace(".", ",") + "%"; svg.appendChild(texto); });
+    var cores = ["#B08830", "#0B3C1F", "#9C3B2E", "#4C7A1F"];
+    var modo = painel.querySelector(".comparativo-modo").value;
+    series.forEach(function (item, indice) {
+      var pontos = item.variacoes.map(ponto), grupo = document.createElementNS(ns, "g");
+      grupo.setAttribute("class", "comparativo-linha");
+      if (modo === "barras") pontos.forEach(function (p, i) { var barra = document.createElementNS(ns, "rect"), zero = ponto(0, i)[1]; barra.setAttribute("x", p[0] - Math.max(2, passo / (series.length + 1)) * (series.length - indice)); barra.setAttribute("y", Math.min(p[1], zero)); barra.setAttribute("width", Math.max(3, passo / (series.length + 1))); barra.setAttribute("height", Math.abs(zero - p[1])); barra.setAttribute("fill", cores[indice % cores.length]); barra.setAttribute("opacity", ".78"); grupo.appendChild(barra); });
+      else { var linha = document.createElementNS(ns, "path"); linha.setAttribute("d", _caminhoSuaveJS(pontos)); linha.setAttribute("fill", "none"); linha.setAttribute("stroke", cores[indice % cores.length]); linha.setAttribute("stroke-width", indice === 0 ? "3" : "2"); grupo.appendChild(linha); }
+      svg.appendChild(grupo);
     });
-
-    svg.appendChild(grupo);
-    chartWrap.classList.add("chart-comparando");
-
-    var legenda = document.querySelector(".chart-comparacao-legenda");
-    if (legenda) legenda.classList.add("visivel");
+    [0, Math.floor((n - 1) / 2), n - 1].forEach(function (i) { var texto = document.createElementNS(ns, "text"), p = ponto(0, i); texto.setAttribute("x", p[0]); texto.setAttribute("y", "285"); texto.setAttribute("text-anchor", "middle"); texto.setAttribute("font-size", "11"); texto.setAttribute("fill", "#61705f"); texto.textContent = (series[0].valores[i][0] || "").split("-").reverse().join("/"); svg.appendChild(texto); });
+    var legenda = painel.querySelector(".comparativo-legenda"); legenda.innerHTML = series.map(function (item, indice) { return '<span><i style="background:' + cores[indice % cores.length] + '"></i>' + item.nome + " · " + (serieTipo === "futuros" ? "futuro" : "físico") + "</span>"; }).join("");
   }
 
   function renderizarModoGrafico(modo) {
@@ -351,33 +286,26 @@
 
   function iniciarFerramentasGrafico() {
     var estiloImpressao = document.createElement("style");
-    estiloImpressao.textContent = "@media print{body.imprimir-grafico>*{display:none!important}body.imprimir-grafico main{display:block!important}body.imprimir-grafico main>section{display:none!important}body.imprimir-grafico main>section.grafico-para-impressao{display:block!important;padding:20px 0}body.imprimir-grafico .chart-ferramentas{display:none!important}}";
+    estiloImpressao.textContent = ".comparativo-painel{margin:28px 0 0;padding:28px 32px;border:1px solid #d7ddcf;border-top:3px solid #B08830;background:#FDFDF9}.comparativo-cabecalho{display:flex;justify-content:space-between;gap:24px;align-items:flex-start}.comparativo-cabecalho h3{margin:5px 0 4px;color:#0B3C1F;font:600 25px Georgia,serif}.comparativo-cabecalho p{max-width:62ch;margin:0;color:#61705f;font-size:14px;line-height:1.6}.comparativo-limpar{border:1px solid #d7ddcf;background:#fff;color:#0B3C1F;padding:8px 12px;font:500 11px 'IBM Plex Mono',monospace;cursor:pointer;white-space:nowrap}.comparativo-controles{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;margin:24px 0 14px}.comparativo-controles fieldset{border:0;margin:0;padding:0}.comparativo-controles legend,.comparativo-controles label{display:block;font:500 11px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.06em;color:#4C7A1F;margin-bottom:8px}.comparativo-opcoes{display:flex;gap:8px;flex-wrap:wrap}.comparativo-opcoes label{display:flex;align-items:center;gap:6px;border:1px solid #d7ddcf;background:#fff;color:#0B3C1F;padding:9px 11px;text-transform:none;letter-spacing:0;font:500 13px Inter,sans-serif;margin:0}.comparativo-controles select{display:block;margin-top:8px;padding:9px 11px;border:1px solid #d7ddcf;background:#fff;color:#0B3C1F;font:13px Inter,sans-serif}.comparativo-legenda{display:flex;gap:18px;flex-wrap:wrap;margin:18px 0 6px;font:12px 'IBM Plex Mono',monospace;color:#61705f}.comparativo-legenda span{display:inline-flex;align-items:center;gap:6px}.comparativo-legenda i{width:18px;height:3px;display:inline-block}.comparativo-svg{width:100%;height:auto;min-height:260px;display:block}.comparativo-vazio{margin:0;color:#61705f;font-size:13px}.comparativo-vazio[hidden]{display:none}@media print{body.imprimir-grafico>*{display:none!important}body.imprimir-grafico main{display:block!important}body.imprimir-grafico main>section{display:none!important}body.imprimir-grafico main>section.grafico-para-impressao{display:block!important;padding:20px 0}body.imprimir-grafico .chart-ferramentas,.comparativo-limpar{display:none!important}}@media(max-width:640px){.comparativo-painel{padding:24px 18px}.comparativo-cabecalho{display:block}.comparativo-limpar{margin-top:16px}.comparativo-controles{gap:16px}.comparativo-svg{min-height:220px}}";
     document.head.appendChild(estiloImpressao);
-    document.querySelectorAll(".chart-ferramentas").forEach(function (ferramentas) {
-      var dados = obterDadosHistorico();
-      var atual = (document.querySelector(".chart-wrap") || {}).dataset?.slug;
-      var select = ferramentas.querySelector("#comparar-select");
-      if (select) { select.multiple = true; select.size = 3; }
-      if (!select) {
-        select = document.createElement("select");
-        select.id = "comparar-select"; select.className = "chart-comparar-select"; select.multiple = true; select.size = 3;
-        select.setAttribute("aria-label", "Comparar com outra commodity");
-        select.innerHTML = '<option value="">Comparar com...</option>';
-      }
-      var nomes = { soja: "Soja", milho: "Milho", cafe: "Café Arábica", "boi-gordo": "Boi Gordo" };
-      if (dados && dados.fisicos) Object.keys(dados.fisicos).forEach(function (slug) {
-        if (slug !== atual) select.innerHTML += '<option value="' + slug + '">' + (nomes[slug] || slug) + '</option>';
-      });
-      if (!select.parentNode) ferramentas.insertBefore(select, ferramentas.querySelector(".chart-exportar"));
-      if (ferramentas.querySelector(".comparar-serie-select")) return;
-      var serieComparada = document.createElement("select");
-      serieComparada.className = "comparar-serie-select"; serieComparada.setAttribute("aria-label", "Série da comparação");
-      serieComparada.innerHTML = '<option value="fisicos">Comparar: físico</option><option value="futuros">Comparar: futuro</option>';
-      ferramentas.insertBefore(serieComparada, ferramentas.querySelector(".chart-exportar"));
-      var modoComparado = document.createElement("select");
-      modoComparado.className = "comparar-modo-select"; modoComparado.setAttribute("aria-label", "Tipo de gráfico da comparação");
-      modoComparado.innerHTML = '<option value="linha">Comparação em linha</option><option value="barras">Comparação em barras</option>';
-      ferramentas.insertBefore(modoComparado, ferramentas.querySelector(".chart-exportar"));
+      document.querySelectorAll(".chart-ferramentas").forEach(function (ferramentas) {
+        var comparadorLegado = ferramentas.querySelector("#comparar-select");
+        if (comparadorLegado) comparadorLegado.style.display = "none";
+        var dados = obterDadosHistorico();
+        var base = document.querySelector(".chart-wrap");
+        var grafico = document.querySelector(".chart-box");
+        if (dados && base && grafico && !document.querySelector(".comparativo-painel")) {
+          var nomes = { soja: "Soja", milho: "Milho", cafe: "Café Arábica", "boi-gordo": "Boi Gordo" };
+          var painel = document.createElement("section"); painel.className = "comparativo-painel";
+          painel.innerHTML = '<div class="comparativo-cabecalho"><div><span class="section-label">Comparação</span><h3>Evolução comparada</h3><p>Todos os preços são normalizados para começar em 0%. Assim, commodities com valores diferentes podem ser comparadas sem distorção.</p></div><button type="button" class="comparativo-limpar">Limpar seleção</button></div><div class="comparativo-controles"><fieldset><legend>Commodities</legend><div class="comparativo-opcoes"></div></fieldset><label>Série<select class="comparativo-serie"><option value="fisicos">Preço físico</option><option value="futuros">Preço futuro</option></select></label><label>Visualização<select class="comparativo-modo"><option value="linha">Linhas</option><option value="barras">Barras agrupadas</option></select></label></div><div class="comparativo-legenda"></div><svg class="comparativo-svg" role="img" aria-label="Comparação de evolução percentual entre commodities"></svg><p class="comparativo-vazio">Selecione uma ou mais commodities para iniciar a comparação.</p>';
+          grafico.parentNode.insertBefore(painel, grafico.nextSibling);
+          var opcoes = painel.querySelector(".comparativo-opcoes");
+          Object.keys(dados.fisicos).forEach(function (slug) { if (slug !== base.dataset.slug) opcoes.innerHTML += '<label><input type="checkbox" name="commodity-comparada" value="' + slug + '">' + (nomes[slug] || slug) + '</label>'; });
+          painel.querySelectorAll("input[name='commodity-comparada']").forEach(function (input) { input.addEventListener("change", function () { painel.querySelector(".comparativo-vazio").hidden = painel.querySelectorAll("input:checked").length > 0; renderizarComparativo(painel); }); });
+          painel.querySelector(".comparativo-serie").addEventListener("change", function () { renderizarComparativo(painel); });
+          painel.querySelector(".comparativo-modo").addEventListener("change", function () { renderizarComparativo(painel); });
+          painel.querySelector(".comparativo-limpar").addEventListener("click", function () { painel.querySelectorAll("input:checked").forEach(function (input) { input.checked = false; }); painel.querySelector(".comparativo-vazio").hidden = false; renderizarComparativo(painel); });
+        }
     });
     document.querySelectorAll(".chart-modo-btn").forEach(function (botao) {
       botao.addEventListener("click", function () {
@@ -394,8 +322,6 @@
         });
         var modoAtivo = document.querySelector(".chart-modo-btn.active");
         renderizarModoGrafico(modoAtivo ? modoAtivo.dataset.modoGrafico : "linha");
-        var comparar = document.getElementById("comparar-select");
-        if (comparar && comparar.selectedOptions.length) desenharComparacao(comparar.value);
       });
     });
     document.querySelectorAll(".chart-exportar").forEach(function (botao) {
@@ -425,18 +351,8 @@
   }
 
   function iniciarComparador() {
-    var select = document.getElementById("comparar-select");
-    if (!select) return;
-    select.addEventListener("change", function () {
-      if (select.value) {
-        desenharComparacao(select.value);
-      } else {
-        pararComparacao();
-      }
-    });
+    return;
   }
-
-  // -------------------------------------------------------------------
   // 5) Compartilhar: copiar link + intents de WhatsApp/LinkedIn (sem
   //    nenhuma API/conta de terceiro - so URLs publicas de share).
   // -------------------------------------------------------------------

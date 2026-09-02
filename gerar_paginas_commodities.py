@@ -543,6 +543,13 @@ def _renderizar_svg_periodo(serie: list, nome_exibicao: str, slug_base: str, suf
     id_gradiente = f"grad-{slug}"
     data_final_fmt = escape(_fmt_data_br(data_final))
     preco_final_fmt = _fmt_brl(valores[-1])
+    indices_rotulo = sorted({0, len(pontos) // 2, len(pontos) - 1})
+    rotulos_datas = "".join(
+        f'<text x="{pontos[i][0]:.1f}" y="{altura - 8}" text-anchor="middle" '
+        f'font-family="IBM Plex Mono, monospace" font-size="11" fill="#0B3C1F" opacity="0.6">'
+        f'{escape(_fmt_data_br(pontos[i][2]))}</text>'
+        for i in indices_rotulo
+    )
 
     svg = f'''<div class="chart-wrap" id="{id_unico}" data-slug="{slug_base}" data-margem-esq="{margem_esq}" data-margem-topo="{margem_topo}" data-altura-util="{altura_util}" data-largura-util="{largura_util}" data-num-pontos="{len(serie)}">
 <svg viewBox="0 0 {largura} {altura}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Variação de preço de {escape(nome_exibicao)} no período">
@@ -559,6 +566,7 @@ def _renderizar_svg_periodo(serie: list, nome_exibicao: str, slug_base: str, suf
   <path d="{caminho_area}" fill="url(#{id_gradiente})" stroke="none"/>
   <path d="{caminho_linha}" fill="none" stroke="{cor_linha}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
   {pontos_svg_str}
+    {rotulos_datas}
   <circle cx="{circulo_final_x:.1f}" cy="{circulo_final_y:.1f}" r="4" fill="{cor_linha}"/>
 </svg>
 </div>
