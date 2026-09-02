@@ -244,9 +244,11 @@
     var svg = chartWrap.querySelector("svg");
     if (!svg || isNaN(margemEsq) || !numPontos) return;
 
-    var tipoSerie = document.querySelector(".chart-serie-select")?.value || "fisicos";
+    var tipoSerie = document.querySelector(".comparar-serie-select")?.value || document.querySelector(".chart-serie-select")?.value || "fisicos";
     var serieBaseCompleta = dados[tipoSerie][slugBase];
-    var serieCompCompleta = dados[tipoSerie][slugComparar];
+    var comparar = document.getElementById("comparar-select");
+    var slugsComparar = comparar ? Array.from(comparar.selectedOptions).map(function (option) { return option.value; }).filter(Boolean) : [slugComparar];
+    var serieCompCompleta = dados[tipoSerie][slugsComparar[0]];
     if (!serieBaseCompleta || !serieCompCompleta) return;
 
     // Mesma janela de dias usada no periodo em exibicao, alinhada pelas
@@ -290,13 +292,27 @@
     pathBase.setAttribute("stroke-dasharray", "1,0");
     grupo.appendChild(pathBase);
 
-    var pathComp = document.createElementNS(nsSvg, "path");
-    pathComp.setAttribute("d", _caminhoSuaveJS(pontosDe(varComp)));
-    pathComp.setAttribute("fill", "none");
-    pathComp.setAttribute("stroke", "#0B3C1F");
-    pathComp.setAttribute("stroke-width", "2");
-    pathComp.setAttribute("stroke-dasharray", "6,4");
+    var modoComparacao = document.querySelector(".comparar-modo-select")?.value || "linha";
+    var pathComp = document.createElementNS(nsSvg, modoComparacao === "barras" ? "rect" : "path");
+    if (modoComparacao === "barras") {
+      var primeiroBarra = pontosDe(varComp)[varComp.length - 1];
+      pathComp.setAttribute("x", primeiroBarra[0] - passoX * .25); pathComp.setAttribute("y", Math.min(primeiroBarra[1], margemTopo + alturaUtil));
+      pathComp.setAttribute("width", Math.max(4, passoX * .5)); pathComp.setAttribute("height", Math.abs(margemTopo + alturaUtil - primeiroBarra[1]));
+      pathComp.setAttribute("fill", "#0B3C1F"); pathComp.setAttribute("opacity", ".55");
+    } else {
+      pathComp.setAttribute("d", _caminhoSuaveJS(pontosDe(varComp))); pathComp.setAttribute("fill", "none");
+      pathComp.setAttribute("stroke", "#0B3C1F"); pathComp.setAttribute("stroke-width", "2"); pathComp.setAttribute("stroke-dasharray", "6,4");
+    }
     grupo.appendChild(pathComp);
+    slugsComparar.slice(1).forEach(function (slug, indice) {
+      var serieExtra = (dados[tipoSerie][slug] || []).slice(-n);
+      if (serieExtra.length < 2) return;
+      var variacaoExtra = _variacaoPercentual(serieExtra);
+      var pathExtra = document.createElementNS(nsSvg, "path");
+      pathExtra.setAttribute("d", _caminhoSuaveJS(pontosDe(variacaoExtra))); pathExtra.setAttribute("fill", "none");
+      pathExtra.setAttribute("stroke", ["#9C3B2E", "#B08830"][indice % 2]); pathExtra.setAttribute("stroke-width", "2"); pathExtra.setAttribute("stroke-dasharray", "3,3");
+      grupo.appendChild(pathExtra);
+    });
 
     svg.appendChild(grupo);
     chartWrap.classList.add("chart-comparando");
@@ -338,18 +354,30 @@
     estiloImpressao.textContent = "@media print{body.imprimir-grafico>*{display:none!important}body.imprimir-grafico main{display:block!important}body.imprimir-grafico main>section{display:none!important}body.imprimir-grafico main>section.grafico-para-impressao{display:block!important;padding:20px 0}body.imprimir-grafico .chart-ferramentas{display:none!important}}";
     document.head.appendChild(estiloImpressao);
     document.querySelectorAll(".chart-ferramentas").forEach(function (ferramentas) {
-      if (ferramentas.querySelector("#comparar-select")) return;
       var dados = obterDadosHistorico();
       var atual = (document.querySelector(".chart-wrap") || {}).dataset?.slug;
-      var select = document.createElement("select");
-      select.id = "comparar-select"; select.className = "chart-comparar-select";
-      select.setAttribute("aria-label", "Comparar com outra commodity");
-      select.innerHTML = '<option value="">Comparar com...</option>';
+      var select = ferramentas.querySelector("#comparar-select");
+      if (select) { select.multiple = true; select.size = 3; }
+      if (!select) {
+        select = document.createElement("select");
+        select.id = "comparar-select"; select.className = "chart-comparar-select"; select.multiple = true; select.size = 3;
+        select.setAttribute("aria-label", "Comparar com outra commodity");
+        select.innerHTML = '<option value="">Comparar com...</option>';
+      }
       var nomes = { soja: "Soja", milho: "Milho", cafe: "Café Arábica", "boi-gordo": "Boi Gordo" };
       if (dados && dados.fisicos) Object.keys(dados.fisicos).forEach(function (slug) {
         if (slug !== atual) select.innerHTML += '<option value="' + slug + '">' + (nomes[slug] || slug) + '</option>';
       });
-      ferramentas.insertBefore(select, ferramentas.querySelector(".chart-exportar"));
+      if (!select.parentNode) ferramentas.insertBefore(select, ferramentas.querySelector(".chart-exportar"));
+      if (ferramentas.querySelector(".comparar-serie-select")) return;
+      var serieComparada = document.createElement("select");
+      serieComparada.className = "comparar-serie-select"; serieComparada.setAttribute("aria-label", "Série da comparação");
+      serieComparada.innerHTML = '<option value="fisicos">Comparar: físico</option><option value="futuros">Comparar: futuro</option>';
+      ferramentas.insertBefore(serieComparada, ferramentas.querySelector(".chart-exportar"));
+      var modoComparado = document.createElement("select");
+      modoComparado.className = "comparar-modo-select"; modoComparado.setAttribute("aria-label", "Tipo de gráfico da comparação");
+      modoComparado.innerHTML = '<option value="linha">Comparação em linha</option><option value="barras">Comparação em barras</option>';
+      ferramentas.insertBefore(modoComparado, ferramentas.querySelector(".chart-exportar"));
     });
     document.querySelectorAll(".chart-modo-btn").forEach(function (botao) {
       botao.addEventListener("click", function () {
@@ -367,7 +395,7 @@
         var modoAtivo = document.querySelector(".chart-modo-btn.active");
         renderizarModoGrafico(modoAtivo ? modoAtivo.dataset.modoGrafico : "linha");
         var comparar = document.getElementById("comparar-select");
-        if (comparar && comparar.value) desenharComparacao(comparar.value);
+        if (comparar && comparar.selectedOptions.length) desenharComparacao(comparar.value);
       });
     });
     document.querySelectorAll(".chart-exportar").forEach(function (botao) {
