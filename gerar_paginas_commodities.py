@@ -480,6 +480,18 @@ def carregar_historico_futuro(nome_futuro: str, dias: int = 90) -> list:
         )
         if not resultado:
             continue
+        # Quando a cotacao do dolar nao pode ser buscada naquele dia,
+        # converter_futuros_para_reais() (monitor_agro_v9.py) mantem o
+        # preco_reais de commodities cotadas em dolar (soja, cafe) SEM
+        # converter, so acrescentando esse aviso em texto. O numero que
+        # sobra e o preco em US$, nao em R$ - se entrasse no historico
+        # como estivesse em reais, criaria uma "queda" artificial de
+        # ~80% (a diferenca entre R$ e US$ pela taxa de cambio), igual
+        # em qualquer commodity afetada no mesmo dia. Melhor tratar como
+        # dado ausente naquele dia do que corromper a serie com uma
+        # unidade errada.
+        if "não convertido" in str(resultado.get("preco_reais", "")):
+            continue
         try:
             valor = _preco_fisico_para_float(
                 site._preco_futuro_apenas_valor(resultado["preco_reais"])
