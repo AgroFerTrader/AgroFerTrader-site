@@ -289,6 +289,8 @@ Como esse preço é histórico (venda já feita, não uma trava futura), não h�
 
 No PDF/planilha para download (seção "Baixar planilha/PDF do resultado", item 4.1), adicionar um **gráfico de pizza** com a participação percentual de cada subcategoria de custo (fixo + variável juntos, ou dois gráficos separados — usar um só, combinado, para leitura mais rápida). Fixar uma cor por subcategoria (ex: sempre a mesma cor para "Fertilizantes/adubos" entre exportações diferentes) para que, ao comparar relatórios de safras diferentes lado a lado, o produtor perceba visualmente se uma fatia cresceu ou encolheu, sem precisar ler números.
 
+*(Implementado — ver `montarFatiasComposicao()`, `corParaSubcategoria()` e `desenharGraficoPizza()` em `assets/calculadora-core.js`. As 14 subcategorias pré-cadastradas têm cor fixa explícita, sem colisão entre si; subcategorias de nome livre caem num hash determinístico sobre uma paleta separada. Testado: percentuais somando 100%, cores estáveis entre chamadas, e o caso de uma categoria inteira zerada (só fixas ou só variáveis) sem erro.)*
+
 ---
 
 ## 13. Notas para o Claude Code

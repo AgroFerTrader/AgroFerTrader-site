@@ -138,6 +138,8 @@
       nomeCultura: DADOS.culturas[estado.cultura].nome,
       culturaSlug: estado.cultura,
       pessoaJuridica: estado.pessoaJuridica,
+      fixos: estado.fixos,
+      variaveis: estado.variaveis,
     });
   }
 
