@@ -24,10 +24,12 @@ jobs:
         run: python gerar_site.py
       - name: Gerar as páginas de commodities
         run: python gerar_paginas_commodities.py
+      - name: Gerar a calculadora de break-even
+        run: python gerar_calculadora.py
       - name: Publicar as mudanças (commit + push)
         run: |
           git config user.name "AgroFer Trader Bot"
           git config user.email "bot@agrofertrader.local"
-          git add index.html dados/ commodities/ sitemap.xml
+          git add index.html dados/ commodities/ calculadora/ sitemap.xml
           git diff --quiet && git diff --staged --quiet || git commit -m "Atualiza site - $(date +'%d/%m/%Y')"
           git push
