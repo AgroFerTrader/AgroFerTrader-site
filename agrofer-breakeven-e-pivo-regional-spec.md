@@ -177,13 +177,16 @@ Front-end (`assets/calculadora.js`) lembra o e-mail em `localStorage`, carrega o
 
 ---
 
-## 9. Resumo explicativo (correção — obrigatório, feedback do piloto real)
+## 9. Resumo, diagnóstico e detalhamento (correção — obrigatório, feedback do piloto real)
 
-**Problema identificado no primeiro teste real (produção do irmão, milho, 4ha):** os números batem matematicamente (verificado célula por célula), mas exibir só os 4 cartões técnicos (break-even, ganho marginal, ganho real bruto, ganho real líquido) sem narrativa deixou o produtor confuso — em especial porque "ganho marginal" (margem de contribuição) é numericamente maior que "ganho real bruto" (margem após rateio do custo fixo), o que parece contraditório sem explicação.
+**Problema identificado no primeiro teste real (produção do irmão, milho, 4ha):** os números batem matematicamente (verificado célula por célula), mas exibir só os 4 cartões técnicos (break-even, ganho marginal, ganho real bruto, ganho real líquido) sem narrativa deixou o produtor confuso — em especial porque "ganho marginal" (margem de contribuição) é numericamente maior que "ganho real bruto" (margem após rateio do custo fixo), o que parece contraditório sem explicação. Feedback de segunda rodada: falta uma camada de **diagnóstico analítico** (não confundir com recomendação — recomendação é o texto de alerta que já existe; diagnóstico é leitura crítica/comparativa em cima dos números).
 
-**Correção obrigatória — ordem de exibição do resultado:**
-1. **Primeiro: um parágrafo-resumo em texto**, gerado dinamicamente a partir dos valores calculados, ANTES dos cartões técnicos.
-2. **Depois: os cartões técnicos (seção 4)**, agora como "detalhamento", para quem quiser ver a composição.
+**Ordem final de exibição do resultado:**
+1. **Resumo narrativo** (9.1) — parágrafo gerado dinamicamente, texto fixo e sempre visível.
+2. **Diagnóstico** (9.2) — tópicos curtos, cada um uma comparação aritmética, nunca causal; texto fixo e sempre visível, no mesmo nível de destaque do resumo (não fica escondido atrás de clique/hover).
+3. **Detalhamento técnico** (cartões da seção 4) — explicações de conceito (ex: "ganho marginal") viram ícone ⓘ discreto ao lado do rótulo, expandido só sob clique/hover — não mais parágrafo fixo ocupando espaço da tela.
+
+### 9.1. Resumo narrativo
 
 **Template do parágrafo-resumo (preencher com os valores calculados):**
 
@@ -206,15 +209,50 @@ isso resultaria em prejuízo de R${prejuizo_total} nesta safra (R${prejuizo_saca
 o preço, reduzir custo ou aguardar uma janela melhor antes de vender."
 ```
 
-**Explicação obrigatória ao lado do cartão "Ganho marginal/saca" (tooltip ou nota de rodapé), para não parecer contraditório com "Ganho real bruto/saca":**
-```
-"Este é o ganho de cada saca ALÉM das que já bastam para cobrir seu custo fixo — como o custo fixo já está pago
-nessas sacas extras, cada uma rende mais que a média geral por saca (o "ganho real bruto")."
-```
-
-**Nota para o Claude Code:** o parágrafo-resumo é o elemento mais importante da tela de resultado — deve vir com destaque visual (tamanho de fonte maior que os cartões técnicos, topo da seção de resultado), não como rodapé.
-
 *(Implementado — ver `montarResumo()` em `assets/calculadora.js` e `.calc-resumo` em `calculadora/_template.html`. Testado com o cenário exato do piloto (milho, 4ha) e com um cenário de prejuízo; matemática conferida célula por célula nos dois casos.)*
+
+### 9.2. Diagnóstico (tópicos curtos, cada um uma fórmula, nunca causa especulada)
+
+**Diagnóstico 1 — produtividade necessária ao preço informado (inverso do break-even):**
+```
+produtividade_minima = custo_total_ha / preco_venda
+```
+Exibir sempre. Texto:
+```
+Se preco_venda < break_even (ou seja, produtividade_minima > produtividade informada):
+"Para não ter prejuízo ao preço de R${preco_venda}/saca, você precisaria produzir pelo menos
+{produtividade_minima} sacas/ha — {diferenca} sacas/ha a mais do que você informou ({produtividade})."
+
+Se preco_venda >= break_even:
+"Sua produtividade de {produtividade} sacas/ha está {diferenca} sacas/ha acima do mínimo necessário
+({produtividade_minima} sacas/ha) para não ter prejuízo a este preço."
+```
+
+**Diagnóstico 2 — comparação com o preço futuro de mercado (só exibir se o produtor alterou o preço pré-preenchido pelo feed B3; se manteve o valor de mercado, omitir por redundância):**
+```
+diferenca_mercado_valor = preco_venda_informado - preco_futuro_mercado
+diferenca_mercado_pct = diferenca_mercado_valor / preco_futuro_mercado
+```
+Texto:
+```
+"O mercado (B3) projeta R${preco_futuro_mercado}/saca para entrega em {vencimento}, enquanto você projetou
+vender a R${preco_venda_informado} — uma diferença de R${diferenca_mercado_valor} ({diferenca_mercado_pct}%)
+{acima/abaixo} do que o mercado sinaliza para essa data."
+```
+
+**Diagnóstico 3 — Fase 2, só ativar quando houver volume mínimo de dados regionais (ver seção 4.1, regra dos 15-20 produtores):** comparação de produtividade e composição de custo com a média de outros produtores da mesma cultura/região. Não implementado ainda — fica preparado no componente para receber esse terceiro bloco depois.
+
+**Regra editorial (reforçando o que já vale para toda a ferramenta):** cada item do diagnóstico é comparação aritmética entre dois números (o que o produtor informou vs. um referencial — mínimo necessário, preço de mercado, ou futuramente média regional). Nunca inferir causa ("sua produtividade está baixa porque...") — só o quê e o quanto.
+
+*(Implementado — ver `montarDiagnostico()` em `assets/calculadora.js` e `#calc-diagnostico` em `calculadora/_template.html`. Diagnóstico 3 deixado para a Fase 2, conforme decisão da seção 4.1.)*
+
+### 9.3. Explicações de conceito — de parágrafo fixo para ícone ⓘ discreto
+
+Removido o texto de explicação fixo abaixo do cartão "Ganho marginal/saca". Substituído por um ícone pequeno (ⓘ) ao lado do rótulo do cartão, que exibe a explicação em popover só ao clicar/tocar (elemento `<details>` nativo do HTML, acessível e sem JS extra) — mantém a tela limpa e a explicação disponível sob demanda.
+
+**Nota para o Claude Code:** o resumo narrativo (9.1) e o diagnóstico (9.2) juntos são o elemento mais importante da tela de resultado — devem vir com destaque visual, no topo, antes dos cartões técnicos (seção 4), que passam a ser "detalhamento" secundário.
+
+*(Implementado — ver `.calc-info`/`.calc-info-popover` em `calculadora/_template.html`.)*
 
 ---
 

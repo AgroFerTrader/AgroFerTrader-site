@@ -118,6 +118,8 @@
     variaveis: [],
     pessoaJuridica: false,
     precoEditadoManualmente: false,
+    precoMercadoReferencia: null, // valor do vencimento B3 usado para pré-preencher o preço (diagnóstico 2)
+    vencimentoReferencia: null,
   };
 
   var elCorpo = document.querySelector(".calc-corpo");
@@ -225,6 +227,8 @@
       if (!estado.precoEditadoManualmente) {
         elPreco.value = escolhido.valor_reais.toFixed(2);
       }
+      estado.precoMercadoReferencia = escolhido.valor_reais;
+      estado.vencimentoReferencia = formatarVencimento(escolhido.vencimento);
     } else if (dadosCultura.preco_fisico_hoje) {
       elFonte.textContent =
         "Sem cotação de futuro disponível no momento para essa cultura - usando o preço físico de hoje como referência " +
@@ -232,8 +236,14 @@
       if (!estado.precoEditadoManualmente) {
         elPreco.value = dadosCultura.preco_fisico_hoje.toFixed(2);
       }
+      // Preço físico de hoje não tem "vencimento" - diagnóstico 2 (spec 9.2)
+      // só faz sentido comparando com um vencimento de contrato futuro.
+      estado.precoMercadoReferencia = null;
+      estado.vencimentoReferencia = null;
     } else {
       elFonte.textContent = "Sem preço de referência disponível no momento - informe o valor que deseja simular.";
+      estado.precoMercadoReferencia = null;
+      estado.vencimentoReferencia = null;
     }
     recalcular();
   }
@@ -323,6 +333,57 @@
     };
   }
 
+  // Diagnóstico (spec, seção 9.2) - tópicos curtos, cada um comparando dois
+  // números (o que o produtor informou vs. um referencial). Sempre fato e
+  // aritmética, nunca causa especulada - mesma regra editorial da seção 4.1.
+  // Fica sempre visível, no mesmo nível de destaque do resumo (não é um
+  // tooltip escondido, ao contrário das explicações de conceito da 9.3).
+  function montarDiagnostico(resultado) {
+    var itens = [];
+
+    // Diagnóstico 1 - produtividade mínima ao preço informado (sempre exibido).
+    var custoTotalHa = resultado.produtividade > 0 ? resultado.breakEven * resultado.produtividade : 0;
+    if (resultado.precoVenda > 0) {
+      var produtividadeMinima = custoTotalHa / resultado.precoVenda;
+      var diferencaProdutividade = Math.abs(resultado.produtividade - produtividadeMinima);
+      var produtividadeMinimaFmt = produtividadeMinima.toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+      var diferencaProdutividadeFmt = diferencaProdutividade.toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+      var produtividadeFmt = resultado.produtividade.toLocaleString("pt-BR");
+
+      if (resultado.precoVenda < resultado.breakEven) {
+        itens.push(
+          "Para não ter prejuízo ao preço de " + formatarBRL(resultado.precoVenda) + "/saca, você precisaria produzir pelo menos " +
+          produtividadeMinimaFmt + " sacas/ha — " + diferencaProdutividadeFmt + " sacas/ha a mais do que você informou (" +
+          produtividadeFmt + ")."
+        );
+      } else {
+        itens.push(
+          "Sua produtividade de " + produtividadeFmt + " sacas/ha está " + diferencaProdutividadeFmt +
+          " sacas/ha acima do mínimo necessário (" + produtividadeMinimaFmt + " sacas/ha) para não ter prejuízo a este preço."
+        );
+      }
+    }
+
+    // Diagnóstico 2 - só exibido se o produtor sobrescreveu o preço sugerido
+    // pelo feed B3 (se manteve o valor de mercado, comparar seria redundante).
+    if (estado.precoEditadoManualmente && estado.precoMercadoReferencia) {
+      var diferencaValor = resultado.precoVenda - estado.precoMercadoReferencia;
+      var diferencaPct = Math.abs((diferencaValor / estado.precoMercadoReferencia) * 100);
+      itens.push(
+        "O mercado (B3) projeta " + formatarBRL(estado.precoMercadoReferencia) + "/saca para entrega em " +
+        estado.vencimentoReferencia + ", enquanto você projetou vender a " + formatarBRL(resultado.precoVenda) +
+        " — uma diferença de " + formatarBRL(Math.abs(diferencaValor)) + " (" + diferencaPct.toFixed(1).replace(".", ",") + "%) " +
+        (diferencaValor >= 0 ? "acima" : "abaixo") + " do que o mercado sinaliza para essa data."
+      );
+    }
+
+    // Diagnóstico 3 (benchmark regional) fica para a Fase 2, quando houver
+    // volume mínimo de produtores cadastrados (spec, seção 4.1) - não
+    // implementado ainda.
+
+    return itens;
+  }
+
   function recalcular() {
     var resultado = calcular();
     if (!resultado) {
@@ -335,6 +396,15 @@
     var elResumo = document.getElementById("calc-resumo");
     elResumo.textContent = resumo.html;
     elResumo.className = "calc-resumo" + (resumo.alerta ? " alerta" : "");
+
+    var elDiagnostico = document.getElementById("calc-diagnostico");
+    elDiagnostico.innerHTML = "";
+    montarDiagnostico(resultado).forEach(function (texto) {
+      var item = document.createElement("p");
+      item.className = "calc-diagnostico-item";
+      item.textContent = texto;
+      elDiagnostico.appendChild(item);
+    });
 
     document.getElementById("calc-break-even").textContent = formatarBRL(resultado.breakEven);
     var elMargemContrib = document.getElementById("calc-margem-contribuicao");
