@@ -889,6 +889,23 @@ def buscar_futuro_b3(
             except (TypeError, ValueError):
                 preco_formatado = str(preco_bruto)
 
+            # TODOS os vencimentos da tabela (não só o mais próximo,
+            # `primeira_linha` acima) - usado pela calculadora de
+            # break-even (ver agrofer-breakeven-e-pivo-regional-spec.md,
+            # seção 3) para achar o vencimento mais próximo da data em
+            # que o produtor pretende vender, não só o front-month.
+            vencimentos = []
+            for _, linha in tabela.iterrows():
+                valor_linha = None
+                try:
+                    valor_linha = float(linha[coluna_preco]) * fator_conversao
+                except (TypeError, ValueError):
+                    pass
+                vencimentos.append({
+                    "vencimento": str(linha[coluna_contrato]),
+                    "valor_numerico": valor_linha,
+                })
+
             return {
                 "nome": nome_exibicao,
                 "data": f"contrato {primeira_linha[coluna_contrato]}",
@@ -898,6 +915,7 @@ def buscar_futuro_b3(
                 # permitir converter para Real depois, em coletar_dados():
                 "valor_numerico": valor_numerico,
                 "unidade": unidade,
+                "vencimentos": vencimentos,
             }
 
     raise ValueError(f"Não encontrei tabela de futuro reconhecível para {nome_exibicao}")
@@ -940,13 +958,23 @@ def converter_futuros_para_reais(resultados_futuros: list, taxa_dolar: float | N
 
         # "R$/US$" é a cotação do dólar em si (Dólar Futuro) - já é,
         # por definição, uma cotação em Real. Não há o que converter.
+        # (vencimentos já vêm em R$ nesse caso - "valor_reais" espelha
+        # "valor_numerico" pra quem consome só olhar um campo.)
         if "US$" not in unidade or "R$/US$" in unidade:
+            resultado = dict(resultado)
+            resultado["vencimentos"] = [
+                {**v, "valor_reais": float(v["valor_numerico"]) if v["valor_numerico"] is not None else None}
+                for v in resultado.get("vencimentos", [])
+            ]
             resultados_convertidos.append(resultado)
             continue
 
         if taxa_dolar is None or valor_numerico is None:
             resultado = dict(resultado)
             resultado["preco_reais"] = f"{resultado['preco_reais']} (não convertido - dólar indisponível)"
+            resultado["vencimentos"] = [
+                {**v, "valor_reais": None} for v in resultado.get("vencimentos", [])
+            ]
             resultados_convertidos.append(resultado)
             continue
 
@@ -961,6 +989,16 @@ def converter_futuros_para_reais(resultados_futuros: list, taxa_dolar: float | N
             + f" /{unidade_em_reais.split('/', 1)[1] if '/' in unidade_em_reais else ''}"
             + f" (≈ US$ {preco_original_formatado} x R$ {taxa_formatada})"
         )
+        # Cada vencimento também precisa do valor convertido para Real -
+        # é o que a calculadora de break-even usa pra "travar" um preço
+        # de venda numa data futura (ver seção 3 da spec).
+        resultado["vencimentos"] = [
+            {
+                **v,
+                "valor_reais": float(v["valor_numerico"] * taxa_dolar) if v["valor_numerico"] is not None else None,
+            }
+            for v in resultado.get("vencimentos", [])
+        ]
         resultados_convertidos.append(resultado)
 
     return resultados_convertidos
