@@ -162,6 +162,25 @@
 
   .calc-aviso-generico{font-size:13.5px;opacity:.65;margin-top:24px;max-width:60ch;}
 
+  .calc-historico{margin-top:32px;padding-top:28px;border-top:1px solid var(--line);}
+  .calc-historico h3{font-family:var(--display);font-size:17px;margin:0 0 6px;}
+  .calc-historico-apoio{font-size:13.5px;opacity:.7;margin:0 0 16px;max-width:56ch;}
+  .calc-historico-campos{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;}
+  .calc-historico-campos .calc-campo{margin-bottom:0;flex:1 1 220px;}
+  .calc-consentimento{display:flex;align-items:flex-start;gap:8px;margin:14px 0;max-width:56ch;}
+  .calc-consentimento input{margin-top:3px;flex-shrink:0;}
+  .calc-consentimento label{font-size:12.5px;opacity:.75;line-height:1.5;}
+  .calc-historico-status{font-size:13px;margin-top:10px;min-height:1.4em;}
+  .calc-historico-status.erro{color:var(--down);}
+  .calc-historico-status.ok{color:var(--up);}
+
+  .calc-evolucao{margin-top:24px;padding:20px 22px;background:var(--paper-dim);border-left:3px solid var(--leaf);}
+  .calc-evolucao[hidden]{display:none;}
+  .calc-evolucao h4{font-family:var(--display);font-size:15.5px;margin:0 0 10px;}
+  .calc-evolucao-linha{display:flex;justify-content:space-between;gap:12px;font-size:13.5px;margin-bottom:6px;}
+  .calc-evolucao-linha .up{color:var(--up);font-weight:600;}
+  .calc-evolucao-linha .down{color:var(--down);font-weight:600;}
+
   footer{padding:40px 0 56px;font-size:13px;color:var(--ink);opacity:.6;}
   footer .foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:1px solid var(--line);padding-top:24px;max-width:1080px;margin:0 auto;padding-left:24px;padding-right:24px;}
 
@@ -337,6 +356,28 @@
       </div>
 
       <p class="calc-aviso-generico">Cálculo estimado a partir dos valores informados - não constitui recomendação de investimento ou negócio. Confirme a alíquota de Funrural vigente com seu contador antes de decidir.</p>
+
+      <div class="calc-historico" id="calc-historico-secao" hidden>
+        <h3>Salvar meu histórico</h3>
+        <p class="calc-historico-apoio">Guarde este cálculo pelo seu e-mail para comparar com as próximas safras automaticamente, sem precisar reenviar nada. Opcional.</p>
+        <div class="calc-historico-campos">
+          <div class="calc-campo">
+            <label for="calc-email">Seu e-mail</label>
+            <input type="text" id="calc-email" inputmode="email" placeholder="voce@exemplo.com">
+          </div>
+          <button type="button" class="calc-btn-secundario" id="calc-salvar-historico">Salvar este cálculo</button>
+        </div>
+        <div class="calc-consentimento">
+          <input type="checkbox" id="calc-consentimento">
+          <label for="calc-consentimento">Seus dados ficam salvos para comparação nas próximas safras; não serão compartilhados com terceiros sem sua autorização.</label>
+        </div>
+        <p class="calc-historico-status" id="calc-historico-status"></p>
+
+        <div class="calc-evolucao" id="calc-evolucao" hidden>
+          <h4>Evolução frente à safra anterior</h4>
+          <div id="calc-evolucao-lista"></div>
+        </div>
+      </div>
     </section>
   </div>
 </main>

@@ -62,6 +62,17 @@ ALIQUOTA_FUNRURAL = {
     "pessoa_juridica": 0.0223,
 }
 
+# Endpoint de persistência (Google Apps Script, implantado como Web App
+# pelo usuário) - "Salvar meu histórico" (spec seção 4.1). Único lugar do
+# código onde essa URL é definida; se o Apps Script for reimplantado com
+# uma URL nova, só precisa trocar aqui. Vazio/None desliga a funcionalidade
+# de salvar/carregar histórico sem quebrar o resto da calculadora (o
+# cálculo e o PDF continuam funcionando sem depender disso).
+URL_PERSISTENCIA_CALCULADORA = (
+    "https://script.google.com/macros/s/"
+    "AKfycbxovPLKOvDgh-yjsIy6ydkZhUsGTaRVavASr_Iim5rFfsQEvmqyr23x3U3NEKuV8O7P/exec"
+)
+
 # Culturas cobertas pela calculadora - boi gordo fica de fora (o modelo
 # hectares plantados x sacas/ha não se aplica a pecuária de corte, que se
 # pensa em cabeças/arrobas/taxa de lotação; ver spec, seção 7, decisão 2).
@@ -107,7 +118,11 @@ def montar_dados_calculadora(dados: dict) -> dict:
             "produtividade_fonte": produtividade["fonte"],
         }
 
-    return {"culturas": culturas, "aliquota_funrural": ALIQUOTA_FUNRURAL}
+    return {
+        "culturas": culturas,
+        "aliquota_funrural": ALIQUOTA_FUNRURAL,
+        "url_persistencia": URL_PERSISTENCIA_CALCULADORA,
+    }
 
 
 def montar_dados_calculadora_json(dados: dict) -> str:
