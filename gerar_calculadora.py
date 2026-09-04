@@ -28,6 +28,13 @@ PASTA_CALCULADORA = os.path.join(PASTA_SITE, "calculadora")
 CAMINHO_TEMPLATE = os.path.join(PASTA_CALCULADORA, "_template.html")
 CAMINHO_PAGINA = os.path.join(PASTA_CALCULADORA, "index.html")
 
+# Pagina "outros modos" (spec, secao 11, Modos B e C) - acessada só por
+# um link dentro da calculadora principal; usa os mesmos dados embutidos
+# (montar_dados_calculadora_json), so muda o template/pagina.
+PASTA_OUTROS_MODOS = os.path.join(PASTA_CALCULADORA, "outros-modos")
+CAMINHO_TEMPLATE_OUTROS_MODOS = os.path.join(PASTA_OUTROS_MODOS, "_template.html")
+CAMINHO_PAGINA_OUTROS_MODOS = os.path.join(PASTA_OUTROS_MODOS, "index.html")
+
 
 # ---------------------------------------------------------------------------
 # Produtividade média regional (sacas/ha) - fonte CONAB, 10º Levantamento
@@ -168,10 +175,45 @@ def atualizar_pagina(dados: dict) -> None:
     print("Pagina atualizada: calculadora/index.html")
 
 
+def garantir_pagina_existe_outros_modos() -> None:
+    if os.path.exists(CAMINHO_PAGINA_OUTROS_MODOS):
+        return
+    os.makedirs(PASTA_OUTROS_MODOS, exist_ok=True)
+    with open(CAMINHO_TEMPLATE_OUTROS_MODOS, encoding="utf-8") as f:
+        html = f.read()
+    html = html.replace("{{DADOS_CALCULADORA_INICIAL}}", "")
+    html = html.replace("{{EYEBROW_INICIAL}}", "")
+    html = html.replace("{{UPDATED_INICIAL}}", "")
+    with open(CAMINHO_PAGINA_OUTROS_MODOS, "w", encoding="utf-8") as f:
+        f.write(html)
+    print("Pagina criada: calculadora/outros-modos/index.html")
+
+
+def atualizar_pagina_outros_modos(dados: dict) -> None:
+    garantir_pagina_existe_outros_modos()
+
+    with open(CAMINHO_PAGINA_OUTROS_MODOS, encoding="utf-8") as f:
+        html = f.read()
+
+    substituicoes = {
+        "EYEBROW": site.montar_eyebrow(),
+        "UPDATED": site.montar_updated(dados),
+        "DADOS_CALCULADORA": montar_dados_calculadora_json(dados),
+    }
+    for marcador, conteudo in substituicoes.items():
+        html = site._substituir_entre_marcadores(html, marcador, conteudo)
+
+    with open(CAMINHO_PAGINA_OUTROS_MODOS, "w", encoding="utf-8") as f:
+        f.write(html)
+
+    print("Pagina atualizada: calculadora/outros-modos/index.html")
+
+
 def gerar_calculadora() -> None:
     print("Buscando os mesmos dados do dia usados no resto do site (monitor_agro_v9)...")
     dados = monitor.coletar_dados()
     atualizar_pagina(dados)
+    atualizar_pagina_outros_modos(dados)
     print("Calculadora atualizada.")
 
 
