@@ -338,27 +338,107 @@
     return { somaFixos: somaFixos, somaVariaveis: somaVariaveis };
   }
 
+  // Cor fixa por subcategoria (spec, secao 12): a MESMA subcategoria
+  // (ex.: "Fertilizantes/adubos") sempre cai na mesma cor, em qualquer
+  // exportacao/safra, sem precisar guardar essa associacao em lugar
+  // nenhum. As 14 subcategorias pre-cadastradas (SUBCATEGORIAS_*_PADRAO)
+  // ganham cor explicita, garantindo que nunca colidem entre si no
+  // mesmo grafico (o caso comum); subcategorias com nome livre, criadas
+  // via "+ Adicionar subcategoria", caem num hash do nome sobre uma
+  // paleta separada - determinístico, mas sem garantia de nunca colidir
+  // com outra custom no mesmo grafico.
+  var CORES_SUBCATEGORIAS_PADRAO = {
+    "Arrendamento/aluguel da terra": "#4C7A1F",
+    "Depreciação de máquinas e equipamentos": "#B08830",
+    "Mão de obra fixa (salários + encargos)": "#9C3B2E",
+    "Seguro rural": "#2F5D8A",
+    "Manutenção de benfeitorias/infraestrutura": "#7A4C9C",
+    "ITR e outros impostos fixos": "#1F7A6B",
+    "Sementes": "#C77B2E",
+    "Fertilizantes/adubos": "#5A5A5A",
+    "Defensivos (herbicida, inseticida, fungicida)": "#8A2F5D",
+    "Combustível/diesel": "#2F8A5D",
+    "Mão de obra temporária/diarista": "#8A6B2F",
+    "Colheita (frete de colheitadeira terceirizada, se aplicável)": "#3B5D9C",
+    "Frete/transporte da produção": "#9C2F6B",
+    "Secagem e armazenagem": "#5D8A2F",
+  };
+
+  var PALETA_CORES_FALLBACK = [
+    "#2F6B8A", "#8A4C2F", "#5D2F8A", "#2F8A8A", "#8A2F2F", "#6B8A2F",
+    "#2F4C8A", "#8A6B5D", "#4C2F8A", "#2F8A6B", "#8A5D2F", "#3B2F8A",
+  ];
+
+  function corParaSubcategoria(nome) {
+    var texto = String(nome || "");
+    if (CORES_SUBCATEGORIAS_PADRAO[texto]) return CORES_SUBCATEGORIAS_PADRAO[texto];
+    var hash = 0;
+    for (var i = 0; i < texto.length; i++) {
+      hash = (hash * 31 + texto.charCodeAt(i)) >>> 0;
+    }
+    return PALETA_CORES_FALLBACK[hash % PALETA_CORES_FALLBACK.length];
+  }
+
+  // Uma fatia por subcategoria preenchida - fixas E variaveis misturadas
+  // num unico grafico (spec, secao 12), nao duas fatias agregadas nem
+  // dois graficos separados. So omite subcategorias com valor R$0,00 -
+  // se todas as fixas (ou todas as variaveis) forem zero, o grafico
+  // simplesmente mostra só as outras, sem tratar isso como erro.
+  function montarFatiasComposicao(fixos, variaveis) {
+    var todas = (fixos || []).concat(variaveis || [])
+      .map(function (i) { return { nome: i.nome || "(sem nome)", valor: parseFloat(i.valor) || 0 }; })
+      .filter(function (i) { return i.valor > 0; });
+    var total = todas.reduce(function (s, i) { return s + i.valor; }, 0);
+    if (!todas.length || total <= 0) return [];
+
+    todas.sort(function (a, b) { return b.valor - a.valor; });
+    return todas.map(function (i) {
+      return { nome: i.nome, valor: i.valor, pct: (i.valor / total) * 100, cor: corParaSubcategoria(i.nome) };
+    });
+  }
+
   function atualizarComposicaoCusto(resultado, fixos, variaveis, containerId) {
     var container = document.getElementById(containerId);
     if (!container) return;
     container.innerHTML = "";
-    var todas = (fixos || []).concat(variaveis || [])
-      .map(function (i) { return { nome: i.nome || "(sem nome)", valor: parseFloat(i.valor) || 0 }; })
-      .filter(function (i) { return i.valor > 0; });
-    var total = resultado.somaFixos + resultado.somaVariaveis;
-    if (!todas.length || total <= 0) return;
-
-    todas.sort(function (a, b) { return b.valor - a.valor; });
-    todas.forEach(function (item) {
-      var pct = (item.valor / total) * 100;
+    montarFatiasComposicao(fixos, variaveis).forEach(function (fatia) {
       var linha = document.createElement("div");
       linha.className = "calc-composicao-linha";
       linha.innerHTML =
-        '<span class="calc-composicao-nome" title="' + item.nome.replace(/"/g, "&quot;") + '">' + item.nome + "</span>" +
-        '<span class="calc-composicao-barra-fundo"><span class="calc-composicao-barra" style="width:' + pct.toFixed(1) + '%"></span></span>' +
-        '<span class="calc-composicao-pct">' + pct.toFixed(1).replace(".", ",") + "%</span>";
+        '<span class="calc-composicao-nome" title="' + fatia.nome.replace(/"/g, "&quot;") + '">' + fatia.nome + "</span>" +
+        '<span class="calc-composicao-barra-fundo"><span class="calc-composicao-barra" style="width:' + fatia.pct.toFixed(1) + '%"></span></span>' +
+        '<span class="calc-composicao-pct">' + fatia.pct.toFixed(1).replace(".", ",") + "%</span>";
       container.appendChild(linha);
     });
+  }
+
+  // Desenha o grafico de pizza num <canvas> fora da tela e devolve como
+  // imagem (data URL) - jsPDF nao tem primitiva nativa de fatia de
+  // pizza, mas aceita imagem embutida via addImage.
+  function desenharGraficoPizza(fatias, tamanhoPx) {
+    var canvas = document.createElement("canvas");
+    canvas.width = tamanhoPx;
+    canvas.height = tamanhoPx;
+    var ctx = canvas.getContext("2d");
+    var cx = tamanhoPx / 2, cy = tamanhoPx / 2, raio = tamanhoPx / 2 - 4;
+    var total = fatias.reduce(function (s, f) { return s + f.valor; }, 0);
+    var anguloAtual = -Math.PI / 2;
+    fatias.forEach(function (fatia) {
+      var angulo = (fatia.valor / total) * Math.PI * 2;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.arc(cx, cy, raio, anguloAtual, anguloAtual + angulo);
+      ctx.closePath();
+      ctx.fillStyle = fatia.cor;
+      ctx.fill();
+      anguloAtual += angulo;
+    });
+    return canvas.toDataURL("image/png");
+  }
+
+  function hexParaRgb(hex) {
+    var limpo = String(hex).replace("#", "");
+    return [parseInt(limpo.substr(0, 2), 16), parseInt(limpo.substr(2, 2), 16), parseInt(limpo.substr(4, 2), 16)];
   }
 
   // -------------------------------------------------------------------
@@ -582,6 +662,34 @@
       linha("Resultado total da safra (líquido)", formatarBRL(resultado.lucroLiquidoTotal));
     }
 
+    // Gráfico de pizza da composição do custo (spec, seção 12) - uma
+    // fatia por subcategoria preenchida, fixas e variáveis misturadas,
+    // com cor fixa por nome (mesma cor em qualquer exportação).
+    var fatias = montarFatiasComposicao(ctx.fixos, ctx.variaveis);
+    if (fatias.length) {
+      y += 16;
+      if (y > 560) { doc.addPage(); y = margem; }
+      doc.setFont("helvetica", "bold"); doc.setFontSize(13); doc.setTextColor(11, 60, 31);
+      doc.text("Composição do custo", margem, y); y += 16;
+
+      var tamanhoPx = 300, tamanhoPt = 130;
+      var imagemPizza = desenharGraficoPizza(fatias, tamanhoPx);
+      doc.addImage(imagemPizza, "PNG", margem, y, tamanhoPt, tamanhoPt);
+
+      var legendaX = margem + tamanhoPt + 24;
+      var legendaY = y + 6;
+      fatias.forEach(function (fatia) {
+        var rgb = hexParaRgb(fatia.cor);
+        doc.setFillColor(rgb[0], rgb[1], rgb[2]);
+        doc.rect(legendaX, legendaY - 7, 8, 8, "F");
+        doc.setFont("helvetica", "normal"); doc.setFontSize(9.5); doc.setTextColor(11, 60, 31);
+        doc.text(fatia.nome + " — " + fatia.pct.toFixed(1).replace(".", ",") + "%", legendaX + 13, legendaY);
+        legendaY += 14;
+      });
+
+      y += tamanhoPt + 16;
+    }
+
     y += 20;
     doc.setFont("helvetica", "normal"); doc.setFontSize(9); doc.setTextColor(140, 140, 140);
     doc.text(
@@ -609,6 +717,9 @@
     somarSubcategorias: somarSubcategorias,
     recalcularSubtotais: recalcularSubtotais,
     atualizarComposicaoCusto: atualizarComposicaoCusto,
+    corParaSubcategoria: corParaSubcategoria,
+    montarFatiasComposicao: montarFatiasComposicao,
+    desenharGraficoPizza: desenharGraficoPizza,
     emailValido: emailValido,
     buscarHistorico: buscarHistorico,
     salvarHistorico: salvarHistorico,
