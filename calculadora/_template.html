@@ -353,7 +353,13 @@
       <span class="calc-detalhamento-label">Detalhamento</span>
       <div class="calc-resultado-grid">
         <div class="calc-resultado-card">
-          <div class="calc-resultado-label">Break-even (preço mínimo/saca)</div>
+          <div class="calc-resultado-label">
+            Break-even (preço mínimo/saca)
+            <details class="calc-info">
+              <summary aria-label="O que é isso?">ⓘ</summary>
+              <div class="calc-info-popover">É o menor preço pelo qual você pode vender sem ter prejuízo. Abaixo disso, você perde dinheiro; acima, você lucra.</div>
+            </details>
+          </div>
           <div class="calc-resultado-valor" id="calc-break-even">—</div>
         </div>
         <div class="calc-resultado-card">
@@ -361,23 +367,41 @@
             Ganho marginal/saca
             <details class="calc-info">
               <summary aria-label="O que é isso?">ⓘ</summary>
-              <div class="calc-info-popover">Ganho de cada saca ALÉM das que já bastam para cobrir seu custo fixo — como o custo fixo já está pago nessas sacas extras, cada uma rende mais que a média geral por saca (o "ganho real bruto" ao lado).</div>
+              <div class="calc-info-popover">É quanto sobra em cada saca a mais que você vender, depois que suas contas fixas já estão pagas — por isso essa saca extra rende um pouco mais que a média das outras.</div>
             </details>
           </div>
           <div class="calc-resultado-valor" id="calc-margem-contribuicao">—</div>
         </div>
         <div class="calc-resultado-card">
-          <div class="calc-resultado-label">Ganho real bruto/saca</div>
+          <div class="calc-resultado-label">
+            Ganho real bruto/saca
+            <details class="calc-info">
+              <summary aria-label="O que é isso?">ⓘ</summary>
+              <div class="calc-info-popover">É quanto sobra, em média, em cada saca vendida — já descontando todos os seus gastos, mas ainda sem o imposto.</div>
+            </details>
+          </div>
           <div class="calc-resultado-valor" id="calc-margem-bruta">—</div>
         </div>
         <div class="calc-resultado-card">
-          <div class="calc-resultado-label">Ganho real líquido/saca</div>
+          <div class="calc-resultado-label">
+            Ganho real líquido/saca
+            <details class="calc-info">
+              <summary aria-label="O que é isso?">ⓘ</summary>
+              <div class="calc-info-popover">É quanto realmente fica no seu bolso por saca, depois de pagar os gastos E o imposto (Funrural).</div>
+            </details>
+          </div>
           <div class="calc-resultado-valor" id="calc-lucro-liquido-saca">—</div>
         </div>
       </div>
 
       <div class="calc-resultado-card" style="text-align:center;">
-        <div class="calc-resultado-label">Resultado total da safra (líquido)</div>
+        <div class="calc-resultado-label" style="justify-content:center;">
+          Resultado total da safra (líquido)
+          <details class="calc-info">
+            <summary aria-label="O que é isso?">ⓘ</summary>
+            <div class="calc-info-popover" style="left:50%;transform:translateX(-50%);">É quanto sobra no total da safra inteira, depois de pagar tudo.</div>
+          </details>
+        </div>
         <div class="calc-resultado-valor" id="calc-lucro-liquido-total" style="font-size:28px;">—</div>
       </div>
 
