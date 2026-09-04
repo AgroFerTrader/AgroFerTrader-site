@@ -274,6 +274,52 @@
       breakEven: breakEven, margemContribuicao: margemContribuicao, margemBruta: margemBruta,
       lucroLiquidoSaca: lucroLiquidoSaca, lucroLiquidoTotal: lucroLiquidoTotal,
       precoVenda: precoVal, somaFixos: somaFixos, somaVariaveis: somaVariaveis,
+      sacasTotais: sacasTotais, receitaBrutaTotal: receitaBrutaTotal, receitaLiquidaTotal: receitaLiquidaTotal,
+      hectares: hectares, produtividade: produtividade,
+    };
+  }
+
+  // Paragrafo-resumo em linguagem corrida, feedback direto de um piloto
+  // real (safra do irmao, milho, 4ha): os 4 cartoes tecnicos sozinhos,
+  // sem narrativa, deixaram o produtor confuso - em especial porque
+  // "ganho marginal" (margem de contribuicao) e numericamente MAIOR que
+  // "ganho real bruto" (margem apos ratear o custo fixo), o que parece
+  // contraditorio sem explicacao. Esse resumo vem ANTES dos cartoes
+  // tecnicos (que passam a ser so o "detalhamento"), com destaque visual
+  // maior - e o elemento mais importante da tela de resultado.
+  function montarResumo(resultado) {
+    var nomeCultura = (DADOS.culturas[estado.cultura].nome || estado.cultura).toLowerCase();
+    var sacasTotaisFmt = Math.round(resultado.sacasTotais).toLocaleString("pt-BR");
+    var custoTotalTotal = resultado.somaFixos + resultado.somaVariaveis;
+
+    if (resultado.precoVenda < resultado.breakEven) {
+      var prejuizoTotal = Math.abs(resultado.lucroLiquidoTotal);
+      var prejuizoSaca = Math.abs(resultado.lucroLiquidoSaca);
+      return {
+        alerta: true,
+        html:
+          "Atenção: ao preço de " + formatarBRL(resultado.precoVenda) + "/saca, você venderia abaixo do seu break-even de " +
+          formatarBRL(resultado.breakEven) + " — isso resultaria em prejuízo de " + formatarBRL(prejuizoTotal) +
+          " nesta safra (" + formatarBRL(prejuizoSaca) + " por saca). Considere renegociar o preço, reduzir custo ou " +
+          "aguardar uma janela melhor antes de vender.",
+      };
+    }
+
+    var qualificar = resultado.breakEven > 0 && (resultado.margemBruta / resultado.breakEven) < 0.10 ? "apertada" : "confortável";
+    return {
+      alerta: false,
+      html:
+        "Você plantou " + resultado.hectares.toLocaleString("pt-BR") + " hectares de " + nomeCultura +
+        ", com produtividade esperada de " + resultado.produtividade.toLocaleString("pt-BR") + " sacas/ha — cerca de " +
+        sacasTotaisFmt + " sacas nesta safra. Seus custos somam " + formatarBRL(custoTotalTotal) + " (" +
+        formatarBRL(resultado.somaFixos) + " fixos + " + formatarBRL(resultado.somaVariaveis) + " variáveis). " +
+        "Para não ter prejuízo, você precisa vender a pelo menos " + formatarBRL(resultado.breakEven) + " por saca. " +
+        "Ao preço informado de " + formatarBRL(resultado.precoVenda) + "/saca, sua receita bruta seria " +
+        formatarBRL(resultado.receitaBrutaTotal) + "; depois do Funrural, sobra " + formatarBRL(resultado.receitaLiquidaTotal) +
+        " líquidos — dos quais " + formatarBRL(custoTotalTotal) + " cobrem seu custo, restando " +
+        formatarBRL(resultado.lucroLiquidoTotal) + " de lucro líquido nesta safra (" + formatarBRL(resultado.lucroLiquidoSaca) +
+        " por saca). Esse preço está " + formatarBRL(resultado.margemBruta) + " acima do seu break-even: uma margem " +
+        qualificar + ".",
     };
   }
 
@@ -284,6 +330,11 @@
       return;
     }
     elResultado.hidden = false;
+
+    var resumo = montarResumo(resultado);
+    var elResumo = document.getElementById("calc-resumo");
+    elResumo.textContent = resumo.html;
+    elResumo.className = "calc-resumo" + (resumo.alerta ? " alerta" : "");
 
     document.getElementById("calc-break-even").textContent = formatarBRL(resultado.breakEven);
     var elMargemContrib = document.getElementById("calc-margem-contribuicao");
@@ -301,9 +352,6 @@
     var elLucroTotal = document.getElementById("calc-lucro-liquido-total");
     elLucroTotal.textContent = formatarBRL(resultado.lucroLiquidoTotal);
     elLucroTotal.className = "calc-resultado-valor " + (resultado.lucroLiquidoTotal >= 0 ? "up" : "down");
-
-    var alerta = document.getElementById("calc-alerta");
-    alerta.hidden = resultado.precoVenda >= resultado.breakEven;
 
     atualizarComposicaoCusto(resultado);
   }
