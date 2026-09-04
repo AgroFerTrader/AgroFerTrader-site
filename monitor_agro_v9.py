@@ -255,31 +255,25 @@ _UFS_VALIDAS = {
 _UF_PRIORIDADE = ["MG", "MT", "PR", "GO", "RS", "SP", "BA", "MS", "SC", "MA", "PA", "ES"]
 
 
-def buscar_cotacoes_regionais_mercado_fisico(
-    caminho: str, estados_desejados: list, max_pracas: int = 4
-) -> list:
+def _ler_pracas_mercado_fisico(caminho: str) -> list:
     """
-    Busca cotações regionais de praças/cooperativas de UMA commodity nas
-    páginas "Mercado Físico - Sindicatos e Cooperativas" do Notícias
-    Agrícolas (soja e milho), que trazem preço por cidade/cooperativa no
+    Lê a página "Mercado Físico - Sindicatos e Cooperativas" do Notícias
+    Agrícolas (soja e milho), que traz preço por cidade/cooperativa no
     formato "Cidade/UF (Cooperativa)" - mesmo padrão da fonte dedicada de
-    café (ver buscar_cotacoes_regionais_cafe).
+    café (ver buscar_cotacoes_regionais_cafe). Devolve TODAS as praças
+    com cotação válida (não filtra por UF/região aqui - isso é
+    responsabilidade de quem chama, ver
+    buscar_cotacoes_regionais_mercado_fisico e
+    buscar_cotacoes_regionais_sul_de_minas_fisico logo abaixo).
 
     Essas páginas acumulam o histórico dos últimos dias como várias
     tabelas empilhadas (mesmo cabeçalho "Praça"/"Preço"/"Variação"
     repetido, uma tabela por dia); usamos a PRIMEIRA tabela com linhas de
     dado (não só o cabeçalho) como o dia mais recente.
 
-    estados_desejados: UFs, em ordem de prioridade, das praças que se
-    quer destacar (ex.: ["MT", "PR", "MS", "RS"] para soja). Para cada UF
-    dessa lista, pega-se a PRIMEIRA praça encontrada na tabela com preço
-    cotado; estados sem nenhuma praça cotada nesta rodada ("s/ cotação"
-    ou ausentes da tabela) simplesmente não aparecem no resultado -
-    preferimos mostrar menos praças reais a inventar uma cotação.
-
-    Retorna uma lista de dicts {"praca": "Cidade - UF", "preco": str},
-    na mesma ordem de estados_desejados, ou lista vazia se a página não
-    trouxer nenhuma tabela reconhecível (layout mudou, fonte fora do ar).
+    Retorna uma lista de dicts {"cidade": str, "uf": str, "praca": "Cidade - UF",
+    "preco": str}, ou lista vazia se a página não trouxer nenhuma tabela
+    reconhecível (layout mudou, fonte fora do ar).
 
     IMPORTANTE (bug real encontrado e evitado aqui): esta função NÃO usa
     pd.read_html para ler a tabela. Preços de 2-3 dígitos com vírgula
@@ -330,7 +324,7 @@ def buscar_cotacoes_regionais_mercado_fisico(
     if indice_praca is None or indice_preco is None:
         return []
 
-    por_uf = {}
+    pracas = []
     for tr in linhas_html[1:]:
         celulas = [td.get_text(strip=True) for td in tr.find_all("td")]
         if len(celulas) <= max(indice_praca, indice_preco):
@@ -340,7 +334,7 @@ def buscar_cotacoes_regionais_mercado_fisico(
         if not m:
             continue
         cidade, uf = m.group(1).strip(), m.group(2).upper()
-        if not cidade or uf not in _UFS_VALIDAS or uf not in estados_desejados or uf in por_uf:
+        if not cidade or uf not in _UFS_VALIDAS:
             continue
         try:
             preco_num = _texto_para_float(celulas[indice_preco])
@@ -349,9 +343,47 @@ def buscar_cotacoes_regionais_mercado_fisico(
         if preco_num <= 0:
             continue
         preco_fmt = f"{preco_num:,.2f}".replace(",", "_").replace(".", ",").replace("_", ".")
-        por_uf[uf] = {"praca": f"{cidade} - {uf}", "preco": preco_fmt}
+        pracas.append({"cidade": cidade, "uf": uf, "praca": f"{cidade} - {uf}", "preco": preco_fmt})
+
+    return pracas
+
+
+def buscar_cotacoes_regionais_mercado_fisico(
+    caminho: str, estados_desejados: list, max_pracas: int = 4
+) -> list:
+    """
+    Como _ler_pracas_mercado_fisico(), mas escolhe UMA praça por UF de
+    `estados_desejados` (a primeira encontrada com cotação), na ordem da
+    lista - visão nacional variada, um estado de cada vez. Estados sem
+    nenhuma praça cotada nesta rodada simplesmente não aparecem no
+    resultado - preferimos mostrar menos praças reais a inventar uma
+    cotação.
+    """
+    por_uf = {}
+    for item in _ler_pracas_mercado_fisico(caminho):
+        if item["uf"] not in estados_desejados or item["uf"] in por_uf:
+            continue
+        por_uf[item["uf"]] = {"praca": item["praca"], "preco": item["preco"]}
 
     return [por_uf[uf] for uf in estados_desejados if uf in por_uf][:max_pracas]
+
+
+def buscar_cotacoes_regionais_sul_de_minas_fisico(caminho: str, max_pracas: int = 4) -> list:
+    """
+    Como _ler_pracas_mercado_fisico(), mas retorna todas as praças do Sul
+    de Minas (mesma região do pivô regional do site - ver
+    agrofer-breakeven-e-pivo-regional-spec.md), em vez de uma por UF.
+    Reaproveita a mesma lista de cidades cafeeiras do Sul de Minas
+    (_REGIOES_CAFE_MG) - a fonte de soja/milho também cobre cidades dessa
+    região (ex.: Machado/MG, via cooperativa Coopama), apesar do nome da
+    função original sugerir só café.
+    """
+    selecionadas = [
+        item
+        for item in _ler_pracas_mercado_fisico(caminho)
+        if item["uf"] == "MG" and _regiao_cafe_de(item["praca"]) == "Sul de Minas"
+    ]
+    return [{"praca": item["praca"], "preco": item["preco"]} for item in selecionadas[:max_pracas]]
 
 
 def buscar_cotacoes_regionais_boi(estados_desejados: list, max_pracas: int = 4) -> list:
@@ -428,6 +460,72 @@ def buscar_cotacoes_regionais_boi(estados_desejados: list, max_pracas: int = 4) 
         por_uf[uf] = {"praca": f"{regiao} - {uf}", "preco": preco_fmt}
 
     return [por_uf[uf] for uf in estados_desejados if uf in por_uf][:max_pracas]
+
+
+def buscar_cotacoes_regionais_boi_sul_de_minas() -> list:
+    """
+    Preço do boi gordo especificamente para o Sul de Minas, a partir da
+    mesma fonte (Scot Consultoria) usada por buscar_cotacoes_regionais_boi
+    - só que aqui, em vez de escolher uma região por UF de uma lista,
+    procura a linha "MG Sul" (a classificação regional que a própria
+    fonte já usa para o Sul de Minas dentro de Minas Gerais, ao lado de
+    "MG Triângulo", "MG Norte", "MG B.Horizonte").
+
+    Diferente das praças de soja/milho/café (cidade específica), aqui o
+    dado já vem por região dentro do estado - por isso devolve no máximo
+    um item, rotulado "Sul de Minas" em vez de uma cidade.
+    """
+    from bs4 import BeautifulSoup
+
+    url = "https://www.noticiasagricolas.com.br/cotacoes/boi-gordo/boi-gordo-scot-consultoria"
+    cabecalhos = {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/124.0.0.0 Safari/537.36"
+        )
+    }
+    resposta = requests.get(url, headers=cabecalhos, timeout=10)
+    resposta.raise_for_status()
+
+    sopa = BeautifulSoup(resposta.text, "lxml")
+    tabela_html = sopa.find("table")
+    if tabela_html is None:
+        return []
+
+    linhas_html = tabela_html.find_all("tr")
+    if len(linhas_html) < 2:
+        return []
+
+    cabecalho = [c.get_text(strip=True).lower() for c in linhas_html[0].find_all(["th", "td"])]
+    indice_municipio = next(
+        (i for i, c in enumerate(cabecalho) if "município" in c or "municipio" in c), None
+    )
+    indice_preco = next((i for i, c in enumerate(cabecalho) if "à vista" in c or "a vista" in c), None)
+    if indice_municipio is None or indice_preco is None:
+        return []
+
+    for tr in linhas_html[1:]:
+        celulas = [td.get_text(strip=True) for td in tr.find_all("td")]
+        if len(celulas) <= max(indice_municipio, indice_preco):
+            continue
+
+        partes = celulas[indice_municipio].split(" ", 1)
+        if len(partes) != 2:
+            continue
+        uf, regiao = partes[0].upper(), partes[1].strip().rstrip("*").strip()
+        if uf != "MG" or regiao.lower() != "sul":
+            continue
+        try:
+            preco_num = _texto_para_float(celulas[indice_preco])
+        except ValueError:
+            continue
+        if preco_num <= 0:
+            continue
+        preco_fmt = f"{preco_num:,.2f}".replace(",", "_").replace(".", ",").replace("_", ".")
+        return [{"praca": "Sul de Minas", "preco": preco_fmt}]
+
+    return []
 
 
 def buscar_cotacoes_regionais_cafe(max_pracas: int = 6) -> list:

@@ -59,9 +59,6 @@ COMMODITIES_PAGINAS = [
         "nome_fisica": "Soja",
         "nome_futuro": "Soja Futuro (B3)",
         "categoria_noticias": "soja",
-        # Praças regionais, em ordem de prioridade - ver
-        # buscar_cotacoes_regionais_da_pagina() logo abaixo.
-        "estados_regionais": ["MT", "PR", "MS", "RS"],
         "titulo_pagina": "Preço da Soja Hoje — Cotação Física, Futuro e Notícias",
         "meta_descricao": "Cotação física e futura da soja atualizadas diariamente (CEPEA/Esalq e B3), com histórico de preços e notícias específicas do mercado de soja.",
         "headline": "Análise de Mercado — Soja",
@@ -73,7 +70,6 @@ COMMODITIES_PAGINAS = [
         "nome_fisica": "Milho",
         "nome_futuro": "Milho Futuro (B3)",
         "categoria_noticias": "milho",
-        "estados_regionais": ["MT", "PR", "GO", "MG"],
         "titulo_pagina": "Preço do Milho Hoje — Cotação Física, Futuro e Notícias",
         "meta_descricao": "Cotação física e futura do milho atualizadas diariamente (CEPEA/Esalq e B3), com histórico de preços e notícias específicas do mercado de milho.",
         "headline": "Análise de Mercado — Milho",
@@ -98,7 +94,6 @@ COMMODITIES_PAGINAS = [
         "nome_fisica": "Boi Gordo",
         "nome_futuro": "Boi Gordo Futuro (B3)",
         "categoria_noticias": "boi",
-        "estados_regionais": ["SP", "MT", "BA", "GO"],
         "titulo_pagina": "Preço do Boi Gordo Hoje — Cotação Física, Futuro e Notícias",
         "meta_descricao": "Cotação física e futura do boi gordo atualizadas diariamente (CEPEA/Esalq e B3), com histórico de preços e notícias específicas da pecuária de corte.",
         "headline": "Análise de Mercado — Boi Gordo",
@@ -300,29 +295,35 @@ def carregar_analise_markdown(slug: str):
 
 
 # ---------------------------------------------------------------------------
-# 0) COTACOES REGIONAIS - pivo regional do site: foco no Sul de Minas
-#    (ver agrofer-breakeven-e-pivo-regional-spec.md). Café tem fonte
-#    pública granular o suficiente para automatizar por região (CEPEA,
-#    via buscar_cotacoes_regionais_cafe_sul_de_minas); soja/milho/boi
-#    gordo ainda usam a coleta por estado (sem indicador público de Sul
-#    de Minas) até a Parte 1, item 2, trocar por dado manual.
+# 0) COTACOES REGIONAIS - pivo regional do site: foco no Sul de Minas (ver
+#    agrofer-breakeven-e-pivo-regional-spec.md). As 4 commodities têm
+#    fonte pública automatizável para essa região especificamente:
+#    - Café: CEPEA/Notícias Agrícolas, por praça cafeeira (já existia).
+#    - Soja/milho: mesma página de "mercado físico" já usada para a
+#      visão nacional, mas filtrando cidades do Sul de Minas em vez de
+#      uma praça por estado (ex.: Machado/MG, via cooperativa Coopama).
+#    - Boi gordo: fonte Scot Consultoria já classifica "MG Sul" como
+#      região própria dentro do estado.
+#    Todas podem retornar lista vazia num dia em que a fonte não tiver
+#    cotação fresca pra Sul de Minas especificamente (comum pra soja,
+#    cuja cooperativa de referência não posta preço todo dia) - a
+#    página então não mostra bloco nenhum nesse dia, em vez de inventar
+#    um número ou mostrar a região errada.
 # ---------------------------------------------------------------------------
 
 def buscar_cotacoes_regionais_da_pagina(config: dict) -> list:
     if config["slug"] == "cafe":
         return monitor.buscar_cotacoes_regionais_cafe_sul_de_minas()
     if config["slug"] == "soja":
-        return monitor.buscar_cotacoes_regionais_mercado_fisico(
-            "soja/soja-mercado-fisico-sindicatos-e-cooperativas",
-            config["estados_regionais"],
+        return monitor.buscar_cotacoes_regionais_sul_de_minas_fisico(
+            "soja/soja-mercado-fisico-sindicatos-e-cooperativas"
         )
     if config["slug"] == "milho":
-        return monitor.buscar_cotacoes_regionais_mercado_fisico(
-            "milho/milho-mercado-fisico-sindicatos-e-cooperativas",
-            config["estados_regionais"],
+        return monitor.buscar_cotacoes_regionais_sul_de_minas_fisico(
+            "milho/milho-mercado-fisico-sindicatos-e-cooperativas"
         )
     if config["slug"] == "boi-gordo":
-        return monitor.buscar_cotacoes_regionais_boi(config["estados_regionais"])
+        return monitor.buscar_cotacoes_regionais_boi_sul_de_minas()
     return []
 
 
@@ -1011,8 +1012,7 @@ def atualizar_pagina_commodity(config: dict, dados: dict) -> None:
         # e usado na home) resolveria errado a partir daqui e cairia num 404.
         "PRECO_FISICO": site.montar_precos_html(fisica_filtrada, com_links=False),
         "COTACOES_REGIONAIS": site.montar_cotacoes_regionais_html(
-            cotacoes_regionais,
-            titulo_secao="Sul de Minas" if config["slug"] == "cafe" else "Outras praças",
+            cotacoes_regionais, titulo_secao="Sul de Minas"
         ),
         "FUTURO": site.montar_futuros_html(futuro_filtrado),
         "GRAFICO": montar_grafico_svg(
