@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
-<link rel="manifest" href="../site.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../assets/apple-touch-icon.png">
+<link rel="manifest" href="../../site.webmanifest">
 
-<title>Calculadora de Break-even | AgroFer Trader</title>
-<meta name="description" content="Calcule o preço mínimo que cobre seus custos (break-even) e a margem real da sua safra de soja, milho ou café - com o preço de venda travável hoje via contrato futuro.">
+<title>Outras formas de calcular | AgroFer Trader</title>
+<meta name="description" content="Não sabe seu preço de venda ainda, ou não sabe sua produtividade? Descubra seu break-even ou sua produtividade a partir do que você já vendeu.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<link rel="canonical" href="https://agrofertrader.github.io/AgroFerTrader-site/calculadora/">
+<link rel="canonical" href="https://agrofertrader.github.io/AgroFerTrader-site/calculadora/outros-modos/">
 
 <meta property="og:locale" content="pt_BR">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Calculadora de Break-even | AgroFer Trader">
-<meta property="og:description" content="Calcule o preço mínimo que cobre seus custos (break-even) e a margem real da sua safra de soja, milho ou café.">
-<meta property="og:url" content="https://agrofertrader.github.io/AgroFerTrader-site/calculadora/">
+<meta property="og:title" content="Outras formas de calcular | AgroFer Trader">
+<meta property="og:description" content="Não sabe seu preço de venda ainda, ou não sabe sua produtividade? Descubra seu break-even ou sua produtividade a partir do que você já vendeu.">
+<meta property="og:url" content="https://agrofertrader.github.io/AgroFerTrader-site/calculadora/outros-modos/">
 <meta property="og:site_name" content="AgroFer Trader">
 <meta property="og:image" content="https://agrofertrader.github.io/AgroFerTrader-site/assets/logo.png">
 <meta property="og:image:alt" content="Logo da AgroFer Trader">
@@ -61,23 +61,31 @@
   .hero{background:var(--ink);color:var(--paper);}
   .hero-inner{padding:48px 24px 40px;max-width:1080px;margin:0 auto;}
   .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
-  h1.headline{font-family:var(--display);font-weight:600;font-size:clamp(30px, 4.5vw, 46px);line-height:1.1;margin:0 0 16px;max-width:20ch;}
+  h1.headline{font-family:var(--display);font-weight:600;font-size:clamp(30px, 4.5vw, 46px);line-height:1.1;margin:0 0 16px;max-width:24ch;}
   .hero-sub{font-size:16px;color:var(--ink-soft);max-width:62ch;margin:0;}
   .updated{font-size:13px;color:var(--ink-soft);opacity:.75;font-family:var(--mono);margin-top:14px;}
 
   main{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
 
+  .calc-voltar{font-size:13.5px;margin:0 0 28px;}
+  .calc-voltar a{color:var(--leaf);font-weight:600;text-decoration:none;}
+  .calc-voltar a:hover{text-decoration:underline;}
+
+  .calc-modo-escolha{display:flex;flex-direction:column;gap:10px;margin-bottom:40px;}
+  .calc-modo-btn{
+    font-family:var(--body);font-size:15px;text-align:left;padding:18px 20px;border:1px solid var(--line);
+    border-radius:2px;background:var(--paper);color:var(--ink);cursor:pointer;
+  }
+  .calc-modo-btn.active{border-color:var(--gold);background:var(--ink);color:var(--paper);font-weight:600;}
+
   .calc-cultura-escolha{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:48px;}
+  .calc-cultura-escolha[hidden]{display:none;}
   .calc-cultura-btn{
     font-family:var(--mono);font-size:13px;text-transform:uppercase;letter-spacing:.04em;
     padding:14px 20px;border:1px solid var(--line);border-radius:2px;background:var(--paper);
     color:var(--ink);cursor:pointer;flex:1 1 140px;text-align:center;
   }
   .calc-cultura-btn.active{border-color:var(--gold);background:var(--ink);color:var(--paper);font-weight:600;}
-
-  .calc-outros-modos-link{font-size:13.5px;opacity:.75;margin:0 0 40px;max-width:60ch;}
-  .calc-outros-modos-link a{color:var(--leaf);font-weight:600;text-decoration:none;}
-  .calc-outros-modos-link a:hover{text-decoration:underline;}
 
   .calc-secao{margin-bottom:44px;}
   .calc-secao[hidden]{display:none;}
@@ -96,6 +104,7 @@
     background:var(--paper);color:var(--ink);font-size:15px;font-family:var(--body);
   }
   .calc-campo-nota{font-size:12.5px;opacity:.65;margin-top:6px;max-width:60ch;}
+  .calc-campo-nota.destaque{opacity:1;font-weight:600;color:var(--leaf);}
 
   .calc-subcategorias{border:1px solid var(--line);}
   .calc-subcategoria-linha{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);}
@@ -124,11 +133,6 @@
   }
   .calc-toggle-btn.active{border-color:var(--gold);background:var(--leaf);color:var(--paper);font-weight:600;}
 
-  .calc-preco-fonte{
-    background:var(--paper-dim);border-left:3px solid var(--gold);padding:12px 16px;
-    font-size:13.5px;line-height:1.6;margin:12px 0 16px;max-width:60ch;
-  }
-
   .calc-resultado{
     border:1px solid var(--line);border-top:4px solid var(--gold);background:var(--paper);
     padding:32px;margin-top:8px;
@@ -136,33 +140,26 @@
   .calc-resultado[hidden]{display:none;}
   .calc-resultado h2{margin-top:0;}
   .calc-resultado-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin:20px 0;}
+  .calc-resultado-grid[hidden]{display:none;}
   .calc-resultado-card{background:var(--paper);padding:18px;}
+  .calc-resultado-card[hidden]{display:none;}
   .calc-resultado-label{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--leaf);opacity:.85;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
   .calc-resultado-valor{font-family:var(--mono);font-size:22px;font-weight:600;}
   .calc-resultado-valor.up{color:var(--up);}
   .calc-resultado-valor.down{color:var(--down);}
 
-  /* Resumo em linguagem corrida - o elemento mais importante da tela de
-     resultado (feedback de piloto real: os cartoes tecnicos sozinhos,
-     sem narrativa, confundiam o produtor). Fonte maior que os cartoes,
-     no topo da secao - nao um rodape. */
   .calc-resumo{
     font-size:17px;line-height:1.75;margin:0 0 28px;padding:22px 26px;
     background:var(--paper-dim);border-left:4px solid var(--gold);
   }
   .calc-resumo.alerta{background:#F7E4E0;border-left-color:var(--down);color:var(--down);font-weight:600;}
 
-  /* Diagnóstico (spec 9.2) - tópicos curtos, sempre visíveis, mesmo nível
-     de destaque do resumo (ao contrário das notas de conceito da 9.3, que
-     viraram ícone ⓘ sob demanda). */
   .calc-diagnostico{margin:0 0 28px;display:flex;flex-direction:column;gap:10px;}
   .calc-diagnostico[hidden]{display:none;}
   .calc-diagnostico-item{font-size:14px;line-height:1.6;margin:0;padding:12px 16px;background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--leaf);}
 
   .calc-detalhamento-label{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--leaf);opacity:.85;display:block;margin:0 0 4px;}
 
-  /* Explicação de conceito sob demanda (spec 9.3) - <details> nativo, sem
-     JS: clique/toque no ⓘ abre um popover, sem ocupar espaço fixo na tela. */
   .calc-info{position:relative;display:inline-block;}
   .calc-info summary{list-style:none;cursor:pointer;color:var(--gold);font-size:13px;line-height:1;}
   .calc-info summary::-webkit-details-marker{display:none;}
@@ -193,6 +190,7 @@
   .calc-aviso-generico{font-size:13.5px;opacity:.65;margin-top:24px;max-width:60ch;}
 
   .calc-historico{margin-top:32px;padding-top:28px;border-top:1px solid var(--line);}
+  .calc-historico[hidden]{display:none;}
   .calc-historico h3{font-family:var(--display);font-size:17px;margin:0 0 6px;}
   .calc-historico-apoio{font-size:13.5px;opacity:.7;margin:0 0 16px;max-width:56ch;}
   .calc-historico-campos{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;}
@@ -219,10 +217,6 @@
     .calc-subcategoria-linha input[type=number]{width:100px;}
   }
 
-  /* Nav: mesmo padrao ja validado em commodities/_template.html - em
-     telas estreitas, a logo fica numa linha e os links viram uma faixa
-     rolavel horizontalmente (em vez de quebrar em varias linhas e
-     "vazar" pra fora da viewport). */
   @media (max-width:680px){
     nav{flex-wrap:wrap;row-gap:10px;}
     .brand{flex-shrink:0;}
@@ -248,21 +242,21 @@
 
 <nav aria-label="Navegação principal">
   <div class="brand">
-    <a href="../" aria-label="AgroFer Trader — página inicial">
-      <img src="../assets/logo.png" alt="AgroFer Trader">
+    <a href="../../" aria-label="AgroFer Trader — página inicial">
+      <img src="../../assets/logo.png" alt="AgroFer Trader">
     </a>
   </div>
   <div class="navlinks">
-    <a href="../#precos">Preços de hoje</a>
-    <a href="../#futuro">Mercado futuro</a>
+    <a href="../../#precos">Preços de hoje</a>
+    <a href="../../#futuro">Mercado futuro</a>
     <span class="nav-divider" aria-hidden="true">|</span>
-    <a href="../commodities/soja/">Soja</a>
-    <a href="../commodities/milho/">Milho</a>
-    <a href="../commodities/cafe/">Café Arábica</a>
-    <a href="../commodities/boi-gordo/">Boi Gordo</a>
+    <a href="../../commodities/soja/">Soja</a>
+    <a href="../../commodities/milho/">Milho</a>
+    <a href="../../commodities/cafe/">Café Arábica</a>
+    <a href="../../commodities/boi-gordo/">Boi Gordo</a>
     <span class="nav-divider" aria-hidden="true">|</span>
-    <a href="../entenda.html">Entenda</a>
-    <a class="active" href="../calculadora/">Calculadora</a>
+    <a href="../../entenda.html">Entenda</a>
+    <a class="active" href="../../calculadora/">Calculadora</a>
     <a href="https://www.instagram.com/agrofertrader/" target="_blank" rel="noopener">Instagram</a>
   </div>
 </nav>
@@ -270,26 +264,31 @@
 <div class="hero">
   <div class="hero-inner">
     <div class="eyebrow"><!-- EYEBROW:START -->
-{{EYEBROW_INICIAL}}
+Sexta-feira, 04 de setembro de 2026 · fechamento do dia anterior
 <!-- EYEBROW:END --></div>
-    <h1 class="headline">Calculadora de Break-even</h1>
-    <p class="hero-sub">Descubra o preço mínimo que cobre seus custos e a margem real da sua safra de soja, milho ou café - com o preço de venda que você poderia travar hoje via contrato futuro.</p>
+    <h1 class="headline">Outras formas de calcular</h1>
+    <p class="hero-sub">Não sabe seu preço de venda ainda, ou não sabe sua produtividade? Descubra seu break-even sem informar preço, ou descubra sua produtividade a partir do que você já vendeu.</p>
     <div class="updated"><!-- UPDATED:START -->
-{{UPDATED_INICIAL}}
+Fonte: CEPEA/Esalq · dado de 04/09/2026
 <!-- UPDATED:END --></div>
   </div>
 </div>
 
 <main id="calculadora-app">
-  <div class="calc-cultura-escolha" role="tablist" aria-label="Escolha a cultura">
+  <p class="calc-voltar"><a href="../">← Voltar para a calculadora principal</a></p>
+
+  <div class="calc-modo-escolha" role="tablist" aria-label="O que você quer descobrir">
+    <button type="button" class="calc-modo-btn" data-modo="B">Só o preço mínimo que preciso vender <span style="opacity:.65;font-weight:400;">— sem informar preço de venda</span></button>
+    <button type="button" class="calc-modo-btn" data-modo="C">Não sei minha produtividade — quero descobrir <span style="opacity:.65;font-weight:400;">— a partir do que você já vendeu</span></button>
+  </div>
+
+  <div class="calc-cultura-escolha" id="calc-cultura-escolha" hidden role="tablist" aria-label="Escolha a cultura">
     <button type="button" class="calc-cultura-btn" data-cultura="soja">Soja</button>
     <button type="button" class="calc-cultura-btn" data-cultura="milho">Milho</button>
     <button type="button" class="calc-cultura-btn" data-cultura="cafe">Café Arábica</button>
   </div>
 
-  <p class="calc-outros-modos-link">Não sabe seu preço de venda ainda, ou não sabe sua produtividade? <a href="outros-modos/">Veja outras formas de calcular →</a></p>
-
-  <div class="calc-corpo" hidden>
+  <div class="calc-corpo" id="calc-corpo" hidden>
     <section class="calc-secao">
       <h2><span class="calc-secao-num">1</span>Hectares plantados</h2>
       <div class="calc-campo">
@@ -298,13 +297,27 @@
       </div>
     </section>
 
-    <section class="calc-secao">
+    <section class="calc-secao" id="calc-secao-produtividade-b" hidden>
       <h2><span class="calc-secao-num">2</span>Produtividade esperada</h2>
       <p class="calc-secao-apoio" id="calc-produtividade-apoio"></p>
       <div class="calc-campo">
         <label for="calc-produtividade">Sacas por hectare</label>
         <input type="number" id="calc-produtividade" min="0" step="0.1" inputmode="decimal">
       </div>
+    </section>
+
+    <section class="calc-secao" id="calc-secao-descobrir-c" hidden>
+      <h2><span class="calc-secao-num">2</span>Descubra sua produtividade</h2>
+      <p class="calc-secao-apoio">A partir do que você já vendeu — sem precisar saber quantas sacas colheu por hectare.</p>
+      <div class="calc-campo">
+        <label for="calc-preco-recebido">Preço de venda recebido (R$/saca)</label>
+        <input type="number" id="calc-preco-recebido" min="0" step="0.01" inputmode="decimal">
+      </div>
+      <div class="calc-campo">
+        <label for="calc-receita-total">Receita total recebida (R$)</label>
+        <input type="number" id="calc-receita-total" min="0" step="0.01" inputmode="decimal">
+      </div>
+      <p class="calc-campo-nota destaque" id="calc-produtividade-descoberta"></p>
     </section>
 
     <section class="calc-secao">
@@ -323,34 +336,18 @@
       <div class="calc-subtotal">Subtotal: <span id="calc-variaveis-subtotal">R$ 0,00</span></div>
     </section>
 
-    <section class="calc-secao">
-      <h2><span class="calc-secao-num">5</span>Quando pretende vender</h2>
-      <div class="calc-campo">
-        <label for="calc-meses">Daqui a quantos meses</label>
-        <input type="number" id="calc-meses" min="0" max="24" step="1" value="6">
+    <section class="calc-secao" id="calc-secao-pessoa-c" hidden>
+      <h2><span class="calc-secao-num">5</span>Você declara como</h2>
+      <div class="calc-toggle-linha">
+        <button type="button" class="calc-toggle-btn active" data-pessoa="fisica">Pessoa física</button>
+        <button type="button" class="calc-toggle-btn" data-pessoa="juridica">Pessoa jurídica</button>
       </div>
-    </section>
-
-    <section class="calc-secao">
-      <h2><span class="calc-secao-num">6</span>Preço de venda</h2>
-      <div class="calc-preco-fonte" id="calc-preco-fonte-texto"></div>
-      <div class="calc-campo">
-        <label for="calc-preco">R$ por saca</label>
-        <input type="number" id="calc-preco" min="0" step="0.01" inputmode="decimal">
-      </div>
-      <div class="calc-campo">
-        <label>Você declara como</label>
-        <div class="calc-toggle-linha">
-          <button type="button" class="calc-toggle-btn active" data-pessoa="fisica">Pessoa física</button>
-          <button type="button" class="calc-toggle-btn" data-pessoa="juridica">Pessoa jurídica</button>
-        </div>
-        <p class="calc-campo-nota">Muda a alíquota do Funrural aplicada no resultado líquido.</p>
-      </div>
+      <p class="calc-campo-nota">Muda a alíquota do Funrural aplicada no resultado líquido.</p>
     </section>
 
     <section class="calc-resultado" id="calc-resultado" hidden>
       <span class="section-label" style="font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--leaf);">Resultado</span>
-      <h2>7. Break-even e margem</h2>
+      <h2>Break-even e margem</h2>
 
       <p class="calc-resumo" id="calc-resumo"></p>
 
@@ -368,7 +365,7 @@
           </div>
           <div class="calc-resultado-valor" id="calc-break-even">—</div>
         </div>
-        <div class="calc-resultado-card">
+        <div class="calc-resultado-card" id="calc-card-margem-contribuicao">
           <div class="calc-resultado-label">
             Ganho marginal/saca
             <details class="calc-info">
@@ -378,7 +375,7 @@
           </div>
           <div class="calc-resultado-valor" id="calc-margem-contribuicao">—</div>
         </div>
-        <div class="calc-resultado-card">
+        <div class="calc-resultado-card" id="calc-card-margem-bruta">
           <div class="calc-resultado-label">
             Ganho real bruto/saca
             <details class="calc-info">
@@ -388,7 +385,7 @@
           </div>
           <div class="calc-resultado-valor" id="calc-margem-bruta">—</div>
         </div>
-        <div class="calc-resultado-card">
+        <div class="calc-resultado-card" id="calc-card-lucro-saca">
           <div class="calc-resultado-label">
             Ganho real líquido/saca
             <details class="calc-info">
@@ -400,7 +397,7 @@
         </div>
       </div>
 
-      <div class="calc-resultado-card" style="text-align:center;">
+      <div class="calc-resultado-card" id="calc-card-lucro-total" style="text-align:center;">
         <div class="calc-resultado-label" style="justify-content:center;">
           Resultado total da safra (líquido)
           <details class="calc-info">
@@ -453,7 +450,7 @@
       <div>AgroFer Trader — conteúdo informativo sobre o mercado agrícola. Não constitui recomendação de investimento ou negócio.</div>
       <div>
         Fontes: B3 (contratos futuros) e CEPEA/Esalq (preço físico), via Notícias Agrícolas; produtividade média via CONAB.
-        · <a href="../entenda.html">Entenda</a>
+        · <a href="../../entenda.html">Entenda</a>
         · <a href="https://www.instagram.com/agrofertrader/" target="_blank" rel="noopener">Instagram @agrofertrader</a>
       </div>
     </div>
@@ -461,11 +458,11 @@
 </div>
 
 <!-- DADOS_CALCULADORA:START -->
-{{DADOS_CALCULADORA_INICIAL}}
+<script type="application/json" id="dados-calculadora">{"culturas":{"soja":{"nome":"Soja","preco_fisico_hoje":160.87,"vencimentos":[{"vencimento":"Janeiro/2027","valor_reais":149.863772},{"vencimento":"Março/2027","valor_reais":150.17129},{"vencimento":"Maio/2027","valor_reais":151.503868}],"produtividade_media_sacas_ha":63,"produtividade_fonte":"CONAB, 10º Levantamento 2025/26 (3,8 t/ha, MG)"},"milho":{"nome":"Milho","preco_fisico_hoje":70.93,"vencimentos":[{"vencimento":"Setembro/2026","valor_reais":71.8},{"vencimento":"Janeiro/2027","valor_reais":81.1},{"vencimento":"Março/2027","valor_reais":83.16},{"vencimento":"Maio/2027","valor_reais":81.4},{"vencimento":"Julho/2027","valor_reais":79.52},{"vencimento":"Setembro/2027","valor_reais":79.4}],"produtividade_media_sacas_ha":112,"produtividade_fonte":"CONAB, 10º Levantamento 2025/26 - 1ª safra (6,7 t/ha, MG)"},"cafe":{"nome":"Café Arábica","preco_fisico_hoje":1659.93,"vencimentos":[{"vencimento":"Dezembro/2026","valor_reais":1855.3586},{"vencimento":"Março/2027","valor_reais":1829.9883650000002}],"produtividade_media_sacas_ha":28.6,"produtividade_fonte":"Estimativa da safra 2026 para Minas Gerais"}},"aliquota_funrural":{"pessoa_fisica":0.0163,"pessoa_juridica":0.0223},"url_persistencia":"https://script.google.com/macros/s/AKfycbxovPLKOvDgh-yjsIy6ydkZhUsGTaRVavASr_Iim5rFfsQEvmqyr23x3U3NEKuV8O7P/exec"}</script>
 <!-- DADOS_CALCULADORA:END -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
-<script src="../assets/calculadora-core.js" defer></script>
-<script src="../assets/calculadora.js" defer></script>
+<script src="../../assets/calculadora-core.js" defer></script>
+<script src="../../assets/calculadora-outros-modos.js" defer></script>
 </body>
 </html>

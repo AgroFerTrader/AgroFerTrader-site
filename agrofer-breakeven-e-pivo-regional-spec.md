@@ -264,7 +264,34 @@ Cada cartão técnico (não apenas "ganho marginal") recebe um ícone ⓘ ao lad
 
 ---
 
-## 10. Notas para o Claude Code
+## 11. Modos de entrada — a calculadora principal continua a mesma; os modos adicionais ficam numa página à parte
+
+**Problema identificado (feedback do piloto):** a calculadora hoje só entrega resultado se TODOS os campos forem preenchidos, assumindo que o produtor sempre sabe hectares + produtividade + custos + preço de antemão. Na prática existem pelo menos três objetivos diferentes de uso — dois deles usam a mesma fórmula de break-even, mas precisam ser opções explícitas, não um comportamento escondido dentro de um fluxo único.
+
+**Decisão de arquitetura (ajuste do João sobre a proposta original):** a página principal `/calculadora/` **não muda** — continua exatamente o fluxo já existente (hectares → produtividade → custos → quando vender → preço → resultado completo, o que a spec chama de Modo A). Os modos adicionais (B e C, abaixo) ficam numa **página separada** (`/calculadora/outros-modos/`), acessada só por um link discreto dentro da página principal — quem só quer calcular o break-even normal nunca precisa ver ou saber que os outros modos existem.
+
+**Modo A — "Minha margem e meu break-even"** (já existente, página principal, sem mudanças): inclui o campo de preço de venda; exibe break-even, margem e diagnóstico completo (seção 9).
+
+**Modo B — "Qual o preço mínimo que preciso vender"** (novo, na página `/calculadora/outros-modos/`): pede hectares, produtividade (com sugestão regional, seção 1) e custos (seção 2) — **não pede preço de venda**. Resultado: só o cartão de break-even, com o resumo narrativo na variante sem preço (seção 9.1: troca "ao preço informado de R$X, sua margem seria..." pela frase só do break-even) — sem diagnóstico (não há preço pra comparar contra nada) e sem os cartões de margem/lucro.
+
+**Modo C — "Não sei minha produtividade — quero descobrir"** (novo, na página `/calculadora/outros-modos/`): inputs = hectares, preço de venda já recebido (R$/saca), receita total recebida pela venda (R$). Cálculo:
+```
+sacas_totais = receita_total_recebida / preco_venda
+produtividade = sacas_totais / hectares
+```
+Como esse preço é histórico (venda já feita, não uma trava futura), não há busca de vencimento B3 nem campo "daqui a quantos meses" neste modo. Depois de calculado, o produtor informa os custos (mesmo fluxo de subcategorias da seção 2) e cai na mesma tela de resultado completa do Modo A (break-even, margem, diagnóstico 1 — sem diagnóstico 2, que depende de uma cotação B3 que não existe neste fluxo), usando a produtividade descoberta em vez de informada.
+
+**Nota para o Claude Code:** os três modos convergem para o mesmo motor de cálculo de break-even/margem (seções 4 e 9) — implementado como funções puras compartilhadas (`assets/calculadora-core.js`) entre a página principal (`assets/calculadora.js`) e a página de outros modos (`assets/calculadora-outros-modos.js`), para que uma correção futura (como a do Funrural) não precise ser replicada em mais de um lugar. "Salvar meu histórico" (seção 4.1) fica disponível nos modos A e C (que produzem margem/lucro completos, os campos que a planilha espera); no Modo B (só break-even) essa seção fica escondida, para não salvar um registro parcial que quebraria a comparação de evolução entre safras.
+
+---
+
+## 12. Exportação — gráfico de pizza de composição de custo
+
+No PDF/planilha para download (seção "Baixar planilha/PDF do resultado", item 4.1), adicionar um **gráfico de pizza** com a participação percentual de cada subcategoria de custo (fixo + variável juntos, ou dois gráficos separados — usar um só, combinado, para leitura mais rápida). Fixar uma cor por subcategoria (ex: sempre a mesma cor para "Fertilizantes/adubos" entre exportações diferentes) para que, ao comparar relatórios de safras diferentes lado a lado, o produtor perceba visualmente se uma fatia cresceu ou encolheu, sem precisar ler números.
+
+---
+
+## 13. Notas para o Claude Code
 
 - Não implementar cálculo de Funrural como constante fixa sem comentário — deixar claro no código que a alíquota pode mudar (já mudou em abril/2026 pela LC 224/2025) e deve ser fácil de atualizar em um único lugar.
 - Os campos de preço regional manual (milho/soja/boi) precisam de UI de edição simples para João/irmão atualizarem sem mexer em código (JSON simples ou campo de admin, dependendo do que o gerador de site já usa).
