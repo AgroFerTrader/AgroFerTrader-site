@@ -246,13 +246,21 @@ vender a R${preco_venda_informado} — uma diferença de R${diferenca_mercado_va
 
 *(Implementado — ver `montarDiagnostico()` em `assets/calculadora.js` e `#calc-diagnostico` em `calculadora/_template.html`. Diagnóstico 3 deixado para a Fase 2, conforme decisão da seção 4.1.)*
 
-### 9.3. Explicações de conceito — de parágrafo fixo para ícone ⓘ discreto
+### 9.3. Explicações de conceito — linguagem simples, em TODOS os cartões (não só um)
 
-Removido o texto de explicação fixo abaixo do cartão "Ganho marginal/saca". Substituído por um ícone pequeno (ⓘ) ao lado do rótulo do cartão, que exibe a explicação em popover só ao clicar/tocar (elemento `<details>` nativo do HTML, acessível e sem JS extra) — mantém a tela limpa e a explicação disponível sob demanda.
+Cada cartão técnico (não apenas "ganho marginal") recebe um ícone ⓘ ao lado do rótulo, com popover/tooltip no mesmo padrão visual (elemento `<details>` nativo do HTML, acessível e sem JS extra) — mantém a tela limpa e a explicação disponível sob demanda. Texto de cada um (linguagem simples, sem jargão contábil):
+
+| Cartão | Texto do ⓘ |
+|---|---|
+| Break-even (preço mínimo/saca) | "É o menor preço pelo qual você pode vender sem ter prejuízo. Abaixo disso, você perde dinheiro; acima, você lucra." |
+| Ganho marginal/saca | "É quanto sobra em cada saca a mais que você vender, depois que suas contas fixas já estão pagas — por isso essa saca extra rende um pouco mais que a média das outras." |
+| Ganho real bruto/saca | "É quanto sobra, em média, em cada saca vendida — já descontando todos os seus gastos, mas ainda sem o imposto." |
+| Ganho real líquido/saca | "É quanto realmente fica no seu bolso por saca, depois de pagar os gastos E o imposto (Funrural)." |
+| Resultado total da safra (líquido) | "É quanto sobra no total da safra inteira, depois de pagar tudo." |
 
 **Nota para o Claude Code:** o resumo narrativo (9.1) e o diagnóstico (9.2) juntos são o elemento mais importante da tela de resultado — devem vir com destaque visual, no topo, antes dos cartões técnicos (seção 4), que passam a ser "detalhamento" secundário.
 
-*(Implementado — ver `.calc-info`/`.calc-info-popover` em `calculadora/_template.html`.)*
+*(Implementado — ver `.calc-info`/`.calc-info-popover` em `calculadora/_template.html`, um por cartão.)*
 
 ---
 

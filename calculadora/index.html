@@ -353,7 +353,13 @@ Fonte: CEPEA/Esalq · dado de 03/09/2026
       <span class="calc-detalhamento-label">Detalhamento</span>
       <div class="calc-resultado-grid">
         <div class="calc-resultado-card">
-          <div class="calc-resultado-label">Break-even (preço mínimo/saca)</div>
+          <div class="calc-resultado-label">
+            Break-even (preço mínimo/saca)
+            <details class="calc-info">
+              <summary aria-label="O que é isso?">ⓘ</summary>
+              <div class="calc-info-popover">É o menor preço pelo qual você pode vender sem ter prejuízo. Abaixo disso, você perde dinheiro; acima, você lucra.</div>
+            </details>
+          </div>
           <div class="calc-resultado-valor" id="calc-break-even">—</div>
         </div>
         <div class="calc-resultado-card">
@@ -361,23 +367,41 @@ Fonte: CEPEA/Esalq · dado de 03/09/2026
             Ganho marginal/saca
             <details class="calc-info">
               <summary aria-label="O que é isso?">ⓘ</summary>
-              <div class="calc-info-popover">Ganho de cada saca ALÉM das que já bastam para cobrir seu custo fixo — como o custo fixo já está pago nessas sacas extras, cada uma rende mais que a média geral por saca (o "ganho real bruto" ao lado).</div>
+              <div class="calc-info-popover">É quanto sobra em cada saca a mais que você vender, depois que suas contas fixas já estão pagas — por isso essa saca extra rende um pouco mais que a média das outras.</div>
             </details>
           </div>
           <div class="calc-resultado-valor" id="calc-margem-contribuicao">—</div>
         </div>
         <div class="calc-resultado-card">
-          <div class="calc-resultado-label">Ganho real bruto/saca</div>
+          <div class="calc-resultado-label">
+            Ganho real bruto/saca
+            <details class="calc-info">
+              <summary aria-label="O que é isso?">ⓘ</summary>
+              <div class="calc-info-popover">É quanto sobra, em média, em cada saca vendida — já descontando todos os seus gastos, mas ainda sem o imposto.</div>
+            </details>
+          </div>
           <div class="calc-resultado-valor" id="calc-margem-bruta">—</div>
         </div>
         <div class="calc-resultado-card">
-          <div class="calc-resultado-label">Ganho real líquido/saca</div>
+          <div class="calc-resultado-label">
+            Ganho real líquido/saca
+            <details class="calc-info">
+              <summary aria-label="O que é isso?">ⓘ</summary>
+              <div class="calc-info-popover">É quanto realmente fica no seu bolso por saca, depois de pagar os gastos E o imposto (Funrural).</div>
+            </details>
+          </div>
           <div class="calc-resultado-valor" id="calc-lucro-liquido-saca">—</div>
         </div>
       </div>
 
       <div class="calc-resultado-card" style="text-align:center;">
-        <div class="calc-resultado-label">Resultado total da safra (líquido)</div>
+        <div class="calc-resultado-label" style="justify-content:center;">
+          Resultado total da safra (líquido)
+          <details class="calc-info">
+            <summary aria-label="O que é isso?">ⓘ</summary>
+            <div class="calc-info-popover" style="left:50%;transform:translateX(-50%);">É quanto sobra no total da safra inteira, depois de pagar tudo.</div>
+          </details>
+        </div>
         <div class="calc-resultado-valor" id="calc-lucro-liquido-total" style="font-size:28px;">—</div>
       </div>
 
@@ -431,7 +455,7 @@ Fonte: CEPEA/Esalq · dado de 03/09/2026
 </div>
 
 <!-- DADOS_CALCULADORA:START -->
-<script type="application/json" id="dados-calculadora">{"culturas":{"soja":{"nome":"Soja","preco_fisico_hoje":160.14,"vencimentos":[{"vencimento":"Janeiro/2027","valor_reais":149.863772},{"vencimento":"Março/2027","valor_reais":150.17129},{"vencimento":"Maio/2027","valor_reais":151.503868}],"produtividade_media_sacas_ha":63,"produtividade_fonte":"CONAB, 10º Levantamento 2025/26 (3,8 t/ha, MG)"},"milho":{"nome":"Milho","preco_fisico_hoje":71.06,"vencimentos":[{"vencimento":"Setembro/2026","valor_reais":71.8},{"vencimento":"Janeiro/2027","valor_reais":81.1},{"vencimento":"Março/2027","valor_reais":83.16},{"vencimento":"Maio/2027","valor_reais":81.4},{"vencimento":"Julho/2027","valor_reais":79.52},{"vencimento":"Setembro/2027","valor_reais":79.4}],"produtividade_media_sacas_ha":112,"produtividade_fonte":"CONAB, 10º Levantamento 2025/26 - 1ª safra (6,7 t/ha, MG)"},"cafe":{"nome":"Café Arábica","preco_fisico_hoje":1672.25,"vencimentos":[{"vencimento":"Dezembro/2026","valor_reais":1855.3586},{"vencimento":"Março/2027","valor_reais":1829.9883650000002}],"produtividade_media_sacas_ha":28.6,"produtividade_fonte":"Estimativa da safra 2026 para Minas Gerais"}},"aliquota_funrural":{"pessoa_fisica":0.0163,"pessoa_juridica":0.0223},"url_persistencia":"https://script.google.com/macros/s/AKfycbxovPLKOvDgh-yjsIy6ydkZhUsGTaRVavASr_Iim5rFfsQEvmqyr23x3U3NEKuV8O7P/exec"}</script>
+<script type="application/json" id="dados-calculadora">{"culturas":{"soja":{"nome":"Soja","preco_fisico_hoje":160.14,"vencimentos":[{"vencimento":"Janeiro/2027","valor_reais":149.863772},{"vencimento":"Março/2027","valor_reais":150.17129},{"vencimento":"Maio/2027","valor_reais":151.503868}],"produtividade_media_sacas_ha":63,"produtividade_fonte":"CONAB, 10º Levantamento 2025/26 (3,8 t/ha, MG)"},"milho":{"nome":"Milho","preco_fisico_hoje":71.06,"vencimentos":[{"vencimento":"Setembro/2026","valor_reais":71.8},{"vencimento":"Janeiro/2027","valor_reais":81.1},{"vencimento":"Março/2027","valor_reais":83.16},{"vencimento":"Maio/2027","valor_reais":81.4},{"vencimento":"Julho/2027","valor_reais":79.52},{"vencimento":"Setembro/2027","valor_reais":79.4}],"produtividade_media_sacas_ha":112,"produtividade_fonte":"CONAB, 10º Levantamento 2025/26 - 1ª safra (6,7 t/ha, MG)"},"cafe":{"nome":"Café Arábica","preco_fisico_hoje":1659.93,"vencimentos":[{"vencimento":"Dezembro/2026","valor_reais":1855.3586},{"vencimento":"Março/2027","valor_reais":1829.9883650000002}],"produtividade_media_sacas_ha":28.6,"produtividade_fonte":"Estimativa da safra 2026 para Minas Gerais"}},"aliquota_funrural":{"pessoa_fisica":0.0163,"pessoa_juridica":0.0223},"url_persistencia":"https://script.google.com/macros/s/AKfycbxovPLKOvDgh-yjsIy6ydkZhUsGTaRVavASr_Iim5rFfsQEvmqyr23x3U3NEKuV8O7P/exec"}</script>
 <!-- DADOS_CALCULADORA:END -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
