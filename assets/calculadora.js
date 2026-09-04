@@ -443,8 +443,12 @@
 
     document.getElementById("calc-exportar-pdf").addEventListener("click", exportarPdf);
 
-    // Cultura inicial: a primeira (soja), pra pagina nao comecar em branco.
-    escolherCultura("soja");
+    // Cultura inicial: a que veio por ?cultura= (link do widget compacto
+    // nas paginas de commodity - ver montar_calc_widget_html), ou soja
+    // por padrao, pra pagina nao comecar em branco.
+    var params = new URLSearchParams(window.location.search);
+    var culturaUrl = params.get("cultura");
+    escolherCultura(culturaUrl && DADOS.culturas[culturaUrl] ? culturaUrl : "soja");
   }
 
   document.addEventListener("DOMContentLoaded", iniciar);

@@ -328,6 +328,41 @@ def buscar_cotacoes_regionais_da_pagina(config: dict) -> list:
 
 
 # ---------------------------------------------------------------------------
+# 0.5) WIDGET DA CALCULADORA - bloco compacto de CTA na pagina de commodity,
+#    linkando pra /calculadora/ ja com a cultura selecionada (spec, secao
+#    6.2). So soja/milho/cafe: boi gordo fica fora da calculadora (modelo
+#    hectares x sacas/ha nao se aplica a pecuaria de corte - spec secao 7).
+#    Reaproveita o MESMO componente de calculo (nao duplica formula nem
+#    UI aqui) - o link so leva pra pagina que ja faz a conta.
+# ---------------------------------------------------------------------------
+
+SLUGS_CALCULADORA = {"soja", "milho", "cafe"}
+
+
+def montar_calc_widget_html(config: dict, fisica_filtrada: list) -> str:
+    if config["slug"] not in SLUGS_CALCULADORA:
+        return ""
+
+    preco_texto = ""
+    if fisica_filtrada and "erro" not in fisica_filtrada[0]:
+        try:
+            preco_num = _preco_fisico_para_float(fisica_filtrada[0]["preco_reais"])
+            preco_texto = f" de R$ {_fmt_brl(preco_num)}/saca"
+        except (ValueError, TypeError, KeyError):
+            preco_texto = ""
+
+    return (
+        '<div class="calc-widget">'
+        '<div class="calc-widget-texto">'
+        f'<strong>Esse preço{preco_texto} cobre seu custo?</strong>'
+        '<span>Calcule seu break-even e a margem real da sua safra em menos de 2 minutos.</span>'
+        '</div>'
+        f'<a class="calc-widget-btn" href="../../calculadora/?cultura={config["slug"]}">Calcular meu break-even</a>'
+        '</div>'
+    )
+
+
+# ---------------------------------------------------------------------------
 # 1) SCAFFOLD - cria commodities/<slug>/index.html a partir do template,
 #    SOMENTE se o arquivo ainda nao existir (nunca sobrescreve o que ja
 #    foi gerado, para nao perder os dados do dia que ja estao la).
@@ -376,6 +411,7 @@ def garantir_pagina_existe(config: dict) -> str:
         "{{UPDATED_INICIAL}}": "",
         "{{PRECO_FISICO_INICIAL}}": "",
         "{{COTACOES_REGIONAIS_INICIAL}}": "",
+        "{{CALC_WIDGET_INICIAL}}": "",
         "{{FUTURO_INICIAL}}": "",
         "{{GRAFICO_INICIAL}}": "",
         "{{GRAFICO_LEGENDA_STAT_INICIAL}}": "",
@@ -1014,6 +1050,7 @@ def atualizar_pagina_commodity(config: dict, dados: dict) -> None:
         "COTACOES_REGIONAIS": site.montar_cotacoes_regionais_html(
             cotacoes_regionais, titulo_secao="Sul de Minas"
         ),
+        "CALC_WIDGET": montar_calc_widget_html(config, fisica_filtrada),
         "FUTURO": site.montar_futuros_html(futuro_filtrado),
         "GRAFICO": montar_grafico_svg(
             historico,
