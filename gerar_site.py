@@ -146,15 +146,19 @@ def montar_precos_html(resultados_commodities, com_links: bool = True) -> str:
     return "\n      ".join(blocos)
 
 
-def montar_cotacoes_regionais_html(cotacoes_regionais) -> str:
-    """Monta o bloco de 'outras pracas' (cotacoes regionais) exibido
-    apenas nas paginas individuais de cada commodity, abaixo do preco
-    principal (indicador CEPEA/Esalq). Nao e usado na home - a home
-    mantem so o indicador principal, sem alteracao nenhuma.
+def montar_cotacoes_regionais_html(cotacoes_regionais, titulo_secao: str = "Outras praças") -> str:
+    """Monta o bloco de cotacoes regionais exibido apenas nas paginas
+    individuais de cada commodity, abaixo do preco principal (indicador
+    CEPEA/Esalq). Nao e usado na home - a home mantem so o indicador
+    principal, sem alteracao nenhuma.
 
     cotacoes_regionais: lista de dicts {"praca": str, "preco": str}.
     Se vier vazia (fonte indisponivel ou secao nao encontrada), nao
     renderiza nada, em vez de mostrar uma caixa vazia.
+
+    titulo_secao: rotulo acima dos cartoes - "Outras praças" (padrao,
+    varias regioes misturadas) ou o nome da regiao quando o pivo
+    regional do site foca numa unica praca/regiao (ex: "Sul de Minas").
     """
     if not cotacoes_regionais:
         return ""
@@ -169,7 +173,7 @@ def montar_cotacoes_regionais_html(cotacoes_regionais) -> str:
         )
 
     return (
-        '<div class="regional-label">Outras praças</div>\n'
+        f'<div class="regional-label">{escape(titulo_secao)}</div>\n'
         '<div class="price-grid-regional">\n' + "\n".join(cartoes) + "\n</div>"
     )
 

@@ -300,14 +300,17 @@ def carregar_analise_markdown(slug: str):
 
 
 # ---------------------------------------------------------------------------
-# 0) COTACOES REGIONAIS - cada commodity usa a fonte (Notícias
-#    Agrícolas/CEPEA) que de fato traz as praças pedidas para ela; café é
-#    o único caso agrupado por praça cafeeira (não por estado).
+# 0) COTACOES REGIONAIS - pivo regional do site: foco no Sul de Minas
+#    (ver agrofer-breakeven-e-pivo-regional-spec.md). Café tem fonte
+#    pública granular o suficiente para automatizar por região (CEPEA,
+#    via buscar_cotacoes_regionais_cafe_sul_de_minas); soja/milho/boi
+#    gordo ainda usam a coleta por estado (sem indicador público de Sul
+#    de Minas) até a Parte 1, item 2, trocar por dado manual.
 # ---------------------------------------------------------------------------
 
 def buscar_cotacoes_regionais_da_pagina(config: dict) -> list:
     if config["slug"] == "cafe":
-        return monitor.buscar_cotacoes_regionais_cafe_por_regiao()
+        return monitor.buscar_cotacoes_regionais_cafe_sul_de_minas()
     if config["slug"] == "soja":
         return monitor.buscar_cotacoes_regionais_mercado_fisico(
             "soja/soja-mercado-fisico-sindicatos-e-cooperativas",
@@ -1007,7 +1010,10 @@ def atualizar_pagina_commodity(config: dict, dados: dict) -> None:
         # de volta pra "commodities/{slug}/" (relativo à raiz do site, como
         # e usado na home) resolveria errado a partir daqui e cairia num 404.
         "PRECO_FISICO": site.montar_precos_html(fisica_filtrada, com_links=False),
-        "COTACOES_REGIONAIS": site.montar_cotacoes_regionais_html(cotacoes_regionais),
+        "COTACOES_REGIONAIS": site.montar_cotacoes_regionais_html(
+            cotacoes_regionais,
+            titulo_secao="Sul de Minas" if config["slug"] == "cafe" else "Outras praças",
+        ),
         "FUTURO": site.montar_futuros_html(futuro_filtrado),
         "GRAFICO": montar_grafico_svg(
             historico,
