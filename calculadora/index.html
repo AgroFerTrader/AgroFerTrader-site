@@ -138,11 +138,18 @@
   .calc-resultado-valor.up{color:var(--up);}
   .calc-resultado-valor.down{color:var(--down);}
 
-  .calc-alerta{
-    background:#F7E4E0;border:1px solid var(--down);color:var(--down);
-    padding:14px 18px;font-weight:600;margin:16px 0;border-radius:2px;
+  /* Resumo em linguagem corrida - o elemento mais importante da tela de
+     resultado (feedback de piloto real: os cartoes tecnicos sozinhos,
+     sem narrativa, confundiam o produtor). Fonte maior que os cartoes,
+     no topo da secao - nao um rodape. */
+  .calc-resumo{
+    font-size:17px;line-height:1.75;margin:0 0 28px;padding:22px 26px;
+    background:var(--paper-dim);border-left:4px solid var(--gold);
   }
-  .calc-alerta[hidden]{display:none;}
+  .calc-resumo.alerta{background:#F7E4E0;border-left-color:var(--down);color:var(--down);font-weight:600;}
+
+  .calc-detalhamento-label{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--leaf);opacity:.85;display:block;margin:0 0 4px;}
+  .calc-resultado-nota{font-size:11.5px;opacity:.65;line-height:1.5;margin-top:8px;}
 
   .calc-composicao{margin-top:28px;}
   .calc-composicao h3{font-family:var(--display);font-size:17px;margin:0 0 12px;}
@@ -320,8 +327,9 @@ Fonte: CEPEA/Esalq · dado de 03/09/2026
       <span class="section-label" style="font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--leaf);">Resultado</span>
       <h2>7. Break-even e margem</h2>
 
-      <div class="calc-alerta" id="calc-alerta" hidden>Preço abaixo do break-even — prejuízo projetado.</div>
+      <p class="calc-resumo" id="calc-resumo"></p>
 
+      <span class="calc-detalhamento-label">Detalhamento</span>
       <div class="calc-resultado-grid">
         <div class="calc-resultado-card">
           <div class="calc-resultado-label">Break-even (preço mínimo/saca)</div>
@@ -330,6 +338,7 @@ Fonte: CEPEA/Esalq · dado de 03/09/2026
         <div class="calc-resultado-card">
           <div class="calc-resultado-label">Ganho marginal/saca</div>
           <div class="calc-resultado-valor" id="calc-margem-contribuicao">—</div>
+          <div class="calc-resultado-nota">Ganho de cada saca ALÉM das que já bastam para cobrir seu custo fixo — como o custo fixo já está pago nessas sacas extras, cada uma rende mais que a média geral por saca (o "ganho real bruto" ao lado).</div>
         </div>
         <div class="calc-resultado-card">
           <div class="calc-resultado-label">Ganho real bruto/saca</div>
