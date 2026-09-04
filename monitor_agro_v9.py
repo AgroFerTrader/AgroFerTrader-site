@@ -547,6 +547,22 @@ _REGIOES_CAFE_MG = {
 }
 
 
+def _regiao_cafe_de(praca: str):
+    """Deriva a região cafeeira (Sul de Minas, Cerrado Mineiro, Mogiana...)
+    a partir do nome "Cidade - UF" de uma praça, usando _REGIOES_CAFE_MG.
+    Compartilhada por buscar_cotacoes_regionais_cafe_por_regiao() (visão
+    nacional variada) e buscar_cotacoes_regionais_cafe_sul_de_minas()
+    (foco numa única região)."""
+    m = re.match(r"^(.*) - ([A-Z]{2})$", praca)
+    if not m:
+        return None
+    cidade, uf = m.group(1).strip(), m.group(2)
+    chave_busca = _sem_acentos(cidade.lower())
+    if uf != "MG":
+        return "Mogiana" if "franca" in chave_busca else uf
+    return _REGIOES_CAFE_MG.get(chave_busca, "Outras praças de MG")
+
+
 def buscar_cotacoes_regionais_cafe_por_regiao(max_pracas: int = 4) -> list:
     """
     Seleciona, a partir dos municípios de buscar_cotacoes_regionais_cafe(),
@@ -569,35 +585,49 @@ def buscar_cotacoes_regionais_cafe_por_regiao(max_pracas: int = 4) -> list:
     if not brutos:
         return []
 
-    def _regiao_de(praca: str):
-        m = re.match(r"^(.*) - ([A-Z]{2})$", praca)
-        if not m:
-            return None
-        cidade, uf = m.group(1).strip(), m.group(2)
-        chave_busca = _sem_acentos(cidade.lower())
-        if uf != "MG":
-            return "Mogiana" if "franca" in chave_busca else uf
-        return _REGIOES_CAFE_MG.get(chave_busca, "Outras praças de MG")
-
     varginha = next((item for item in brutos if item["praca"].startswith("Varginha")), None)
 
     selecionadas = []
     regioes_usadas = set()
     if varginha:
         selecionadas.append(varginha)
-        regioes_usadas.add(_regiao_de(varginha["praca"]))
+        regioes_usadas.add(_regiao_cafe_de(varginha["praca"]))
 
     for item in brutos:
         if len(selecionadas) >= max_pracas:
             break
         if item is varginha:
             continue
-        regiao = _regiao_de(item["praca"])
+        regiao = _regiao_cafe_de(item["praca"])
         if regiao is None or regiao in regioes_usadas:
             continue
         selecionadas.append(item)
         regioes_usadas.add(regiao)
 
+    return selecionadas[:max_pracas]
+
+
+def buscar_cotacoes_regionais_cafe_sul_de_minas(max_pracas: int = 4) -> list:
+    """
+    Retorna até `max_pracas` praças cafeeiras do Sul de Minas - a maior
+    região produtora do país, e a que interessa ao pivô regional do site
+    (foco geográfico em Minas Gerais, ver spec de pivô regional). Usada
+    nas páginas individuais de commodity no lugar de
+    buscar_cotacoes_regionais_cafe_por_regiao(), que mistura regiões
+    diferentes (Cerrado, Mogiana etc.) para dar uma visão nacional
+    variada - aqui o objetivo é o oposto: só uma região, detalhada.
+
+    Não inventa dado novo, só filtra os preços municipais já coletados
+    por buscar_cotacoes_regionais_cafe() para os que pertencem à região
+    "Sul de Minas" em _REGIOES_CAFE_MG. Se a fonte não trouxer nenhuma
+    praça do Sul de Minas no momento, devolve lista vazia (o chamador já
+    trata isso mostrando nada, em vez de um bloco vazio).
+    """
+    brutos = buscar_cotacoes_regionais_cafe(max_pracas=30)
+    if not brutos:
+        return []
+
+    selecionadas = [item for item in brutos if _regiao_cafe_de(item["praca"]) == "Sul de Minas"]
     return selecionadas[:max_pracas]
 
 
