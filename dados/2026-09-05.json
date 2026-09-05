@@ -1,0 +1,251 @@
+{
+  "dolar": {
+    "data": "04/09/2026",
+    "valor": 5.1253,
+    "variacao_pct": 0.5710136964797412
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "16/09/2026",
+    "valor": 14.0
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "04/09/2026",
+      "preco_reais": "160.87",
+      "variacao_pct": "+0.46"
+    },
+    {
+      "nome": "Milho",
+      "data": "04/09/2026",
+      "preco_reais": "70.93",
+      "variacao_pct": "-0.18"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "04/09/2026",
+      "preco_reais": "87,45",
+      "variacao_pct": "0.07"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "04/09/2026",
+      "preco_reais": "1659.93",
+      "variacao_pct": "-0.74"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "04/09/2026",
+      "preco_reais": "347.7",
+      "variacao_pct": "0.03"
+    },
+    {
+      "nome": "Algodão",
+      "data": "04/09/2026",
+      "preco_reais": "439.98",
+      "variacao_pct": "0.44"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "04/09/2026",
+      "preco_reais": "116.79",
+      "variacao_pct": "0.59"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Outubro/26",
+      "preco_reais": "5,1535 R$/US$",
+      "variacao_pct": "0.4",
+      "valor_numerico": 5.1535,
+      "unidade": "R$/US$",
+      "vencimentos": [
+        {
+          "vencimento": "Outubro/26",
+          "valor_numerico": 5.1535,
+          "valor_reais": 5.1535
+        },
+        {
+          "vencimento": "Novembro/26",
+          "valor_numerico": 5.164,
+          "valor_reais": 5.164
+        }
+      ]
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Janeiro/2027",
+      "preco_reais": "R$ 149,86 /sc 60 kg (≈ US$ 29,24 x R$ 5,1253)",
+      "variacao_pct": "-0.54",
+      "valor_numerico": 29.24,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 29.24,
+          "valor_reais": 149.863772
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 29.3,
+          "valor_reais": 150.17129
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 29.56,
+          "valor_reais": 151.503868
+        }
+      ]
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "71,80 R$/sc 60 kg",
+      "variacao_pct": "-0.07",
+      "valor_numerico": 71.8,
+      "unidade": "R$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Setembro/2026",
+          "valor_numerico": 71.8,
+          "valor_reais": 71.8
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 81.1,
+          "valor_reais": 81.1
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 83.16,
+          "valor_reais": 83.16
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 81.4,
+          "valor_reais": 81.4
+        },
+        {
+          "vencimento": "Julho/2027",
+          "valor_numerico": 79.52,
+          "valor_reais": 79.52
+        },
+        {
+          "vencimento": "Setembro/2027",
+          "valor_numerico": 79.4,
+          "valor_reais": 79.4
+        }
+      ]
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "358,90 R$/@",
+      "variacao_pct": "0.25",
+      "valor_numerico": 358.9,
+      "unidade": "R$/@",
+      "vencimentos": [
+        {
+          "vencimento": "Setembro/2026",
+          "valor_numerico": 358.9,
+          "valor_reais": 358.9
+        },
+        {
+          "vencimento": "Outubro/2026",
+          "valor_numerico": 373.95,
+          "valor_reais": 373.95
+        },
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 378.35,
+          "valor_reais": 378.35
+        },
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 379.0,
+          "valor_reais": 379.0
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 380.8,
+          "valor_reais": 380.8
+        },
+        {
+          "vencimento": "Fevereiro/2027",
+          "valor_numerico": 380.25,
+          "valor_reais": 380.25
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 380.95,
+          "valor_reais": 380.95
+        }
+      ]
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Dezembro/2026",
+      "preco_reais": "R$ 1855,36 /sc 60 kg (≈ US$ 362,00 x R$ 5,1253)",
+      "variacao_pct": "0.86",
+      "valor_numerico": 362.0,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 362.0,
+          "valor_reais": 1855.3586
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 357.05,
+          "valor_reais": 1829.9883650000002
+        }
+      ]
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Câmbio subiu discretamente hoje (+0.57%) - não é uma virada de tendência, mas pequenas altas como essa historicamente já dão um empurrão positivo ao preço doméstico de commodities de exportação.",
+    "Com a Selic em 14.00% ao ano, o custo de financiamento no campo segue elevado - isso tende a acelerar vendas (para gerar caixa) e, por atrair capital estrangeiro, também tende a fortalecer o real. Os dois efeitos juntos costumam pressionar o preço das commodities exportadas para baixo.",
+    "Obs.: essas são tendências gerais - clima, quebra de safra, estoques mundiais e demanda de outros países também afetam o preço e podem superar o efeito isolado do câmbio ou da Selic."
+  ],
+  "noticias": [
+    {
+      "titulo": "Política e Economia17:28Dólar fecha em alta ante real após dados de emprego nos EUA",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/427562-dolar-fecha-em-alta-ante-real-apos-dados-de-emprego-nos-eua.html",
+      "resumo": "SÃO PAULO, 4 Set (Reuters) - O dólar fechou a sexta-feira em alta ante o real após dados do governo dos EUA indicarem geração de postos de trabalho acima do esperado no país em agosto, enquanto no Brasil a disputa pela P...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "04/09/2026 - 17:09Exportações de algodão crescem 37,3% em agosto na comparação com 2025",
+      "link": "https://www.noticiasagricolas.com.br/noticias/algodao/427559-exportacoes-de-algodao-crescem-37-3-em-agosto-na-comparacao-com-2025.html",
+      "resumo": "As exportações brasileiras de algodão em bruto somaram 106.345,3 toneladas em agosto de 2026, volume 37,3% superior ao registrado em agosto de 2025, quando o país embarcou 77.463,4 toneladas. Os dados foram divulgados pe...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "04/09/2026 - 16:30Brasil vende mais para EUA apesar de tarifas e tem superávit comercial de US$7,394 bi em agosto",
+      "link": "https://www.noticiasagricolas.com.br/noticias/agronegocio/427558-brasil-vende-mais-para-eua-apesar-de-tarifas-e-tem-superavit-comercial-de-us7394-bi-em-agosto.html",
+      "resumo": "SÃO PAULO, 4 Set (Reuters) - A balança comercial brasileira registrou superávit de US$7,394 bilhões em agosto, segundo dados da Secretaria de Comércio Exterior (Secex) divulgados nesta sexta-feira, com as vendas para os ...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "04/09/2026 - 15:59Com mercado aquecido, comercialização da soja 26/27 do Brasil chega a 29,1% e supera média",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/427546-com-mercado-aquecido-comercializacao-da-soja-26-27-do-brasil-chega-a-29-1-e-supera-media.html",
+      "resumo": "A última semana foi marcada por uma intensa movimentação no mercado da soja tanto na Bolsa de Chicago, quanto no mercado nacional, trazendo um cenário bastante otimista para o produtor brasileiro. Com os preços registran...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "04/09/2026 - 15:52China derruba embarques de carne bovina em agosto, mas outros mercados compram volume recorde do Brasil",
+      "link": "https://www.noticiasagricolas.com.br/noticias/carnes/427547-china-derruba-embarques-de-carne-bovina-em-agosto-mas-outros-mercados-compram-volume-recorde-do-brasil.html",
+      "resumo": "As exportações brasileiras de proteínas animais encerraram agosto com sinais distintos, mas com um dado especialmente importante para pecuária: a forte queda nos embarques de carne bovina esteve concentrada principalment...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
