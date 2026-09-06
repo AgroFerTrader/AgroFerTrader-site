@@ -212,7 +212,8 @@ def _secao_por_prefixo(secoes: dict, prefixo: str):
 def carregar_analise_markdown(slug: str):
     """Le analises/<slug>.md e devolve o dict de substituicoes prontas para
     os marcadores ANALISE_* do template (texto corrido em <p>, rodape de
-    fontes + data). Devolve None se o arquivo ainda nao existir - nesse
+    fontes + data) e RESUMO_ANALISTA (hero, primeiro paragrafo de "O que
+    aconteceu"). Devolve None se o arquivo ainda nao existir - nesse
     caso a pagina mantem o que ja tinha (placeholder ou publicacao
     anterior), sem risco de apagar conteudo por engano.
 
@@ -268,6 +269,16 @@ def carregar_analise_markdown(slug: str):
         fontes_texto = paragrafos_observar.pop()
     corpo_observar_html = "\n".join(f"<p>{escape(p, quote=False)}</p>" for p in paragrafos_observar)
 
+    # Resumo do hero (RESUMO_ANALISTA) - o primeiro paragrafo de "O que
+    # aconteceu", como veio no markdown aprovado (sem reescrever nada) -
+    # substitui o placeholder "Analise em preparacao..." fixado na
+    # criacao da pagina, que nunca era atualizado depois (garantir_pagina_existe
+    # so define esse texto uma vez, na primeira geracao da pagina).
+    primeiro_paragrafo_o_que = next(
+        (b.strip().replace("\n", " ") for b in re.split(r"\n\s*\n", corpo_o_que.strip()) if b.strip()),
+        "",
+    )
+
     data_publicacao = datetime.fromtimestamp(os.path.getmtime(caminho)).strftime("%d/%m/%Y")
     partes_rodape = []
     if fechamento:
@@ -278,6 +289,7 @@ def carregar_analise_markdown(slug: str):
     rodape = " · ".join(partes_rodape)
 
     return {
+        "RESUMO_ANALISTA": escape(primeiro_paragrafo_o_que, quote=False),
         "ANALISE_O_QUE_ACONTECEU": _paragrafos_html(corpo_o_que),
         "ANALISE_POR_QUE_ACONTECEU": html_por_que,
         "ANALISE_CONSEQUENCIAS": _paragrafos_html(corpo_consequencias),
