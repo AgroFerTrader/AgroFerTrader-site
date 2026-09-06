@@ -406,6 +406,16 @@ def garantir_pagina_existe(config: dict) -> str:
         "{{TITULO_PAGINA}}": config["titulo_pagina"],
         "{{META_DESCRICAO}}": config["meta_descricao"],
         "{{HEADLINE}}": config["headline"],
+        "{{HERO_TAGLINE}}": (
+            f"Acompanhe a cotação diária e a análise da semana do mercado de "
+            f"{config['nome_exibicao'].lower()} — e calcule se esse preço cobre o "
+            f"seu custo com a calculadora de break-even."
+            if config["slug"] in SLUGS_CALCULADORA
+            else (
+                f"Acompanhe a cotação diária, o histórico de preços e a análise "
+                f"da semana do mercado de {config['nome_exibicao'].lower()}."
+            )
+        ),
         "{{SWITCH_LINKS}}": montar_links_switch(config["slug"]),
         "{{EYEBROW_INICIAL}}": "",
         "{{UPDATED_INICIAL}}": "",
