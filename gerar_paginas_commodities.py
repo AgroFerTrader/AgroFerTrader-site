@@ -407,14 +407,8 @@ def garantir_pagina_existe(config: dict) -> str:
         "{{META_DESCRICAO}}": config["meta_descricao"],
         "{{HEADLINE}}": config["headline"],
         "{{HERO_TAGLINE}}": (
-            f"Acompanhe a cotação diária e a análise da semana do mercado de "
-            f"{config['nome_exibicao'].lower()} — e calcule se esse preço cobre o "
-            f"seu custo com a calculadora de break-even."
-            if config["slug"] in SLUGS_CALCULADORA
-            else (
-                f"Acompanhe a cotação diária, o histórico de preços e a análise "
-                f"da semana do mercado de {config['nome_exibicao'].lower()}."
-            )
+            f"Verifique a seguir o que moveu o mercado de "
+            f"{config['nome_exibicao'].lower()} na última semana."
         ),
         "{{SWITCH_LINKS}}": montar_links_switch(config["slug"]),
         "{{EYEBROW_INICIAL}}": "",
