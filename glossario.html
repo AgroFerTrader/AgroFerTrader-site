@@ -63,6 +63,13 @@
   h1{font-family:var(--display);font-weight:600;font-size:clamp(30px,4.5vw,44px);margin:0 0 14px;line-height:1.1;}
   .page-sub{font-size:16px;color:var(--ink);opacity:.75;max-width:60ch;margin:0;}
 
+  section.entry{padding:44px 0;border-bottom:1px solid var(--line);scroll-margin-top:24px;}
+  .entry-label{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);background:var(--ink);display:inline-block;padding:4px 10px;margin-bottom:16px;}
+  h2{font-family:var(--display);font-weight:600;font-size:26px;margin:0 0 16px;}
+  section.entry p{font-size:15.5px;max-width:66ch;margin:0 0 16px;}
+  section.entry p:last-child{margin-bottom:0;}
+  .lista-label{margin-top:44px;}
+
   .glossario-grid{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line);margin-top:8px;}
   .termo{scroll-margin-top:24px;display:grid;grid-template-columns:200px 1fr;gap:24px;padding:22px 0;border-bottom:1px solid var(--line);}
   .termo dt{font-family:var(--mono);font-weight:600;font-size:14.5px;color:var(--leaf);}
@@ -115,7 +122,6 @@
     <a href="commodities/cafe/">Café Arábica</a>
     <a href="commodities/boi-gordo/">Boi Gordo</a>
     <span class="nav-divider" aria-hidden="true">|</span>
-    <a href="entenda.html">Entenda</a>
     <a class="active" href="glossario.html">Glossário</a>
     <a href="calendario.html">Calendário</a>
     <a href="correlacoes.html">Correlações</a>
@@ -131,10 +137,27 @@
     <p class="page-sub">Os termos técnicos que mais aparecem nas nossas análises semanais, explicados em linguagem simples. Clique em qualquer palavra destacada numa análise para chegar direto na explicação aqui.</p>
   </div>
 
+  <section class="entry" id="cepea">
+    <div class="entry-label">01 · Preço físico</div>
+    <h2>O que é o CEPEA, e por que confiamos nele</h2>
+    <p>O CEPEA (Centro de Estudos Avançados em Economia Aplicada) é ligado à Esalq, escola de agricultura da USP. Todos os dias, pesquisadores levantam os preços praticados em cooperativas, armazéns e tradings de várias regiões do país, e calculam uma média que representa o preço físico daquela commodity — o valor que o produtor realmente recebe hoje, na entrega imediata.</p>
+    <p>É por isso que usamos o CEPEA como referência: é o indicador mais citado do setor no Brasil, usado oficialmente pela Conab, pelo Ministério da Agricultura, por bancos e por cooperativas. Não é uma estimativa de mercado financeiro — é o retrato do que está sendo negociado de verdade, no chão da fazenda e no balcão da cooperativa.</p>
+    <p>Um detalhe importante: o CEPEA fecha a conta do dia só no fim da tarde. Por isso, o preço que aparece pela manhã é sempre o fechamento do dia anterior — não é atraso do site, é como a coleta de dados funciona.</p>
+  </section>
+
+  <section class="entry" id="futuro">
+    <div class="entry-label">02 · Preço futuro</div>
+    <h2>Por que existe um preço "de hoje" e um preço "de setembro"</h2>
+    <p>Além do preço físico, a B3 (a bolsa brasileira) negocia contratos futuros: acordos para comprar ou vender uma commodity numa data futura, por um preço combinado agora. Esse preço reflete a expectativa do mercado financeiro — o que compradores e vendedores acham que o preço vai valer lá na frente, considerando clima, tamanho da safra, câmbio e demanda internacional.</p>
+    <p>Por isso o preço futuro quase nunca é idêntico ao físico: a diferença entre os dois (o que o mercado chama de "base" ou "basis") carrega informação. Se o futuro está bem mais alto que o físico, por exemplo, o mercado está apostando em alguma pressão de alta entre agora e o vencimento do contrato — pode ser expectativa de quebra de safra, alta do dólar, ou aumento de demanda externa.</p>
+    <p>Quem exporta ou compra grandes volumes usa esse mercado para se proteger de oscilação de preço (o que se chama de "hedge") — travando hoje o valor de uma venda ou compra que só vai acontecer daqui a alguns meses.</p>
+  </section>
+
+  <div class="entry-label lista-label">03 · Referência rápida</div>
   <dl class="glossario-grid">
     <div class="termo" id="arroba">
       <dt><a href="#arroba">Arroba</a></dt>
-      <dd>Unidade de medida usada para negociar boi gordo no Brasil, equivalente a 15 quilos de carcaça do animal (não do animal vivo). Quando uma análise cita "R$ 340 a arroba", está falando do preço pago por cada 15 kg de carne já processada.</dd>
+      <dd>Unidade de medida usada para negociar boi gordo no Brasil, equivalente a 15 quilos de carcaça do animal (não do animal vivo). Quando uma análise cita "R$ 340 a arroba", está falando do preço pago por cada 15 kg de carne já processada. O boi gordo é sempre cotado por arroba, nunca por saca.</dd>
     </div>
     <div class="termo" id="b3">
       <dt><a href="#b3">B3</a></dt>
@@ -143,6 +166,10 @@
     <div class="termo" id="backwardation">
       <dt><a href="#backwardation">Backwardation</a></dt>
       <dd>Situação em que o preço de um contrato futuro com entrega mais distante é menor do que o de entrega mais próxima. Na prática, indica que o mercado espera que a escassez atual de um produto seja temporária, e não um problema permanente de oferta.</dd>
+    </div>
+    <div class="termo" id="basis">
+      <dt><a href="#basis">Basis (base)</a></dt>
+      <dd>A diferença entre o preço físico e o preço futuro da mesma commodity. Está diretamente ligada aos conceitos de backwardation e contango: carrega informação sobre a expectativa do mercado quanto à oferta e demanda futura de um produto.</dd>
     </div>
     <div class="termo" id="cambio">
       <dt><a href="#cambio">Câmbio (dólar/real)</a></dt>
@@ -159,6 +186,10 @@
     <div class="termo" id="contango">
       <dt><a href="#contango">Contango</a></dt>
       <dd>O oposto do backwardation: quando o preço do contrato futuro de entrega mais distante é maior do que o de entrega próxima. Costuma refletir custo de armazenagem e expectativa de preços mais altos no futuro.</dd>
+    </div>
+    <div class="termo" id="contrato-futuro">
+      <dt><a href="#contrato-futuro">Contrato futuro</a></dt>
+      <dd>Acordo para comprar ou vender uma quantidade fixa de uma commodity numa data futura, por um preço definido hoje. É o instrumento financeiro por trás de conceitos como dólar futuro, backwardation e contango.</dd>
     </div>
     <div class="termo" id="cota-tarifaria">
       <dt><a href="#cota-tarifaria">Cota tarifária</a></dt>
@@ -180,6 +211,14 @@
       <dt><a href="#eudr">EUDR (Regulamento Europeu de Desmatamento)</a></dt>
       <dd>Norma da União Europeia que exige comprovação, com rastreabilidade documental, de que produtos como café, soja e carne bovina vendidos ao bloco europeu não vêm de áreas desmatadas recentemente. Passa a valer para grandes empresas a partir de 30 de dezembro de 2026.</dd>
     </div>
+    <div class="termo" id="fechamento">
+      <dt><a href="#fechamento">Fechamento</a></dt>
+      <dd>O último preço negociado antes do encerramento do pregão do dia — o resultado final daquele dia de negociação para uma determinada commodity ou contrato.</dd>
+    </div>
+    <div class="termo" id="hedge">
+      <dt><a href="#hedge">Hedge</a></dt>
+      <dd>Estratégia usada para travar um preço futuro e se proteger de oscilações de mercado. É uma prática comum entre exportadores e compradores de grandes volumes, que assim reduzem a incerteza sobre o preço de uma operação que só vai se concretizar meses à frente.</dd>
+    </div>
     <div class="termo" id="indicador-esalq">
       <dt><a href="#indicador-esalq">Indicador ESALQ</a></dt>
       <dd>Nome usado para os preços físicos de referência calculados pelo CEPEA/Esalq para diferentes commodities e praças (por exemplo, "Indicador ESALQ/Paranaguá" para a soja).</dd>
@@ -194,7 +233,7 @@
     </div>
     <div class="termo" id="ptax">
       <dt><a href="#ptax">PTAX</a></dt>
-      <dd>Taxa de câmbio oficial calculada e divulgada pelo Banco Central do Brasil, usada como referência em contratos financeiros e liquidações que envolvem conversão entre reais e dólares.</dd>
+      <dd>Taxa de câmbio oficial calculada e divulgada pelo Banco Central do Brasil, usada como referência em contratos financeiros e liquidações que envolvem conversão entre reais e dólares. É calculada uma vez por dia, a partir da média das operações de câmbio realizadas no mercado.</dd>
     </div>
     <div class="termo" id="relacao-estoque-consumo">
       <dt><a href="#relacao-estoque-consumo">Relação estoque/consumo</a></dt>
@@ -228,8 +267,7 @@
     <div class="foot-row">
       <div>AgroFer Trader — conteúdo informativo sobre o mercado agrícola. Não constitui recomendação de investimento ou negócio.</div>
       <div>
-        <a href="entenda.html">Entenda</a>
-        · <a href="https://www.instagram.com/agrofertrader/" target="_blank" rel="noopener">Instagram @agrofertrader</a>
+        <a href="https://www.instagram.com/agrofertrader/" target="_blank" rel="noopener">Instagram @agrofertrader</a>
       </div>
     </div>
   </footer>
