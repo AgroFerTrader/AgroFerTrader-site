@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<title>Glossário de Mercado | AgroFer Trader</title>
+<meta name="description" content="Os termos técnicos mais usados nas análises de mercado agrícola da AgroFer Trader — CEPEA, WASDE, backwardation, vazio sanitário e outros, explicados em linguagem simples.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="canonical" href="https://agrofertrader.github.io/AgroFerTrader-site/glossario.html">
+
+<meta property="og:locale" content="pt_BR">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Glossário de Mercado | AgroFer Trader">
+<meta property="og:description" content="Os termos técnicos mais usados nas análises de mercado agrícola da AgroFer Trader, explicados em linguagem simples.">
+<meta property="og:url" content="https://agrofertrader.github.io/AgroFerTrader-site/glossario.html">
+<meta property="og:site_name" content="AgroFer Trader">
+<meta property="og:image" content="https://agrofertrader.github.io/AgroFerTrader-site/assets/logo.png">
+<meta property="og:image:alt" content="Logo da AgroFer Trader">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#0B3C1F;
+    --ink-soft:#BFD1B8;
+    --paper:#FDFDF9;
+    --paper-dim:#F2F1E4;
+    --gold:#B08830;
+    --leaf:#4C7A1F;
+    --up:#4C7A1F;
+    --down:#9C3B2E;
+    --line: rgba(11,60,31,0.14);
+    --line-dark: rgba(253,253,249,0.16);
+    --display: 'Fraunces', serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.5;overflow-x:hidden;}
+  a{color:var(--leaf);}
+  img{max-width:100%;}
+  .wrap{max-width:820px;margin:0 auto;padding:0 24px;}
+
+  nav{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;max-width:1080px;margin:0 auto;flex-wrap:wrap;gap:12px;}
+  .brand{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:0.01em;display:flex;align-items:center;gap:10px;}
+  .brand img{height:58px;width:auto;display:block;}
+  .navlinks{display:flex;gap:24px;font-size:14px;font-weight:500;flex-wrap:wrap;}
+  .navlinks a{text-decoration:none;opacity:0.75;transition:opacity .15s;color:var(--ink);}
+  .navlinks a:hover, .navlinks a:focus-visible{opacity:1;}
+  .navlinks .nav-divider{opacity:.25;font-weight:300;}
+  .navlinks a.active{opacity:1;border-bottom:2px solid var(--gold);}
+
+  .page-head{padding:44px 0 40px;border-bottom:1px solid var(--line);}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--leaf);margin-bottom:14px;}
+  h1{font-family:var(--display);font-weight:600;font-size:clamp(30px,4.5vw,44px);margin:0 0 14px;line-height:1.1;}
+  .page-sub{font-size:16px;color:var(--ink);opacity:.75;max-width:60ch;margin:0;}
+
+  .glossario-grid{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line);margin-top:8px;}
+  .termo{scroll-margin-top:24px;display:grid;grid-template-columns:200px 1fr;gap:24px;padding:22px 0;border-bottom:1px solid var(--line);}
+  .termo dt{font-family:var(--mono);font-weight:600;font-size:14.5px;color:var(--leaf);}
+  .termo dt a{color:inherit;text-decoration:none;}
+  .termo dt a:hover{text-decoration:underline;}
+  .termo dd{margin:0;font-size:15px;}
+  @media (max-width:560px){
+    .termo{grid-template-columns:1fr;gap:6px;}
+  }
+
+  footer{padding:40px 0 56px;font-size:13px;color:var(--ink);opacity:.6;border-top:1px solid var(--line);margin-top:8px;}
+  footer .foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+  footer a{text-decoration:underline;color:var(--ink);}
+
+  @media (max-width:680px){
+    nav{flex-wrap:wrap;row-gap:10px;}
+    .brand{flex-shrink:0;}
+    .navlinks{
+      flex:1 1 100%;
+      justify-content:flex-start;
+      flex-wrap:nowrap;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+      white-space:nowrap;
+      scrollbar-width:none;
+      padding-bottom:2px;
+      margin:0 -24px;
+      padding-left:24px;
+      padding-right:24px;
+    }
+    .navlinks::-webkit-scrollbar{display:none;}
+    .navlinks a, .navlinks .nav-divider{flex-shrink:0;}
+  }
+</style>
+</head>
+<body>
+
+<nav aria-label="Navegação principal">
+  <div class="brand">
+    <a href="./" aria-label="AgroFer Trader — página inicial">
+      <img src="assets/logo.png" alt="AgroFer Trader">
+    </a>
+  </div>
+  <div class="navlinks">
+    <a href="index.html#precos">Preços de hoje</a>
+    <a href="index.html#futuro">Mercado futuro</a>
+    <span class="nav-divider" aria-hidden="true">|</span>
+    <a href="commodities/soja/">Soja</a>
+    <a href="commodities/milho/">Milho</a>
+    <a href="commodities/cafe/">Café Arábica</a>
+    <a href="commodities/boi-gordo/">Boi Gordo</a>
+    <span class="nav-divider" aria-hidden="true">|</span>
+    <a href="entenda.html">Entenda</a>
+    <a class="active" href="glossario.html">Glossário</a>
+    <a href="calculadora/">Calculadora</a>
+    <a href="https://www.instagram.com/agrofertrader/" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="page-head">
+    <div class="eyebrow">Guia de referência</div>
+    <h1>Glossário de mercado</h1>
+    <p class="page-sub">Os termos técnicos que mais aparecem nas nossas análises semanais, explicados em linguagem simples. Clique em qualquer palavra destacada numa análise para chegar direto na explicação aqui.</p>
+  </div>
+
+  <dl class="glossario-grid">
+    <div class="termo" id="arroba">
+      <dt><a href="#arroba">Arroba</a></dt>
+      <dd>Unidade de medida usada para negociar boi gordo no Brasil, equivalente a 15 quilos de carcaça do animal (não do animal vivo). Quando uma análise cita "R$ 340 a arroba", está falando do preço pago por cada 15 kg de carne já processada.</dd>
+    </div>
+    <div class="termo" id="b3">
+      <dt><a href="#b3">B3</a></dt>
+      <dd>A bolsa de valores e de mercadorias do Brasil, sediada em São Paulo. É nela que se negociam os contratos futuros de commodities brasileiras, como o milho e o boi gordo, com entrega prevista para meses à frente.</dd>
+    </div>
+    <div class="termo" id="backwardation">
+      <dt><a href="#backwardation">Backwardation</a></dt>
+      <dd>Situação em que o preço de um contrato futuro com entrega mais distante é menor do que o de entrega mais próxima. Na prática, indica que o mercado espera que a escassez atual de um produto seja temporária, e não um problema permanente de oferta.</dd>
+    </div>
+    <div class="termo" id="cambio">
+      <dt><a href="#cambio">Câmbio (dólar/real)</a></dt>
+      <dd>A cotação que informa quantos reais são necessários para comprar um dólar americano. Como boa parte das commodities agrícolas é precificada internacionalmente em dólar, um real mais fraco (dólar mais caro) tende a favorecer o exportador brasileiro, que recebe mais reais pela mesma venda em dólar.</dd>
+    </div>
+    <div class="termo" id="cepea-esalq">
+      <dt><a href="#cepea-esalq">CEPEA/Esalq</a></dt>
+      <dd>Centro de Estudos Avançados em Economia Aplicada, ligado à Escola Superior de Agricultura Luiz de Queiroz (USP). É a principal fonte de referência de preços agrícolas físicos no Brasil — quando uma cotação de café, soja, milho ou boi gordo é citada sem outra fonte, normalmente vem daqui.</dd>
+    </div>
+    <div class="termo" id="conab">
+      <dt><a href="#conab">Conab</a></dt>
+      <dd>Companhia Nacional de Abastecimento, empresa pública ligada ao Ministério da Agricultura. Divulga, mensalmente, as estimativas oficiais de produção das safras agrícolas brasileiras.</dd>
+    </div>
+    <div class="termo" id="contango">
+      <dt><a href="#contango">Contango</a></dt>
+      <dd>O oposto do backwardation: quando o preço do contrato futuro de entrega mais distante é maior do que o de entrega próxima. Costuma refletir custo de armazenagem e expectativa de preços mais altos no futuro.</dd>
+    </div>
+    <div class="termo" id="cota-tarifaria">
+      <dt><a href="#cota-tarifaria">Cota tarifária</a></dt>
+      <dd>Quantidade de um produto que um país pode exportar para outro pagando uma tarifa reduzida ou zero. Depois de atingido esse limite, qualquer volume adicional passa a pagar uma tarifa mais alta, o que reduz a competitividade do produto excedente.</dd>
+    </div>
+    <div class="termo" id="dolar-futuro">
+      <dt><a href="#dolar-futuro">Dólar futuro</a></dt>
+      <dd>Contrato negociado na B3 que trava, hoje, o valor do dólar para uma data futura — usado por exportadores e importadores para se proteger de variações bruscas do câmbio.</dd>
+    </div>
+    <div class="termo" id="el-nino-la-nina">
+      <dt><a href="#el-nino-la-nina">El Niño / La Niña</a></dt>
+      <dd>Fenômenos climáticos causados por variações na temperatura das águas do oceano Pacífico, que alteram o regime de chuvas em boa parte do mundo, incluindo o Brasil. O El Niño costuma trazer chuva em excesso ao Sul do país e períodos mais secos ao Norte e Nordeste; a La Niña tende a inverter esse padrão.</dd>
+    </div>
+    <div class="termo" id="estoque-de-passagem">
+      <dt><a href="#estoque-de-passagem">Estoque de passagem</a></dt>
+      <dd>A quantidade de um produto que sobra no fim de um ciclo de safra e é somada à produção do ciclo seguinte. Um estoque de passagem baixo significa que há pouca "gordura" no sistema — qualquer imprevisto na safra seguinte tende a pressionar os preços com mais força.</dd>
+    </div>
+    <div class="termo" id="eudr">
+      <dt><a href="#eudr">EUDR (Regulamento Europeu de Desmatamento)</a></dt>
+      <dd>Norma da União Europeia que exige comprovação, com rastreabilidade documental, de que produtos como café, soja e carne bovina vendidos ao bloco europeu não vêm de áreas desmatadas recentemente. Passa a valer para grandes empresas a partir de 30 de dezembro de 2026.</dd>
+    </div>
+    <div class="termo" id="indicador-esalq">
+      <dt><a href="#indicador-esalq">Indicador ESALQ</a></dt>
+      <dd>Nome usado para os preços físicos de referência calculados pelo CEPEA/Esalq para diferentes commodities e praças (por exemplo, "Indicador ESALQ/Paranaguá" para a soja).</dd>
+    </div>
+    <div class="termo" id="libra-peso">
+      <dt><a href="#libra-peso">Libra-peso</a></dt>
+      <dd>Unidade de peso usada nos Estados Unidos, equivalente a cerca de 453,6 gramas. O café é negociado internacionalmente em dólares por libra-peso na Bolsa de Nova York.</dd>
+    </div>
+    <div class="termo" id="one-health">
+      <dt><a href="#one-health">One Health</a></dt>
+      <dd>Política da União Europeia que trata a saúde humana, animal e ambiental como interligadas, usada como base para exigências sanitárias sobre produtos importados, como o controle de antimicrobianos em animais.</dd>
+    </div>
+    <div class="termo" id="ptax">
+      <dt><a href="#ptax">PTAX</a></dt>
+      <dd>Taxa de câmbio oficial calculada e divulgada pelo Banco Central do Brasil, usada como referência em contratos financeiros e liquidações que envolvem conversão entre reais e dólares.</dd>
+    </div>
+    <div class="termo" id="relacao-estoque-consumo">
+      <dt><a href="#relacao-estoque-consumo">Relação estoque/consumo</a></dt>
+      <dd>Percentual que compara quanto de um produto está estocado em relação ao quanto o mundo consome dele por ano. Quanto menor essa relação, mais sensível o preço fica a qualquer imprevisto de oferta.</dd>
+    </div>
+    <div class="termo" id="saca">
+      <dt><a href="#saca">Saca</a></dt>
+      <dd>Unidade de medida usada para negociar grãos no Brasil. Para café, soja e milho, a saca padrão equivale a 60 quilos; para o açúcar cristal, a referência usada no mercado é a saca de 50 quilos.</dd>
+    </div>
+    <div class="termo" id="safra-safrinha">
+      <dt><a href="#safra-safrinha">Safra / Safrinha</a></dt>
+      <dd>"Safra" é o ciclo principal de plantio e colheita de uma cultura em determinado ano agrícola. "Safrinha" é a segunda safra, plantada logo após a colheita da primeira no mesmo ano — no Brasil, é especialmente importante para o milho.</dd>
+    </div>
+    <div class="termo" id="selic">
+      <dt><a href="#selic">Selic</a></dt>
+      <dd>Taxa básica de juros da economia brasileira, definida pelo Copom (Comitê de Política Monetária do Banco Central). Influencia o custo do crédito rural e a atratividade de reter ou vender a produção agrícola.</dd>
+    </div>
+    <div class="termo" id="vazio-sanitario">
+      <dt><a href="#vazio-sanitario">Vazio sanitário</a></dt>
+      <dd>Período obrigatório em que fica proibido manter, no campo, plantas de determinada cultura (como a soja) em certas regiões, para reduzir a proliferação de pragas e doenças de uma safra para a outra. Só depois de encerrado esse período é liberado o plantio da safra seguinte.</dd>
+    </div>
+    <div class="termo" id="wasde">
+      <dt><a href="#wasde">WASDE (World Agricultural Supply and Demand Estimates)</a></dt>
+      <dd>Relatório mensal do Departamento de Agricultura dos Estados Unidos (USDA) com estimativas de oferta e demanda mundial de grãos e outras commodities. Por cobrir também a produção americana e mundial, é uma das publicações mais acompanhadas pelo mercado agrícola global, inclusive no Brasil.</dd>
+    </div>
+  </dl>
+</div>
+
+<div class="wrap">
+  <footer>
+    <div class="foot-row">
+      <div>AgroFer Trader — conteúdo informativo sobre o mercado agrícola. Não constitui recomendação de investimento ou negócio.</div>
+      <div>
+        <a href="entenda.html">Entenda</a>
+        · <a href="https://www.instagram.com/agrofertrader/" target="_blank" rel="noopener">Instagram @agrofertrader</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>
