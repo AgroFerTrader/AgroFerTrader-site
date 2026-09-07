@@ -176,14 +176,86 @@ PASTA_ANALISES = os.path.join(PASTA_SITE, "analises")
 _RE_SECAO_MD = re.compile(r"(?m)^##\s+(.+)$")
 
 
-def _paragrafos_html(texto: str) -> str:
-    """Converte paragrafos separados por linha em branco (texto corrido,
-    dissertativo - nao bullet points) em <p>...</p>, um por paragrafo."""
-    blocos = re.split(r"\n\s*\n", texto.strip())
-    return "\n".join(
-        f"<p>{escape(bloco.strip().replace(chr(10), ' '), quote=False)}</p>"
-        for bloco in blocos if bloco.strip()
+# ---------------------------------------------------------------------------
+# GLOSSARIO (Recurso 1) - glossario_termos.json mapeia cada termo (como
+# aparece no texto corrido das analises) para a ancora correspondente em
+# glossario.html. Na primeira ocorrencia de cada termo dentro do texto de
+# uma analise, a funcao abaixo envolve a palavra num link - sem linkar de
+# novo o mesmo termo (ou uma variante dele que aponte pra mesma ancora)
+# depois disso. So opera sobre texto JA escapado para HTML (sem tags
+# ainda), inserindo apenas o <a> do termo encontrado.
+# ---------------------------------------------------------------------------
+
+CAMINHO_GLOSSARIO_TERMOS = os.path.join(PASTA_SITE, "glossario_termos.json")
+
+
+def _carregar_termos_glossario() -> list:
+    """Le glossario_termos.json e devolve [(termo, href), ...] ordenado do
+    termo mais longo pro mais curto - assim, quando dois termos poderiam
+    casar a partir do mesmo ponto do texto (ex.: "CEPEA" dentro de
+    "CEPEA/Esalq"), a alternativa mais longa e testada primeiro pela
+    regex combinada abaixo."""
+    if not os.path.exists(CAMINHO_GLOSSARIO_TERMOS):
+        return []
+    with open(CAMINHO_GLOSSARIO_TERMOS, encoding="utf-8") as f:
+        termos = json.load(f)
+    return sorted(termos.items(), key=lambda par: -len(par[0]))
+
+
+_TERMOS_GLOSSARIO = _carregar_termos_glossario()
+_HREF_POR_TERMO = {termo.lower(): href for termo, href in _TERMOS_GLOSSARIO}
+_REGEX_TERMOS_GLOSSARIO = (
+    re.compile(
+        r"(?<!\w)(?:" + "|".join(re.escape(termo) for termo, _ in _TERMOS_GLOSSARIO) + r")(?!\w)",
+        re.IGNORECASE,
     )
+    if _TERMOS_GLOSSARIO
+    else None
+)
+
+
+def _linkar_termos_glossario(texto_escapado: str, ancoras_usadas: set) -> str:
+    """Envolve num link a primeira ocorrencia de cada termo do glossario
+    cuja ancora ainda nao tenha sido usada NESTA analise. `texto_escapado`
+    ja passou por html.escape - a busca e por palavra inteira
+    (case-insensitive), pra nao casar "safra" dentro de "safrinha" nem
+    "CEPEA" dentro de outra palavra.
+
+    Usa uma UNICA regex combinada (em vez de um termo por vez) para que a
+    ordem de deteccao siga a ordem real do texto: quando dois termos
+    diferentes apontam pra mesma ancora (ex.: "Safra" e "Safrinha"), o
+    que aparece primeiro no texto e o que vira link, nao o termo mais
+    longo do dicionario."""
+    if _REGEX_TERMOS_GLOSSARIO is None:
+        return texto_escapado
+
+    def _substituir(m: re.Match) -> str:
+        achado = m.group(0)
+        href = _HREF_POR_TERMO.get(achado.lower())
+        if href is None or href in ancoras_usadas:
+            return achado
+        ancoras_usadas.add(href)
+        return f'<a class="termo-link" href="{href}">{achado}</a>'
+
+    return _REGEX_TERMOS_GLOSSARIO.sub(_substituir, texto_escapado)
+
+
+def _paragrafos_html(texto: str, ancoras_usadas: set | None = None) -> str:
+    """Converte paragrafos separados por linha em branco (texto corrido,
+    dissertativo - nao bullet points) em <p>...</p>, um por paragrafo.
+    Quando `ancoras_usadas` e passado, tambem aplica o auto-link do
+    glossario (Recurso 1) em cada paragrafo, compartilhando o conjunto de
+    ancoras ja usadas com o restante da analise."""
+    blocos = re.split(r"\n\s*\n", texto.strip())
+    paragrafos = []
+    for bloco in blocos:
+        if not bloco.strip():
+            continue
+        escapado = escape(bloco.strip().replace(chr(10), " "), quote=False)
+        if ancoras_usadas is not None:
+            escapado = _linkar_termos_glossario(escapado, ancoras_usadas)
+        paragrafos.append(f"<p>{escapado}</p>")
+    return "\n".join(paragrafos)
 
 
 def _secoes_analise_md(texto_md: str) -> dict:
@@ -243,6 +315,16 @@ def carregar_analise_markdown(slug: str):
     _, corpo_b2c = _secao_por_prefixo(secoes, "Impacto B2C")
     _, corpo_observar = _secao_por_prefixo(secoes, "O que observar")
 
+    # Um so conjunto de ancoras usadas para a analise inteira (todas as
+    # secoes) - um termo do glossario so vira link na primeira vez que
+    # aparecer em qualquer lugar do texto, nao uma vez por secao. As
+    # secoes sao processadas na MESMA ORDEM em que aparecem na pagina
+    # (o_que -> por_que -> consequencias -> b2b -> b2c -> observar), pra
+    # que "primeira ocorrencia" corresponda ao que o leitor ve primeiro.
+    ancoras_usadas: set = set()
+
+    html_o_que = _paragrafos_html(corpo_o_que, ancoras_usadas)
+
     # O subtitulo de "Por que aconteceu" (ex.: "- a camada internacional
     # que explica o paradoxo") carrega informacao real do texto aprovado,
     # mas o <h3> da secao ja e fixo no template - entra como frase de
@@ -252,8 +334,15 @@ def carregar_analise_markdown(slug: str):
         subtitulo = titulo_por_que.split("—", 1)[1].strip()
         if subtitulo:
             subtitulo = subtitulo[0].upper() + subtitulo[1:]
-            html_por_que += f"<p><strong>{escape(subtitulo, quote=False)}.</strong></p>\n"
-    html_por_que += _paragrafos_html(corpo_por_que)
+            subtitulo_escapado = _linkar_termos_glossario(
+                escape(subtitulo, quote=False), ancoras_usadas
+            )
+            html_por_que += f"<p><strong>{subtitulo_escapado}.</strong></p>\n"
+    html_por_que += _paragrafos_html(corpo_por_que, ancoras_usadas)
+
+    html_consequencias = _paragrafos_html(corpo_consequencias, ancoras_usadas)
+    html_b2b = _paragrafos_html(corpo_b2b, ancoras_usadas)
+    html_b2c = _paragrafos_html(corpo_b2c, ancoras_usadas)
 
     # "Fontes consultadas" e o ultimo paragrafo da secao "O que observar"
     # no markdown aprovado (sem cabecalho '##' proprio) - separado aqui do
@@ -266,7 +355,10 @@ def carregar_analise_markdown(slug: str):
     fontes_texto = ""
     if paragrafos_observar and paragrafos_observar[-1].startswith("Fontes consultadas"):
         fontes_texto = paragrafos_observar.pop()
-    corpo_observar_html = "\n".join(f"<p>{escape(p, quote=False)}</p>" for p in paragrafos_observar)
+    corpo_observar_html = "\n".join(
+        f"<p>{_linkar_termos_glossario(escape(p, quote=False), ancoras_usadas)}</p>"
+        for p in paragrafos_observar
+    )
 
     data_publicacao = datetime.fromtimestamp(os.path.getmtime(caminho)).strftime("%d/%m/%Y")
     partes_rodape = []
@@ -278,16 +370,14 @@ def carregar_analise_markdown(slug: str):
     rodape = " · ".join(partes_rodape)
 
     return {
-        "ANALISE_O_QUE_ACONTECEU": _paragrafos_html(corpo_o_que),
+        "ANALISE_O_QUE_ACONTECEU": html_o_que,
         "ANALISE_POR_QUE_ACONTECEU": html_por_que,
-        "ANALISE_CONSEQUENCIAS": _paragrafos_html(corpo_consequencias),
+        "ANALISE_CONSEQUENCIAS": html_consequencias,
         "ANALISE_IMPACTO_B2B": (
-            f'<h3>Impacto B2B</h3>\n        <div class="analise-texto">'
-            f'{_paragrafos_html(corpo_b2b)}</div>'
+            f'<h3>Impacto B2B</h3>\n        <div class="analise-texto">{html_b2b}</div>'
         ),
         "ANALISE_IMPACTO_B2C": (
-            f'<h3>Impacto B2C</h3>\n        <div class="analise-texto">'
-            f'{_paragrafos_html(corpo_b2c)}</div>'
+            f'<h3>Impacto B2C</h3>\n        <div class="analise-texto">{html_b2c}</div>'
         ),
         "ANALISE_O_QUE_OBSERVAR": corpo_observar_html,
         "ANALISE_FONTES": rodape,
