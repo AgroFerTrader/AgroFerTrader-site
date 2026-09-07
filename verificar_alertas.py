@@ -47,17 +47,16 @@ import monitor_agro_v9 as monitor
 PASTA_SITE = os.path.dirname(os.path.abspath(__file__))
 CAMINHO_TEMPLATE_ALERTA = os.path.join(PASTA_SITE, "emails", "alerta-preco.html")
 
-# Preencher com o ID real da planilha (Google Sheets > Compartilhar >
-# copiar link > o trecho entre "/d/" e "/edit") antes do primeiro uso.
-PLANILHA_ALERTAS_ID = "SUA_PLANILHA_ID_AQUI"
+PLANILHA_ALERTAS_ID = "1wcprb8UI4MFpcZC1LZXAjLp1GilepKJ-OEA-on1CDLs"
 
 ESCOPOS_GOOGLE = [
     "https://www.googleapis.com/auth/spreadsheets",
 ]
 
+# Remetente verificado no painel do Brevo.
 BREVO_REMETENTE = {
     "name": "AgroFer Trader",
-    "email": "contato@agrofertrader.com",  # precisa ser um remetente verificado no Brevo
+    "email": "agrofertrader@gmail.com",
 }
 
 # Mapeia o texto que pode aparecer na coluna "commodity" da planilha
