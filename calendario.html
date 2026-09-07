@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<title>Calendário do Produtor | AgroFer Trader</title>
+<meta name="description" content="As datas que movem o mercado agrícola: WASDE, Copom, CONAB e prazos regulatórios, com o porquê de cada uma importar para quem produz ou negocia commodities.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="canonical" href="https://agrofertrader.github.io/AgroFerTrader-site/calendario.html">
+
+<meta property="og:locale" content="pt_BR">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Calendário do Produtor | AgroFer Trader">
+<meta property="og:description" content="As datas que movem o mercado agrícola, com o porquê de cada uma importar para quem produz ou negocia commodities.">
+<meta property="og:url" content="https://agrofertrader.github.io/AgroFerTrader-site/calendario.html">
+<meta property="og:site_name" content="AgroFer Trader">
+<meta property="og:image" content="https://agrofertrader.github.io/AgroFerTrader-site/assets/logo.png">
+<meta property="og:image:alt" content="Logo da AgroFer Trader">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#0B3C1F;
+    --ink-soft:#BFD1B8;
+    --paper:#FDFDF9;
+    --paper-dim:#F2F1E4;
+    --gold:#B08830;
+    --leaf:#4C7A1F;
+    --up:#4C7A1F;
+    --down:#9C3B2E;
+    --line: rgba(11,60,31,0.14);
+    --line-dark: rgba(253,253,249,0.16);
+    --display: 'Fraunces', serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.5;overflow-x:hidden;}
+  a{color:var(--leaf);}
+  img{max-width:100%;}
+  .wrap{max-width:820px;margin:0 auto;padding:0 24px;}
+
+  nav{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;max-width:1080px;margin:0 auto;flex-wrap:wrap;gap:12px;}
+  .brand{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:0.01em;display:flex;align-items:center;gap:10px;}
+  .brand img{height:58px;width:auto;display:block;}
+  .navlinks{display:flex;gap:24px;font-size:14px;font-weight:500;flex-wrap:wrap;}
+  .navlinks a{text-decoration:none;opacity:0.75;transition:opacity .15s;color:var(--ink);}
+  .navlinks a:hover, .navlinks a:focus-visible{opacity:1;}
+  .navlinks .nav-divider{opacity:.25;font-weight:300;}
+  .navlinks a.active{opacity:1;border-bottom:2px solid var(--gold);}
+
+  .page-head{padding:44px 0 40px;border-bottom:1px solid var(--line);}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--leaf);margin-bottom:14px;}
+  h1{font-family:var(--display);font-weight:600;font-size:clamp(30px,4.5vw,44px);margin:0 0 14px;line-height:1.1;}
+  .page-sub{font-size:16px;color:var(--ink);opacity:.75;max-width:60ch;margin:0;}
+
+  .mes{margin-top:44px;}
+  .mes-titulo{
+    font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--gold);background:var(--ink);display:inline-block;padding:5px 12px;margin-bottom:20px;
+  }
+
+  .evento-card{
+    border:1px solid var(--line);border-left:4px solid var(--line);
+    padding:20px 24px;margin-bottom:16px;scroll-margin-top:24px;
+  }
+  .evento-card.proximo{border-left-color:var(--gold);background:var(--paper-dim);}
+  .evento-selo{display:none;}
+  .evento-card.proximo .evento-selo{
+    display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--ink);background:var(--gold);padding:2px 8px;border-radius:2px;margin-bottom:10px;
+  }
+  .evento-data{font-family:var(--mono);font-size:13px;color:var(--leaf);font-weight:600;margin-bottom:6px;}
+  .evento-nome{font-family:var(--display);font-weight:600;font-size:19px;margin:0 0 10px;}
+  .evento-motivo{font-size:14.5px;margin:0;max-width:66ch;}
+  .evento-motivo strong{color:var(--leaf);}
+
+  .rodape-nota{font-size:13px;opacity:.65;max-width:70ch;margin:36px 0 0;padding-top:20px;border-top:1px solid var(--line);}
+
+  footer{padding:40px 0 56px;font-size:13px;color:var(--ink);opacity:.6;border-top:1px solid var(--line);margin-top:32px;}
+  footer .foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+  footer a{text-decoration:underline;color:var(--ink);}
+
+  @media (max-width:680px){
+    nav{flex-wrap:wrap;row-gap:10px;}
+    .brand{flex-shrink:0;}
+    .navlinks{
+      flex:1 1 100%;
+      justify-content:flex-start;
+      flex-wrap:nowrap;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+      white-space:nowrap;
+      scrollbar-width:none;
+      padding-bottom:2px;
+      margin:0 -24px;
+      padding-left:24px;
+      padding-right:24px;
+    }
+    .navlinks::-webkit-scrollbar{display:none;}
+    .navlinks a, .navlinks .nav-divider{flex-shrink:0;}
+  }
+</style>
+</head>
+<body>
+
+<nav aria-label="Navegação principal">
+  <div class="brand">
+    <a href="./" aria-label="AgroFer Trader — página inicial">
+      <img src="assets/logo.png" alt="AgroFer Trader">
+    </a>
+  </div>
+  <div class="navlinks">
+    <a href="index.html#precos">Preços de hoje</a>
+    <a href="index.html#futuro">Mercado futuro</a>
+    <span class="nav-divider" aria-hidden="true">|</span>
+    <a href="commodities/soja/">Soja</a>
+    <a href="commodities/milho/">Milho</a>
+    <a href="commodities/cafe/">Café Arábica</a>
+    <a href="commodities/boi-gordo/">Boi Gordo</a>
+    <span class="nav-divider" aria-hidden="true">|</span>
+    <a href="entenda.html">Entenda</a>
+    <a href="glossario.html">Glossário</a>
+    <a class="active" href="calendario.html">Calendário</a>
+    <a href="calculadora/">Calculadora</a>
+    <a href="https://www.instagram.com/agrofertrader/" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="page-head">
+    <div class="eyebrow">Guia de referência</div>
+    <h1>Calendário do produtor</h1>
+    <p class="page-sub">As datas que costumam mexer com o preço das commodities — relatórios oficiais, decisões de juros e prazos regulatórios — com o porquê de cada uma importar. O evento mais próximo aparece destacado.</p>
+  </div>
+
+  <div class="mes">
+    <div class="mes-titulo">Setembro de 2026</div>
+
+    <div class="evento-card" data-date="2026-09-11">
+      <div class="evento-selo">Próximo evento</div>
+      <div class="evento-data">11 de setembro</div>
+      <h3 class="evento-nome">Relatório WASDE (USDA)</h3>
+      <p class="evento-motivo"><strong>Por que importa:</strong> É o boletim mensal do governo americano que estima quanto o mundo vai produzir e consumir de soja, milho e outras commodities. Como o Brasil compete diretamente com os Estados Unidos nesses mercados, qualquer revisão nesse relatório costuma mexer com os preços em poucos minutos — inclusive os praticados aqui.</p>
+    </div>
+
+    <div class="evento-card" data-date="2026-09-15">
+      <div class="evento-selo">Próximo evento</div>
+      <div class="evento-data">15 de setembro</div>
+      <h3 class="evento-nome">Copom decide a Selic</h3>
+      <p class="evento-motivo"><strong>Por que importa:</strong> A taxa básica de juros do Brasil influencia o custo de crédito rural, o câmbio e a disposição do produtor de vender agora ou guardar a produção esperando preço melhor. Juro mais alto tende a incentivar venda mais rápida, por encarecer o custo de estocar.</p>
+    </div>
+
+    <div class="evento-card" data-date="2026-09-15">
+      <div class="evento-selo">Próximo evento</div>
+      <div class="evento-data">15 de setembro</div>
+      <h3 class="evento-nome">Conab encerra o acompanhamento da safra de grãos 2025/26</h3>
+      <p class="evento-motivo"><strong>Por que importa:</strong> É o último boletim mensal do ciclo que está terminando — a "foto final" de quanto o Brasil realmente produziu de soja, milho e outros grãos nessa safra, usada como referência por todo o mercado.</p>
+    </div>
+
+    <div class="evento-card" data-date="2026-09-24">
+      <div class="evento-selo">Próximo evento</div>
+      <div class="evento-data">24 de setembro</div>
+      <h3 class="evento-nome">Conab divulga a 3ª estimativa da safra de café 2026</h3>
+      <p class="evento-motivo"><strong>Por que importa:</strong> Mostra se a produção de café está confirmando, superando ou ficando abaixo do que se esperava — informação que move diretamente o preço pago ao produtor.</p>
+    </div>
+  </div>
+
+  <div class="mes">
+    <div class="mes-titulo">Outubro de 2026</div>
+
+    <div class="evento-card" data-date="2026-10-09">
+      <div class="evento-selo">Próximo evento</div>
+      <div class="evento-data">9 de outubro</div>
+      <h3 class="evento-nome">Relatório WASDE (USDA)</h3>
+      <p class="evento-motivo"><strong>Por que importa:</strong> Mesma importância do relatório de setembro — atualização mensal das estimativas de oferta e demanda mundial.</p>
+    </div>
+
+    <div class="evento-card" data-date="2026-10-15">
+      <div class="evento-selo">Próximo evento</div>
+      <div class="evento-data">15 de outubro</div>
+      <h3 class="evento-nome">Conab inicia o acompanhamento da safra de grãos 2026/27</h3>
+      <p class="evento-motivo"><strong>Por que importa:</strong> É o primeiro retrato oficial da nova safra que está sendo plantada agora — o mercado passa a reagir a esses números como referência do que vem pela frente, substituindo as estimativas do ciclo anterior.</p>
+    </div>
+  </div>
+
+  <div class="mes">
+    <div class="mes-titulo">Novembro de 2026</div>
+
+    <div class="evento-card" data-date="2026-11-03">
+      <div class="evento-selo">Próximo evento</div>
+      <div class="evento-data">3 e 4 de novembro</div>
+      <h3 class="evento-nome">Copom decide a Selic</h3>
+      <p class="evento-motivo"><strong>Por que importa:</strong> A taxa básica de juros do Brasil influencia o custo de crédito rural, o câmbio e a disposição do produtor de vender agora ou guardar a produção esperando preço melhor. Juro mais alto tende a incentivar venda mais rápida, por encarecer o custo de estocar.</p>
+    </div>
+
+    <div class="evento-card" data-date="2026-11-10">
+      <div class="evento-selo">Próximo evento</div>
+      <div class="evento-data">10 de novembro</div>
+      <h3 class="evento-nome">Relatório WASDE (USDA)</h3>
+      <p class="evento-motivo"><strong>Por que importa:</strong> Mesma importância do relatório de setembro — atualização mensal das estimativas de oferta e demanda mundial.</p>
+    </div>
+  </div>
+
+  <div class="mes">
+    <div class="mes-titulo">Dezembro de 2026</div>
+
+    <div class="evento-card" data-date="2026-12-08">
+      <div class="evento-selo">Próximo evento</div>
+      <div class="evento-data">8 e 9 de dezembro</div>
+      <h3 class="evento-nome">Copom decide a Selic</h3>
+      <p class="evento-motivo"><strong>Por que importa:</strong> A taxa básica de juros do Brasil influencia o custo de crédito rural, o câmbio e a disposição do produtor de vender agora ou guardar a produção esperando preço melhor. Juro mais alto tende a incentivar venda mais rápida, por encarecer o custo de estocar.</p>
+    </div>
+
+    <div class="evento-card" data-date="2026-12-10">
+      <div class="evento-selo">Próximo evento</div>
+      <div class="evento-data">10 de dezembro</div>
+      <h3 class="evento-nome">Relatório WASDE (USDA)</h3>
+      <p class="evento-motivo"><strong>Por que importa:</strong> Mesma importância do relatório de setembro — atualização mensal das estimativas de oferta e demanda mundial.</p>
+    </div>
+
+    <div class="evento-card" data-date="2026-12-30">
+      <div class="evento-selo">Próximo evento</div>
+      <div class="evento-data">30 de dezembro</div>
+      <h3 class="evento-nome">Prazo do EUDR (Regulamento Europeu de Desmatamento) entra em vigor para grandes operadores</h3>
+      <p class="evento-motivo"><strong>Por que importa:</strong> A partir dessa data, empresas europeias de grande porte só podem comprar café, soja e outras commodities do Brasil se conseguirem comprovar, com documentação detalhada, que a produção não veio de área desmatada recentemente. Isso pode mudar o ritmo de compra de exportadores europeus nas semanas anteriores ao prazo, como já vimos acontecer com o café em 2026.</p>
+    </div>
+  </div>
+
+  <p class="rodape-nota">As datas de reuniões do Copom e divulgação do WASDE seguem calendário oficial já publicado pelo Banco Central do Brasil e pelo USDA, respectivamente, e raramente mudam. As datas da Conab podem sofrer pequenos ajustes; a AgroFer Trader confirma e atualiza este calendário sempre que um novo cronograma oficial é publicado. Fontes: Banco Central do Brasil, USDA/WAOB, Conab.</p>
+</div>
+
+<div class="wrap">
+  <footer>
+    <div class="foot-row">
+      <div>AgroFer Trader — conteúdo informativo sobre o mercado agrícola. Não constitui recomendação de investimento ou negócio.</div>
+      <div>
+        <a href="glossario.html">Glossário</a>
+        · <a href="entenda.html">Entenda</a>
+        · <a href="https://www.instagram.com/agrofertrader/" target="_blank" rel="noopener">Instagram @agrofertrader</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  // Destaca o evento mais proximo da data atual - primeiro evento cuja
+  // data ainda nao passou; se todos ja passaram, destaca o ultimo da
+  // lista. So mexe na apresentacao (classe CSS), o conteudo em si e
+  // atualizado manualmente a cada trimestre (ver nota de rodape).
+  var cartoes = Array.prototype.slice.call(document.querySelectorAll(".evento-card"));
+  if (!cartoes.length) return;
+
+  var hoje = new Date();
+  hoje.setHours(0, 0, 0, 0);
+
+  var escolhido = cartoes.find(function (cartao) {
+    var data = new Date(cartao.dataset.date + "T00:00:00");
+    return data >= hoje;
+  }) || cartoes[cartoes.length - 1];
+
+  cartoes.forEach(function (cartao) {
+    if (cartao !== escolhido) {
+      cartao.classList.remove("proximo");
+    }
+  });
+  escolhido.classList.add("proximo");
+})();
+</script>
+
+</body>
+</html>
