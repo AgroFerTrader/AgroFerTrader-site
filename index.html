@@ -260,6 +260,26 @@
   .glossary-card a{text-decoration:none;font-weight:600;font-size:15px;display:flex;justify-content:space-between;align-items:center;}
   .glossary-card p{font-size:13px;color:var(--ink-soft);margin:8px 0 0;}
 
+  .newsletter-band{background:var(--paper-dim);}
+  .newsletter-inner{padding:56px 0;text-align:left;}
+  .newsletter-sub{font-size:15px;opacity:.8;max-width:56ch;margin:10px 0 0;}
+  .newsletter-form{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;max-width:520px;}
+  .newsletter-form input[type=email]{
+    flex:1 1 240px;padding:12px 14px;border:1px solid var(--line);border-radius:2px;
+    font-size:15px;font-family:var(--body);background:var(--paper);color:var(--ink);
+  }
+  .newsletter-form button{
+    font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.05em;
+    padding:12px 22px;background:var(--ink);color:var(--paper);border:none;border-radius:2px;
+    cursor:pointer;white-space:nowrap;
+  }
+  .newsletter-form button:hover{background:var(--leaf);}
+  .newsletter-status{font-size:13px;margin:10px 0 0;min-height:1.3em;}
+  .newsletter-status.ok{color:var(--leaf);}
+  .newsletter-status.erro{color:var(--down);}
+  .newsletter-nota{font-size:12px;opacity:.6;margin:10px 0 0;max-width:60ch;}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+
   footer{padding:40px 0 56px;font-size:13px;color:var(--ink);opacity:.6;}
   footer .foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:1px solid var(--line);padding-top:24px;}
   footer a{text-decoration:underline;}
@@ -526,6 +546,50 @@ Fonte: CEPEA/Esalq · dado de 04/09/2026
     </div>
   </div>
 </section>
+
+<section class="newsletter-band" aria-labelledby="titulo-newsletter">
+  <div class="wrap newsletter-inner">
+    <div class="section-label">Toda semana no seu e-mail</div>
+    <h2 id="titulo-newsletter">Receba a análise por e-mail</h2>
+    <p class="newsletter-sub">O resumo da semana de soja, milho, café e boi gordo, direto na sua caixa de entrada — sem spam, cancele quando quiser.</p>
+
+    <!--
+      IMPORTANTE: troque "SEU_FORM_ID" abaixo pela URL real do formulário
+      criado no Brevo (painel Brevo > Contacts > Forms > criar formulário
+      > copiar o "action" do HTML gerado). Isso submete o e-mail direto
+      pro Brevo sem precisar de nenhuma chave de API no navegador - a
+      BREVO_API_KEY (secret) so e usada nos scripts que RODAM no servidor
+      (enviar_newsletter.py e, no futuro, verificar_alertas.py), nunca
+      aqui no HTML publico.
+    -->
+    <form class="newsletter-form" id="form-newsletter" action="https://SEU_FORM_ID.sibforms.com/serve/SEU_FORM_ID" method="post" target="newsletter-brevo-frame">
+      <label for="newsletter-email" class="sr-only">Seu e-mail</label>
+      <input type="email" id="newsletter-email" name="EMAIL" required placeholder="seu@email.com" autocomplete="email">
+      <button type="submit">Quero receber</button>
+    </form>
+    <iframe name="newsletter-brevo-frame" id="newsletter-brevo-frame" style="display:none;" title="Envio da inscrição na newsletter"></iframe>
+    <p class="newsletter-status" id="newsletter-status" role="status"></p>
+    <p class="newsletter-nota">Seus dados ficam salvos só para o envio dessa newsletter; não serão compartilhados com terceiros sem sua autorização.</p>
+  </div>
+</section>
+
+<script>
+(function () {
+  "use strict";
+  var form = document.getElementById("form-newsletter");
+  var status = document.getElementById("newsletter-status");
+  if (!form || !status) return;
+  form.addEventListener("submit", function () {
+    // O envio em si acontece pelo target="iframe oculto" acima (evita
+    // navegar pra fora do site) - aqui so mostramos uma confirmação
+    // otimista, já que a resposta do Brevo fica dentro do iframe oculto
+    // e não é algo que este script possa (nem precise) ler.
+    status.textContent = "Inscrição enviada! Confira sua caixa de entrada.";
+    status.className = "newsletter-status ok";
+    form.reset();
+  });
+})();
+</script>
 
 <div class="wrap">
   <footer>

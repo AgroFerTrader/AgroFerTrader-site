@@ -1,0 +1,57 @@
+name: Enviar newsletter semanal
+# Recurso 3 - so roda por acionamento manual (workflow_dispatch), NUNCA
+# em agendamento automatico. Quem aciona precisa escolher a commodity
+# principal da semana, escrever o titulo (decisao editorial - o script
+# nao inventa manchete sozinho) e marcar explicitamente a caixa
+# "confirmar" pra que o envio de fato aconteca - sem isso, o job so
+# gera e mostra a previa, sem mandar nada (mesma logica de seguranca do
+# script quando rodado localmente, que pede confirmacao s/n no terminal;
+# como o Actions nao tem terminal interativo, o input "confirmar" faz
+# esse papel aqui).
+on:
+  workflow_dispatch:
+    inputs:
+      commodity:
+        description: "Commodity principal da semana"
+        required: true
+        type: choice
+        options:
+          - soja
+          - milho
+          - cafe
+          - boi-gordo
+      titulo:
+        description: "Título/manchete da newsletter"
+        required: true
+        type: string
+      confirmar:
+        description: "Marque para ENVIAR de verdade (sem marcar, só gera a prévia)"
+        required: true
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  enviar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o repositório
+        uses: actions/checkout@v4
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Instalar dependências
+        run: pip install requests pandas lxml beautifulsoup4
+      - name: Gerar prévia (sempre, sem precisar de API key)
+        run: python enviar_newsletter.py --commodity "${{ inputs.commodity }}" --titulo "${{ inputs.titulo }}" --dry-run
+      - name: Publicar a prévia como artefato do workflow
+        uses: actions/upload-artifact@v4
+        with:
+          name: previa-newsletter
+          path: emails/_enviados/*.html
+      - name: Enviar de verdade (só se "confirmar" estiver marcado)
+        if: ${{ inputs.confirmar == 'true' }}
+        env:
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+        run: python enviar_newsletter.py --commodity "${{ inputs.commodity }}" --titulo "${{ inputs.titulo }}" --confirmar
