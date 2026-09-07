@@ -234,6 +234,15 @@
   }
   .btn-primary{background:var(--gold);color:var(--ink);}
   .btn-ghost{border-color:var(--line-dark);color:var(--paper);}
+  .cta-secondary-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
+  .btn-secondary{
+    display:inline-flex;align-items:center;gap:6px;
+    padding:9px 16px;border-radius:2px;
+    font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.04em;
+    text-decoration:none;border:1px solid var(--gold);color:var(--gold);
+    transition:background .15s,color .15s;
+  }
+  .btn-secondary:hover, .btn-secondary:focus-visible{background:var(--gold);color:var(--ink);}
 
   section{padding:64px 0;}
   .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:32px;flex-wrap:wrap;}
@@ -299,9 +308,13 @@
   .glossary-card p{font-size:13px;color:var(--ink-soft);margin:8px 0 0;}
 
   .newsletter-band{background:var(--paper-dim);}
-  .newsletter-inner{padding:56px 0;text-align:left;}
+  .newsletter-alerta-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;padding:56px 0;}
+  .newsletter-alerta-col{text-align:left;min-width:0;}
   .newsletter-sub{font-size:15px;opacity:.8;max-width:56ch;margin:10px 0 0;}
   .newsletter-nota{font-size:12px;opacity:.6;margin:10px 0 0;max-width:60ch;}
+  @media (max-width:780px){
+    .newsletter-alerta-grid{grid-template-columns:1fr;gap:40px;padding:44px 0;}
+  }
 
   footer{padding:40px 0 56px;font-size:13px;color:var(--ink);opacity:.6;}
   footer .foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:1px solid var(--line);padding-top:24px;}
@@ -357,7 +370,6 @@
     <a href="calendario.html">Calendário</a>
     <a href="correlacoes.html">Correlações</a>
     <a href="calculadora/">Calculadora</a>
-    <a href="https://www.instagram.com/agrofertrader/" target="_blank" rel="noopener">Instagram</a>
   </div>
 </nav>
 
@@ -395,7 +407,12 @@ Segunda-feira, 07 de setembro de 2026 · fechamento do dia anterior
 
     <div class="cta-row">
       <a href="#precos" class="btn btn-primary">Ver preços de hoje ↓</a>
-      <a href="glossario.html" class="btn btn-ghost">Não entendo nada disso →</a>
+    </div>
+    <div class="cta-secondary-row">
+      <a href="calculadora/" class="btn-secondary">Calculadora</a>
+      <a href="#titulo-newsletter" class="btn-secondary">Newsletter</a>
+      <a href="#titulo-alerta" class="btn-secondary">Alerta de Preços</a>
+      <a href="https://www.instagram.com/agrofertrader/" target="_blank" rel="noopener" class="btn-secondary">Instagram</a>
     </div>
   </div>
 </header>
@@ -464,22 +481,6 @@ Fonte: CEPEA/Esalq · dado de 04/09/2026
     </div>
   </section>
 
-  <section aria-labelledby="titulo-contexto">
-    <div class="section-head">
-      <div>
-        <div class="section-label">Contexto do dia</div>
-        <h2 id="titulo-contexto">O que as cotações significam</h2>
-      </div>
-    </div>
-
-    <div class="explain"><!-- EXPLAIN:START -->
-<p>Câmbio subiu discretamente hoje (+0.57%) - não é uma virada de tendência, mas pequenas altas como essa historicamente já dão um empurrão positivo ao preço doméstico de commodities de exportação.</p>
-      <p>Com a Selic em 14.00% ao ano, o custo de financiamento no campo segue elevado - isso tende a acelerar vendas (para gerar caixa) e, por atrair capital estrangeiro, também tende a fortalecer o real. Os dois efeitos juntos costumam pressionar o preço das commodities exportadas para baixo.</p>
-      <p class="obs">Obs.: vale lembrar que essas são relações históricas, não regras fixas - fatores como clima, safra e demanda internacional podem se sobrepor facilmente ao efeito do câmbio ou dos juros.</p>
-<!-- EXPLAIN:END -->
-    </div>
-  </section>
-
   <section id="futuro" aria-labelledby="titulo-futuro">
     <div class="section-head">
       <div>
@@ -509,69 +510,10 @@ Fonte: CEPEA/Esalq · dado de 04/09/2026
     </table>
   </section>
 
-  <section aria-labelledby="titulo-noticias">
-    <div class="section-head">
-      <div>
-        <div class="section-label">Comércio &amp; economia</div>
-        <h2 id="titulo-noticias">Notícias do agronegócio em destaque</h2>
-      </div>
-    </div>
-
-<!-- NEWS:START -->
-<article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/graos/427569-safra-de-extremos-nos-eua-do-alerta-em-illinois-ao-alivio-no-nebraska-veja-o-balanco-da-1-semana-do-crop-tour.html" target="_blank" rel="noopener">Grãos05/09/2026 - 09:58Safra de extremos nos EUA: Do alerta em Illinois ao alívio no Nebraska, veja o balanço da 1ª semana do Crop Tour</a></p>
-  <p class="news-summary">A 50ª edição do Crop Tour EUA, promovida pelo Grupo Labhoro em parceria com o Notícias Agrícolas, percorreu o coração agrícola dos Estados Unidos para avaliar de perto as condições das lavouras de soja e milho da safra 2...</p>
-  <p class="news-source">Fonte: Notícias Agrícolas</p>
-</article>
-    <article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/politica-economia/427562-dolar-fecha-em-alta-ante-real-apos-dados-de-emprego-nos-eua.html" target="_blank" rel="noopener">Política e Economia04/09/2026 - 17:28Dólar fecha em alta ante real após dados de emprego nos EUA</a></p>
-  <p class="news-summary">SÃO PAULO, 4 Set (Reuters) - O dólar fechou a sexta-feira em alta ante o real após dados do governo dos EUA indicarem geração de postos de trabalho acima do esperado no país em agosto, enquanto no Brasil a disputa pela P...</p>
-  <p class="news-source">Fonte: Notícias Agrícolas</p>
-</article>
-    <article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/algodao/427559-exportacoes-de-algodao-crescem-37-3-em-agosto-na-comparacao-com-2025.html" target="_blank" rel="noopener">04/09/2026 - 17:09Exportações de algodão crescem 37,3% em agosto na comparação com 2025</a></p>
-  <p class="news-summary">As exportações brasileiras de algodão em bruto somaram 106.345,3 toneladas em agosto de 2026, volume 37,3% superior ao registrado em agosto de 2025, quando o país embarcou 77.463,4 toneladas. Os dados foram divulgados pe...</p>
-  <p class="news-source">Fonte: Notícias Agrícolas</p>
-</article>
-    <article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/agronegocio/427558-brasil-vende-mais-para-eua-apesar-de-tarifas-e-tem-superavit-comercial-de-us7394-bi-em-agosto.html" target="_blank" rel="noopener">04/09/2026 - 16:30Brasil vende mais para EUA apesar de tarifas e tem superávit comercial de US$7,394 bi em agosto</a></p>
-  <p class="news-summary">SÃO PAULO, 4 Set (Reuters) - A balança comercial brasileira registrou superávit de US$7,394 bilhões em agosto, segundo dados da Secretaria de Comércio Exterior (Secex) divulgados nesta sexta-feira, com as vendas para os ...</p>
-  <p class="news-source">Fonte: Notícias Agrícolas</p>
-</article>
-    <article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/soja/427546-com-mercado-aquecido-comercializacao-da-soja-26-27-do-brasil-chega-a-29-1-e-supera-media.html" target="_blank" rel="noopener">04/09/2026 - 15:59Com mercado aquecido, comercialização da soja 26/27 do Brasil chega a 29,1% e supera média</a></p>
-  <p class="news-summary">A última semana foi marcada por uma intensa movimentação no mercado da soja tanto na Bolsa de Chicago, quanto no mercado nacional, trazendo um cenário bastante otimista para o produtor brasileiro. Com os preços registran...</p>
-  <p class="news-source">Fonte: Notícias Agrícolas</p>
-</article>
-<!-- NEWS:END -->
-  </section>
-
-</main>
-
-<section class="glossary-band" aria-labelledby="titulo-entenda">
-  <div class="wrap glossary-inner">
-    <div class="section-label">Comece por aqui</div>
-    <h2 id="titulo-entenda">Entenda o mercado, sem jargão</h2>
-
-    <div class="glossary-links">
-      <div class="glossary-card">
-        <a href="glossario.html#cepea">O que é o CEPEA →</a>
-        <p>Quem calcula o preço que você vê aqui todo dia, e como.</p>
-      </div>
-      <div class="glossary-card">
-        <a href="glossario.html#futuro">Como funciona o mercado futuro →</a>
-        <p>Por que existe um preço "de hoje" e um preço "de setembro".</p>
-      </div>
-      <div class="glossary-card">
-        <a href="glossario.html">Glossário do agro →</a>
-        <p>Saca, arroba, PTAX, Selic — os termos, explicados.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="newsletter-band" aria-labelledby="titulo-newsletter">
-  <div class="wrap newsletter-inner">
+  <div class="wrap">
+    <div class="newsletter-alerta-grid">
+      <div class="newsletter-alerta-col">
     <div class="section-label">Toda semana no seu e-mail</div>
     <h2 id="titulo-newsletter">Receba a análise por e-mail</h2>
     <p class="newsletter-sub">O resumo da semana de soja, milho, café e boi gordo, direto na sua caixa de entrada — sem spam, cancele quando quiser.</p>
@@ -668,11 +610,8 @@ Fonte: CEPEA/Esalq · dado de 04/09/2026
       </div>
     </div>
     <p class="newsletter-nota">Seus dados ficam salvos só para o envio dessa newsletter; não serão compartilhados com terceiros sem sua autorização.</p>
-  </div>
-</section>
-
-<section class="newsletter-band" aria-labelledby="titulo-alerta" style="border-top:1px solid var(--line);">
-  <div class="wrap newsletter-inner">
+      </div>
+      <div class="newsletter-alerta-col">
     <div class="section-label">Avise-me quando o preço mudar</div>
     <h2 id="titulo-alerta">Alerta de preço por e-mail</h2>
     <p class="newsletter-sub">Cadastre um valor de referência para soja, milho, café ou boi gordo e receba um e-mail automático assim que o preço do dia cruzar esse valor — pra cima ou pra baixo.</p>
@@ -685,6 +624,85 @@ Fonte: CEPEA/Esalq · dado de 04/09/2026
       </a>
     </p>
     <p class="newsletter-nota">Você recebe no máximo um e-mail por alerta cadastrado. Cancele quando quiser respondendo o e-mail recebido.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section aria-labelledby="titulo-contexto">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Contexto do dia</div>
+        <h2 id="titulo-contexto">O que as cotações significam</h2>
+      </div>
+    </div>
+
+    <div class="explain"><!-- EXPLAIN:START -->
+<p>Câmbio subiu discretamente hoje (+0.57%) - não é uma virada de tendência, mas pequenas altas como essa historicamente já dão um empurrão positivo ao preço doméstico de commodities de exportação.</p>
+      <p>Com a Selic em 14.00% ao ano, o custo de financiamento no campo segue elevado - isso tende a acelerar vendas (para gerar caixa) e, por atrair capital estrangeiro, também tende a fortalecer o real. Os dois efeitos juntos costumam pressionar o preço das commodities exportadas para baixo.</p>
+      <p class="obs">Obs.: vale lembrar que essas são relações históricas, não regras fixas - fatores como clima, safra e demanda internacional podem se sobrepor facilmente ao efeito do câmbio ou dos juros.</p>
+<!-- EXPLAIN:END -->
+    </div>
+  </section>
+
+  <section aria-labelledby="titulo-noticias">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Comércio &amp; economia</div>
+        <h2 id="titulo-noticias">Notícias do agronegócio em destaque</h2>
+      </div>
+    </div>
+
+<!-- NEWS:START -->
+<article class="news-item">
+  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/graos/427569-safra-de-extremos-nos-eua-do-alerta-em-illinois-ao-alivio-no-nebraska-veja-o-balanco-da-1-semana-do-crop-tour.html" target="_blank" rel="noopener">Grãos05/09/2026 - 09:58Safra de extremos nos EUA: Do alerta em Illinois ao alívio no Nebraska, veja o balanço da 1ª semana do Crop Tour</a></p>
+  <p class="news-summary">A 50ª edição do Crop Tour EUA, promovida pelo Grupo Labhoro em parceria com o Notícias Agrícolas, percorreu o coração agrícola dos Estados Unidos para avaliar de perto as condições das lavouras de soja e milho da safra 2...</p>
+  <p class="news-source">Fonte: Notícias Agrícolas</p>
+</article>
+    <article class="news-item">
+  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/politica-economia/427562-dolar-fecha-em-alta-ante-real-apos-dados-de-emprego-nos-eua.html" target="_blank" rel="noopener">Política e Economia04/09/2026 - 17:28Dólar fecha em alta ante real após dados de emprego nos EUA</a></p>
+  <p class="news-summary">SÃO PAULO, 4 Set (Reuters) - O dólar fechou a sexta-feira em alta ante o real após dados do governo dos EUA indicarem geração de postos de trabalho acima do esperado no país em agosto, enquanto no Brasil a disputa pela P...</p>
+  <p class="news-source">Fonte: Notícias Agrícolas</p>
+</article>
+    <article class="news-item">
+  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/algodao/427559-exportacoes-de-algodao-crescem-37-3-em-agosto-na-comparacao-com-2025.html" target="_blank" rel="noopener">04/09/2026 - 17:09Exportações de algodão crescem 37,3% em agosto na comparação com 2025</a></p>
+  <p class="news-summary">As exportações brasileiras de algodão em bruto somaram 106.345,3 toneladas em agosto de 2026, volume 37,3% superior ao registrado em agosto de 2025, quando o país embarcou 77.463,4 toneladas. Os dados foram divulgados pe...</p>
+  <p class="news-source">Fonte: Notícias Agrícolas</p>
+</article>
+    <article class="news-item">
+  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/agronegocio/427558-brasil-vende-mais-para-eua-apesar-de-tarifas-e-tem-superavit-comercial-de-us7394-bi-em-agosto.html" target="_blank" rel="noopener">04/09/2026 - 16:30Brasil vende mais para EUA apesar de tarifas e tem superávit comercial de US$7,394 bi em agosto</a></p>
+  <p class="news-summary">SÃO PAULO, 4 Set (Reuters) - A balança comercial brasileira registrou superávit de US$7,394 bilhões em agosto, segundo dados da Secretaria de Comércio Exterior (Secex) divulgados nesta sexta-feira, com as vendas para os ...</p>
+  <p class="news-source">Fonte: Notícias Agrícolas</p>
+</article>
+    <article class="news-item">
+  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/soja/427546-com-mercado-aquecido-comercializacao-da-soja-26-27-do-brasil-chega-a-29-1-e-supera-media.html" target="_blank" rel="noopener">04/09/2026 - 15:59Com mercado aquecido, comercialização da soja 26/27 do Brasil chega a 29,1% e supera média</a></p>
+  <p class="news-summary">A última semana foi marcada por uma intensa movimentação no mercado da soja tanto na Bolsa de Chicago, quanto no mercado nacional, trazendo um cenário bastante otimista para o produtor brasileiro. Com os preços registran...</p>
+  <p class="news-source">Fonte: Notícias Agrícolas</p>
+</article>
+<!-- NEWS:END -->
+  </section>
+
+</main>
+
+<section class="glossary-band" aria-labelledby="titulo-entenda">
+  <div class="wrap glossary-inner">
+    <div class="section-label">Comece por aqui</div>
+    <h2 id="titulo-entenda">Entenda o mercado, sem jargão</h2>
+
+    <div class="glossary-links">
+      <div class="glossary-card">
+        <a href="glossario.html#cepea">O que é o CEPEA →</a>
+        <p>Quem calcula o preço que você vê aqui todo dia, e como.</p>
+      </div>
+      <div class="glossary-card">
+        <a href="glossario.html#futuro">Como funciona o mercado futuro →</a>
+        <p>Por que existe um preço "de hoje" e um preço "de setembro".</p>
+      </div>
+      <div class="glossary-card">
+        <a href="glossario.html">Glossário do agro →</a>
+        <p>Saca, arroba, PTAX, Selic — os termos, explicados.</p>
+      </div>
+    </div>
   </div>
 </section>
 
