@@ -4,8 +4,9 @@ Gerar Site - AgroFer Trader
 ============================
 Gera o site (index.html) automaticamente a partir dos mesmos dados que o
 monitor_agro_v9.py ja busca (dolar, Selic, commodities fisicas, futuros
-B3, noticias). A pagina entenda.html e conteudo evergreen (nao muda todo
-dia) e nao e tocada por este script.
+B3, noticias). Paginas como glossario.html e calendario.html sao
+conteudo evergreen (nao mudam todo dia) e nao sao tocadas por este
+script.
 
 Requisitos: os mesmos do monitor_agro_v9.py (requests, pandas, lxml,
 beautifulsoup4), mais este proprio arquivo monitor_agro_v9.py no mesmo

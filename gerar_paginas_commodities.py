@@ -1170,13 +1170,13 @@ def atualizar_pagina_commodity(config: dict, dados: dict) -> None:
 
 # ---------------------------------------------------------------------------
 # 6) SITEMAP - regenerado a cada rodada a partir das paginas fixas do
-#    site (home, entenda) + uma entrada por commodity em
-#    COMMODITIES_PAGINAS, para nunca ficar desatualizado quando uma nova
-#    commodity for adicionada aqui.
+#    site (home, glossario, calendario, correlacoes) + uma entrada por
+#    commodity em COMMODITIES_PAGINAS, para nunca ficar desatualizado
+#    quando uma nova commodity for adicionada aqui.
 # ---------------------------------------------------------------------------
 
 URL_BASE_SITE = "https://agrofertrader.github.io/AgroFerTrader-site"
-PAGINAS_FIXAS_SITEMAP = ["", "entenda.html"]
+PAGINAS_FIXAS_SITEMAP = ["", "glossario.html", "calendario.html", "correlacoes.html"]
 
 
 def gerar_sitemap() -> None:
