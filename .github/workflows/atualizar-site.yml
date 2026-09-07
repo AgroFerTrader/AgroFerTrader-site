@@ -19,13 +19,19 @@ jobs:
         with:
           python-version: "3.12"
       - name: Instalar dependências
-        run: pip install requests pandas lxml beautifulsoup4
+        run: pip install requests pandas lxml beautifulsoup4 gspread google-auth
       - name: Gerar o site com os dados de hoje
         run: python gerar_site.py
       - name: Gerar as páginas de commodities
         run: python gerar_paginas_commodities.py
       - name: Gerar a calculadora de break-even
         run: python gerar_calculadora.py
+      - name: Verificar alertas de preço (Recurso 4 - roda automaticamente, sem gerar texto novo, só compara número e dispara e-mail padrão)
+        continue-on-error: true # nunca deixa a publicação diária das cotações travar por causa deste passo opcional
+        env:
+          GOOGLE_SHEETS_CREDENTIALS: ${{ secrets.GOOGLE_SHEETS_CREDENTIALS }}
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+        run: python verificar_alertas.py
       - name: Publicar as mudanças (commit + push)
         run: |
           git config user.name "AgroFer Trader Bot"
