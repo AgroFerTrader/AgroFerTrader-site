@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<title>Painel de Correlações | AgroFer Trader</title>
+<meta name="description" content="Compare a evolução de preços de commodities, câmbio e Selic, e veja a correlação estatística entre elas - com o cuidado de nunca confundir correlação com causalidade.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="canonical" href="https://agrofertrader.github.io/AgroFerTrader-site/correlacoes.html">
+
+<meta property="og:locale" content="pt_BR">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Painel de Correlações | AgroFer Trader">
+<meta property="og:description" content="Compare a evolução de preços de commodities, câmbio e Selic, e veja a correlação estatística entre elas.">
+<meta property="og:url" content="https://agrofertrader.github.io/AgroFerTrader-site/correlacoes.html">
+<meta property="og:site_name" content="AgroFer Trader">
+<meta property="og:image" content="https://agrofertrader.github.io/AgroFerTrader-site/assets/logo.png">
+<meta property="og:image:alt" content="Logo da AgroFer Trader">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#0B3C1F;
+    --ink-soft:#BFD1B8;
+    --paper:#FDFDF9;
+    --paper-dim:#F2F1E4;
+    --gold:#B08830;
+    --leaf:#4C7A1F;
+    --up:#4C7A1F;
+    --down:#9C3B2E;
+    --line: rgba(11,60,31,0.14);
+    --line-dark: rgba(253,253,249,0.16);
+    --display: 'Fraunces', serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.5;overflow-x:hidden;}
+  a{color:var(--leaf);}
+  img{max-width:100%;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
+
+  nav{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;max-width:1080px;margin:0 auto;flex-wrap:wrap;gap:12px;}
+  .brand{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:0.01em;display:flex;align-items:center;gap:10px;}
+  .brand img{height:58px;width:auto;display:block;}
+  .navlinks{display:flex;gap:24px;font-size:14px;font-weight:500;flex-wrap:wrap;}
+  .navlinks a{text-decoration:none;opacity:0.75;transition:opacity .15s;color:var(--ink);}
+  .navlinks a:hover, .navlinks a:focus-visible{opacity:1;}
+  .navlinks .nav-divider{opacity:.25;font-weight:300;}
+  .navlinks a.active{opacity:1;border-bottom:2px solid var(--gold);}
+
+  .page-head{padding:44px 0 36px;border-bottom:1px solid var(--line);}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--leaf);margin-bottom:14px;}
+  h1{font-family:var(--display);font-weight:600;font-size:clamp(30px,4.5vw,44px);margin:0 0 14px;line-height:1.1;}
+  .page-sub{font-size:16px;color:var(--ink);opacity:.75;max-width:64ch;margin:0;}
+
+  main{padding:40px 0 64px;}
+
+  .controles{
+    display:flex;gap:20px;flex-wrap:wrap;align-items:flex-end;margin-bottom:32px;
+    padding:22px 24px;background:var(--paper-dim);border-left:3px solid var(--gold);
+  }
+  .campo-controle{display:flex;flex-direction:column;gap:6px;min-width:180px;flex:1 1 200px;}
+  .campo-controle label{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--leaf);}
+  .campo-controle select{
+    padding:10px 12px;border:1px solid var(--line);border-radius:2px;background:var(--paper);
+    color:var(--ink);font-size:14px;font-family:var(--body);
+  }
+
+  .chart-box{border:1px solid var(--line);background:var(--paper);padding:24px;margin-bottom:28px;}
+  .chart-wrap{position:relative;height:380px;}
+  .chart-vazio{font-size:14px;opacity:.65;text-align:center;padding:60px 0;}
+
+  .correlacao-box{
+    border:1px solid var(--line);border-top:4px solid var(--gold);background:var(--paper);
+    padding:28px 32px;margin-bottom:28px;
+  }
+  .correlacao-numero{font-family:var(--mono);font-size:42px;font-weight:600;line-height:1;}
+  .correlacao-numero.positiva{color:var(--up);}
+  .correlacao-numero.negativa{color:var(--down);}
+  .correlacao-label{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--leaf);opacity:.85;margin-bottom:8px;}
+  .correlacao-interpretacao{font-size:16px;margin:14px 0 0;max-width:70ch;}
+  .correlacao-interpretacao strong{color:var(--leaf);}
+  .correlacao-meta{font-size:13px;opacity:.6;margin-top:10px;}
+
+  .aviso-causalidade{
+    font-size:13.5px;opacity:.7;max-width:74ch;padding-top:20px;border-top:1px solid var(--line);
+  }
+
+  footer{padding:40px 0 56px;font-size:13px;color:var(--ink);opacity:.6;border-top:1px solid var(--line);margin-top:8px;}
+  footer .foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+  footer a{text-decoration:underline;color:var(--ink);}
+
+  @media (max-width:680px){
+    nav{flex-wrap:wrap;row-gap:10px;}
+    .brand{flex-shrink:0;}
+    .navlinks{
+      flex:1 1 100%;
+      justify-content:flex-start;
+      flex-wrap:nowrap;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+      white-space:nowrap;
+      scrollbar-width:none;
+      padding-bottom:2px;
+      margin:0 -24px;
+      padding-left:24px;
+      padding-right:24px;
+    }
+    .navlinks::-webkit-scrollbar{display:none;}
+    .navlinks a, .navlinks .nav-divider{flex-shrink:0;}
+  }
+</style>
+</head>
+<body>
+
+<nav aria-label="Navegação principal">
+  <div class="brand">
+    <a href="./" aria-label="AgroFer Trader — página inicial">
+      <img src="assets/logo.png" alt="AgroFer Trader">
+    </a>
+  </div>
+  <div class="navlinks">
+    <a href="index.html#precos">Preços de hoje</a>
+    <a href="index.html#futuro">Mercado futuro</a>
+    <span class="nav-divider" aria-hidden="true">|</span>
+    <a href="commodities/soja/">Soja</a>
+    <a href="commodities/milho/">Milho</a>
+    <a href="commodities/cafe/">Café Arábica</a>
+    <a href="commodities/boi-gordo/">Boi Gordo</a>
+    <span class="nav-divider" aria-hidden="true">|</span>
+    <a href="entenda.html">Entenda</a>
+    <a href="glossario.html">Glossário</a>
+    <a href="calendario.html">Calendário</a>
+    <a class="active" href="correlacoes.html">Correlações</a>
+    <a href="calculadora/">Calculadora</a>
+    <a href="https://www.instagram.com/agrofertrader/" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="page-head">
+    <div class="eyebrow">Ferramenta de análise</div>
+    <h1>Painel de correlações</h1>
+    <p class="page-sub">Compare a evolução de duas variáveis - preço de commodities, câmbio ou Selic - no mesmo período, e veja o quanto elas se moveram juntas historicamente.</p>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="controles">
+    <div class="campo-controle">
+      <label for="select-variavel-a">Variável A</label>
+      <select id="select-variavel-a"></select>
+    </div>
+    <div class="campo-controle">
+      <label for="select-variavel-b">Variável B</label>
+      <select id="select-variavel-b"></select>
+    </div>
+    <div class="campo-controle">
+      <label for="select-periodo">Período</label>
+      <select id="select-periodo">
+        <option value="90">3 meses</option>
+        <option value="180">6 meses</option>
+        <option value="365">1 ano</option>
+        <option value="all">Todo o histórico</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-wrap">
+      <canvas id="grafico-correlacao" aria-label="Gráfico comparando as duas variáveis selecionadas ao longo do tempo" role="img"></canvas>
+      <p class="chart-vazio" id="chart-vazio" hidden>Sem dados suficientes no período selecionado para as duas variáveis escolhidas.</p>
+    </div>
+  </div>
+
+  <div class="correlacao-box">
+    <div class="correlacao-label">Correlação de Pearson no período</div>
+    <div class="correlacao-numero" id="correlacao-numero">—</div>
+    <p class="correlacao-interpretacao" id="correlacao-interpretacao"></p>
+    <p class="correlacao-meta" id="correlacao-meta"></p>
+  </div>
+
+  <p class="aviso-causalidade">Correlação estatística não implica causalidade. Os valores aqui exibidos são calculados automaticamente a partir do histórico de preços e indicadores coletados pela AgroFer Trader, e devem ser interpretados como apoio à análise, não como recomendação de posição de mercado.</p>
+</main>
+
+<div class="wrap">
+  <footer>
+    <div class="foot-row">
+      <div>AgroFer Trader — conteúdo informativo sobre o mercado agrícola. Não constitui recomendação de investimento ou negócio.</div>
+      <div>
+        <a href="glossario.html">Glossário</a>
+        · <a href="entenda.html">Entenda</a>
+        · <a href="https://www.instagram.com/agrofertrader/" target="_blank" rel="noopener">Instagram @agrofertrader</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.1/chart.umd.min.js" defer></script>
+<script defer>
+(function () {
+  "use strict";
+
+  var VARIAVEIS = {
+    cafe: { rotulo: "Preço do Café", campo: "cafe", unidade: "R$/saca" },
+    soja: { rotulo: "Preço da Soja", campo: "soja", unidade: "R$/saca" },
+    milho: { rotulo: "Preço do Milho", campo: "milho", unidade: "R$/saca" },
+    boi_gordo: { rotulo: "Preço do Boi Gordo", campo: "boi_gordo", unidade: "R$/@" },
+    cambio: { rotulo: "Câmbio (USD/BRL)", campo: "cambio", unidade: "R$" },
+    selic: { rotulo: "Selic", campo: "selic", unidade: "% a.a." },
+  };
+
+  var HISTORICO = [];
+  var grafico = null;
+
+  function popularSelects() {
+    var selA = document.getElementById("select-variavel-a");
+    var selB = document.getElementById("select-variavel-b");
+    Object.keys(VARIAVEIS).forEach(function (chave) {
+      var optA = document.createElement("option");
+      optA.value = chave;
+      optA.textContent = VARIAVEIS[chave].rotulo;
+      selA.appendChild(optA);
+
+      var optB = document.createElement("option");
+      optB.value = chave;
+      optB.textContent = VARIAVEIS[chave].rotulo;
+      selB.appendChild(optB);
+    });
+    selA.value = "cafe";
+    selB.value = "cambio";
+  }
+
+  function filtrarPorPeriodo(historico, periodo) {
+    if (periodo === "all") return historico;
+    var dias = parseInt(periodo, 10);
+    var limite = new Date();
+    limite.setDate(limite.getDate() - dias);
+    return historico.filter(function (linha) {
+      return new Date(linha.data + "T00:00:00") >= limite;
+    });
+  }
+
+  function pearson(xs, ys) {
+    var n = xs.length;
+    if (n < 2) return null;
+    var mediaX = xs.reduce(function (a, b) { return a + b; }, 0) / n;
+    var mediaY = ys.reduce(function (a, b) { return a + b; }, 0) / n;
+    var num = 0, denX = 0, denY = 0;
+    for (var i = 0; i < n; i++) {
+      var dx = xs[i] - mediaX, dy = ys[i] - mediaY;
+      num += dx * dy;
+      denX += dx * dx;
+      denY += dy * dy;
+    }
+    if (denX === 0 || denY === 0) return null;
+    return num / Math.sqrt(denX * denY);
+  }
+
+  function interpretarCorrelacao(r) {
+    var abs = Math.abs(r);
+    var forca = abs > 0.7 ? "forte" : (abs >= 0.4 ? "moderada" : "fraca ou inexistente");
+    var sinal = r > 0.0001 ? "positiva" : (r < -0.0001 ? "negativa" : "nula");
+    var explicacaoSinal =
+      sinal === "positiva" ? "as duas sobem/descem juntas" :
+      sinal === "negativa" ? "uma sobe quando a outra desce" :
+      "sem relação linear discernível entre as duas";
+    return { forca: forca, sinal: sinal, explicacaoSinal: explicacaoSinal };
+  }
+
+  function atualizar() {
+    var chaveA = document.getElementById("select-variavel-a").value;
+    var chaveB = document.getElementById("select-variavel-b").value;
+    var periodo = document.getElementById("select-periodo").value;
+
+    var varA = VARIAVEIS[chaveA];
+    var varB = VARIAVEIS[chaveB];
+
+    var linhas = filtrarPorPeriodo(HISTORICO, periodo)
+      .filter(function (l) { return l[varA.campo] !== null && l[varA.campo] !== undefined && l[varB.campo] !== null && l[varB.campo] !== undefined; })
+      .sort(function (a, b) { return a.data < b.data ? -1 : 1; });
+
+    var elVazio = document.getElementById("chart-vazio");
+    var elCanvas = document.getElementById("grafico-correlacao");
+
+    if (linhas.length < 2) {
+      elVazio.hidden = false;
+      elCanvas.style.display = "none";
+      if (grafico) { grafico.destroy(); grafico = null; }
+      document.getElementById("correlacao-numero").textContent = "—";
+      document.getElementById("correlacao-interpretacao").textContent = "";
+      document.getElementById("correlacao-meta").textContent = "";
+      return;
+    }
+    elVazio.hidden = true;
+    elCanvas.style.display = "";
+
+    var datas = linhas.map(function (l) { return l.data; });
+    var valoresA = linhas.map(function (l) { return l[varA.campo]; });
+    var valoresB = linhas.map(function (l) { return l[varB.campo]; });
+
+    if (grafico) grafico.destroy();
+    grafico = new Chart(elCanvas.getContext("2d"), {
+      type: "line",
+      data: {
+        labels: datas,
+        datasets: [
+          {
+            label: varA.rotulo,
+            data: valoresA,
+            borderColor: "#4C7A1F",
+            backgroundColor: "rgba(76,122,31,0.08)",
+            yAxisID: "yA",
+            tension: 0.25,
+            pointRadius: 2,
+          },
+          {
+            label: varB.rotulo,
+            data: valoresB,
+            borderColor: "#B08830",
+            backgroundColor: "rgba(176,136,48,0.08)",
+            yAxisID: "yB",
+            tension: 0.25,
+            pointRadius: 2,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: "index", intersect: false },
+        plugins: {
+          legend: { position: "top", labels: { font: { family: "Inter" } } },
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { maxTicksLimit: 10, font: { family: "IBM Plex Mono", size: 10 } } },
+          yA: {
+            type: "linear", position: "left",
+            title: { display: true, text: varA.rotulo + " (" + varA.unidade + ")", color: "#4C7A1F" },
+            grid: { color: "rgba(11,60,31,0.06)" },
+            ticks: { color: "#4C7A1F" },
+          },
+          yB: {
+            type: "linear", position: "right",
+            title: { display: true, text: varB.rotulo + " (" + varB.unidade + ")", color: "#B08830" },
+            grid: { display: false },
+            ticks: { color: "#B08830" },
+          },
+        },
+      },
+    });
+
+    var r = pearson(valoresA, valoresB);
+    var elNumero = document.getElementById("correlacao-numero");
+    var elInterp = document.getElementById("correlacao-interpretacao");
+    var elMeta = document.getElementById("correlacao-meta");
+
+    if (r === null) {
+      elNumero.textContent = "—";
+      elNumero.className = "correlacao-numero";
+      elInterp.textContent = "Não foi possível calcular a correlação (uma das variáveis não varia no período selecionado).";
+      elMeta.textContent = "";
+      return;
+    }
+
+    var info = interpretarCorrelacao(r);
+    elNumero.textContent = r.toFixed(2).replace(".", ",");
+    elNumero.className = "correlacao-numero " + (info.sinal === "positiva" ? "positiva" : info.sinal === "negativa" ? "negativa" : "");
+    elInterp.innerHTML =
+      "Correlação <strong>" + info.forca + "</strong> e <strong>" + info.sinal + "</strong> entre " +
+      varA.rotulo.toLowerCase() + " e " + varB.rotulo.toLowerCase() + " — " + info.explicacaoSinal + ".";
+    elMeta.textContent = linhas.length + " dias com dado disponível para as duas variáveis, de " + datas[0] + " a " + datas[datas.length - 1] + ".";
+  }
+
+  function iniciar() {
+    fetch("dados/historico.json")
+      .then(function (resp) { return resp.json(); })
+      .then(function (dados) {
+        HISTORICO = dados || [];
+        popularSelects();
+        ["select-variavel-a", "select-variavel-b", "select-periodo"].forEach(function (id) {
+          document.getElementById(id).addEventListener("change", atualizar);
+        });
+        atualizar();
+      })
+      .catch(function () {
+        document.getElementById("chart-vazio").hidden = false;
+        document.getElementById("chart-vazio").textContent = "Não foi possível carregar o histórico de dados agora.";
+        document.getElementById("grafico-correlacao").style.display = "none";
+      });
+  }
+
+  document.addEventListener("DOMContentLoaded", iniciar);
+})();
+</script>
+
+</body>
+</html>

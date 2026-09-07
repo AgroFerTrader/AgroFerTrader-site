@@ -44,6 +44,86 @@ def salvar_snapshot_diario(dados: dict) -> None:
         json.dump(dados, f, ensure_ascii=False, indent=2)
 
 
+CAMINHO_HISTORICO_CONSOLIDADO = os.path.join(PASTA_DADOS, "historico.json")
+
+# slug (usado no painel de correlacoes) -> nome exatamente como aparece
+# em resultados_commodities.
+NOMES_HISTORICO_CONSOLIDADO = {
+    "soja": "Soja",
+    "milho": "Milho",
+    "cafe": "Café Arábica",
+    "boi_gordo": "Boi Gordo",
+}
+
+
+def _preco_para_float(preco_reais):
+    """Mesma logica de gerar_paginas_commodities._preco_fisico_para_float,
+    copiada aqui (em vez de importada) para nao criar import circular -
+    gerar_paginas_commodities.py ja importa gerar_site como `site`."""
+    texto = str(preco_reais).strip()
+    try:
+        return float(texto)
+    except ValueError:
+        pass
+    return monitor._texto_para_float(texto)
+
+
+def atualizar_historico_consolidado(dados: dict) -> None:
+    """Mantem dados/historico.json - UM arquivo cumulativo com uma linha
+    por dia (data, preco fisico de soja/milho/cafe/boi gordo, cambio,
+    selic), usado pelo painel de correlacoes (correlacoes.html/Recurso
+    5). Diferente dos snapshots dados/AAAA-MM-DD.json (que guardam TUDO
+    que o monitor coletou naquele dia, um arquivo por dia, para outros
+    usos), este arquivo guarda só os poucos números que a correlação
+    precisa, já consolidados - um único fetch no navegador, não um por
+    dia do histórico inteiro.
+
+    Nunca sobrescreve dias anteriores - só acrescenta (ou substitui) a
+    linha do dia de hoje, preservando o resto. Se um dado especifico
+    (cambio, selic ou uma commodity) nao estiver disponivel hoje, grava
+    None nesse campo - o painel de correlacao trata isso ignorando esse
+    dia no calculo daquela serie, em vez de quebrar.
+    """
+    os.makedirs(PASTA_DADOS, exist_ok=True)
+
+    if os.path.exists(CAMINHO_HISTORICO_CONSOLIDADO):
+        with open(CAMINHO_HISTORICO_CONSOLIDADO, encoding="utf-8") as f:
+            historico = json.load(f)
+    else:
+        historico = []
+
+    precos = {}
+    for slug, nome in NOMES_HISTORICO_CONSOLIDADO.items():
+        precos[slug] = None
+        for r in dados.get("resultados_commodities", []) or []:
+            if r.get("nome") == nome and "erro" not in r:
+                try:
+                    precos[slug] = _preco_para_float(r["preco_reais"])
+                except (ValueError, TypeError, KeyError):
+                    precos[slug] = None
+                break
+
+    dolar_dia = dados.get("dolar") or {}
+    selic_dia = dados.get("selic") or {}
+
+    linha = {
+        "data": datetime.now().strftime("%Y-%m-%d"),
+        "soja": precos["soja"],
+        "milho": precos["milho"],
+        "cafe": precos["cafe"],
+        "boi_gordo": precos["boi_gordo"],
+        "cambio": dolar_dia.get("valor"),
+        "selic": selic_dia.get("valor"),
+    }
+
+    historico = [h for h in historico if h.get("data") != linha["data"]]
+    historico.append(linha)
+    historico.sort(key=lambda h: h["data"])
+
+    with open(CAMINHO_HISTORICO_CONSOLIDADO, "w", encoding="utf-8") as f:
+        json.dump(historico, f, ensure_ascii=False, indent=2)
+
+
 def _seta_e_classe(variacao) -> tuple:
     v = monitor._variacao_para_float(variacao)
     if v is None:
@@ -339,6 +419,7 @@ def gerar_site() -> None:
 
     print("Salvando snapshot diário em dados/...")
     salvar_snapshot_diario(dados)
+    atualizar_historico_consolidado(dados)
 
     print("Lendo template index.html...")
     with open(CAMINHO_TEMPLATE, encoding="utf-8") as f:
