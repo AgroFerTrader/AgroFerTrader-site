@@ -48,13 +48,12 @@ PASTA_SITE = os.path.dirname(os.path.abspath(__file__))
 CAMINHO_TEMPLATE_NEWSLETTER = os.path.join(PASTA_SITE, "emails", "newsletter.html")
 PASTA_SAIDA = os.path.join(PASTA_SITE, "emails", "_enviados")
 
-# Preencher com os dados reais da conta Brevo antes do primeiro envio de
-# verdade - nao sao segredo (diferente da API key, que vem do secret
-# BREVO_API_KEY), so precisam ser configurados uma vez.
-BREVO_LIST_ID = None  # ID da lista de contatos no Brevo (Contacts > Lists)
+BREVO_LIST_ID = 3  # ID da lista de contatos no Brevo (Contacts > Lists)
+
+# Remetente verificado no painel do Brevo.
 BREVO_REMETENTE = {
     "name": "AgroFer Trader",
-    "email": "contato@agrofertrader.com",  # precisa ser um remetente verificado no Brevo
+    "email": "agrofertrader@gmail.com",
 }
 
 NOMES_COMMODITY_EMOJI = {
