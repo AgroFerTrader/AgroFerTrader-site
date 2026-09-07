@@ -559,8 +559,8 @@ Fonte: CEPEA/Esalq · dado de 04/09/2026
       > copiar o "action" do HTML gerado). Isso submete o e-mail direto
       pro Brevo sem precisar de nenhuma chave de API no navegador - a
       BREVO_API_KEY (secret) so e usada nos scripts que RODAM no servidor
-      (enviar_newsletter.py e, no futuro, verificar_alertas.py), nunca
-      aqui no HTML publico.
+      (enviar_newsletter.py e verificar_alertas.py), nunca aqui no HTML
+      publico.
     -->
     <form class="newsletter-form" id="form-newsletter" action="https://SEU_FORM_ID.sibforms.com/serve/SEU_FORM_ID" method="post" target="newsletter-brevo-frame">
       <label for="newsletter-email" class="sr-only">Seu e-mail</label>
@@ -590,6 +590,28 @@ Fonte: CEPEA/Esalq · dado de 04/09/2026
   });
 })();
 </script>
+
+<section class="newsletter-band" aria-labelledby="titulo-alerta" style="border-top:1px solid var(--line);">
+  <div class="wrap newsletter-inner">
+    <div class="section-label">Avise-me quando o preço mudar</div>
+    <h2 id="titulo-alerta">Alerta de preço por e-mail</h2>
+    <p class="newsletter-sub">Cadastre um valor de referência para soja, milho, café ou boi gordo e receba um e-mail automático assim que o preço do dia cruzar esse valor — pra cima ou pra baixo.</p>
+
+    <!--
+      IMPORTANTE: troque o href abaixo pelo link real do Google Forms já
+      criado (o mesmo conectado à planilha usada por verificar_alertas.py).
+      Não recriamos o formulário aqui porque ele já existe do lado do
+      Google - só precisa do link.
+    -->
+    <p style="margin-top:20px;">
+      <a href="https://forms.gle/SEU_GOOGLE_FORM_AQUI" target="_blank" rel="noopener"
+         style="display:inline-block;font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.05em;padding:12px 22px;background:var(--ink);color:var(--paper);text-decoration:none;border-radius:2px;">
+        Cadastrar meu alerta →
+      </a>
+    </p>
+    <p class="newsletter-nota">Você recebe no máximo um e-mail por alerta cadastrado. Cancele quando quiser respondendo o e-mail recebido.</p>
+  </div>
+</section>
 
 <div class="wrap">
   <footer>
