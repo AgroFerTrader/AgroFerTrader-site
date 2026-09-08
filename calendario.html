@@ -33,6 +33,8 @@
     --paper:#FDFDF9;
     --paper-dim:#F2F1E4;
     --gold:#B08830;
+    --gold-deep:#8d6d26;
+    --gold-pale:#c0a059;
     --leaf:#4C7A1F;
     --up:#4C7A1F;
     --down:#9C3B2E;
@@ -66,7 +68,7 @@
   .mes{margin-top:44px;}
   .mes-titulo{
     font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;
-    color:var(--gold);background:var(--ink);display:inline-block;padding:5px 12px;margin-bottom:20px;
+    color:var(--gold-pale);background:var(--ink);display:inline-block;padding:5px 12px;margin-bottom:20px;
   }
 
   .evento-card{
@@ -74,19 +76,20 @@
     padding:20px 24px;margin-bottom:16px;scroll-margin-top:24px;
   }
   .evento-card.proximo{border-left-color:var(--gold);background:var(--paper-dim);}
+  .evento-card.proximo .evento-data, .evento-card.proximo .evento-motivo strong{color:#47751f;}
   .evento-selo{display:none;}
   .evento-card.proximo .evento-selo{
     display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
-    color:var(--ink);background:var(--gold);padding:2px 8px;border-radius:2px;margin-bottom:10px;
+    color:#000;background:var(--gold);padding:2px 8px;border-radius:2px;margin-bottom:10px;
   }
   .evento-data{font-family:var(--mono);font-size:13px;color:var(--leaf);font-weight:600;margin-bottom:6px;}
   .evento-nome{font-family:var(--display);font-weight:600;font-size:19px;margin:0 0 10px;}
   .evento-motivo{font-size:14.5px;margin:0;max-width:66ch;}
   .evento-motivo strong{color:var(--leaf);}
 
-  .rodape-nota{font-size:13px;opacity:.65;max-width:70ch;margin:36px 0 0;padding-top:20px;border-top:1px solid var(--line);}
+  .rodape-nota{font-size:13px;color:var(--ink);opacity:.72;max-width:70ch;margin:36px 0 0;padding-top:20px;border-top:1px solid var(--line);}
 
-  footer{padding:40px 0 56px;font-size:13px;color:var(--ink);opacity:.6;border-top:1px solid var(--line);margin-top:32px;}
+  footer{padding:40px 0 56px;font-size:13px;color:var(--ink);opacity:.72;border-top:1px solid var(--line);margin-top:32px;}
   footer .foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;}
   footer a{text-decoration:underline;color:var(--ink);}
 
@@ -135,7 +138,7 @@
   </div>
 </nav>
 
-<div class="wrap">
+<main class="wrap">
   <div class="page-head">
     <div class="eyebrow">Guia de referência</div>
     <h1>Calendário do produtor</h1>
@@ -143,7 +146,7 @@
   </div>
 
   <div class="mes">
-    <div class="mes-titulo">Setembro de 2026</div>
+    <h2 class="mes-titulo">Setembro de 2026</h2>
 
     <div class="evento-card" data-date="2026-09-11">
       <div class="evento-selo">Próximo evento</div>
@@ -175,7 +178,7 @@
   </div>
 
   <div class="mes">
-    <div class="mes-titulo">Outubro de 2026</div>
+    <h2 class="mes-titulo">Outubro de 2026</h2>
 
     <div class="evento-card" data-date="2026-10-09">
       <div class="evento-selo">Próximo evento</div>
@@ -193,7 +196,7 @@
   </div>
 
   <div class="mes">
-    <div class="mes-titulo">Novembro de 2026</div>
+    <h2 class="mes-titulo">Novembro de 2026</h2>
 
     <div class="evento-card" data-date="2026-11-03">
       <div class="evento-selo">Próximo evento</div>
@@ -211,7 +214,7 @@
   </div>
 
   <div class="mes">
-    <div class="mes-titulo">Dezembro de 2026</div>
+    <h2 class="mes-titulo">Dezembro de 2026</h2>
 
     <div class="evento-card" data-date="2026-12-08">
       <div class="evento-selo">Próximo evento</div>
@@ -236,7 +239,7 @@
   </div>
 
   <p class="rodape-nota">As datas de reuniões do Copom e divulgação do WASDE seguem calendário oficial já publicado pelo Banco Central do Brasil e pelo USDA, respectivamente, e raramente mudam. As datas da Conab podem sofrer pequenos ajustes; a AgroFer Trader confirma e atualiza este calendário sempre que um novo cronograma oficial é publicado. Fontes: Banco Central do Brasil, USDA/WAOB, Conab.</p>
-</div>
+</main>
 
 <div class="wrap">
   <footer>
