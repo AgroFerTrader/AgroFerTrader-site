@@ -178,6 +178,14 @@
 
   .chart-box{border:1px solid var(--line);background:var(--paper);padding:24px;}
   .chart-ferramentas{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px;}.chart-modos{display:flex;gap:4px;}.chart-modo-btn,.chart-exportar,.chart-btn-secundario{font-family:var(--mono);font-size:11px;padding:7px 10px;border:1px solid var(--line);border-radius:2px;background:var(--paper);color:var(--ink);cursor:pointer;}.chart-modo-btn.active,.chart-exportar:hover,.chart-btn-secundario:hover{border-color:var(--gold);color:var(--leaf);font-weight:600;}
+  .chart-periodos{display:flex;gap:8px;margin-bottom:16px;}
+  .periodo-btn{
+    font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.04em;
+    padding:6px 14px;border:1px solid var(--line);border-radius:20px;background:var(--paper);
+    color:var(--ink);opacity:.72;cursor:pointer;transition:opacity .15s,border-color .15s;
+  }
+  .periodo-btn:hover{opacity:.85;}
+  .periodo-btn.active{opacity:1;border-color:var(--leaf);color:var(--leaf);font-weight:600;}
   .chart-wrap{position:relative;}
   .chart-wrap svg{width:100%;height:auto;display:block;}
   .chart-hit{cursor:pointer;}
