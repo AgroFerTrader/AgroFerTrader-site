@@ -293,12 +293,19 @@ def _preco_futuro_apenas_valor(preco_reais: str) -> str:
     return m.group(0)
 
 
-def montar_futuros_html(resultados_futuros: list) -> str:
+def montar_futuros_html(resultados_futuros: list, prefixo_link: str = "../") -> str:
     """
     Apresenta apenas o resultado final dos cálculos do mercado futuro.
 
     O monitor_agro_v9.py continua responsável por calcular/converter os
     valores. Esta função somente controla o que o visitante vê.
+
+    `prefixo_link` é o caminho relativo até a pasta `commodities/` a
+    partir de onde esta tabela é exibida: nas próprias páginas de
+    commodity (commodities/<slug>/index.html), as outras commodities
+    são pastas-irmãs, então o padrão "../" está correto; já na home
+    (index.html, na raiz do site) é preciso "commodities/" - usar o
+    default aqui faria o link apontar para fora do site.
     """
     linhas = []
 
@@ -328,7 +335,7 @@ def montar_futuros_html(resultados_futuros: list) -> str:
 
         slug = SLUGS_COMMODITIES.get(nome_limpo)
         nome_celula = (
-            f'<a href="../{slug}/">{escape(nome_limpo)}</a>' if slug
+            f'<a href="{prefixo_link}{slug}/">{escape(nome_limpo)}</a>' if slug
             else escape(nome_limpo)
         )
 
@@ -435,7 +442,7 @@ def gerar_site() -> None:
         "UPDATED": montar_updated(dados),
         "PRICES": montar_precos_html(dados["resultados_commodities"]),
         "EXPLAIN": montar_explain_html(dados["explicacoes_macro"]),
-        "FUTURES": montar_futuros_html(dados["resultados_futuros"]),
+        "FUTURES": montar_futuros_html(dados["resultados_futuros"], prefixo_link="commodities/"),
         "NEWS": montar_noticias_html(dados["noticias"]),
     }
 
