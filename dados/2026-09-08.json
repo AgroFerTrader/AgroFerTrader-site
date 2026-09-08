@@ -1,0 +1,231 @@
+{
+  "dolar": {
+    "data": "04/09/2026",
+    "valor": 5.1253,
+    "variacao_pct": 0.5710136964797412
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "16/09/2026",
+    "valor": 14.0
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "04/09/2026",
+      "preco_reais": "160.87",
+      "variacao_pct": "+0.46"
+    },
+    {
+      "nome": "Milho",
+      "data": "04/09/2026",
+      "preco_reais": "70.93",
+      "variacao_pct": "-0.18"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "04/09/2026",
+      "preco_reais": "87,45",
+      "variacao_pct": "0.07"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "04/09/2026",
+      "preco_reais": "1659.93",
+      "variacao_pct": "-0.74"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "04/09/2026",
+      "preco_reais": "347.7",
+      "variacao_pct": "0.03"
+    },
+    {
+      "nome": "Algodão",
+      "data": "04/09/2026",
+      "preco_reais": "439.98",
+      "variacao_pct": "0.44"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "04/09/2026",
+      "preco_reais": "116.79",
+      "variacao_pct": "0.59"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Outubro/26",
+      "preco_reais": "5,1535 R$/US$",
+      "variacao_pct": "0.4",
+      "valor_numerico": 5.1535,
+      "unidade": "R$/US$",
+      "vencimentos": [
+        {
+          "vencimento": "Outubro/26",
+          "valor_numerico": 5.1535,
+          "valor_reais": 5.1535
+        },
+        {
+          "vencimento": "Novembro/26",
+          "valor_numerico": 5.164,
+          "valor_reais": 5.164
+        }
+      ]
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Janeiro/2027",
+      "preco_reais": "R$ 149,86 /sc 60 kg (≈ US$ 29,24 x R$ 5,1253)",
+      "variacao_pct": "-0.54",
+      "valor_numerico": 29.24,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 29.24,
+          "valor_reais": 149.863772
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 29.3,
+          "valor_reais": 150.17129
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 29.56,
+          "valor_reais": 151.503868
+        }
+      ]
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "71,66 R$/sc 60 kg",
+      "variacao_pct": "0.0",
+      "valor_numerico": 71.66,
+      "unidade": "R$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Setembro/2026",
+          "valor_numerico": 71.66,
+          "valor_reais": 71.66
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 80.97,
+          "valor_reais": 80.97
+        }
+      ]
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "359,20 R$/@",
+      "variacao_pct": "0.0",
+      "valor_numerico": 359.2,
+      "unidade": "R$/@",
+      "vencimentos": [
+        {
+          "vencimento": "Setembro/2026",
+          "valor_numerico": 359.2,
+          "valor_reais": 359.2
+        },
+        {
+          "vencimento": "Outubro/2026",
+          "valor_numerico": 374.8,
+          "valor_reais": 374.8
+        },
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 378.8,
+          "valor_reais": 378.8
+        },
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 379.65,
+          "valor_reais": 379.65
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 381.0,
+          "valor_reais": 381.0
+        },
+        {
+          "vencimento": "Fevereiro/2027",
+          "valor_numerico": 380.85,
+          "valor_reais": 380.85
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 380.95,
+          "valor_reais": 380.95
+        }
+      ]
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Dezembro/2026",
+      "preco_reais": "R$ 1850,23 /sc 60 kg (≈ US$ 361,00 x R$ 5,1253)",
+      "variacao_pct": "0.0",
+      "valor_numerico": 361.0,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 361.0,
+          "valor_reais": 1850.2333
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 355.1,
+          "valor_reais": 1819.9940300000003
+        }
+      ]
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Câmbio subiu discretamente hoje (+0.57%) - não é uma virada de tendência, mas pequenas altas como essa historicamente já dão um empurrão positivo ao preço doméstico de commodities de exportação.",
+    "Juros em 14.00% ao ano seguem em patamar alto - carregar estoque fica caro, o que empurra produtores a vender mais rápido, e o diferencial de juros atrai capital estrangeiro, valorizando o real. Ambos tendem a pesar contra o preço em reais das commodities de exportação.",
+    "Obs.: nenhuma dessas relações é garantida - clima, oferta mundial e demanda por vezes pesam mais que câmbio e juros na formação do preço final."
+  ],
+  "noticias": [
+    {
+      "titulo": "Soja10:01AgRural: Paraná dá a largada no plantio da safra 2026/27 de soja",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/427575-parana-da-a-largada-no-plantio-da-safra-2026-27-de-soja.html",
+      "resumo": "O plantio da safra 2026/27 de soja já está em andamento em áreas do Paraná, estado em que algumas regiões já têm o vazio sanitário encerrado desde 1º de setembro. De acordo com levantamento da AgRural, as áreas paranaens...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "Café09:39Volume x Qualidade: Safra 26/27 do Brasil atende demanda com tranquilidade, apesar de pressão nos preços",
+      "link": "https://www.noticiasagricolas.com.br/noticias/cafe/427574-cafe-chuvas-afetam-qualidade-da-safra-26-27-alargam-diferenciais-de-precos-e-produtor-segura-vendas.html",
+      "resumo": "O Brasil já está com a colheita da safra 2026/27 de café praticamente concluída. No entanto, o mercado se depara com um um oceano de sacas, mas encontrando uma seca quando o assunto é qualidade. Dizer que as chuvas preju...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "05/09/2026 - 09:58Safra de extremos nos EUA: Do alerta em Illinois ao alívio no Nebraska, veja o balanço da 1ª semana do Crop Tour",
+      "link": "https://www.noticiasagricolas.com.br/noticias/graos/427569-safra-de-extremos-nos-eua-do-alerta-em-illinois-ao-alivio-no-nebraska-veja-o-balanco-da-1-semana-do-crop-tour.html",
+      "resumo": "A 50ª edição do Crop Tour EUA, promovida pelo Grupo Labhoro em parceria com o Notícias Agrícolas, percorreu o coração agrícola dos Estados Unidos para avaliar de perto as condições das lavouras de soja e milho da safra 2...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "04/09/2026 - 17:28Dólar fecha em alta ante real após dados de emprego nos EUA",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/427562-dolar-fecha-em-alta-ante-real-apos-dados-de-emprego-nos-eua.html",
+      "resumo": "SÃO PAULO, 4 Set (Reuters) - O dólar fechou a sexta-feira em alta ante o real após dados do governo dos EUA indicarem geração de postos de trabalho acima do esperado no país em agosto, enquanto no Brasil a disputa pela P...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "04/09/2026 - 17:09Exportações de algodão crescem 37,3% em agosto na comparação com 2025",
+      "link": "https://www.noticiasagricolas.com.br/noticias/algodao/427559-exportacoes-de-algodao-crescem-37-3-em-agosto-na-comparacao-com-2025.html",
+      "resumo": "As exportações brasileiras de algodão em bruto somaram 106.345,3 toneladas em agosto de 2026, volume 37,3% superior ao registrado em agosto de 2025, quando o país embarcou 77.463,4 toneladas. Os dados foram divulgados pe...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
