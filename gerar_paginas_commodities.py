@@ -697,6 +697,7 @@ def montar_grafico_svg(
     slug: str,
     serie_futura: list | None = None,
     unidade_preco: str = "R$/saca",
+    id_extra: str = "",
 ) -> str:
     """Monta o gráfico com abas de período (7/30/90 dias). Cada aba é
     renderizada inteira no servidor (_renderizar_svg_periodo) a partir
@@ -708,14 +709,24 @@ def montar_grafico_svg(
     logo após o lançamento do site, quando o histórico ainda é curto)
     não geram aba. Se sobrar só um período utilizável, mostra o gráfico
     sem abas (nada para alternar).
+
+    `id_extra` distingue os IDs do SVG (grafico-/grad-/ponto-) quando o
+    mesmo `slug` é renderizado mais de uma vez na mesma página - hoje só
+    acontece abaixo, entre o painel "fisicos" e o painel "futuros": sem
+    isso, as duas renderizações produziam IDs idênticos (HTML inválido e,
+    pior, o preenchimento de gradiente de um painel podia usar a cor do
+    outro via `url(#id)`, já que o navegador resolve IDs duplicados pelo
+    primeiro elemento do documento). Não afeta `data-slug`, que continua
+    sendo o slug puro da commodity (ex.: "cafe") - é isso que o JS usa
+    pra cruzar com o dicionário de séries no comparativo entre commodities.
     """
     if serie_futura is not None:
         return (
             f'<div class="chart-series-panel" data-serie="fisicos">'
-            f'{montar_grafico_svg(serie, nome_exibicao, slug, unidade_preco=unidade_preco)}'
+            f'{montar_grafico_svg(serie, nome_exibicao, slug, unidade_preco=unidade_preco, id_extra="-fis")}'
             f'</div>'
             f'<div class="chart-series-panel" data-serie="futuros" hidden>'
-            f'{montar_grafico_svg(serie_futura, nome_exibicao, slug, unidade_preco=unidade_preco)}'
+            f'{montar_grafico_svg(serie_futura, nome_exibicao, slug, unidade_preco=unidade_preco, id_extra="-fut")}'
             f'</div>'
         )
 
@@ -732,7 +743,7 @@ def montar_grafico_svg(
         recorte = serie[-dias:]
         if len(recorte) < 2:
             continue
-        conteudo = _renderizar_svg_periodo(recorte, nome_exibicao, slug, sufixo, unidade_preco)
+        conteudo = _renderizar_svg_periodo(recorte, nome_exibicao, slug, sufixo, unidade_preco, id_extra)
         conteudos.append((sufixo, rotulo, conteudo))
 
     if not conteudos:
@@ -761,9 +772,10 @@ def montar_grafico_svg(
 
 
 def _renderizar_svg_periodo(
-    serie: list, nome_exibicao: str, slug_base: str, sufixo: str, unidade_preco: str = "R$/saca"
+    serie: list, nome_exibicao: str, slug_base: str, sufixo: str, unidade_preco: str = "R$/saca",
+    id_extra: str = "",
 ) -> str:
-    slug = f"{slug_base}-{sufixo}"
+    slug = f"{slug_base}{id_extra}-{sufixo}"
     largura, altura = 900, 360
     # margem esquerda cresce com a quantidade de digitos do maior preco,
     # para o rotulo "R$ X.XXX,XX" nunca ser cortado pela borda do SVG
