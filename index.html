@@ -127,6 +127,8 @@
     --paper:#FDFDF9;
     --paper-dim:#F2F1E4;
     --gold:#B08830;
+    --gold-deep:#8d6d26;
+    --gold-pale:#c0a059;
     --leaf:#4C7A1F;
     --up:#4C7A1F;
     --down:#9C3B2E;
@@ -194,6 +196,8 @@
   .ticker-track span.item b{color:var(--paper);font-weight:600;}
   .up{color:var(--up) !important;}
   .down{color:var(--down) !important;}
+  .ticker-track .up{color:#94af79 !important;}
+  .ticker-track .down{color:#ce9d96 !important;}
   @keyframes scroll{
     0%{transform:translateX(0);}
     100%{transform:translateX(-50%);}
@@ -205,7 +209,7 @@
     font-size:12px;
     letter-spacing:0.12em;
     text-transform:uppercase;
-    color:var(--gold);
+    color:var(--gold-pale);
     margin-bottom:18px;
   }
   h1.headline{
@@ -232,14 +236,14 @@
     text-decoration:none;
     border:1px solid transparent;
   }
-  .btn-primary{background:var(--gold);color:var(--ink);}
+  .btn-primary{background:var(--gold);color:#000;}
   .btn-ghost{border-color:var(--line-dark);color:var(--paper);}
   .cta-secondary-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
   .btn-secondary{
     display:inline-flex;align-items:center;gap:6px;
     padding:9px 16px;border-radius:2px;
     font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.04em;
-    text-decoration:none;border:1px solid var(--gold);color:var(--gold);
+    text-decoration:none;border:1px solid var(--gold);color:var(--gold-pale);
     transition:background .15s,color .15s;
   }
   .btn-secondary:hover, .btn-secondary:focus-visible{background:var(--gold);color:var(--ink);}
@@ -253,7 +257,7 @@
   h2{
     font-family:var(--display);font-weight:600;font-size:28px;margin:6px 0 0;
   }
-  .updated{font-size:13px;color:var(--ink);opacity:.55;font-family:var(--mono);}
+  .updated{font-size:13px;color:var(--ink);opacity:.7;font-family:var(--mono);}
 
   .price-grid{
     display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
@@ -264,9 +268,9 @@
   .price-card-link:hover, .price-card-link:focus-visible{background-color:var(--paper-dim);}
   .price-name{font-size:14px;font-weight:600;margin-bottom:10px;}
   .price-value{font-family:var(--mono);font-size:24px;font-weight:600;}
-  .price-meta{font-size:12px;margin-top:8px;color:var(--ink);opacity:.65;}
+  .price-meta{font-size:12px;margin-top:8px;color:var(--ink);opacity:.75;}
   .price-var{font-family:var(--mono);font-size:13px;font-weight:600;margin-top:4px;display:inline-block;}
-  .price-link{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--gold);margin-top:12px;font-weight:600;}
+  .price-link{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--gold-deep);margin-top:12px;font-weight:600;}
 
   .explain{
     border-left:3px solid var(--gold);
@@ -274,7 +278,7 @@
   }
   .explain p{margin:0 0 14px;font-size:15.5px;line-height:1.65;max-width:70ch;}
   .explain p:last-child{margin-bottom:0;}
-  .explain .obs{font-size:13px;opacity:.65;font-style:italic;}
+  .explain .obs{font-size:13px;opacity:.72;font-style:italic;}
 
   .futures-note{
     font-size:14px;color:var(--ink);opacity:.75;max-width:60ch;margin:0 0 24px;
@@ -296,27 +300,28 @@
   .news-title a{text-decoration:none;}
   .news-title a:hover{text-decoration:underline;}
   .news-summary{font-size:14.5px;opacity:.8;margin:0 0 8px;max-width:68ch;}
-  .news-source{font-size:12px;font-family:var(--mono);opacity:.55;}
+  .news-source{font-size:12px;font-family:var(--mono);color:var(--ink);opacity:.72;}
 
   .glossary-band{background:var(--ink);color:var(--paper);}
   .glossary-inner{padding:56px 0;text-align:left;}
   .glossary-band h2{color:var(--paper);}
-  .glossary-band .section-label{color:var(--gold);}
+  .glossary-band .section-label{color:var(--gold-pale);}
   .glossary-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--line-dark);border:1px solid var(--line-dark);margin-top:28px;}
   .glossary-card{background:var(--ink);padding:22px;}
   .glossary-card a{text-decoration:none;font-weight:600;font-size:15px;display:flex;justify-content:space-between;align-items:center;}
   .glossary-card p{font-size:13px;color:var(--ink-soft);margin:8px 0 0;}
 
   .newsletter-band{background:var(--paper-dim);}
+  .newsletter-band .section-label{color:#47751f;}
   .newsletter-alerta-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;padding:56px 0;}
   .newsletter-alerta-col{text-align:left;min-width:0;}
   .newsletter-sub{font-size:15px;opacity:.8;max-width:56ch;margin:10px 0 0;}
-  .newsletter-nota{font-size:12px;opacity:.6;margin:10px 0 0;max-width:60ch;}
+  .newsletter-nota{font-size:12px;color:var(--ink);opacity:.72;margin:10px 0 0;max-width:60ch;}
   @media (max-width:780px){
     .newsletter-alerta-grid{grid-template-columns:1fr;gap:40px;padding:44px 0;}
   }
 
-  footer{padding:40px 0 56px;font-size:13px;color:var(--ink);opacity:.6;}
+  footer{padding:40px 0 56px;font-size:13px;color:var(--ink);opacity:.72;}
   footer .foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:1px solid var(--line);padding-top:24px;}
   footer a{text-decoration:underline;}
 
@@ -374,7 +379,7 @@
 </nav>
 
 <header class="hero">
-  <div class="ticker-strip" aria-label="Cotações em destaque">
+  <div class="ticker-strip" role="group" aria-label="Cotações em destaque">
     <div class="ticker-track"><!-- TICKER:START -->
 <span class="item">DÓLAR <b>R$ 5,1253</b> <span class="up">▲ 0.57%</span></span>
       <span class="item">SOJA <b>R$ 160.87</b> <span class="up">▲ 0.46%</span></span>
@@ -430,7 +435,7 @@ Fonte: CEPEA/Esalq · dado de 04/09/2026
 <!-- UPDATED:END --></div>
     </div>
 
-    <div class="price-grid" aria-label="Cotações agrícolas de hoje"><!-- PRICES:START -->
+    <div class="price-grid" role="group" aria-label="Cotações agrícolas de hoje"><!-- PRICES:START -->
 <a class="price-card price-card-link" href="commodities/soja/">
   <div class="price-name">Soja</div>
   <div class="price-value">R$ 160.87</div>

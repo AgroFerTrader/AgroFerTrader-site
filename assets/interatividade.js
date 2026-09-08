@@ -783,7 +783,7 @@
     document.querySelectorAll(".chart-modo-btn").forEach(function (botao) {
       botao.addEventListener("click", function () {
         document.querySelectorAll(".chart-modo-btn").forEach(function (item) {
-          var ativo = item === botao; item.classList.toggle("active", ativo); item.setAttribute("aria-selected", ativo ? "true" : "false");
+          var ativo = item === botao; item.classList.toggle("active", ativo); item.setAttribute("aria-pressed", ativo ? "true" : "false");
         });
         renderizarModoGrafico(botao.dataset.modoGrafico);
       });
