@@ -1,0 +1,256 @@
+{
+  "dolar": {
+    "data": "08/09/2026",
+    "valor": 5.0856,
+    "variacao_pct": -0.7745888045577789
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "16/09/2026",
+    "valor": 14.0
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "08/09/2026",
+      "preco_reais": "160.46",
+      "variacao_pct": "-0.25"
+    },
+    {
+      "nome": "Milho",
+      "data": "08/09/2026",
+      "preco_reais": "70.9",
+      "variacao_pct": "-0,04%"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "08/09/2026",
+      "preco_reais": "87,69",
+      "variacao_pct": "0.27"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "08/09/2026",
+      "preco_reais": "1635.57",
+      "variacao_pct": "-1.47"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "08/09/2026",
+      "preco_reais": "348.35",
+      "variacao_pct": "0.19"
+    },
+    {
+      "nome": "Algodão",
+      "data": "08/09/2026",
+      "preco_reais": "439.45",
+      "variacao_pct": "-0,12%"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "08/09/2026",
+      "preco_reais": "117.34",
+      "variacao_pct": "0.47"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Outubro/26",
+      "preco_reais": "5,1130 R$/US$",
+      "variacao_pct": "-0.88",
+      "valor_numerico": 5.113,
+      "unidade": "R$/US$",
+      "vencimentos": [
+        {
+          "vencimento": "Outubro/26",
+          "valor_numerico": 5.113,
+          "valor_reais": 5.113
+        },
+        {
+          "vencimento": "Novembro/26",
+          "valor_numerico": 5.1435,
+          "valor_reais": 5.1435
+        }
+      ]
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Janeiro/2027",
+      "preco_reais": "R$ 149,11 /sc 60 kg (≈ US$ 29,32 x R$ 5,0856)",
+      "variacao_pct": "0.27",
+      "valor_numerico": 29.32,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 29.32,
+          "valor_reais": 149.109792
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 29.5,
+          "valor_reais": 150.0252
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 29.58,
+          "valor_reais": 150.432048
+        }
+      ]
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "71,19 R$/sc 60 kg",
+      "variacao_pct": "-0.74",
+      "valor_numerico": 71.19,
+      "unidade": "R$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Setembro/2026",
+          "valor_numerico": 71.19,
+          "valor_reais": 71.19
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 80.29,
+          "valor_reais": 80.29
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 82.3,
+          "valor_reais": 82.3
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 80.8,
+          "valor_reais": 80.8
+        },
+        {
+          "vencimento": "Julho/2027",
+          "valor_numerico": 79.0,
+          "valor_reais": 79.0
+        },
+        {
+          "vencimento": "Setembro/2027",
+          "valor_numerico": 79.0,
+          "valor_reais": 79.0
+        }
+      ]
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "362,30 R$/@",
+      "variacao_pct": "0.95",
+      "valor_numerico": 362.3,
+      "unidade": "R$/@",
+      "vencimentos": [
+        {
+          "vencimento": "Setembro/2026",
+          "valor_numerico": 362.3,
+          "valor_reais": 362.3
+        },
+        {
+          "vencimento": "Outubro/2026",
+          "valor_numerico": 377.5,
+          "valor_reais": 377.5
+        },
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 382.4,
+          "valor_reais": 382.4
+        },
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 382.5,
+          "valor_reais": 382.5
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 383.65,
+          "valor_reais": 383.65
+        },
+        {
+          "vencimento": "Fevereiro/2027",
+          "valor_numerico": 383.0,
+          "valor_reais": 383.0
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 383.6,
+          "valor_reais": 383.6
+        }
+      ]
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Dezembro/2026",
+      "preco_reais": "R$ 1786,06 /sc 60 kg (≈ US$ 351,20 x R$ 5,0856)",
+      "variacao_pct": "-2.98",
+      "valor_numerico": 351.2,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 351.2,
+          "valor_reais": 1786.0627200000001
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 348.2,
+          "valor_reais": 1770.80592
+        },
+        {
+          "vencimento": "Setembro/2027",
+          "valor_numerico": 338.2,
+          "valor_reais": 1719.94992
+        }
+      ]
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Queda suave do dólar (-0.77%): tende a esfriar discretamente o apetite por exportação, com leve efeito de baixa sobre o preço doméstico de commodities.",
+    "Com a Selic em 14.00% ao ano, o custo de financiamento no campo segue elevado - isso tende a acelerar vendas (para gerar caixa) e, por atrair capital estrangeiro, também tende a fortalecer o real. Os dois efeitos juntos costumam pressionar o preço das commodities exportadas para baixo.",
+    "Obs.: essas são tendências gerais - clima, quebra de safra, estoques mundiais e demanda de outros países também afetam o preço e podem superar o efeito isolado do câmbio ou da Selic."
+  ],
+  "noticias": [
+    {
+      "titulo": "Política e Economia17:28Dólar cai a R$5,0892 com avanço de Flávio Bolsonaro em pesquisas eleitorais",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/427642-dolar-cai-a-r50892-com-avanco-de-flavio-bolsonaro-em-pesquisas-eleitorais.html",
+      "resumo": "SÃO PAULO, 8 Set (Reuters) - O dólar fechou a terça-feira pós-feriado na menor cotação em um mês, após novas pesquisas indicarem ligeiro fortalecimento do senador Flávio Bolsonaro (PL-RJ) na disputa acirrada com o presid...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "08/09/2026 - 16:39Importações de soja e farelo pela UE recuam no início da safra 2026/27",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/427647-importacoes-de-soja-e-farelo-pela-ue-recuam-no-inicio-da-safra-202627.html",
+      "resumo": "8 Set (Reuters) - As importações de soja pela União Europeia na temporada 2026/27, iniciada em julho, atingiram 2,18 milhões de toneladas métricas até 6 de setembro, uma queda de 17% em relação ao mesmo período do ano an...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "08/09/2026 - 16:20Excedente de exportação de trigo francês pode desaparecer em 10 anos, dizem produtores",
+      "link": "https://www.noticiasagricolas.com.br/noticias/trigo/427636-excedente-de-exportacao-de-trigo-frances-pode-desaparecer-em-10-anos-dizem-produtores.html",
+      "resumo": "PARIS, 8 Set (Reuters) - A França, maior produtora de trigo da União Europeia, poderá perder sua capacidade de exportar para o mercado mundial dentro de 10 anos se a tendência de queda nas safras, associada a pressões ec...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "08/09/2026 - 15:12Exportações de frutas começam setembro com volume 20% menor, mas preço médio segue acima de 2025",
+      "link": "https://www.noticiasagricolas.com.br/noticias/hortifruti/427631-exportacoes-de-frutas-comecam-setembro-com-volume-20-menor-mas-preco-medio-segue-acima-de-2025.html",
+      "resumo": "As exportações brasileiras de frutas e nozes frescas ou secas começaram setembro de 2026 com menor ritmo de embarques na comparação com o mesmo período do ano passado, enquanto os preços médios permaneceram mais elevados...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "08/09/2026 - 15:10Exportações de milho começam setembro ainda abaixo de 2025, mas ritmo reage após agosto fraco",
+      "link": "https://www.noticiasagricolas.com.br/noticias/milho/427630-exportacoes-de-milho-comecam-setembro-ainda-abaixo-de-2025-mas-ritmo-reage-apos-agosto-fraco.html",
+      "resumo": "As exportações brasileiras de milho começaram setembro de 2026 em ritmo inferior ao registrado no mesmo período do ano passado, mas com uma recuperação em relação ao desempenho observado ao longo de agosto.",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
