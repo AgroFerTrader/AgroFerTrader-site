@@ -19,13 +19,13 @@
 <meta property="og:description" content="Cotação física e futura do milho atualizadas diariamente (CEPEA/Esalq e B3), com histórico de preços e notícias específicas do mercado de milho.">
 <meta property="og:url" content="https://agrofertrader.github.io/AgroFerTrader-site/commodities/milho/">
 <meta property="og:site_name" content="AgroFer Trader">
-<meta property="og:image" content="https://agrofertrader.github.io/AgroFerTrader-site/assets/logo.png">
+<meta property="og:image" content="https://agrofertrader.github.io/AgroFerTrader-site/assets/logo-social.jpg">
 <meta property="og:image:alt" content="Logo da AgroFer Trader">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Preço do Milho Hoje — Cotação Física, Futuro e Notícias | AgroFer Trader">
 <meta name="twitter:description" content="Cotação física e futura do milho atualizadas diariamente (CEPEA/Esalq e B3), com histórico de preços e notícias específicas do mercado de milho.">
-<meta name="twitter:image" content="https://agrofertrader.github.io/AgroFerTrader-site/assets/logo.png">
+<meta name="twitter:image" content="https://agrofertrader.github.io/AgroFerTrader-site/assets/logo-social.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,13 +35,18 @@
      <div class="sib-form"> mais abaixo. -->
 <style>
   :where(.sib-form-message-panel) { display: none; }
+  /* O CSS oficial do Brevo (sib-styles.css) so carrega quando o bloco
+     Newsletter se aproxima da tela (ver script no fim do body) - essa
+     regra some com o campo-armadilha antispam do formulario (sempre
+     presente no HTML, nunca deve aparecer pro usuario) mesmo antes
+     disso, pra ninguem ver um campo de texto sem rotulo por engano. */
+  .input--hidden { display: none; }
   :where(.sib-form-message-panel .sib-notification__icon) { width: 20px; height: 20px; }
   #sib-container input:-ms-input-placeholder { font-family: var(--body); text-align: left; color: #c0ccda; }
   #sib-container input::placeholder { font-family: var(--body); text-align: left; color: #c0ccda; }
   #sib-container textarea::placeholder { font-family: var(--body); text-align: left; color: #c0ccda; }
   #sib-container a { text-decoration: underline; color: #2BB2FC; }
 </style>
-<link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 
 <script type="application/ld+json">
 {
@@ -53,7 +58,7 @@
       "name": "AgroFer Trader",
       "description": "AgroFer Trader é uma referência em inteligência e análise de mercado agrícola — leitura do que está por trás das cotações de soja, milho, café e boi gordo, não um agregador de preços.",
       "url": "https://agrofertrader.github.io/AgroFerTrader-site/",
-      "logo": "https://agrofertrader.github.io/AgroFerTrader-site/assets/logo.png",
+      "logo": "https://agrofertrader.github.io/AgroFerTrader-site/assets/logo-social.jpg",
       "sameAs": [
         "https://www.instagram.com/agrofertrader/"
       ]
@@ -304,7 +309,7 @@
 <nav aria-label="Navegação principal">
   <div class="brand">
     <a href="../../" aria-label="AgroFer Trader — página inicial">
-      <img src="../../assets/logo.png" alt="AgroFer Trader">
+      <img src="../../assets/logo-nav.jpg" alt="AgroFer Trader">
     </a>
   </div>
   <div class="navlinks">
@@ -1161,6 +1166,37 @@ Atualizado em: 08/09/2026 · Fontes consultadas: CEPEA, Notícias Agrícolas, di
   };
   var AUTOHIDE = Boolean(0);
 </script>
-<script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
+<script>
+  // O script/CSS do Brevo (formulario de newsletter) so carrega quando o
+  // bloco "Newsletter" se aproxima da tela - no perfil de CPU throttled
+  // do Lighthouse mobile, o main.js do Brevo sozinho custava ~3s de
+  // scripting (ficava mais caro ainda em paginas com grafico grande, tipo
+  // as de commodity, porque ele varre o documento inteiro procurando o
+  // formulario). Carregar sob demanda tira esse custo do carregamento
+  // inicial da pagina pra quem nunca rola ate o formulario.
+  (function () {
+    var carregado = false;
+    function carregarBrevo() {
+      if (carregado) return;
+      carregado = true;
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "https://sibforms.com/forms/end-form/build/sib-styles.css";
+      document.head.appendChild(link);
+      var script = document.createElement("script");
+      script.src = "https://sibforms.com/forms/end-form/build/main.js";
+      script.defer = true;
+      document.body.appendChild(script);
+    }
+    var alvo = document.querySelector(".newsletter-band");
+    if (!alvo || !("IntersectionObserver" in window)) { carregarBrevo(); return; }
+    var observador = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (entrada) {
+        if (entrada.isIntersecting) { carregarBrevo(); observador.disconnect(); }
+      });
+    }, { rootMargin: "400px 0px" });
+    observador.observe(alvo);
+  })();
+</script>
 </body>
 </html>
