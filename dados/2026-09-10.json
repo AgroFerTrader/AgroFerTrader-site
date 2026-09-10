@@ -1,0 +1,255 @@
+{
+  "dolar": {
+    "data": "09/09/2026",
+    "valor": 5.0979,
+    "variacao_pct": 0.24185936762623397
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "16/09/2026",
+    "valor": 14.0
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "09/09/2026",
+      "preco_reais": "160.12",
+      "variacao_pct": "-0,21%"
+    },
+    {
+      "nome": "Milho",
+      "data": "09/09/2026",
+      "preco_reais": "70.52",
+      "variacao_pct": "-0,54%"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "09/09/2026",
+      "preco_reais": "87,72",
+      "variacao_pct": "0,04%"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "09/09/2026",
+      "preco_reais": "1647.29",
+      "variacao_pct": "0,72%"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "09/09/2026",
+      "preco_reais": "349.5",
+      "variacao_pct": "0,33%"
+    },
+    {
+      "nome": "Algodão",
+      "data": "09/09/2026",
+      "preco_reais": "432.61",
+      "variacao_pct": "-1,56%"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "09/09/2026",
+      "preco_reais": "118.28",
+      "variacao_pct": "0,80%"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Outubro/26",
+      "preco_reais": "5,1280 R$/US$",
+      "variacao_pct": "0.28",
+      "valor_numerico": 5.128,
+      "unidade": "R$/US$",
+      "vencimentos": [
+        {
+          "vencimento": "Outubro/26",
+          "valor_numerico": 5.128,
+          "valor_reais": 5.128
+        },
+        {
+          "vencimento": "Novembro/26",
+          "valor_numerico": 5.164,
+          "valor_reais": 5.164
+        }
+      ]
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Janeiro/2027",
+      "preco_reais": "R$ 149,06 /sc 60 kg (≈ US$ 29,24 x R$ 5,0979)",
+      "variacao_pct": "-0.27",
+      "valor_numerico": 29.24,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 29.24,
+          "valor_reais": 149.06259599999998
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 29.36,
+          "valor_reais": 149.674344
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 29.35,
+          "valor_reais": 149.623365
+        }
+      ]
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "71,04 R$/sc 60 kg",
+      "variacao_pct": "-0.21",
+      "valor_numerico": 71.04,
+      "unidade": "R$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Setembro/2026",
+          "valor_numerico": 71.04,
+          "valor_reais": 71.04
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 80.15,
+          "valor_reais": 80.15
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 82.16,
+          "valor_reais": 82.16
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 80.9,
+          "valor_reais": 80.9
+        },
+        {
+          "vencimento": "Julho/2027",
+          "valor_numerico": 79.3,
+          "valor_reais": 79.3
+        },
+        {
+          "vencimento": "Setembro/2027",
+          "valor_numerico": 79.3,
+          "valor_reais": 79.3
+        }
+      ]
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "363,20 R$/@",
+      "variacao_pct": "0.25",
+      "valor_numerico": 363.2,
+      "unidade": "R$/@",
+      "vencimentos": [
+        {
+          "vencimento": "Setembro/2026",
+          "valor_numerico": 363.2,
+          "valor_reais": 363.2
+        },
+        {
+          "vencimento": "Outubro/2026",
+          "valor_numerico": 381.05,
+          "valor_reais": 381.05
+        },
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 386.2,
+          "valor_reais": 386.2
+        },
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 386.7,
+          "valor_reais": 386.7
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 388.7,
+          "valor_reais": 388.7
+        },
+        {
+          "vencimento": "Fevereiro/2027",
+          "valor_numerico": 386.5,
+          "valor_reais": 386.5
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 386.4,
+          "valor_reais": 386.4
+        }
+      ]
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 1923,44 /sc 60 kg (≈ US$ 377,30 x R$ 5,0979)",
+      "variacao_pct": "1.15",
+      "valor_numerico": 377.3,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Setembro/2026",
+          "valor_numerico": 377.3,
+          "valor_reais": 1923.43767
+        },
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 353.7,
+          "valor_reais": 1803.12723
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 349.95,
+          "valor_reais": 1784.010105
+        },
+        {
+          "vencimento": "Setembro/2027",
+          "valor_numerico": 338.0,
+          "valor_reais": 1723.0902
+        }
+      ]
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Dólar praticamente estável hoje (+0.24%): sem pressão cambial relevante sobre os preços agrícolas no momento - outros fatores (clima, safra, demanda) tendem a pesar mais que o câmbio hoje.",
+    "Selic em 14.00% ao ano - um patamar considerado alto: o crédito rural fica mais caro e carregar estoque também, o que costuma levar produtores a vender mais rápido para gerar caixa, pressionando o preço para baixo no curto prazo. Juros altos também tendem a atrair capital estrangeiro e valorizar o real, reforçando essa pressão via câmbio.",
+    "Obs.: vale lembrar que essas são relações históricas, não regras fixas - fatores como clima, safra e demanda internacional podem se sobrepor facilmente ao efeito do câmbio ou dos juros."
+  ],
+  "noticias": [
+    {
+      "titulo": "Soja18:56Anec vê avanço na exportação de soja do Brasil em setembro e recorde para farelo",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/427730-anec-ve-avanco-na-exportacao-de-soja-do-brasil-em-setembro-e-recorde-para-farelo.html",
+      "resumo": "SÃO PAULO, 9 Set (Reuters) - A exportação de soja do Brasil em setembro foi estimada nesta quarta-feira em 7,74 milhões de toneladas, crescimento de cerca de 760 mil toneladas em relação ao mesmo período do ano passado, ...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "Política e Economia17:38Dólar fecha em alta no Brasil com acirramento das tensões no Oriente Médio",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/427725-dolar-fecha-em-alta-no-brasil-com-acirramento-das-tensoes-no-oriente-medio.html",
+      "resumo": "SÃO PAULO, 9 Set (Reuters) - O dólar fechou a quarta-feira em alta ante o real, em uma sessão marcada pelo acirramento da guerra no Oriente Médio, enquanto no Brasil os investidores estiveram atentos aos desdobramentos d...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "09/09/2026 - 16:24Trump diz que Putin quer chegar a um acordo sobre Ucrânia",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/427720-trump-diz-que-putin-quer-chegar-a-um-acordo-sobre-ucrania.html",
+      "resumo": "WASHINGTON, 9 Set (Reuters) - O presidente dos Estados Unidos, Donald Trump, afirmou nesta quarta-feira que teve uma conversa “ótima” com o presidente russo, Vladimir Putin, no início desta semana, e que o líder russo de...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "09/09/2026 - 16:22Às vésperas da safra 2026/2027, produtor do Cerrado se prepara para ciclo de maior atenção a clima e manejo",
+      "link": "https://www.noticiasagricolas.com.br/noticias/agronegocio/427710-as-vesperas-da-safra-2026-2027-produtor-do-cerrado-se-prepara-para-ciclo-de-maior-atencao-a-clima-e-manejo.html",
+      "resumo": "O agricultor já está planejando a safra 2026/2027 e o clima é um dos principais desafios a acompanhar no MATOPIBA, Pará, Rondônia e Mato Grosso. As condições de El Niño estão presentes e, segundo o Instituto Nacional de ...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
