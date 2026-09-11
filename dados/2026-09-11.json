@@ -1,0 +1,261 @@
+{
+  "dolar": {
+    "data": "10/09/2026",
+    "valor": 5.1149,
+    "variacao_pct": 0.33347064477528904
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "16/09/2026",
+    "valor": 14.0
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "10/09/2026",
+      "preco_reais": "161.73",
+      "variacao_pct": "1,01%"
+    },
+    {
+      "nome": "Milho",
+      "data": "10/09/2026",
+      "preco_reais": "70.19",
+      "variacao_pct": "-0,47%"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "10/09/2026",
+      "preco_reais": "88,39",
+      "variacao_pct": "0,76%"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "10/09/2026",
+      "preco_reais": "1618.91",
+      "variacao_pct": "-1,72%"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "10/09/2026",
+      "preco_reais": "349.5",
+      "variacao_pct": "0,00%"
+    },
+    {
+      "nome": "Algodão",
+      "data": "10/09/2026",
+      "preco_reais": "434.35",
+      "variacao_pct": "0,40%"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "10/09/2026",
+      "preco_reais": "119.11",
+      "variacao_pct": "0,70%"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Outubro/26",
+      "preco_reais": "5,1315 R$/US$",
+      "variacao_pct": "-0.06",
+      "valor_numerico": 5.1315,
+      "unidade": "R$/US$",
+      "vencimentos": [
+        {
+          "vencimento": "Outubro/26",
+          "valor_numerico": 5.1315,
+          "valor_reais": 5.1315
+        },
+        {
+          "vencimento": "Novembro/26",
+          "valor_numerico": 5.1465000000000005,
+          "valor_reais": 5.1465000000000005
+        }
+      ]
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Janeiro/2027",
+      "preco_reais": "R$ 151,81 /sc 60 kg (≈ US$ 29,68 x R$ 5,1149)",
+      "variacao_pct": "1.5",
+      "valor_numerico": 29.68,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 29.68,
+          "valor_reais": 151.81023199999998
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 29.81,
+          "valor_reais": 152.475169
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 29.96,
+          "valor_reais": 153.242404
+        }
+      ]
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "70,85 R$/sc 60 kg",
+      "variacao_pct": "-0.27",
+      "valor_numerico": 70.85,
+      "unidade": "R$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Setembro/2026",
+          "valor_numerico": 70.85,
+          "valor_reais": 70.85
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 80.33,
+          "valor_reais": 80.33
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 82.45,
+          "valor_reais": 82.45
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 81.06,
+          "valor_reais": 81.06
+        },
+        {
+          "vencimento": "Julho/2027",
+          "valor_numerico": 79.52,
+          "valor_reais": 79.52
+        },
+        {
+          "vencimento": "Setembro/2027",
+          "valor_numerico": 79.4,
+          "valor_reais": 79.4
+        }
+      ]
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "358,75 R$/@",
+      "variacao_pct": "-1.25",
+      "valor_numerico": 358.75,
+      "unidade": "R$/@",
+      "vencimentos": [
+        {
+          "vencimento": "Setembro/2026",
+          "valor_numerico": 358.75,
+          "valor_reais": 358.75
+        },
+        {
+          "vencimento": "Outubro/2026",
+          "valor_numerico": 377.0,
+          "valor_reais": 377.0
+        },
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 383.2,
+          "valor_reais": 383.2
+        },
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 383.45,
+          "valor_reais": 383.45
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 384.6,
+          "valor_reais": 384.6
+        },
+        {
+          "vencimento": "Fevereiro/2027",
+          "valor_numerico": 384.0,
+          "valor_reais": 384.0
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 385.0,
+          "valor_reais": 385.0
+        }
+      ]
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "R$ 1836,25 /sc 60 kg (≈ US$ 359,00 x R$ 5,1149)",
+      "variacao_pct": "-4.85",
+      "valor_numerico": 359.0,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Setembro/2026",
+          "valor_numerico": 359.0,
+          "valor_reais": 1836.2490999999998
+        },
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 347.2,
+          "valor_reais": 1775.8932799999998
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 349.0,
+          "valor_reais": 1785.1000999999999
+        },
+        {
+          "vencimento": "Setembro/2027",
+          "valor_numerico": 330.0,
+          "valor_reais": 1687.917
+        }
+      ]
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Dólar em leve alta (+0.33%): o movimento é moderado, mas já tende a favorecer um pouco o preço interno de commodities exportadas, já que a mesma cotação em dólar rende mais reais.",
+    "Juros em 14.00% ao ano seguem em patamar alto - carregar estoque fica caro, o que empurra produtores a vender mais rápido, e o diferencial de juros atrai capital estrangeiro, valorizando o real. Ambos tendem a pesar contra o preço em reais das commodities de exportação.",
+    "Obs.: vale lembrar que essas são relações históricas, não regras fixas - fatores como clima, safra e demanda internacional podem se sobrepor facilmente ao efeito do câmbio ou dos juros."
+  ],
+  "noticias": [
+    {
+      "titulo": "Política e Economia17:18Dólar fecha em baixa, na contramão do exterior, após nova pesquisa eleitoral",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/427802-dolar-fecha-em-baixa-na-contramao-do-exterior-apos-nova-pesquisa-eleitoral.html",
+      "resumo": "SÃO PAULO, 10 Set (Reuters) - O dólar fechou a quinta-feira em baixa após uma nova pesquisa eleitoral mostrar o senador Flávio Bolsonaro (PL-RJ) numericamente à frente do presidente Luiz Inácio Lula da Silva na disputa p...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "10/09/2026 - 16:49Exportações mundiais de café verde aumentaram 6,3% em julho, diz OIC",
+      "link": "https://www.noticiasagricolas.com.br/noticias/cafe/427797-exportacoes-mundiais-de-cafe-verde-aumentaram-63-em-julho-diz-oic.html",
+      "resumo": "LONDRES, 10 Set (Reuters) - As exportações globais de café verde aumentaram 6,3% em julho em relação ao mesmo período do ano anterior, atingindo 10,76 milhões de sacas de 60 kg, graças a um forte aumento nas exportações ...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "10/09/2026 - 16:28Exportação de café do Brasil tem melhor agosto da história: 4,16 mi/sacas",
+      "link": "https://www.noticiasagricolas.com.br/noticias/cafe/427806-exportacoes-de-cafe-do-brasil-superaram-4-mi-sacas-e-marcam-recorde-para-agosto-diz-cecafe.html",
+      "resumo": "As exportações brasileiras de café registraram seu melhor desempenho na história para os meses de agosto. Foram embarcados 4,155 milhões de sacas de 60 kg de todos os tipos do produto, volume 31% superior ao aferido no m...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "10/09/2026 - 14:20HORTI RESENHA #156 - Investimentos em logística são essenciais na distribuição de FFLVOs",
+      "link": "https://www.noticiasagricolas.com.br/noticias/hortifruti/427783-horti-resenha-156-investimentos-em-logistica-sao-essenciais-na-distribuicao-de-fflv-os.html",
+      "resumo": "O Horti Resenha desta semana conversou com o CEO do Grupo Aranda, Marco Aranda, que destacou a importância do cuidado com a logística de transporte de flores, frutas, legumes, verduras e ovos do campo até a mesa do consu...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "10/09/2026 - 14:01Efeito Xi Jinping e Petróleo: Soja dispara em Chicago e saca no porto de Paranaguá bate R$ 165,50",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/427781-efeito-xi-jinping-e-petroleo-soja-dispara-em-chicago-e-saca-no-porto-de-paranagua-bate-r-165-50.html",
+      "resumo": "O complexo da soja opera com fortes altas nesta quinta-feira (10) na Bolsa de Chicago (CBOT). O movimento é generalizado, com as cotações do grão, do farelo e do óleo registrando avanços expressivos de quase 2% cada um d...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
