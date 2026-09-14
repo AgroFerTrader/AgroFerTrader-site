@@ -11,6 +11,15 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="AgroFer">
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('../sw.js').catch(function (erro) {
+      console.warn('Falha ao registrar o service worker:', erro);
+    });
+  });
+}
+</script>
 
 <title>Calculadora de Break-even | AgroFer Trader</title>
 <meta name="description" content="Calcule o preço mínimo que cobre seus custos (break-even) e a margem real da sua safra de soja, milho ou café - com o preço de venda travável hoje via contrato futuro.">

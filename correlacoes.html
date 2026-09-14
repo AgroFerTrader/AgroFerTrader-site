@@ -11,6 +11,15 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="AgroFer">
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('sw.js').catch(function (erro) {
+      console.warn('Falha ao registrar o service worker:', erro);
+    });
+  });
+}
+</script>
 
 <title>Painel de Correlações | AgroFer Trader</title>
 <meta name="description" content="Compare a evolução de preços de commodities, câmbio e Selic, e veja a correlação estatística entre elas - com o cuidado de nunca confundir correlação com causalidade.">
