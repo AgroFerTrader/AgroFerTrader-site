@@ -11,6 +11,15 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="AgroFer">
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('sw.js').catch(function (erro) {
+      console.warn('Falha ao registrar o service worker:', erro);
+    });
+  });
+}
+</script>
 
 <title>Glossário de Mercado | AgroFer Trader</title>
 <meta name="description" content="Os termos técnicos mais usados nas análises de mercado agrícola da AgroFer Trader — CEPEA, WASDE, backwardation, vazio sanitário e outros, explicados em linguagem simples.">
