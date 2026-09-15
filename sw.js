@@ -25,7 +25,7 @@
  * evento "activate"), em vez de servir arquivo velho pra sempre.
  */
 
-const CACHE_VERSION = "v1";
+const CACHE_VERSION = "v2";
 const STATIC_CACHE = `agrofer-estatico-${CACHE_VERSION}`;
 const PAGES_CACHE = `agrofer-paginas-${CACHE_VERSION}`;
 const CACHES_ATUAIS = [STATIC_CACHE, PAGES_CACHE];
@@ -54,6 +54,7 @@ const PRECACHE_URLS = [
   "assets/calculadora-outros-modos.js",
   "assets/interatividade.js",
   "assets/offline-banner.js",
+  "assets/install-prompt.js",
   "calculadora/",
   "calculadora/outros-modos/",
   "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js",
