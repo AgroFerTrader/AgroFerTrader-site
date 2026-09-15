@@ -25,7 +25,7 @@
  * evento "activate"), em vez de servir arquivo velho pra sempre.
  */
 
-const CACHE_VERSION = "v2";
+const CACHE_VERSION = "v3";
 const STATIC_CACHE = `agrofer-estatico-${CACHE_VERSION}`;
 const PAGES_CACHE = `agrofer-paginas-${CACHE_VERSION}`;
 const CACHES_ATUAIS = [STATIC_CACHE, PAGES_CACHE];
@@ -55,6 +55,7 @@ const PRECACHE_URLS = [
   "assets/interatividade.js",
   "assets/offline-banner.js",
   "assets/install-prompt.js",
+  "assets/update-banner.js",
   "calculadora/",
   "calculadora/outros-modos/",
   "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js",
@@ -73,6 +74,17 @@ self.addEventListener("install", (event) => {
       )
     )
   );
+});
+
+// Nunca ativa a versão nova sozinho (sem isso, o navegador só troca de
+// service worker quando todas as abas do site forem fechadas). Espera
+// o usuário tocar no aviso "Nova versão disponível" (ver
+// assets/update-banner.js) pra não trocar o app debaixo dele no meio
+// do uso - item 5 da spec do PWA.
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
 });
 
 self.addEventListener("activate", (event) => {
