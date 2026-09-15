@@ -22,15 +22,112 @@
 (function () {
   "use strict";
 
-  function obterDadosCalculadora() {
-    var script = document.getElementById("dados-calculadora");
-    if (!script) return null;
+  // Chave do "último preço conhecido" salvo em localStorage - fallback
+  // extra pro cálculo de break-even funcionar offline (spec do PWA,
+  // item 3) mesmo no caso raro de o HTML cacheado pelo service worker
+  // não trazer os dados embutidos (ex.: cache limpo manualmente, ou
+  // uma versão muito antiga do arquivo). Na prática, como a página
+  // inteira já fica em cache-first (ver sw.js), os dados embutidos
+  // quase sempre estão disponíveis mesmo offline - este fallback é uma
+  // segunda camada de segurança, não o caminho principal.
+  var CHAVE_DADOS_LOCAL = "agrofer_calc_ultimo_preco_v1";
+
+  function temAlgumPrecoValido(dados) {
+    var culturas = dados && dados.culturas;
+    if (!culturas) return false;
+    for (var slug in culturas) {
+      if (culturas[slug] && culturas[slug].preco_fisico_hoje !== null && culturas[slug].preco_fisico_hoje !== undefined) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function salvarDadosLocal(dados, referencia) {
     try {
-      var texto = script.textContent.replace(/<!--[\s\S]*?-->/g, "").trim();
-      return JSON.parse(texto);
+      localStorage.setItem(CHAVE_DADOS_LOCAL, JSON.stringify({
+        dados: dados,
+        referencia: referencia,
+        salvoEm: new Date().toISOString(),
+      }));
+    } catch (e) {
+      // localStorage indisponível (modo privado, quota cheia etc.) - a
+      // calculadora continua funcionando, só sem esse fallback extra.
+    }
+  }
+
+  function carregarDadosLocal() {
+    try {
+      var bruto = localStorage.getItem(CHAVE_DADOS_LOCAL);
+      return bruto ? JSON.parse(bruto) : null;
     } catch (e) {
       return null;
     }
+  }
+
+  function obterDadosCalculadora() {
+    var script = document.getElementById("dados-calculadora");
+    var dados = null;
+
+    if (script) {
+      try {
+        var texto = script.textContent.replace(/<!--[\s\S]*?-->/g, "").trim();
+        dados = JSON.parse(texto);
+      } catch (e) {
+        dados = null;
+      }
+    }
+
+    var referenciaEl = document.querySelector(".updated");
+    var referenciaTexto = referenciaEl ? referenciaEl.textContent.trim() : "";
+
+    if (temAlgumPrecoValido(dados)) {
+      salvarDadosLocal(dados, referenciaTexto);
+      dados._referencia = referenciaTexto;
+      dados._desatualizado = false;
+      return dados;
+    }
+
+    // Dados embutidos ausentes/incompletos - usa a última cotação salva
+    // localmente (se existir), avisando que pode estar desatualizada.
+    var salvo = carregarDadosLocal();
+    if (salvo && temAlgumPrecoValido(salvo.dados)) {
+      salvo.dados._referencia = salvo.referencia;
+      salvo.dados._desatualizado = true;
+      return salvo.dados;
+    }
+
+    return dados;
+  }
+
+  // Mostra/esconde o aviso de preço desatualizado (elementos
+  // #aviso-preco-desatualizado / #aviso-preco-desatualizado-texto, ver
+  // calculadora/_template.html e calculadora/outros-modos/_template.html)
+  // sempre que o navegador estiver offline (o preço em tela pode ser de
+  // uma visita anterior) ou quando os dados vieram do fallback salvo em
+  // localStorage. Reage também a mudanças de conectividade durante o
+  // uso, sem precisar recarregar a página.
+  function mostrarAvisoPrecoSeNecessario(dados) {
+    var aviso = document.getElementById("aviso-preco-desatualizado");
+    var texto = document.getElementById("aviso-preco-desatualizado-texto");
+    if (!aviso || !texto || !dados) return;
+
+    function atualizar() {
+      var desatualizado = !!dados._desatualizado || !navigator.onLine;
+      if (!desatualizado) {
+        aviso.hidden = true;
+        return;
+      }
+      var referencia = dados._referencia
+        ? " (" + dados._referencia.replace(/^Fonte:\s*/i, "") + ")"
+        : "";
+      texto.textContent = "Você está offline ou os preços podem estar desatualizados" + referencia + ". Confira a cotação atual quando reconectar.";
+      aviso.hidden = false;
+    }
+
+    atualizar();
+    window.addEventListener("online", atualizar);
+    window.addEventListener("offline", atualizar);
   }
 
   function formatarBRL(numero) {
@@ -706,6 +803,7 @@
 
   window.AgroFerCalc = {
     obterDadosCalculadora: obterDadosCalculadora,
+    mostrarAvisoPrecoSeNecessario: mostrarAvisoPrecoSeNecessario,
     formatarBRL: formatarBRL,
     parseVencimento: parseVencimento,
     acharVencimentoMaisProximo: acharVencimentoMaisProximo,

@@ -194,6 +194,8 @@
   function iniciar() {
     if (!DADOS || !DADOS.culturas) return;
 
+    Core.mostrarAvisoPrecoSeNecessario(DADOS);
+
     document.querySelectorAll(".calc-cultura-btn").forEach(function (botao) {
       botao.addEventListener("click", function () { escolherCultura(botao.dataset.cultura); });
     });
