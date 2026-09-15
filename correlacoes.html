@@ -11,10 +11,13 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="AgroFer">
+<script src="assets/update-banner.js" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
-    navigator.serviceWorker.register('sw.js').catch(function (erro) {
+    navigator.serviceWorker.register('sw.js').then(function (registration) {
+      if (window.AgroFerUpdateBanner) window.AgroFerUpdateBanner.observar(registration);
+    }).catch(function (erro) {
       console.warn('Falha ao registrar o service worker:', erro);
     });
   });
@@ -135,6 +138,15 @@ if ('serviceWorker' in navigator) {
 </style>
 </head>
 <body>
+
+<div id="aviso-nova-versao" class="pwa-nova-versao" hidden role="button" tabindex="0">
+  🔄 Nova versão disponível — toque para atualizar
+</div>
+<style>
+  .pwa-nova-versao{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:center;gap:8px;background:#173321;color:#FDFDF9;font:600 13px/1.4 "Inter",sans-serif;padding:10px 16px;text-align:center;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.2);}
+  .pwa-nova-versao:hover{background:#0B3C1F;}
+  .pwa-nova-versao[hidden]{display:none;}
+</style>
 
 <nav aria-label="Navegação principal">
   <div class="brand">
