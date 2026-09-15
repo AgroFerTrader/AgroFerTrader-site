@@ -488,5 +488,23 @@ if ('serviceWorker' in navigator) {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
 <script src="../../assets/calculadora-core.js" defer></script>
 <script src="../../assets/calculadora-outros-modos.js" defer></script>
+
+<button id="botao-instalar-app" class="pwa-instalar-btn" type="button" hidden>
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  Instalar app
+</button>
+<div id="aviso-instalar-ios" class="pwa-instalar-ios" hidden>
+  <span>No iPhone: toque em <strong>Compartilhar</strong> e depois em <strong>Adicionar à Tela de Início</strong> para instalar o app.</span>
+  <button id="fechar-aviso-instalar-ios" type="button" aria-label="Fechar aviso">×</button>
+</div>
+<style>
+  .pwa-instalar-btn{position:fixed;right:16px;bottom:16px;z-index:40;display:flex;align-items:center;gap:8px;background:#173321;color:#FDFDF9;border:none;border-radius:999px;padding:12px 18px;font:600 13px/1 "Inter",sans-serif;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25);}
+  .pwa-instalar-btn:hover{background:#0B3C1F;}
+  .pwa-instalar-btn[hidden]{display:none;}
+  .pwa-instalar-ios{position:fixed;right:16px;bottom:16px;left:16px;max-width:360px;margin-left:auto;z-index:40;display:flex;align-items:center;gap:10px;background:#FDFDF9;color:#173321;border:1px solid rgba(11,60,31,.16);border-radius:10px;padding:12px 14px;font:500 13px/1.4 "Inter",sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.18);}
+  .pwa-instalar-ios[hidden]{display:none;}
+  .pwa-instalar-ios button{background:none;border:none;color:#173321;opacity:.6;cursor:pointer;font-size:16px;line-height:1;padding:0 0 0 8px;flex-shrink:0;}
+</style>
+<script src="../../assets/install-prompt.js" defer></script>
 </body>
 </html>
