@@ -1,0 +1,256 @@
+{
+  "dolar": {
+    "data": "14/09/2026",
+    "valor": 5.1696,
+    "variacao_pct": 1.5279468950076567
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "16/09/2026",
+    "valor": 14.0
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "14/09/2026",
+      "preco_reais": "160.44",
+      "variacao_pct": "-0.07"
+    },
+    {
+      "nome": "Milho",
+      "data": "14/09/2026",
+      "preco_reais": "69.51",
+      "variacao_pct": "-0.37"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "14/09/2026",
+      "preco_reais": "90,26",
+      "variacao_pct": "0.98"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "14/09/2026",
+      "preco_reais": "1594.86",
+      "variacao_pct": "-0.13"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "14/09/2026",
+      "preco_reais": "349.5",
+      "variacao_pct": "0,00%"
+    },
+    {
+      "nome": "Algodão",
+      "data": "14/09/2026",
+      "preco_reais": "437.5",
+      "variacao_pct": "-0.02"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "14/09/2026",
+      "preco_reais": "119.41",
+      "variacao_pct": "0.19"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Outubro/26",
+      "preco_reais": "5,1680 R$/US$",
+      "variacao_pct": "0.3",
+      "valor_numerico": 5.168,
+      "unidade": "R$/US$",
+      "vencimentos": [
+        {
+          "vencimento": "Outubro/26",
+          "valor_numerico": 5.168,
+          "valor_reais": 5.168
+        },
+        {
+          "vencimento": "Novembro/26",
+          "valor_numerico": 5.183,
+          "valor_reais": 5.183
+        }
+      ]
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Janeiro/2027",
+      "preco_reais": "R$ 150,49 /sc 60 kg (≈ US$ 29,11 x R$ 5,1696)",
+      "variacao_pct": "0.73",
+      "valor_numerico": 29.11,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 29.11,
+          "valor_reais": 150.487056
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 29.22,
+          "valor_reais": 151.055712
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 29.45,
+          "valor_reais": 152.24472
+        }
+      ]
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "69,89 R$/sc 60 kg",
+      "variacao_pct": "-0.04",
+      "valor_numerico": 69.89,
+      "unidade": "R$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Setembro/2026",
+          "valor_numerico": 69.89,
+          "valor_reais": 69.89
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 80.38,
+          "valor_reais": 80.38
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 82.39,
+          "valor_reais": 82.39
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 81.1,
+          "valor_reais": 81.1
+        },
+        {
+          "vencimento": "Julho/2027",
+          "valor_numerico": 79.4,
+          "valor_reais": 79.4
+        },
+        {
+          "vencimento": "Setembro/2027",
+          "valor_numerico": 79.41,
+          "valor_reais": 79.41
+        }
+      ]
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "356,80 R$/@",
+      "variacao_pct": "-0.42",
+      "valor_numerico": 356.8,
+      "unidade": "R$/@",
+      "vencimentos": [
+        {
+          "vencimento": "Setembro/2026",
+          "valor_numerico": 356.8,
+          "valor_reais": 356.8
+        },
+        {
+          "vencimento": "Outubro/2026",
+          "valor_numerico": 375.55,
+          "valor_reais": 375.55
+        },
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 383.2,
+          "valor_reais": 383.2
+        },
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 384.1,
+          "valor_reais": 384.1
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 386.3,
+          "valor_reais": 386.3
+        },
+        {
+          "vencimento": "Fevereiro/2027",
+          "valor_numerico": 385.0,
+          "valor_reais": 385.0
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 384.5,
+          "valor_reais": 384.5
+        }
+      ]
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Dezembro/2026",
+      "preco_reais": "R$ 1827,45 /sc 60 kg (≈ US$ 353,50 x R$ 5,1696)",
+      "variacao_pct": "3.27",
+      "valor_numerico": 353.5,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 353.5,
+          "valor_reais": 1827.4536
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 348.0,
+          "valor_reais": 1799.0208
+        },
+        {
+          "vencimento": "Setembro/2027",
+          "valor_numerico": 332.35,
+          "valor_reais": 1718.1165600000002
+        }
+      ]
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Dólar em leve alta (+1.53%): o movimento é moderado, mas já tende a favorecer um pouco o preço interno de commodities exportadas, já que a mesma cotação em dólar rende mais reais.",
+    "Juros em 14.00% ao ano seguem em patamar alto - carregar estoque fica caro, o que empurra produtores a vender mais rápido, e o diferencial de juros atrai capital estrangeiro, valorizando o real. Ambos tendem a pesar contra o preço em reais das commodities de exportação.",
+    "Obs.: essas são tendências gerais - clima, quebra de safra, estoques mundiais e demanda de outros países também afetam o preço e podem superar o efeito isolado do câmbio ou da Selic."
+  ],
+  "noticias": [
+    {
+      "titulo": "Carnes18:22Brasil exporta 79,7 mil toneladas de carne bovina até a segunda semana de setembro",
+      "link": "https://www.noticiasagricolas.com.br/noticias/carnes/427965-brasil-exporta-79-7-mil-toneladas-de-carne-bovina-ate-a-segunda-semana-de-setembro.html",
+      "resumo": "As exportações brasileiras de carne bovina somaram 79,71 mil toneladas nos primeiros oito dias úteis de setembro de 2026, segundo dados da Secretaria de Comércio Exterior (Secex). Os números foram divulgados nesta segund...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "14/09/2026 - 17:23Exportação de café do Brasil salta no início de setembro; embarque de petróleo também dispara",
+      "link": "https://www.noticiasagricolas.com.br/noticias/cafe/427957-exportacao-de-cafe-do-brasil-salta-no-inicio-de-setembro-embarque-de-petroleo-tambem-dispara.html",
+      "resumo": "SÃO PAULO, 14 Set (Reuters) - As exportações brasileiras de café verde seguiram fortes no início de setembro, após o recorde histórico para o mês de agosto registrado pelo setor, com os embarques do grão aumentando mais ...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "14/09/2026 - 17:17Dólar sobe para perto dos R$5,15 influenciado por exterior e cenário político",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/427956-dolar-sobe-para-perto-dos-r515-influenciado-por-exterior-e-cenario-politico.html",
+      "resumo": "SÃO PAULO, 14 Set (Reuters) - O dólar fechou a segunda-feira em alta ante o real, influenciado tanto pelo avanço da moeda norte-americana no exterior quanto pelo cenário político conturbado no Brasil, em meio à crise no ...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "14/09/2026 - 16:53Soja reage no Brasil: saca ganha até R$ 3,00 com alta do dólar, prêmios firmes e petróleo",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/427955-soja-reage-no-brasil-saca-ganha-ate-r-3-00-com-alta-do-dolar-premios-firmes-e-petroleo.html",
+      "resumo": "Os preços da soja no Brasil abriram a semana em tom positivo e recuperando parte das perdas da última sexta-feira (11). A combinação de dólar valorizado, prêmios sustentados nos portos e uma reação pontual em Chicago gar...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "14/09/2026 - 15:37Importações de fertilizantes perdem ritmo e ficam 26% abaixo de setembro de 2025",
+      "link": "https://www.noticiasagricolas.com.br/noticias/agronegocio/427945-importacoes-de-fertilizantes-perdem-ritmo-e-ficam-26-abaixo-de-setembro-de-2025.html",
+      "resumo": "As importações brasileiras de fertilizantes voltaram a perder ritmo na segunda semana de setembro, após um início de mês que havia indicado uma recuperação em relação ao forte recuo registrado em agosto.",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
