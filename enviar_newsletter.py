@@ -37,7 +37,7 @@ import os
 import re
 import sys
 import webbrowser
-from datetime import datetime, timedelta
+from datetime import datetime
 from html import escape
 
 import requests
@@ -69,6 +69,11 @@ NOMES_COMMODITY_EXIBICAO = {
     "boi-gordo": "Boi gordo",
 }
 SLUGS_VALIDOS = list(NOMES_COMMODITY_EXIBICAO)
+
+# Mesmo padrao de URL ja usado em verificar_alertas.py para o botao do
+# e-mail de alerta de preco (LINK_COMMODITY) - GitHub Pages serve o site
+# em /AgroFerTrader-site/, nao na raiz de agrofertrader.github.io.
+URL_BASE_SITE = "https://agrofertrader.github.io/AgroFerTrader-site"
 
 
 def _ler_secoes(slug: str) -> dict:
@@ -116,25 +121,29 @@ def _primeira_frase(texto: str, limite: int = 120) -> str:
     return cortada.rstrip(" ,;:—-") + "…"
 
 
-def _formatar_periodo_semana(hoje: datetime) -> str:
-    """'1 a 5 de setembro de 2026' - segunda a sexta da semana de `hoje`,
-    em portugues. Puramente mecanico (so calcula datas), nao decide nada
-    sobre o conteudo."""
-    meses = [
-        "janeiro", "fevereiro", "março", "abril", "maio", "junho",
-        "julho", "agosto", "setembro", "outubro", "novembro", "dezembro",
-    ]
-    segunda = hoje - timedelta(days=hoje.weekday())
-    sexta = segunda + timedelta(days=4)
-    if segunda.month == sexta.month:
-        return f"{segunda.day} a {sexta.day} de {meses[segunda.month - 1]} de {segunda.year}"
-    return (
-        f"{segunda.day} de {meses[segunda.month - 1]} a "
-        f"{sexta.day} de {meses[sexta.month - 1]} de {sexta.year}"
-    )
+def _periodo_da_analise(slug: str) -> str:
+    """Le a primeira linha 'Semana de X a Y de <mes> de <ano> | Atualizado
+    em: ...' de analises/<slug>.md e devolve so o trecho 'X a Y de <mes>
+    de <ano>' - o periodo REAL coberto pela analise que esta sendo
+    enviada, nao uma janela calculada a partir da data de hoje (que pode
+    nao bater com a semana da analise: a newsletter do dia 16/09 sobre a
+    analise "8 a 15 de setembro" chegou a sair anunciando "14 a 18 de
+    setembro" - uma data que nem tinha acontecido ainda - porque o
+    periodo era calculado a partir de datetime.now() em vez de vir do
+    proprio arquivo .md)."""
+    caminho = os.path.join(gpc.PASTA_ANALISES, f"{slug}.md")
+    with open(caminho, encoding="utf-8") as f:
+        linha_semana = next((l for l in f if l.startswith("Semana de ")), None)
+    m = re.match(r"Semana de (.+?)\s*\|", linha_semana) if linha_semana else None
+    if not m:
+        raise SystemExit(
+            f"Nao encontrei a linha 'Semana de ... | Atualizado em: ...' em "
+            f"analises/{slug}.md - confira o cabecalho do arquivo."
+        )
+    return m.group(1).strip()
 
 
-def montar_html_newsletter(slug_principal: str, titulo: str, data_referencia: datetime) -> str:
+def montar_html_newsletter(slug_principal: str, titulo: str) -> str:
     """Monta o HTML final da campanha: le o template aprovado
     (emails/newsletter.html) e substitui só os trechos variáveis (período,
     título, corpo, caixa de observação, resumo das outras 3 commodities) -
@@ -154,7 +163,7 @@ def montar_html_newsletter(slug_principal: str, titulo: str, data_referencia: da
     paragrafo_corpo_2 = escape(_primeiro_paragrafo(corpo_por_que), quote=False)
     texto_observar = escape(_primeiro_paragrafo(corpo_observar), quote=False)
 
-    periodo = _formatar_periodo_semana(data_referencia)
+    periodo = _periodo_da_analise(slug_principal)
 
     def _substituir_obrigatorio(padrao: str, repl, texto: str, rotulo: str) -> str:
         """Como re.sub, mas ESTOURA erro se o padrao nao casar - uma
@@ -181,7 +190,19 @@ def montar_html_newsletter(slug_principal: str, titulo: str, data_referencia: da
         "selo de período",
     )
 
-    # 2) Titulo principal (H1) - o template de exemplo usa <br> pra quebrar
+    # 2) Botao "LER ANALISE COMPLETA NO SITE" - precisa apontar pra pagina
+    # real da commodity escolhida (commodities/<slug>/), nao pra raiz do
+    # dominio agrofertrader.github.io (que e outro site/repo e devolve
+    # 404). O template usa o mesmo placeholder LINK_COMMODITY que
+    # verificar_alertas.py ja substitui no e-mail de alerta de preco.
+    html = _substituir_obrigatorio(
+        r'href="LINK_COMMODITY"',
+        f'href="{URL_BASE_SITE}/commodities/{slug_principal}/"',
+        html,
+        "link do botão (LINK_COMMODITY)",
+    )
+
+    # 3) Titulo principal (H1) - o template de exemplo usa <br> pra quebrar
     # em duas linhas; aqui deixamos o titulo inteiro numa linha só e o
     # <br> cuidando da quebra visual se o texto for longo o bastante.
     html = _substituir_obrigatorio(
@@ -191,7 +212,7 @@ def montar_html_newsletter(slug_principal: str, titulo: str, data_referencia: da
         "título (H1)",
     )
 
-    # 3) Corpo - ancorado no proprio marcador <!-- CORPO --> e no <td>
+    # 4) Corpo - ancorado no proprio marcador <!-- CORPO --> e no <td>
     # logo em seguida (nao no que vem DEPOIS do corpo, que e o que
     # quebrou antes: o template nao tem um </table> ali, so </td></tr>).
     html = _substituir_obrigatorio(
@@ -201,7 +222,7 @@ def montar_html_newsletter(slug_principal: str, titulo: str, data_referencia: da
         "corpo (CORPO)",
     )
 
-    # 4) Caixa "O QUE OBSERVAR" - ancorada no texto literal "O QUE
+    # 5) Caixa "O QUE OBSERVAR" - ancorada no texto literal "O QUE
     # OBSERVAR</div>" (unico na pagina) e no <div> seguinte.
     html = _substituir_obrigatorio(
         r'(O QUE OBSERVAR</div>\s*<div style="[^"]*">)\s*.*?\s*(</div>)',
@@ -210,7 +231,7 @@ def montar_html_newsletter(slug_principal: str, titulo: str, data_referencia: da
         "caixa O QUE OBSERVAR",
     )
 
-    # 5) "Tambem nesta semana" - as outras 3 commodities, resumidas em uma
+    # 6) "Tambem nesta semana" - as outras 3 commodities, resumidas em uma
     # frase cada (a primeira frase de "O que aconteceu" de cada uma,
     # excerto literal - nao e sintese nova).
     outras = [s for s in SLUGS_VALIDOS if s != slug_principal]
@@ -301,7 +322,7 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    html = montar_html_newsletter(args.commodity, args.titulo, datetime.now())
+    html = montar_html_newsletter(args.commodity, args.titulo)
     caminho_preview = salvar_preview(html, args.commodity)
 
     print("=" * 70)
