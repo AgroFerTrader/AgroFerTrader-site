@@ -1,22 +1,22 @@
 # Análise de Mercado — Milho
-Semana de 1 a 5 de setembro de 2026 | Atualizado em: 06/09/2026
+Semana de 8 a 15 de setembro de 2026 | Atualizado em: 16/09/2026
 
 ## O que aconteceu
-O milho fechou agosto cotado a R$ 66,61 por saca no mercado físico (CEPEA), alta de 7,86% frente a julho, confirmando a valorização mensal já observada nas semanas anteriores. Na primeira semana de setembro, os futuros em Chicago recuaram na sexta-feira (4/09), com o contrato de setembro/26 cotado a US$ 5,12, mas isso não apaga o saldo da semana: tanto a bolsa de Chicago quanto a B3 fecharam a semana no positivo, mesmo com essa realização de lucros no fechamento.
+O milho recebeu números favoráveis no relatório WASDE de sexta-feira (11/09): o USDA reduziu a produção americana para 15,8 bilhões de bushels (produtividade de 178,5 sacas por acre, revisada para baixo) e cortou o estoque final projetado de 1,653 para 1,567 bilhão de bushels — dado estruturalmente positivo para o preço. Mesmo assim, os contratos futuros fecharam aquele dia em queda de 3,50 centavos, a US$ 5,325 por bushel. Na segunda-feira seguinte (14/09), o CEPEA registrou uma mudança de narrativa: "com demanda enfraquecida, preços recuam" — a saca caiu para R$ 69,77 (-0,60%).
 
 ## Por que aconteceu
-O motivo do recuo pontual de sexta-feira foi simples, segundo a Notícias Agrícolas: realização de lucros, com investidores materializando ganhos acumulados durante a semana e o mercado já de olho no próximo relatório do USDA, que deve trazer atualização de estoque e produção. Esse é um padrão técnico normal — subir ao longo da semana e "descansar" um pouco na sexta-feira —, não uma reversão de tendência.
+A queda de sexta-feira, apesar do dado favorável, é um caso raro e didático de fundamento bom com mercado vendendo mesmo assim: o milho chegou a operar em alta por um curto período logo após a divulgação do relatório — reação correta ao dado — mas foi arrastado para baixo ao longo do dia pela venda maciça na soja (que teve a surpresa do WASDE) e pelo clima de aversão a risco mais amplo, ligado à proximidade das decisões do Federal Reserve e do Copom. Já a fraqueza de demanda registrada na segunda-feira representa uma mudança de motivo em relação às semanas anteriores, quando a narrativa girava em torno da retração do vendedor — agora é o comprador que está mais cauteloso.
 
 ## Consequências no mercado
-Um dado novo e relevante desta semana: o crescimento do processamento doméstico de milho vem ampliando as alternativas de comercialização do produtor brasileiro e reduzindo sua dependência das exportações. Isso confirma, com dado fresco desta semana, a mudança estrutural ligada à expansão do etanol de milho e da demanda por ração animal que já vínhamos acompanhando como tendência de fundo — agora formalizada como notícia da própria imprensa especializada.
+Isso mostra que, em dias de relatório oficial, o preço de curto prazo às vezes reflete mais o sentimento do mercado como um todo do que os fundamentos específicos daquela commodity — uma distinção importante para quem tenta entender "por que caiu, se a notícia era boa". A fraqueza de demanda que se seguiu levanta a dúvida se essa é uma continuação do mesmo padrão ou um fator novo e independente.
 
 ## Impacto B2B
-Com mais opções de venda dentro do próprio país — etanol, ração —, o produtor de milho ganha poder de negociação: não depende mais só do exportador ou da indústria tradicional para escoar a produção, o que tende a sustentar os preços mesmo em momentos de oferta mais abundante.
+Para quem processa milho (etanol, ração), o corte de estoque americano é um sinal de que a disputa por grão deve continuar apertada nos próximos meses — mas a fraqueza de demanda observada nesta semana pode abrir uma janela de compra a preços mais baixos no curto prazo.
 
 ## Impacto B2C
 Sem efeito direto identificado nesta semana.
 
 ## O que observar
-O próximo relatório do USDA, mencionado explicitamente como o gatilho que o mercado está aguardando, deve ser o evento mais importante para o milho nas próximas semanas — qualquer revisão de estoque ou produção tende a mexer com os preços em Chicago e, por consequência, com a paridade de exportação brasileira.
+Se os preços do milho recuperam o valor fundamentalmente justificado pelo corte de estoque americano, uma vez que a poeira do dia de relatório assentar, e se a fraqueza de demanda registrada na segunda-feira é ruído pontual (reflexo do próprio dia de relatório) ou o início de um padrão diferente do que vínhamos documentando nas semanas anteriores.
 
-Fontes consultadas: CEPEA, Notícias Agrícolas, divulgardinheiro.com, B3, CBOT/CME Group.
+Fontes consultadas: USDA/WASDE, BPMoney, CEPEA/ESALQ, Aprosoja/MS, Notícias Agrícolas.
