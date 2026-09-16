@@ -51,7 +51,7 @@ jobs:
           name: previa-newsletter
           path: emails/_enviados/*.html
       - name: Enviar de verdade (só se "confirmar" estiver marcado)
-        if: ${{ inputs.confirmar == 'true' }}
+        if: ${{ inputs.confirmar == 'true' || inputs.confirmar == true }}
         env:
           BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
         run: python enviar_newsletter.py --commodity "${{ inputs.commodity }}" --titulo "${{ inputs.titulo }}" --confirmar
