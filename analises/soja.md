@@ -1,22 +1,22 @@
 # Análise de Mercado — Soja
-Semana de 1 a 5 de setembro de 2026 | Atualizado em: 06/09/2026
+Semana de 8 a 15 de setembro de 2026 | Atualizado em: 16/09/2026
 
 ## O que aconteceu
-Depois de meses discutindo o quando do plantio da safra 2026/27, esta foi a semana em que ele de fato começou: em 1º de setembro, terminou o vazio sanitário em partes do Paraná (região Norte, Noroeste, Oeste e Centro) e de São Paulo (região Sul e Sudoeste), liberando oficialmente a semeadura nessas áreas. É o evento mais previsível do calendário agrícola global — a transição de foco do mercado de Chicago da safra americana para a sul-americana —, mas isso não o torna menos relevante: agora o mercado passa a monitorar, dia a dia, se o plantio avança ou atrasa.
+O relatório WASDE de setembro, divulgado na sexta-feira (11/09), trouxe a maior surpresa da semana para o mercado de grãos: o consenso de analistas apontava corte na produção e nos estoques de passagem americanos, mas o USDA fez o contrário, elevando a produção dos EUA para 4,535 bilhões de bushels — acima até da própria estimativa de agosto (4,519 bilhões) e muito acima do que o mercado esperava (4,492 bilhões). O contrato mais negociado em Chicago caiu quase 3% na mínima da sessão, fechando a US$ 12,965 por bushel. No Brasil, a saca chegou a perder até R$ 5 em praças de Mato Grosso na sexta-feira, e a correção seguiu na segunda-feira (14/09), com Paranaguá recuando 0,73% (R$ 160,55) e o Paraná interior cedendo 0,64% (R$ 152,82).
 
 ## Por que aconteceu
-O CEPEA publicou nesta semana que demanda firme e incertezas sobre a safra 2026/27 seguem elevando os preços — a mesma dinâmica já observada nas semanas anteriores, mas agora com o relógio realmente correndo. A soja havia renovado a máxima nominal de 2026 na semana anterior (R$ 149 por saca em Paranaguá), e o mercado começa a dividir atenção entre a conclusão da colheita americana e o início do plantio brasileiro. Uma analista de mercado resumiu bem o dilema atual: ainda existe preocupação em relação ao comportamento das chuvas ao longo de todo o ciclo da soja no Brasil; os mapas climáticos podem indicar um início favorável, mas será importante acompanhar como esse cenário evolui ao longo da safra.
+Fundos de investimento já estavam posicionados comprados em Chicago, apostando no corte que o consenso previa. Quando o número veio ao contrário, esses fundos precisaram desmontar posições rapidamente, ampliando o movimento de queda. Mas o mesmo boletim do CEPEA que registrou a correção de segunda-feira trouxe um contraponto importante: "chuvas favorecem semeadura e sustentam preços no Brasil" — ou seja, a chuva que vinha sendo tratada como risco (atraso no plantio sob influência do El Niño) começou a se comportar como fator positivo, favorecendo o avanço da semeadura 2026/27 nas áreas já liberadas do Paraná e de São Paulo.
 
 ## Consequências no mercado
-O fim do vazio sanitário autoriza a semeadura, mas não significa plantio imediato — as condições de campo, incluindo a retomada das chuvas concentradas até agora no Rio Grande do Sul, Santa Catarina, Mato Grosso do Sul, São Paulo e Minas Gerais, ainda são determinantes para a decisão do produtor sobre quando efetivamente plantar.
+Há, nesta semana, uma divergência real entre o que aconteceu no mercado futuro (volatilidade brusca ligada a um relatório oficial e ao reposicionamento de fundos) e o que está acontecendo no campo (avanço favorável do plantio). Essa é a primeira confirmação com dado real de que o início do ciclo 2026/27 pode estar em melhores condições do que o temor generalizado sugeria nas semanas anteriores.
 
 ## Impacto B2B
-Cooperativas e revendas de insumos entram no pico de demanda da temporada — o produtor precisa decidir agora entre antecipar o plantio, aproveitando a liberação já em vigor, ou esperar mais chuva, um dilema real que vem sendo debatido pela imprensa especializada do setor.
+Tradings e indústrias que já haviam fechado compras a preços mais altos durante a semana anterior ao relatório viram o custo de reposição cair de uma hora para outra — um lembrete de que operar perto de datas de relatório oficial carrega risco de reversão brusca, independentemente da tendência vigente até ali.
 
 ## Impacto B2C
-Nenhum efeito direto nesta fase — o ciclo da soja até o consumidor final, via ração animal e óleo, ainda está a meses de distância.
+Sem repasse identificado ao consumidor final nesta semana.
 
 ## O que observar
-O ritmo de plantio nas próximas semanas, nas áreas já liberadas do Paraná e de São Paulo, deve dar o primeiro sinal real de como a safra 2026/27 está reagindo ao clima sob influência do El Niño — informação mais concreta do que qualquer previsão climática até aqui, porque agora se trata de dado de campo, não de modelo.
+Se os fundos de investimento, agora com posições mais neutras após o ajuste forçado pelo WASDE, voltam a construir posição compradora nas próximas semanas — o que sinalizaria se a queda foi só ajuste técnico pontual ou início de uma correção mais longa. Também vale acompanhar o ritmo de plantio nas áreas já liberadas e a decisão do Copom/Federal Reserve desta semana, que pode mover o câmbio e, por consequência, a paridade de exportação da soja brasileira.
 
-Fontes consultadas: CEPEA/ESALQ, ADAPAR, Canal Rural, SpaceMoney, Notícias Agrícolas, Canaoeste.
+Fontes consultadas: USDA/WASDE, Reuters, Canal Rural, SpaceMoney, Associação Comercial e Industrial de Araçatuba, CEPEA/ESALQ.
