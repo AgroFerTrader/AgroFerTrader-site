@@ -1,22 +1,22 @@
 # Análise de Mercado — Café Arábica
-Semana de 8 a 15 de setembro de 2026 | Atualizado em: 16/09/2026
+Semana de 12 a 18 de setembro de 2026 | Atualizado em: 19/09/2026
 
 ## O que aconteceu
-Os futuros do arábica em Nova York caíram para a mínima em cerca de dois meses no contrato dezembro na terça-feira (8/09), com queda de mais de 2% no dia. A tendência de correção, já identificada na semana anterior, ganhou um novo capítulo na quinta-feira (10/09): o CEPEA registrou que chuvas favoreceram as floradas da próxima safra, elevando as expectativas para o ciclo 2027/28 — a primeira notícia de alívio, não de alerta, sobre o principal risco climático que vínhamos monitorando desde agosto.
+O indicador Cepea/Esalq do café arábica fechou em 18 de setembro a R$ 1.546,58 por saca de 60 kg, com alta de 0,30% no dia. No plano internacional, contudo, a semana consolidada até 8 de setembro trouxe uma queda expressiva: o café arábica negociado na ICE (Nova York) recuou 5,9% no período, movimento que acompanhou perdas generalizadas em commodities agrícolas — o cacau caiu 10,8% em Londres, o trigo caiu 4,5% em Chicago, e o índice geral de commodities agrícolas (S&P GSCI Agriculture) recuou 3,0% na semana. As causas apontadas para o recuo do café foram o aumento dos estoques certificados e a mudança nas expectativas de demanda, além de chuvas recentes e previstas no Brasil que melhoraram as perspectivas para a safra 2027/28.
 
 ## Por que aconteceu
-A queda de terça-feira teve motivo direto: aumento real dos embarques brasileiros de café, sinalizando que a oferta doméstica está mais disponível no mercado internacional, combinado com condições climáticas favoráveis no Brasil. Isso reforça a tese que a StoneX já havia levantado semanas atrás — a de uma safra 2026/27 recorde, com o volume de fato chegando ao mercado. A notícia de quinta-feira aprofunda esse quadro: se as chuvas favoráveis à florada se confirmarem ao longo de setembro e outubro, o principal fator de risco que vinha sustentando um prêmio nos preços — o temor de que o El Niño comprometesse a safra 2027/28 — perde força.
+O movimento de queda no mercado externo reflete uma recomposição de estoques certificados na bolsa de Nova York após um período de escassez, somada à melhora do panorama climático para a próxima safra brasileira — as chuvas que favorecem a floração e o pegamento dos grãos reduzem a percepção de risco de quebra futura, o que tende a aliviar prêmios de risco embutidos nos contratos futuros mais longos. A resiliência do indicador Cepea em reais (com leve alta no dia) frente à queda em dólar na ICE é explicada, em parte, pelo comportamento do câmbio: um dólar mais firme compensa parcialmente, para o produtor brasileiro, a queda da cotação internacional em moeda americana.
 
 ## Consequências no mercado
-A combinação de mais café sendo exportado com um cenário climático mais tranquilo para o próximo ciclo reforça a trajetória de correção iniciada na semana anterior. O mercado está, aos poucos, absorvendo a ideia de que a safra recorde é real e que o próximo ciclo também começa em condições favoráveis — dois fatores que, juntos, reduzem o prêmio de escassez que vinha sustentando os preços ao longo do ano.
+No curto prazo, a combinação de estoques maiores em Nova York com perspectiva climática mais favorável para 2027/28 tende a manter os preços internacionais sob pressão baixista, especialmente se as chuvas no Brasil se confirmarem ao longo da florada. Para o produtor brasileiro, o amortecedor cambial é relevante: enquanto o real não se apreciar de forma significativa, parte da queda em dólar tende a ser compensada na conversão para reais, sustentando a remuneração doméstica.
 
 ## Impacto B2B
-Compradores internacionais conseguem repor estoque a preços mais baixos que há duas semanas — alívio direto para torrefadoras que vinham reclamando de escassez. Se o cenário climático favorável para 2027/28 se confirmar, essa tendência de preços mais baixos tende a se estender.
+Torrefadoras e exportadores se beneficiam de preços internacionais mais baixos e da manutenção da isenção tarifária nos Estados Unidos, embora o produtor sinta a queda em dólar amortecida pelo câmbio — o repasse ao custo de compra da indústria tende a ser gradual, não imediato.
 
 ## Impacto B2C
 Sem repasse identificado ao preço de varejo do café nesta semana.
 
 ## O que observar
-Se o ritmo de embarques brasileiros se mantém elevado nas próximas semanas — o que tende a reforçar a tendência de queda — e se as chuvas favoráveis à florada continuam ao longo de setembro e outubro, período crítico para a formação da safra 2027/28. Uma reversão desse padrão climático voltaria a colocar o risco de oferta futura no centro das atenções do mercado.
+A confirmação das chuvas ao longo da florada 2027/28 nas próximas semanas, e o resultado da rodada de negociação tarifária Brasil-EUA de 30 de setembro a 1º de outubro — a manutenção da isenção tarifária do café remove um risco relevante de perda de competitividade justamente no momento em que o mercado começa a precificar uma safra brasileira maior.
 
-Fontes consultadas: CEPEA/ESALQ, Safras & Mercado, StoneX, Portal do Agronegócio, Conexão Safra.
+Fontes consultadas: Cepea/Esalq, Agrolink, Notícias Agrícolas.

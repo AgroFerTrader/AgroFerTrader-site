@@ -1188,7 +1188,7 @@ def atualizar_pagina_commodity(config: dict, dados: dict) -> None:
 # ---------------------------------------------------------------------------
 
 URL_BASE_SITE = "https://agrofertrader.github.io/AgroFerTrader-site"
-PAGINAS_FIXAS_SITEMAP = ["", "glossario.html", "calendario.html", "correlacoes.html"]
+PAGINAS_FIXAS_SITEMAP = ["", "glossario.html", "calendario.html", "correlacoes.html", "panorama.html"]
 
 
 def gerar_sitemap() -> None:
