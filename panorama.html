@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#173321">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="AgroFer">
+<script src="assets/update-banner.js" defer></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('sw.js').then(function (registration) {
+      if (window.AgroFerUpdateBanner) window.AgroFerUpdateBanner.observar(registration);
+    }).catch(function (erro) {
+      console.warn('Falha ao registrar o service worker:', erro);
+    });
+  });
+}
+</script>
+
+<title>Panorama Semanal do Agronegócio | AgroFer Trader</title>
+<meta name="description" content="Panorama semanal do agronegócio brasileiro: Copom, Federal Reserve, safra recorde da Conab, balança comercial, tarifas e o desempenho de soja, milho, café e boi gordo.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="canonical" href="https://agrofertrader.github.io/AgroFerTrader-site/panorama.html">
+
+<meta property="og:locale" content="pt_BR">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Panorama Semanal do Agronegócio | AgroFer Trader">
+<meta property="og:description" content="Copom, Federal Reserve, safra recorde da Conab, balança comercial, tarifas e o desempenho de soja, milho, café e boi gordo na semana.">
+<meta property="og:url" content="https://agrofertrader.github.io/AgroFerTrader-site/panorama.html">
+<meta property="og:site_name" content="AgroFer Trader">
+<meta property="og:image" content="https://agrofertrader.github.io/AgroFerTrader-site/assets/logo-social.jpg">
+<meta property="og:image:alt" content="Logo da AgroFer Trader">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#0B3C1F;
+    --ink-soft:#BFD1B8;
+    --paper:#FDFDF9;
+    --paper-dim:#F2F1E4;
+    --gold:#B08830;
+    --gold-deep:#8d6d26;
+    --leaf:#4C7A1F;
+    --up:#4C7A1F;
+    --down:#9C3B2E;
+    --line: rgba(11,60,31,0.14);
+    --line-dark: rgba(253,253,249,0.16);
+    --display: 'Fraunces', serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.5;overflow-x:hidden;}
+  a{color:var(--leaf);}
+  img{max-width:100%;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+
+  nav{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;max-width:1080px;margin:0 auto;flex-wrap:wrap;gap:12px;}
+  .brand{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:0.01em;display:flex;align-items:center;gap:10px;}
+  .brand img{height:58px;width:auto;display:block;}
+  .navlinks{display:flex;gap:24px;font-size:14px;font-weight:500;flex-wrap:wrap;}
+  .navlinks a{text-decoration:none;opacity:0.75;transition:opacity .15s;color:var(--ink);}
+  .navlinks a:hover, .navlinks a:focus-visible{opacity:1;}
+  .navlinks .nav-divider{opacity:.25;font-weight:300;}
+  .navlinks a.active{opacity:1;border-bottom:2px solid var(--gold);}
+
+  .page-head{padding:44px 0 36px;border-bottom:1px solid var(--line);}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--leaf);margin-bottom:14px;}
+  h1{font-family:var(--display);font-weight:600;font-size:clamp(30px,4.5vw,44px);margin:0 0 10px;line-height:1.1;}
+  .page-sub{font-size:16px;color:var(--ink);opacity:.8;max-width:70ch;margin:0 0 10px;}
+  .page-meta{font-family:var(--mono);font-size:12.5px;color:var(--ink);opacity:.65;}
+  .page-intro{font-size:16.5px;line-height:1.75;max-width:74ch;margin:22px 0 0;}
+
+  main{padding:40px 0 64px;}
+
+  .sumario{
+    display:flex;flex-wrap:wrap;gap:8px 18px;padding:18px 22px;
+    background:var(--paper-dim);border-left:3px solid var(--gold);margin-bottom:44px;
+    font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;
+  }
+  .sumario a{color:var(--ink);text-decoration:none;border-bottom:1px dotted var(--ink);opacity:.8;}
+  .sumario a:hover{opacity:1;}
+
+  .tabela-cotacoes{width:100%;border-collapse:collapse;font-size:14.5px;margin-bottom:12px;}
+  .tabela-cotacoes th{
+    text-align:left;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.05em;
+    color:var(--leaf);padding:0 12px 10px 0;border-bottom:1px solid var(--line);font-weight:600;
+  }
+  .tabela-cotacoes td{padding:10px 12px 10px 0;border-bottom:1px solid var(--line);}
+  .tabela-cotacoes td.val{font-family:var(--mono);font-weight:600;white-space:nowrap;}
+  .tabela-fonte{font-size:12.5px;opacity:.65;margin:0 0 56px;}
+
+  .panorama-secao{margin-bottom:56px;scroll-margin-top:24px;}
+  .panorama-secao > h2{
+    font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.1em;
+    color:var(--leaf);margin:0 0 24px;padding-bottom:10px;border-bottom:1px solid var(--line);
+  }
+  .item{max-width:74ch;margin-bottom:32px;scroll-margin-top:24px;}
+  .item:last-child{margin-bottom:0;}
+  .item h3{
+    font-family:var(--display);font-weight:600;font-size:19px;
+    color:var(--ink);margin:0 0 12px;padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.01em;
+  }
+  .item p{font-size:15.5px;line-height:1.75;margin:0 0 14px;}
+  .item p:last-child{margin-bottom:0;}
+
+  .leitura{
+    border-left:3px solid var(--gold);background:var(--paper-dim);
+    padding:16px 20px;margin-top:16px;max-width:74ch;
+  }
+  .leitura-label{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--gold-deep);margin-bottom:6px;}
+  .leitura p{font-size:14.5px;line-height:1.7;margin:0;}
+
+  .commodity-preco{
+    font-family:var(--mono);font-size:13px;background:var(--paper);border:1px solid var(--line);
+    display:inline-block;padding:6px 12px;margin-bottom:16px;
+  }
+  .commodity-preco .val{font-weight:600;}
+  .commodity-preco .up{color:var(--up);}
+  .commodity-preco .down{color:var(--down);}
+
+  .fontes-grupo{margin-bottom:26px;}
+  .fontes-grupo h4{
+    font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;
+    color:var(--leaf);margin:0 0 10px;
+  }
+  .fontes-grupo ul{margin:0;padding-left:18px;font-size:13.5px;line-height:1.9;}
+  .fontes-nota{font-size:13px;opacity:.65;margin:0 0 28px;max-width:74ch;}
+
+  .aviso-disclaimer{
+    font-size:13.5px;opacity:.7;max-width:74ch;padding-top:20px;border-top:1px solid var(--line);
+  }
+
+  footer{padding:40px 0 56px;font-size:13px;color:var(--ink);opacity:.72;border-top:1px solid var(--line);margin-top:8px;}
+  footer .foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+  footer a{text-decoration:underline;color:var(--ink);}
+
+  @media (max-width:680px){
+    nav{flex-wrap:wrap;row-gap:10px;}
+    .brand{flex-shrink:0;}
+    .navlinks{
+      flex:1 1 100%;
+      justify-content:flex-start;
+      flex-wrap:nowrap;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+      white-space:nowrap;
+      scrollbar-width:none;
+      padding-bottom:2px;
+      margin:0 -24px;
+      padding-left:24px;
+      padding-right:24px;
+    }
+    .navlinks::-webkit-scrollbar{display:none;}
+    .navlinks a, .navlinks .nav-divider{flex-shrink:0;}
+    .tabela-cotacoes{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  }
+</style>
+</head>
+<body>
+
+<div id="aviso-nova-versao" class="pwa-nova-versao" hidden role="button" tabindex="0">
+  🔄 Nova versão disponível — toque para atualizar
+</div>
+<style>
+  .pwa-nova-versao{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:center;gap:8px;background:#173321;color:#FDFDF9;font:600 13px/1.4 "Inter",sans-serif;padding:10px 16px;text-align:center;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.2);}
+  .pwa-nova-versao:hover{background:#0B3C1F;}
+  .pwa-nova-versao[hidden]{display:none;}
+</style>
+
+<nav aria-label="Navegação principal">
+  <div class="brand">
+    <a href="./" aria-label="AgroFer Trader — página inicial">
+      <img src="assets/logo-nav.jpg" alt="AgroFer Trader">
+    </a>
+  </div>
+  <div class="navlinks">
+    <a href="index.html#precos">Preços de hoje</a>
+    <a href="index.html#futuro">Mercado futuro</a>
+    <span class="nav-divider" aria-hidden="true">|</span>
+    <a href="commodities/soja/">Soja</a>
+    <a href="commodities/milho/">Milho</a>
+    <a href="commodities/cafe/">Café Arábica</a>
+    <a href="commodities/boi-gordo/">Boi Gordo</a>
+    <span class="nav-divider" aria-hidden="true">|</span>
+    <a href="glossario.html">Glossário</a>
+    <a href="calendario.html">Calendário</a>
+    <a href="correlacoes.html">Correlações</a>
+    <a class="active" href="panorama.html">Panorama</a>
+    <a href="calculadora/">Calculadora</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="page-head">
+    <div class="eyebrow">Panorama semanal</div>
+    <h1>Panorama Semanal do Agronegócio</h1>
+    <p class="page-sub">Semana de 12 a 18 de setembro de 2026</p>
+    <p class="page-meta">Por João Gabriel Rezende Ferreira, economista — AgroFer Trader · Publicado em 19 de setembro de 2026</p>
+    <p class="page-intro">A semana de 12 a 18 de setembro de 2026 reuniu um dos calendários macroeconômicos mais carregados do ano — com decisões simultâneas do Copom e do Federal Reserve — em meio a uma safra brasileira de grãos que a Conab confirmou como recorde histórico. No campo das commodities agrícolas, soja e milho operaram em compasso de espera doméstica enquanto o mercado externo redesenhava fluxos de exportação diante da aproximação entre China e Estados Unidos; o café perdeu força no exterior; e o boi gordo seguiu sustentado por oferta enxuta, mesmo com exportações de carne em desaceleração. Abaixo, o detalhamento de cada frente, com os mecanismos econômicos de transmissão e as consequências esperadas para produtores, margens e competitividade externa.</p>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <div class="sumario" aria-label="Nesta edição">
+    <a href="#cotacoes">Cotações</a>
+    <a href="#destaques">Destaques</a>
+    <a href="#soja">Soja</a>
+    <a href="#milho">Milho</a>
+    <a href="#cafe">Café</a>
+    <a href="#boi-gordo">Boi gordo</a>
+    <a href="#macro">Cenário macro</a>
+    <a href="#fontes">Fontes</a>
+  </div>
+
+  <section class="panorama-secao" id="cotacoes">
+    <h2>Cotações da semana</h2>
+    <div style="overflow-x:auto;">
+    <table class="tabela-cotacoes">
+      <thead>
+        <tr><th>Commodity / Indicador</th><th>Fonte</th><th>Preço (18/09/2026)</th><th>Variação</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Soja — Paraná</td><td>Cepea/Esalq</td><td class="val">R$ 155,18/sc (60kg)</td><td class="val up">+0,15% no dia</td></tr>
+        <tr><td>Soja — Paranaguá (porto)</td><td>Cepea/Esalq/B3</td><td class="val">R$ 161,89/sc (60kg)</td><td class="val down">-0,08% no dia</td></tr>
+        <tr><td>Milho</td><td>Cepea/Esalq</td><td class="val">R$ 69,29/sc (60kg)</td><td class="val up">+0,06% no dia</td></tr>
+        <tr><td>Café Arábica</td><td>Cepea/Esalq</td><td class="val">R$ 1.546,58/sc (60kg)</td><td class="val up">+0,30% no dia</td></tr>
+        <tr><td>Boi Gordo</td><td>Cepea/Esalq/B3 (SP)</td><td class="val">R$ 352,90/@</td><td class="val up">+0,10% no dia</td></tr>
+        <tr><td>Dólar comercial (venda)</td><td>Mercado / Infomoney</td><td class="val">R$ 5,1451</td><td class="val up">+0,39% na semana</td></tr>
+        <tr><td>Taxa Selic</td><td>Copom/BCB (16/09)</td><td class="val">13,75% a.a.</td><td class="val down">-0,25 p.p.</td></tr>
+        <tr><td>Fed Funds Rate</td><td>Federal Reserve (16/09)</td><td class="val">3,75%–4,00% a.a.</td><td class="val up">+0,25 p.p.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="tabela-fonte">Fontes: Cepea/Esalq, Infomoney, Banco Central do Brasil (BCB), Federal Reserve. Indicadores à vista, fechamento de 18/09/2026, salvo indicação em contrário.</p>
+  </section>
+
+  <section class="panorama-secao" id="destaques">
+    <h2>1 · Destaques da semana</h2>
+
+    <div class="item" id="copom">
+      <h3>1.1 Copom corta a Selic para 13,75% a.a., mas mantém tom cauteloso</h3>
+      <p>Em reunião realizada em 16 de setembro, o Comitê de Política Monetária (Copom) reduziu por unanimidade a taxa Selic em 0,25 ponto percentual, de 14,00% para 13,75% ao ano. A justificativa oficial apontou "moderação gradual da atividade econômica", citando o recuo de 0,22% do IBC-Br em julho e a queda de 0,8% nas vendas do varejo no mesmo mês. Ao mesmo tempo, o comunicado reconheceu que a inflação "permanece acima da meta" e que "as expectativas de inflação também continuam desancoradas", com o IPCA projetado em 5,2% para 2026 — bem acima do centro da meta de 3%.</p>
+      <div class="leitura">
+        <div class="leitura-label">Leitura econômica</div>
+        <p>O corte confirma o início de um ciclo de afrouxamento monetário, mas o ritmo comedido (0,25 p.p.) e a linguagem de cautela sinalizam que o Banco Central não pretende acelerar novos cortes enquanto a inflação estiver desancorada. Para o produtor rural, o efeito prático de curto prazo é marginal: 13,75% ao ano ainda é um patamar de crédito extremamente oneroso, e a manutenção do discurso de cautela reduz a probabilidade de uma queda mais rápida no custo do capital de giro e do crédito de custeio no Plano Safra 2026/27. O câmbio tende a ser o canal mais sensível: cortes da Selic estreitam o diferencial de juros com os EUA, pressionando o real.</p>
+      </div>
+    </div>
+
+    <div class="item" id="fed">
+      <h3>1.2 Fed eleva juros para 3,75%–4,00%, primeira alta desde 2023</h3>
+      <p>No mesmo dia 16 de setembro, o Federal Reserve elevou sua taxa básica em 0,25 ponto percentual, para o intervalo de 3,75% a 4,00% — a primeira alta de juros americana desde 2023. A decisão foi unânime sob a liderança do novo presidente do Fed, Kevin Warsh, que declarou que a inflação americana está "alta demais" e por "tempo demais". Dezesseis dos dezoito membros do comitê sinalizaram a expectativa de pelo menos mais uma alta de 0,25 p.p. até o fim do ano, projetando a taxa entre 4,00% e 4,25% ao final de 2026. O Fed revisou a projeção de inflação para 3,7% e a de crescimento do PIB para 2,3%; a gasolina nos EUA está 33% mais cara que há um ano e a hipoteca de 30 anos se aproxima de 7%.</p>
+      <div class="leitura">
+        <div class="leitura-label">Leitura econômica</div>
+        <p>A combinação de Fed subindo juros e Copom cortando é uma divergência de política monetária pouco usual e relevante para o câmbio. Em teoria, o estreitamento do diferencial de juros Brasil-EUA reduz o carry trade a favor do real e pressiona o dólar para cima frente às moedas emergentes — inclusive o real. Isso tende a ser positivo para a competitividade das exportações agrícolas brasileiras (grãos e carne ficam mais baratos em dólar para o comprador externo, e o produtor recebe mais reais por saca ou arroba exportada), mas também eleva o custo em reais de insumos importados (fertilizantes, defensivos, diesel) e da dívida em dólar de tradings e cooperativas.</p>
+      </div>
+    </div>
+
+    <div class="item" id="conab">
+      <h3>1.3 Conab confirma safra de grãos recorde de 361,7 milhões de toneladas</h3>
+      <p>Em 15 de setembro, a Companhia Nacional de Abastecimento (Conab) elevou a estimativa da safra de grãos 2025/26 para 361,7 milhões de toneladas, alta de 2,6% sobre 2024/25 e de 0,3% em relação ao levantamento de agosto. A soja atingiu 180,4 milhões de toneladas (+5,2%), a maior produção da série histórica da Conab; o milho somou 144 milhões de toneladas (+2,0%); já o trigo recuou 27,1%, para 5,74 milhões de toneladas — a maior retração entre as culturas. A área plantada cresceu 1,7% na comparação anual, para 83,5 milhões de hectares.</p>
+      <div class="leitura">
+        <div class="leitura-label">Leitura econômica</div>
+        <p>Uma oferta recorde de soja e milho é, por definição, um fator estrutural baixista para os preços domésticos no curto e médio prazo, pressionando a margem do produtor justamente no momento em que o custo do crédito (Selic a 13,75%) permanece elevado — um aperto de "tesoura" entre receita mais fraca e custo de capital mais caro. Por outro lado, o volume recorde sustenta o processamento industrial (esmagamento de soja em ritmo recorde, como detalhado na seção de soja) e amplia a capacidade de exportação, contribuindo para o superávit comercial.</p>
+      </div>
+    </div>
+
+    <div class="item" id="balanca">
+      <h3>1.4 Balança comercial: agro segue como motor do superávit</h3>
+      <p>Dados divulgados em 14 de setembro mostraram superávit comercial de US$ 1,548 bilhão na segunda semana de setembro, com exportações de US$ 7,034 bilhões e importações de US$ 5,486 bilhões. As exportações do agronegócio somaram US$ 2,831 bilhões na semana, alta de 16,5% ante o mesmo período de 2025, enquanto o total das exportações brasileiras cresceu 28,5% no comparativo anual. O saldo acumulado no mês (até a segunda semana) chegou a US$ 3,356 bilhões, e o superávit acumulado no ano alcançou US$ 58,674 bilhões — 36,9% acima do mesmo intervalo de 2025.</p>
+      <div class="leitura">
+        <div class="leitura-label">Leitura econômica</div>
+        <p>O fluxo comercial positivo e crescente do agronegócio é o principal contrapeso doméstico à saída de capital financeiro (ver seção de câmbio) e ajuda a explicar por que o real não se desvalorizou de forma mais acentuada mesmo com o Fed subindo juros. Do ponto de vista do produtor, o resultado reforça a leitura de que a demanda externa por commodities brasileiras segue aquecida, sustentando o valor das exportações mesmo em um cenário de preços internacionais pressionados por oferta abundante.</p>
+      </div>
+    </div>
+
+    <div class="item" id="tarifas">
+      <h3>1.5 Tarifas Brasil-EUA: próxima rodada de negociação em 30/09–01/10</h3>
+      <p>As equipes técnicas do Brasil e dos Estados Unidos seguem sem acordo sobre o tarifaço imposto pelo governo Trump. Segundo informações de 15 de setembro, a próxima rodada presencial de negociações ocorrerá entre 30 de setembro e 1º de outubro, em Milwaukee, à margem da reunião de ministros de Indústria e Comércio do G20 — com o ministro Márcio Elias Rosa (Desenvolvimento, Indústria, Comércio e Serviços) e o chanceler Mauro Vieira representando o Brasil diante do representante comercial dos EUA, Jamieson Greer. O ministro brasileiro afirmou que "ainda não há um rascunho de acordo" e reconheceu "a dificuldade das negociações". Carne bovina, café, petróleo, terras raras e peças aeroespaciais já constam da lista de produtos isentos das tarifas adicionais; o objetivo brasileiro na próxima rodada é ampliar essa lista.</p>
+      <div class="leitura">
+        <div class="leitura-label">Leitura econômica</div>
+        <p>Para o produtor de café e de boi gordo, a manutenção da isenção tarifária é a informação mais relevante da semana no front comercial: significa que, ao menos por ora, o principal risco de perda de competitividade nos EUA está afastado para essas duas cadeias. Soja e milho brasileiros, cuja exposição ao mercado americano é historicamente pequena (o grosso das exportações vai para a China), são menos sensíveis a esse capítulo específico da disputa comercial, mas seguem expostos indiretamente à forma como a disputa EUA-China por safras agrícolas se resolve.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panorama-secao" id="soja">
+    <h2>2 · Soja</h2>
+    <div class="commodity-preco">🌱 Cepea/Esalq Paraná: <span class="val">R$ 155,18/sc</span> <span class="up">▲ 0,15%</span> no dia</div>
+    <div class="item">
+      <h3>O que aconteceu</h3>
+      <p>O indicador Cepea/Esalq da soja no Paraná fechou em 18 de setembro a R$ 155,18 por saca de 60 kg (+0,15% no dia), enquanto o indicador de Paranaguá (porto) marcou R$ 161,89/sc (-0,08%). No plano da oferta, dois números estruturais dominaram a semana: a Conab confirmou a safra 2025/26 do Brasil em 180,4 milhões de toneladas (+5,2% sobre 2024/25, recorde histórico), e a consultoria StoneX elevou sua primeira estimativa para a safra 2026/27 a 183,5 milhões de toneladas (+0,2% em relação à leitura anterior da própria consultoria). Já nos Estados Unidos, o relatório WASDE do USDA, divulgado em 11 de setembro, elevou a produção americana 2026/27 para 4,535 bilhões de bushels (123,43 milhões de toneladas), ante 4,519 bilhões de bushels (123 milhões de toneladas) na leitura anterior — alta de 0,43 milhão de toneladas —, mantendo a estimativa para o Brasil praticamente estável, em torno de 186 milhões de toneladas para 2026/27.</p>
+      <p>No front comercial, a Abiove revisou, em 18 de setembro, a previsão de exportação de soja do Brasil para 115 milhões de toneladas em 2026, uma redução de 400 mil toneladas frente à estimativa anterior — a primeira queda mensal desde março de 2026, ainda que o número represente alta de 6,3% sobre 2025. A associação atribuiu o ajuste à intensificação das compras chinesas de soja norte-americana nas últimas semanas, movimento que antecedeu a visita do presidente chinês Xi Jinping a Washington. Em contrapartida, a Abiove elevou a previsão de processamento (esmagamento) de soja no Brasil para um recorde de 63,5 milhões de toneladas, e a de exportação de óleo de soja para 1,8 milhão de toneladas (+5,9%). No campo, chuvas regulares aceleraram o início do plantio da safra 2026/27 em meados de setembro, favorecendo a semeadura em praticamente todas as regiões produtoras.</p>
+      <h3>Por que aconteceu</h3>
+      <p>O comportamento lateral dos preços domésticos reflete o equilíbrio entre dois vetores opostos: de um lado, uma oferta recorde tanto da safra que se encerra (180,4 Mt) quanto da que se inicia (183–186 Mt projetadas), que naturalmente limita o espaço para altas; de outro, a demanda firme da indústria doméstica de esmagamento, que opera em ritmo recorde e sustenta o preço pago ao produtor mesmo com o grão mais disponível. No mercado externo, a decisão da China de intensificar compras nos Estados Unidos é um movimento tático — em parte diplomático, ligado à visita de Xi Jinping — que reduz o ritmo de vendas externas do Brasil justamente no início da comercialização da nova safra, sem, porém, reverter a tendência estrutural de crescimento das exportações brasileiras no ano.</p>
+      <h3>Consequências no mercado</h3>
+      <p>No curto prazo, a combinação de safra recorde com exportação levemente mais lenta tende a manter os prêmios de exportação em Paranaguá comprimidos e os preços domésticos sob viés lateral a levemente baixista, especialmente enquanto persistir a preferência chinesa por origem americana. A margem do produtor brasileiro, contudo, é parcialmente protegida pelo aumento do processamento doméstico — a indústria de esmagamento, operando em recorde, atua como comprador adicional que absorve parte do excedente de oferta, sustentando o preço da soja em grão mesmo com a exportação mais fraca no curtíssimo prazo.</p>
+      <h3>Impacto B2B</h3>
+      <p>Tradings enfrentam prêmios de exportação comprimidos em Paranaguá diante da preferência chinesa por origem americana, mas a indústria de esmagamento doméstica — operando em ritmo recorde de 63,5 milhões de toneladas projetadas — absorve parte do excedente de grão e sustenta a demanda por matéria-prima, amortecendo o efeito da exportação mais lenta sobre o produtor.</p>
+      <h3>Impacto B2C</h3>
+      <p>Sem repasse direto identificado ao consumidor final nesta semana.</p>
+      <h3>O que observar</h3>
+      <p>O resultado da negociação comercial EUA-China será determinante para a safra 2026/27: uma normalização duradoura das compras chinesas nos Estados Unidos reduziria a participação relativa do Brasil no mercado chinês, ainda que o volume recorde da produção brasileira deva sustentar as exportações totais em patamar elevado. O câmbio mais depreciado, discutido na seção macro, tende a compensar parcialmente a pressão de oferta.</p>
+    </div>
+  </section>
+
+  <section class="panorama-secao" id="milho">
+    <h2>3 · Milho</h2>
+    <div class="commodity-preco">🌽 Cepea/Esalq: <span class="val">R$ 69,29/sc</span> <span class="up">▲ 0,06%</span> no dia</div>
+    <div class="item">
+      <h3>O que aconteceu</h3>
+      <p>O indicador Cepea/Esalq do milho fechou em 18 de setembro a R$ 69,29 por saca de 60 kg, alta marginal de 0,06% no dia. A Conab confirmou a safra brasileira 2025/26 em 144 milhões de toneladas, crescimento de 2,0% sobre o ciclo anterior. Já nos Estados Unidos, o relatório WASDE de setembro do USDA trouxe um corte relevante na produção: a estimativa caiu para 15,8 bilhões de bushels (401,32 milhões de toneladas), ante 16,013 bilhões de bushels (406,73 milhões de toneladas) no mês anterior — uma redução de 5,41 milhões de toneladas, atribuída à produtividade revisada para 178,5 bushels/acre. Como consequência, os estoques finais americanos recuaram para 1,567 bilhão de bushels (39,80 milhões de toneladas), ante 1,653 bilhão de bushels na leitura anterior, e os estoques mundiais finais caíram para 272,1 milhões de toneladas, de 274,7 milhões de toneladas.</p>
+      <h3>Por que aconteceu</h3>
+      <p>O preço doméstico do milho segue ancorado, acima de tudo, pela fartura de oferta interna: a safra recorde de 144 milhões de toneladas, somada aos estoques de passagem elevados, mantém o mercado brasileiro folgado, num contraste direto com o cenário americano, onde o corte de produtividade do USDA reduziu tanto os estoques domésticos quanto os globais. Esse corte no WASDE é, isoladamente, um fator de sustentação para os preços internacionais em dólar — menor produção e menor estoque de passagem nos EUA tendem a apoiar Chicago —, mas seu efeito de repasse ao mercado físico brasileiro tem sido limitado pela disponibilidade doméstica recorde.</p>
+      <h3>Consequências no mercado</h3>
+      <p>No curto prazo, o milho brasileiro deve continuar operando com viés mais dependente da dinâmica de câmbio e do ritmo de embarques do que da referência de Chicago, dado o excedente de oferta interna. Para o produtor, a boa notícia é que os estoques mundiais mais apertados (272,1 Mt) sustentam o piso de preços internacionais, o que preserva a paridade de exportação como alternativa de escoamento caso a demanda doméstica (ração animal, etanol de milho) desacelere.</p>
+      <h3>Impacto B2B</h3>
+      <p>Processadoras domésticas (etanol, ração) seguem se beneficiando de matéria-prima abundante e preços comprimidos, enquanto o corte de estoques nos EUA sustenta um piso para os preços internacionais que preserva a paridade de exportação como alternativa de escoamento caso a demanda interna desacelere.</p>
+      <h3>Impacto B2C</h3>
+      <p>Sem efeito direto identificado nesta semana.</p>
+      <h3>O que observar</h3>
+      <p>O avanço do plantio da safra de verão 2026/27 e, mais adiante, a decisão de área para a segunda safra (safrinha) — historicamente responsável por cerca de 80% da produção nacional —, que definirá se a folga de oferta se mantém ou se estreita ao longo de 2027.</p>
+    </div>
+  </section>
+
+  <section class="panorama-secao" id="cafe">
+    <h2>4 · Café</h2>
+    <div class="commodity-preco">☕ Cepea/Esalq: <span class="val">R$ 1.546,58/sc</span> <span class="up">▲ 0,30%</span> no dia</div>
+    <div class="item">
+      <h3>O que aconteceu</h3>
+      <p>O indicador Cepea/Esalq do café arábica fechou em 18 de setembro a R$ 1.546,58 por saca de 60 kg, com alta de 0,30% no dia. No plano internacional, contudo, a semana consolidada até 8 de setembro trouxe uma queda expressiva: o café arábica negociado na ICE (Nova York) recuou 5,9% no período, movimento que acompanhou perdas generalizadas em commodities agrícolas — o cacau caiu 10,8% em Londres, o trigo caiu 4,5% em Chicago, e o índice geral de commodities agrícolas (S&amp;P GSCI Agriculture) recuou 3,0% na semana. As causas apontadas para o recuo do café foram o aumento dos estoques certificados e a mudança nas expectativas de demanda, além de chuvas recentes e previstas no Brasil que melhoraram as perspectivas para a safra 2027/28.</p>
+      <h3>Por que aconteceu</h3>
+      <p>O movimento de queda no mercado externo reflete uma recomposição de estoques certificados na bolsa de Nova York após um período de escassez, somada à melhora do panorama climático para a próxima safra brasileira — as chuvas que favorecem a floração e o pegamento dos grãos reduzem a percepção de risco de quebra futura, o que tende a aliviar prêmios de risco embutidos nos contratos futuros mais longos. A resiliência do indicador Cepea em reais (com leve alta no dia) frente à queda em dólar na ICE é explicada, em parte, pelo comportamento do câmbio: um dólar mais firme (ou estável) compensa parcialmente, para o produtor brasileiro, a queda da cotação internacional em moeda americana.</p>
+      <h3>Consequências no mercado</h3>
+      <p>No curto prazo, a combinação de estoques maiores em Nova York com perspectiva climática mais favorável para 2027/28 tende a manter os preços internacionais sob pressão baixista, especialmente se as chuvas no Brasil se confirmarem ao longo da florada. Para o produtor brasileiro, o amortecedor cambial é relevante: enquanto o real não se apreciar de forma significativa, parte da queda em dólar tende a ser compensada na conversão para reais, sustentando a remuneração doméstica.</p>
+      <h3>Impacto B2B</h3>
+      <p>Torrefadoras e exportadores se beneficiam de preços internacionais mais baixos e da manutenção da isenção tarifária nos Estados Unidos, embora o produtor sinta a queda em dólar amortecida pelo câmbio — o repasse ao custo de compra da indústria tende a ser gradual, não imediato.</p>
+      <h3>Impacto B2C</h3>
+      <p>Sem repasse identificado ao preço de varejo do café nesta semana.</p>
+      <h3>O que observar</h3>
+      <p>A confirmação das chuvas ao longo da florada 2027/28 nas próximas semanas, e o resultado da rodada de negociação tarifária Brasil-EUA de 30 de setembro a 1º de outubro — a manutenção da isenção tarifária do café remove um risco relevante de perda de competitividade justamente no momento em que o mercado começa a precificar uma safra brasileira maior.</p>
+    </div>
+  </section>
+
+  <section class="panorama-secao" id="boi-gordo">
+    <h2>5 · Boi gordo</h2>
+    <div class="commodity-preco">🐂 Cepea/Esalq/B3 (SP): <span class="val">R$ 352,90/@</span> <span class="up">▲ 0,10%</span> no dia</div>
+    <div class="item">
+      <h3>O que aconteceu</h3>
+      <p>O indicador Cepea/Esalq/B3 do boi gordo em São Paulo fechou em 18 de setembro a R$ 352,90 por arroba, alta de 0,10% no dia. Levantamentos da semana anterior (14 de setembro) já mostravam um mercado de poucos negócios e preços estáveis em torno de R$ 345 a prazo, com a oferta de animais terminados descrita como "ajustada e suficiente" para atender às escalas de abate — de 33 praças monitoradas, 27 não registraram variação de preço. No front comercial, contudo, as exportações de carne bovina seguem em desaceleração: o volume embarcado em agosto caiu 27% frente a agosto de 2025, ainda que o acumulado de 2026 mantenha alta de 5%. As vendas à China caíram 48% em julho na comparação anual, refletindo a proximidade do esgotamento da cota chinesa: o Brasil já havia embarcado 872 mil toneladas entre janeiro e agosto, de uma cota total de 1,106 milhão de toneladas para 2026.</p>
+      <p>Como contrapartida, abriu-se uma janela nos Estados Unidos: o Brasil deve receber 193 mil toneladas de uma cota de 300 mil toneladas com isenção tarifária, liberada em parcelas mensais de 100 mil toneladas, o que deve compensar parte das perdas do mercado chinês já no terceiro trimestre. Apesar da queda de volume, o valor médio das exportações de carne se manteve firme na comparação anual, com recuo de apenas 3% em dólares frente a julho.</p>
+      <h3>Por que aconteceu</h3>
+      <p>A firmeza do preço doméstico, mesmo em semana de negócios mais fracos, decorre da oferta controlada de animais terminados — resultado do ciclo pecuário e da resistência dos pecuaristas em vender abaixo do preço desejado — combinada com a necessidade dos frigoríficos de manter escalas de abate. Já a desaceleração das exportações para a China é um fenômeno essencialmente de cota: como o Brasil já colocou 872 mil das 1,106 milhão de toneladas permitidas em 2026, o ritmo de embarques naturalmente perde força nos meses finais do ano, independentemente da demanda chinesa subjacente. A abertura da cota tarifária americana, por sua vez, é resultado direto da manutenção da isenção do tarifaço de Trump sobre a carne bovina brasileira.</p>
+      <h3>Consequências no mercado</h3>
+      <p>No curto prazo, o mercado doméstico do boi gordo deve seguir sustentado pela oferta enxuta de animais terminados, com viés de estabilidade a leve alta — a curva futura da B3 já precifica valorização da ordem de 8,7% até fevereiro de 2027, sinalizando confiança do mercado em preços mais altos adiante. A queda das exportações para a China, embora expressiva em volume, tem impacto limitado sobre o preço doméstico porque é majoritariamente um efeito de cota, não de demanda, e a cota americana parcialmente compensa o volume perdido.</p>
+      <h3>Impacto B2B</h3>
+      <p>Frigoríficos conseguem compensar parte da queda do volume para a China com a nova cota tarifária americana (193 mil das 300 mil toneladas), mas a diversificação para mercados como a União Europeia — cujos preços pagam prêmio de até 56% sobre a média brasileira para produtos de maior valor agregado — segue sendo o principal vetor estrutural buscado pelo setor.</p>
+      <h3>Impacto B2C</h3>
+      <p>Sem sinal de repasse direto ao consumidor identificado nesta semana.</p>
+      <h3>O que observar</h3>
+      <p>A evolução do uso da nova cota tarifária americana e o ritmo de retenção de fêmeas/abate no mercado doméstico — o preço da arroba segue mais determinado pelo ciclo de oferta interna do que pela volatilidade do comércio exterior neste momento, mas a diversificação de mercados (China, EUA e, potencialmente, União Europeia) segue sendo o principal vetor estrutural de valorização de médio prazo.</p>
+    </div>
+  </section>
+
+  <section class="panorama-secao" id="macro">
+    <h2>6 · Cenário macroeconômico</h2>
+
+    <div class="item" id="cambio">
+      <h3>6.1 Câmbio</h3>
+      <p>O dólar fechou a semana cotado a R$ 5,1451 em 18 de setembro (+0,11% no dia, +0,39% na semana), após oscilar entre R$ 5,14 e R$ 5,17 ao longo do período. Entre os fatores citados pelo mercado estão: a pesquisa Datafolha de segundo turno mostrando o presidente Lula (PT) com 46% das intenções de voto contra 44% do senador Flávio Bolsonaro (PL-RJ) — configurando empate técnico e mantendo o noticiário eleitoral como fonte de ruído para o câmbio; a atuação do Banco Central, que realizou leilão de linha de US$ 1 bilhão com vencimento em abril de 2027 e rolou 50 mil contratos de swap cambial referentes ao vencimento de outubro; e a saída líquida de capital de US$ 5,987 bilhões do país em setembro (até o dia 11), sendo cerca de 90% pelo canal financeiro.</p>
+      <div class="leitura">
+        <div class="leitura-label">Leitura econômica</div>
+        <p>O real se manteve relativamente estável na semana — variação de menos de 0,4% — apesar da elevação de juros nos EUA, o que evidencia o papel amortecedor do superávit comercial recorde do agronegócio e da atuação ativa do Banco Central via leilões de linha e swaps para conter a volatilidade. Para o exportador de commodities, o nível corrente em torno de R$ 5,14–5,15 permanece historicamente favorável à receita em reais por saca ou arroba exportada; o risco a monitorar é a trajetória do diferencial de juros Brasil-EUA, que se estreitou nesta semana (Selic a 13,75% e Fed Funds a 3,75–4,00%) e tende a se estreitar ainda mais se o Fed cumprir a sinalização de nova alta até o fim do ano — um fator estruturalmente depreciacionista para o real, positivo para a competitividade-preço das exportações agrícolas, porém pressionando o custo em reais de insumos importados e de dívidas em moeda estrangeira do setor.</p>
+      </div>
+    </div>
+
+    <div class="item" id="selic-credito">
+      <h3>6.2 Taxa Selic e custo do crédito rural</h3>
+      <p>Como detalhado na seção 1.1, o Copom reduziu a Selic para 13,75% ao ano em 16 de setembro, citando moderação da atividade (IBC-Br -0,22% em julho, varejo -0,8%) mas mantendo a inflação como preocupação central (IPCA projetado em 5,2% para 2026, acima da meta de 3%, com expectativas desancoradas).</p>
+      <div class="leitura">
+        <div class="leitura-label">Leitura econômica</div>
+        <p>Com a Selic ainda em patamar de dois dígitos elevado, o custo de oportunidade do capital permanece alto para o produtor que financia custeio e investimento fora das linhas subsidiadas do Plano Safra, e mesmo as taxas equalizadas do crédito rural tendem a repassar parte da trajetória da Selic com defasagem. O corte de 0,25 p.p. tem efeito incremental pequeno sobre o fluxo de caixa do produtor no curto prazo; o que realmente importa para a margem rural é a inclinação da curva de juros futura — e o comunicado cauteloso do Copom sugere que o ciclo de cortes deve ser lento, o que posterga o alívio mais expressivo no custo do crédito para 2027.</p>
+      </div>
+    </div>
+
+    <div class="item" id="comercio-tarifas">
+      <h3>6.3 Comércio exterior e tarifas</h3>
+      <p>Os dados de comércio exterior e o andamento da negociação tarifária Brasil-EUA reforçam um quadro de resiliência exportadora do agronegócio brasileiro, com o superávit acumulado no ano 36,9% acima do mesmo período de 2025 e a manutenção da isenção tarifária para carne bovina e café — as duas cadeias historicamente mais expostas ao mercado americano entre as commodities cobertas por esta análise.</p>
+      <div class="leitura">
+        <div class="leitura-label">Leitura econômica</div>
+        <p>O principal ponto de atenção para as próximas semanas é o resultado da rodada de negociação de 30 de setembro a 1º de outubro em Milwaukee. Uma eventual ampliação da lista de produtos isentos — ou, no cenário contrário, a imposição de novas tarifas sobre grãos ou derivados — teria impacto direto e imediato sobre os fluxos de exportação e, por consequência, sobre os prêmios de exportação pagos ao produtor brasileiro nos portos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panorama-secao" id="fontes">
+    <h2>Fontes</h2>
+    <p class="fontes-nota">Todos os dados, números e citações desta análise foram extraídos das fontes abaixo, consultadas entre 18 e 19 de setembro de 2026.</p>
+
+    <div class="fontes-grupo">
+      <h4>Cepea/Esalq e cotações</h4>
+      <ul>
+        <li><a href="https://cepea.org.br/br/indicador/soja.aspx" target="_blank" rel="noopener">Cepea/Esalq — Indicador da Soja</a></li>
+        <li><a href="https://www.cepea.org.br/br/indicador/milho.aspx" target="_blank" rel="noopener">Cepea/Esalq — Indicador do Milho</a></li>
+        <li><a href="https://www.cepea.org.br/br/indicador/cafe.aspx" target="_blank" rel="noopener">Cepea/Esalq — Indicador do Café</a></li>
+        <li><a href="https://www.cepea.org.br/br/indicador/boi-gordo.aspx" target="_blank" rel="noopener">Cepea/Esalq — Indicador do Boi Gordo</a></li>
+        <li><a href="https://www.noticiasagricolas.com.br/cotacoes/soja" target="_blank" rel="noopener">Notícias Agrícolas — Cotação da Soja</a></li>
+        <li><a href="https://www.noticiasagricolas.com.br/cotacoes/milho" target="_blank" rel="noopener">Notícias Agrícolas — Cotação do Milho</a></li>
+        <li><a href="https://www.noticiasagricolas.com.br/cotacoes/cafe" target="_blank" rel="noopener">Notícias Agrícolas — Cotação do Café</a></li>
+        <li><a href="https://www.noticiasagricolas.com.br/cotacoes/boi-gordo" target="_blank" rel="noopener">Notícias Agrícolas — Cotação do Boi Gordo</a></li>
+      </ul>
+    </div>
+
+    <div class="fontes-grupo">
+      <h4>Safras e USDA/Conab</h4>
+      <ul>
+        <li><a href="https://www.usda.gov/oce/commodity/wasde" target="_blank" rel="noopener">USDA — WASDE Report, setembro de 2026</a></li>
+        <li><a href="https://www.piranot.com.br/2026/09/14/noticias/economia/agronegocio/usda-eleva-soja-corta-milho/" target="_blank" rel="noopener">Piranot — USDA eleva safra de soja e corta milho (14/09/2026)</a></li>
+        <li><a href="https://rotabioceanica.com.br/2026/09/conab-estima-producao-recorde-na-safra-2025-26-com-3617-milhoes-de-toneladas-de-graos/" target="_blank" rel="noopener">Rota Bioceânica — Conab estima safra recorde (15/09/2026)</a></li>
+        <li><a href="https://grupoahora.net.br/conteudos/2026/09/15/conab-eleva-projecao-da-safra-para-3617-milhoes-de-toneladas/" target="_blank" rel="noopener">Grupo A Hora — Conab eleva projeção da safra (15/09/2026)</a></li>
+        <li><a href="https://forbes.com.br/forbes-agro/2026/09/safra-soja-brasil-2026-27-stonex-183-milhoes-toneladas/" target="_blank" rel="noopener">Forbes Agro — Safra de soja 2026/27, estimativa StoneX</a></li>
+      </ul>
+    </div>
+
+    <div class="fontes-grupo">
+      <h4>Exportações e mercado externo</h4>
+      <ul>
+        <li><a href="https://www.infomoney.com.br/economia/abiove-reduz-previsao-de-exportacao-de-soja-enquanto-china-compra-mais-dos-eua/" target="_blank" rel="noopener">InfoMoney — Abiove reduz previsão de exportação de soja (18/09/2026)</a></li>
+        <li><a href="https://forbes.com.br/forbes-agro/2026/09/embarques-de-soja-devem-alcancar-774-milhoes-de-toneladas-em-setembro-com-forte-demanda/" target="_blank" rel="noopener">Forbes Agro — Embarques de soja em setembro</a></li>
+        <li><a href="https://folhaagricola.com.br/2026/09/14/soja-chuvas-favorecem-semeadura-e-sustentam-precos-no-brasil/" target="_blank" rel="noopener">Folha Agrícola — Soja: chuvas favorecem semeadura (14/09/2026)</a></li>
+        <li><a href="https://souagro.net/noticia/2026/09/exportacoes-de-carne-caem-com-recuo-da-china-mas-eua-podem-aliviar-pressao/" target="_blank" rel="noopener">Souagro — Exportações de carne caem com recuo da China (09/09/2026)</a></li>
+        <li><a href="https://beefpoint.com.br/mercado-do-boi-gordo-comeca-a-semana-com-poucos-negocios-e-precos-estaveis/" target="_blank" rel="noopener">Beefpoint — Mercado do boi gordo (15/09/2026)</a></li>
+        <li><a href="https://www.agrolink.com.br/noticias/commodities-agricolas-recuam-3--em-uma-semana_518821.html" target="_blank" rel="noopener">Agrolink — Commodities agrícolas recuam 3% (15/09/2026)</a></li>
+        <li><a href="https://www.canalrural.com.br/economia/balanca-comercial-registra-superavit-de-us-1548-bilhao-na-segunda-semana-de-setembro" target="_blank" rel="noopener">Canal Rural — Balança comercial (14/09/2026)</a></li>
+      </ul>
+    </div>
+
+    <div class="fontes-grupo">
+      <h4>Macroeconomia — Selic, Fed e câmbio</h4>
+      <ul>
+        <li><a href="https://www.opovo.com.br/noticias/economia/2026/09/16/copom-reduz-taxa-selic-em-025-ponto-porcentual-para-1375-ao-ano-em-decisao-unanime.html" target="_blank" rel="noopener">O Povo — Copom reduz Selic para 13,75% (16/09/2026)</a></li>
+        <li><a href="https://melhorinvestimento.net/noticias/copom-decisao-selic-setembro-2026" target="_blank" rel="noopener">Melhor Investimento — Copom corta a Selic e sinaliza cautela</a></li>
+        <li><a href="https://www.diariocarioca.com/2026/09/16/mundo/estados-unidos/fed-eleva-juros-dos-eua-para-ate-4-em-primeira-alta-desde-2023" target="_blank" rel="noopener">Diário Carioca — Fed eleva juros dos EUA (16/09/2026)</a></li>
+        <li><a href="https://fedratecalc.com/fomc-meeting-schedule/september-2026/" target="_blank" rel="noopener">Fed Rate Calc — FOMC Meeting Schedule, setembro de 2026</a></li>
+        <li><a href="https://www.infomoney.com.br/mercados/dolar-hoje-abertura-fechamento-comercial-turismo-16092026/" target="_blank" rel="noopener">InfoMoney — Dólar hoje (16/09/2026)</a></li>
+        <li><a href="https://www.infomoney.com.br/mercados/dolar-hoje-abertura-fechamento-comercial-turismo-18092026/" target="_blank" rel="noopener">InfoMoney — Dólar fecha a R$ 5,14 (18/09/2026)</a></li>
+      </ul>
+    </div>
+
+    <div class="fontes-grupo">
+      <h4>Tarifas comerciais</h4>
+      <ul>
+        <li><a href="https://www.tribunadosertao.com.br/financas/2026/09/15/979131-governos-lula-e-trump-preparam-nova-rodada-de-negociacao-sobre-tarifas" target="_blank" rel="noopener">Tribuna do Sertão — Brasil e EUA preparam nova rodada de negociação (15/09/2026)</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <p class="aviso-disclaimer">Esta análise tem caráter informativo e educacional, não constituindo recomendação de investimento ou de comercialização. Dados sujeitos a revisão pelas fontes originais.</p>
+</main>
+
+<div class="wrap">
+  <footer>
+    <div class="foot-row">
+      <div>AgroFer Trader — conteúdo informativo sobre o mercado agrícola. Não constitui recomendação de investimento ou negócio.</div>
+      <div>
+        <a href="glossario.html">Glossário</a>
+        · <a href="https://www.instagram.com/agrofertrader/" target="_blank" rel="noopener">Instagram @agrofertrader</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>

@@ -1,22 +1,22 @@
 # Análise de Mercado — Milho
-Semana de 8 a 15 de setembro de 2026 | Atualizado em: 16/09/2026
+Semana de 12 a 18 de setembro de 2026 | Atualizado em: 19/09/2026
 
 ## O que aconteceu
-O milho recebeu números favoráveis no relatório WASDE de sexta-feira (11/09): o USDA reduziu a produção americana para 15,8 bilhões de bushels (produtividade de 178,5 sacas por acre, revisada para baixo) e cortou o estoque final projetado de 1,653 para 1,567 bilhão de bushels — dado estruturalmente positivo para o preço. Mesmo assim, os contratos futuros fecharam aquele dia em queda de 3,50 centavos, a US$ 5,325 por bushel. Na segunda-feira seguinte (14/09), o CEPEA registrou uma mudança de narrativa: "com demanda enfraquecida, preços recuam" — a saca caiu para R$ 69,77 (-0,60%).
+O indicador Cepea/Esalq do milho fechou em 18 de setembro a R$ 69,29 por saca de 60 kg, alta marginal de 0,06% no dia. A Conab confirmou a safra brasileira 2025/26 em 144 milhões de toneladas, crescimento de 2,0% sobre o ciclo anterior. Já nos Estados Unidos, o relatório WASDE de setembro do USDA trouxe um corte relevante na produção: a estimativa caiu para 15,8 bilhões de bushels, atribuída à produtividade revisada para 178,5 bushels/acre. Como consequência, os estoques finais americanos recuaram para 1,567 bilhão de bushels, ante 1,653 bilhão de bushels na leitura anterior, e os estoques mundiais finais caíram para 272,1 milhões de toneladas, de 274,7 milhões.
 
 ## Por que aconteceu
-A queda de sexta-feira, apesar do dado favorável, é um caso raro e didático de fundamento bom com mercado vendendo mesmo assim: o milho chegou a operar em alta por um curto período logo após a divulgação do relatório — reação correta ao dado — mas foi arrastado para baixo ao longo do dia pela venda maciça na soja (que teve a surpresa do WASDE) e pelo clima de aversão a risco mais amplo, ligado à proximidade das decisões do Federal Reserve e do Copom. Já a fraqueza de demanda registrada na segunda-feira representa uma mudança de motivo em relação às semanas anteriores, quando a narrativa girava em torno da retração do vendedor — agora é o comprador que está mais cauteloso.
+O preço doméstico do milho segue ancorado, acima de tudo, pela fartura de oferta interna: a safra recorde de 144 milhões de toneladas, somada aos estoques de passagem elevados, mantém o mercado brasileiro folgado, num contraste direto com o cenário americano, onde o corte de produtividade do USDA reduziu tanto os estoques domésticos quanto os globais. Esse corte no WASDE é, isoladamente, um fator de sustentação para os preços internacionais em dólar, mas seu efeito de repasse ao mercado físico brasileiro tem sido limitado pela disponibilidade doméstica recorde.
 
 ## Consequências no mercado
-Isso mostra que, em dias de relatório oficial, o preço de curto prazo às vezes reflete mais o sentimento do mercado como um todo do que os fundamentos específicos daquela commodity — uma distinção importante para quem tenta entender "por que caiu, se a notícia era boa". A fraqueza de demanda que se seguiu levanta a dúvida se essa é uma continuação do mesmo padrão ou um fator novo e independente.
+No curto prazo, o milho brasileiro deve continuar operando com viés mais dependente da dinâmica de câmbio e do ritmo de embarques do que da referência de Chicago, dado o excedente de oferta interna. Para o produtor, os estoques mundiais mais apertados (272,1 milhões de toneladas) sustentam o piso de preços internacionais, o que preserva a paridade de exportação como alternativa de escoamento caso a demanda doméstica desacelere.
 
 ## Impacto B2B
-Para quem processa milho (etanol, ração), o corte de estoque americano é um sinal de que a disputa por grão deve continuar apertada nos próximos meses — mas a fraqueza de demanda observada nesta semana pode abrir uma janela de compra a preços mais baixos no curto prazo.
+Processadoras domésticas (etanol, ração) seguem se beneficiando de matéria-prima abundante e preços comprimidos, enquanto o corte de estoques nos EUA sustenta um piso para os preços internacionais que preserva a paridade de exportação como alternativa de escoamento caso a demanda interna desacelere.
 
 ## Impacto B2C
 Sem efeito direto identificado nesta semana.
 
 ## O que observar
-Se os preços do milho recuperam o valor fundamentalmente justificado pelo corte de estoque americano, uma vez que a poeira do dia de relatório assentar, e se a fraqueza de demanda registrada na segunda-feira é ruído pontual (reflexo do próprio dia de relatório) ou o início de um padrão diferente do que vínhamos documentando nas semanas anteriores.
+O avanço do plantio da safra de verão 2026/27 e, mais adiante, a decisão de área para a segunda safra (safrinha) — historicamente responsável por cerca de 80% da produção nacional —, que definirá se a folga de oferta se mantém ou se estreita ao longo de 2027.
 
-Fontes consultadas: USDA/WASDE, BPMoney, CEPEA/ESALQ, Aprosoja/MS, Notícias Agrícolas.
+Fontes consultadas: Cepea/Esalq, USDA/WASDE, Conab, Piranot.
