@@ -46,6 +46,7 @@ import gerar_paginas_commodities as gpc
 
 PASTA_SITE = os.path.dirname(os.path.abspath(__file__))
 CAMINHO_TEMPLATE_NEWSLETTER = os.path.join(PASTA_SITE, "emails", "newsletter.html")
+CAMINHO_PANORAMA = os.path.join(PASTA_SITE, "panorama.html")
 PASTA_SAIDA = os.path.join(PASTA_SITE, "emails", "_enviados")
 
 BREVO_LIST_ID = 3  # ID da lista de contatos no Brevo (Contacts > Lists)
@@ -141,6 +142,27 @@ def _periodo_da_analise(slug: str) -> str:
             f"analises/{slug}.md - confira o cabecalho do arquivo."
         )
     return m.group(1).strip()
+
+
+def _resumo_panorama() -> str | None:
+    """Le panorama.html (se existir) e devolve a primeira frase do
+    parágrafo de abertura (class="page-intro") pro bloco extra da
+    newsletter que aponta pro Panorama Semanal (Copom, Fed, Conab,
+    câmbio, tarifas) - fonte única de verdade é o próprio panorama.html
+    publicado no site, sem duplicar texto em outro lugar. Devolve None
+    se o arquivo não existir ou não tiver o marcador esperado - nesse
+    caso a newsletter sai sem o bloco, em vez de falhar (nem toda
+    semana necessariamente tem uma edição nova do Panorama)."""
+    if not os.path.exists(CAMINHO_PANORAMA):
+        return None
+    with open(CAMINHO_PANORAMA, encoding="utf-8") as f:
+        html_panorama = f.read()
+    m_intro = re.search(r'<p class="page-intro">(.*?)</p>', html_panorama, re.DOTALL)
+    if not m_intro:
+        return None
+    intro_texto = re.sub(r"<[^>]+>", "", m_intro.group(1))
+    intro_texto = re.sub(r"\s+", " ", intro_texto).strip()
+    return _primeira_frase(intro_texto, limite=220)
 
 
 def montar_html_newsletter(slug_principal: str, titulo: str) -> str:
@@ -255,6 +277,37 @@ def montar_html_newsletter(slug_principal: str, titulo: str) -> str:
         html,
         "lista Também nesta semana",
     )
+
+    # 7) Bloco "Panorama macro da semana" - opcional: se panorama.html
+    # nao existir ou nao tiver uma edicao com o marcador esperado, o
+    # bloco inteiro (e o separador que vem com ele) e removido do
+    # e-mail, em vez de sair com um resumo vazio ou um link quebrado.
+    resumo_panorama = _resumo_panorama()
+    padrao_bloco_panorama = (
+        r'\s*<!-- BLOCO PANORAMA MACRO -->.*?<!-- SEPARADOR 2 -->.*?</tr>\n'
+    )
+    if resumo_panorama:
+        html = _substituir_obrigatorio(
+            r"PANORAMA_RESUMO",
+            escape(resumo_panorama, quote=False),
+            html,
+            "resumo do panorama macro",
+        )
+        html = _substituir_obrigatorio(
+            r"PANORAMA_LINK",
+            f"{URL_BASE_SITE}/panorama.html",
+            html,
+            "link do panorama macro",
+        )
+    else:
+        novo_html, n = re.subn(padrao_bloco_panorama, "\n", html, count=1, flags=re.DOTALL)
+        if n != 1:
+            raise SystemExit(
+                "Falha ao montar a newsletter: não encontrei o bloco 'BLOCO PANORAMA "
+                "MACRO' em emails/newsletter.html pra remover (o template pode ter "
+                "mudado de estrutura - ajuste o regex correspondente em enviar_newsletter.py)."
+            )
+        html = novo_html
 
     return html
 
