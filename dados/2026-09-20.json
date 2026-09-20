@@ -1,0 +1,251 @@
+{
+  "dolar": {
+    "data": "18/09/2026",
+    "valor": 5.1575,
+    "variacao_pct": 0.10481163020903805
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "04/11/2026",
+    "valor": 13.75
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "18/09/2026",
+      "preco_reais": "161.89",
+      "variacao_pct": "-0,08%"
+    },
+    {
+      "nome": "Milho",
+      "data": "18/09/2026",
+      "preco_reais": "69.29",
+      "variacao_pct": "0,06%"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "18/09/2026",
+      "preco_reais": "90,61",
+      "variacao_pct": "0,03%"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "18/09/2026",
+      "preco_reais": "1546.58",
+      "variacao_pct": "0,30%"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "18/09/2026",
+      "preco_reais": "352.9",
+      "variacao_pct": "0,10%"
+    },
+    {
+      "nome": "Algodão",
+      "data": "18/09/2026",
+      "preco_reais": "427.13",
+      "variacao_pct": "-1,26%"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "18/09/2026",
+      "preco_reais": "120.05",
+      "variacao_pct": "0,39%"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Outubro/26",
+      "preco_reais": "5,1550 R$/US$",
+      "variacao_pct": "-0.12",
+      "valor_numerico": 5.155,
+      "unidade": "R$/US$",
+      "vencimentos": [
+        {
+          "vencimento": "Outubro/26",
+          "valor_numerico": 5.155,
+          "valor_reais": 5.155
+        },
+        {
+          "vencimento": "Novembro/26",
+          "valor_numerico": 5.1915000000000004,
+          "valor_reais": 5.1915000000000004
+        }
+      ]
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Janeiro/2027",
+      "preco_reais": "R$ 150,08 /sc 60 kg (≈ US$ 29,10 x R$ 5,1575)",
+      "variacao_pct": "-1.36",
+      "valor_numerico": 29.1,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 29.1,
+          "valor_reais": 150.08325
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 29.31,
+          "valor_reais": 151.16632499999997
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 29.5,
+          "valor_reais": 152.14624999999998
+        }
+      ]
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Janeiro/2027",
+      "preco_reais": "80,10 R$/sc 60 kg",
+      "variacao_pct": "-0.14",
+      "valor_numerico": 80.1,
+      "unidade": "R$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 80.1,
+          "valor_reais": 80.1
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 81.95,
+          "valor_reais": 81.95
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 80.4,
+          "valor_reais": 80.4
+        },
+        {
+          "vencimento": "Julho/2027",
+          "valor_numerico": 78.91,
+          "valor_reais": 78.91
+        },
+        {
+          "vencimento": "Setembro/2027",
+          "valor_numerico": 78.91,
+          "valor_reais": 78.91
+        }
+      ]
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "359,70 R$/@",
+      "variacao_pct": "0.31",
+      "valor_numerico": 359.7,
+      "unidade": "R$/@",
+      "vencimentos": [
+        {
+          "vencimento": "Setembro/2026",
+          "valor_numerico": 359.7,
+          "valor_reais": 359.7
+        },
+        {
+          "vencimento": "Outubro/2026",
+          "valor_numerico": 380.0,
+          "valor_reais": 380.0
+        },
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 385.15,
+          "valor_reais": 385.15
+        },
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 386.4,
+          "valor_reais": 386.4
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 387.4,
+          "valor_reais": 387.4
+        },
+        {
+          "vencimento": "Fevereiro/2027",
+          "valor_numerico": 386.15,
+          "valor_reais": 386.15
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 387.0,
+          "valor_reais": 387.0
+        }
+      ]
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Dezembro/2026",
+      "preco_reais": "R$ 1736,01 /sc 60 kg (≈ US$ 336,60 x R$ 5,1575)",
+      "variacao_pct": "0.33",
+      "valor_numerico": 336.6,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 336.6,
+          "valor_reais": 1736.0145
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 336.1,
+          "valor_reais": 1733.43575
+        },
+        {
+          "vencimento": "Setembro/2027",
+          "valor_numerico": 320.8,
+          "valor_reais": 1654.526
+        }
+      ]
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Câmbio sem grandes variações (+0.10%): não é o dólar que deve explicar os movimentos de preço agrícola hoje, e sim fatores de oferta e demanda específicos de cada commodity.",
+    "Selic em 13.75% ao ano - um patamar considerado alto: o crédito rural fica mais caro e carregar estoque também, o que costuma levar produtores a vender mais rápido para gerar caixa, pressionando o preço para baixo no curto prazo. Juros altos também tendem a atrair capital estrangeiro e valorizar o real, reforçando essa pressão via câmbio.",
+    "Obs.: vale lembrar que essas são relações históricas, não regras fixas - fatores como clima, safra e demanda internacional podem se sobrepor facilmente ao efeito do câmbio ou dos juros."
+  ],
+  "noticias": [
+    {
+      "titulo": "Petróleo18/09/2026 - 18:52Petróleo cai após China pedir ao Irã que limite ataques dos houthis a instalações da Arábia Saudita",
+      "link": "https://www.noticiasagricolas.com.br/noticias/petroleo/428265-petroleo-cai-apos-china-pedir-ao-ira-que-limite-ataques-dos-houthis-a-instalacoes-da-arabia-saudita.html",
+      "resumo": "HOUSTON, 18 Set (Reuters) - Os preços do petróleo caíram nesta sexta-feira depois que a China, atendendo a um pedido da Arábia Saudita, solicitou ao Irã que limitasse os ataques dos rebeldes houthis à infraestrutura petr...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "18/09/2026 - 17:12Dólar fecha sessão sem gatilhos perto da estabilidade",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/428255-dolar-fecha-sessao-sem-gatilhos-perto-da-estabilidade.html",
+      "resumo": "SÃO PAULO, 18 Set (Reuters) - O dólar fechou a sexta-feira próximo da estabilidade no Brasil, em paralelo à perda de força da moeda norte-americana ante outras divisas durante a tarde, em uma sessão sem gatilhos fortes p...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "18/09/2026 - 16:58Soja: Farelo despenca em Chicago, mas dólar e prêmios seguram preços no Brasil",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/428250-soja-farelo-despenca-em-chicago-mas-dolar-e-premios-seguram-precos-no-brasil.html",
+      "resumo": "Os preços da soja encerraram a sexta-feira (18) com perdas expressivas na Bolsa de Chicago, pressionados principalmente pela forte realização de lucros no farelo. Depois de recuar quase 20 pontos durante o pregão, o cont...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "18/09/2026 - 16:22Mato Grosso plantou 1,15% da safra de soja, diz Imea em 1º informe da safra 2026/27",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/428252-mato-grosso-plantou-115-da-safra-de-soja-diz-imea-em-1o-informe-da-safra-202627.html",
+      "resumo": "SÃO PAULO, 18 Set (Reuters) - O plantio de soja em Mato Grosso começou com ligeira antecipação ante a média histórica de cinco anos, informou o Instituto Mato-grossense de Economia Agropecuária (Imea), nesta sexta-feira.",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "18/09/2026 - 15:00“Brasil precisa sair da arquibancada”: Cabrera cobra diplomacia comercial para transformar força do agro em poder global",
+      "link": "https://www.noticiasagricolas.com.br/noticias/agronegocio/428239-brasil-precisa-sair-da-arquibancada-cabrera-cobra-diplomacia-comercial-para-transformar-forca-do-agro-em-poder-global.html",
+      "resumo": "O produtor brasileiro construiu, nas últimas décadas, uma agricultura competitiva, tecnológica e capaz de colocar o país entre os maiores fornecedores mundiais de alimentos. Para o ex-ministro da Agricultura Antônio Cabr...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
