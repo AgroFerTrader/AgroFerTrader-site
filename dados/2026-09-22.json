@@ -1,0 +1,251 @@
+{
+  "dolar": {
+    "data": "21/09/2026",
+    "valor": 5.1117,
+    "variacao_pct": -0.8880271449345581
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "04/11/2026",
+    "valor": 13.75
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "21/09/2026",
+      "preco_reais": "161.52",
+      "variacao_pct": "-0,23%"
+    },
+    {
+      "nome": "Milho",
+      "data": "21/09/2026",
+      "preco_reais": "69.62",
+      "variacao_pct": "0,48%"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "21/09/2026",
+      "preco_reais": "91,93",
+      "variacao_pct": "1,45%"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "21/09/2026",
+      "preco_reais": "1534.23",
+      "variacao_pct": "-0,80%"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "21/09/2026",
+      "preco_reais": "354.65",
+      "variacao_pct": "0,50%"
+    },
+    {
+      "nome": "Algodão",
+      "data": "21/09/2026",
+      "preco_reais": "422.83",
+      "variacao_pct": "-1,01%"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "21/09/2026",
+      "preco_reais": "120.13",
+      "variacao_pct": "0,07%"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Outubro/26",
+      "preco_reais": "5,1225 R$/US$",
+      "variacao_pct": "-0.71",
+      "valor_numerico": 5.1225000000000005,
+      "unidade": "R$/US$",
+      "vencimentos": [
+        {
+          "vencimento": "Outubro/26",
+          "valor_numerico": 5.1225000000000005,
+          "valor_reais": 5.1225000000000005
+        },
+        {
+          "vencimento": "Novembro/26",
+          "valor_numerico": 5.1895,
+          "valor_reais": 5.1895
+        }
+      ]
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Janeiro/2027",
+      "preco_reais": "R$ 151,41 /sc 60 kg (≈ US$ 29,62 x R$ 5,1117)",
+      "variacao_pct": "1.79",
+      "valor_numerico": 29.62,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 29.62,
+          "valor_reais": 151.408554
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 29.77,
+          "valor_reais": 152.175309
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 29.88,
+          "valor_reais": 152.737596
+        }
+      ]
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Janeiro/2027",
+      "preco_reais": "80,76 R$/sc 60 kg",
+      "variacao_pct": "0.82",
+      "valor_numerico": 80.76,
+      "unidade": "R$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 80.76,
+          "valor_reais": 80.76
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 82.17,
+          "valor_reais": 82.17
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 80.4,
+          "valor_reais": 80.4
+        },
+        {
+          "vencimento": "Julho/2027",
+          "valor_numerico": 78.72,
+          "valor_reais": 78.72
+        },
+        {
+          "vencimento": "Setembro/2027",
+          "valor_numerico": 79.0,
+          "valor_reais": 79.0
+        }
+      ]
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "359,60 R$/@",
+      "variacao_pct": "-0.03",
+      "valor_numerico": 359.6,
+      "unidade": "R$/@",
+      "vencimentos": [
+        {
+          "vencimento": "Setembro/2026",
+          "valor_numerico": 359.6,
+          "valor_reais": 359.6
+        },
+        {
+          "vencimento": "Outubro/2026",
+          "valor_numerico": 380.75,
+          "valor_reais": 380.75
+        },
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 389.0,
+          "valor_reais": 389.0
+        },
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 389.5,
+          "valor_reais": 389.5
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 389.9,
+          "valor_reais": 389.9
+        },
+        {
+          "vencimento": "Fevereiro/2027",
+          "valor_numerico": 389.7,
+          "valor_reais": 389.7
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 391.0,
+          "valor_reais": 391.0
+        }
+      ]
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Dezembro/2026",
+      "preco_reais": "R$ 1684,31 /sc 60 kg (≈ US$ 329,50 x R$ 5,1117)",
+      "variacao_pct": "-2.11",
+      "valor_numerico": 329.5,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 329.5,
+          "valor_reais": 1684.30515
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 329.85,
+          "valor_reais": 1686.094245
+        },
+        {
+          "vencimento": "Setembro/2027",
+          "valor_numerico": 315.0,
+          "valor_reais": 1610.1855
+        }
+      ]
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Queda suave do dólar (-0.89%): tende a esfriar discretamente o apetite por exportação, com leve efeito de baixa sobre o preço doméstico de commodities.",
+    "Selic em 13.75% ao ano - um patamar considerado alto: o crédito rural fica mais caro e carregar estoque também, o que costuma levar produtores a vender mais rápido para gerar caixa, pressionando o preço para baixo no curto prazo. Juros altos também tendem a atrair capital estrangeiro e valorizar o real, reforçando essa pressão via câmbio.",
+    "Obs.: nenhuma dessas relações é garantida - clima, oferta mundial e demanda por vezes pesam mais que câmbio e juros na formação do preço final."
+  ],
+  "noticias": [
+    {
+      "titulo": "Política e Economia17:21Dólar cai a R$5,1080 sob influência do exterior",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/428343-dolar-cai-a-r51080-sob-influencia-do-exterior.html",
+      "resumo": "SÃO PAULO, 21 Set (Reuters) - O dólar fechou a segunda-feira em baixa e novamente na faixa dos R$5,10, acompanhando o recuo dos rendimentos dos Treasuries e da moeda norte-americana ante outras divisas de países emergent...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "21/09/2026 - 16:58Preço do petróleo cai para US$100 por esperança de acordo entre EUA e Irã",
+      "link": "https://www.noticiasagricolas.com.br/noticias/petroleo/428338-preco-do-petroleo-cai-para-us100-por-esperanca-de-acordo-entre-eua-e-ira.html",
+      "resumo": "NOVA YORK, 21 Set (Reuters) - Os preços do petróleo recuaram nesta segunda-feira para o nível mais baixo em 12 dias, à medida que os investidores esperavam avanços diplomáticos na crise com o Irã devido à reunião das Naç...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "21/09/2026 - 16:23Média diária das exportações de algodão sobe 15,8% até a 3ª semana de setembro",
+      "link": "https://www.noticiasagricolas.com.br/noticias/algodao/428334-exportacoes-de-algodao-tem-media-diaria-15-8-maior-ate-a-3-semana-de-setembro.html",
+      "resumo": "As exportações brasileiras de algodão registraram média diária de 9.408,6 toneladas nos primeiros 13 dias úteis de setembro de 2026, alta de 15,8% em relação às 8.127,7 toneladas da média de setembro de 2025. Os dados co...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "21/09/2026 - 16:03Açúcar recua nas exportações, enquanto etanol avança em agosto; agro soma US$ 15,2 bi",
+      "link": "https://www.noticiasagricolas.com.br/noticias/sucroenergetico/428330-acucar-recua-nas-exportacoes-enquanto-etanol-avanca-em-agosto-agro-soma-us-15-2-bi.html",
+      "resumo": "As exportações brasileiras do agronegócio movimentaram US$ 15,2 bilhões em agosto de 2026, alta de 6,7% em relação ao mesmo mês do ano passado, mas queda de 6,8% na comparação com julho. No setor sucroenergético, o desta...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "21/09/2026 - 14:44Agropalma vê alta de 20% na nova safra após El Niño de 2023 afetar ciclo passado",
+      "link": "https://www.noticiasagricolas.com.br/noticias/agronegocio/428322-agropalma-ve-alta-de-20-na-nova-safra-apos-el-nino-de-2023-afetar-ciclo-passado.html",
+      "resumo": "SÃO PAULO, 21 Set (Reuters) - A Agropalma, líder na fabricação de óleo de palma do Brasil, projeta um aumento de cerca de 20% na produção da safra que se inicia em relação à anterior, após ter sido atingida no ano passad...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
