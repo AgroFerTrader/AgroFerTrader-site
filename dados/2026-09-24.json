@@ -1,0 +1,251 @@
+{
+  "dolar": {
+    "data": "23/09/2026",
+    "valor": 5.1414,
+    "variacao_pct": 0.494517308105777
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "04/11/2026",
+    "valor": 13.75
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "23/09/2026",
+      "preco_reais": "161.65",
+      "variacao_pct": "-0,17%"
+    },
+    {
+      "nome": "Milho",
+      "data": "23/09/2026",
+      "preco_reais": "69.82",
+      "variacao_pct": "0,11%"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "23/09/2026",
+      "preco_reais": "92,01",
+      "variacao_pct": "-0,11%"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "23/09/2026",
+      "preco_reais": "1513.01",
+      "variacao_pct": "0,11%"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "23/09/2026",
+      "preco_reais": "357.4",
+      "variacao_pct": "0,37%"
+    },
+    {
+      "nome": "Algodão",
+      "data": "23/09/2026",
+      "preco_reais": "421.86",
+      "variacao_pct": "0,45%"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "23/09/2026",
+      "preco_reais": "120.08",
+      "variacao_pct": "-0,59%"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Outubro/26",
+      "preco_reais": "5,1730 R$/US$",
+      "variacao_pct": "1.15",
+      "valor_numerico": 5.173,
+      "unidade": "R$/US$",
+      "vencimentos": [
+        {
+          "vencimento": "Outubro/26",
+          "valor_numerico": 5.173,
+          "valor_reais": 5.173
+        },
+        {
+          "vencimento": "Novembro/26",
+          "valor_numerico": 5.205,
+          "valor_reais": 5.205
+        }
+      ]
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Janeiro/2027",
+      "preco_reais": "R$ 151,00 /sc 60 kg (≈ US$ 29,37 x R$ 5,1414)",
+      "variacao_pct": "-1.01",
+      "valor_numerico": 29.37,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 29.37,
+          "valor_reais": 151.002918
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 29.5,
+          "valor_reais": 151.6713
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 29.65,
+          "valor_reais": 152.44251
+        }
+      ]
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Janeiro/2027",
+      "preco_reais": "79,69 R$/sc 60 kg",
+      "variacao_pct": "-0.08",
+      "valor_numerico": 79.69,
+      "unidade": "R$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 79.69,
+          "valor_reais": 79.69
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 81.66,
+          "valor_reais": 81.66
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 80.0,
+          "valor_reais": 80.0
+        },
+        {
+          "vencimento": "Julho/2027",
+          "valor_numerico": 78.6,
+          "valor_reais": 78.6
+        },
+        {
+          "vencimento": "Setembro/2027",
+          "valor_numerico": 78.62,
+          "valor_reais": 78.62
+        }
+      ]
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Setembro/2026",
+      "preco_reais": "360,85 R$/@",
+      "variacao_pct": "0.29",
+      "valor_numerico": 360.85,
+      "unidade": "R$/@",
+      "vencimentos": [
+        {
+          "vencimento": "Setembro/2026",
+          "valor_numerico": 360.85,
+          "valor_reais": 360.85
+        },
+        {
+          "vencimento": "Outubro/2026",
+          "valor_numerico": 379.9,
+          "valor_reais": 379.9
+        },
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 388.9,
+          "valor_reais": 388.9
+        },
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 388.9,
+          "valor_reais": 388.9
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 388.95,
+          "valor_reais": 388.95
+        },
+        {
+          "vencimento": "Fevereiro/2027",
+          "valor_numerico": 388.35,
+          "valor_reais": 388.35
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 389.0,
+          "valor_reais": 389.0
+        }
+      ]
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Dezembro/2026",
+      "preco_reais": "R$ 1706,94 /sc 60 kg (≈ US$ 332,00 x R$ 5,1414)",
+      "variacao_pct": "1.19",
+      "valor_numerico": 332.0,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 332.0,
+          "valor_reais": 1706.9448
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 332.5,
+          "valor_reais": 1709.5155
+        },
+        {
+          "vencimento": "Setembro/2027",
+          "valor_numerico": 316.75,
+          "valor_reais": 1628.53845
+        }
+      ]
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Câmbio subiu discretamente hoje (+0.49%) - não é uma virada de tendência, mas pequenas altas como essa historicamente já dão um empurrão positivo ao preço doméstico de commodities de exportação.",
+    "Juros em 13.75% ao ano seguem em patamar alto - carregar estoque fica caro, o que empurra produtores a vender mais rápido, e o diferencial de juros atrai capital estrangeiro, valorizando o real. Ambos tendem a pesar contra o preço em reais das commodities de exportação.",
+    "Obs.: nenhuma dessas relações é garantida - clima, oferta mundial e demanda por vezes pesam mais que câmbio e juros na formação do preço final."
+  ],
+  "noticias": [
+    {
+      "titulo": "Política e Economia17:19Dólar tem alta forte reagindo a nova pesquisa eleitoral e exterior",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/428499-dolar-tem-alta-forte-reagindo-a-nova-pesquisa-eleitoral-e-exterior.html",
+      "resumo": "SÃO PAULO, 23 Set (Reuters) - O dólar fechou a quarta-feira com alta firme no Brasil, reagindo ao avanço da moeda norte-americana no exterior e a uma nova pesquisa eleitoral no Brasil mostrando o presidente Luiz Inácio L...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "23/09/2026 - 17:17Soja segura R$ 162 a R$ 163 nos portos mesmo com queda de Chicago; dólar e prêmios sustentam Brasil",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/428498-soja-segura-r-162-a-r-163-nos-portos-mesmo-com-queda-de-chicago-dolar-e-premios-sustentam-brasil.html",
+      "resumo": "A soja terminou esta quarta-feira (23) em baixa na Bolsa de Chicago, mas o movimento não se repetiu no mercado brasileiro. A forte valorização do dólar, prêmios mais firmes e a demanda presente nos portos ajudaram a sust...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "23/09/2026 - 16:20Processadoras da China compram canola australiana, nos primeiros negócios desde 2020",
+      "link": "https://www.noticiasagricolas.com.br/noticias/agronegocio/428495-processadoras-da-china-compram-canola-australiana-nos-primeiros-negocios-desde-2020.html",
+      "resumo": "CINGAPURA/PEQUIM/CANBERRA, 23 Set (Reuters) - Uma processadora privada chinesa comprou 68.000 toneladas métricas de canola australiana da nova safra para embarque em março, depois que uma carga semelhante adquirida por o...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "23/09/2026 - 15:33Milho recua em Chicago e na B3 mesmo com dólar e petróleo em forte alta nesta 4ª (23)",
+      "link": "https://www.noticiasagricolas.com.br/noticias/milho/428487-milho-recua-em-chicago-e-na-b-3-mesmo-com-dolar-e-petroleo-em-forte-alta-nesta-4-23.html",
+      "resumo": "Os preços do milho terminaram a quarta-feira (23) pressionados nas bolsas, com baixas em Chicago e também nos principais contratos negociados na B3. O movimento chama atenção porque aconteceu em uma sessão de forte valor...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "23/09/2026 - 15:17Café tenta reação em NY, mas mercado já precifica safra brasileira que ainda precisa ser confirmada",
+      "link": "https://www.noticiasagricolas.com.br/noticias/cafe/428480-cafe-tenta-reacao-em-ny-mas-mercado-ja-precifica-safra-brasileira-que-ainda-precisa-ser-confirmada.html",
+      "resumo": "Os preços do café arábica terminaram esta quarta-feira (23) com boas altas na Bolsa de Nova York, recuperando parte das perdas recentes, depois de um período de forte pressão sobre as cotações. Apesar da reação, o mercad...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
