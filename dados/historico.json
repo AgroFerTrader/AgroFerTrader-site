@@ -754,5 +754,14 @@
     "boi_gordo": 369.9,
     "cambio": null,
     "selic": null
+  },
+  {
+    "data": "2026-10-05",
+    "soja": 159.94,
+    "milho": 68.53,
+    "cafe": 1572.01,
+    "boi_gordo": 369.9,
+    "cambio": 5.2238,
+    "selic": 13.75
   }
 ]

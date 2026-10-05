@@ -1,0 +1,246 @@
+{
+  "dolar": {
+    "data": "02/10/2026",
+    "valor": 5.2238,
+    "variacao_pct": 0.30530540140938495
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "04/11/2026",
+    "valor": 13.75
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "02/10/2026",
+      "preco_reais": "159.94",
+      "variacao_pct": "-0,60%"
+    },
+    {
+      "nome": "Milho",
+      "data": "02/10/2026",
+      "preco_reais": "68.53",
+      "variacao_pct": "-0,07%"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "02/10/2026",
+      "preco_reais": "93,22",
+      "variacao_pct": "1,00%"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "02/10/2026",
+      "preco_reais": "1572.01",
+      "variacao_pct": "-0,34%"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "02/10/2026",
+      "preco_reais": "369.9",
+      "variacao_pct": "0,93%"
+    },
+    {
+      "nome": "Algodão",
+      "data": "02/10/2026",
+      "preco_reais": "420.89",
+      "variacao_pct": "-0,03%"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "02/10/2026",
+      "preco_reais": "123.37",
+      "variacao_pct": "1,77%"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Outubro/26",
+      "preco_reais": "5,1810 R$/US$",
+      "variacao_pct": "0.0",
+      "valor_numerico": 5.181,
+      "unidade": "R$/US$",
+      "vencimentos": [
+        {
+          "vencimento": "Outubro/26",
+          "valor_numerico": 5.181,
+          "valor_reais": 5.181
+        },
+        {
+          "vencimento": "Novembro/26",
+          "valor_numerico": 5.256,
+          "valor_reais": 5.256
+        }
+      ]
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Março/2027",
+      "preco_reais": "R$ 150,39 /sc 60 kg (≈ US$ 28,79 x R$ 5,2238)",
+      "variacao_pct": "0.21",
+      "valor_numerico": 28.79,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 28.79,
+          "valor_reais": 150.393202
+        }
+      ]
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Novembro/2026",
+      "preco_reais": "71,67 R$/sc 60 kg",
+      "variacao_pct": "-0.72",
+      "valor_numerico": 71.67,
+      "unidade": "R$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 71.67,
+          "valor_reais": 71.67
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 76.35,
+          "valor_reais": 76.35
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 79.15,
+          "valor_reais": 79.15
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 77.95,
+          "valor_reais": 77.95
+        },
+        {
+          "vencimento": "Julho/2027",
+          "valor_numerico": 77.64,
+          "valor_reais": 77.64
+        },
+        {
+          "vencimento": "Setembro/2027",
+          "valor_numerico": 77.8,
+          "valor_reais": 77.8
+        },
+        {
+          "vencimento": "Novembro/2027",
+          "valor_numerico": 79.87,
+          "valor_reais": 79.87
+        }
+      ]
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Outubro/2026",
+      "preco_reais": "387,85 R$/@",
+      "variacao_pct": "0.57",
+      "valor_numerico": 387.85,
+      "unidade": "R$/@",
+      "vencimentos": [
+        {
+          "vencimento": "Outubro/2026",
+          "valor_numerico": 387.85,
+          "valor_reais": 387.85
+        },
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 395.8,
+          "valor_reais": 395.8
+        },
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 395.6,
+          "valor_reais": 395.6
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 396.0,
+          "valor_reais": 396.0
+        },
+        {
+          "vencimento": "Fevereiro/2027",
+          "valor_numerico": 396.0,
+          "valor_reais": 396.0
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 395.65,
+          "valor_reais": 395.65
+        }
+      ]
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Dezembro/2026",
+      "preco_reais": "R$ 1829,90 /sc 60 kg (≈ US$ 350,30 x R$ 5,2238)",
+      "variacao_pct": "-0.34",
+      "valor_numerico": 350.3,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 350.3,
+          "valor_reais": 1829.89714
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 348.0,
+          "valor_reais": 1817.8824
+        },
+        {
+          "vencimento": "Setembro/2027",
+          "valor_numerico": 335.05,
+          "valor_reais": 1750.23419
+        }
+      ]
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Alta suave do dólar (+0.31%): efeito tende a ser discreto, mas na mesma direção de sempre - real mais fraco favorece um pouco quem exporta café, soja e afins.",
+    "Selic em 13.75% ao ano - um patamar considerado alto: o crédito rural fica mais caro e carregar estoque também, o que costuma levar produtores a vender mais rápido para gerar caixa, pressionando o preço para baixo no curto prazo. Juros altos também tendem a atrair capital estrangeiro e valorizar o real, reforçando essa pressão via câmbio.",
+    "Obs.: essas são tendências gerais - clima, quebra de safra, estoques mundiais e demanda de outros países também afetam o preço e podem superar o efeito isolado do câmbio ou da Selic."
+  ],
+  "noticias": [
+    {
+      "titulo": "Tempo e Dinheiro - com João Batista Olivi",
+      "link": "https://www.noticiasagricolas.com.br/eventos/tempo-e-dinheiro-com-joao-batista-olivi/",
+      "resumo": "[fora do filtro de comércio/economia agro] Este é o Tempo e Dinheiro, programa apresentado pelo jornalista João Batista Olivi e que conta com a participação de especialistas de diversos setores. Acompanhe as notícias sobre os bastidores do Congresso Nacional, com...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "Política e Economia04/10/2026 - 21:52Douglas Ruas e Eduardo Paes disputam o 2º turno para o governo do Rio",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/429094-douglas-ruas-e-eduardo-paes-disputam-o-2-turno-para-o-governo-do-rio.html",
+      "resumo": "[fora do filtro de comércio/economia agro] Douglas Ruas (PL) e Eduardo Paes (PSD) vão disputar o segundo turno da eleição para governador do Rio de Janeiro. Os dois candidatos foram os mais votados no primeiro turno, realizado neste domingo (4), segundo dados do ...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "Política e Economia04/10/2026 - 21:50Alagoas elege JHC governador no primeiro turno",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/429093-alagoas-elege-jhc-governador-no-primeiro-turno.html",
+      "resumo": "[fora do filtro de comércio/economia agro] JHC foi eleito governador de Alagoas neste domingo (4), no primeiro turno das eleições de 2026. O candidato do PSDB obteve 52,09% dos votos válidos, o equivalente a 873.978 votos, segundo dados do Tribunal Superior Eleit...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "Política e Economia04/10/2026 - 21:41Jerônimo é reeleito governador no primeiro turno na Bahia",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/429092-jeronimo-e-reeleito-governador-no-primeiro-turno-na-bahia.html",
+      "resumo": "[fora do filtro de comércio/economia agro] Jerônimo Rodrigues foi reeleito governador da Bahia neste domingo (4), no primeiro turno das eleições de 2026. O candidato do PT obteve 55,41% dos votos válidos, o equivalente a 4.440.938 votos, segundo dados do Tribunal...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "Política e Economia04/10/2026 - 21:33Maranhão elege Eduardo Braide governador no primeiro turno",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/429091-maranhao-elege-eduardo-braide-governador-no-primeiro-turno.html",
+      "resumo": "[fora do filtro de comércio/economia agro] Eduardo Braide foi eleito governador do Maranhão neste domingo (4), no primeiro turno das eleições de 2026. O candidato do PSD obteve 54,10% dos votos válidos, o equivalente a 2.074.520 votos, segundo dados do Tribunal S...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
