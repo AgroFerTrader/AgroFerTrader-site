@@ -1,0 +1,256 @@
+{
+  "dolar": null,
+  "erro_dolar": "HTTPSConnectionPool(host='api.bcb.gov.br', port=443): Read timed out. (read timeout=10)",
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "04/11/2026",
+    "valor": 13.75
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "09/10/2026",
+      "preco_reais": "154.75",
+      "variacao_pct": "-0,10%"
+    },
+    {
+      "nome": "Milho",
+      "data": "09/10/2026",
+      "preco_reais": "67.35",
+      "variacao_pct": "0,25%"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "09/10/2026",
+      "preco_reais": "93,76",
+      "variacao_pct": "0,11%"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "09/10/2026",
+      "preco_reais": "1531.88",
+      "variacao_pct": "-0,85%"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "09/10/2026",
+      "preco_reais": "377.8",
+      "variacao_pct": "0,40%"
+    },
+    {
+      "nome": "Algodão",
+      "data": "09/10/2026",
+      "preco_reais": "409.7",
+      "variacao_pct": "-0,92%"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "09/10/2026",
+      "preco_reais": "123.16",
+      "variacao_pct": "0,46%"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Novembro/26",
+      "preco_reais": "5,0045 R$/US$",
+      "variacao_pct": "-0.71",
+      "valor_numerico": 5.0045,
+      "unidade": "R$/US$",
+      "vencimentos": [
+        {
+          "vencimento": "Novembro/26",
+          "valor_numerico": 5.0045,
+          "valor_reais": 5.0045
+        },
+        {
+          "vencimento": "Dezembro/26",
+          "valor_numerico": 5.0315,
+          "valor_reais": 5.0315
+        }
+      ]
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Novembro/2026",
+      "preco_reais": "28,48 US$/sc 60 kg (não convertido - dólar indisponível)",
+      "variacao_pct": "0.39",
+      "valor_numerico": 28.48,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 28.48,
+          "valor_reais": null
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 28.85,
+          "valor_reais": null
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 28.89,
+          "valor_reais": null
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 29.15,
+          "valor_reais": null
+        }
+      ]
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Novembro/2026",
+      "preco_reais": "68,70 R$/sc 60 kg",
+      "variacao_pct": "-1.21",
+      "valor_numerico": 68.7,
+      "unidade": "R$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 68.7,
+          "valor_reais": 68.7
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 72.85,
+          "valor_reais": 72.85
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 76.53,
+          "valor_reais": 76.53
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 75.29,
+          "valor_reais": 75.29
+        },
+        {
+          "vencimento": "Julho/2027",
+          "valor_numerico": 74.95,
+          "valor_reais": 74.95
+        },
+        {
+          "vencimento": "Setembro/2027",
+          "valor_numerico": 75.2,
+          "valor_reais": 75.2
+        },
+        {
+          "vencimento": "Novembro/2027",
+          "valor_numerico": 77.5,
+          "valor_reais": 77.5
+        }
+      ]
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Outubro/2026",
+      "preco_reais": "388,70 R$/@",
+      "variacao_pct": "0.05",
+      "valor_numerico": 388.7,
+      "unidade": "R$/@",
+      "vencimentos": [
+        {
+          "vencimento": "Outubro/2026",
+          "valor_numerico": 388.7,
+          "valor_reais": 388.7
+        },
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 396.6,
+          "valor_reais": 396.6
+        },
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 395.05,
+          "valor_reais": 395.05
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 395.0,
+          "valor_reais": 395.0
+        },
+        {
+          "vencimento": "Fevereiro/2027",
+          "valor_numerico": 394.0,
+          "valor_reais": 394.0
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 394.8,
+          "valor_reais": 394.8
+        }
+      ]
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Dezembro/2026",
+      "preco_reais": "350,50 US$/sc 60 kg (não convertido - dólar indisponível)",
+      "variacao_pct": "-1.02",
+      "valor_numerico": 350.5,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 350.5,
+          "valor_reais": null
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 348.55,
+          "valor_reais": null
+        },
+        {
+          "vencimento": "Setembro/2027",
+          "valor_numerico": 332.0,
+          "valor_reais": null
+        }
+      ]
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Selic em 13.75% ao ano - um patamar considerado alto: o crédito rural fica mais caro e carregar estoque também, o que costuma levar produtores a vender mais rápido para gerar caixa, pressionando o preço para baixo no curto prazo. Juros altos também tendem a atrair capital estrangeiro e valorizar o real, reforçando essa pressão via câmbio.",
+    "Obs.: essas são tendências gerais - clima, quebra de safra, estoques mundiais e demanda de outros países também afetam o preço e podem superar o efeito isolado do câmbio ou da Selic."
+  ],
+  "noticias": [
+    {
+      "titulo": "09/10/2026 - 17:24Dólar volta a cair e fecha semana pós-primeiro turno abaixo de R$5",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/429489-dolar-volta-a-cair-e-fecha-semana-pos-primeiro-turno-abaixo-de-r5.html",
+      "resumo": "SÃO PAULO, 9 Out (Reuters) - O dólar voltou a ceder nesta sexta-feira e encerrou a semana pós-primeiro turno abaixo dos R$5, depois de duas novas pesquisas eleitorais mostrarem o senador Flávio Bolsonaro (PL) à frente do...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "09/10/2026 - 17:11Brasil exporta 3,9 mi de sacas de café em setembro; alta de 3% ante 2025",
+      "link": "https://www.noticiasagricolas.com.br/noticias/cafe/429486-brasil-exporta-3-9-mi-de-sacas-de-cafe-em-setembro-alta-de-3-ante-2025.html",
+      "resumo": "Segundo os dados mais recentes do boletim estatístico mensal do Conselho dos Exportadores de Café do Brasil (Cecafé), o país embarcou 3,894 milhões de sacas de 60 kg do produto em setembro, volume que implica alta de 3,1...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "09/10/2026 - 16:33Mato Grosso semeia 33% da soja e recupera ritmo de plantio na safra 2026/27",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/429478-mato-grosso-semeia-33-da-soja-e-recupera-ritmo-de-plantio-na-safra-2026-27.html",
+      "resumo": "A semeadura da soja da safra 2026/27 ganhou ritmo em Mato Grosso na primeira semana de outubro, com a retomada dos trabalhos após o atraso inicial. Até sexta-feira (9), o plantio alcançou 33,28% da área estimada, avanço ...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "09/10/2026 - 15:13Café amplia perdas em NY e fecha com queda de mais de 1%; clima da safra 2027 entra no radar",
+      "link": "https://www.noticiasagricolas.com.br/noticias/cafe/429468-cafe-amplia-perdas-em-ny-e-fecha-com-queda-de-mais-de-1-clima-da-safra-2027-entra-no-radar.html",
+      "resumo": "Os preços do café arábica voltaram a perder força na Bolsa de Nova York nesta sexta-feira (9) e encerraram a sessão com baixas superiores a 1% nos principais contratos. Depois da forte valorização registrada nos últimos ...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "09/10/2026 - 14:50El Niño forte aumenta riscos para a safra brasileira no fim de 2026, aponta StoneX",
+      "link": "https://www.noticiasagricolas.com.br/noticias/tempo-e-clima/429464-el-nino-forte-aumenta-riscos-para-a-safra-brasileira-no-fim-de-2026-aponta-stone-x.html",
+      "resumo": "O avanço de um El Niño de forte intensidade deve ampliar os desafios climáticos para o agronegócio brasileiro no último trimestre de 2026. Enquanto o excesso de chuva pode atrapalhar o plantio e as operações no campo no ...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
