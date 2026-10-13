@@ -1,0 +1,236 @@
+{
+  "dolar": {
+    "data": "09/10/2026",
+    "valor": 4.9892,
+    "variacao_pct": -0.4529220455316247
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "04/11/2026",
+    "valor": 13.75
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "09/10/2026",
+      "preco_reais": "154.75",
+      "variacao_pct": "-0,10%"
+    },
+    {
+      "nome": "Milho",
+      "data": "09/10/2026",
+      "preco_reais": "67.35",
+      "variacao_pct": "0,25%"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "09/10/2026",
+      "preco_reais": "93,76",
+      "variacao_pct": "0,11%"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "09/10/2026",
+      "preco_reais": "1531.88",
+      "variacao_pct": "-0,85%"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "09/10/2026",
+      "preco_reais": "377.8",
+      "variacao_pct": "0,40%"
+    },
+    {
+      "nome": "Algodão",
+      "data": "09/10/2026",
+      "preco_reais": "409.7",
+      "variacao_pct": "-0,92%"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "09/10/2026",
+      "preco_reais": "123.16",
+      "variacao_pct": "0,46%"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Novembro/26",
+      "preco_reais": "5,0045 R$/US$",
+      "variacao_pct": "-0.71",
+      "valor_numerico": 5.0045,
+      "unidade": "R$/US$",
+      "vencimentos": [
+        {
+          "vencimento": "Novembro/26",
+          "valor_numerico": 5.0045,
+          "valor_reais": 5.0045
+        },
+        {
+          "vencimento": "Dezembro/26",
+          "valor_numerico": 5.0315,
+          "valor_reais": 5.0315
+        }
+      ]
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Novembro/2026",
+      "preco_reais": "R$ 142,09 /sc 60 kg (≈ US$ 28,48 x R$ 4,9892)",
+      "variacao_pct": "0.39",
+      "valor_numerico": 28.48,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 28.48,
+          "valor_reais": 142.09241600000001
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 28.85,
+          "valor_reais": 143.93842
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 28.89,
+          "valor_reais": 144.137988
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 29.15,
+          "valor_reais": 145.43518
+        }
+      ]
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Novembro/2026",
+      "preco_reais": "68,69 R$/sc 60 kg",
+      "variacao_pct": "0.0",
+      "valor_numerico": 68.69,
+      "unidade": "R$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 68.69,
+          "valor_reais": 68.69
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 72.8,
+          "valor_reais": 72.8
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 76.4,
+          "valor_reais": 76.4
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 75.0,
+          "valor_reais": 75.0
+        },
+        {
+          "vencimento": "Julho/2027",
+          "valor_numerico": 74.95,
+          "valor_reais": 74.95
+        },
+        {
+          "vencimento": "Novembro/2027",
+          "valor_numerico": 77.5,
+          "valor_reais": 77.5
+        }
+      ]
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Outubro/2026",
+      "preco_reais": "388,30 R$/@",
+      "variacao_pct": "0.0",
+      "valor_numerico": 388.3,
+      "unidade": "R$/@",
+      "vencimentos": [
+        {
+          "vencimento": "Outubro/2026",
+          "valor_numerico": 388.3,
+          "valor_reais": 388.3
+        },
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 396.8,
+          "valor_reais": 396.8
+        },
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 394.9,
+          "valor_reais": 394.9
+        }
+      ]
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Dezembro/2026",
+      "preco_reais": "R$ 1746,22 /sc 60 kg (≈ US$ 350,00 x R$ 4,9892)",
+      "variacao_pct": "0.0",
+      "valor_numerico": 350.0,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 350.0,
+          "valor_reais": 1746.22
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 348.55,
+          "valor_reais": 1738.98566
+        }
+      ]
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Dólar em leve queda (-0.45%): o real um pouco mais valorizado tende a reduzir de forma discreta o incentivo à exportação, pressionando levemente o preço interno de commodities cotadas em dólar.",
+    "Juros em 13.75% ao ano seguem em patamar alto - carregar estoque fica caro, o que empurra produtores a vender mais rápido, e o diferencial de juros atrai capital estrangeiro, valorizando o real. Ambos tendem a pesar contra o preço em reais das commodities de exportação.",
+    "Obs.: essas são tendências gerais - clima, quebra de safra, estoques mundiais e demanda de outros países também afetam o preço e podem superar o efeito isolado do câmbio ou da Selic."
+  ],
+  "noticias": [
+    {
+      "titulo": "Política e Economia12/10/2026 - 17:03Dólar mantém maior cotação em 18 meses diante de tensões no Golfo e inflação nos EUA",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/429530-dolar-mantem-maior-cotacao-em-18-meses-diante-de-tensoes-no-golfo-e-inflacao-nos-eua.html",
+      "resumo": "NOVA YORK, 12 Out (Reuters) - O dólar se manteve na maior cotação dos últimos 18 meses nesta segunda-feira, apoiado pela demanda por ativos de refúgio, à medida que ataques se intensificaram no Oriente Médio no fim de se...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "Política e Economia12/10/2026 - 16:51Ataques mantêm aeroporto de capital saudita fechado esta semana",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/429527-ataques-mantem-aeroporto-de-capital-saudita-fechado-esta-semana.html",
+      "resumo": "12 Out (Reuters) - Autoridades sauditas prorrogaram o fechamento do aeroporto internacional de Riad até sábado e companhias aéreas cancelaram voos depois que os ataques contínuos dos houthis do Iêmen, alinhados ao Irã, e...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "Soja12/10/2026 - 16:31Soja fecha no vermelho em Chicago com mercado digerindo safra maior nos EUA",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/429526-soja-fecha-no-vermelho-em-chicago-com-mercado-digerindo-safra-maior-nos-eua.html",
+      "resumo": "O mercado da soja encerrou esta segunda-feira (12) em queda na Bolsa de Chicago, em uma sessão de ajustes após os números divulgados pelo USDA (Departamento de Agricultura dos Estados Unidos) na última sexta-feira (9). O...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "12/10/2026 - 14:29Trump defende acordo de diesel com Rússia enquanto parlamentares de ambos partidos reclamam",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/429520-trump-defende-acordo-de-diesel-com-russia-enquanto-parlamentares-de-ambos-partidos-reclamam.html",
+      "resumo": "WASHINGTON, 12 Out (Reuters) - O presidente Donald Trump defendeu nesta segunda-feira o acordo de fornecimento de óleo diesel que firmou com a Rússia, enquanto parlamentares de ambos os partidos reclamavam que o acordo p...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "12/10/2026 - 11:36China impõe sanções a ministros do Paraguai e de Belize por relações com Taiwan",
+      "link": "https://www.noticiasagricolas.com.br/noticias/agronegocio/429515-china-impoe-sancoes-a-ministros-do-paraguai-e-de-belize-por-relacoes-com-taiwan.html",
+      "resumo": "PEQUIM/TAIPÉ, 12 Out (Reuters) - A China impôs nesta segunda-feira sanções ao ministro das Comunicações do Paraguai e ao ministro das Relações Exteriores de Belize devido a laços de seus países com Taiwan, afirmando que ...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
