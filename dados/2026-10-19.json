@@ -1,0 +1,241 @@
+{
+  "dolar": null,
+  "erro_dolar": "HTTPSConnectionPool(host='api.bcb.gov.br', port=443): Read timed out. (read timeout=10)",
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": null,
+  "erro_selic": "HTTPSConnectionPool(host='api.bcb.gov.br', port=443): Read timed out. (read timeout=10)",
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "16/10/2026",
+      "preco_reais": "154.61",
+      "variacao_pct": "-0,06%"
+    },
+    {
+      "nome": "Milho",
+      "data": "16/10/2026",
+      "preco_reais": "64.85",
+      "variacao_pct": "0,06%"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "16/10/2026",
+      "preco_reais": "94,27",
+      "variacao_pct": "-0,19%"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "16/10/2026",
+      "preco_reais": "1601.25",
+      "variacao_pct": "1,52%"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "16/10/2026",
+      "preco_reais": "380.7",
+      "variacao_pct": "0,13%"
+    },
+    {
+      "nome": "Algodão",
+      "data": "16/10/2026",
+      "preco_reais": "407.41",
+      "variacao_pct": "0,23%"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "16/10/2026",
+      "preco_reais": "125.74",
+      "variacao_pct": "0,85%"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Novembro/26",
+      "preco_reais": "5,0800 R$/US$",
+      "variacao_pct": "-0.28",
+      "valor_numerico": 5.08,
+      "unidade": "R$/US$",
+      "vencimentos": [
+        {
+          "vencimento": "Novembro/26",
+          "valor_numerico": 5.08,
+          "valor_reais": 5.08
+        },
+        {
+          "vencimento": "Dezembro/26",
+          "valor_numerico": 5.1295,
+          "valor_reais": 5.1295
+        }
+      ]
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Novembro/2026",
+      "preco_reais": "27,82 US$/sc 60 kg (não convertido - dólar indisponível)",
+      "variacao_pct": "-0.11",
+      "valor_numerico": 27.82,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 27.82,
+          "valor_reais": null
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 28.08,
+          "valor_reais": null
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 28.3,
+          "valor_reais": null
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 28.4,
+          "valor_reais": null
+        }
+      ]
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Novembro/2026",
+      "preco_reais": "66,57 R$/sc 60 kg",
+      "variacao_pct": "-0.8",
+      "valor_numerico": 66.57,
+      "unidade": "R$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 66.57,
+          "valor_reais": 66.57
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 70.92,
+          "valor_reais": 70.92
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 75.96,
+          "valor_reais": 75.96
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 74.69,
+          "valor_reais": 74.69
+        },
+        {
+          "vencimento": "Julho/2027",
+          "valor_numerico": 74.57,
+          "valor_reais": 74.57
+        },
+        {
+          "vencimento": "Setembro/2027",
+          "valor_numerico": 75.41,
+          "valor_reais": 75.41
+        },
+        {
+          "vencimento": "Novembro/2027",
+          "valor_numerico": 77.88,
+          "valor_reais": 77.88
+        }
+      ]
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Outubro/2026",
+      "preco_reais": "389,30 R$/@",
+      "variacao_pct": "0.1",
+      "valor_numerico": 389.3,
+      "unidade": "R$/@",
+      "vencimentos": [
+        {
+          "vencimento": "Outubro/2026",
+          "valor_numerico": 389.3,
+          "valor_reais": 389.3
+        },
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 397.95,
+          "valor_reais": 397.95
+        },
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 396.75,
+          "valor_reais": 396.75
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 395.0,
+          "valor_reais": 395.0
+        },
+        {
+          "vencimento": "Fevereiro/2027",
+          "valor_numerico": 395.35,
+          "valor_reais": 395.35
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 396.1,
+          "valor_reais": 396.1
+        }
+      ]
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Dezembro/2026",
+      "preco_reais": "375,95 US$/sc 60 kg (não convertido - dólar indisponível)",
+      "variacao_pct": "2.16",
+      "valor_numerico": 375.95,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 375.95,
+          "valor_reais": null
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 367.55,
+          "valor_reais": null
+        }
+      ]
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Obs.: nenhuma dessas relações é garantida - clima, oferta mundial e demanda por vezes pesam mais que câmbio e juros na formação do preço final."
+  ],
+  "noticias": [
+    {
+      "titulo": "Política e Economia16/10/2026 - 18:05Zelenskiy critica acordo entre EUA e Rússia sobre diesel",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/429838-zelenskiy-critica-acordo-entre-eua-e-russia-sobre-diesel.html",
+      "resumo": "16 Out (Reuters) - O presidente ucraniano Volodymyr Zelenskiy condenou, nesta sexta-feira, o acordo firmado pelo presidente dos Estados Unidos, Donald Trump, com a Rússia envolvendo o diesel, classificou a posição de Mos...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "16/10/2026 - 17:16Dólar tem leve baixa no dia, mas fecha semana com alta de 1,75% com eleição no foco",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/429833-dolar-tem-leve-baixa-no-dia-mas-fecha-semana-com-alta-de-175-com-eleicao-no-foco.html",
+      "resumo": "SÃO PAULO, 16 Out (Reuters) - O dólar oscilou em margens estreitas nesta sexta-feira e fechou a sessão com leve baixa no Brasil, influenciado por um lado pelas novas pesquisas eleitorais, mostrando empate técnico na disp...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "16/10/2026 - 15:58UE vai propor restrições às importações de outros setores chineses, diz chefe da UE",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/429826-ue-vai-propor-restricoes-as-importacoes-de-outros-setores-chineses-diz-chefe-da-ue.html",
+      "resumo": "BRUXELAS, 16 Out (Reuters) - A Comissão Europeia proporá restrições às importações da China que vão além das medidas de salvaguarda acordadas com Pequim para reduzir pela metade as remessas de carros híbridos chineses, a...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "16/10/2026 - 14:40Melancia/Cepea: Após atrasos por conta das chuvas, safra paulista tem início",
+      "link": "https://www.noticiasagricolas.com.br/noticias/hortifruti/429805-melancia-cepea-apos-atrasos-por-conta-das-chuvas-safra-paulista-tem-inicio.html",
+      "resumo": "As regiões de Marília e Oscar Bressane (SP) iniciaram a colheita da safra principal deste ano. A atividade estava prevista para começar na primeira semana de outubro, no entanto, após a alta incidência de chuvas no estad...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
