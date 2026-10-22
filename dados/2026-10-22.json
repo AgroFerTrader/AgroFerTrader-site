@@ -1,0 +1,261 @@
+{
+  "dolar": {
+    "data": "21/10/2026",
+    "valor": 5.0277,
+    "variacao_pct": 0.27323494216194744
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "04/11/2026",
+    "valor": 13.75
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "21/10/2026",
+      "preco_reais": "152.13",
+      "variacao_pct": "-0,83%"
+    },
+    {
+      "nome": "Milho",
+      "data": "21/10/2026",
+      "preco_reais": "64.3",
+      "variacao_pct": "-0,06%"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "21/10/2026",
+      "preco_reais": "93,60",
+      "variacao_pct": "-0,21%"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "21/10/2026",
+      "preco_reais": "1620.92",
+      "variacao_pct": "0,67%"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "21/10/2026",
+      "preco_reais": "380.4",
+      "variacao_pct": "-0,01%"
+    },
+    {
+      "nome": "Algodão",
+      "data": "21/10/2026",
+      "preco_reais": "407.14",
+      "variacao_pct": "-0,07%"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "21/10/2026",
+      "preco_reais": "125.59",
+      "variacao_pct": "0,06%"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Novembro/26",
+      "preco_reais": "5,0330 R$/US$",
+      "variacao_pct": "0.13",
+      "valor_numerico": 5.033,
+      "unidade": "R$/US$",
+      "vencimentos": [
+        {
+          "vencimento": "Novembro/26",
+          "valor_numerico": 5.033,
+          "valor_reais": 5.033
+        },
+        {
+          "vencimento": "Dezembro/26",
+          "valor_numerico": 5.0600000000000005,
+          "valor_reais": 5.0600000000000005
+        }
+      ]
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Novembro/2026",
+      "preco_reais": "R$ 138,11 /sc 60 kg (≈ US$ 27,47 x R$ 5,0277)",
+      "variacao_pct": "-0.07",
+      "valor_numerico": 27.47,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 27.47,
+          "valor_reais": 138.110919
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 27.72,
+          "valor_reais": 139.367844
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 27.94,
+          "valor_reais": 140.473938
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 28.09,
+          "valor_reais": 141.228093
+        }
+      ]
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Novembro/2026",
+      "preco_reais": "65,74 R$/sc 60 kg",
+      "variacao_pct": "-0.33",
+      "valor_numerico": 65.74,
+      "unidade": "R$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 65.74,
+          "valor_reais": 65.74
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 70.22,
+          "valor_reais": 70.22
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 75.19,
+          "valor_reais": 75.19
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 74.36,
+          "valor_reais": 74.36
+        },
+        {
+          "vencimento": "Julho/2027",
+          "valor_numerico": 74.4,
+          "valor_reais": 74.4
+        },
+        {
+          "vencimento": "Setembro/2027",
+          "valor_numerico": 75.12,
+          "valor_reais": 75.12
+        },
+        {
+          "vencimento": "Novembro/2027",
+          "valor_numerico": 77.56,
+          "valor_reais": 77.56
+        }
+      ]
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Outubro/2026",
+      "preco_reais": "384,30 R$/@",
+      "variacao_pct": "-0.18",
+      "valor_numerico": 384.3,
+      "unidade": "R$/@",
+      "vencimentos": [
+        {
+          "vencimento": "Outubro/2026",
+          "valor_numerico": 384.3,
+          "valor_reais": 384.3
+        },
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 393.7,
+          "valor_reais": 393.7
+        },
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 394.1,
+          "valor_reais": 394.1
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 394.3,
+          "valor_reais": 394.3
+        },
+        {
+          "vencimento": "Fevereiro/2027",
+          "valor_numerico": 393.75,
+          "valor_reais": 393.75
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 393.95,
+          "valor_reais": 393.95
+        },
+        {
+          "vencimento": "GO RD",
+          "valor_numerico": 392.5,
+          "valor_reais": 392.5
+        }
+      ]
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Dezembro/2026",
+      "preco_reais": "R$ 1955,78 /sc 60 kg (≈ US$ 389,00 x R$ 5,0277)",
+      "variacao_pct": "1.67",
+      "valor_numerico": 389.0,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 389.0,
+          "valor_reais": 1955.7753
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 380.95,
+          "valor_reais": 1915.3023150000001
+        }
+      ]
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Dólar de lado (+0.27%): num dia como esse, vale mais olhar para os fundamentos de cada mercado (clima, safra, estoques) do que para o câmbio.",
+    "Com a Selic em 13.75% ao ano, o custo de financiamento no campo segue elevado - isso tende a acelerar vendas (para gerar caixa) e, por atrair capital estrangeiro, também tende a fortalecer o real. Os dois efeitos juntos costumam pressionar o preço das commodities exportadas para baixo.",
+    "Obs.: essas são tendências gerais - clima, quebra de safra, estoques mundiais e demanda de outros países também afetam o preço e podem superar o efeito isolado do câmbio ou da Selic."
+  ],
+  "noticias": [
+    {
+      "titulo": "Política e Economia17:19Dólar tem leve variação positiva após pesquisa mostrar distância menor entre Flávio e Lula",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/430081-dolar-tem-leve-variacao-positiva-apos-pesquisa-mostrar-distancia-menor-entre-flavio-e-lula.html",
+      "resumo": "SÃO PAULO, 21 Out (Reuters) - Após recuar nas três sessões anteriores, o dólar fechou a quarta-feira com leve variação positiva ante o real, após uma nova pesquisa da Quaest mostrar o senador Flávio Bolsonaro (PL) numeri...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "Algodão16:55Anea eleva projeções de safra de algodão do Brasil e vê exportações em níveis recordes",
+      "link": "https://www.noticiasagricolas.com.br/noticias/algodao/430080-anea-eleva-projecoes-de-safra-de-algodao-do-brasil-e-ve-exportacoes-em-niveis-recordes.html",
+      "resumo": "SÃO PAULO, 21 Out (Reuters) - A Associação Nacional dos Exportadores de Algodão (Anea) revisou para cima a safra de algodão do Brasil colhida neste ano e também elevou a projeção para a temporada 2026/27, citando uma pos...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "21/10/2026 - 15:32Exportação de milho do Brasil para Europa deve saltar em outubro, diz corretora",
+      "link": "https://www.noticiasagricolas.com.br/noticias/agronegocio/430074-exportacao-de-milho-do-brasil-para-europa-deve-saltar-em-outubro-diz-corretora.html",
+      "resumo": "SÃO PAULO, 21 Out (Reuters) - A exportação de milho do Brasil para países da Europa deverá saltar para 1,65 milhão de toneladas, ante cerca de 200 mil no mesmo período do ano passado, à medida que o cereal brasileiro gan...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "21/10/2026 - 15:18Importação de etanol pode ganhar força no início de 2027 com alta dos custos internos",
+      "link": "https://www.noticiasagricolas.com.br/noticias/biocombustivel/430063-importacao-de-etanol-pode-ganhar-forca-no-inicio-de-2027-com-alta-dos-custos-internos.html",
+      "resumo": "A importação de etanol anidro pelo Brasil pode ganhar força no primeiro trimestre de 2027, diante da perspectiva de encarecimento do produto nacional e de preços mais competitivos do biocombustível norte-americano. A ava...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "21/10/2026 - 15:16Arábia Saudita e Malásia também suspendem importações de frango do Brasil",
+      "link": "https://www.noticiasagricolas.com.br/noticias/carnes/430060-arabia-saudita-e-malasia-tambem-suspendem-importacoes-de-frango-do-brasil.html",
+      "resumo": "Ministério da Agricultura e Pecuária (Mapa) atualiza as informações sobre as restrições temporárias impostas por parceiros comerciais às exportações brasileiras de produtos avícolas, após a confirmação de um foco da doen...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
