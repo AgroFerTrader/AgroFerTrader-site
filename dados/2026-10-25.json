@@ -1,0 +1,250 @@
+{
+  "dolar": {
+    "data": "23/10/2026",
+    "valor": 5.0377,
+    "variacao_pct": -0.011908778754728577
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "04/11/2026",
+    "valor": 13.75
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "23/10/2026",
+      "preco_reais": "152.41",
+      "variacao_pct": "0,32%"
+    },
+    {
+      "nome": "Milho",
+      "data": "23/10/2026",
+      "preco_reais": "64.27",
+      "variacao_pct": "0,05%"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "23/10/2026",
+      "preco_reais": "93,62",
+      "variacao_pct": "-0,02%"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "23/10/2026",
+      "preco_reais": "1601.95",
+      "variacao_pct": "-1,11%"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "23/10/2026",
+      "preco_reais": "381.4",
+      "variacao_pct": "0,22%"
+    },
+    {
+      "nome": "Algodão",
+      "data": "23/10/2026",
+      "preco_reais": "404.71",
+      "variacao_pct": "0,10%"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "23/10/2026",
+      "preco_reais": "125.44",
+      "variacao_pct": "-0,43%"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Novembro/26",
+      "preco_reais": "4,9745 R$/US$",
+      "variacao_pct": "-1.39",
+      "valor_numerico": 4.9745,
+      "unidade": "R$/US$",
+      "vencimentos": [
+        {
+          "vencimento": "Novembro/26",
+          "valor_numerico": 4.9745,
+          "valor_reais": 4.9745
+        },
+        {
+          "vencimento": "Dezembro/26",
+          "valor_numerico": 5.011,
+          "valor_reais": 5.011
+        }
+      ]
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Novembro/2026",
+      "preco_reais": "R$ 139,59 /sc 60 kg (≈ US$ 27,71 x R$ 5,0377)",
+      "variacao_pct": "0.33",
+      "valor_numerico": 27.71,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 27.71,
+          "valor_reais": 139.59466700000002
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 27.96,
+          "valor_reais": 140.854092
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 28.35,
+          "valor_reais": 142.81879500000002
+        }
+      ]
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Novembro/2026",
+      "preco_reais": "65,53 R$/sc 60 kg",
+      "variacao_pct": "0.08",
+      "valor_numerico": 65.53,
+      "unidade": "R$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 65.53,
+          "valor_reais": 65.53
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 70.08,
+          "valor_reais": 70.08
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 75.34,
+          "valor_reais": 75.34
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 74.69,
+          "valor_reais": 74.69
+        },
+        {
+          "vencimento": "Julho/2027",
+          "valor_numerico": 73.96,
+          "valor_reais": 73.96
+        },
+        {
+          "vencimento": "Setembro/2027",
+          "valor_numerico": 75.03,
+          "valor_reais": 75.03
+        },
+        {
+          "vencimento": "Novembro/2027",
+          "valor_numerico": 77.3,
+          "valor_reais": 77.3
+        }
+      ]
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Outubro/2026",
+      "preco_reais": "384,55 R$/@",
+      "variacao_pct": "0.4",
+      "valor_numerico": 384.55,
+      "unidade": "R$/@",
+      "vencimentos": [
+        {
+          "vencimento": "Outubro/2026",
+          "valor_numerico": 384.55,
+          "valor_reais": 384.55
+        },
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 392.45,
+          "valor_reais": 392.45
+        },
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 392.95,
+          "valor_reais": 392.95
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 393.05,
+          "valor_reais": 393.05
+        },
+        {
+          "vencimento": "Fevereiro/2027",
+          "valor_numerico": 393.5,
+          "valor_reais": 393.5
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 394.4,
+          "valor_reais": 394.4
+        },
+        {
+          "vencimento": "GO RD",
+          "valor_numerico": 392.6,
+          "valor_reais": 392.6
+        }
+      ]
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Dezembro/2026",
+      "preco_reais": "R$ 1916,84 /sc 60 kg (≈ US$ 380,50 x R$ 5,0377)",
+      "variacao_pct": "-1.68",
+      "valor_numerico": 380.5,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 380.5,
+          "valor_reais": 1916.84485
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 369.35,
+          "valor_reais": 1860.6744950000002
+        }
+      ]
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Câmbio sem grandes variações (-0.01%): não é o dólar que deve explicar os movimentos de preço agrícola hoje, e sim fatores de oferta e demanda específicos de cada commodity.",
+    "Selic em 13.75% ao ano - um patamar considerado alto: o crédito rural fica mais caro e carregar estoque também, o que costuma levar produtores a vender mais rápido para gerar caixa, pressionando o preço para baixo no curto prazo. Juros altos também tendem a atrair capital estrangeiro e valorizar o real, reforçando essa pressão via câmbio.",
+    "Obs.: essas são tendências gerais - clima, quebra de safra, estoques mundiais e demanda de outros países também afetam o preço e podem superar o efeito isolado do câmbio ou da Selic."
+  ],
+  "noticias": [
+    {
+      "titulo": "Política e Economia23/10/2026 - 17:25Dólar cai abaixo dos R$5 com apostas de vitória de Flávio sobre Lula",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/430235-dolar-cai-abaixo-dos-r5-com-apostas-de-vitoria-de-flavio-sobre-lula.html",
+      "resumo": "SÃO PAULO, 23 Out (Reuters) - Após se manter próximo da estabilidade durante a maior parte da sessão, o dólar fechou a sexta-feira em queda de quase 1% e abaixo dos R$5, com investidores operando sob a perspectiva de vit...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "23/10/2026 - 16:11Moagem de cana no Centro-Sul cresce 1,8%, mas produção de açúcar cai 10,3% na safra 2026/27",
+      "link": "https://www.noticiasagricolas.com.br/noticias/sucroenergetico/430223-moagem-de-cana-no-centro-sul-cresce-1-8-mas-producao-de-acucar-cai-10-3-na-safra-2026-27.html",
+      "resumo": "A moagem de cana-de-açúcar no Centro-Sul do Brasil alcançou 412,371 milhões de toneladas até 1º de setembro da safra 2026/27 (abril de 2026 a março de 2027), volume 1,81% superior ao registrado em igual período do ciclo ...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "23/10/2026 - 15:36Brasil deve importar até 10 milhões de toneladas de trigo em 2027",
+      "link": "https://www.noticiasagricolas.com.br/noticias/trigo/430217-brasil-deve-importar-ate-10-milhoes-de-toneladas-de-trigo-em-2027.html",
+      "resumo": "A redução da produção brasileira de trigo e a maior dependência das importações estão entre os principais desafios para o abastecimento nacional no fechamento de 2026 e ao longo de 2027. O cenário foi discutido por espec...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "23/10/2026 - 14:49Primeira carga de diesel russo do acordo Putin-Trump está a caminho dos EUA",
+      "link": "https://www.noticiasagricolas.com.br/noticias/petroleo/430215-primeira-carga-de-diesel-russo-do-acordo-putin-trump-esta-a-caminho-dos-eua.html",
+      "resumo": "23 Out (Reuters) - O primeiro carregamento de diesel russo com destino aos EUA, após um acordo surpresa firmado entre Moscou e o presidente dos EUA, Donald Trump, está a bordo de um navio-tanque rumo a Nova York, segundo...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
