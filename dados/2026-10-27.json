@@ -1,0 +1,271 @@
+{
+  "dolar": {
+    "data": "26/10/2026",
+    "valor": 5.5007,
+    "variacao_pct": 9.190702106119858
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "04/11/2026",
+    "valor": 13.75
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "26/10/2026",
+      "preco_reais": "155.55",
+      "variacao_pct": "2,06%"
+    },
+    {
+      "nome": "Milho",
+      "data": "26/10/2026",
+      "preco_reais": "64.24",
+      "variacao_pct": "-0,05%"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "26/10/2026",
+      "preco_reais": "93,81",
+      "variacao_pct": "0,21%"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "26/10/2026",
+      "preco_reais": "1627.46",
+      "variacao_pct": "1,59%"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "26/10/2026",
+      "preco_reais": "381.4",
+      "variacao_pct": "0,00%"
+    },
+    {
+      "nome": "Algodão",
+      "data": "26/10/2026",
+      "preco_reais": "406.11",
+      "variacao_pct": "0,35%"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "26/10/2026",
+      "preco_reais": "127.05",
+      "variacao_pct": "1,28%"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Novembro/26",
+      "preco_reais": "5,3855 R$/US$",
+      "variacao_pct": "7.51",
+      "valor_numerico": 5.3855,
+      "unidade": "R$/US$",
+      "vencimentos": [
+        {
+          "vencimento": "Novembro/26",
+          "valor_numerico": 5.3855,
+          "valor_reais": 5.3855
+        },
+        {
+          "vencimento": "Dezembro/26",
+          "valor_numerico": 5.423,
+          "valor_reais": 5.423
+        }
+      ]
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Novembro/2026",
+      "preco_reais": "R$ 150,33 /sc 60 kg (≈ US$ 27,33 x R$ 5,5007)",
+      "variacao_pct": "-1.37",
+      "valor_numerico": 27.33,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 27.33,
+          "valor_reais": 150.33413099999999
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 27.65,
+          "valor_reais": 152.094355
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 27.79,
+          "valor_reais": 152.864453
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 27.97,
+          "valor_reais": 153.854579
+        },
+        {
+          "vencimento": "Julho/2027",
+          "valor_numerico": 28.12,
+          "valor_reais": 154.679684
+        }
+      ]
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Novembro/2026",
+      "preco_reais": "66,99 R$/sc 60 kg",
+      "variacao_pct": "2.23",
+      "valor_numerico": 66.99,
+      "unidade": "R$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 66.99,
+          "valor_reais": 66.99
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 71.83,
+          "valor_reais": 71.83
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 77.34,
+          "valor_reais": 77.34
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 76.65,
+          "valor_reais": 76.65
+        },
+        {
+          "vencimento": "Julho/2027",
+          "valor_numerico": 75.7,
+          "valor_reais": 75.7
+        },
+        {
+          "vencimento": "Setembro/2027",
+          "valor_numerico": 76.45,
+          "valor_reais": 76.45
+        },
+        {
+          "vencimento": "Novembro/2027",
+          "valor_numerico": 78.81,
+          "valor_reais": 78.81
+        }
+      ]
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Outubro/2026",
+      "preco_reais": "384,50 R$/@",
+      "variacao_pct": "-0.01",
+      "valor_numerico": 384.5,
+      "unidade": "R$/@",
+      "vencimentos": [
+        {
+          "vencimento": "Outubro/2026",
+          "valor_numerico": 384.5,
+          "valor_reais": 384.5
+        },
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 397.0,
+          "valor_reais": 397.0
+        },
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 396.95,
+          "valor_reais": 396.95
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 396.75,
+          "valor_reais": 396.75
+        },
+        {
+          "vencimento": "Fevereiro/2027",
+          "valor_numerico": 396.45,
+          "valor_reais": 396.45
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 395.8,
+          "valor_reais": 395.8
+        },
+        {
+          "vencimento": "GO RD",
+          "valor_numerico": 394.05,
+          "valor_reais": 394.05
+        }
+      ]
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Dezembro/2026",
+      "preco_reais": "R$ 2031,96 /sc 60 kg (≈ US$ 369,40 x R$ 5,5007)",
+      "variacao_pct": "-2.92",
+      "valor_numerico": 369.4,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 369.4,
+          "valor_reais": 2031.95858
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 356.8,
+          "valor_reais": 1962.64976
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 353.0,
+          "valor_reais": 1941.7471
+        }
+      ]
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "O dólar disparou hoje (+9.19%). Historicamente, altas dessa magnitude pressionam com força o preço interno de commodities como café e soja para cima, por conta do efeito direto sobre a paridade de exportação.",
+    "Selic em 13.75% ao ano - um patamar considerado alto: o crédito rural fica mais caro e carregar estoque também, o que costuma levar produtores a vender mais rápido para gerar caixa, pressionando o preço para baixo no curto prazo. Juros altos também tendem a atrair capital estrangeiro e valorizar o real, reforçando essa pressão via câmbio.",
+    "Obs.: vale lembrar que essas são relações históricas, não regras fixas - fatores como clima, safra e demanda internacional podem se sobrepor facilmente ao efeito do câmbio ou dos juros."
+  ],
+  "noticias": [
+    {
+      "titulo": "Política e Economia26/10/2026 - 18:04Dólar tem maior alta diária em 23 anos após vitória de Lula e fecha em R$5,4066",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/430354-dolar-tem-maior-alta-diaria-em-23-anos-apos-vitoria-de-lula-e-fecha-em-r54066.html",
+      "resumo": "SÃO PAULO, 26 Out (Reuters) - O dólar à vista disparou 8,36% frente ao real nesta segunda-feira, maior alta em 23 anos, com o mercado reagindo negativamente à vitória do presidente Luiz Inácio Lula da Silva (PT) sobre o ...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "26/10/2026 - 15:53Faturamento diário das exportações de algodão cresce 27,8% até a 4ª semana de outubro",
+      "link": "https://www.noticiasagricolas.com.br/noticias/algodao/430341-faturamento-diario-das-exportacoes-de-algodao-cresce-27-8-ate-a-4-semana-de-outubro.html",
+      "resumo": "As exportações brasileiras de algodão registraram faturamento médio diário de US$ 27,705 milhões nos primeiros 16 dias úteis de outubro de 2026, alta de 27,8% em relação à média de US$ 21,684 milhões observada em todo o ...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "26/10/2026 - 15:42Milho fecha com altas de até 2,65% na B3 impulsionado pelo dólar, enquanto Chicago termina em queda",
+      "link": "https://www.noticiasagricolas.com.br/noticias/milho/430339-milho-fecha-segunda-feira-em-queda-em-chicago-mas-reduz-perdas-no-decorrer-do-pregao.html",
+      "resumo": "Os preços futuros do milho encerraram a segunda-feira (26) em direções opostas nas bolsas brasileira e norte-americana. Enquanto Chicago terminou com perdas moderadas, os contratos negociados na B3 registraram valorizaçõ...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "26/10/2026 - 15:39Soja fecha segunda-feira com queda superior a 1% em Chicago após disparada do dólar no Brasil",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/430338-soja-fecha-segunda-feira-com-queda-superior-a-1-em-chicago-apos-disparada-do-dolar-no-brasil.html",
+      "resumo": "Os preços futuros da soja encerraram a segunda-feira (26) em queda na Bolsa de Chicago (CBOT), em um pregão marcado pela forte desvalorização do real após o segundo turno das eleições presidenciais brasileiras. Embora te...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "26/10/2026 - 15:26Adido americano projeta safra de milho da Argentina 7 milhões de toneladas acima do USDA e exportações de 43 milhões",
+      "link": "https://www.noticiasagricolas.com.br/noticias/milho/430335-adido-americano-projeta-safra-de-milho-da-argentina-7-milhoes-de-toneladas-acima-do-usda-e-exportacoes-de-43-milhoes.html",
+      "resumo": "A Argentina poderá produzir 62 milhões de toneladas de milho na safra 2026/27, volume 7 milhões de toneladas superior à estimativa oficial do Departamento de Agricultura dos Estados Unidos (USDA), de 55 milhões. A projeç...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
