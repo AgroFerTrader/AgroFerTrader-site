@@ -1,0 +1,265 @@
+{
+  "dolar": {
+    "data": "28/10/2026",
+    "valor": 5.342,
+    "variacao_pct": 0.13871705469950193
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "04/11/2026",
+    "valor": 13.75
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "28/10/2026",
+      "preco_reais": "157.42",
+      "variacao_pct": "0,01%"
+    },
+    {
+      "nome": "Milho",
+      "data": "28/10/2026",
+      "preco_reais": "64.73",
+      "variacao_pct": "-0,22%"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "28/10/2026",
+      "preco_reais": "94,28",
+      "variacao_pct": "0,11%"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "28/10/2026",
+      "preco_reais": "1593.89",
+      "variacao_pct": "-1,01%"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "28/10/2026",
+      "preco_reais": "389.05",
+      "variacao_pct": "0,71%"
+    },
+    {
+      "nome": "Algodão",
+      "data": "28/10/2026",
+      "preco_reais": "411.34",
+      "variacao_pct": "0,67%"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "28/10/2026",
+      "preco_reais": "128.74",
+      "variacao_pct": "0,00%"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Novembro/26",
+      "preco_reais": "5,3490 R$/US$",
+      "variacao_pct": "-0.03",
+      "valor_numerico": 5.349,
+      "unidade": "R$/US$",
+      "vencimentos": [
+        {
+          "vencimento": "Novembro/26",
+          "valor_numerico": 5.349,
+          "valor_reais": 5.349
+        },
+        {
+          "vencimento": "Dezembro/26",
+          "valor_numerico": 5.3835,
+          "valor_reais": 5.3835
+        }
+      ]
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Novembro/2026",
+      "preco_reais": "R$ 144,13 /sc 60 kg (≈ US$ 26,98 x R$ 5,3420)",
+      "variacao_pct": "-0.52",
+      "valor_numerico": 26.98,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 26.98,
+          "valor_reais": 144.12716
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 27.25,
+          "valor_reais": 145.56949999999998
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 27.62,
+          "valor_reais": 147.54604
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 27.7,
+          "valor_reais": 147.9734
+        }
+      ]
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Novembro/2026",
+      "preco_reais": "66,80 R$/sc 60 kg",
+      "variacao_pct": "0.68",
+      "valor_numerico": 66.8,
+      "unidade": "R$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 66.8,
+          "valor_reais": 66.8
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 70.56,
+          "valor_reais": 70.56
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 75.2,
+          "valor_reais": 75.2
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 74.62,
+          "valor_reais": 74.62
+        },
+        {
+          "vencimento": "Julho/2027",
+          "valor_numerico": 74.52,
+          "valor_reais": 74.52
+        },
+        {
+          "vencimento": "Setembro/2027",
+          "valor_numerico": 75.36,
+          "valor_reais": 75.36
+        },
+        {
+          "vencimento": "Novembro/2027",
+          "valor_numerico": 77.6,
+          "valor_reais": 77.6
+        }
+      ]
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Outubro/2026",
+      "preco_reais": "387,00 R$/@",
+      "variacao_pct": "0.51",
+      "valor_numerico": 387.0,
+      "unidade": "R$/@",
+      "vencimentos": [
+        {
+          "vencimento": "Outubro/2026",
+          "valor_numerico": 387.0,
+          "valor_reais": 387.0
+        },
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 405.6,
+          "valor_reais": 405.6
+        },
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 403.8,
+          "valor_reais": 403.8
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 401.2,
+          "valor_reais": 401.2
+        },
+        {
+          "vencimento": "Fevereiro/2027",
+          "valor_numerico": 402.2,
+          "valor_reais": 402.2
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 401.5,
+          "valor_reais": 401.5
+        },
+        {
+          "vencimento": "GO RD",
+          "valor_numerico": 399.65,
+          "valor_reais": 399.65
+        }
+      ]
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Dezembro/2026",
+      "preco_reais": "R$ 1896,41 /sc 60 kg (≈ US$ 355,00 x R$ 5,3420)",
+      "variacao_pct": "-1.53",
+      "valor_numerico": 355.0,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 355.0,
+          "valor_reais": 1896.4099999999999
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 344.5,
+          "valor_reais": 1840.319
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 341.5,
+          "valor_reais": 1824.293
+        },
+        {
+          "vencimento": "Setembro/2027",
+          "valor_numerico": 323.0,
+          "valor_reais": 1725.466
+        }
+      ]
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Câmbio sem grandes variações (+0.14%): não é o dólar que deve explicar os movimentos de preço agrícola hoje, e sim fatores de oferta e demanda específicos de cada commodity.",
+    "Com a Selic em 13.75% ao ano, o custo de financiamento no campo segue elevado - isso tende a acelerar vendas (para gerar caixa) e, por atrair capital estrangeiro, também tende a fortalecer o real. Os dois efeitos juntos costumam pressionar o preço das commodities exportadas para baixo.",
+    "Obs.: nenhuma dessas relações é garantida - clima, oferta mundial e demanda por vezes pesam mais que câmbio e juros na formação do preço final."
+  ],
+  "noticias": [
+    {
+      "titulo": "Sucroenergético28/10/2026 - 18:16Raízen faz acordo tributário de R$22,4 bi com Receita Federal e Fazenda",
+      "link": "https://www.noticiasagricolas.com.br/noticias/sucroenergetico/430517-raizen-faz-acordo-tributario-de-r224-bi-com-receita-federal-e-fazenda.html",
+      "resumo": "SÃO PAULO, 28 Out (Reuters) - A Raízen anunciou nesta quarta-feira acordo tributário com a Procuradoria-Geral da Fazenda Nacional (PGFN) e com a Receita Federal do Brasil no montante de R$22,4 bilhões, segundo fato relev...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "28/10/2026 - 17:22Dólar tem sessão volátil e fecha estável com noticiário político e exterior no radar",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/430510-dolar-tem-sessao-volatil-e-fecha-estavel-com-noticiario-politico-e-exterior-no-radar.html",
+      "resumo": "SÃO PAULO, 28 Out (Reuters) - Em sessão de volatilidade, o dólar alternou altas e baixas em diferentes momentos até encerrar a quarta-feira próximo da estabilidade ante o real, com investidores ponderando o noticiário el...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "28/10/2026 - 16:08El Niño, fundos especulativos e perdas de safra elevam incertezas no mercado global de açúcar",
+      "link": "https://www.noticiasagricolas.com.br/noticias/sucroenergetico/430500-el-nino-fundos-especulativos-e-perdas-de-safra-elevam-incertezas-no-mercado-global-de-acucar.html",
+      "resumo": "O mercado internacional de açúcar enfrenta um cenário de forte volatilidade, influenciado pela intensificação dos efeitos do El Niño, pela mudança de posicionamento dos fundos especulativos e pelas revisões nas estimativ...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "28/10/2026 - 15:38Com expectativa de maior oferta e câmbio no radar, café arábica cai mais de 2% em NY nesta quarta-feira",
+      "link": "https://www.noticiasagricolas.com.br/noticias/cafe/430493-com-expectativa-de-maior-oferta-e-cambio-no-radar-cafe-arabica-cai-mais-de-2-em-ny-nesta-quarta-feira.html",
+      "resumo": "Os preços internacionais do café encerraram a quarta-feira (28) em queda nas bolsas de Nova York e Londres. O arábica registrou o terceiro pregão consecutivo de desvalorização, acumulando perda de 6,73% desde sexta-feira...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
