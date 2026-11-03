@@ -1,0 +1,226 @@
+{
+  "dolar": {
+    "data": "30/10/2026",
+    "valor": 5.4212,
+    "variacao_pct": 0.8707948794284046
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "04/11/2026",
+    "valor": 13.75
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "30/10/2026",
+      "preco_reais": "158.88",
+      "variacao_pct": "0,38%"
+    },
+    {
+      "nome": "Milho",
+      "data": "30/10/2026",
+      "preco_reais": "65.64",
+      "variacao_pct": "0,08%"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "30/10/2026",
+      "preco_reais": "94,19",
+      "variacao_pct": "-0,53%"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "30/10/2026",
+      "preco_reais": "1598.37",
+      "variacao_pct": "0,48%"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "30/10/2026",
+      "preco_reais": "389.9",
+      "variacao_pct": "0,18%"
+    },
+    {
+      "nome": "Algodão",
+      "data": "30/10/2026",
+      "preco_reais": "413.02",
+      "variacao_pct": "0,21%"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "30/10/2026",
+      "preco_reais": "128.35",
+      "variacao_pct": "-1,25%"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Novembro/26",
+      "preco_reais": "5,4215 R$/US$",
+      "variacao_pct": "0.44",
+      "valor_numerico": 5.4215,
+      "unidade": "R$/US$",
+      "vencimentos": [
+        {
+          "vencimento": "Novembro/26",
+          "valor_numerico": 5.4215,
+          "valor_reais": 5.4215
+        },
+        {
+          "vencimento": "Dezembro/26",
+          "valor_numerico": 5.471,
+          "valor_reais": 5.471
+        }
+      ]
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Janeiro/2027",
+      "preco_reais": "R$ 147,46 /sc 60 kg (≈ US$ 27,20 x R$ 5,4212)",
+      "variacao_pct": "-0.22",
+      "valor_numerico": 27.2,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 27.2,
+          "valor_reais": 147.45664
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 27.75,
+          "valor_reais": 150.4383
+        }
+      ]
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Novembro/2026",
+      "preco_reais": "67,35 R$/sc 60 kg",
+      "variacao_pct": "0.0",
+      "valor_numerico": 67.35,
+      "unidade": "R$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 67.35,
+          "valor_reais": 67.35
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 71.3,
+          "valor_reais": 71.3
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 74.47,
+          "valor_reais": 74.47
+        },
+        {
+          "vencimento": "Julho/2027",
+          "valor_numerico": 74.21,
+          "valor_reais": 74.21
+        },
+        {
+          "vencimento": "Setembro/2027",
+          "valor_numerico": 75.05,
+          "valor_reais": 75.05
+        },
+        {
+          "vencimento": "Novembro/2027",
+          "valor_numerico": 77.8,
+          "valor_reais": 77.8
+        }
+      ]
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Novembro/2026",
+      "preco_reais": "407,50 R$/@",
+      "variacao_pct": "0.0",
+      "valor_numerico": 407.5,
+      "unidade": "R$/@",
+      "vencimentos": [
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 407.5,
+          "valor_reais": 407.5
+        },
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 407.0,
+          "valor_reais": 407.0
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 403.95,
+          "valor_reais": 403.95
+        }
+      ]
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Dezembro/2026",
+      "preco_reais": "R$ 1938,62 /sc 60 kg (≈ US$ 357,60 x R$ 5,4212)",
+      "variacao_pct": "0.0",
+      "valor_numerico": 357.6,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 357.6,
+          "valor_reais": 1938.62112
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 349.5,
+          "valor_reais": 1894.7094
+        }
+      ]
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Alta suave do dólar (+0.87%): efeito tende a ser discreto, mas na mesma direção de sempre - real mais fraco favorece um pouco quem exporta café, soja e afins.",
+    "Com a Selic em 13.75% ao ano, o custo de financiamento no campo segue elevado - isso tende a acelerar vendas (para gerar caixa) e, por atrair capital estrangeiro, também tende a fortalecer o real. Os dois efeitos juntos costumam pressionar o preço das commodities exportadas para baixo.",
+    "Obs.: essas são tendências gerais - clima, quebra de safra, estoques mundiais e demanda de outros países também afetam o preço e podem superar o efeito isolado do câmbio ou da Selic."
+  ],
+  "noticias": [
+    {
+      "titulo": "Trigo02/11/2026 - 17:09Trigo recupera os US$ 6,00 em Chicago e inicia novembro com pequenas altas, apesar da pressão sobre exportações",
+      "link": "https://www.noticiasagricolas.com.br/noticias/trigo/430696-trigo-recupera-os-us-6-00-em-chicago-e-inicia-novembro-com-pequenas-altas-apesar-da-pressao-sobre-exportacoes.html",
+      "resumo": "Os preços futuros do trigo iniciaram novembro com pequenas valorizações na Bolsa de Chicago (CBOT), recuperando parte das perdas acumuladas durante os últimos pregões de outubro. Nesta segunda-feira (2), os principais co...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "02/11/2026 - 17:00Soja inicia novembro com perdas superiores a 1% em Chicago, apesar de inspeções de exportação acima de 2,44 milhões de toneladas",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/430693-soja-inicia-novembro-com-perdas-superiores-a-1-em-chicago-apesar-de-inspecoes-de-exportacao-acima-de-2-44-milhoes-de-toneladas.html",
+      "resumo": "Os preços futuros da soja registraram fortes perdas na Bolsa de Chicago (CBOT) nesta segunda-feira (2), primeiro pregão de novembro, aprofundando a pressão observada durante a última semana de outubro. Os principais venc...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "02/11/2026 - 15:01Petróleo despenca mais de 7% nesta segunda-feira com expectativas de acordo para encerrar guerra com Irã",
+      "link": "https://www.noticiasagricolas.com.br/noticias/petroleo/430690-petroleo-despenca-mais-de-7-nesta-segunda-feira-com-expectativas-de-acordo-para-encerrar-guerra-com-ira.html",
+      "resumo": "Os preços internacionais do petróleo aprofundaram as perdas ao longo desta segunda-feira (2), primeiro pregão de novembro, com desvalorizações superiores a 7% nas principais referências do mercado. O movimento é impulsio...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "02/11/2026 - 13:21Soja amplia perdas em Chicago nesta segunda-feira e novembro se aproxima dos US$ 12,00, apesar de exportações fortes",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/430684-soja-amplia-perdas-em-chicago-nesta-segunda-feira-e-novembro-se-aproxima-dos-us-12-00-apesar-de-exportacoes-fortes.html",
+      "resumo": "Os preços futuros da soja intensificaram as perdas na Bolsa de Chicago (CBOT) ao longo desta segunda-feira (2), primeiro pregão de novembro. Depois de iniciarem a sessão com pequenas baixas, os contratos passaram a recua...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "02/11/2026 - 11:30Alta de 5% no diesel eleva em 1,5% o custo do frete para produtores de MT, diz Imea",
+      "link": "https://www.noticiasagricolas.com.br/noticias/logistica/430678-alta-de-5-no-diesel-eleva-em-1-5-o-custo-do-frete-para-produtores-de-mt-diz-imea.html",
+      "resumo": "Uma nova análise realizada pelo Instituto Mato-grossensse de Economia Agropecuária (Imea) aponta que a cada 5% de aumento no preço do diesel, o custo operacional do frete rodoviário sobe aproximadamente 1,5% para o produ...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
