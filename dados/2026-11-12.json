@@ -1,0 +1,261 @@
+{
+  "dolar": {
+    "data": "11/11/2026",
+    "valor": 5.5606,
+    "variacao_pct": -0.41905444126073865
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "09/12/2026",
+    "valor": 13.75
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "data": "11/11/2026",
+      "preco_reais": "160.41",
+      "variacao_pct": "0,34%"
+    },
+    {
+      "nome": "Milho",
+      "data": "11/11/2026",
+      "preco_reais": "67.3",
+      "variacao_pct": "0,24%"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "data": "11/11/2026",
+      "preco_reais": "93,71",
+      "variacao_pct": "-0,14%"
+    },
+    {
+      "nome": "Café Arábica",
+      "data": "11/11/2026",
+      "preco_reais": "1593.28",
+      "variacao_pct": "-1,12%"
+    },
+    {
+      "nome": "Boi Gordo",
+      "data": "11/11/2026",
+      "preco_reais": "394.15",
+      "variacao_pct": "0,22%"
+    },
+    {
+      "nome": "Algodão",
+      "data": "11/11/2026",
+      "preco_reais": "414.26",
+      "variacao_pct": "-0,56%"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "data": "11/11/2026",
+      "preco_reais": "128.86",
+      "variacao_pct": "-0,02%"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "data": "contrato Dezembro/26",
+      "preco_reais": "5,6025 R$/US$",
+      "variacao_pct": "0.09",
+      "valor_numerico": 5.6025,
+      "unidade": "R$/US$",
+      "vencimentos": [
+        {
+          "vencimento": "Dezembro/26",
+          "valor_numerico": 5.6025,
+          "valor_reais": 5.6025
+        },
+        {
+          "vencimento": "Janiero/27",
+          "valor_numerico": 5.639,
+          "valor_reais": 5.639
+        }
+      ]
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "data": "contrato Janeiro/2027",
+      "preco_reais": "R$ 150,91 /sc 60 kg (≈ US$ 27,14 x R$ 5,5606)",
+      "variacao_pct": "0.18",
+      "valor_numerico": 27.14,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 27.14,
+          "valor_reais": 150.914684
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 27.38,
+          "valor_reais": 152.249228
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 27.47,
+          "valor_reais": 152.749682
+        }
+      ]
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "data": "contrato Novembro/2026",
+      "preco_reais": "67,40 R$/sc 60 kg",
+      "variacao_pct": "-0.1",
+      "valor_numerico": 67.4,
+      "unidade": "R$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 67.4,
+          "valor_reais": 67.4
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 70.77,
+          "valor_reais": 70.77
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 74.5,
+          "valor_reais": 74.5
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 73.52,
+          "valor_reais": 73.52
+        },
+        {
+          "vencimento": "Julho/2027",
+          "valor_numerico": 73.01,
+          "valor_reais": 73.01
+        },
+        {
+          "vencimento": "Setembro/2027",
+          "valor_numerico": 73.97,
+          "valor_reais": 73.97
+        },
+        {
+          "vencimento": "Novembro/2027",
+          "valor_numerico": 76.6,
+          "valor_reais": 76.6
+        }
+      ]
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "data": "contrato Novembro/2026",
+      "preco_reais": "405,85 R$/@",
+      "variacao_pct": "-0.11",
+      "valor_numerico": 405.85,
+      "unidade": "R$/@",
+      "vencimentos": [
+        {
+          "vencimento": "Novembro/2026",
+          "valor_numerico": 405.85,
+          "valor_reais": 405.85
+        },
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 409.05,
+          "valor_reais": 409.05
+        },
+        {
+          "vencimento": "Janeiro/2027",
+          "valor_numerico": 408.05,
+          "valor_reais": 408.05
+        },
+        {
+          "vencimento": "Fevereiro/2027",
+          "valor_numerico": 407.6,
+          "valor_reais": 407.6
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 409.6,
+          "valor_reais": 409.6
+        },
+        {
+          "vencimento": "GO RD",
+          "valor_numerico": 405.6,
+          "valor_reais": 405.6
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 404.1,
+          "valor_reais": 404.1
+        }
+      ]
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "data": "contrato Dezembro/2026",
+      "preco_reais": "R$ 1896,16 /sc 60 kg (≈ US$ 341,00 x R$ 5,5606)",
+      "variacao_pct": "-1.32",
+      "valor_numerico": 341.0,
+      "unidade": "US$/sc 60 kg",
+      "vencimentos": [
+        {
+          "vencimento": "Dezembro/2026",
+          "valor_numerico": 341.0,
+          "valor_reais": 1896.1646
+        },
+        {
+          "vencimento": "Março/2027",
+          "valor_numerico": 327.95,
+          "valor_reais": 1823.5987699999998
+        },
+        {
+          "vencimento": "Maio/2027",
+          "valor_numerico": 327.0,
+          "valor_reais": 1818.3162
+        }
+      ]
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Câmbio recuou de forma moderada hoje (-0.42%) - efeito inverso do de uma alta: a mesma cotação internacional passa a render um pouco menos em reais.",
+    "Com a Selic em 13.75% ao ano, o custo de financiamento no campo segue elevado - isso tende a acelerar vendas (para gerar caixa) e, por atrair capital estrangeiro, também tende a fortalecer o real. Os dois efeitos juntos costumam pressionar o preço das commodities exportadas para baixo.",
+    "Obs.: essas são tendências gerais - clima, quebra de safra, estoques mundiais e demanda de outros países também afetam o preço e podem superar o efeito isolado do câmbio ou da Selic."
+  ],
+  "noticias": [
+    {
+      "titulo": "Política e Economia11/11/2026 - 17:44Dólar fecha em queda ante real com correção e plano fiscal do governo no foco",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/431217-dolar-fecha-em-queda-ante-real-com-correcao-e-plano-fiscal-do-governo-no-foco.html",
+      "resumo": "SÃO PAULO, 11 Nov (Reuters) - O dólar encerrou a quarta-feira em queda ante o real, após uma sessão de ajustes em relação à forte perda da moeda brasileira na véspera, enquanto os agentes avaliavam as notícias de que o g...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "11/11/2026 - 17:41Café: Cooxupé avalia quebra de potencial de safra de 10% para 2027 durante a SIC",
+      "link": "https://www.noticiasagricolas.com.br/noticias/cafe/431215-cafe-cooxupe-avalia-quebra-de-potencial-de-safra-de-10-para-2027-durante-a-sic.html",
+      "resumo": "A safra 2027 de café na região de atuação da Cooxupé (Cooperativa Regional de Cafeicultores em Guaxupé), que já seria menor pelo ciclo bienal da cultura em relação a 2026, tem uma quebra inicialmente avaliada em 10% do p...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "11/11/2026 - 17:28Brasil exporta recorde de 5,3 milhões de sacas de café em outubro",
+      "link": "https://www.noticiasagricolas.com.br/noticias/cafe/431211-brasil-exporta-recorde-de-5-3-milhoes-de-sacas-de-cafe-em-outubro.html",
+      "resumo": "O Brasil remeteu, em outubro deste ano, recorde mensal de café ao exterior: 5.326.944 sacas de 60 kg, o que representa um incremento de 28,4% em relação aos 4,149 milhões de sacas aferidos em idêntico período de 2025. A ...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "11/11/2026 - 16:07Dólar sobe mais de 10% frente ao real após eleições no Brasil, mas produtor segura vendas de soja à espera de novas altas",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/431198-dolar-sobe-mais-de-10-apos-eleicoes-mas-produtor-segura-vendas-de-soja-a-espera-de-novas-altas.html",
+      "resumo": "A valorização de mais de 10% do dólar frente ao real desde o último pregão anterior às eleições presidenciais brasileiras mudou a dinâmica de formação dos preços da soja no país e abriu novas oportunidades de comercializ...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "11/11/2026 - 15:36Ministro das Relações Exteriores da China diz que conversa por telefone com Rubio foi “positiva e construtiva”",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/431206-ministro-das-relacoes-exteriores-da-china-diz-que-conversa-por-telefone-com-rubio-foi-positiva-e-construtiva.html",
+      "resumo": "PEQUIM/WASHINGTON, 11 Nov (Reuters) - O ministro das Relações Exteriores da China, Wang Yi, manteve uma conversa telefônica “positiva e construtiva” com o secretário de Estado dos EUA, Marco Rubio, nesta quarta-feira, se...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
