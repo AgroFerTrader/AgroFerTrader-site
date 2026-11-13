@@ -1,0 +1,107 @@
+{
+  "dolar": {
+    "data": "12/11/2026",
+    "valor": 5.6143,
+    "variacao_pct": 0.9657231234039507
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "09/12/2026",
+    "valor": 13.75
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/soja"
+    },
+    {
+      "nome": "Milho",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/milho/indicador-cepea-esalq-milho"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/trigo/preco-medio-do-trigo-cepea-esalq"
+    },
+    {
+      "nome": "Café Arábica",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/cafe/indicador-cepea-esalq-cafe-arabica"
+    },
+    {
+      "nome": "Boi Gordo",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/boi-gordo/boi-gordo-indicador-esalq-bmf"
+    },
+    {
+      "nome": "Algodão",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/algodao/algodao-indicador-cepea-esalq-a-prazo"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/sucroenergetico/acucar-cristal-cepea"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/mercado-financeiro/dolar-b3"
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/soja/soja-b3-pregao-regular"
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/milho/milho-b3-prego-regular"
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/boi-gordo/boi-gordo-b3-prego-regular"
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/cafe/cafe-arabica-4-5-b3-prego-regular"
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Dólar em leve alta (+0.97%): o movimento é moderado, mas já tende a favorecer um pouco o preço interno de commodities exportadas, já que a mesma cotação em dólar rende mais reais.",
+    "Selic em 13.75% ao ano - um patamar considerado alto: o crédito rural fica mais caro e carregar estoque também, o que costuma levar produtores a vender mais rápido para gerar caixa, pressionando o preço para baixo no curto prazo. Juros altos também tendem a atrair capital estrangeiro e valorizar o real, reforçando essa pressão via câmbio.",
+    "Obs.: nenhuma dessas relações é garantida - clima, oferta mundial e demanda por vezes pesam mais que câmbio e juros na formação do preço final."
+  ],
+  "noticias": [
+    {
+      "titulo": "Milho12/11/2026 - 18:33Milho fecha em queda em Chicago, mas sobe na B3 com dólar a R$ 5,65 nesta 5ª feira",
+      "link": "https://www.noticiasagricolas.com.br/noticias/milho/431307-milho-fecha-em-queda-em-chicago-mas-sobe-na-b-3-com-dolar-a-r-5-65-nesta-5-feira.html",
+      "resumo": "O mercado do milho apresentou movimentos distintos nas bolsas brasileira e norte-americana nesta quinta-feira (12). Enquanto os contratos futuros negociados na Bolsa de Chicago (CBOT) registraram perdas, os principais ve...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "12/11/2026 - 17:18Dólar dispara e chega a R$5,65 em meio a insatisfação com pacote fiscal e pressão externa",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/431300-dolar-a-vista-fecha-em-alta-de-158-a-r56507-na-venda.html",
+      "resumo": "SÃO PAULO, 12 Nov (Reuters) - O dólar encerrou a quinta-feira em forte alta ante o real, na casa dos R$5,65, em meio à insatisfação do mercado com a proposta do governo de medidas fiscais para 2027 e ao fortalecimento da...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "12/11/2026 - 15:56Semeadura do feijão de 1ª safra avança em ritmos diferentes nas principais regiões produtoras",
+      "link": "https://www.noticiasagricolas.com.br/noticias/feijao-e-graos-especiais/431285-inmet-semeadura-do-feijao-de-1-safra-avanca-em-ritmos-diferentes-nas-principais-regioes-produtoras.html",
+      "resumo": "O início da safra 2026/27 de feijão de primeira safra apresenta aspectos positivos para os produtores brasileiros, especialmente em Minas Gerais e Bahia. Dados da Companhia Nacional de Abastecimento (CONAB) indicam que a...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "12/11/2026 - 15:32Hedgepoint avalia efeitos do câmbio e das chuvas sobre o mercado de açúcar",
+      "link": "https://www.noticiasagricolas.com.br/noticias/sucroenergetico/431278-hedgepoint-avalia-efeitos-do-cambio-e-das-chuvas-sobre-o-mercado-de-acucar.html",
+      "resumo": "A forte desvalorização do real após o resultado das eleições brasileiras provocou uma queda expressiva nos preços internacionais do açúcar bruto na última semana de outubro. Segundo relatório da Hedgepoint Global Markets...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "12/11/2026 - 15:31Casa Branca discute futuro de Howard Lutnick como secretário de Comércio, dizem fontes",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/431282-casa-branca-discute-futuro-de-howard-lutnick-como-secretario-de-comercio-dizem-fontes.html",
+      "resumo": "WASHINGTON, 12 Nov (Reuters) - Autoridades seniores da Casa Branca estão discutindo se o secretário de Comércio, Howard Lutnick, deveria ser afastado na esteira do escândalo de espionagem envolvendo o agora ex-presidente...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
