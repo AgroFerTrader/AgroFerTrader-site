@@ -1,0 +1,107 @@
+{
+  "dolar": {
+    "data": "13/11/2026",
+    "valor": 5.6518,
+    "variacao_pct": 0.6679372317118722
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "09/12/2026",
+    "valor": 13.75
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/soja"
+    },
+    {
+      "nome": "Milho",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/milho/indicador-cepea-esalq-milho"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/trigo/preco-medio-do-trigo-cepea-esalq"
+    },
+    {
+      "nome": "Café Arábica",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/cafe/indicador-cepea-esalq-cafe-arabica"
+    },
+    {
+      "nome": "Boi Gordo",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/boi-gordo/boi-gordo-indicador-esalq-bmf"
+    },
+    {
+      "nome": "Algodão",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/algodao/algodao-indicador-cepea-esalq-a-prazo"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/sucroenergetico/acucar-cristal-cepea"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/mercado-financeiro/dolar-b3"
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/soja/soja-b3-pregao-regular"
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/milho/milho-b3-prego-regular"
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/boi-gordo/boi-gordo-b3-prego-regular"
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/cafe/cafe-arabica-4-5-b3-prego-regular"
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Câmbio subiu discretamente hoje (+0.67%) - não é uma virada de tendência, mas pequenas altas como essa historicamente já dão um empurrão positivo ao preço doméstico de commodities de exportação.",
+    "Selic em 13.75% ao ano - um patamar considerado alto: o crédito rural fica mais caro e carregar estoque também, o que costuma levar produtores a vender mais rápido para gerar caixa, pressionando o preço para baixo no curto prazo. Juros altos também tendem a atrair capital estrangeiro e valorizar o real, reforçando essa pressão via câmbio.",
+    "Obs.: vale lembrar que essas são relações históricas, não regras fixas - fatores como clima, safra e demanda internacional podem se sobrepor facilmente ao efeito do câmbio ou dos juros."
+  ],
+  "noticias": [
+    {
+      "titulo": "Política e Economia13/11/2026 - 18:00Dólar fecha estável ante o real mas sobe mais de 2% na semana de olho em pacote fiscal do governo",
+      "link": "https://www.noticiasagricolas.com.br/noticias/politica-economia/431380-dolar-fecha-estavel-ante-o-real-mas-sobe-mais-de-2-na-semana-de-olho-em-pacote-fiscal-do-governo.html",
+      "resumo": "SÃO PAULO, 13 Nov (Reuters) - O dólar encerrou a sexta-feira praticamente estável ante o real, mas acumulou ganho de mais de 2% na semana, com o mercado digerindo o pacote fiscal do governo para o próximo ano, ao mesmo t...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "13/11/2026 - 17:25Produtores do Mato Grosso superam desafios e monitoram desenvolvimento da safra 2026 27",
+      "link": "https://www.noticiasagricolas.com.br/noticias/soja/431373-produtores-do-mato-grosso-superam-desafios-e-monitoram-desenvolvimento-da-safra-2026-27.html",
+      "resumo": "Mercado de soja tem semana de altas no Brasil e produtores avançam na comercialização",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "13/11/2026 - 17:10Café fecha 6ªfeira (13) em queda em NY, pressionado pelo dólar; mercado físico brasileiro tem poucas alterações",
+      "link": "https://www.noticiasagricolas.com.br/noticias/cafe/431370-cafe-fecha-6-feira-13-em-queda-em-ny-pressionado-pelo-dolar-mercado-fisico-brasileiro-tem-poucas-alteracoes.html",
+      "resumo": "O mercado futuro do café arábica encerrou as negociações desta sexta-feira (13) com desvalorizações na Bolsa de Nova York (ICE Futures US), em um cenário de atenção ao comportamento do câmbio e às perspectivas de comerci...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "13/11/2026 - 16:21Açúcar fecha em alta nas bolsas com perspectiva de déficit global na safra 2026/27",
+      "link": "https://www.noticiasagricolas.com.br/noticias/sucroenergetico/431365-acucar-fecha-em-alta-nas-bolsas-com-perspectiva-de-deficit-global-na-safra-2026-27.html",
+      "resumo": "Os preços do açúcar fecharam em alta nas bolsas internacionais nesta sexta-feira (13), impulsionados pelas perspectivas de redução da oferta global na safra 2026/27. A estimativa da Organização Internacional do Açúcar (I...",
+      "fonte": "Notícias Agrícolas"
+    },
+    {
+      "titulo": "13/11/2026 - 16:11Sustentabilidade avança como exigência no mercado de café e demanda adequações dos produtores, mas também gera prêmios na comercialização",
+      "link": "https://www.noticiasagricolas.com.br/noticias/cafe/431361-sustentabilidade-avanca-como-exigencia-no-mercado-de-cafe-e-demanda-adequacoes-dos-produtores-mas-tambem-gera-premios-na-comercializacao.html",
+      "resumo": "A sustentabilidade ganha importância crescente como condição de acesso a compradores e mercados internacionais de café, exigindo dos produtores investimentos em infraestrutura, rastreabilidade e mudanças na gestão das pr...",
+      "fonte": "Notícias Agrícolas"
+    }
+  ],
+  "erro_noticias": null
+}
