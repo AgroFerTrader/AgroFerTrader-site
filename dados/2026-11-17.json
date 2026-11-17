@@ -67,9 +67,9 @@
   "explicacoes_macro": [
     "",
     "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
-    "Câmbio subiu discretamente hoje (+1.43%) - não é uma virada de tendência, mas pequenas altas como essa historicamente já dão um empurrão positivo ao preço doméstico de commodities de exportação.",
-    "Com a Selic em 13.75% ao ano, o custo de financiamento no campo segue elevado - isso tende a acelerar vendas (para gerar caixa) e, por atrair capital estrangeiro, também tende a fortalecer o real. Os dois efeitos juntos costumam pressionar o preço das commodities exportadas para baixo.",
-    "Obs.: essas são tendências gerais - clima, quebra de safra, estoques mundiais e demanda de outros países também afetam o preço e podem superar o efeito isolado do câmbio ou da Selic."
+    "Alta suave do dólar (+1.43%): efeito tende a ser discreto, mas na mesma direção de sempre - real mais fraco favorece um pouco quem exporta café, soja e afins.",
+    "Juros em 13.75% ao ano seguem em patamar alto - carregar estoque fica caro, o que empurra produtores a vender mais rápido, e o diferencial de juros atrai capital estrangeiro, valorizando o real. Ambos tendem a pesar contra o preço em reais das commodities de exportação.",
+    "Obs.: nenhuma dessas relações é garantida - clima, oferta mundial e demanda por vezes pesam mais que câmbio e juros na formação do preço final."
   ],
   "noticias": [],
   "erro_noticias": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/noticias"
