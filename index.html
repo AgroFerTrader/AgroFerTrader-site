@@ -1,52 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#173321">
+<meta name="theme-color" content="#06220A">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="AgroFer">
 <script src="assets/update-banner.js" defer></script>
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function () {
-    navigator.serviceWorker.register('sw.js').then(function (registration) {
-      if (window.AgroFerUpdateBanner) window.AgroFerUpdateBanner.observar(registration);
-    }).catch(function (erro) {
-      console.warn('Falha ao registrar o service worker:', erro);
-    });
-  });
-}
-</script>
 
-<title>AgroFer Trader | Inteligência e Análise de Mercado Agrícola</title>
-<meta name="description" content="AgroFer Trader é referência em inteligência e análise de mercado agrícola: entenda o que está por trás dos preços de soja, milho, café arábica e boi gordo, com cotações de referência (CEPEA/Esalq) e mercado futuro.">
+<title>AgroFer | Consultoria financeira e agrícola para o produtor rural</title>
+<meta name="description" content="A AgroFer une economia, gestão do agronegócio e agronomia para apoiar as decisões do produtor: custo, ponto de equilíbrio, comercialização e crédito. Preços CEPEA de soja, milho, café e boi gordo, ferramentas de cálculo e análises diárias.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <link rel="canonical" href="https://agrofertrader.github.io/AgroFerTrader-site/">
-
 <meta property="og:locale" content="pt_BR">
 <meta property="og:type" content="website">
-<meta property="og:title" content="AgroFer Trader | Inteligência e Análise de Mercado Agrícola">
-<meta property="og:description" content="Inteligência e análise de mercado agrícola: o que está por trás dos preços de soja, milho, café e boi gordo, não só os números.">
+<meta property="og:title" content="AgroFer | Consultoria financeira e agrícola para o produtor rural">
+<meta property="og:description" content="Consultoria financeira e agrícola: transformamos dados de mercado em estratégia para o negócio do produtor.">
 <meta property="og:url" content="https://agrofertrader.github.io/AgroFerTrader-site/">
-<meta property="og:site_name" content="AgroFer Trader">
+<meta property="og:site_name" content="AgroFer">
 <meta property="og:image" content="https://agrofertrader.github.io/AgroFerTrader-site/assets/logo-social.jpg">
-<meta property="og:image:alt" content="Logo da AgroFer Trader">
-
+<meta property="og:image:alt" content="Logo da AgroFer">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AgroFer Trader | Inteligência e Análise de Mercado Agrícola">
-<meta name="twitter:description" content="Inteligência e análise de mercado agrícola: o que está por trás dos preços de soja, milho, café e boi gordo.">
+<meta name="twitter:title" content="AgroFer | Consultoria financeira e agrícola para o produtor rural">
+<meta name="twitter:description" content="Consultoria financeira e agrícola: dados de mercado transformados em estratégia para o produtor.">
 <meta name="twitter:image" content="https://agrofertrader.github.io/AgroFerTrader-site/assets/logo-social.jpg">
-
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Organization","@id":"https://agrofertrader.github.io/AgroFerTrader-site/#organization","name":"AgroFer","alternateName":"AgroFer Trader","description":"Consultoria financeira e agrícola para o produtor rural, com inteligência de mercado, ferramentas de cálculo e formação de consultores.","url":"https://agrofertrader.github.io/AgroFerTrader-site/","logo":"https://agrofertrader.github.io/AgroFerTrader-site/assets/logo-social.jpg","sameAs":["https://www.instagram.com/agrofertrader/"]},
+{"@type":"WebSite","@id":"https://agrofertrader.github.io/AgroFerTrader-site/#website","url":"https://agrofertrader.github.io/AgroFerTrader-site/","name":"AgroFer","publisher":{"@id":"https://agrofertrader.github.io/AgroFerTrader-site/#organization"},"inLanguage":"pt-BR"}
+]}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@1&family=Source+Serif+4:wght@700&display=swap" rel="stylesheet">
 <!-- Formulário de newsletter (Brevo) - fontes/cores próprias do Brevo
      removidas/ajustadas abaixo para seguir a identidade do site (ver
      comentário junto ao <div class="sib-form"> mais abaixo). -->
@@ -92,418 +83,364 @@ if ('serviceWorker' in navigator) {
     color: #2BB2FC;
   }
 </style>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://agrofertrader.github.io/AgroFerTrader-site/#organization",
-      "name": "AgroFer Trader",
-      "description": "AgroFer Trader é uma referência em inteligência e análise de mercado agrícola — leitura do que está por trás das cotações de soja, milho, café e boi gordo, não um agregador de preços.",
-      "url": "https://agrofertrader.github.io/AgroFerTrader-site/",
-      "logo": "https://agrofertrader.github.io/AgroFerTrader-site/assets/logo-social.jpg",
-      "sameAs": [
-        "https://www.instagram.com/agrofertrader/"
-      ]
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://agrofertrader.github.io/AgroFerTrader-site/#website",
-      "url": "https://agrofertrader.github.io/AgroFerTrader-site/",
-      "name": "AgroFer Trader",
-      "description": "Inteligência e análise de mercado agrícola: o que está por trás dos preços de soja, milho, café e boi gordo, não só os números.",
-      "publisher": {
-        "@id": "https://agrofertrader.github.io/AgroFerTrader-site/#organization"
-      },
-      "inLanguage": "pt-BR"
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://agrofertrader.github.io/AgroFerTrader-site/#webpage",
-      "url": "https://agrofertrader.github.io/AgroFerTrader-site/",
-      "name": "Inteligência e Análise de Mercado Agrícola | AgroFer Trader",
-      "isPartOf": {
-        "@id": "https://agrofertrader.github.io/AgroFerTrader-site/#website"
-      },
-      "about": [
-        "Inteligência de mercado agrícola",
-        "Soja",
-        "Milho",
-        "Trigo",
-        "Café arábica",
-        "Boi gordo",
-        "Algodão",
-        "Açúcar",
-        "Mercado futuro"
-      ],
-      "inLanguage": "pt-BR"
-    }
-  ]
-}
-</script>
-
 <style>
-  :root{
-    --ink:#0B3C1F;
-    --ink-soft:#BFD1B8;
-    --paper:#FDFDF9;
-    --paper-dim:#F2F1E4;
-    --gold:#B08830;
-    --gold-deep:#8d6d26;
-    --gold-pale:#c0a059;
-    --leaf:#4C7A1F;
-    --up:#4C7A1F;
-    --down:#9C3B2E;
-    --line: rgba(11,60,31,0.14);
-    --line-dark: rgba(253,253,249,0.16);
-    --display: 'Fraunces', serif;
-    --body: 'Inter', sans-serif;
-    --mono: 'IBM Plex Mono', monospace;
-  }
+/* Ideia de layout: caderno de campo + mesa de operações. Blocos claros com fios finos de planilha,
+   interrompidos por faixas de mata escura riscadas em curvas de nível (o plantio em morro do Sul de Minas). */
+:root{
+  color-scheme: light;
+  --mata:#06220A; --floresta:#0B3A0E; --musgo:#2F7A0A;
+  --ouro:#A87700; --ouro-claro:#EBAB01;
+  --papel:#F2F4EC; --branco:#FBFCF8; --tinta:#1A211C; --cinza:#586259; --linha:#D3D9CC;
+  --alta:#1C7A45; --baixa:#B4372B;
+  --f-display:"Bricolage Grotesque","Arial Narrow",system-ui,sans-serif;
+  --f-corpo:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-num:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --f-serif:"Instrument Serif",Georgia,serif;
+  --f-marca:"Source Serif 4",Georgia,serif;
+  --raio:10px; --larg:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--papel);color:var(--tinta);font:16px/1.6 var(--f-corpo);-webkit-font-smoothing:antialiased}
+img,svg,canvas{max-width:100%}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.05;margin:0;text-wrap:balance;letter-spacing:-.02em}
+h2{font-size:clamp(1.9rem,4vw,3rem);font-weight:700}
+h3{font-size:1.25rem;font-weight:700;letter-spacing:-.01em;line-height:1.2}
+p{margin:0}
+em.s{font-family:var(--f-serif);font-style:italic;font-weight:400;letter-spacing:0;color:var(--ouro)}
+.num{font-family:var(--f-num);font-variant-numeric:tabular-nums}
+.wrap{max-width:var(--larg);margin:0 auto;padding:0 20px}
+.eyebrow{font:600 .72rem/1 var(--f-num);letter-spacing:.14em;text-transform:uppercase;color:var(--ouro)}
+.lead{font-size:1.12rem;color:var(--cinza);max-width:62ch}
+:focus-visible{outline:2px solid var(--ouro);outline-offset:3px;border-radius:4px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 .95rem/1 var(--f-corpo);padding:14px 20px;border-radius:999px;border:1.5px solid transparent;cursor:pointer;text-decoration:none;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-ouro{background:var(--ouro-claro);color:var(--mata)}
+.btn-ouro:hover{background:#F7C02E}
+.btn-mata{background:var(--floresta);color:var(--branco)}
+.btn-linha{border-color:currentColor;background:transparent;color:inherit}
+.btn-sm{padding:10px 16px;font-size:.85rem}
 
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:var(--body);
-    line-height:1.5;
-  }
-  a{color:inherit;}
-  img{max-width:100%;}
+/* Cabeçalho */
+header.topo{position:sticky;top:0;z-index:20;background:rgba(6,34,10,.96);backdrop-filter:blur(8px);color:var(--branco);border-bottom:1px solid rgba(235,171,1,.25)}
+.topo .wrap{display:flex;align-items:center;gap:18px;height:64px}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 1.4rem/1 var(--f-marca);letter-spacing:-.01em;flex:none}
+.marca b{color:var(--ouro-claro);font-weight:700}
+nav.principal{display:flex;gap:2px;overflow-x:auto;flex:1;scrollbar-width:none}
+nav.principal::-webkit-scrollbar{display:none}
+nav.principal a{white-space:nowrap;text-decoration:none;font-size:.9rem;font-weight:500;padding:8px 12px;border-radius:999px;color:rgba(251,252,248,.78)}
+nav.principal a:hover{color:#fff}
+nav.principal a[aria-current="page"]{background:rgba(235,171,1,.16);color:var(--ouro-claro)}
+.topo .btn{flex:none}
+@media(max-width:760px){.topo .wrap{flex-wrap:wrap;height:auto;padding-top:10px;padding-bottom:6px;row-gap:4px}.topo .btn{margin-left:auto}nav.principal{order:3;flex-basis:100%}}
 
-  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+/* Fita de indicadores */
+.fita{background:var(--floresta);color:var(--branco);border-bottom:1px solid rgba(235,171,1,.2)}
+.fita .wrap{display:flex;gap:26px;overflow-x:auto;padding-top:9px;padding-bottom:9px;scrollbar-width:thin}
+.fita .it{display:flex;gap:8px;align-items:baseline;white-space:nowrap;font-size:.8rem}
+.fita .it span:first-child{color:rgba(251,252,248,.65)}
+.fita .it .num{font-weight:500}
+.up{color:var(--alta)} .dn{color:var(--baixa)}
+.fita .up{color:#7FD6A1} .fita .dn{color:#F09A8E}
 
-  nav{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:20px 24px;max-width:1080px;margin:0 auto;
-  }
-  .brand{
-    font-family:var(--display);
-    font-weight:600;
-    font-size:20px;
-    letter-spacing:0.01em;
-    display:flex;align-items:center;gap:10px;
-  }
-  .brand img{height:58px;width:auto;display:block;}
-  .navlinks{display:flex;flex:1;justify-content:center;align-items:center;gap:18px;font-size:14px;font-weight:500;flex-wrap:wrap;}
-  .navlinks a{text-decoration:none;opacity:0.75;transition:opacity .15s;white-space:nowrap;}
-  .navlinks a:hover, .navlinks a:focus-visible{opacity:1;}
-  .navlinks .nav-divider{opacity:.25;font-weight:300;}
+.view{display:none}
+.view.on{display:block}
+section.bloco{padding:72px 0}
+.cab{display:grid;gap:14px;margin-bottom:36px}
 
-  .hero{background:var(--ink);color:var(--paper);}
-  .ticker-strip{
-    border-top:1px solid var(--line-dark);
-    border-bottom:1px solid var(--line-dark);
-    overflow:hidden;
-    white-space:nowrap;
-  }
-  .ticker-track{
-    display:inline-flex;
-    padding:12px 0;
-    animation:scroll 38s linear infinite;
-  }
-  @media (prefers-reduced-motion: reduce){ .ticker-track{animation:none;} }
-  .ticker-track span.item{
-    font-family:var(--mono);
-    font-size:13px;
-    padding:0 28px;
-    border-right:1px solid var(--line-dark);
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    color:var(--ink-soft);
-  }
-  .ticker-track span.item b{color:var(--paper);font-weight:600;}
-  .up{color:var(--up) !important;}
-  .down{color:var(--down) !important;}
-  .ticker-track .up{color:#94af79 !important;}
-  .ticker-track .down{color:#ce9d96 !important;}
-  @keyframes scroll{
-    0%{transform:translateX(0);}
-    100%{transform:translateX(-50%);}
-  }
+/* Hero */
+.hero{position:relative;background:var(--mata);color:var(--branco);overflow:hidden}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.9}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.25fr .9fr;gap:48px;padding-top:72px;padding-bottom:80px;align-items:center}
+.hero h1{font-size:clamp(2.7rem,7.2vw,5.6rem);font-weight:800;letter-spacing:-.045em;line-height:.94}
+.hero h1 em.s{color:var(--ouro-claro);font-size:1.06em}
+.hero p.lead{color:rgba(251,252,248,.8);margin:22px 0 28px}
+.hero .acoes{display:flex;gap:12px;flex-wrap:wrap}
+.hero .de{margin-top:30px;font-size:.82rem;color:rgba(251,252,248,.6);max-width:52ch}
+@media(max-width:900px){.hero .wrap{grid-template-columns:1fr;padding-top:48px;padding-bottom:56px;gap:32px}}
 
-  .hero-inner{padding:64px 24px 72px;max-width:1080px;margin:0 auto;}
-  .eyebrow{
-    font-family:var(--mono);
-    font-size:12px;
-    letter-spacing:0.12em;
-    text-transform:uppercase;
-    color:var(--gold-pale);
-    margin-bottom:18px;
-  }
-  h1.headline{
-    font-family:var(--display);
-    font-weight:600;
-    font-size:clamp(34px, 5vw, 54px);
-    line-height:1.08;
-    margin:0 0 20px;
-    max-width:14ch;
-  }
-  .hero-sub{
-    font-size:17px;
-    color:var(--ink-soft);
-    max-width:46ch;
-    margin:0 0 32px;
-  }
-  .cta-row{display:flex;gap:16px;flex-wrap:wrap;}
-  .btn{
-    display:inline-flex;align-items:center;gap:8px;
-    padding:13px 22px;
-    border-radius:2px;
-    font-weight:600;
-    font-size:14px;
-    text-decoration:none;
-    border:1px solid transparent;
-  }
-  .btn-primary{background:var(--gold);color:#000;}
-  .btn-ghost{border-color:var(--line-dark);color:var(--paper);}
-  .cta-secondary-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
-  .btn-secondary{
-    display:inline-flex;align-items:center;gap:6px;
-    padding:9px 16px;border-radius:2px;
-    font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.04em;
-    text-decoration:none;border:1px solid var(--gold);color:var(--gold-pale);
-    transition:background .15s,color .15s;
-  }
-  .btn-secondary:hover, .btn-secondary:focus-visible{background:var(--gold);color:var(--ink);}
+.painel{background:var(--branco);color:var(--tinta);border-radius:16px;padding:24px;box-shadow:0 24px 60px rgba(0,0,0,.35);display:grid;gap:16px}
+.painel h3{font-size:1.05rem}
+.campo{display:grid;gap:6px}
+.campo label{font-size:.78rem;font-weight:600;color:var(--cinza)}
+.campo input,.campo select,.campo textarea{font:500 1rem var(--f-num);padding:11px 12px;border:1.5px solid var(--linha);border-radius:8px;background:#fff;color:var(--tinta);width:100%}
+.campo select,.campo textarea{font-family:var(--f-corpo)}
+.campo input:focus,.campo select:focus,.campo textarea:focus{border-color:var(--ouro);outline:none}
+.grade2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.resultado{border-top:1px dashed var(--linha);padding-top:14px;display:grid;gap:8px}
+.grande{font:600 2.3rem/1 var(--f-num);letter-spacing:-.03em}
+.barra{height:12px;background:#E6EADF;border-radius:99px;overflow:hidden;display:flex}
+.barra i{display:block;height:100%}
+.nota{font-size:.78rem;color:var(--cinza);line-height:1.45}
 
-  section{padding:64px 0;}
-  .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:32px;flex-wrap:wrap;}
-  .section-label{
-    font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;
-    color:var(--leaf);
-  }
-  h2{
-    font-family:var(--display);font-weight:600;font-size:28px;margin:6px 0 0;
-  }
-  .updated{font-size:13px;color:var(--ink);opacity:.7;font-family:var(--mono);}
+/* Cartões e grades */
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:900px){.g3,.g4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.g3,.g2,.g4,.grade2{grid-template-columns:1fr}}
+.cartao{background:var(--branco);border:1px solid var(--linha);border-radius:var(--raio);padding:22px;display:grid;gap:10px;align-content:start}
+.cartao p{color:var(--cinza);font-size:.95rem}
+.cartao .tag{font:600 .7rem/1 var(--f-num);letter-spacing:.1em;text-transform:uppercase;color:var(--ouro)}
+.escuro{background:var(--mata);color:var(--branco);position:relative}
+.escuro .lead,.escuro .cartao p{color:rgba(251,252,248,.72)}
+.escuro .cartao{background:rgba(255,255,255,.04);border-color:rgba(235,171,1,.22)}
 
-  .price-grid{
-    display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-    gap:1px;background:var(--line);border:1px solid var(--line);
-  }
-  .price-card{background:var(--paper);padding:22px 20px;}
-  .price-card-link{text-decoration:none;color:inherit;display:block;transition:background-color .15s;}
-  .price-card-link:hover, .price-card-link:focus-visible{background-color:var(--paper-dim);}
-  .price-name{font-size:14px;font-weight:600;margin-bottom:10px;}
-  .price-value{font-family:var(--mono);font-size:24px;font-weight:600;}
-  .price-meta{font-size:12px;margin-top:8px;color:var(--ink);opacity:.75;}
-  .price-var{font-family:var(--mono);font-size:13px;font-weight:600;margin-top:4px;display:inline-block;}
-  .price-link{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--gold-deep);margin-top:12px;font-weight:600;}
+/* Frentes: fio de planilha */
+.frentes{border-top:2px solid var(--tinta)}
+.frente{display:grid;grid-template-columns:70px 1fr 1.4fr;gap:20px;padding:22px 0;border-bottom:1px solid var(--linha);align-items:baseline}
+.frente .n{font:500 .85rem var(--f-num);color:var(--ouro)}
+.frente h3{font-size:1.5rem}
+.frente h3 span{color:var(--cinza);font-weight:400}
+.frente p{color:var(--cinza)}
+@media(max-width:760px){.frente{grid-template-columns:1fr;gap:6px}}
 
-  .explain{
-    border-left:3px solid var(--gold);
-    padding:2px 0 2px 28px;
-  }
-  .explain p{margin:0 0 14px;font-size:15.5px;line-height:1.65;max-width:70ch;}
-  .explain p:last-child{margin-bottom:0;}
-  .explain .obs{font-size:13px;opacity:.72;font-style:italic;}
+/* Método */
+.metodo{display:grid;grid-template-columns:repeat(6,1fr);gap:0;border:1px solid rgba(235,171,1,.3);border-radius:var(--raio);overflow:hidden}
+.passo{padding:22px 18px;border-right:1px solid rgba(235,171,1,.3);display:grid;gap:10px;align-content:start}
+.passo:last-child{border-right:0}
+.passo .l{font:800 3.4rem/1 var(--f-display);color:var(--ouro-claro);letter-spacing:-.04em}
+.passo h4{font-size:1.02rem;font-family:var(--f-corpo);font-weight:700;letter-spacing:0}
+.passo p{font-size:.86rem;color:rgba(251,252,248,.7);line-height:1.45}
+@media(max-width:900px){.metodo{grid-template-columns:repeat(2,1fr)}.passo{border-bottom:1px solid rgba(235,171,1,.3)}}
 
-  .futures-note{
-    font-size:14px;color:var(--ink);opacity:.75;max-width:60ch;margin:0 0 24px;
-  }
-  .futures-table{width:100%;border-collapse:collapse;font-size:14px;}
-  .futures-table th{
-    text-align:left;font-family:var(--mono);font-size:11px;text-transform:uppercase;
-    letter-spacing:.08em;color:var(--leaf);font-weight:600;
-    padding:10px 12px;border-bottom:1px solid var(--line);
-  }
-  .futures-table td{padding:12px;border-bottom:1px solid var(--line);}
-  .futures-table td.val{font-family:var(--mono);font-weight:600;}
-  .futures-table td a{text-decoration:none;border-bottom:1px dotted var(--leaf);}
-  .futures-table td a:hover{color:var(--leaf);}
+/* Duas portas */
+.portas{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.porta{border-radius:16px;padding:32px;display:grid;gap:14px;align-content:start}
+.porta.a{background:var(--floresta);color:var(--branco)}
+.porta.b{background:var(--ouro-claro);color:var(--mata)}
+.porta h3{font-size:1.9rem}
+.porta ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:.95rem}
+@media(max-width:760px){.portas{grid-template-columns:1fr}}
 
-  .news-item{padding:20px 0;border-bottom:1px solid var(--line);}
-  .news-item:first-child{padding-top:0;}
-  .news-title{font-weight:600;font-size:16px;margin:0 0 8px;}
-  .news-title a{text-decoration:none;}
-  .news-title a:hover{text-decoration:underline;}
-  .news-summary{font-size:14.5px;opacity:.8;margin:0 0 8px;max-width:68ch;}
-  .news-source{font-size:12px;font-family:var(--mono);color:var(--ink);opacity:.72;}
+/* Mercado */
+.ind{background:var(--branco);border:1px solid var(--linha);border-radius:var(--raio);padding:18px;display:grid;gap:6px}
+.ind .nome{font-size:.82rem;font-weight:600;color:var(--cinza)}
+.ind .v{font:600 1.55rem/1.1 var(--f-num);letter-spacing:-.02em}
+.ind .var{font:500 .85rem var(--f-num)}
+.ind .f{font-size:.72rem;color:var(--cinza);line-height:1.35}
+.ind svg{display:block;width:100%;height:46px;margin-top:4px}
+.leitura{display:grid;grid-template-columns:1.3fr 1fr;gap:28px}
+@media(max-width:860px){.leitura{grid-template-columns:1fr}}
+.leitura article{align-content:start;background:var(--branco);border:1px solid var(--linha);border-left:4px solid var(--ouro);border-radius:var(--raio);padding:26px;display:grid;gap:14px}
+.leitura article h3{font-size:1.6rem}
+.leitura article p{color:#333b35}
+.leitura .fonte{font-size:.78rem;color:var(--cinza)}
+table.t{width:100%;border-collapse:collapse;font-size:.9rem}
+table.t th,table.t td{padding:10px 8px;border-bottom:1px solid var(--linha);text-align:left}
+table.t th{font:600 .7rem var(--f-num);letter-spacing:.08em;text-transform:uppercase;color:var(--cinza)}
+table.t td.num{text-align:right}
+.rolagem{overflow-x:auto}
 
-  .glossary-band{background:var(--ink);color:var(--paper);}
-  .glossary-inner{padding:56px 0;text-align:left;}
-  .glossary-band h2{color:var(--paper);}
-  .glossary-band .section-label{color:var(--gold-pale);}
-  .glossary-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--line-dark);border:1px solid var(--line-dark);margin-top:28px;}
-  .glossary-card{background:var(--ink);padding:22px;}
-  .glossary-card a{text-decoration:none;font-weight:600;font-size:15px;display:flex;justify-content:space-between;align-items:center;}
-  .glossary-card p{font-size:13px;color:var(--ink-soft);margin:8px 0 0;}
+/* Ferramentas */
+.abas{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.abas button{font:600 .88rem var(--f-corpo);padding:10px 16px;border-radius:999px;border:1.5px solid var(--linha);background:var(--branco);color:var(--tinta);cursor:pointer}
+.abas button[aria-selected="true"]{background:var(--floresta);border-color:var(--floresta);color:var(--branco)}
+.abas button .pro{font:600 .62rem var(--f-num);background:var(--ouro-claro);color:var(--mata);padding:2px 6px;border-radius:4px;margin-left:6px;letter-spacing:.06em}
+.ferr{display:none;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:22px;align-items:start}
+.ferr.on{display:grid}
+@media(max-width:860px){.ferr.on{grid-template-columns:1fr}}
+.ferr .entrada,.ferr .saida{background:var(--branco);border:1px solid var(--linha);border-radius:var(--raio);padding:22px;display:grid;gap:14px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:600px){.kpis{grid-template-columns:1fr 1fr}}
+.kpi{border:1px solid var(--linha);border-radius:8px;padding:12px;display:grid;gap:4px}
+.kpi span{font-size:.72rem;font-weight:600;color:var(--cinza)}
+.kpi b{font:600 1.2rem/1.15 var(--f-num);letter-spacing:-.02em}
+.sens{border-collapse:collapse;width:100%;font:500 .8rem var(--f-num)}
+.sens th,.sens td{padding:8px 6px;text-align:right;border:1px solid var(--branco)}
+.sens th{color:var(--cinza);font-weight:500;background:transparent}
+.veredito{padding:12px 14px;border-radius:8px;font-size:.92rem;font-weight:500}
+.veredito.ok{background:#E3F1E7;color:#14532F}
+.veredito.at{background:#FBEFD6;color:#6B4A0C}
+.veredito.ru{background:#F8E1DD;color:#7A221A}
 
-  .newsletter-band{background:var(--paper-dim);}
-  .newsletter-band .section-label{color:#47751f;}
-  .newsletter-alerta-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;padding:56px 0;}
-  .newsletter-alerta-col{text-align:left;min-width:0;}
-  .newsletter-sub{font-size:15px;opacity:.8;max-width:56ch;margin:10px 0 0;}
-  .newsletter-nota{font-size:12px;color:var(--ink);opacity:.72;margin:10px 0 0;max-width:60ch;}
-  @media (max-width:780px){
-    .newsletter-alerta-grid{grid-template-columns:1fr;gap:40px;padding:44px 0;}
-  }
+/* Trilha de carreira */
+.trilha{display:grid;grid-template-columns:repeat(5,1fr);gap:0;counter-reset:t}
+.degrau{padding:20px 16px 20px 0;border-top:3px solid var(--ouro);margin-right:10px;display:grid;gap:8px;align-content:start}
+.degrau::before{counter-increment:t;content:"0" counter(t);font:500 .8rem var(--f-num);color:var(--ouro)}
+.degrau h4{font-size:1.15rem}
+.degrau p{font-size:.86rem;color:var(--cinza);line-height:1.45}
+@media(max-width:900px){.trilha{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.trilha{grid-template-columns:1fr}}
+.lista{margin:0;padding:0;list-style:none;display:grid;gap:0}
+.lista li{display:grid;grid-template-columns:54px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid var(--linha)}
+.lista li b{font:500 .85rem var(--f-num);color:var(--ouro)}
+.lista li strong{display:block}
+.lista li span{color:var(--cinza);font-size:.92rem}
 
-  footer{padding:40px 0 56px;font-size:13px;color:var(--ink);opacity:.72;}
-  footer .foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:1px solid var(--line);padding-top:24px;}
-  footer a{text-decoration:underline;}
+/* Planos */
+.plano{background:var(--branco);border:1px solid var(--linha);border-radius:14px;padding:26px;display:grid;gap:14px;align-content:start}
+.plano.dest{background:var(--mata);color:var(--branco);border-color:var(--mata)}
+.plano .preco{font:600 2.2rem/1 var(--f-num);letter-spacing:-.03em}
+.plano .preco small{font:500 .85rem var(--f-corpo);opacity:.7;letter-spacing:0}
+.plano ul{margin:0;padding-left:18px;display:grid;gap:7px;font-size:.92rem}
+.plano.dest ul{color:rgba(251,252,248,.85)}
+.aviso{background:#FBEFD6;border:1px solid #E6CF95;color:#5E420B;border-radius:8px;padding:12px 14px;font-size:.85rem}
 
-  @media (max-width:640px){
-    .section-head{flex-direction:column;align-items:flex-start;}
-  }
+footer{background:var(--mata);color:rgba(251,252,248,.7);padding:48px 0 36px;font-size:.85rem}
+footer .wrap{display:grid;gap:22px}
+footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:28px}
+@media(max-width:760px){footer .cols{grid-template-columns:1fr}}
+footer h4{font:600 .72rem var(--f-num);letter-spacing:.12em;text-transform:uppercase;color:var(--ouro-claro);margin-bottom:10px}
+footer a{display:block;text-decoration:none;padding:3px 0}
+footer a:hover{color:#fff}
+footer .legal{border-top:1px solid rgba(235,171,1,.2);padding-top:18px;font-size:.76rem;line-height:1.5}
 
-  /* Nav: em telas estreitas, a logo fica numa linha e os links viram
-     uma faixa rolável horizontalmente (em vez de quebrar em 3 linhas
-     e espremer a logo). Não afeta o layout de desktop. */
-  @media (max-width:680px){
-    nav{flex-wrap:wrap;row-gap:10px;}
-    .brand{flex-shrink:0;}
-    .navlinks{
-      flex:1 1 100%;
-      justify-content:flex-start;
-      flex-wrap:nowrap;
-      overflow-x:auto;
-      -webkit-overflow-scrolling:touch;
-      white-space:nowrap;
-      scrollbar-width:none;
-      padding-bottom:2px;
-      margin:0 -24px;
-      padding-left:24px;
-      padding-right:24px;
-    }
-    .navlinks::-webkit-scrollbar{display:none;}
-    .navlinks a, .navlinks .nav-divider{flex-shrink:0;}
-  }
+
+/* Aliases usados pelos blocos herdados do site anterior (newsletter Brevo) */
+:root{--body:var(--f-corpo);--mono:var(--f-num);--display:var(--f-display);--ink:var(--tinta);--paper:var(--branco);--paper-dim:#E9EDE1;--gold-deep:var(--ouro)}
+.newsletter-band{background:var(--paper-dim)}
+.newsletter-band .wrap{max-width:var(--larg);margin:0 auto;padding:0 20px}
+.newsletter-band .section-label{font:600 .72rem/1 var(--f-num);letter-spacing:.14em;text-transform:uppercase;color:#2F7A0A}
+.newsletter-band h2{font-size:1.7rem;margin-top:10px}
+.newsletter-alerta-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;padding:56px 0}
+.newsletter-alerta-col{text-align:left;min-width:0}
+.newsletter-sub{font-size:15px;opacity:.8;max-width:56ch;margin:10px 0 0}
+.newsletter-nota{font-size:12px;color:var(--ink);opacity:.72;margin:10px 0 0;max-width:60ch}
+@media(max-width:860px){.newsletter-alerta-grid{grid-template-columns:1fr;gap:40px;padding:44px 0}}
+/* Blocos gerados pelo gerar_site.py dentro de Mercado */
+.explica{display:grid;gap:12px}
+.explica p{color:#333b35}
+.explica p.obs{font-size:.85rem;color:var(--cinza)}
+table.t td.val{font-family:var(--f-num);font-weight:600;white-space:nowrap}
+table.t td.up,table.t td.down{font-family:var(--f-num);white-space:nowrap}
+.down{color:var(--baixa)}
+table.t td a{color:var(--floresta);font-weight:600}
+.news-item{padding:14px 0;border-bottom:1px solid var(--linha);display:grid;gap:4px}
+.news-item:last-child{border-bottom:0}
+.news-title{font-weight:600;line-height:1.35}
+.news-title a{text-decoration:none}
+.news-title a:hover{text-decoration:underline}
+.news-summary{font-size:.88rem;color:var(--cinza);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.news-source{font:500 .72rem var(--f-num);color:var(--cinza)}
+.atalhos{display:flex;flex-wrap:wrap;gap:8px}
+.atalhos a{font:600 .85rem var(--f-corpo);padding:9px 14px;border:1.5px solid var(--linha);border-radius:999px;text-decoration:none;background:var(--branco)}
+.atalhos a:hover{border-color:var(--ouro)}
+dialog{border:0;border-radius:14px;padding:28px;max-width:420px;width:calc(100% - 32px);background:var(--branco);color:var(--tinta)}
+dialog::backdrop{background:rgba(6,34,10,.6)}
+dialog form{display:grid;gap:14px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
-
 <body>
 
-<div id="aviso-nova-versao" class="pwa-nova-versao" hidden role="button" tabindex="0">
-  🔄 Nova versão disponível — toque para atualizar
-</div>
-<style>
-  .pwa-nova-versao{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:center;gap:8px;background:#173321;color:#FDFDF9;font:600 13px/1.4 "Inter",sans-serif;padding:10px 16px;text-align:center;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.2);}
-  .pwa-nova-versao:hover{background:#0B3C1F;}
-  .pwa-nova-versao[hidden]{display:none;}
-</style>
-
-<nav aria-label="Navegação principal">
-  <div class="brand">
-    <a href="./" aria-label="AgroFer Trader — página inicial">
-      <img src="assets/logo-nav.jpg" alt="AgroFer Trader">
+<header class="topo">
+  <div class="wrap">
+    <a class="marca" href="#inicio" aria-label="AgroFer, início">
+      <img src="assets/emblema.png" alt="" width="40" height="38" style="display:block">
+      <span>Agro<b>Fer</b></span>
     </a>
-  </div>
-  <div class="navlinks">
-    <a href="#precos">Preços de hoje</a>
-    <a href="#futuro">Mercado futuro</a>
-    <span class="nav-divider" aria-hidden="true">|</span>
-    <a href="commodities/soja/">Soja</a>
-    <a href="commodities/milho/">Milho</a>
-    <a href="commodities/cafe/">Café Arábica</a>
-    <a href="commodities/boi-gordo/">Boi Gordo</a>
-    <span class="nav-divider" aria-hidden="true">|</span>
-    <a href="glossario.html">Glossário</a>
-    <a href="calendario.html">Calendário</a>
-    <a href="correlacoes.html">Correlações</a>
-    <a href="panorama.html">Panorama</a>
-    <a href="calculadora/">Calculadora</a>
-  </div>
-</nav>
-
-<div id="aviso-offline" class="aviso-offline" hidden>
-  <span aria-hidden="true">⚠</span>
-  <span id="aviso-offline-texto">Dados offline.</span>
-</div>
-<style>
-  .aviso-offline{display:flex;align-items:center;justify-content:center;gap:8px;background:#F4B740;color:#173321;font:600 13px/1.4 "Inter",sans-serif;padding:8px 16px;text-align:center;}
-  .aviso-offline[hidden]{display:none;}
-</style>
-<script src="assets/offline-banner.js" defer></script>
-
-<header class="hero">
-  <div class="ticker-strip" role="group" aria-label="Cotações em destaque">
-    <div class="ticker-track"><!-- TICKER:START -->
-<span class="item">DÓLAR <b>R$ 5,6518</b> <span class="up">▲ 0.67%</span></span>
-      <span class="item">DÓLAR <b>R$ 5,6518</b> <span class="up">▲ 0.67%</span></span>
-<!-- TICKER:END -->
-    </div>
-  </div>
-
-  <div class="hero-inner">
-    <div class="eyebrow"><!-- EYEBROW:START -->
-Segunda-feira, 16 de novembro de 2026 · fechamento do dia anterior
-<!-- EYEBROW:END --></div>
-
-    <h1 class="headline">Inteligência de mercado para o agronegócio.</h1>
-
-    <p class="hero-sub">AgroFer Trader é referência em análise de mercado agrícola: cotações são o ponto de partida, não o produto final. Abaixo, os preços de referência do dia — a leitura completa, com o que está por trás de cada movimento, está na análise de cada commodity.</p>
-
-    <div class="cta-row">
-      <a href="#precos" class="btn btn-primary">Ver preços de hoje ↓</a>
-    </div>
-    <div class="cta-secondary-row">
-      <a href="calculadora/" class="btn-secondary">Calculadora</a>
-      <a href="#titulo-newsletter" class="btn-secondary">Newsletter</a>
-      <a href="#titulo-alerta" class="btn-secondary">Alerta de Preços</a>
-      <a href="https://www.instagram.com/agrofertrader/" target="_blank" rel="noopener" class="btn-secondary">Instagram</a>
-    </div>
+    <nav class="principal" aria-label="Principal">
+      <a href="#inicio">Início</a>
+      <a href="#produtores">Consultoria</a>
+      <a href="#mercado">Mercado</a>
+      <a href="#ferramentas">Ferramentas</a>
+      <a href="#academia">Academia</a>
+      <a href="#carreira">Seja consultor</a>
+      <a href="#planos">Planos</a>
+    </nav>
+    <button class="btn btn-ouro btn-sm" id="abrirLogin" type="button">Área do cliente</button>
   </div>
 </header>
+<script src="assets/offline-banner.js" defer></script>
+<div class="fita" aria-label="Indicadores do dia"><div class="wrap" id="fita"></div></div>
 
-<main class="wrap">
-
-  <section id="precos" aria-labelledby="titulo-precos">
-    <div class="section-head">
+<main>
+<!-- ================= INÍCIO ================= -->
+<div class="view" id="inicio">
+  <section class="hero">
+    <canvas id="curvas" aria-hidden="true"></canvas>
+    <div class="wrap">
       <div>
-        <div class="section-label">Mercado físico</div>
-        <h2 id="titulo-precos">Preços agrícolas de hoje</h2>
+        <p class="eyebrow">Consultoria financeira e agrícola</p>
+        <h1 style="margin-top:16px">A margem da sua safra é uma <em class="s">decisão.</em></h1>
+        <p class="lead">O mercado define o preço. Custo, momento de venda, proteção e crédito são escolhas da fazenda. A AgroFer reúne economistas, gestores do agronegócio e agrônomos para tomar essas decisões com o produtor, com método e com número.</p>
+        <div class="acoes">
+          <a class="btn btn-ouro" href="#produtores">Solicitar diagnóstico da propriedade</a>
+          <a class="btn btn-linha" href="#carreira">Quero ser consultor</a>
+        </div>
+        <p class="de">Nascemos em Lavras, no Sul de Minas, explicando informações do mercado agrícola. Hoje vamos além: trabalhamos ao lado do produtor, apoiando cada decisão e transformando dados de mercado em estratégia para o seu negócio.</p>
       </div>
-      <div class="updated"><!-- UPDATED:START -->
-Fonte: CEPEA/Esalq · dado de 16/11/2026
-<!-- UPDATED:END --></div>
-    </div>
-
-    <div class="price-grid" role="group" aria-label="Cotações agrícolas de hoje"><!-- PRICES:START -->
-<article class="price-card"><div class="price-name">Soja</div><div class="price-meta">Indisponível no momento</div></article>
-      <article class="price-card"><div class="price-name">Milho</div><div class="price-meta">Indisponível no momento</div></article>
-      <article class="price-card"><div class="price-name">Trigo</div><div class="price-meta">Indisponível no momento</div></article>
-      <article class="price-card"><div class="price-name">Café Arábica</div><div class="price-meta">Indisponível no momento</div></article>
-      <article class="price-card"><div class="price-name">Boi Gordo</div><div class="price-meta">Indisponível no momento</div></article>
-      <article class="price-card"><div class="price-name">Algodão</div><div class="price-meta">Indisponível no momento</div></article>
-      <article class="price-card"><div class="price-name">Açúcar Cristal</div><div class="price-meta">Indisponível no momento</div></article>
-<!-- PRICES:END -->
+      <form class="painel" id="mini" autocomplete="off">
+        <div><p class="eyebrow">Faça a conta agora</p><h3 style="margin-top:8px">Quanto sobra por saca no preço de hoje?</h3></div>
+        <div class="grade2">
+          <div class="campo"><label for="miniCult">Cultura</label><select id="miniCult"></select></div>
+          <div class="campo"><label for="miniCusto">Seu custo por <span id="miniUn">saca</span> (R$)</label><input id="miniCusto" type="number" min="0" step="1" inputmode="decimal"></div>
+        </div>
+        <div class="resultado" aria-live="polite">
+          <span class="nota" id="miniRef"></span>
+          <div class="grande" id="miniMargem"></div>
+          <div class="barra" aria-hidden="true"><i id="miniB1" style="background:var(--musgo)"></i><i id="miniB2"></i></div>
+          <p id="miniFrase" style="font-size:.95rem"></p>
+        </div>
+        <a class="btn btn-mata" href="#ferramentas" style="justify-content:center">Abrir a calculadora completa</a>
+        <p class="nota">O custo inicial é um exemplo. Troque pelo seu.</p>
+      </form>
     </div>
   </section>
 
-  <section id="futuro" aria-labelledby="titulo-futuro">
-    <div class="section-head">
-      <div>
-        <div class="section-label">Pra quem quer se aprofundar</div>
-        <h2 id="titulo-futuro">Mercado futuro (B3)</h2>
+  <section class="bloco">
+    <div class="wrap">
+      <div class="cab">
+        <p class="eyebrow">Um ecossistema, cinco frentes</p>
+        <h2>Da porteira para dentro e da porteira para <em class="s">fora.</em></h2>
+        <p class="lead">Cada frente resolve uma parte da margem. Juntas, cobrem o ciclo inteiro da safra: produzir, custear, vender, proteger e aprender.</p>
+      </div>
+      <div class="frentes">
+        <div class="frente"><span class="n">01</span><h3>AgroFer <span>Consultoria</span></h3><p>Gestão econômica e financeira da propriedade: custo real por saca, fluxo de caixa da safra, crédito, investimento e planejamento. É a porta de entrada de todo cliente.</p></div>
+        <div class="frente"><span class="n">02</span><h3>AgroFer <span>Hedge</span></h3><p>Gestão de risco de preço e plano de comercialização. Definimos com o produtor quanto vender, quando e a que preço mínimo, sempre a partir do ponto de equilíbrio dele.</p></div>
+        <div class="frente"><span class="n">03</span><h3>AgroFer <span>Trade</span></h3><p>Inteligência de mercado. Preços CEPEA, câmbio, juros e a leitura diária do que mudou, com fonte nomeada em cada número. É a antiga AgroFer Trader, agora a serviço da consultoria.</p></div>
+        <div class="frente"><span class="n">04</span><h3>AgroFer <span>Campo</span></h3><p>Agronomia aplicada à margem. Produtividade e manejo avaliados pelo retorno por hectare, com responsável técnico habilitado.</p></div>
+        <div class="frente"><span class="n">05</span><h3>AgroFer <span>Desenvolvimento</span></h3><p>Formação de consultores e de produtores. Academia, trilha de carreira e a plataforma de ferramentas que sustenta todas as outras frentes.</p></div>
       </div>
     </div>
+  </section>
 
-    <p class="futures-note">
-      O preço físico é o que se negocia hoje, na entrega imediata. O mercado futuro mostra
-      preços negociados para contratos com vencimentos adiante e reflete expectativas sobre
-      clima, safra, câmbio, oferta e demanda.
-    </p>
+  <section class="bloco escuro">
+    <div class="wrap">
+      <div class="cab">
+        <p class="eyebrow">Metodologia própria</p>
+        <h2>Método <em class="s">MARGEM</em></h2>
+        <p class="lead">Seis etapas, sempre na mesma ordem, em toda propriedade atendida. O consultor muda; o método é o mesmo. É isso que permite treinar pessoas, comparar safras e medir resultado.</p>
+      </div>
+      <div class="metodo">
+        <div class="passo"><span class="l">M</span><h4>Mapear</h4><p>Talhões, contratos, dívidas, estoques e histórico de vendas. A fotografia da fazenda como negócio.</p></div>
+        <div class="passo"><span class="l">A</span><h4>Apurar</h4><p>Custo real por saca ou arroba e ponto de equilíbrio. O número que orienta todas as decisões seguintes.</p></div>
+        <div class="passo"><span class="l">R</span><h4>Riscos</h4><p>Exposição a preço, câmbio, juros e clima, medida em reais por hectare.</p></div>
+        <div class="passo"><span class="l">G</span><h4>Gerir</h4><p>Plano de safra: comercialização, proteção de preço, crédito e caixa, com metas escritas.</p></div>
+        <div class="passo"><span class="l">E</span><h4>Executar</h4><p>Acompanhamento mensal com o consultor e alertas da plataforma quando o mercado atinge os gatilhos do plano.</p></div>
+        <div class="passo"><span class="l">M</span><h4>Medir</h4><p>Margem realizada contra a planejada no fim da safra. O resultado alimenta o plano seguinte.</p></div>
+      </div>
+    </div>
+  </section>
 
-    <table class="futures-table">
-      <thead>
-        <tr><th>Commodity</th><th>Contrato</th><th>Fechamento</th><th>Variação</th></tr>
-      </thead>
-      <tbody><!-- FUTURES:START -->
-<tr><td>Dólar Futuro (B3)</td><td colspan="3">Indisponível no momento</td></tr>
-        <tr><td>Soja Futuro (B3)</td><td colspan="3">Indisponível no momento</td></tr>
-        <tr><td>Milho Futuro (B3)</td><td colspan="3">Indisponível no momento</td></tr>
-        <tr><td>Boi Gordo Futuro (B3)</td><td colspan="3">Indisponível no momento</td></tr>
-        <tr><td>Café Arábica Futuro (B3)</td><td colspan="3">Indisponível no momento</td></tr>
-<!-- FUTURES:END -->
-      </tbody>
-    </table>
+  <section class="bloco">
+    <div class="wrap">
+      <div class="cab"><p class="eyebrow">Duas formas de fazer parte</p><h2>Para quem produz e para quem quer <em class="s">orientar</em> quem produz.</h2></div>
+      <div class="portas">
+        <div class="porta a">
+          <p class="eyebrow" style="color:var(--ouro-claro)">Sou produtor</p>
+          <h3>Um consultor que conhece o seu custo.</h3>
+          <ul><li>Diagnóstico inicial da propriedade</li><li>Plano de safra pelo Método MARGEM</li><li>Ferramentas e alertas na plataforma</li><li>Reunião mensal de acompanhamento</li></ul>
+          <div><a class="btn btn-ouro" href="#produtores">Conhecer a consultoria</a></div>
+        </div>
+        <div class="porta b">
+          <p class="eyebrow" style="color:var(--mata)">Quero trabalhar na AgroFer</p>
+          <h3>Formação, método e carteira própria.</h3>
+          <ul><li>Academia com certificação interna</li><li>Trilha de carreira em cinco níveis</li><li>Materiais, roteiros e ferramentas prontos</li><li>Mentoria em casos reais desde o início</li></ul>
+          <div><a class="btn btn-mata" href="#carreira">Ver a trilha de carreira</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloco" style="padding-top:0">
+    <div class="wrap">
+      <div class="cab"><p class="eyebrow">Mercado hoje</p><h2>O que mudou e o que isso muda na <em class="s">conta.</em></h2></div>
+      <div class="g4" id="indInicio"></div>
+      <p style="margin-top:22px"><a class="btn btn-linha" href="#mercado">Ver painel e leitura do dia</a></p>
+    </div>
   </section>
 
 <section class="newsletter-band" aria-labelledby="titulo-newsletter">
@@ -624,97 +561,682 @@ Fonte: CEPEA/Esalq · dado de 16/11/2026
     </div>
   </div>
 </section>
+</div>
 
-  <section aria-labelledby="titulo-contexto">
-    <div class="section-head">
-      <div>
-        <div class="section-label">Contexto do dia</div>
-        <h2 id="titulo-contexto">O que as cotações significam</h2>
+<!-- ================= CONSULTORIA ================= -->
+<div class="view" id="produtores">
+  <section class="bloco">
+    <div class="wrap">
+      <div class="cab">
+        <p class="eyebrow">Consultoria para produtores</p>
+        <h2>Primeiro o seu custo. Depois o <em class="s">mercado.</em></h2>
+        <p class="lead">A maior parte das decisões ruins de venda nasce de não saber o próprio ponto de equilíbrio. Por isso todo atendimento começa pela apuração do custo e só então chega ao preço.</p>
       </div>
-    </div>
-
-    <div class="explain"><!-- EXPLAIN:START -->
-<p>Dólar em leve alta (+0.67%): o movimento é moderado, mas já tende a favorecer um pouco o preço interno de commodities exportadas, já que a mesma cotação em dólar rende mais reais.</p>
-      <p>Com a Selic em 13.75% ao ano, o custo de financiamento no campo segue elevado - isso tende a acelerar vendas (para gerar caixa) e, por atrair capital estrangeiro, também tende a fortalecer o real. Os dois efeitos juntos costumam pressionar o preço das commodities exportadas para baixo.</p>
-      <p class="obs">Obs.: nenhuma dessas relações é garantida - clima, oferta mundial e demanda por vezes pesam mais que câmbio e juros na formação do preço final.</p>
-<!-- EXPLAIN:END -->
+      <div class="g3">
+        <div class="cartao"><span class="tag">Etapa 1 · sem custo</span><h3>Diagnóstico</h3><p>Uma conversa de cerca de uma hora e o levantamento dos números básicos da propriedade. Você recebe o custo estimado por saca e o ponto de equilíbrio, mesmo que não contrate.</p></div>
+        <div class="cartao"><span class="tag">Etapa 2</span><h3>Plano de safra</h3><p>Documento com custo apurado, exposição a risco, metas de venda por faixa de preço, necessidade de caixa e opções de crédito. É a entrega das etapas M, A, R e G do método.</p></div>
+        <div class="cartao"><span class="tag">Etapa 3 · recorrente</span><h3>Acompanhamento</h3><p>Reunião mensal, revisão do plano quando o mercado muda e fechamento de safra com a margem realizada. Acesso completo à plataforma incluído.</p></div>
+      </div>
     </div>
   </section>
+  <section class="bloco" style="padding-top:0">
+    <div class="wrap g2" style="align-items:start">
+      <div style="display:grid;gap:16px">
+        <h2 style="font-size:2rem">O que você recebe por escrito</h2>
+        <ul class="lista">
+          <li><b>A</b><div><strong>Custo por saca e ponto de equilíbrio</strong><span>Por talhão ou por cultura, separando custo operacional, fixo e financeiro.</span></div></li>
+          <li><b>R</b><div><strong>Mapa de exposição</strong><span>Quanto da sua margem depende de preço, de câmbio e de juros.</span></div></li>
+          <li><b>G</b><div><strong>Plano de comercialização</strong><span>Parcelas de venda com preço-gatilho, definidas antes da colheita.</span></div></li>
+          <li><b>G</b><div><strong>Planejamento de caixa e crédito</strong><span>Calendário de desembolsos e comparação do custo das linhas disponíveis.</span></div></li>
+          <li><b>M</b><div><strong>Relatório de fechamento</strong><span>Margem planejada, margem realizada e o que explica a diferença.</span></div></li>
+        </ul>
+      </div>
+      <form class="painel" id="formDiag" style="box-shadow:none;border:1px solid var(--linha)">
+        <h3>Solicitar diagnóstico</h3>
+        <div class="campo"><label for="dNome">Nome</label><input id="dNome" required style="font-family:var(--f-corpo)"></div>
+        <div class="grade2">
+          <div class="campo"><label for="dCidade">Município / UF</label><input id="dCidade" required style="font-family:var(--f-corpo)"></div>
+          <div class="campo"><label for="dFone">WhatsApp</label><input id="dFone" inputmode="tel" required></div>
+        </div>
+        <div class="grade2">
+          <div class="campo"><label for="dCult">Cultura principal</label><select id="dCult"><option>Café</option><option>Soja</option><option>Milho</option><option>Pecuária de corte</option><option>Outra</option></select></div>
+          <div class="campo"><label for="dArea">Área (ha)</label><input id="dArea" type="number" min="0"></div>
+        </div>
+        <div class="campo"><label for="dMsg">O que mais pesa hoje na sua decisão?</label><textarea id="dMsg" rows="3"></textarea></div>
+        <button class="btn btn-mata" type="submit" style="justify-content:center">Enviar pedido</button>
+        <p class="nota" id="dRet" role="status"></p>
+      </form>
+    </div>
+  </section>
+</div>
 
-  <section aria-labelledby="titulo-noticias">
-    <div class="section-head">
-      <div>
-        <div class="section-label">Comércio &amp; economia</div>
-        <h2 id="titulo-noticias">Notícias do agronegócio em destaque</h2>
+<!-- ================= MERCADO ================= -->
+<div class="view" id="mercado">
+  <section class="bloco">
+    <div class="wrap">
+      <div class="cab">
+        <p class="eyebrow">AgroFer Trade · painel</p>
+        <h2>Preços, juros e câmbio com <em class="s">fonte</em> em cada número.</h2>
+        <p class="lead">Indicadores físicos pelo fechamento CEPEA/Esalq mais recente. Indicadores financeiros pelo fechamento do dia.</p>
+      </div>
+      <div class="g4" id="indMercado"></div>
+    </div>
+  </section>
+  <section class="bloco" style="padding-top:0">
+    <div class="wrap leitura">
+      <article>
+        <p class="eyebrow"><!-- EYEBROW:START -->
+Segunda-feira, 16 de novembro de 2026 · fechamento do dia anterior
+<!-- EYEBROW:END --></p>
+        <h3>Como câmbio e juros entram na conta do produtor hoje</h3>
+        <div class="explica"><!-- EXPLAIN:START -->
+<p>Câmbio recuou de forma moderada hoje (-0.42%) - efeito inverso do de uma alta: a mesma cotação internacional passa a render um pouco menos em reais.</p>
+      <p>Com a Selic em 13.75% ao ano, o custo de financiamento no campo segue elevado - isso tende a acelerar vendas (para gerar caixa) e, por atrair capital estrangeiro, também tende a fortalecer o real. Os dois efeitos juntos costumam pressionar o preço das commodities exportadas para baixo.</p>
+      <p class="obs">Obs.: essas são tendências gerais - clima, quebra de safra, estoques mundiais e demanda de outros países também afetam o preço e podem superar o efeito isolado do câmbio ou da Selic.</p>
+<!-- EXPLAIN:END --></div>
+        <p class="fonte">Leitura gerada automaticamente a partir dos dados do dia. Fontes: CEPEA/Esalq, Banco Central do Brasil e Notícias Agrícolas.</p>
+      </article>
+      <div style="display:grid;gap:18px;align-content:start">
+        <div class="cartao">
+          <span class="tag">Indicadores físicos · CEPEA/Esalq · <span id="dataFis"></span></span>
+          <div class="rolagem"><table class="t"><thead><tr><th>Produto</th><th style="text-align:right">Preço</th><th style="text-align:right">Dia</th></tr></thead><tbody id="tabFis"></tbody></table></div>
+        </div>
+        <div class="cartao">
+          <span class="tag">O que acompanhamos</span>
+          <table class="t"><tbody>
+            <tr><td>Indicadores CEPEA/Esalq</td><td class="num">diário</td></tr>
+            <tr><td>Boletim Focus (Banco Central)</td><td class="num">segundas</td></tr>
+            <tr><td>Reuniões do Copom</td><td class="num">8 por ano</td></tr>
+            <tr><td>Relatório WASDE (USDA)</td><td class="num">mensal</td></tr>
+            <tr><td>Levantamento de safra (Conab)</td><td class="num">mensal</td></tr>
+          </tbody></table>
+        </div>
       </div>
     </div>
-
+  </section>
+  <section class="bloco" style="padding-top:0">
+    <div class="wrap" style="display:grid;gap:18px">
+      <div class="g2" style="align-items:start">
+        <div class="cartao">
+          <span class="tag">Mercado futuro · B3</span>
+          <div class="rolagem"><table class="t"><thead><tr><th>Produto</th><th>Contrato</th><th>Preço</th><th>Dia</th></tr></thead>
+          <tbody><!-- FUTURES:START -->
+<tr><td>Dólar</td><td>Dezembro/26</td><td class="val">R$ 5,6025</td><td class="up">▲ 0.09%</td></tr>
+        <tr><td><a href="commodities/soja/">Soja</a></td><td>Janeiro/2027</td><td class="val">R$ 150,91 /sc</td><td class="up">▲ 0.18%</td></tr>
+        <tr><td><a href="commodities/milho/">Milho</a></td><td>Novembro/2026</td><td class="val">R$ 67,40 /sc</td><td class="down">▼ 0.10%</td></tr>
+        <tr><td><a href="commodities/boi-gordo/">Boi Gordo</a></td><td>Novembro/2026</td><td class="val">R$ 405,85 /@</td><td class="down">▼ 0.11%</td></tr>
+        <tr><td><a href="commodities/cafe/">Café Arábica</a></td><td>Dezembro/2026</td><td class="val">R$ 1896,16 /sc</td><td class="down">▼ 1.32%</td></tr>
+<!-- FUTURES:END -->
+          </tbody></table></div>
+          <p class="nota">Quando a fonte está indisponível no dia, a linha mostra o último valor coletado.</p>
+        </div>
+        <div class="cartao">
+          <span class="tag">Notícias de economia e comércio agro</span>
+          <div>
 <!-- NEWS:START -->
 <article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/politica-economia/431380-dolar-fecha-estavel-ante-o-real-mas-sobe-mais-de-2-na-semana-de-olho-em-pacote-fiscal-do-governo.html" target="_blank" rel="noopener">Política e Economia13/11/2026 - 18:00Dólar fecha estável ante o real mas sobe mais de 2% na semana de olho em pacote fiscal do governo</a></p>
-  <p class="news-summary">SÃO PAULO, 13 Nov (Reuters) - O dólar encerrou a sexta-feira praticamente estável ante o real, mas acumulou ganho de mais de 2% na semana, com o mercado digerindo o pacote fiscal do governo para o próximo ano, ao mesmo t...</p>
+  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/politica-economia/431217-dolar-fecha-em-queda-ante-real-com-correcao-e-plano-fiscal-do-governo-no-foco.html" target="_blank" rel="noopener">Política e Economia11/11/2026 - 17:44Dólar fecha em queda ante real com correção e plano fiscal do governo no foco</a></p>
+  <p class="news-summary">SÃO PAULO, 11 Nov (Reuters) - O dólar encerrou a quarta-feira em queda ante o real, após uma sessão de ajustes em relação à forte perda da moeda brasileira na véspera, enquanto os agentes avaliavam as notícias de que o g...</p>
   <p class="news-source">Fonte: Notícias Agrícolas</p>
 </article>
     <article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/soja/431373-produtores-do-mato-grosso-superam-desafios-e-monitoram-desenvolvimento-da-safra-2026-27.html" target="_blank" rel="noopener">13/11/2026 - 17:25Produtores do Mato Grosso superam desafios e monitoram desenvolvimento da safra 2026 27</a></p>
-  <p class="news-summary">Mercado de soja tem semana de altas no Brasil e produtores avançam na comercialização</p>
+  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/cafe/431215-cafe-cooxupe-avalia-quebra-de-potencial-de-safra-de-10-para-2027-durante-a-sic.html" target="_blank" rel="noopener">11/11/2026 - 17:41Café: Cooxupé avalia quebra de potencial de safra de 10% para 2027 durante a SIC</a></p>
+  <p class="news-summary">A safra 2027 de café na região de atuação da Cooxupé (Cooperativa Regional de Cafeicultores em Guaxupé), que já seria menor pelo ciclo bienal da cultura em relação a 2026, tem uma quebra inicialmente avaliada em 10% do p...</p>
   <p class="news-source">Fonte: Notícias Agrícolas</p>
 </article>
     <article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/cafe/431370-cafe-fecha-6-feira-13-em-queda-em-ny-pressionado-pelo-dolar-mercado-fisico-brasileiro-tem-poucas-alteracoes.html" target="_blank" rel="noopener">13/11/2026 - 17:10Café fecha 6ªfeira (13) em queda em NY, pressionado pelo dólar; mercado físico brasileiro tem poucas alterações</a></p>
-  <p class="news-summary">O mercado futuro do café arábica encerrou as negociações desta sexta-feira (13) com desvalorizações na Bolsa de Nova York (ICE Futures US), em um cenário de atenção ao comportamento do câmbio e às perspectivas de comerci...</p>
+  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/cafe/431211-brasil-exporta-recorde-de-5-3-milhoes-de-sacas-de-cafe-em-outubro.html" target="_blank" rel="noopener">11/11/2026 - 17:28Brasil exporta recorde de 5,3 milhões de sacas de café em outubro</a></p>
+  <p class="news-summary">O Brasil remeteu, em outubro deste ano, recorde mensal de café ao exterior: 5.326.944 sacas de 60 kg, o que representa um incremento de 28,4% em relação aos 4,149 milhões de sacas aferidos em idêntico período de 2025. A ...</p>
   <p class="news-source">Fonte: Notícias Agrícolas</p>
 </article>
     <article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/sucroenergetico/431365-acucar-fecha-em-alta-nas-bolsas-com-perspectiva-de-deficit-global-na-safra-2026-27.html" target="_blank" rel="noopener">13/11/2026 - 16:21Açúcar fecha em alta nas bolsas com perspectiva de déficit global na safra 2026/27</a></p>
-  <p class="news-summary">Os preços do açúcar fecharam em alta nas bolsas internacionais nesta sexta-feira (13), impulsionados pelas perspectivas de redução da oferta global na safra 2026/27. A estimativa da Organização Internacional do Açúcar (I...</p>
+  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/soja/431198-dolar-sobe-mais-de-10-apos-eleicoes-mas-produtor-segura-vendas-de-soja-a-espera-de-novas-altas.html" target="_blank" rel="noopener">11/11/2026 - 16:07Dólar sobe mais de 10% frente ao real após eleições no Brasil, mas produtor segura vendas de soja à espera de novas altas</a></p>
+  <p class="news-summary">A valorização de mais de 10% do dólar frente ao real desde o último pregão anterior às eleições presidenciais brasileiras mudou a dinâmica de formação dos preços da soja no país e abriu novas oportunidades de comercializ...</p>
   <p class="news-source">Fonte: Notícias Agrícolas</p>
 </article>
     <article class="news-item">
-  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/cafe/431361-sustentabilidade-avanca-como-exigencia-no-mercado-de-cafe-e-demanda-adequacoes-dos-produtores-mas-tambem-gera-premios-na-comercializacao.html" target="_blank" rel="noopener">13/11/2026 - 16:11Sustentabilidade avança como exigência no mercado de café e demanda adequações dos produtores, mas também gera prêmios na comercialização</a></p>
-  <p class="news-summary">A sustentabilidade ganha importância crescente como condição de acesso a compradores e mercados internacionais de café, exigindo dos produtores investimentos em infraestrutura, rastreabilidade e mudanças na gestão das pr...</p>
+  <p class="news-title"><a href="https://www.noticiasagricolas.com.br/noticias/politica-economia/431206-ministro-das-relacoes-exteriores-da-china-diz-que-conversa-por-telefone-com-rubio-foi-positiva-e-construtiva.html" target="_blank" rel="noopener">11/11/2026 - 15:36Ministro das Relações Exteriores da China diz que conversa por telefone com Rubio foi “positiva e construtiva”</a></p>
+  <p class="news-summary">PEQUIM/WASHINGTON, 11 Nov (Reuters) - O ministro das Relações Exteriores da China, Wang Yi, manteve uma conversa telefônica “positiva e construtiva” com o secretário de Estado dos EUA, Marco Rubio, nesta quarta-feira, se...</p>
   <p class="news-source">Fonte: Notícias Agrícolas</p>
 </article>
 <!-- NEWS:END -->
+          </div>
+        </div>
+      </div>
+      <div class="cartao">
+        <span class="tag">Páginas por produto e painéis</span>
+        <div class="atalhos">
+          <a href="commodities/soja/">Soja</a><a href="commodities/milho/">Milho</a><a href="commodities/cafe/">Café arábica</a><a href="commodities/boi-gordo/">Boi gordo</a>
+          <a href="panorama.html">Panorama</a><a href="correlacoes.html">Correlações</a><a href="calendario.html">Calendário</a><a href="glossario.html">Glossário</a>
+        </div>
+      </div>
+    </div>
   </section>
-
-</main>
-
-<section class="glossary-band" aria-labelledby="titulo-entenda">
-  <div class="wrap glossary-inner">
-    <div class="section-label">Comece por aqui</div>
-    <h2 id="titulo-entenda">Entenda o mercado, sem jargão</h2>
-
-    <div class="glossary-links">
-      <div class="glossary-card">
-        <a href="glossario.html#cepea">O que é o CEPEA →</a>
-        <p>Quem calcula o preço que você vê aqui todo dia, e como.</p>
-      </div>
-      <div class="glossary-card">
-        <a href="glossario.html#futuro">Como funciona o mercado futuro →</a>
-        <p>Por que existe um preço "de hoje" e um preço "de setembro".</p>
-      </div>
-      <div class="glossary-card">
-        <a href="glossario.html">Glossário do agro →</a>
-        <p>Saca, arroba, PTAX, Selic — os termos, explicados.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="wrap">
-  <footer>
-    <div class="foot-row">
-      <div>AgroFer Trader — conteúdo informativo sobre o mercado agrícola. Não constitui recomendação de investimento ou negócio.</div>
-      <div>
-        Fontes: Banco Central, AwesomeAPI, B3 e CEPEA/Esalq (via Notícias Agrícolas)
-        · <a href="glossario.html">Glossário</a>
-        · <a href="https://www.instagram.com/agrofertrader/" target="_blank" rel="noopener">Instagram @agrofertrader</a>
-      </div>
-    </div>
-  </footer>
 </div>
 
+<!-- ================= FERRAMENTAS ================= -->
+<div class="view" id="ferramentas">
+  <section class="bloco">
+    <div class="wrap">
+      <div class="cab">
+        <p class="eyebrow">Plataforma AgroFer</p>
+        <h2>As contas que o consultor faz, abertas para <em class="s">você.</em></h2>
+        <p class="lead">Preços de referência já preenchidos com o último fechamento. Tudo é simulação com os números que você informar; nenhuma ferramenta substitui o plano feito com um consultor.</p>
+      </div>
+      <p style="margin-bottom:18px"><a class="btn btn-linha btn-sm" href="calculadora/">Abrir a calculadora de break-even completa</a></p>
+      <div class="abas" role="tablist" id="abas">
+        <button role="tab" data-f="fMargem" aria-selected="true">Margem e ponto de equilíbrio</button>
+        <button role="tab" data-f="fTrava" aria-selected="false">Simulador de trava<span class="pro">PRO</span></button>
+        <button role="tab" data-f="fArm" aria-selected="false">Vender ou armazenar<span class="pro">PRO</span></button>
+        <button role="tab" data-f="fFin" aria-selected="false">Custo do financiamento</button>
+        <button role="tab" data-f="fConv" aria-selected="false">Conversor dólar · saca</button>
+      </div>
+
+      <!-- Margem -->
+      <div class="ferr on" id="fMargem">
+        <form class="entrada" autocomplete="off">
+          <div class="campo"><label for="mCult">Cultura</label><select id="mCult"></select></div>
+          <div class="grade2">
+            <div class="campo"><label for="mArea">Área (ha)</label><input id="mArea" type="number" min="0" step="1"></div>
+            <div class="campo"><label for="mProd">Produtividade (<span class="un">sc</span>/ha)</label><input id="mProd" type="number" min="0" step="0.5"></div>
+          </div>
+          <div class="campo"><label for="mCusto">Custo total (R$/ha)</label><input id="mCusto" type="number" min="0" step="50"></div>
+          <div class="campo"><label for="mPreco">Preço de venda (R$/<span class="un">sc</span>)</label><input id="mPreco" type="number" min="0" step="0.01"><span class="nota" id="mRef"></span></div>
+          <p class="nota">Área, produtividade e custo iniciais são exemplos ilustrativos, não médias de mercado.</p>
+        </form>
+        <div class="saida" aria-live="polite">
+          <div class="veredito" id="mVer"></div>
+          <div class="kpis">
+            <div class="kpi"><span>Ponto de equilíbrio</span><b id="mBE"></b></div>
+            <div class="kpi"><span>Margem por <span class="un">sc</span></span><b id="mMs"></b></div>
+            <div class="kpi"><span>Margem sobre o preço</span><b id="mMp"></b></div>
+            <div class="kpi"><span>Resultado por hectare</span><b id="mMh"></b></div>
+            <div class="kpi"><span>Resultado da área</span><b id="mMt"></b></div>
+            <div class="kpi"><span>Produtividade de equilíbrio</span><b id="mPE"></b></div>
+          </div>
+          <div>
+            <h3 style="font-size:1rem;margin-bottom:8px">Resultado por hectare se preço e produtividade variarem</h3>
+            <div class="rolagem"><table class="sens" id="mSens"></table></div>
+            <p class="nota" style="margin-top:8px">Linhas: variação da produtividade. Colunas: variação do preço. Verde é lucro, vermelho é prejuízo.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trava -->
+      <div class="ferr" id="fTrava">
+        <form class="entrada" autocomplete="off">
+          <div class="grade2">
+            <div class="campo"><label for="tProd">Produção (sacas)</label><input id="tProd" type="number" min="0" value="600"></div>
+            <div class="campo"><label for="tCusto">Custo por saca (R$)</label><input id="tCusto" type="number" min="0" value="1100"></div>
+          </div>
+          <div class="campo"><label for="tPct">Parcela travada: <b id="tPctV" class="num"></b></label><input id="tPct" type="range" min="0" max="100" step="5" value="40" style="padding:0"></div>
+          <div class="grade2">
+            <div class="campo"><label for="tTrava">Preço travado (R$/sc)</label><input id="tTrava" type="number" min="0" step="0.01"></div>
+            <div class="campo"><label for="tRef">Preço de referência hoje</label><input id="tRef" type="number" min="0" step="0.01"></div>
+          </div>
+          <p class="nota">Simulação educacional de venda antecipada a preço fixo. Não considera base, custos de corretagem, ajustes diários nem margem de garantia, e não é recomendação de operação.</p>
+        </form>
+        <div class="saida" aria-live="polite">
+          <div class="veredito" id="tVer"></div>
+          <svg id="tGraf" viewBox="0 0 640 300" role="img" aria-label="Resultado total com e sem trava conforme o preço na colheita" style="width:100%;height:auto"></svg>
+          <div class="rolagem"><table class="t" id="tTab"></table></div>
+        </div>
+      </div>
+
+      <!-- Armazenar -->
+      <div class="ferr" id="fArm">
+        <form class="entrada" autocomplete="off">
+          <div class="grade2">
+            <div class="campo"><label for="aPreco">Preço hoje (R$/sc)</label><input id="aPreco" type="number" min="0" step="0.01"></div>
+            <div class="campo"><label for="aMeses">Meses guardando</label><input id="aMeses" type="number" min="1" max="24" value="4"></div>
+          </div>
+          <div class="grade2">
+            <div class="campo"><label for="aArm">Armazenagem (R$/sc/mês)</label><input id="aArm" type="number" min="0" step="0.1" value="3"></div>
+            <div class="campo"><label for="aQuebra">Quebra técnica (%/mês)</label><input id="aQuebra" type="number" min="0" step="0.05" value="0.1"></div>
+          </div>
+          <div class="campo"><label for="aTaxa">Custo de oportunidade (% a.a.)</label><input id="aTaxa" type="number" min="0" step="0.25" ><span class="nota" id="aTaxaNota"></span></div>
+        </form>
+        <div class="saida" aria-live="polite">
+          <div class="veredito at" id="aVer"></div>
+          <div class="kpis">
+            <div class="kpi"><span>Preço de equilíbrio na venda futura</span><b id="aBE"></b></div>
+            <div class="kpi"><span>Alta necessária</span><b id="aAlta"></b></div>
+            <div class="kpi"><span>Custo de carregar por saca</span><b id="aCarry"></b></div>
+          </div>
+          <div class="rolagem"><table class="t" id="aTab"></table></div>
+          <p class="nota">Conta: preço hoje capitalizado pela taxa no período, mais armazenagem, corrigido pela quebra de peso. Guardar só compensa se o preço esperado superar o de equilíbrio.</p>
+        </div>
+      </div>
+
+      <!-- Financiamento -->
+      <div class="ferr" id="fFin">
+        <form class="entrada" autocomplete="off">
+          <div class="campo"><label for="fVal">Valor financiado (R$)</label><input id="fVal" type="number" min="0" step="1000" value="200000"></div>
+          <div class="grade2">
+            <div class="campo"><label for="fTaxa">Taxa (% a.a.)</label><input id="fTaxa" type="number" min="0" step="0.25" value="12"></div>
+            <div class="campo"><label for="fMes">Prazo (meses)</label><input id="fMes" type="number" min="1" value="10"></div>
+          </div>
+          <div class="grade2">
+            <div class="campo"><label for="fSc">Produção (sacas)</label><input id="fSc" type="number" min="1" value="600"></div>
+            <div class="campo"><label for="fPr">Preço de venda (R$/sc)</label><input id="fPr" type="number" min="0" step="0.01"></div>
+          </div>
+          <p class="nota">Pagamento único no vencimento, juros compostos. A taxa inicial é um exemplo; informe a do seu contrato.</p>
+        </form>
+        <div class="saida" aria-live="polite">
+          <div class="kpis">
+            <div class="kpi"><span>Juros no período</span><b id="fJ"></b></div>
+            <div class="kpi"><span>Juros por saca</span><b id="fJs"></b></div>
+            <div class="kpi"><span>Juros sobre a receita</span><b id="fJp"></b></div>
+            <div class="kpi"><span>Total a pagar</span><b id="fTot"></b></div>
+            <div class="kpi"><span>Sacas para quitar</span><b id="fScQ"></b></div>
+            <div class="kpi"><span>Parcela da produção</span><b id="fScP"></b></div>
+          </div>
+          <div class="rolagem"><table class="t" id="fTab"></table></div>
+        </div>
+      </div>
+
+      <!-- Conversor -->
+      <div class="ferr" id="fConv">
+        <form class="entrada" autocomplete="off">
+          <div class="campo"><label for="cCambio">Dólar (R$)</label><input id="cCambio" type="number" min="0" step="0.0001"><span class="nota" id="cCambioNota"></span></div>
+          <div class="campo"><label for="cLb">Café em Nova York (US$ por libra-peso)</label><input id="cLb" type="number" min="0" step="0.01" value="2.20"><span class="nota">Valor de exemplo. Uma saca de 60 kg tem 132,277 libras-peso.</span></div>
+          <div class="campo"><label for="cSc">Ou preço direto em US$ por saca</label><input id="cSc" type="number" min="0" step="0.01"><span class="nota">Preenchido com o indicador da soja CEPEA convertido em dólar.</span></div>
+        </form>
+        <div class="saida" aria-live="polite">
+          <div class="kpis" style="grid-template-columns:1fr 1fr">
+            <div class="kpi"><span>Café: US$ por saca</span><b id="cO1"></b></div>
+            <div class="kpi"><span>Café: R$ por saca na paridade</span><b id="cO2"></b></div>
+            <div class="kpi"><span>Preço direto: R$ por saca</span><b id="cO3"></b></div>
+            <div class="kpi"><span>Efeito de +1% no dólar</span><b id="cO4"></b></div>
+          </div>
+          <p class="nota">Paridade é a conversão pura do preço internacional. O preço pago na sua praça difere por qualidade, frete, prêmio ou desconto regional (a base).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= ACADEMIA ================= -->
+<div class="view" id="academia">
+  <section class="bloco">
+    <div class="wrap">
+      <div class="cab">
+        <p class="eyebrow">AgroFer Desenvolvimento · Academia</p>
+        <h2>Material de estudo para o produtor e formação para o <em class="s">consultor.</em></h2>
+        <p class="lead">Conteúdo próprio, explicado com conta e exemplo de safra, e uma biblioteca de fontes públicas e gratuitas que usamos no dia a dia.</p>
+      </div>
+      <div class="g3">
+        <div class="cartao"><span class="tag">Trilha 1 · aberta</span><h3>Economia da propriedade</h3><p>Custo operacional, fixo e de oportunidade. Ponto de equilíbrio. Por que lucro e caixa são coisas diferentes.</p></div>
+        <div class="cartao"><span class="tag">Trilha 2 · aberta</span><h3>Formação de preço</h3><p>Do contrato em bolsa ao preço na praça: câmbio, prêmio, frete e base. Como ler um indicador CEPEA.</p></div>
+        <div class="cartao"><span class="tag">Trilha 3 · assinantes</span><h3>Comercialização e proteção</h3><p>Venda escalonada, contrato a termo, barter, mercado futuro e opções. O que cada um trava e o que deixa em aberto.</p></div>
+        <div class="cartao"><span class="tag">Trilha 4 · assinantes</span><h3>Crédito e juros no campo</h3><p>Como a Selic chega ao custeio. Comparar linhas pelo custo efetivo. Dívida em saca ou em real.</p></div>
+        <div class="cartao"><span class="tag">Trilha 5 · consultores</span><h3>Método MARGEM na prática</h3><p>Roteiro de diagnóstico, modelos de plano de safra, condução de reunião e fechamento. Com estudos de caso.</p></div>
+        <div class="cartao"><span class="tag">Trilha 6 · consultores</span><h3>Atendimento e vendas consultivas</h3><p>Como abrir conversa com o produtor, apresentar o diagnóstico e construir carteira recorrente.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="bloco" style="padding-top:0">
+    <div class="wrap g2" style="align-items:start">
+      <div>
+        <h2 style="font-size:2rem;margin-bottom:14px">Biblioteca de fontes abertas</h2>
+        <p class="eyebrow" style="margin-top:22px">Preços e mercado</p>
+        <ul class="lista">
+          <li><b>01</b><div><strong><a href="https://www.cepea.org.br" target="_blank" rel="noopener">CEPEA/Esalq-USP</a></strong><span>Indicadores diários de preços e análises por cadeia.</span></div></li>
+          <li><b>02</b><div><strong><a href="https://www.noticiasagricolas.com.br" target="_blank" rel="noopener">Notícias Agrícolas</a></strong><span>Cotações de bolsa e físico reunidas, com a fonte de cada número.</span></div></li>
+          <li><b>03</b><div><strong><a href="https://www.usda.gov" target="_blank" rel="noopener">USDA</a></strong><span>Relatório mensal de oferta e demanda mundial (WASDE).</span></div></li>
+        </ul>
+        <p class="eyebrow" style="margin-top:22px">Custo de produção</p>
+        <ul class="lista">
+          <li><b>04</b><div><strong><a href="https://www.gov.br/conab/pt-br" target="_blank" rel="noopener">Conab</a></strong><span>Planilhas de custo por cultura e região, públicas e de uso livre com citação. Levantamentos de safra.</span></div></li>
+          <li><b>05</b><div><strong><a href="https://cnabrasil.org.br/projetos-e-programas/campo-futuro" target="_blank" rel="noopener">Projeto Campo Futuro (CNA/Senar)</a></strong><span>Painéis de custo em polos produtores, feitos com o CEPEA e o CIM/UFLA.</span></div></li>
+        </ul>
+        <p class="eyebrow" style="margin-top:22px">Cursos gratuitos</p>
+        <ul class="lista">
+          <li><b>06</b><div><strong><a href="https://ead.senar.org.br" target="_blank" rel="noopener">Senar EaD</a></strong><span>Cursos a distância gratuitos e com certificado, incluindo gestão e gestão de riscos.</span></div></li>
+          <li><b>07</b><div><strong><a href="https://www.embrapa.br/e-campo" target="_blank" rel="noopener">Embrapa e-Campo</a></strong><span>Capacitações on-line gratuitas, de 4 a 80 horas, por cadeia produtiva.</span></div></li>
+          <li><b>08</b><div><strong><a href="https://www.b3.com.br" target="_blank" rel="noopener">B3 Educação</a></strong><span>Cursos gratuitos; há trilha para produtor rural sobre contratos de commodities e hedge, feita com apoio da CVM.</span></div></li>
+          <li><b>09</b><div><strong><a href="https://www.cmegroup.com/education" target="_blank" rel="noopener">CME Group Education</a></strong><span>Cursos gratuitos em inglês sobre hedge com futuros e opções de grãos e pecuária.</span></div></li>
+        </ul>
+        <p class="eyebrow" style="margin-top:22px">Juros, inflação e crédito</p>
+        <ul class="lista">
+          <li><b>10</b><div><strong><a href="https://www.bcb.gov.br" target="_blank" rel="noopener">Banco Central do Brasil</a></strong><span>Boletim Focus, atas do Copom e estatísticas de crédito rural.</span></div></li>
+          <li><b>11</b><div><strong><a href="https://www.ibge.gov.br" target="_blank" rel="noopener">IBGE</a></strong><span>IPCA, produção agrícola municipal e levantamento sistemático.</span></div></li>
+        </ul>
+        <p class="nota" style="margin-top:14px">Critério de entrada: instituição pública, de pesquisa, bolsa ou entidade setorial, com metodologia publicada. Blogs e canais sem fonte primária ficam de fora.</p>
+      </div>
+      <div>
+        <h2 style="font-size:2rem;margin-bottom:14px">Glossário rápido</h2>
+        <div class="cartao" style="gap:0;padding:6px 22px">
+          <table class="t"><tbody>
+            <tr><td><strong>Ponto de equilíbrio</strong></td><td>Preço em que a receita cobre exatamente o custo.</td></tr>
+            <tr><td><strong>Base</strong></td><td>Diferença entre o preço na sua praça e o preço de referência.</td></tr>
+            <tr><td><strong>Hedge</strong></td><td>Operação que fixa ou limita o preço de venda futuro.</td></tr>
+            <tr><td><strong>Barter</strong></td><td>Troca de insumo por produção futura.</td></tr>
+            <tr><td><strong>Paridade</strong></td><td>Preço internacional convertido em reais pelo câmbio.</td></tr>
+            <tr><td><strong>Custo de oportunidade</strong></td><td>O que o dinheiro renderia na melhor alternativa.</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= CARREIRA ================= -->
+<div class="view" id="carreira">
+  <section class="bloco">
+    <div class="wrap">
+      <div class="cab">
+        <p class="eyebrow">Seja consultor AgroFer</p>
+        <h2>Uma carreira para quem entende de número e gosta de <em class="s">campo.</em></h2>
+        <p class="lead">Procuramos estudantes e profissionais de economia, gestão do agronegócio, agronomia, administração e áreas próximas. Você recebe formação, método e ferramentas. A evolução depende de entrega medida, não de tempo de casa.</p>
+      </div>
+      <div class="trilha">
+        <div class="degrau"><h4>Formação</h4><p>Academia AgroFer: trilhas 1 a 6 e avaliação. Quem é aprovado recebe a certificação interna.</p></div>
+        <div class="degrau"><h4>Trainee</h4><p>Acompanha diagnósticos e reuniões de um consultor. Prepara os números do plano de safra.</p></div>
+        <div class="degrau"><h4>Consultor associado</h4><p>Conduz diagnósticos com revisão de um sênior. Começa a formar carteira.</p></div>
+        <div class="degrau"><h4>Consultor</h4><p>Carteira própria de produtores, com acompanhamento mensal e metas de retenção.</p></div>
+        <div class="degrau"><h4>Líder regional</h4><p>Forma e acompanha novos consultores em uma região produtora.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="bloco escuro">
+    <div class="wrap">
+      <div class="cab"><p class="eyebrow">O que a AgroFer entrega a quem entra</p><h2>Você não começa do <em class="s">zero.</em></h2></div>
+      <div class="g4">
+        <div class="cartao"><h3>Método</h3><p>O MARGEM define o que fazer em cada reunião e o que entregar em cada etapa.</p></div>
+        <div class="cartao"><h3>Material de apoio</h3><p>Roteiros de diagnóstico, modelos de relatório e apresentações prontas para adaptar.</p></div>
+        <div class="cartao"><h3>Treinamento contínuo</h3><p>Encontro semanal de mercado, estudo de caso mensal e reciclagem a cada safra.</p></div>
+        <div class="cartao"><h3>Plataforma</h3><p>Ferramentas de cálculo, painel de mercado e gestão da carteira em um só lugar.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="bloco">
+    <div class="wrap g2" style="align-items:start">
+      <div style="display:grid;gap:16px">
+        <h2 style="font-size:2rem">Como funciona a seleção</h2>
+        <ul class="lista">
+          <li><b>01</b><div><strong>Inscrição</strong><span>Formulário ao lado. Conte sua formação e sua ligação com o agro.</span></div></li>
+          <li><b>02</b><div><strong>Conversa inicial</strong><span>Trinta minutos para alinhar expectativa, disponibilidade e região.</span></div></li>
+          <li><b>03</b><div><strong>Formação e avaliação</strong><span>Acesso às trilhas da Academia e resolução de um caso de safra.</span></div></li>
+          <li><b>04</b><div><strong>Início como trainee</strong><span>Entrada em casos reais com um consultor responsável.</span></div></li>
+        </ul>
+        <p class="nota">A remuneração é variável, por consultoria entregue e por carteira recorrente. As regras são apresentadas por escrito na conversa inicial.</p>
+      </div>
+      <form class="painel" id="formCarr" style="box-shadow:none;border:1px solid var(--linha)">
+        <h3>Quero me candidatar</h3>
+        <div class="campo"><label for="kNome">Nome</label><input id="kNome" required style="font-family:var(--f-corpo)"></div>
+        <div class="grade2">
+          <div class="campo"><label for="kCurso">Formação ou curso</label><input id="kCurso" required style="font-family:var(--f-corpo)"></div>
+          <div class="campo"><label for="kCidade">Município / UF</label><input id="kCidade" required style="font-family:var(--f-corpo)"></div>
+        </div>
+        <div class="campo"><label for="kFone">WhatsApp</label><input id="kFone" inputmode="tel" required></div>
+        <div class="campo"><label for="kMsg">Sua ligação com o agro</label><textarea id="kMsg" rows="3"></textarea></div>
+        <button class="btn btn-mata" type="submit" style="justify-content:center">Enviar candidatura</button>
+        <p class="nota" id="kRet" role="status"></p>
+      </form>
+    </div>
+  </section>
+</div>
+
+<!-- ================= PLANOS ================= -->
+<div class="view" id="planos">
+  <section class="bloco">
+    <div class="wrap">
+      <div class="cab">
+        <p class="eyebrow">Plataforma e newsletter</p>
+        <h2>Comece de graça. Assine quando a conta <em class="s">fechar.</em></h2>
+        <p class="lead">As ferramentas e a newsletter funcionam por assinatura. A consultoria é contratada por proposta e já inclui o plano mais completo.</p>
+      </div>
+      <p class="aviso" style="margin-bottom:22px">As assinaturas ainda não estão abertas. Os valores abaixo são os previstos para o lançamento.</p>
+      <div class="g3">
+        <div class="plano">
+          <span class="eyebrow">Livre</span>
+          <div class="preco">R$ 0</div>
+          <ul><li>Painel de preços e leitura do dia</li><li>Calculadora de margem</li><li>Custo do financiamento e conversor</li><li>Newsletter semanal Fecho da Semana</li><li>Trilhas abertas da Academia</li></ul>
+          <a class="btn btn-linha" href="#ferramentas" style="justify-content:center">Usar agora</a>
+        </div>
+        <div class="plano dest">
+          <span class="eyebrow">Produtor Pro</span>
+          <div class="preco">R$ 59 <small>por mês</small></div>
+          <ul><li>Todas as ferramentas, incluindo trava e armazenagem</li><li>Safras e cenários salvos</li><li>Alertas quando o preço atinge o seu gatilho</li><li>Newsletter diária Abertura AgroFer</li><li>Todas as trilhas de produtor</li><li>Relatório mensal da sua margem</li></ul>
+          <button class="btn btn-ouro" type="button" data-login style="justify-content:center">Em breve</button>
+        </div>
+        <div class="plano">
+          <span class="eyebrow">Consultoria</span>
+          <div class="preco" style="font-size:1.6rem">Sob proposta</div>
+          <ul><li>Consultor dedicado</li><li>Método MARGEM completo</li><li>Plano de safra e de comercialização</li><li>Reunião mensal e fechamento de safra</li><li>Produtor Pro incluído</li></ul>
+          <a class="btn btn-mata" href="#produtores" style="justify-content:center">Solicitar diagnóstico</a>
+        </div>
+      </div>
+      <div class="g2" style="margin-top:18px">
+        <div class="cartao"><span class="tag">Só a newsletter</span><h3>Abertura AgroFer · R$ 19 por mês</h3><p>Todo dia útil antes da abertura do mercado: fechamento CEPEA, câmbio, juros e a leitura do que mudou, em cinco minutos. A análise semanal por e-mail continua gratuita.</p><div><a class="btn btn-linha btn-sm" href="#inicio" id="irNews">Assinar a análise semanal gratuita</a></div></div>
+        <div class="cartao"><span class="tag">Para consultorias, cooperativas e revendas</span><h3>Plataforma para a sua equipe</h3><p>As mesmas ferramentas com a sua carteira de produtores, vários usuários e relatórios com a sua marca. Sob consulta.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="bloco escuro">
+    <div class="wrap">
+      <div class="cab"><p class="eyebrow">Segurança e dados</p><h2>O custo da sua fazenda é informação <em class="s">sua.</em></h2><p class="lead">A plataforma é desenhada para guardar dados financeiros sensíveis. Estes são os compromissos de projeto da área logada.</p></div>
+      <div class="g3">
+        <div class="cartao"><h3>Acesso protegido</h3><p>Verificação em duas etapas, bloqueio após tentativas repetidas e encerramento de sessão em aparelhos que você não reconhece.</p></div>
+        <div class="cartao"><h3>Dados criptografados</h3><p>Tráfego e armazenamento cifrados. Cada produtor só enxerga os próprios números; o consultor só enxerga a própria carteira.</p></div>
+        <div class="cartao"><h3>LGPD como regra</h3><p>Você pode exportar ou apagar seus dados. Estatísticas regionais usam apenas dados agregados e anônimos, e somente com o seu consentimento.</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div><div class="marca" style="color:var(--branco);margin-bottom:10px"><img src="assets/emblema.png" alt="" width="46" height="44"><span>Agro<b>Fer</b></span></div><p>Consultoria financeira e agrícola. Lavras, Minas Gerais.</p></div>
+      <div><h4>Frentes</h4><a href="#produtores">Consultoria e Hedge</a><a href="#mercado">Trade</a><a href="#ferramentas">Plataforma</a><a href="#academia">Academia</a></div>
+      <div><h4>AgroFer</h4><a href="#carreira">Seja consultor</a><a href="#planos">Planos e segurança</a><a href="#inicio">Método MARGEM</a></div>
+    </div>
+    <p class="legal">A AgroFer não realiza recomendação de compra ou venda de valores mobiliários. Simulações e conteúdos têm caráter educacional e dependem dos dados informados pelo usuário. Indicadores: CEPEA/Esalq, B3 e Banco Central do Brasil, atualizados uma vez por dia. Área do cliente e assinaturas ainda não estão ativas.</p>
+  </div>
+</footer>
+
+<dialog id="login" aria-labelledby="loginT">
+  <form method="dialog">
+    <h3 id="loginT">Área do cliente</h3>
+    <p style="color:var(--cinza);font-size:.95rem">A área logada está em desenvolvimento. Nela ficam as safras salvas, os alertas de preço e o acompanhamento com o consultor.</p>
+    <p class="nota">Enquanto isso, assine a newsletter na página inicial para ser avisado do lançamento.</p>
+    <button class="btn btn-mata" style="justify-content:center">Fechar</button>
+  </form>
+</dialog>
+
+<!-- DADOS:START -->
+<script>window.AGROFER_DADOS={"gerado_em":"16/11/2026","dolar":{"valor":5.5606,"var":-0.42,"data":"11/11/2026","hist":[5.5007,5.3346,5.342,5.3744,5.4212,5.4935,5.4778,5.4621,5.5013,5.5146,5.584,5.5606,5.6143,5.6518,5.5606]},"selic":{"valor":13.75},"fisico":[{"id":"cafe","nome":"Café arábica","un":"sc 60 kg","preco":1593.28,"var":-1.12,"data":"11/11/2026","hist":[1610.14,1620.92,1601.95,1627.46,1610.19,1593.89,1590.72,1598.37,1611.06,1600.77,1603.86,1611.14,1597.0,1611.3,1593.28],"moeda":true},{"id":"soja","nome":"Soja","un":"sc 60 kg","preco":160.41,"var":0.34,"data":"11/11/2026","hist":[153.4,152.13,152.41,155.55,157.41,157.42,158.28,158.88,159.28,158.17,158.53,158.52,158.62,159.87,160.41],"moeda":true},{"id":"milho","nome":"Milho","un":"sc 60 kg","preco":67.3,"var":0.24,"data":"11/11/2026","hist":[64.34,64.3,64.27,64.24,64.87,64.73,65.59,65.64,66.19,66.47,66.6,66.77,66.88,67.14,67.3],"moeda":true},{"id":"boi","nome":"Boi gordo","un":"arroba","preco":394.15,"var":0.22,"data":"11/11/2026","hist":[380.2,380.7,380.45,380.4,381.4,386.3,389.05,389.2,389.9,390.0,390.85,391.35,392.7,393.3,394.15],"moeda":true},{"id":"trigo","nome":"Trigo","un":"sc 60 kg","preco":93.71,"var":-0.14,"data":"11/11/2026","hist":[],"moeda":true},{"id":"algodao","nome":"Algodão","un":"¢ R$/lp","preco":414.26,"var":-0.56,"data":"11/11/2026","hist":[],"moeda":false},{"id":"acucar","nome":"Açúcar cristal","un":"sc 50 kg","preco":128.86,"var":-0.02,"data":"11/11/2026","hist":[],"moeda":true}]};</script>
+<!-- DADOS:END -->
+<script>
+(function(){
+"use strict";
+var $=function(id){return document.getElementById(id)};
+var nf=function(v,d){return (isFinite(v)?v:0).toLocaleString("pt-BR",{minimumFractionDigits:d==null?2:d,maximumFractionDigits:d==null?2:d})};
+var rs=function(v,d){return (v<0?"− R$ ":"R$ ")+nf(Math.abs(v),d)};
+var pc=function(v,d){return (v>0?"+":v<0?"−":"")+nf(Math.abs(v),d==null?2:d)+"%"};
+
+/* ---------- Dados: injetados todo dia pelo gerar_site.py (marcador DADOS) ---------- */
+var D=window.AGROFER_DADOS||{dolar:null,selic:null,fisico:[]};
+var FIS=D.fisico||[];
+function fis(id){for(var k=0;k<FIS.length;k++){if(FIS[k].id===id)return FIS[k]}return null}
+var IND=[];
+if(D.dolar&&D.dolar.valor){IND.push({id:"usd",nome:"Dólar comercial",v:"R$ "+nf(D.dolar.valor,4),va:D.dolar.var,txt:"",f:"Fechamento de "+D.dolar.data,h:D.dolar.hist})}
+if(D.selic&&D.selic.valor){IND.push({id:"selic",nome:"Selic",v:nf(D.selic.valor,2)+"% a.a.",va:null,txt:"meta vigente",f:"Banco Central do Brasil"})}
+FIS.forEach(function(x){IND.push({id:x.id,nome:x.nome+" · "+x.un,v:(x.moeda===false?"":"R$ ")+nf(x.preco,2),va:x.var,txt:"",f:"CEPEA/Esalq · "+x.data,h:x.hist,fisico:true})});
+var USD=(D.dolar&&D.dolar.valor)||0;
+var BASE={cafe:{n:"Café arábica",un:"sc",area:20,prod:30,custo:32000},soja:{n:"Soja",un:"sc",area:100,prod:60,custo:7200},milho:{n:"Milho",un:"sc",area:50,prod:110,custo:6400},boi:{n:"Boi gordo",un:"@",area:200,prod:8,custo:2600}};
+var CULT={};
+Object.keys(BASE).forEach(function(k){var x=fis(k);if(x){CULT[k]=BASE[k];CULT[k].preco=x.preco;CULT[k].data=x.data}});
+if(!Object.keys(CULT).length){CULT.cafe=BASE.cafe;CULT.cafe.preco=0;CULT.cafe.data="indisponível"}
+var REF=CULT.cafe||CULT[Object.keys(CULT)[0]];
+function varHtml(i){ if(i.va==null||isNaN(i.va)) return '<span class="var" style="color:var(--cinza)">'+i.txt+'</span>'; return '<span class="var '+(i.va>=0?"up":"dn")+'">'+pc(i.va)+'</span>'; }
+function spark(h,up){
+  if(!h||h.length<2) return "";
+  var mn=Math.min.apply(0,h),mx=Math.max.apply(0,h),W=200,H=46,p=5;
+  var pts=h.map(function(y,i){return [p+i*(W-2*p)/(h.length-1), H-p-(y-mn)/((mx-mn)||1)*(H-2*p)]});
+  var d=pts.map(function(q){return q[0].toFixed(1)+","+q[1].toFixed(1)}).join(" ");
+  var c=up?"#1C7A45":"#B4372B", l=pts[pts.length-1];
+  return '<svg viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none" aria-hidden="true"><polygon points="'+p+','+H+' '+d+' '+(W-p)+','+H+'" fill="'+c+'" opacity=".1"/><polyline points="'+d+'" fill="none" stroke="'+c+'" stroke-width="1.6" vector-effect="non-scaling-stroke"/><circle cx="'+l[0]+'" cy="'+l[1]+'" r="2.6" fill="'+c+'"/></svg>';
+}
+function cardInd(i){return '<div class="ind"><span class="nome">'+i.nome+'</span><span class="v">'+i.v+'</span>'+varHtml(i)+(i.h?spark(i.h,i.h[i.h.length-1]>=i.h[0]):"")+'<span class="f">'+i.f+'</span></div>'}
+$("fita").innerHTML=IND.map(function(i){return '<div class="it"><span>'+i.nome.split(" ·")[0]+'</span><span class="num">'+i.v+'</span>'+varHtml(i)+'</div>'}).join("");
+$("indInicio").innerHTML=IND.filter(function(i){return ["usd","selic","cafe","soja"].indexOf(i.id)>=0}).map(cardInd).join("");
+$("indMercado").innerHTML=IND.filter(function(i){return ["trigo","algodao","acucar"].indexOf(i.id)<0}).map(cardInd).join("");
+$("tabFis").innerHTML=IND.filter(function(i){return i.fisico}).map(function(i){return '<tr><td>'+i.nome+'</td><td class="num">'+i.v+'</td><td class="num '+(i.va>=0?"up":"dn")+'">'+(i.va==null?"":pc(i.va))+'</td></tr>'}).join("");
+$("dataFis").textContent=FIS.length?FIS[0].data:"indisponível";
+
+/* ---------- Rotas ---------- */
+var views=["inicio","produtores","mercado","ferramentas","academia","carreira","planos"];
+function rota(){
+  var h=(location.hash||"#inicio").slice(1); if(views.indexOf(h)<0) h="inicio";
+  views.forEach(function(v){$(v).classList.toggle("on",v===h)});
+  document.querySelectorAll("nav.principal a").forEach(function(a){ if(a.getAttribute("href")==="#"+h) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current"); });
+  window.scrollTo(0,0);
+  if(h==="inicio") curvas();
+}
+window.addEventListener("hashchange",rota);
+
+/* ---------- Curvas de nível ---------- */
+function curvas(){
+  var c=$("curvas"); if(!c) return; var r=c.parentElement.getBoundingClientRect(); if(!r.width) return;
+  var d=Math.min(window.devicePixelRatio||1,2); c.width=r.width*d; c.height=r.height*d;
+  var x=c.getContext("2d"); x.scale(d,d); x.clearRect(0,0,r.width,r.height);
+  var n=Math.round(r.height/20);
+  for(var i=0;i<n;i++){
+    var t=i/n, y0=r.height*(.08+t*1.0);
+    x.beginPath();
+    for(var px=-10;px<=r.width+10;px+=8){
+      var u=px/r.width;
+      var y=y0 - Math.sin(u*3.1+.4)*70*(1-t*.5) - Math.sin(u*7.3+i*.35)*10 - Math.cos(u*1.6+i*.12)*26;
+      if(px===-10) x.moveTo(px,y); else x.lineTo(px,y);
+    }
+    x.strokeStyle="rgba(235,171,1,"+(i%4===0?.34:.13)+")"; x.lineWidth=i%4===0?1.2:1; x.stroke();
+  }
+}
+var rz; window.addEventListener("resize",function(){clearTimeout(rz);rz=setTimeout(curvas,150)});
+
+/* ---------- Mini calculadora ---------- */
+var opts=Object.keys(CULT).map(function(k){return '<option value="'+k+'">'+CULT[k].n+'</option>'}).join("");
+$("miniCult").innerHTML=opts; $("mCult").innerHTML=opts;
+function miniSet(){var c=CULT[$("miniCult").value]; $("miniCusto").value=Math.round(c.custo/c.prod); $("miniUn").textContent=c.un==="@"?"arroba":"saca"; mini();}
+function mini(){
+  var c=CULT[$("miniCult").value], custo=+$("miniCusto").value||0, m=c.preco-custo, un=c.un==="@"?"arroba":"saca";
+  $("miniRef").textContent="Referência: "+c.n+" CEPEA/Esalq em "+c.data+", R$ "+nf(c.preco)+" por "+un;
+  $("miniMargem").textContent=rs(m); $("miniMargem").style.color=m>=0?"var(--alta)":"var(--baixa)";
+  var a=Math.min(custo,c.preco)/Math.max(custo,c.preco)*100;
+  $("miniB1").style.width=a+"%"; $("miniB2").style.width=(100-a)+"%"; $("miniB2").style.background=m>=0?"var(--ouro-claro)":"var(--baixa)";
+  $("miniFrase").textContent = m>=0 ? "O preço pode cair "+nf(m/c.preco*100,1)+"% antes de você vender abaixo do custo." : "Nesse preço, cada "+un+" vendida custa "+nf(-m/c.preco*100,1)+"% a mais do que rende.";
+}
+$("miniCult").addEventListener("change",miniSet); $("miniCusto").addEventListener("input",mini);
+$("mini").addEventListener("submit",function(e){e.preventDefault()});
+
+/* ---------- Margem ---------- */
+function mSet(){var c=CULT[$("mCult").value]; $("mArea").value=c.area;$("mProd").value=c.prod;$("mCusto").value=c.custo;$("mPreco").value=c.preco;
+  document.querySelectorAll("#fMargem .un").forEach(function(e){e.textContent=c.un});
+  $("mRef").textContent="CEPEA/Esalq "+c.data+": R$ "+nf(c.preco)+". Ajuste para o preço da sua praça."; mCalc();}
+function cor(v,ref){var k=Math.max(-1,Math.min(1,v/(ref||1))); return k>=0?"rgba(28,122,69,"+(.12+.5*k)+")":"rgba(180,55,43,"+(.12+.5*-k)+")"}
+function mCalc(){
+  var c=CULT[$("mCult").value],A=+$("mArea").value||0,P=+$("mProd").value||0,C=+$("mCusto").value||0,R=+$("mPreco").value||0,u=c.un;
+  var be=P?C/P:0, ms=R-be, mh=R*P-C, mp=R?ms/R*100:0;
+  $("mBE").textContent="R$ "+nf(be)+"/"+u; $("mMs").textContent=rs(ms); $("mMp").textContent=pc(mp,1);
+  $("mMh").textContent=rs(mh,0); $("mMt").textContent=rs(mh*A,0); $("mPE").textContent=nf(R?C/R:0,1)+" "+u+"/ha";
+  var v=$("mVer");
+  if(mp>=20){v.className="veredito ok";v.textContent="Margem de segurança de "+nf(mp,1)+"%. O preço pode recuar até R$ "+nf(be)+" antes do prejuízo."}
+  else if(mp>=0){v.className="veredito at";v.textContent="Margem apertada: "+nf(mp,1)+"% sobre o preço. Uma queda pequena de preço ou de produtividade leva ao prejuízo."}
+  else{v.className="veredito ru";v.textContent="Operação abaixo do custo. Faltam R$ "+nf(-ms)+" por "+u+" para empatar."}
+  var st=[-20,-10,0,10,20],h='<tr><th></th>'+st.map(function(s){return '<th>preço '+(s>0?"+":"")+s+'%</th>'}).join("")+'</tr>',ref=Math.max(Math.abs(R*P*.4),1);
+  st.slice().reverse().forEach(function(sp){h+='<tr><th>prod. '+(sp>0?"+":"")+sp+'%</th>'+st.map(function(sr){var x=R*(1+sr/100)*P*(1+sp/100)-C;return '<td style="background:'+cor(x,ref)+'">'+nf(x,0)+'</td>'}).join("")+'</tr>'});
+  $("mSens").innerHTML=h;
+}
+$("mCult").addEventListener("change",mSet);
+["mArea","mProd","mCusto","mPreco"].forEach(function(i){$(i).addEventListener("input",mCalc)});
+
+/* ---------- Trava ---------- */
+function tCalc(){
+  var Q=+$("tProd").value||0,C=+$("tCusto").value||0,p=(+$("tPct").value||0)/100,T=+$("tTrava").value||0,R=+$("tRef").value||1;
+  $("tPctV").textContent=nf(p*100,0)+"%";
+  var res=function(s,pp){return Q*(pp*T+(1-pp)*s)-Q*C};
+  var lo=R*.6,hi=R*1.4,W=640,H=300,L=74,B=40,Tp=18,Rg=30;
+  var ys=[res(lo,0),res(hi,0),res(lo,p),res(hi,p),0],mn=Math.min.apply(0,ys),mx=Math.max.apply(0,ys); if(mx===mn){mx=mn+1}
+  var X=function(s){return L+(s-lo)/(hi-lo)*(W-L-Rg)},Y=function(v){return Tp+(mx-v)/(mx-mn)*(H-Tp-B)};
+  var g='';
+  for(var i=0;i<=4;i++){var v=mn+(mx-mn)*i/4;g+='<line x1="'+L+'" x2="'+(W-Rg)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="#D3D9CC" stroke-width="1"/><text x="'+(L-8)+'" y="'+(Y(v)+4)+'" text-anchor="end" font-size="11" font-family="IBM Plex Mono,monospace" fill="#586259">'+nf(v/1000,0)+' mil</text>'}
+  [0.6,0.8,1,1.2,1.4].forEach(function(k){g+='<text x="'+X(R*k)+'" y="'+(H-B+18)+'" text-anchor="middle" font-size="11" font-family="IBM Plex Mono,monospace" fill="#586259">'+nf(R*k,0)+'</text>'});
+  g+='<text x="'+((L+W-Rg)/2)+'" y="'+(H-4)+'" text-anchor="middle" font-size="11" fill="#586259">Preço na colheita (R$/sc)</text>';
+  g+='<line x1="'+L+'" x2="'+(W-Rg)+'" y1="'+Y(0)+'" y2="'+Y(0)+'" stroke="#1A211C" stroke-width="1.2" stroke-dasharray="4 4"/>';
+  g+='<line x1="'+X(lo)+'" y1="'+Y(res(lo,0))+'" x2="'+X(hi)+'" y2="'+Y(res(hi,0))+'" stroke="#8A948B" stroke-width="2"/>';
+  g+='<line x1="'+X(lo)+'" y1="'+Y(res(lo,p))+'" x2="'+X(hi)+'" y2="'+Y(res(hi,p))+'" stroke="#A87700" stroke-width="3"/>';
+  g+='<circle cx="'+X(R)+'" cy="'+Y(res(R,p))+'" r="4.5" fill="#A87700"/>';
+  g+='<g font-size="12" font-weight="600"><rect x="'+(L+10)+'" y="'+(Tp+2)+'" width="12" height="3" fill="#A87700"/><text x="'+(L+28)+'" y="'+(Tp+8)+'" fill="#1A211C">Com trava</text><rect x="'+(L+110)+'" y="'+(Tp+2)+'" width="12" height="3" fill="#8A948B"/><text x="'+(L+128)+'" y="'+(Tp+8)+'" fill="#1A211C">Sem trava</text></g>';
+  $("tGraf").innerHTML=g;
+  var cen=[["Queda de 30%",R*.7],["Queda de 15%",R*.85],["Preço de hoje",R],["Alta de 15%",R*1.15],["Alta de 30%",R*1.3]];
+  $("tTab").innerHTML='<thead><tr><th>Cenário na colheita</th><th style="text-align:right">Preço médio</th><th style="text-align:right">Sem trava</th><th style="text-align:right">Com trava</th></tr></thead><tbody>'+cen.map(function(c){var a=res(c[1],0),b=res(c[1],p);return '<tr><td>'+c[0]+' <span class="num" style="color:var(--cinza)">('+nf(c[1],0)+')</span></td><td class="num">'+nf(p*T+(1-p)*c[1])+'</td><td class="num '+(a>=0?"up":"dn")+'">'+rs(a,0)+'</td><td class="num '+(b>=0?"up":"dn")+'">'+rs(b,0)+'</td></tr>'}).join("")+'</tbody>';
+  var pm=p<1?(C-p*T)/(1-p):null,v=$("tVer");
+  if(T<C&&p>0){v.className="veredito ru";v.textContent="O preço travado está abaixo do seu custo. Essa trava fixa prejuízo sobre "+nf(p*100,0)+"% da produção."}
+  else if(pm===null||pm<=0){v.className="veredito ok";v.textContent="Com essa parcela travada, a safra fecha no positivo qualquer que seja o preço na colheita."}
+  else{v.className="veredito at";v.textContent="Com "+nf(p*100,0)+"% travado a R$ "+nf(T)+", a safra empata se o restante for vendido a R$ "+nf(pm)+" ("+pc((pm/R-1)*100,1)+" em relação a hoje). Sem trava, o empate é em R$ "+nf(C)+"."}
+}
+["tProd","tCusto","tPct","tTrava","tRef"].forEach(function(i){$(i).addEventListener("input",tCalc)});
+
+/* ---------- Armazenar ---------- */
+function aCalc(){
+  var P=+$("aPreco").value||0,m=+$("aMeses").value||0,s=+$("aArm").value||0,q=(+$("aQuebra").value||0)/100,i=(+$("aTaxa").value||0)/100;
+  var f=function(n){return (P*Math.pow(1+i,n/12)+s*n)/Math.pow(1-q,n)};
+  var be=f(m);
+  $("aBE").textContent="R$ "+nf(be); $("aAlta").textContent=pc(P?(be/P-1)*100:0,1); $("aCarry").textContent=rs(be-P);
+  $("aVer").textContent="Guardar por "+m+" "+(m===1?"mês":"meses")+" só compensa se o preço chegar a pelo menos R$ "+nf(be)+" por saca.";
+  var h='<thead><tr><th>Meses</th><th style="text-align:right">Preço de equilíbrio</th><th style="text-align:right">Alta necessária</th></tr></thead><tbody>';
+  [1,2,3,4,6,9,12].forEach(function(n){h+='<tr><td class="num">'+n+'</td><td class="num">R$ '+nf(f(n))+'</td><td class="num">'+pc(P?(f(n)/P-1)*100:0,1)+'</td></tr>'});
+  $("aTab").innerHTML=h+'</tbody>';
+}
+["aPreco","aMeses","aArm","aQuebra","aTaxa"].forEach(function(i){$(i).addEventListener("input",aCalc)});
+
+/* ---------- Financiamento ---------- */
+function fCalc(){
+  var V=+$("fVal").value||0,i=(+$("fTaxa").value||0)/100,m=+$("fMes").value||0,S=+$("fSc").value||1,P=+$("fPr").value||0;
+  var J=function(t){return V*(Math.pow(1+t,m/12)-1)},j=J(i);
+  $("fJ").textContent=rs(j,0);$("fJs").textContent=rs(j/S);$("fJp").textContent=nf(P*S?j/(P*S)*100:0,1)+"%";
+  $("fTot").textContent=rs(V+j,0);$("fScQ").textContent=nf(P?(V+j)/P:0,0)+" sc";$("fScP").textContent=nf(P*S?(V+j)/(P*S)*100:0,1)+"%";
+  var h='<thead><tr><th>Se a taxa fosse</th><th style="text-align:right">Juros</th><th style="text-align:right">Por saca</th></tr></thead><tbody>';
+  [-4,-2,0,2,4].forEach(function(d){var t=Math.max(0,i+d/100);h+='<tr><td class="num">'+nf(t*100,2)+'% a.a.'+(d===0?" · informada":"")+'</td><td class="num">'+rs(J(t),0)+'</td><td class="num">'+rs(J(t)/S)+'</td></tr>'});
+  $("fTab").innerHTML=h+'</tbody>';
+}
+["fVal","fTaxa","fMes","fSc","fPr"].forEach(function(i){$(i).addEventListener("input",fCalc)});
+
+/* ---------- Conversor ---------- */
+function cCalc(){
+  var c=+$("cCambio").value||0,lb=+$("cLb").value||0,sc=+$("cSc").value||0,us=lb*132.277;
+  $("cO1").textContent="US$ "+nf(us);$("cO2").textContent="R$ "+nf(us*c);$("cO3").textContent="R$ "+nf(sc*c);
+  $("cO4").textContent="+ R$ "+nf(us*c*.01)+" no café · + R$ "+nf(sc*c*.01)+" no preço direto";
+}
+["cCambio","cLb","cSc"].forEach(function(i){$(i).addEventListener("input",cCalc)});
+
+/* ---------- Abas ---------- */
+$("abas").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;
+  document.querySelectorAll("#abas button").forEach(function(x){x.setAttribute("aria-selected",x===b?"true":"false")});
+  document.querySelectorAll(".ferr").forEach(function(f){f.classList.toggle("on",f.id===b.dataset.f)});});
+
+/* ---------- Formulários e login ---------- */
+[["formDiag","dRet"],["formCarr","kRet"]].forEach(function(p){$(p[0]).addEventListener("submit",function(e){e.preventDefault();$(p[1]).textContent="O envio deste formulário ainda não está ativo. Fale com a AgroFer pelo Instagram @agrofertrader."})});
+document.querySelectorAll(".entrada").forEach(function(f){f.addEventListener("submit",function(e){e.preventDefault()})});
+function abrir(){var d=$("login"); if(d.showModal) d.showModal(); else d.setAttribute("open","")}
+$("abrirLogin").addEventListener("click",abrir);
+document.querySelectorAll("[data-login]").forEach(function(b){b.addEventListener("click",abrir)});
+
+/* ---------- Início ---------- */
+$("tTrava").value=REF.preco;$("tRef").value=REF.preco;$("aPreco").value=REF.preco;$("fPr").value=REF.preco;$("cCambio").value=USD;
+var SEL=(D.selic&&D.selic.valor)||0;$("aTaxa").value=SEL;
+$("aTaxaNota").textContent="Preenchido com a Selic vigente, "+nf(SEL,2)+"% a.a. Se você tem dívida mais cara, use a taxa da dívida.";
+$("cCambioNota").textContent=D.dolar?"Fechamento de "+D.dolar.data+".":"";
+var SJ=fis("soja");$("cSc").value=(SJ&&USD)?(SJ.preco/USD).toFixed(2):"";
+var irN=$("irNews");if(irN){irN.addEventListener("click",function(){setTimeout(function(){var t=document.getElementById("titulo-newsletter");if(t)t.scrollIntoView()},60)})}
+miniSet();mSet();tCalc();aCalc();fCalc();cCalc();rota();
+if(document.fonts&&document.fonts.ready) document.fonts.ready.then(curvas);
+})();
+</script>
 <!-- Scripts do formulario de newsletter (Brevo) - ver comentario junto
      ao <div class="sib-form"> mais acima. -->
 <script>
@@ -778,14 +1300,14 @@ Fonte: CEPEA/Esalq · dado de 16/11/2026
   <button id="fechar-aviso-instalar-ios" type="button" aria-label="Fechar aviso">×</button>
 </div>
 <style>
-  .pwa-instalar-btn{position:fixed;right:16px;bottom:16px;z-index:40;display:flex;align-items:center;gap:8px;background:#173321;color:#FDFDF9;border:none;border-radius:999px;padding:12px 18px;font:600 13px/1 "Inter",sans-serif;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25);}
+  .pwa-instalar-btn{position:fixed;right:16px;bottom:16px;z-index:40;display:flex;align-items:center;gap:8px;background:#0B3A0E;color:#FDFDF9;border:none;border-radius:999px;padding:12px 18px;font:600 13px/1 "Inter",sans-serif;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25);}
   .pwa-instalar-btn:hover{background:#0B3C1F;}
   .pwa-instalar-btn[hidden]{display:none;}
-  .pwa-instalar-ios{position:fixed;right:16px;bottom:16px;left:16px;max-width:360px;margin-left:auto;z-index:40;display:flex;align-items:center;gap:10px;background:#FDFDF9;color:#173321;border:1px solid rgba(11,60,31,.16);border-radius:10px;padding:12px 14px;font:500 13px/1.4 "Inter",sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.18);}
+  .pwa-instalar-ios{position:fixed;right:16px;bottom:16px;left:16px;max-width:360px;margin-left:auto;z-index:40;display:flex;align-items:center;gap:10px;background:#FDFDF9;color:#06220A;border:1px solid rgba(11,60,31,.16);border-radius:10px;padding:12px 14px;font:500 13px/1.4 "Inter",sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.18);}
   .pwa-instalar-ios[hidden]{display:none;}
-  .pwa-instalar-ios button{background:none;border:none;color:#173321;opacity:.6;cursor:pointer;font-size:16px;line-height:1;padding:0 0 0 8px;flex-shrink:0;}
+  .pwa-instalar-ios button{background:none;border:none;color:#06220A;opacity:.6;cursor:pointer;font-size:16px;line-height:1;padding:0 0 0 8px;flex-shrink:0;}
 </style>
-<script src="assets/install-prompt.js" defer></script>
+<script src="assets/install-prompt.js" defer></script><script src="assets/install-prompt.js" defer></script>
 
 </body>
 </html>
