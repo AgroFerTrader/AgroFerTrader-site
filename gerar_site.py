@@ -2,9 +2,10 @@
 """
 Gerar Site - AgroFer Trader
 ============================
-Gera o site (index.html) automaticamente a partir dos mesmos dados que o
+Atualiza a home (index.html) a partir dos mesmos dados que o
 monitor_agro_v9.py ja busca (dolar, Selic, commodities fisicas, futuros
-B3, noticias). Paginas como glossario.html e calendario.html sao
+B3, noticias). A home e a da AgroFer (consultoria): os numeros entram por
+um bloco unico de dados (marcador DADOS) lido pelo JavaScript da pagina. Paginas como glossario.html e calendario.html sao
 conteudo evergreen (nao mudam todo dia) e nao sao tocadas por este
 script.
 
@@ -403,6 +404,167 @@ def montar_updated(dados: dict) -> str:
     return f"Fonte: CEPEA/Esalq · dado de {data_referencia}"
 
 
+# ---------------------------------------------------------------------
+# Home nova (AgroFer - consultoria): os indicadores, a fita do topo e as
+# ferramentas de calculo sao montados no navegador a partir de UM bloco
+# de dados (window.AGROFER_DADOS), injetado pelo marcador DADOS. Assim a
+# home, a mini calculadora e os simuladores usam exatamente o mesmo
+# numero, e nada fica com data fixa no HTML.
+# ---------------------------------------------------------------------
+
+# id usado no JavaScript da home -> (nome em resultados_commodities,
+# rotulo exibido, unidade, chave em dados/historico.json ou None,
+# valor em reais?)
+FISICO_HOME = [
+    ("cafe", "Café Arábica", "Café arábica", "sc 60 kg", "cafe", True),
+    ("soja", "Soja", "Soja", "sc 60 kg", "soja", True),
+    ("milho", "Milho", "Milho", "sc 60 kg", "milho", True),
+    ("boi", "Boi Gordo", "Boi gordo", "arroba", "boi_gordo", True),
+    ("trigo", "Trigo (R$/saca 60kg)", "Trigo", "sc 60 kg", None, True),
+    ("algodao", "Algodão", "Algodão", "¢ R$/lp", None, False),
+    ("acucar", "Açúcar Cristal", "Açúcar cristal", "sc 50 kg", None, True),
+]
+
+PONTOS_GRAFICO_HOME = 15
+
+
+def _snapshots_anteriores():
+    """Snapshots diarios (dados/AAAA-MM-DD.json), do mais recente para o
+    mais antigo. Usado so quando a fonte falha no dia, para a home mostrar
+    o ultimo valor coletado (com a data dele) em vez de ficar vazia."""
+    if not os.path.isdir(PASTA_DADOS):
+        return
+    nomes = sorted(
+        (n for n in os.listdir(PASTA_DADOS) if re.fullmatch(r"\d{4}-\d{2}-\d{2}\.json", n)),
+        reverse=True,
+    )
+    for nome in nomes:
+        try:
+            with open(os.path.join(PASTA_DADOS, nome), encoding="utf-8") as f:
+                yield json.load(f)
+        except (OSError, ValueError):
+            continue
+
+
+def _ultimo_valido(chave_lista: str, nome: str, dados_hoje: dict):
+    """Resultado de hoje para `nome`; se hoje veio com erro, o mais
+    recente sem erro entre os snapshots salvos. None se nunca houve."""
+    for r in dados_hoje.get(chave_lista) or []:
+        if r.get("nome") == nome and "erro" not in r:
+            return r
+    for snapshot in _snapshots_anteriores():
+        for r in snapshot.get(chave_lista) or []:
+            if r.get("nome") == nome and "erro" not in r:
+                return r
+    return None
+
+
+def _serie_historico(chave: str) -> list:
+    """Ultimos valores nao nulos de uma coluna de dados/historico.json,
+    sem repetir dias em que o valor ficou igual por falta de dado novo."""
+    if not chave or not os.path.exists(CAMINHO_HISTORICO_CONSOLIDADO):
+        return []
+    try:
+        with open(CAMINHO_HISTORICO_CONSOLIDADO, encoding="utf-8") as f:
+            historico = json.load(f)
+    except (OSError, ValueError):
+        return []
+    serie = []
+    for linha in historico:
+        valor = linha.get(chave)
+        if valor is None:
+            continue
+        try:
+            valor = float(valor)
+        except (TypeError, ValueError):
+            continue
+        if not serie or valor != serie[-1]:
+            serie.append(valor)
+    return serie[-PONTOS_GRAFICO_HOME:]
+
+
+def montar_dados_home(dados: dict) -> dict:
+    fisico = []
+    for id_js, nome, rotulo, unidade, chave_hist, em_reais in FISICO_HOME:
+        r = _ultimo_valido("resultados_commodities", nome, dados)
+        if r is None:
+            continue
+        try:
+            preco = _preco_para_float(r["preco_reais"])
+        except (ValueError, TypeError, KeyError):
+            continue
+        if preco is None:
+            continue
+        fisico.append({
+            "id": id_js,
+            "nome": rotulo,
+            "un": unidade,
+            "preco": round(float(preco), 2),
+            "var": monitor._variacao_para_float(r.get("variacao_pct")),
+            "data": str(r.get("data", "")),
+            "hist": _serie_historico(chave_hist),
+            "moeda": em_reais,
+        })
+
+    dolar = dados.get("dolar")
+    if not dolar:
+        for snapshot in _snapshots_anteriores():
+            if snapshot.get("dolar"):
+                dolar = snapshot["dolar"]
+                break
+    dolar_home = None
+    if dolar:
+        try:
+            dolar_home = {
+                "valor": round(float(dolar["valor"]), 4),
+                "var": round(float(dolar["variacao_pct"]), 2),
+                "data": str(dolar.get("data", "")),
+                "hist": _serie_historico("cambio"),
+            }
+        except (KeyError, TypeError, ValueError):
+            dolar_home = None
+
+    selic = dados.get("selic")
+    if not selic:
+        for snapshot in _snapshots_anteriores():
+            if snapshot.get("selic"):
+                selic = snapshot["selic"]
+                break
+    selic_home = None
+    if selic:
+        try:
+            selic_home = {"valor": float(selic["valor"])}
+        except (KeyError, TypeError, ValueError):
+            selic_home = None
+
+    return {
+        "gerado_em": datetime.now().strftime("%d/%m/%Y"),
+        "dolar": dolar_home,
+        "selic": selic_home,
+        "fisico": fisico,
+    }
+
+
+def montar_dados_script(dados: dict) -> str:
+    conteudo = json.dumps(montar_dados_home(dados), ensure_ascii=False, separators=(",", ":"))
+    # "</" dentro de um <script> fecharia a tag antes da hora.
+    conteudo = conteudo.replace("</", "<\\/")
+    return f"<script>window.AGROFER_DADOS={conteudo};</script>"
+
+
+def futuros_com_ultimo_valido(dados: dict) -> list:
+    """Mesma lista de resultados_futuros de hoje, trocando cada item que
+    veio com erro pelo ultimo valor coletado (se existir)."""
+    saida = []
+    for r in dados.get("resultados_futuros") or []:
+        if "erro" in r:
+            anterior = _ultimo_valido("resultados_futuros", r.get("nome"), {})
+            saida.append(anterior or r)
+        else:
+            saida.append(r)
+    return saida
+
+
 def _substituir_entre_marcadores(html: str, marcador: str, novo_conteudo: str) -> str:
     padrao = re.compile(
         rf"(<!-- {marcador}:START -->)(.*?)(<!-- {marcador}:END -->)",
@@ -433,16 +595,16 @@ def gerar_site() -> None:
     with open(CAMINHO_TEMPLATE, encoding="utf-8") as f:
         html = f.read()
 
+    # A home nova nao tem mais os marcadores TICKER, UPDATED e PRICES: a
+    # fita, os cartoes de indicador e as ferramentas sao desenhados no
+    # navegador a partir do bloco DADOS. As funcoes montar_ticker_html,
+    # montar_updated e montar_precos_html continuam neste arquivo porque
+    # as paginas de commodity e a calculadora ainda as usam.
     substituicoes = {
-        "TICKER": montar_ticker_html(
-            dados["dolar"],
-            dados["resultados_commodities"]
-        ),
+        "DADOS": montar_dados_script(dados),
         "EYEBROW": montar_eyebrow(),
-        "UPDATED": montar_updated(dados),
-        "PRICES": montar_precos_html(dados["resultados_commodities"]),
         "EXPLAIN": montar_explain_html(dados["explicacoes_macro"]),
-        "FUTURES": montar_futuros_html(dados["resultados_futuros"], prefixo_link="commodities/"),
+        "FUTURES": montar_futuros_html(futuros_com_ultimo_valido(dados), prefixo_link="commodities/"),
         "NEWS": montar_noticias_html(dados["noticias"]),
     }
 

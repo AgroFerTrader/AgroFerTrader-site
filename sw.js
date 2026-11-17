@@ -25,7 +25,7 @@
  * evento "activate"), em vez de servir arquivo velho pra sempre.
  */
 
-const CACHE_VERSION = "v3";
+const CACHE_VERSION = "v4";
 const STATIC_CACHE = `agrofer-estatico-${CACHE_VERSION}`;
 const PAGES_CACHE = `agrofer-paginas-${CACHE_VERSION}`;
 const CACHES_ATUAIS = [STATIC_CACHE, PAGES_CACHE];
@@ -49,6 +49,7 @@ const PRECACHE_URLS = [
   "assets/apple-touch-icon.png",
   "assets/logo.png",
   "assets/logo-nav.jpg",
+  "assets/emblema.png",
   "assets/calculadora.js",
   "assets/calculadora-core.js",
   "assets/calculadora-outros-modos.js",
