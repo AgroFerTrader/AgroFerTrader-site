@@ -1,0 +1,76 @@
+{
+  "dolar": {
+    "data": "17/11/2026",
+    "valor": 5.7851,
+    "variacao_pct": 0.9193357058125696
+  },
+  "erro_dolar": null,
+  "dolar_tr": null,
+  "erro_dolar_tr": "429 Client Error: Too Many Requests for url: https://economia.awesomeapi.com.br/json/last/USD-BRL",
+  "selic": {
+    "data": "09/12/2026",
+    "valor": 13.75
+  },
+  "erro_selic": null,
+  "resultados_commodities": [
+    {
+      "nome": "Soja",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/soja"
+    },
+    {
+      "nome": "Milho",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/milho/indicador-cepea-esalq-milho"
+    },
+    {
+      "nome": "Trigo (R$/saca 60kg)",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/trigo/preco-medio-do-trigo-cepea-esalq"
+    },
+    {
+      "nome": "Café Arábica",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/cafe/indicador-cepea-esalq-cafe-arabica"
+    },
+    {
+      "nome": "Boi Gordo",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/boi-gordo/boi-gordo-indicador-esalq-bmf"
+    },
+    {
+      "nome": "Algodão",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/algodao/algodao-indicador-cepea-esalq-a-prazo"
+    },
+    {
+      "nome": "Açúcar Cristal",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/sucroenergetico/acucar-cristal-cepea"
+    }
+  ],
+  "resultados_futuros": [
+    {
+      "nome": "Dólar Futuro (B3)",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/mercado-financeiro/dolar-b3"
+    },
+    {
+      "nome": "Soja Futuro (B3)",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/soja/soja-b3-pregao-regular"
+    },
+    {
+      "nome": "Milho Futuro (B3)",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/milho/milho-b3-prego-regular"
+    },
+    {
+      "nome": "Boi Gordo Futuro (B3)",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/boi-gordo/boi-gordo-b3-prego-regular"
+    },
+    {
+      "nome": "Café Arábica Futuro (B3)",
+      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/cafe/cafe-arabica-4-5-b3-prego-regular"
+    }
+  ],
+  "explicacoes_macro": [
+    "",
+    "--- Como dólar e Selic tendem a afetar o café e outras commodities ---",
+    "Dólar em leve alta (+0.92%): o movimento é moderado, mas já tende a favorecer um pouco o preço interno de commodities exportadas, já que a mesma cotação em dólar rende mais reais.",
+    "Com a Selic em 13.75% ao ano, o custo de financiamento no campo segue elevado - isso tende a acelerar vendas (para gerar caixa) e, por atrair capital estrangeiro, também tende a fortalecer o real. Os dois efeitos juntos costumam pressionar o preço das commodities exportadas para baixo.",
+    "Obs.: nenhuma dessas relações é garantida - clima, oferta mundial e demanda por vezes pesam mais que câmbio e juros na formação do preço final."
+  ],
+  "noticias": [],
+  "erro_noticias": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/noticias"
+}
