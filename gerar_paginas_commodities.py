@@ -1115,11 +1115,15 @@ def buscar_noticias_por_categoria(categoria: str, quantidade: int = 5) -> list:
 def atualizar_pagina_commodity(config: dict, dados: dict) -> None:
     caminho_pagina = garantir_pagina_existe(config)
 
-    fisica_filtrada = [
+    # Se a fonte falhou hoje, usa o ultimo valor coletado (com a data
+    # dele), igual a home, em vez de mostrar o cartao de erro.
+    fisica = site._ultimo_valido("resultados_commodities", config["nome_fisica"], dados)
+    fisica_filtrada = [fisica] if fisica else [
         r for r in dados["resultados_commodities"]
         if r.get("nome") == config["nome_fisica"]
     ]
-    futuro_filtrado = [
+    futuro = site._ultimo_valido("resultados_futuros", config["nome_futuro"], dados)
+    futuro_filtrado = [futuro] if futuro else [
         r for r in dados["resultados_futuros"]
         if r.get("nome") == config["nome_futuro"]
     ]

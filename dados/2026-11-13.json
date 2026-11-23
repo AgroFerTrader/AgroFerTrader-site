@@ -15,31 +15,45 @@
   "resultados_commodities": [
     {
       "nome": "Soja",
-      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/soja"
+      "data": "12/11/2026",
+      "preco_reais": "162.31",
+      "variacao_pct": "1,18%"
     },
     {
       "nome": "Milho",
-      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/milho/indicador-cepea-esalq-milho"
+      "data": "12/11/2026",
+      "preco_reais": "67.28",
+      "variacao_pct": "-0,03%"
     },
     {
       "nome": "Trigo (R$/saca 60kg)",
-      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/trigo/preco-medio-do-trigo-cepea-esalq"
+      "data": "12/11/2026",
+      "preco_reais": "94,34",
+      "variacao_pct": "0,68%"
     },
     {
       "nome": "Café Arábica",
-      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/cafe/indicador-cepea-esalq-cafe-arabica"
+      "data": "12/11/2026",
+      "preco_reais": "1619.43",
+      "variacao_pct": "1,64%"
     },
     {
       "nome": "Boi Gordo",
-      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/boi-gordo/boi-gordo-indicador-esalq-bmf"
+      "data": "12/11/2026",
+      "preco_reais": "394.3",
+      "variacao_pct": "0,04%"
     },
     {
       "nome": "Algodão",
-      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/algodao/algodao-indicador-cepea-esalq-a-prazo"
+      "data": "12/11/2026",
+      "preco_reais": "417.68",
+      "variacao_pct": "0,83%"
     },
     {
       "nome": "Açúcar Cristal",
-      "erro": "403 Client Error: Forbidden for url: https://www.noticiasagricolas.com.br/cotacoes/sucroenergetico/acucar-cristal-cepea"
+      "data": "12/11/2026",
+      "preco_reais": "128.5",
+      "variacao_pct": "-0,28%"
     }
   ],
   "resultados_futuros": [
